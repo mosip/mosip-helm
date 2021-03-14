@@ -1,0 +1,47 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "keycloak-init.fullname" . }}
+  labels:
+    {{- include "keycloak-init.labels" . | nindent 4 }}
+    
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "keycloak-init.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.jobAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "keycloak-init.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "keycloak-init.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.jobSecurityContext | nindent 8 }}
+      restartPolicy: Never  # This is one time job
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+        env:
+        {{- $globalSecretName := include "common.secrets.name" (dict "existingSecret" .Values.keycloak.existingSecret "context" $) }}
+        - name: KEYCLOAK_ADMIN_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ $globalSecretName }}
+                  key: {{ include "common.secrets.key" (dict "existingSecret" .Values.auth.existingSecret "key" "keycloak-admin-password") }}
+        envFrom:
+            - configMapRef:
+                name: {{ printf "%s-env-vars" (include "keycloak-init.fullname" .) }}
