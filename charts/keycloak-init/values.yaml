@@ -8,7 +8,7 @@ image:
   repository: pjmosip/keycloak-init 
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "develop"
+  tag: develop
 
 imagePullSecrets: []
 nameOverride: ""
@@ -65,13 +65,6 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
-autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
-
 nodeSelector: {}
 
 tolerations: []
@@ -80,11 +73,11 @@ affinity: {}
 
 keycloak:
   admin:
-    user: admin
+    user: user
     ## If a secret already exists leave this blank
     password: ""
-  ##  Keycloak server auth url. Example 
-  # serverUrl: https://iam.xyz.net/auth/ 
+  ##  Keycloak server auth url. Example: https://iam.xyz.net/auth/
+  serverUrl: "" 
 
 ## An already existing secret containing auth info
   ##
@@ -94,7 +87,7 @@ keycloak:
   #     keycloak-admin-password: myKeycloakAdminPassword
   #
 
-  realms:
+  realms: |-
     mosip: # realm
       roles:  
        - ABIS_PARTNER
@@ -138,4 +131,3 @@ keycloak:
         - PREREG
         - PRE_REGISTRATION_ADMIN
         - REGISTRATION_PROCESSOR
-  
