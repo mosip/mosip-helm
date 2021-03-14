@@ -1,0 +1,27 @@
+apiVersion: v1
+entries:
+  keycloak-init:
+  - apiVersion: v2
+    appVersion: 1.1.5
+    created: "2021-03-14T21:48:49.821419+05:30"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes to initialize Keycloak
+    digest: 778abe7420fa507d405f6c58e22529513bd1c4ed19dacca466ac2cfed95d2169
+    home: https://mosip.io
+    keywords:
+    - keycloak
+    - access-management
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: keycloak-init
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/keycloak-init-1.1.5.tgz
+    version: 1.1.5
+generated: "2021-03-14T21:48:49.819936+05:30"
