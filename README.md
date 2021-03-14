@@ -1,3 +1,0 @@
-# mosip-helm
-
-THIS REPOSITORY IS WORK-IN-PROGRESS
