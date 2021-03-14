@@ -19,17 +19,6 @@ spec:
         {{- toYaml .Values.jobSecurityContext | nindent 8 }}
       restartPolicy: Never  # This is one time job
       containers:
-        - name: test-container
-          image: k8s.gcr.io/busybox
-          command: [ "/bin/sh", "-c", "echo $KEYCLOAK_SERVER_URL " ]
-          volumeMounts:
-            - name: keycloak-init-input
-              mountPath: /opt/mosip/input/input.yaml
-              subPath: input.yaml
-          envFrom:
-              - configMapRef:
-                  name: {{ printf "%s-env-vars" (include "keycloak-init.fullname" .) }}
-
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
