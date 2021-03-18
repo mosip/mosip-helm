@@ -74,25 +74,25 @@ affinity: {}
 databases:
   mosip_master:
     enabled: true
-    host: minibox.mosip.net
-    port: 30090
+    host: ""
+    port: 5432
     su: postgres
-    suPassword: mosip123
-    sysadminPassword: mosip123
-    dbadminPassword: mosip123
-    appadminPassword: mosip123
-    dbuserPassword: mosip123
+    suPassword: "" 
+    sysadminPassword: ""
+    dbadminPassword: ""
+    appadminPassword: ""
+    dbuserPassword: ""
 
   mosip_prereg:
     enabled: true
-    host: minibox.mosip.net
-    port: 30090
+    host: ""
+    port: 5432
     su: postgres
-    suPassword: mosip123
-    sysadminPassword: mosip123
-    dbadminPassword: mosip123
-    appadminPassword: mosip123
-    dbuserPassword: mosip123
+    suPassword: ""
+    sysadminPassword: ""
+    dbadminPassword: ""
+    appadminPassword: ""
+    dbuserPassword: ""
 
 
 
