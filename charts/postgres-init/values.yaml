@@ -83,6 +83,50 @@ databases:
     appadminPassword: ""
     dbuserPassword: ""
 
+  mosip_audit:
+    enabled: true
+    host: ""
+    port: 5432
+    su: postgres
+    suPassword: ""
+    sysadminPassword: ""
+    dbadminPassword: ""
+    appadminPassword: ""
+    dbuserPassword: ""
+
+  mosip_keymgr:
+    enabled: true
+    host: ""
+    port: 5432
+    su: postgres
+    suPassword: ""
+    sysadminPassword: ""
+    dbadminPassword: ""
+    appadminPassword: ""
+    dbuserPassword: ""
+
+  mosip_kernel:
+    enabled: true
+    host: ""
+    port: 5432
+    su: postgres
+    suPassword: ""
+    sysadminPassword: ""
+    dbadminPassword: ""
+    appadminPassword: ""
+    dbuserPassword: ""
+
+  mosip_idmap:
+    enabled: true
+    host: ""
+    port: 5432
+    su: postgres
+    suPassword: ""
+    sysadminPassword: ""
+    dbadminPassword: ""
+    appadminPassword: ""
+    dbuserPassword: ""
+
   mosip_prereg:
     enabled: true
     host: ""
@@ -94,5 +138,103 @@ databases:
     appadminPassword: ""
     dbuserPassword: ""
 
+  mosip_idrepo:
+    enabled: true
+    host: ""
+    port: 5432
+    su: postgres
+    suPassword: ""
+    sysadminPassword: ""
+    dbadminPassword: ""
+    appadminPassword: ""
+    dbuserPassword: ""
+
+  mosip_ida:
+    enabled: true
+    host: ""
+    port: 5432
+    su: postgres
+    suPassword: ""
+    sysadminPassword: ""
+    dbadminPassword: ""
+    appadminPassword: ""
+    dbuserPassword: ""
+
+  mosip_reprc:
+    enabled: true
+    host: ""
+    port: 5432
+    su: postgres
+    suPassword: ""
+    sysadminPassword: ""
+    dbadminPassword: ""
+    appadminPassword: ""
+    dbuserPassword: ""
+
+  mosip_credential:
+    enabled: true
+    host: ""
+    port: 5432
+    su: postgres
+    suPassword: ""
+    sysadminPassword: ""
+    dbadminPassword: ""
+    appadminPassword: ""
+    dbuserPassword: ""
+
+  mosip_regprc:
+    enabled: true
+    host: ""
+    port: 5432
+    su: postgres
+    suPassword: ""
+    sysadminPassword: ""
+    dbadminPassword: ""
+    appadminPassword: ""
+    dbuserPassword: ""
+
+  mosip_regdevice:
+    enabled: true
+    host: ""
+    port: 5432
+    su: postgres
+    suPassword: ""
+    sysadminPassword: ""
+    dbadminPassword: ""
+    appadminPassword: ""
+    dbuserPassword: ""
+
+  mosip_authdevice:
+    enabled: true
+    host: ""
+    port: 5432
+    su: postgres
+    suPassword: ""
+    sysadminPassword: ""
+    dbadminPassword: ""
+    appadminPassword: ""
+    dbuserPassword: ""
+
+  mosip_pms:
+    enabled: true
+    host: ""
+    port: 5432
+    su: postgres
+    suPassword: ""
+    sysadminPassword: ""
+    dbadminPassword: ""
+    appadminPassword: ""
+    dbuserPassword: ""
+
+  mosip_websub:
+    enabled: true
+    host: ""
+    port: 5432
+    su: postgres
+    suPassword: ""
+    sysadminPassword: ""
+    dbadminPassword: ""
+    appadminPassword: ""
+    dbuserPassword: ""
 
 
