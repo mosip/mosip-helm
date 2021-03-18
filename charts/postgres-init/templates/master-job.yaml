@@ -2,7 +2,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: master-job
+  name: db-master-init-job
   labels:
     {{- include "postgres-init.labels" . | nindent 4 }}
 spec:
@@ -10,7 +10,7 @@ spec:
     metadata:
       labels:
         {{- include "postgres-init.selectorLabels" . | nindent 8 }}
-        app.kubernetes.io/name: master-job
+        app.kubernetes.io/name: db-master-init-job
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:

@@ -2,7 +2,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: prereg-job
+  name: db-prereg-init-job
   labels:
     {{- include "postgres-init.labels" . | nindent 4 }}
 spec:
@@ -10,7 +10,7 @@ spec:
     metadata:
       labels:
         {{- include "postgres-init.selectorLabels" . | nindent 8 }}
-        app.kubernetes.io/name: prereg-job
+        app.kubernetes.io/name: db-prereg-init-job
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
