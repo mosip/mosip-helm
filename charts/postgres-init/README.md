@@ -4,7 +4,6 @@
 * Update all database parameters in `values.yaml`
 * Add mosip helm repo
 ```
-$ helm repo add mosip https://mosip.github.io/mosip-helm
 * Update helm dependencies using:
 ```
 $ helm dependency update
