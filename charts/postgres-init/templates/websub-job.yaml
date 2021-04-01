@@ -31,31 +31,31 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: websub-secrets
-                key: su-password
+                key: db-websub-su-password
 
           - name: SYSADMIN_PWD
             valueFrom:
               secretKeyRef:
                 name: websub-secrets
-                key: sysadmin-password
+                key: db-websub-sysadmin-password
 
           - name: DBADMIN_PWD
             valueFrom:
               secretKeyRef:
                 name: websub-secrets
-                key: dbadmin-password
+                key: db-websub-dbadmin-password
 
           - name: APPADMIN_PWD
             valueFrom:
               secretKeyRef:
                 name: websub-secrets
-                key: appadmin-password
+                key: db-websub-appadmin-password
 
           - name: DBUSER_PWD
             valueFrom:
               secretKeyRef:
                 name: websub-secrets
-                key: dbuser-password
+                key: db-websub-dbuser-password
 
           envFrom:
               - configMapRef:

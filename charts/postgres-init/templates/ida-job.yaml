@@ -31,31 +31,31 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: ida-secrets
-                key: su-password
+                key: db-ida-su-password
 
           - name: SYSADMIN_PWD
             valueFrom:
               secretKeyRef:
                 name: ida-secrets
-                key: sysadmin-password
+                key: db-ida-sysadmin-password
 
           - name: DBADMIN_PWD
             valueFrom:
               secretKeyRef:
                 name: ida-secrets
-                key: dbadmin-password
+                key: db-ida-dbadmin-password
 
           - name: APPADMIN_PWD
             valueFrom:
               secretKeyRef:
                 name: ida-secrets
-                key: appadmin-password
+                key: db-ida-appadmin-password
 
           - name: DBUSER_PWD
             valueFrom:
               secretKeyRef:
                 name: ida-secrets
-                key: dbuser-password
+                key: db-ida-dbuser-password
 
           envFrom:
               - configMapRef:

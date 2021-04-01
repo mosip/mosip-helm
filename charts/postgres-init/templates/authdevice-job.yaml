@@ -31,31 +31,31 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: authdevice-secrets
-                key: su-password
+                key: db-authdevice-su-password
 
           - name: SYSADMIN_PWD
             valueFrom:
               secretKeyRef:
                 name: authdevice-secrets
-                key: sysadmin-password
+                key: db-authdevice-sysadmin-password
 
           - name: DBADMIN_PWD
             valueFrom:
               secretKeyRef:
                 name: authdevice-secrets
-                key: dbadmin-password
+                key: db-authdevice-dbadmin-password
 
           - name: APPADMIN_PWD
             valueFrom:
               secretKeyRef:
                 name: authdevice-secrets
-                key: appadmin-password
+                key: db-authdevice-appadmin-password
 
           - name: DBUSER_PWD
             valueFrom:
               secretKeyRef:
                 name: authdevice-secrets
-                key: dbuser-password
+                key: db-authdevice-dbuser-password
 
           envFrom:
               - configMapRef:

@@ -31,31 +31,31 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: idrepo-secrets
-                key: su-password
+                key: db-idrepo-su-password
 
           - name: SYSADMIN_PWD
             valueFrom:
               secretKeyRef:
                 name: idrepo-secrets
-                key: sysadmin-password
+                key: db-idrepo-sysadmin-password
 
           - name: DBADMIN_PWD
             valueFrom:
               secretKeyRef:
                 name: idrepo-secrets
-                key: dbadmin-password
+                key: db-idrepo-dbadmin-password
 
           - name: APPADMIN_PWD
             valueFrom:
               secretKeyRef:
                 name: idrepo-secrets
-                key: appadmin-password
+                key: db-idrepo-appadmin-password
 
           - name: DBUSER_PWD
             valueFrom:
               secretKeyRef:
                 name: idrepo-secrets
-                key: dbuser-password
+                key: db-idrepo-dbuser-password
 
           envFrom:
               - configMapRef:

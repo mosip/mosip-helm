@@ -31,31 +31,31 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: regprc-secrets
-                key: su-password
+                key: db-regprc-su-password
 
           - name: SYSADMIN_PWD
             valueFrom:
               secretKeyRef:
                 name: regprc-secrets
-                key: sysadmin-password
+                key: db-regprc-sysadmin-password
 
           - name: DBADMIN_PWD
             valueFrom:
               secretKeyRef:
                 name: regprc-secrets
-                key: dbadmin-password
+                key: db-regprc-dbadmin-password
 
           - name: APPADMIN_PWD
             valueFrom:
               secretKeyRef:
                 name: regprc-secrets
-                key: appadmin-password
+                key: db-regprc-appadmin-password
 
           - name: DBUSER_PWD
             valueFrom:
               secretKeyRef:
                 name: regprc-secrets
-                key: dbuser-password
+                key: db-regprc-dbuser-password
 
           envFrom:
               - configMapRef:

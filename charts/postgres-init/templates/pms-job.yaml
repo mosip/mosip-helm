@@ -31,31 +31,31 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: pms-secrets
-                key: su-password
+                key: db-pms-su-password
 
           - name: SYSADMIN_PWD
             valueFrom:
               secretKeyRef:
                 name: pms-secrets
-                key: sysadmin-password
+                key: db-pms-sysadmin-password
 
           - name: DBADMIN_PWD
             valueFrom:
               secretKeyRef:
                 name: pms-secrets
-                key: dbadmin-password
+                key: db-pms-dbadmin-password
 
           - name: APPADMIN_PWD
             valueFrom:
               secretKeyRef:
                 name: pms-secrets
-                key: appadmin-password
+                key: db-pms-appadmin-password
 
           - name: DBUSER_PWD
             valueFrom:
               secretKeyRef:
                 name: pms-secrets
-                key: dbuser-password
+                key: db-pms-dbuser-password
 
           envFrom:
               - configMapRef:
