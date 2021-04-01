@@ -94,5 +94,5 @@ gitRepo:
 ## Key used to encrypt fields in the config properties. A random key is generated if not specified.
 encryptKey: ""
 
-## API access hostname (assumed HTTPS)
-mosipApiHost: ""
+## API access hostname (assumed HTTPS). This is the external access hostname to mosip cluster. Example "api.sandbox.xyz.net" 
+mosipApiHost: 
