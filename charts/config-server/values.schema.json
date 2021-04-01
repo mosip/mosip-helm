@@ -1,8 +1,16 @@
 {
-  "$schema": "$schema": "http://json-schema.org/schema#",
-  "required": [
+  "$schema": "http://json-schema.org/schema#",
+  "title": "Values",
+  "type": "object",
+  "required" : [
     "mosipApiHost"
   ],
-  "title": "Values",
-  "type": "object"
+  "properties": {
+    "mosipApiHost": {
+      "description": "Hostname to access mosip apis",
+      "type": "string",
+      "pattern": "^\\S*$",
+      "minLength": 1
+    }
+  }
 }
