@@ -39,6 +39,9 @@ spec:
                  secretKeyRef:
                    name: {{ include "config-server.fullname" . }}
                    key: github-token 
+
+            {{- include "config-server.overrides" . | nindent 12 }}
+
           envFrom:
             - configMapRef:
                 name: {{ printf "%s-env-vars" (include "config-server.fullname" .) }}

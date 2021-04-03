@@ -97,3 +97,10 @@ encryptKey: ""
 ## API access hostname (assumed HTTPS). This is the external access hostname to mosip cluster. Example "api.sandbox.xyz.net" 
 
 mosipApiHost: ""
+
+## Various secrets that are loaded as "overrides" in config server.  
+## The secrets below may be in different namespaces.  Refer to instructions to install Helm Chart in 
+## mosip-infra repo.
+overrides:
+  secrets:
+    db: db-common-secrets 

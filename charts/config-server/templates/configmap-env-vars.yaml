@@ -7,4 +7,3 @@ data:
   SPRING_CLOUD_CONFIG_SERVER_GIT_SEARCHPATHS: {{ .Values.gitRepo.searchFolders  | quote }}
   SPRING_CLOUD_CONFIG_SERVER_GIT_URI: {{ .Values.gitRepo.uri | quote }}
   SPRING_CLOUD_CONFIG_SERVER_GIT_USERNAME: {{ .Values.gitRepo.username | quote  }}
-  SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIPBOX_PUBLIC_URL: {{ printf "https://%s" .Values.mosipApiHost }}   
