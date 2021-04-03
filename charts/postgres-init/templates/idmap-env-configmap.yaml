@@ -17,4 +17,5 @@ data:
   DB_SERVERIP: {{ .Values.databases.mosip_idmap.host | quote }}
   DB_PORT: {{ .Values.databases.mosip_idmap.port | quote }}
   SU_USER: {{ .Values.databases.mosip_idmap.su | quote }}
+  DML_FLAG: {{ .Values.databases.mosip_idmap.dml | quote }}
 {{- end }}

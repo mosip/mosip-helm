@@ -30,34 +30,34 @@ spec:
           - name: SU_USER_PWD
             valueFrom:
               secretKeyRef:
-                name: idrepo-secrets
-                key: db-idrepo-su-password
+                name: {{ .Values.databases.mosip_idrepo.su.secret.name }}
+                key: {{ .Values.databases.mosip_idrepo.su.secret.key }}
 
           - name: SYSADMIN_PWD
             valueFrom:
               secretKeyRef:
-                name: idrepo-secrets
-                key: db-idrepo-sysadmin-password
+                name: db-common-secrets
+                key: db-sysadmin-password
 
           - name: DBADMIN_PWD
             valueFrom:
               secretKeyRef:
-                name: idrepo-secrets
-                key: db-idrepo-dbadmin-password
+                name: db-common-secrets
+                key: db-dbadmin-password
 
           - name: APPADMIN_PWD
             valueFrom:
               secretKeyRef:
-                name: idrepo-secrets
-                key: db-idrepo-appadmin-password
+                name: db-common-secrets
+                key: db-appadmin-password
 
           - name: DBUSER_PWD
             valueFrom:
               secretKeyRef:
-                name: idrepo-secrets
-                key: db-idrepo-dbuser-password
+                name: db-common-secrets
+                key: db-dbuser-password
 
           envFrom:
               - configMapRef:
-                  name: idrepo-env-config
+                  name: db-idrepo-init-env-config
 {{- end }}

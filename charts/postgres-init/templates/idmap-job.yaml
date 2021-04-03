@@ -30,34 +30,34 @@ spec:
           - name: SU_USER_PWD
             valueFrom:
               secretKeyRef:
-                name: idmap-secrets
-                key: db-idmap-su-password
+                name: {{ .Values.databases.mosip_idmap.su.secret.name }}
+                key: {{ .Values.databases.mosip_idmap.su.secret.key }}
 
           - name: SYSADMIN_PWD
             valueFrom:
               secretKeyRef:
-                name: idmap-secrets
-                key: db-idmap-sysadmin-password
+                name: db-common-secrets
+                key: db-sysadmin-password
 
           - name: DBADMIN_PWD
             valueFrom:
               secretKeyRef:
-                name: idmap-secrets
-                key: db-idmap-dbadmin-password
+                name: db-common-secrets
+                key: db-dbadmin-password
 
           - name: APPADMIN_PWD
             valueFrom:
               secretKeyRef:
-                name: idmap-secrets
-                key: db-idmap-appadmin-password
+                name: db-common-secrets
+                key: db-appadmin-password
 
           - name: DBUSER_PWD
             valueFrom:
               secretKeyRef:
-                name: idmap-secrets
-                key: db-idmap-dbuser-password
+                name: db-common-secrets
+                key: db-dbuser-password
 
           envFrom:
               - configMapRef:
-                  name: idmap-env-config
+                  name: db-idmap-init-env-config
 {{- end }}

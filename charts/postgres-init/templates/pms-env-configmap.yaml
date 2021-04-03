@@ -17,4 +17,5 @@ data:
   DB_SERVERIP: {{ .Values.databases.mosip_pms.host | quote }}
   DB_PORT: {{ .Values.databases.mosip_pms.port | quote }}
   SU_USER: {{ .Values.databases.mosip_pms.su | quote }}
+  DML_FLAG: {{ .Values.databases.mosip_pms.dml | quote }}
 {{- end }}

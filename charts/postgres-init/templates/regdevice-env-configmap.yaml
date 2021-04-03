@@ -17,4 +17,6 @@ data:
   DB_SERVERIP: {{ .Values.databases.mosip_regdevice.host | quote }}
   DB_PORT: {{ .Values.databases.mosip_regdevice.port | quote }}
   SU_USER: {{ .Values.databases.mosip_regdevice.su | quote }}
+  DML_FLAG: {{ .Values.databases.mosip_regdevice.dml | quote }}
 {{- end }}
+ 

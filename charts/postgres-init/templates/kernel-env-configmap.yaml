@@ -17,4 +17,5 @@ data:
   DB_SERVERIP: {{ .Values.databases.mosip_kernel.host | quote }}
   DB_PORT: {{ .Values.databases.mosip_kernel.port | quote }}
   SU_USER: {{ .Values.databases.mosip_kernel.su | quote }}
+  DML_FLAG: {{ .Values.databases.mosip_kernel.dml | quote }}
 {{- end }}

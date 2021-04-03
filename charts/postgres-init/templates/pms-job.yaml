@@ -30,34 +30,34 @@ spec:
           - name: SU_USER_PWD
             valueFrom:
               secretKeyRef:
-                name: pms-secrets
-                key: db-pms-su-password
+                name: {{ .Values.databases.mosip_pms.su.secret.name }}
+                key: {{ .Values.databases.mosip_pms.su.secret.key }}
 
           - name: SYSADMIN_PWD
             valueFrom:
               secretKeyRef:
-                name: pms-secrets
-                key: db-pms-sysadmin-password
+                name: db-common-secrets
+                key: db-sysadmin-password
 
           - name: DBADMIN_PWD
             valueFrom:
               secretKeyRef:
-                name: pms-secrets
-                key: db-pms-dbadmin-password
+                name: db-common-secrets
+                key: db-dbadmin-password
 
           - name: APPADMIN_PWD
             valueFrom:
               secretKeyRef:
-                name: pms-secrets
-                key: db-pms-appadmin-password
+                name: db-common-secrets
+                key: db-appadmin-password
 
           - name: DBUSER_PWD
             valueFrom:
               secretKeyRef:
-                name: pms-secrets
-                key: db-pms-dbuser-password
+                name: db-common-secrets
+                key: db-dbuser-password
 
           envFrom:
               - configMapRef:
-                  name: pms-env-config
+                  name: db-pms-init-env-config
 {{- end }}

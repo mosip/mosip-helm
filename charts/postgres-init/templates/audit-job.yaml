@@ -30,34 +30,34 @@ spec:
           - name: SU_USER_PWD
             valueFrom:
               secretKeyRef:
-                name: audit-secrets
-                key: db-audit-su-password
+                name: {{ .Values.databases.mosip_audit.su.secret.name }}
+                key: {{ .Values.databases.mosip_audit.su.secret.key }}
 
           - name: SYSADMIN_PWD
             valueFrom:
               secretKeyRef:
-                name: audit-secrets
-                key: db-audit-sysadmin-password
+                name: db-common-secrets
+                key: db-sysadmin-password
 
           - name: DBADMIN_PWD
             valueFrom:
               secretKeyRef:
-                name: audit-secrets
-                key: db-audit-dbadmin-password
+                name: db-common-secrets
+                key: db-dbadmin-password
 
           - name: APPADMIN_PWD
             valueFrom:
               secretKeyRef:
-                name: audit-secrets
-                key: db-audit-appadmin-password
+                name: db-common-secrets
+                key: db-appadmin-password
 
           - name: DBUSER_PWD
             valueFrom:
               secretKeyRef:
-                name: audit-secrets
-                key: db-audit-dbuser-password
+                name: db-common-secrets
+                key: db-dbuser-password
 
           envFrom:
               - configMapRef:
-                  name: audit-env-config
+                  name: db-audit-init-env-config
 {{- end }}

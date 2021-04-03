@@ -30,34 +30,34 @@ spec:
           - name: SU_USER_PWD
             valueFrom:
               secretKeyRef:
-                name: kernel-secrets
-                key: db-kernel-su-password
+                name: {{ .Values.databases.mosip_kernel.su.secret.name }}
+                key: {{ .Values.databases.mosip_kernel.su.secret.key }}
 
           - name: SYSADMIN_PWD
             valueFrom:
               secretKeyRef:
-                name: kernel-secrets
-                key: db-kernel-sysadmin-password
+                name: db-common-secrets
+                key: db-sysadmin-password
 
           - name: DBADMIN_PWD
             valueFrom:
               secretKeyRef:
-                name: kernel-secrets
-                key: db-kernel-dbadmin-password
+                name: db-common-secrets
+                key: db-dbadmin-password
 
           - name: APPADMIN_PWD
             valueFrom:
               secretKeyRef:
-                name: kernel-secrets
-                key: db-kernel-appadmin-password
+                name: db-common-secrets
+                key: db-appadmin-password
 
           - name: DBUSER_PWD
             valueFrom:
               secretKeyRef:
-                name: kernel-secrets
-                key: db-kernel-dbuser-password
+                name: db-common-secrets
+                key: db-dbuser-password
 
           envFrom:
               - configMapRef:
-                  name: kernel-env-config
+                  name: db-kernel-init-env-config
 {{- end }}

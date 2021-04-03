@@ -30,35 +30,35 @@ spec:
           - name: SU_USER_PWD
             valueFrom:
               secretKeyRef:
-                name: prereg-secrets
-                key: db-prereg-su-password
+                name: {{ .Values.databases.mosip_prereg.su.secret.name }}
+                key: {{ .Values.databases.mosip_prereg.su.secret.key }}
 
           - name: SYSADMIN_PWD
             valueFrom:
               secretKeyRef:
-                name: prereg-secrets
-                key: db-prereg-sysadmin-password
+                name: db-common-secrets
+                key: db-sysadmin-password
 
           - name: DBADMIN_PWD
             valueFrom:
               secretKeyRef:
-                name: prereg-secrets
-                key: db-prereg-dbadmin-password
+                name: db-common-secrets
+                key: db-dbadmin-password
 
           - name: APPADMIN_PWD
             valueFrom:
               secretKeyRef:
-                name: prereg-secrets
-                key: db-prereg-appadmin-password
+                name: db-common-secrets
+                key: db-appadmin-password
 
           - name: DBUSER_PWD
             valueFrom:
               secretKeyRef:
-                name: prereg-secrets
-                key: db-prereg-dbuser-password
+                name: db-common-secrets
+                key: db-dbuser-password
 
           envFrom:
               - configMapRef:
-                  name: prereg-env-config
+                  name: db-prereg-init-env-config
 
 {{- end }}

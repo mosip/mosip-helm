@@ -17,4 +17,5 @@ data:
   DB_SERVERIP: {{ .Values.databases.mosip_authdevice.host | quote }}
   DB_PORT: {{ .Values.databases.mosip_authdevice.port | quote }}
   SU_USER: {{ .Values.databases.mosip_authdevice.su | quote }}
+  DML_FLAG: {{ .Values.databases.mosip_authdevice.dml | quote }}
 {{- end }}

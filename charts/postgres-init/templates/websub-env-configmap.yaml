@@ -17,4 +17,5 @@ data:
   DB_SERVERIP: {{ .Values.databases.mosip_websub.host | quote }}
   DB_PORT: {{ .Values.databases.mosip_websub.port | quote }}
   SU_USER: {{ .Values.databases.mosip_websub.su | quote }}
+  DML_FLAG: {{ .Values.databases.mosip_websub.dml | quote }}
 {{- end }}

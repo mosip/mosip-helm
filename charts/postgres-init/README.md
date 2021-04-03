@@ -10,5 +10,5 @@ $ helm dependency update
 ```
 * Run the helm chart
 ```
-$ helm install postgres-init postgres-init
+$ helm -n postgres install postgres-init postgres-init
 ```
