@@ -29,11 +29,22 @@ spec:
           - name: KEYCLOAK_ADMIN_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: {{ $globalSecretName }}
-                key: {{ include "common.secrets.key" (dict "existingSecret" .Values.keycloak.existingSecret "key" "keycloak-admin-password") }}
+                name: {{ .Values.keycloak.admin.secret.existingSecret }}
+                key: {{ .Values.keycloak.admin.secret.key }}
+          - name: KEYCLOAK_SERVER_URL
+            valueFrom:
+               configMapKeyRef:
+                 name: {{ .Values.keycloak.host.existingConfigMap }} 
+                 key:  {{ .Values.keycloak.host.key }} 
+          - name: KEYCLOAK_ADMIN_USER
+            valueFrom:
+               configMapKeyRef:
+                 name: {{ .Values.keycloak.admin.userName.existingConfigMap }} 
+                 key:  {{ .Values.keycloak.admin.userName.key }} 
           envFrom:
-              - configMapRef:
-                  name: {{ printf "%s-env-vars" (include "keycloak-init.fullname" .) }}
+              - secretRef:
+                  name: client-secrets
+
           volumeMounts:
             - name: keycloak-init-input
               mountPath: /opt/mosip/input/input.yaml

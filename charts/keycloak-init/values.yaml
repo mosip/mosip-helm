@@ -71,21 +71,19 @@ tolerations: []
 
 affinity: {}
 
+## It is assumed that these configmaps are created when Keycloak was installed and available in the same namespace
+## as this chart 
 keycloak:
+  host: 
+    existingConfigMap: keycloak-host
+    key: keycloak-host-url
   admin:
-    user: user
-    ## If a secret already exists leave this blank
-    password: ""
-  ##  Keycloak server auth url. Example: https://iam.xyz.net/auth/
-  serverUrl: "" 
-
-## An already existing secret containing auth info
-  ##
-  # existingSecret:
-  #   name: mySecret
-  #   keyMapping:
-  #     keycloak-admin-password: myKeycloakAdminPassword
-  #
+    userName:
+      existingConfigMap: keycloak-env-vars
+      key: KEYCLOAK_ADMIN_USER 
+    secret:
+      existingSecret: keycloak
+      key: admin-password 
 
   realms: |-
     mosip: # realm
@@ -123,6 +121,9 @@ keycloak:
        - REGISTRATION_SUPERVISOR
        - RESIDENT
        - ZONAL_ADMIN
+      clients: 
+       - mosip-auth-client
+       - mosip-abis-client
     
     preregistration:  # realm
       roles: 
@@ -131,3 +132,12 @@ keycloak:
         - PREREG
         - PRE_REGISTRATION_ADMIN
         - REGISTRATION_PROCESSOR
+      clients: []
+
+## These will be passed as environments variables to keycloak-init docker. Note the expected naming convention is 
+## <realm name>-<clientname>-<secret>.  If empty secret is passed, it shall be randomly generated
+clientSecrets:
+  - name: mosip-auth-client-secret
+    secret: ""
+  - name: mosip-abis-secret
+    secret: ""
