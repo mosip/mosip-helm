@@ -43,7 +43,7 @@ spec:
                  key:  {{ .Values.keycloak.admin.userName.key }} 
           envFrom:
               - secretRef:
-                  name: client-secrets
+                  name: keycloak-client-secrets
 
           volumeMounts:
             - name: keycloak-init-input
