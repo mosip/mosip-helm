@@ -122,8 +122,24 @@ keycloak:
        - RESIDENT
        - ZONAL_ADMIN
       clients: 
-       - mosip-auth-client
        - mosip-abis-client
+       - mosip-admin-client
+       - mosip-admin-services-client
+       - mosip-auth-client
+       - mosip-crereq-client
+       - mosip-creser-client 
+       - mosip-creser-idpass-client
+       - mosip-datsha-client
+       - mosip-ida-client
+       - mosip-misp-client
+       - mosip-partner-client
+       - mosip-partnermanager-client
+       - mosip-pms-client
+       - mosip-policymanager-client
+       - mosip-prereg-client
+       - mosip-reg-client
+       - mosip-regproc-client
+       - mosip-resident-client
     
     preregistration:  # realm
       roles: 
@@ -132,12 +148,45 @@ keycloak:
         - PREREG
         - PRE_REGISTRATION_ADMIN
         - REGISTRATION_PROCESSOR
-      clients: []
+      clients: 
+        - mosip-prereg-client
 
 ## These will be passed as environments variables to keycloak-init docker. Note the expected naming convention is 
 ## <realm name>-<clientname>-<secret>.  If empty secret is passed, it shall be randomly generated
 clientSecrets:
-  - name: mosip-auth-client-secret
+  - name: mosip-mosip-abis-client-secret
     secret: ""
-  - name: mosip-abis-secret
+  - name: mosip-mosip-admin-client-secret
+    secret: ""
+  - name: mosip-mosip-admin-services-client-secret
+    secret: ""
+  - name: mosip-mosip-auth-client-secret
+    secret: ""
+  - name: mosip-mosip-crereq-client-secret
+    secret: ""
+  - name: mosip-mosip-creser-client-secret
+    secret: ""
+  - name: mosip-mosip-datsha-client-secret
+    secret: ""
+  - name: mosip-mosip-ida-client-secret
+    secret: ""
+  - name: mosip-mosip-misp-client-secret
+    secret: ""
+  - name: mosip-mosip-partner-client-secret
+    secret: ""
+  - name: mosip-mosip-partnermanager-client-secret
+    secret: ""
+  - name: mosip-mosip-pms-client-secret
+    secret: ""
+  - name: mosip-mosip-policymanager-client-secret
+    secret: ""
+  - name: mosip-mosip-prereg-client-secret
+    secret: ""
+  - name: mosip-mosip-reg-client-secret
+    secret: ""
+  - name: mosip-mosip-regproc-client-secret
+    secret: ""
+  - name: mosip-mosip-resident-client-secret
+    secret: ""
+  - name: preregistration-mosip-prereg-client-secret
     secret: ""
