@@ -16,6 +16,6 @@ data:
   MOSIP_DB_NAME: mosip_regprc
   DB_SERVERIP: {{ .Values.databases.mosip_regprc.host | quote }}
   DB_PORT: {{ .Values.databases.mosip_regprc.port | quote }}
-  SU_USER: {{ .Values.databases.mosip_regprc.su | quote }}
+  SU_USER: {{ .Values.databases.mosip_regprc.su.user | quote }}
   DML_FLAG: {{ .Values.databases.mosip_regprc.dml | quote }}
 {{- end }}

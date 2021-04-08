@@ -111,8 +111,8 @@ databases:
     dml: 0
 
   mosip_keymgr:
-    enabled: false
-    host: ""
+    enabled: true 
+    host: "postgres-postgresql"
     port: 5432
     su:
       user: postgres
@@ -122,8 +122,8 @@ databases:
     dml: 1 
 
   mosip_kernel:
-    enabled: false
-    host: ""
+    enabled: true
+    host: "postgres-postgresql"
     port: 5432
     su:
       user: postgres
@@ -133,8 +133,8 @@ databases:
     dml: 0 
 
   mosip_idmap:
-    enabled: false
-    host: ""
+    enabled: true
+    host: "postgres-postgresql"
     port: 5432
     su:
       user: postgres
@@ -144,8 +144,8 @@ databases:
     dml: 0 
 
   mosip_prereg:
-    enabled: false
-    host: ""
+    enabled: true
+    host: "postgres-postgresql"
     port: 5432
     su:
       user: postgres
@@ -155,8 +155,8 @@ databases:
     dml: 1 
 
   mosip_idrepo:
-    enabled: false
-    host: ""
+    enabled: true
+    host: "postgres-postgresql"
     port: 5432
     su:
       user: postgres
@@ -166,8 +166,8 @@ databases:
     dml: 0
 
   mosip_ida:
-    enabled: false 
-    host: ""
+    enabled: true
+    host: "postgres-postgresql"
     port: 5432
     su:
       user: postgres
@@ -177,8 +177,8 @@ databases:
     dml: 1 
 
   mosip_credential:
-    enabled: false 
-    host: ""
+    enabled: true
+    host: "postgres-postgresql"
     port: 5432
     su:
       user: postgres
@@ -188,8 +188,8 @@ databases:
     dml: 0 
 
   mosip_regprc:
-    enabled: false 
-    host: ""
+    enabled: true
+    host: "postgres-postgresql"
     port: 5432
     su:
       user: postgres
@@ -199,8 +199,8 @@ databases:
     dml: 1
 
   mosip_regdevice:
-    enabled: false 
-    host: ""
+    enabled: true
+    host: "postgres-postgresql"
     port: 5432
     su:
       user: postgres
@@ -210,8 +210,8 @@ databases:
     dml: 1
 
   mosip_authdevice:
-    enabled: false 
-    host: ""
+    enabled: true
+    host: "postgres-postgresql"
     port: 5432
     su:
       user: postgres
@@ -221,8 +221,8 @@ databases:
     dml: 1
 
   mosip_pms:
-    enabled: false 
-    host: ""
+    enabled: true
+    host: "postgres-postgresql"
     port: 5432
     su:
       user: postgres
@@ -232,8 +232,8 @@ databases:
     dml: 1
 
   mosip_websub:
-    enabled: false 
-    host: ""
+    enabled: true
+    host: "postgres-postgresql"
     port: 5432
     su:
       user: postgres
