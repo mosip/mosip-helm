@@ -99,9 +99,12 @@ encryptKey: ""
 mosipApiHost: ""
 
 ## Various secrets that are loaded as "overrides" in config server.  
-## The secrets below may be in different namespaces.  Refer to instructions to install Helm Chart in 
+## The secrets below may be in different namespaces.  Refer to instructions to install helm chart in 
 ## mosip-infra repo.
 overrides:
   secrets:
     db: db-common-secrets 
-    keycloak: client-secrets
+    keycloak: keycloak
+    keycloakClients: keycloak-client-secrets
+  configmaps:
+    keycloakHost: keycloak-host
