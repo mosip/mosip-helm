@@ -1,0 +1,106 @@
+
+image:
+  # image.registry is the repository where the ActiveMQ Artemis image is stored
+  registry: docker.io
+  # image.repository is the ActiveMQ Artemis image name
+  repository: vromero/activemq-artemis
+  # image.tag is the ActiveMQ Artemis image's tag: https://hub.docker.com/r/vromero/activemq-artemis/tags
+  tag: 2.16.0
+  # image.pullPolicy is the ActiveMQ Artemis image's pull policy
+  pullPolicy: Always
+  # image.pullSecrets optionally specify an array of imagePullSecrets.Secrets must be manually created in the namespace.
+  # ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+  pullSecrets: []
+
+# artemisUser sets the artemis admin user name
+artemisUser: artemis
+# artemisPassword sets the artemis admin user password
+artemisPassword: ""
+
+replicas: 1 
+
+# antiAffinity sets an anti affinity policy between masters and slaves as either hard or soft, default is hard
+antiAffinity: "soft"
+
+# nameOverride replaces the computed chart name with this given name. 
+# nameOverride: 
+
+# namePrefix sets the prefix for the fullname in the template "global prefix + prefix + name + suffix + global suffix"
+# namePrefix:
+
+# nameSuffix sets the suffix for the fullname in the template "global prefix + prefix + name + suffix + global suffix"
+# nameSuffix: 
+
+global:
+# namePrefix sets the global prefix for the fullname in the template "global prefix + prefix + name + suffix + global suffix"
+#   namePrefix: Global prefix
+# nameSuffix sets the global suffix for the fullname in the template "global prefix + prefix + name + suffix + global suffix"
+#   nameSuffix: Global suffix
+
+deployment:
+  ## Artemis Deployment annotations
+  annotations: {}
+  #   name: value
+replica:
+  ## Artemis Replicas annotations
+  annotations: {}
+
+  ## Read more about kube2iam to provide access to s3 https://github.com/jtblin/kube2iam
+  #   iam.amazonaws.com/role: role-arn
+
+## Persist data to a persitent volume
+persistence:
+  testJournalPerformance: AUTO
+  enabled: true
+  ## If defined, volume.beta.kubernetes.io/storage-class: <storageClass>
+  ## Default: volume.alpha.kubernetes.io/storage-class: default
+  ##
+  # storageClass:
+  accessMode: ReadWriteOnce
+  size: 8Gi
+
+## Configure resource requests and limits
+## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+##
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 100m
+
+# A load balander might confuse Minikube when installing with Helm and --wait
+# Probably this is only useful for minikube environments and CI
+loadbalancer:
+  enabled: true
+
+service:
+  annotations: {}
+
+## Prometheus Exporters / Metrics
+##
+prometheus:
+
+  ## Prometheus JMX Exporter: exposes the majority of Kafkas metrics
+  jmx:
+    ## Interval at which Prometheus scrapes metrics, note: only used by Prometheus Operator
+    interval: 10s
+
+    ## Timeout at which Prometheus timeouts scrape run, note: only used by Prometheus Operator
+    scrapeTimeout: 10s
+
+    ## Port jmx-exporter exposes Prometheus format metrics to scrape
+    port: 5556
+
+  operator:
+    ## Are you using Prometheus Operator?
+    enabled: false
+
+    serviceMonitor:
+      # Namespace Prometheus is installed in
+      namespace: monitoring
+
+      ## Defaults to whats used if you follow CoreOS [Prometheus Install Instructions](https://github.com/coreos/prometheus-operator/tree/master/helm#tldr)
+      ## [Prometheus Selector Label](https://github.com/coreos/prometheus-operator/blob/master/helm/prometheus/templates/prometheus.yaml#L65)
+      ## [Kube Prometheus Selector Label](https://github.com/coreos/prometheus-operator/blob/master/helm/kube-prometheus/values.yaml#L298)
+      selector:
+        prometheus: kube-prometheus
+

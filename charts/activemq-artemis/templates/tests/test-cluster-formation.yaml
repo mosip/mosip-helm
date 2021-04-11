@@ -1,0 +1,55 @@
+
+apiVersion: v1
+kind: Pod
+
+metadata:
+  annotations:
+    "helm.sh/hook": test-success
+  name: {{ include "artemis.fullname" . }}-cluster-formation
+  labels:
+{{ include "artemis.labels.standard" . | indent 4 }}
+spec:
+  volumes:
+    - name: tools-{{ include "artemis.fullname" . }}-cluster-formation
+      configMap:
+        name: tools-{{ include "artemis.fullname" . }}-cluster-formation
+  imagePullSecrets: {{ toYaml .Values.image.pullSecrets }}
+  containers:
+  - name: {{ .Release.Name }}-cluster-formation
+    image: {{ template "artemis.image" . }}
+    imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+    env:
+      - name: ARTEMIS_HOST
+        value: {{ include "artemis.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local
+      - name: ARTEMIS_PORT
+        value: "8161"
+      - name: ARTEMIS_USERNAME
+        value: {{ default "" .Values.artemisUser | quote }}
+      - name: ARTEMIS_PASSWORD
+        value: {{ default "" .Values.artemisPassword | quote }}
+    volumeMounts:
+      - name: tools-{{ include "artemis.fullname" . }}-cluster-formation
+        mountPath: /opt/tools
+    command: ["sh", "/opt/tools/cluster-formed.sh"]
+  restartPolicy: Never
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tools-{{ include "artemis.fullname" . }}-cluster-formation
+data:
+  cluster-formed.sh: |
+    MEMBERS="$(curl -sq http://${ARTEMIS_USERNAME}:${ARTEMIS_PASSWORD}@${ARTEMIS_HOST}:${ARTEMIS_PORT}/console/jolokia/read/org.apache.activemq.artemis:broker=%22*%22,component=cluster-connections,name=%22*%22/Topology | jq '[.value[] | .Topology][0]' | sed -re 's/.*nodes=([0-9]+).*/\1/')"
+
+    EXPECTED_MEMBERS=$(( {{ .Values.replicas }} * 2))
+    if test "${MEMBERS}" = "${EXPECTED_MEMBERS}"; then
+      echo OK 
+    else 
+       echo Number of cluster nodes shall be equal to ${EXPECTED_MEMBERS} but found ${MEMBERS}
+       exit 1
+    fi
+
+
+
