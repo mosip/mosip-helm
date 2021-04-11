@@ -1,17 +1,60 @@
 apiVersion: v1
 entries:
+  activemq-artemis:
+  - apiVersion: v1
+    appVersion: 2.6.2
+    created: "2021-04-12T05:26:47.864056+05:30"
+    description: a multi-protocol, embeddable, very high performance, clustered, asynchronous messaging system.
+    digest: a93ca33d8c124da021a2616035aceecef6e4b007a3bae8079f35c8061a967278
+    home: https://activemq.apache.org/artemis/
+    icon: https://activemq.apache.org/assets/img/activemq_logo_icon.png
+    keywords:
+    - activemq
+    - artemis
+    - messaging
+    - mom
+    - amqp
+    - jms
+    - mqtt
+    maintainers:
+    - email: victor.romero@gmail.com
+      name: vromero
+    name: activemq-artemis
+    sources:
+    - https://github.com/kubernetes/charts
+    - https://github.com/apache/activemq-artemis
+    urls:
+    - https://github.com/mosip/mosip-helm/tree/develop/charts/activemq-artemis-0.0.2.tgz
+    version: 0.0.2
+  config-server:
+  - apiVersion: v2
+    appVersion: 1.1.5
+    created: "2021-04-12T05:26:47.864684+05:30"
+    description: A Helm chart for configuration of MOSIP modules
+    digest: 60f6b0c202f365ba5bd5e150d4fd78aca54ce6d2fca2696948396c575194665a
+    home: https://mosip.io
+    keywords:
+    - config-server
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: config-server
+    type: application
+    urls:
+    - https://github.com/mosip/mosip-helm/tree/develop/charts/config-server-1.1.5.tgz
+    version: 1.1.5
   keycloak-init:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-03-14T21:48:49.821419+05:30"
+    created: "2021-04-12T05:26:47.866126+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
       tags:
       - bitnami-common
       version: 1.x.x
-    description: A Helm chart for Kubernetes to initialize Keycloak
-    digest: 778abe7420fa507d405f6c58e22529513bd1c4ed19dacca466ac2cfed95d2169
+    description: A Helm chart for Kubernetes to initialize Keycloak  (updating for test)
+    digest: 4ddfac984f132191dae391fdac71745a6437056e347b7003577cb652ae079554
     home: https://mosip.io
     keywords:
     - keycloak
@@ -22,6 +65,31 @@ entries:
     name: keycloak-init
     type: application
     urls:
-    - https://mosip.github.io/mosip-helm/keycloak-init-1.1.5.tgz
+    - https://github.com/mosip/mosip-helm/tree/develop/charts/keycloak-init-1.1.5.tgz
     version: 1.1.5
-generated: "2021-03-14T21:48:49.819936+05:30"
+  postgres-init:
+  - apiVersion: v2
+    appVersion: 1.1.5
+    created: "2021-04-12T05:26:47.867988+05:30"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes to initialize various Postgres DBs.
+    digest: 417043d1aad0f852ab6a9f421f634e05be679f1587cc06a5795a083138cb2a9e
+    home: https://mosip.io
+    keywords:
+    - postgres
+    - db
+    - database
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: postgres-init
+    type: application
+    urls:
+    - https://github.com/mosip/mosip-helm/tree/develop/charts/postgres-init-1.1.5.tgz
+    version: 1.1.5
+generated: "2021-04-12T05:26:47.862338+05:30"
