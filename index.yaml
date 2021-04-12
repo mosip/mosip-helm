@@ -3,7 +3,7 @@ entries:
   activemq-artemis:
   - apiVersion: v1
     appVersion: 2.6.2
-    created: "2021-04-12T05:26:47.864056+05:30"
+    created: "2021-04-12T05:45:31.107948+05:30"
     description: a multi-protocol, embeddable, very high performance, clustered, asynchronous messaging system.
     digest: a93ca33d8c124da021a2616035aceecef6e4b007a3bae8079f35c8061a967278
     home: https://activemq.apache.org/artemis/
@@ -24,12 +24,12 @@ entries:
     - https://github.com/kubernetes/charts
     - https://github.com/apache/activemq-artemis
     urls:
-    - https://github.com/mosip/mosip-helm/tree/develop/charts/activemq-artemis-0.0.2.tgz
+    - https://mosip.github.io/mosip-helm/activemq-artemis-0.0.2.tgz
     version: 0.0.2
   config-server:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-04-12T05:26:47.864684+05:30"
+    created: "2021-04-12T05:45:31.108582+05:30"
     description: A Helm chart for configuration of MOSIP modules
     digest: 60f6b0c202f365ba5bd5e150d4fd78aca54ce6d2fca2696948396c575194665a
     home: https://mosip.io
@@ -41,12 +41,12 @@ entries:
     name: config-server
     type: application
     urls:
-    - https://github.com/mosip/mosip-helm/tree/develop/charts/config-server-1.1.5.tgz
+    - https://mosip.github.io/mosip-helm/config-server-1.1.5.tgz
     version: 1.1.5
   keycloak-init:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-04-12T05:26:47.866126+05:30"
+    created: "2021-04-12T05:45:31.11006+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -65,12 +65,12 @@ entries:
     name: keycloak-init
     type: application
     urls:
-    - https://github.com/mosip/mosip-helm/tree/develop/charts/keycloak-init-1.1.5.tgz
+    - https://mosip.github.io/mosip-helm/keycloak-init-1.1.5.tgz
     version: 1.1.5
   postgres-init:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-04-12T05:26:47.867988+05:30"
+    created: "2021-04-12T05:45:31.11189+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -90,6 +90,6 @@ entries:
     name: postgres-init
     type: application
     urls:
-    - https://github.com/mosip/mosip-helm/tree/develop/charts/postgres-init-1.1.5.tgz
+    - https://mosip.github.io/mosip-helm/postgres-init-1.1.5.tgz
     version: 1.1.5
-generated: "2021-04-12T05:26:47.862338+05:30"
+generated: "2021-04-12T05:45:31.106355+05:30"
