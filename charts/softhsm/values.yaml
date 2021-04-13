@@ -2,6 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+## TODO: Multiple replicas are not supported 'cause AWS EBS gp2 storage class does not support ReadWriteMany
 replicaCount: 1
 
 image:
