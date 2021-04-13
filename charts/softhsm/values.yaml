@@ -9,7 +9,7 @@ image:
   repository: mosipdev/softhsm
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v1"
+  tag: "v2"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -129,6 +129,9 @@ livenessProbe:
   timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
+
+## Numbers.  If not specified a random PIN is assigned.
+securityPIN: ""
 
 ## Softhhsm conf file that must be mounted inside softhsm container
 configuration: |-

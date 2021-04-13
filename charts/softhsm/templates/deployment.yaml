@@ -37,6 +37,12 @@ spec:
           env:
             - name: SOFTHSM2_CONF
               value: {{ .Values.persistence.mountDir }}/softhsm.conf
+
+            - name: SECURITY_OFFICER_PIN 
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "softhsm.fullname" . }}
+                  key: security-pin 
   
           volumeMounts:
             - name: softhsm-keys
