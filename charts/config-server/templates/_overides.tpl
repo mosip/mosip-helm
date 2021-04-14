@@ -9,13 +9,13 @@ All env variables that are accessed from mosip config properties
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_DBUSER_PASSWORD
   valueFrom:
     secretKeyRef:
-      name: {{ .Values.overrides.secrets.db }}
+      name: db-common-secrets
       key: db-dbuser-password
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_ABIS_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
-      name: {{ .Values.overrides.secrets.keycloakClients }}
+      name: keycloak-client-secrets 
       key: mosip-mosip-abis-client-secret
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_ADMIN_CLIENT_SECRET
@@ -125,6 +125,20 @@ All env variables that are accessed from mosip config properties
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloak }}
       key: admin-password
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SOFTHSM_KERNEL_PIN
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.softhsmKernel }}
+      key: softhsm-kernel-security-pin
+
+{{- if .Values.installedModules.ida }}
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SOFTHSM_IDA_PIN
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.softhsmIDA }}
+      key: softhsm-ida-security-pin
+{{- end }}
     
 {{- end }}
 

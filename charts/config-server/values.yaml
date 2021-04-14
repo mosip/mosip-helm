@@ -98,13 +98,22 @@ encryptKey: ""
 
 mosipApiHost: ""
 
+## Modules installed.  Depending on the modules installed configs and secrets need to be added to _overrides.tpl
+installedModules:
+  kernel: true
+  prereg: false
+  regproc: true  
+  ida: false
+
 ## Various secrets that are loaded as "overrides" in config server.  
-## The secrets below may be in different namespaces.  Refer to instructions to install helm chart in 
-## mosip-infra repo.
+## The secrets below may be in different namespaces that need to be copied to config-server namespace.  Refer to 
+## instructions to install helm chart in  mosip-infra repo.
 overrides:
   secrets:
     db: db-common-secrets 
     keycloak: keycloak
     keycloakClients: keycloak-client-secrets
+    softhsmKernel: softhsm-kernel  
+    softhsmIDA: softhsm-ida
   configmaps:
     keycloakHost: keycloak-host
