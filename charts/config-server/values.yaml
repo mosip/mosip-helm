@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: mosipid/sandbox-config-server
+  repository: mosipdev/config-server
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.1.0"
+  tag: "1.1.2"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -26,9 +26,14 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext: {}
-  # fsGroup: 2000
+## Config server docker runs as non-root user by default, so enabling the below may not be required.
+podSecurityContext:
+  enabled: false
+  runAsUser: 1001
+  runAsGroup: 2001
+  fsGroup: 3001
 
+## Config server docker runs as non-root user by default, so enabling the below may not be required.
 securityContext: {}
   # capabilities:
   #   drop:
