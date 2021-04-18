@@ -3,19 +3,22 @@ All env variables that are accessed from mosip config properties
 */}}
 {{- define "config-server.overrides" -}}
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIPBOX_PUBLIC_URL 
-  value: {{ printf "https://%s" .Values.mosipApiHost }}   
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_API_PUBLIC_URL 
+  valueFrom:
+    configMapKeyRef:
+      name: {{ .Values.overrides.configmaps.global }}
+      key: mosip-api-host-url
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_DBUSER_PASSWORD
   valueFrom:
     secretKeyRef:
-      name: db-common-secrets
+      name: {{ .Values.overrides.secrets.db }}
       key: db-dbuser-password
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_ABIS_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
-      name: keycloak-client-secrets 
+      name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip-mosip-abis-client-secret
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_ADMIN_CLIENT_SECRET

@@ -99,20 +99,15 @@ gitRepo:
 ## Key used to encrypt fields in the config properties. A random key is generated if not specified.
 encryptKey: ""
 
-## API access hostname (assumed HTTPS). This is the external access hostname to mosip cluster. Example "api.sandbox.xyz.net" 
-
-mosipApiHost: ""
-
-## Modules installed.  Depending on the modules installed configs and secrets need to be added to _overrides.tpl
 installedModules:
   kernel: true
   prereg: false
   regproc: true  
   ida: false
 
-## Various secrets that are loaded as "overrides" in config server.  
-## The secrets below may be in different namespaces that need to be copied to config-server namespace.  Refer to 
-## instructions to install helm chart in  mosip-infra repo.
+## Various secrets and configamaps that used as "overrides" in config server.  The are assumed to 'copied' to 
+## config-server name space by a separate process/scripts. 
+## Refer to instructions to install config-server helm chart in mosip-infra repo.
 overrides:
   secrets:
     db: db-common-secrets 
@@ -122,3 +117,4 @@ overrides:
     softhsmIDA: softhsm-ida
   configmaps:
     keycloakHost: keycloak-host
+    global: global
