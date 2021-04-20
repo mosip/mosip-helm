@@ -50,8 +50,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipid/artifactory-server
-  tag: 1.1.4
+  repository: mosipdev/artifactory-server
+  tag: 1.1.5
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -333,3 +333,8 @@ serviceAccount:
   ##
   name:
 
+## There are various jars and libs in artifactory.  Listing their locations here.  The locations are vis-a-vis
+## /usr/share/nginx/html/artifactory path in artifactory docker
+artifacts:
+  iamAdapter: artifactory/libs-release-local/io/mosip/kernel/kernel-auth-adapter.jar
+  hsmClientZip: artifactory/libs-release-local/hsm/client.zip  
