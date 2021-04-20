@@ -25,7 +25,7 @@ $ helm install my-release mosip/clamav
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami/clamavs
+helm install my-release mosip/clamav
 ```
 
 The command deploys clamav on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
