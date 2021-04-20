@@ -87,8 +87,10 @@ affinity: {}
 
 ## Git repository from where config server will read the properties etc.  This repo could public or private
 ## For private repos access token is required.
+## version: branch/tag of the repo to be used
 gitRepo:
   uri: https://github.com/mosip/mosip-config 
+  version: v3
   ## Folders within the base repo where properties may be found.
   searchFolders: ""
   private: false
@@ -118,3 +120,7 @@ overrides:
   configmaps:
     keycloakHost: keycloak-host
     global: global
+
+## The active profile env if you have another set of properties. Correspondingly, properties in Git repo will 
+## have names of type "*-default.properites"
+activeProfileEnv: default  
