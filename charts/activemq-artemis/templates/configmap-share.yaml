@@ -7,5 +7,5 @@ metadata:
   labels:
 {{ include "artemis.labels.standard" . | indent 4 }}
 data:
-  actviemq-host: ""
+  activemq-host: ""
   activemq-core-port: "61616"
