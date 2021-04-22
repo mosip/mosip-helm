@@ -1,7 +1,8 @@
+apiVersion: v2
 name: activemq-artemis
+description: a multi-protocol, embeddable, very high performance, clustered, asynchronous messaging system.
 version: 0.0.2
 appVersion: 2.6.2
-description: a multi-protocol, embeddable, very high performance, clustered, asynchronous messaging system.
 dependencies:
   - name: common
     repository: https://charts.bitnami.com/bitnami
