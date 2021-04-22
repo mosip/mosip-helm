@@ -25,5 +25,6 @@ spec:
     - name: http
       port: {{ .Values.service.port }}
       protocol: TCP 
+      targetPort: {{ .Values.containerPort }}
   selector: {{- include "common.labels.matchLabels" . | nindent 4 }}
     app.kubernetes.io/component: keymanager
