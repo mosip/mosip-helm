@@ -1,11 +1,17 @@
 apiVersion: v1
 entries:
   activemq-artemis:
-  - apiVersion: v1
+  - apiVersion: v2
     appVersion: 2.6.2
-    created: "2021-04-13T22:49:38.012858+05:30"
+    created: "2021-04-22T12:42:19.584227+05:30"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
     description: a multi-protocol, embeddable, very high performance, clustered, asynchronous messaging system.
-    digest: 3e3fa5440f80fadac6872713f03744c3f25091139da25734746c1518cf8f2304
+    digest: 762ee4cee492468127360408626ad09d44d59d6de53de94acfb55028b4c06954
     home: https://activemq.apache.org/artemis/
     icon: https://activemq.apache.org/assets/img/activemq_logo_icon.png
     keywords:
@@ -29,7 +35,7 @@ entries:
   config-server:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-04-13T22:49:38.013487+05:30"
+    created: "2021-04-22T12:42:19.584801+05:30"
     description: A Helm chart for configuration of MOSIP modules
     digest: 60f6b0c202f365ba5bd5e150d4fd78aca54ce6d2fca2696948396c575194665a
     home: https://mosip.io
@@ -46,7 +52,7 @@ entries:
   keycloak-init:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-04-13T22:49:38.015712+05:30"
+    created: "2021-04-22T12:42:19.586111+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -70,7 +76,7 @@ entries:
   postgres-init:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-04-13T22:49:38.017612+05:30"
+    created: "2021-04-22T12:42:19.588795+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -95,7 +101,7 @@ entries:
   softhsm:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-04-13T22:49:38.019605+05:30"
+    created: "2021-04-22T12:42:19.59209+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -116,4 +122,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/softhsm-1.1.5.tgz
     version: 1.1.5
-generated: "2021-04-13T22:49:38.009412+05:30"
+generated: "2021-04-22T12:42:19.582411+05:30"
