@@ -45,3 +45,16 @@ Compile all warnings into a single message.
 {{- end -}}
 {{- end -}}
 
+{{/*
+Return podAnnotations
+*/}}
+{{- define "keymanager.podAnnotations" -}}
+{{- if .Values.podAnnotations }}
+{{ include "common.tplvalues.render" (dict "value" .Values.podAnnotations "context" $) }}
+{{- end }}
+{{- if and .Values.metrics.enabled .Values.metrics.podAnnotations }}
+{{ include "common.tplvalues.render" (dict "value" .Values.metrics.podAnnotations "context" $) }}
+{{- end }}
+{{- end -}}
+
+
