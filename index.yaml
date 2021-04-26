@@ -3,7 +3,7 @@ entries:
   activemq-artemis:
   - apiVersion: v2
     appVersion: 2.6.2
-    created: "2021-04-22T12:42:19.584227+05:30"
+    created: "2021-04-26T11:01:58.85593+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -35,7 +35,7 @@ entries:
   config-server:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-04-22T12:42:19.584801+05:30"
+    created: "2021-04-26T11:01:58.857673+05:30"
     description: A Helm chart for configuration of MOSIP modules
     digest: 60f6b0c202f365ba5bd5e150d4fd78aca54ce6d2fca2696948396c575194665a
     home: https://mosip.io
@@ -52,7 +52,7 @@ entries:
   keycloak-init:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-04-22T12:42:19.586111+05:30"
+    created: "2021-04-26T11:01:58.859803+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -73,10 +73,35 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/keycloak-init-1.1.5.tgz
     version: 1.1.5
+  keymanager:
+  - apiVersion: v2
+    appVersion: 1.1.5
+    created: "2021-04-26T11:01:58.861621+05:30"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Keymanger module
+    digest: cfc897fde8e0cc4f121d67f346a676b1738b5150843619b61a7dd923fbbd0858
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - keymanager
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: keymanager
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/keymanager-1.1.5.tgz
+    version: 1.1.5
   postgres-init:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-04-22T12:42:19.588795+05:30"
+    created: "2021-04-26T11:01:58.864811+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -101,7 +126,7 @@ entries:
   softhsm:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-04-22T12:42:19.59209+05:30"
+    created: "2021-04-26T11:01:58.866178+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -109,7 +134,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP Softhsm module
-    digest: b0c705fcb13654c6ba52d064b016e2a43553d3de4e1c382161271d6e665c6a98
+    digest: 42982f3c33df05759182a658fbd492a1cffc90d8f65885959c09d7e6c1f05f5e
     home: https://mosip.io
     keywords:
     - softhsm
@@ -122,4 +147,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/softhsm-1.1.5.tgz
     version: 1.1.5
-generated: "2021-04-22T12:42:19.582411+05:30"
+generated: "2021-04-26T11:01:58.85245+05:30"
