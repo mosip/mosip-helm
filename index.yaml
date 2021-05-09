@@ -3,7 +3,7 @@ entries:
   activemq-artemis:
   - apiVersion: v2
     appVersion: 2.6.2
-    created: "2021-05-09T19:45:42.197183+05:30"
+    created: "2021-05-09T19:55:43.577877+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -11,7 +11,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: a multi-protocol, embeddable, very high performance, clustered, asynchronous messaging system.
-    digest: 26f36c5741554793314b1656f2871abe8f27c862e805d412423db15aca6b4030
+    digest: 5beeb11d90d5d721bde21179e5321cfa8aa3b8395b3a02e456332fefe8e045e6
     home: https://activemq.apache.org/artemis/
     icon: https://activemq.apache.org/assets/img/activemq_logo_icon.png
     keywords:
@@ -32,12 +32,68 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/activemq-artemis-0.0.2.tgz
     version: 0.0.2
-  config-server:
+  artifactory:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-09T19:45:42.197774+05:30"
+    created: "2021-05-09T19:55:43.579669+05:30"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Artifactory
+    digest: 405ea3229af41778643639047742b05e37b0309c1d9a7c88563ca175e2ef1a33
+    home: https://mosip.io
+    keywords:
+    - artifactory
+    - antivirus
+    - anti-virus
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: artifactory
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/artifactory-1.1.5.tgz
+    version: 1.1.5
+  clamav:
+  - apiVersion: v2
+    appVersion: 1.1.5
+    created: "2021-05-09T19:55:43.581355+05:30"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for Clamav
+    digest: 7732bf83c62307169d9c1ee0a5fa75272dc51bde72ae705f6ac0a10ac01af433
+    home: https://mosip.io
+    keywords:
+    - clamav
+    - antivirus
+    - anti-virus
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: clamav
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/clamav-1.1.5.tgz
+    version: 1.1.5
+  config-server:
+  - apiVersion: v2
+    appVersion: 1.1.2
+    created: "2021-05-09T19:55:43.582823+05:30"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
     description: A Helm chart for configuration of MOSIP modules
-    digest: 60f6b0c202f365ba5bd5e150d4fd78aca54ce6d2fca2696948396c575194665a
+    digest: ae444e975a55cd1e46cb8c6c3ee9ab2f2d08284b032242f37175019df092ad13
     home: https://mosip.io
     keywords:
     - config-server
@@ -49,10 +105,36 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/config-server-1.1.5.tgz
     version: 1.1.5
+  kernel-keygen:
+  - apiVersion: v2
+    appVersion: 1.1.5
+    created: "2021-05-09T19:55:43.585299+05:30"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to generate keys for Kernel
+    digest: 3d008fde75adc2aa59ee970b937869a9fa9d679e7c1ab427340775e1f148ecbe
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - keymanager
+    - keygen
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: kernel-keygen
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/kernel-keygen-1.1.5.tgz
+    version: 1.1.5
   keycloak-init:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-09T19:45:42.199188+05:30"
+    created: "2021-05-09T19:55:43.58667+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -60,7 +142,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for Kubernetes to initialize Keycloak  (updating for test)
-    digest: 4ddfac984f132191dae391fdac71745a6437056e347b7003577cb652ae079554
+    digest: 5d0d621669beac15eb59b4b6cab22eed06d1936057e99075ae51ebc76adc435f
     home: https://mosip.io
     keywords:
     - keycloak
@@ -76,7 +158,7 @@ entries:
   keymanager:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-09T19:45:42.200915+05:30"
+    created: "2021-05-09T19:55:43.588263+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -84,7 +166,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP Keymanger module
-    digest: cfc897fde8e0cc4f121d67f346a676b1738b5150843619b61a7dd923fbbd0858
+    digest: 7cfd37c07b1cee90d3c4e9785f4d55ede4645f7cbda8b28457c9e9298184c5e9
     home: https://mosip.io
     keywords:
     - mosip
@@ -98,10 +180,35 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/keymanager-1.1.5.tgz
     version: 1.1.5
+  mock-abis:
+  - apiVersion: v2
+    appVersion: 1.1.5
+    created: "2021-05-09T19:55:43.589735+05:30"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Mock ABIS
+    digest: b7a73ed3df3d47b66aafd69a18b78f97ce37fc98d3985e12100f1538cca51fe0
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - mock-abis
+    - abis
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: mock-abis
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/mock-abis-1.1.5.tgz
+    version: 1.1.5
   postgres-init:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-09T19:45:42.2034+05:30"
+    created: "2021-05-09T19:55:43.591354+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -109,7 +216,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for Kubernetes to initialize various Postgres DBs.
-    digest: 417043d1aad0f852ab6a9f421f634e05be679f1587cc06a5795a083138cb2a9e
+    digest: 03affcacc4fd8e0ee0c947e1f6b5be113f7df55fdd6b19ba3913b6116b767a15
     home: https://mosip.io
     keywords:
     - postgres
@@ -126,7 +233,7 @@ entries:
   softhsm:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-09T19:45:42.20473+05:30"
+    created: "2021-05-09T19:55:43.592662+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -134,7 +241,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP Softhsm module
-    digest: 42982f3c33df05759182a658fbd492a1cffc90d8f65885959c09d7e6c1f05f5e
+    digest: 6a2dec713aad99d12406a7eed1d99cdf542f402cc34274d22df8ce2a77960306
     home: https://mosip.io
     keywords:
     - softhsm
@@ -147,4 +254,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/softhsm-1.1.5.tgz
     version: 1.1.5
-generated: "2021-05-09T19:45:42.195487+05:30"
+generated: "2021-05-09T19:55:43.576048+05:30"
