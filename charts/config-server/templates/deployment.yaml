@@ -43,6 +43,10 @@ spec:
 
             {{- include "config-server.overrides" . | nindent 12 }}
 
+            {{- if .Values.extraEnvVars }}
+            {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
+            {{- end }}
+
           envFrom:
             - configMapRef:
                 name: {{ printf "%s-env-vars" (include "config-server.fullname" .) }}
