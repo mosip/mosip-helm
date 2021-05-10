@@ -72,6 +72,7 @@ springServicePort: 8080
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
+## TODO: probes disabled as they don't work for some reason
 livenessProbe:
   enabled: false
   httpGet:
