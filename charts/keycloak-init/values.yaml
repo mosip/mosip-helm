@@ -116,77 +116,124 @@ keycloak:
        - PRE_REGISTRATION
        - REGISTRATION_ADMIN
        - REGISTRATION_OFFICER
-       - REGISTRATION_OFFICER
        - REGISTRATION_PROCESSOR
        - REGISTRATION_SUPERVISOR
        - RESIDENT
        - ZONAL_ADMIN
       clients: 
-       - mosip-abis-client
-       - mosip-admin-client
-       - mosip-admin-services-client
-       - mosip-auth-client
-       - mosip-crereq-client
-       - mosip-creser-client 
-       - mosip-creser-idpass-client
-       - mosip-datsha-client
-       - mosip-ida-client
-       - mosip-misp-client
-       - mosip-partner-client
-       - mosip-partnermanager-client
-       - mosip-pms-client
-       - mosip-policymanager-client
-       - mosip-prereg-client
-       - mosip-reg-client
-       - mosip-regproc-client
-       - mosip-resident-client
+       - name: mosip-abis-client
+         saroles: []
+       - name: mosip-admin-client
+         saroles:
+           - MASTERDATA_ADMIN
+       - name: mosip-admin-services-client
+         saroles: []
+       - name: mosip-auth-client
+         saroles:
+           - AUTH
+       - name: mosip-crereq-client
+         saroles:
+           - CREDENTIAL_ISSUANCE
+           - CREDENTIAL_REQUEST 
+       - name: mosip-creser-client 
+         saroles:
+           - CREDENTIAL_ISSUANCE
+           - REGISTRATION_PROCESSOR
+           - POLICYMANAGER
+           - CREATE_SHARE
+       - name: mosip-creser-idpass-client
+         saroles: []
+       - name: mosip-datsha-client
+         saroles:
+           - CREATE_SHARE
+           - REGISTRATION_PROCESSOR
+           - POLICYMANAGER
+       - name: mosip-ida-client
+         saroles:
+           - ID_AUTHENTICATION
+       - name: mosip-misp-client
+         saroles: []
+       - name: mosip-partner-client
+         saroles:
+           - REGISTRATION_PROCESSOR
+       - name: mosip-partnermanager-client
+         saroles: []
+       - name: mosip-pms-client
+         saroles: 
+           - PARTNER_ADMIN
+       - name: mosip-policymanager-client
+         saroles: []
+       - name: mosip-prereg-client
+         saroles:
+           - PREREG
+           - REGISTRATION_PROCESSOR
+       - name: mosip-reg-client
+         saroles:
+           - GLOBAL_ADMIN
+           - REGISTRATION_ADMIN
+           - REGISTRATION_OFFICER
+           - REGISTRATION_SUPERVISOR
+       - name: mosip-regproc-client
+         saroles:
+           - REGISTRATION_PROCESSOR 
+           - DATA_READ 
+           - DOCUMENT_READ 
+           - BIOMETRIC_READ
+           - METADATA_READ 
+           - CREATE_SHARE 
+           - CREDENTIAL_REQUEST
+       - name: mosip-resident-client
+         saroles:
+           - RESIDENT
+           - CREDENTIAL_REQUEST
     
     preregistration:  # realm
       roles: 
         - AUTH
-        - INDIVIDUAL
         - PREREG
-        - PRE_REGISTRATION_ADMIN
         - REGISTRATION_PROCESSOR
       clients: 
-        - mosip-prereg-client
+        - name: mosip-prereg-client
+          saroles:
+           - PREREG
+           - REGISTRATION_PROCESSOR
 
 ## These will be passed as environments variables to keycloak-init docker. Note the expected naming convention is 
-## <realm name>-<clientname>-<secret>.  If empty secret is passed, it shall be randomly generated
+## <realm name>_<clientname>_<secret>.  If empty secret is passed, it shall be randomly generated
 clientSecrets:
-  - name: mosip-mosip-abis-client-secret
+  - name: mosip_mosip_abis_client_secret
     secret: ""
-  - name: mosip-mosip-admin-client-secret
+  - name: mosip_mosip_admin_client_secret
     secret: ""
-  - name: mosip-mosip-admin-services-client-secret
+  - name: mosip_mosip_admin_services_client_secret
     secret: ""
-  - name: mosip-mosip-auth-client-secret
+  - name: mosip_mosip_auth_client_secret
     secret: ""
-  - name: mosip-mosip-crereq-client-secret
+  - name: mosip_mosip_crereq_client_secret
     secret: ""
-  - name: mosip-mosip-creser-client-secret
+  - name: mosip_mosip_creser_client_secret
     secret: ""
-  - name: mosip-mosip-datsha-client-secret
+  - name: mosip_mosip_datsha_client_secret
     secret: ""
-  - name: mosip-mosip-ida-client-secret
+  - name: mosip_mosip_ida_client_secret
     secret: ""
-  - name: mosip-mosip-misp-client-secret
+  - name: mosip_mosip_misp_client_secret
     secret: ""
-  - name: mosip-mosip-partner-client-secret
+  - name: mosip_mosip_partner_client_secret
     secret: ""
-  - name: mosip-mosip-partnermanager-client-secret
+  - name: mosip_mosip_partnermanager_client_secret
     secret: ""
-  - name: mosip-mosip-pms-client-secret
+  - name: mosip_mosip_pms_client_secret
     secret: ""
-  - name: mosip-mosip-policymanager-client-secret
+  - name: mosip_mosip_policymanager_client_secret
     secret: ""
-  - name: mosip-mosip-prereg-client-secret
+  - name: mosip_mosip_prereg_client_secret
     secret: ""
-  - name: mosip-mosip-reg-client-secret
+  - name: mosip_mosip_reg_client_secret
     secret: ""
-  - name: mosip-mosip-regproc-client-secret
+  - name: mosip_mosip_regproc_client_secret
     secret: ""
-  - name: mosip-mosip-resident-client-secret
+  - name: mosip_mosip_resident_client_secret
     secret: ""
-  - name: preregistration-mosip-prereg-client-secret
+  - name: preregistration_mosip_prereg_client_secret
     secret: ""
