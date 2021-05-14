@@ -3,10 +3,12 @@ image:
   # image.registry is the repository where the ActiveMQ Artemis image is stored
   registry: docker.io
   # image.repository is the ActiveMQ Artemis image name
-  repository: vromero/activemq-artemis
+  # repository: vromero/activemq-artemis
+  repository: lalithkota/activemq-artemis
 
   # image.tag is the ActiveMQ Artemis image's tag: https://hub.docker.com/r/vromero/activemq-artemis/tags
-  tag: 2.16.0
+  # tag: 2.16.0
+  tag: latest
   # image.pullPolicy is the ActiveMQ Artemis image's pull policy
   pullPolicy: Always
   # image.pullSecrets optionally specify an array of imagePullSecrets.Secrets must be manually created in the namespace.
@@ -189,3 +191,7 @@ ingress:
   ## The service port to be used by this ingress.
   ## Default is http. Alternative is https.
   servicePort: http
+
+istioinjection:
+  enabled: true
+  hostname: activemq.xyz.net

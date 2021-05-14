@@ -1,0 +1,39 @@
+{{- if .Values.istioinjection.enabled }}
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ include "artemis.fullname" . }}
+spec:
+  hosts:
+    - {{ .Values.istioinjection.hostname }}
+  gateways:
+  - {{ include "artemis.fullname" . }}
+  http:
+  - route:
+    - destination:
+        host: {{ include "artemis.fullname" . }}
+        port:
+          number: 8161
+    headers:
+      request:
+        set:
+          x-forwarded-proto: https
+
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: {{ include "artemis.fullname" . }}
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - {{ .Values.istioinjection.hostname }}
+
+{{- end }}
