@@ -73,14 +73,18 @@ spec:
         - name: jmxexporter
           containerPort: 9404
         livenessProbe:
-          tcpSocket:
+          httpGet:
             port: http
-          initialDelaySeconds: 10
+          initialDelaySeconds: 30
           periodSeconds: 10
         readinessProbe:
-          tcpSocket:
-            port: core
-          initialDelaySeconds: 10
+          exec:
+            command:
+            - "/bin/netcat"
+            - "-z"
+            - "localhost"
+            - "61616"
+          initialDelaySeconds: 30
           periodSeconds: 10
         volumeMounts:
         - name: data
