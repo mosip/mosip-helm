@@ -15,5 +15,5 @@ roleRef:
   name: {{ template "common.names.fullname" . }}
 subjects:
   - kind: ServiceAccount
-    name: {{ template "prereg-booking.serviceAccountName" . }}
+    name: {{ template "prereg-application.serviceAccountName" . }}
     namespace: {{ .Release.Namespace }}

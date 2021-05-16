@@ -52,7 +52,7 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipid/pre-registration-booking-service
+  repository: mosipid/pre-registration-application-service
   tag: 1.1.5
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -67,7 +67,7 @@ image:
   #   - myRegistryKeySecretName
 
 ## Port on which this particular spring service module is running. 
-springServicePort: 9095
+springServicePort: 9090
 
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
@@ -76,7 +76,7 @@ livenessProbe:
   enabled: true
   httpGet:
     path: /preregistration/v1/actuator/health
-    port: 9095
+    port: 9090
   initialDelaySeconds: 60
   periodSeconds: 10
   timeoutSeconds: 5 
@@ -87,7 +87,7 @@ readinessProbe:
   enabled: true
   httpGet:
     path: /preregistration/v1/actuator/health
-    port: 9095
+    port: 9090
   initialDelaySeconds: 30 
   periodSeconds: 10
   timeoutSeconds: 5 
@@ -355,7 +355,7 @@ metrics:
   podAnnotations: 
     prometheus.io/scrape: "true"
   
-  endpointPath: /v1/prereg-booking/actuator/prometheus
+  endpointPath: /v1/prereg-application/actuator/prometheus
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator

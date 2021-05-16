@@ -1,12 +1,12 @@
 # Auditmanager
 
-Helm chart for installing Pre-Registration Application service.
+Helm chart for installing Pre-Registration Booking service.
 
 ## TL;DR
 
 ```console
 $ helm repo add mosip https://mosip.github.io
-$ helm install my-release mosip/prereg-application
+$ helm install my-release mosip/prereg-booking
 ```
 
 ## Introduction
@@ -22,10 +22,10 @@ Auditmanager is  part of the kernel modules, but has a separate Helm chart so as
 
 ## Installing the Chart
 
-To install the chart with the release name `prereg-application`.
+To install the chart with the release name `prereg-booking`.
 
 ```console
-helm install my-release mosip/prereg-application
+helm install my-release mosip/prereg-booking
 ```
 
 > **Tip**: List all releases using `helm list`
