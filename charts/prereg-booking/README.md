@@ -8,11 +8,6 @@ Helm chart for installing Pre-Registration Booking service.
 $ helm repo add mosip https://mosip.github.io
 $ helm install my-release mosip/prereg-booking
 ```
-
-## Introduction
-
-Auditmanager is  part of the kernel modules, but has a separate Helm chart so as to install and manage it in a completely indepedent namespace.
-
 ## Prerequisites
 
 - Kubernetes 1.12+
