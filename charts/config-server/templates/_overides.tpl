@@ -9,6 +9,12 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.configmaps.global }}
       key: mosip-api-host-url
 
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_API_INTERNAL_URL 
+  valueFrom:
+    configMapKeyRef:
+      name: {{ .Values.overrides.configmaps.global }}
+      key: mosip-api-internal-url
+
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_DBUSER_PASSWORD
   valueFrom:
     secretKeyRef:
@@ -143,6 +149,7 @@ All env variables that are accessed from mosip config properties
       key: softhsm-ida-security-pin
 {{- end }}
 
+{{- if .Values.overrides.configmaps.activemq }}
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_ACTIVEMQ_HOST
   valueFrom:
     configMapKeyRef:
@@ -154,12 +161,15 @@ All env variables that are accessed from mosip config properties
     configMapKeyRef:
       name: {{ .Values.overrides.configmaps.activemq }}
       key: activemq-core-port
+{{- end }}
     
+{{- if .Values.overrides.secrets.activemq }}
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_ACTIVEMQ_PASSWORD
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.activemq }}
       key: artemis-password
+{{- end }}
 
 {{- end }}
 
