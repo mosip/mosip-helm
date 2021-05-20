@@ -399,3 +399,8 @@ metrics:
     #     labels:
     #       severity: error
     rules: []
+
+## Only internal access
+istio:
+  enabled: true 
+  gateway: istio-system/internal
