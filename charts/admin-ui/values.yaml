@@ -51,8 +51,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipqa/admin-ui
-  tag: develop
+  repository: mosipid/admin-ui
+  tag: 1.1.5
 
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -402,9 +402,10 @@ metrics:
     #       severity: error
     rules: []
 
+## CAUTION: Domain name to acess Admin UI must be secure/internal/over vpn.   
 ## Slash is important!
 admin:
-  hostUrl: https://api-internal.sandbox.mosip.net/v1/
+  hostUrl: https://your-internal-domain-name/v1/
 
 ## Admin UI swagger should have only internal access. Hence linked to internal gateway
 istio:
