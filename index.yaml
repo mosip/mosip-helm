@@ -3,7 +3,7 @@ entries:
   activemq-artemis:
   - apiVersion: v2
     appVersion: 2.6.2
-    created: "2021-05-21T05:57:11.766646+05:30"
+    created: "2021-05-21T09:04:00.896125+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -35,7 +35,7 @@ entries:
   admin-service:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.768235+05:30"
+    created: "2021-05-21T09:04:00.897816+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -60,7 +60,7 @@ entries:
   admin-ui:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.770048+05:30"
+    created: "2021-05-21T09:04:00.900377+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -85,7 +85,7 @@ entries:
   artifactory:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.772553+05:30"
+    created: "2021-05-21T09:04:00.901985+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -110,7 +110,7 @@ entries:
   auditmanager:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.774198+05:30"
+    created: "2021-05-21T09:04:00.90431+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -132,10 +132,10 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/auditmanager-1.1.5.tgz
     version: 1.1.5
-  auth:
+  authmanager:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.775787+05:30"
+    created: "2021-05-21T09:04:00.905918+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -143,7 +143,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP Authentication Manager module
-    digest: 3c02208ee0a6c9cbb8636ee18e43bf41724b52d26d7814575c212be7fe423114
+    digest: 3038ea8b16262d08a968e1a23162fdc89ac078a56b0bbd5eb68dbd04c1171870
     home: https://mosip.io
     keywords:
     - mosip
@@ -153,15 +153,15 @@ entries:
     maintainers:
     - email: info@mosip.io
       name: MOSIP
-    name: auth
+    name: authmanager
     type: application
     urls:
-    - https://mosip.github.io/mosip-helm/auth-1.1.5.tgz
+    - https://mosip.github.io/mosip-helm/authmanager-1.1.5.tgz
     version: 1.1.5
   clamav:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.77726+05:30"
+    created: "2021-05-21T09:04:00.907475+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -186,7 +186,7 @@ entries:
   config-server:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2021-05-21T05:57:11.778497+05:30"
+    created: "2021-05-21T09:04:00.908806+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -209,7 +209,7 @@ entries:
   idgenerator:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.779974+05:30"
+    created: "2021-05-21T09:04:00.910254+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -234,7 +234,7 @@ entries:
   kernel-keygen:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.781338+05:30"
+    created: "2021-05-21T09:04:00.911455+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -260,7 +260,7 @@ entries:
   keycloak-init:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.7834+05:30"
+    created: "2021-05-21T09:04:00.912703+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -284,7 +284,7 @@ entries:
   keymanager:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.784982+05:30"
+    created: "2021-05-21T09:04:00.914708+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -309,7 +309,7 @@ entries:
   masterdata:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.786469+05:30"
+    created: "2021-05-21T09:04:00.916061+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -334,7 +334,7 @@ entries:
   mock-abis:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.787833+05:30"
+    created: "2021-05-21T09:04:00.917367+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -359,7 +359,7 @@ entries:
   notifier:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.789386+05:30"
+    created: "2021-05-21T09:04:00.918697+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -384,7 +384,7 @@ entries:
   otpmanager:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.790751+05:30"
+    created: "2021-05-21T09:04:00.920019+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -409,7 +409,7 @@ entries:
   postgres-init:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.792835+05:30"
+    created: "2021-05-21T09:04:00.921414+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -434,7 +434,7 @@ entries:
   prereg-application:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.794137+05:30"
+    created: "2021-05-21T09:04:00.923316+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -459,7 +459,7 @@ entries:
   prereg-batchjob:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.795427+05:30"
+    created: "2021-05-21T09:04:00.924637+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -484,7 +484,7 @@ entries:
   prereg-booking:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.796744+05:30"
+    created: "2021-05-21T09:04:00.925956+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -509,7 +509,7 @@ entries:
   prereg-datasync:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.798051+05:30"
+    created: "2021-05-21T09:04:00.927295+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -534,7 +534,7 @@ entries:
   pridgenerator:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.799327+05:30"
+    created: "2021-05-21T09:04:00.9286+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -559,7 +559,7 @@ entries:
   ridgenerator:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.800624+05:30"
+    created: "2021-05-21T09:04:00.929919+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -584,7 +584,7 @@ entries:
   softhsm:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.802492+05:30"
+    created: "2021-05-21T09:04:00.931542+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -608,7 +608,7 @@ entries:
   syncdata:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-05-21T05:57:11.803808+05:30"
+    created: "2021-05-21T09:04:00.932862+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -630,4 +630,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/syncdata-1.1.5.tgz
     version: 1.1.5
-generated: "2021-05-21T05:57:11.764871+05:30"
+generated: "2021-05-21T09:04:00.894369+05:30"
