@@ -22,7 +22,7 @@ spec:
   - name: amqp
     port: 5672
     targetPort: amqp
-  type: LoadBalancer
+  type: {{ .Values.service.type }}
   selector:
     app: {{ template "artemis.name" . }}
     release: {{ .Release.Name | quote }}
