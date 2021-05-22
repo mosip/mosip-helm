@@ -76,6 +76,7 @@ loadbalancer:
   enabled: true
 
 service:
+  type: LoadBalancer
   annotations: {}
 
 ## Prometheus Exporters / Metrics
@@ -193,5 +194,7 @@ ingress:
   servicePort: http
 
 istioinjection:
-  enabled: true
+  enabled: false
   hostname: activemq.xyz.net
+  selector:
+    istio: ingressgateway
