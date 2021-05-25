@@ -14,3 +14,4 @@ data:
   artifactory_url_env: {{ include "artifactory.baseUrl" . }}
   iam_adapter_url_env: {{ printf "%s/%s" (include "artifactory.baseUrl" .) .Values.artifacts.iamAdapter }}
   zip_file_path: {{ .Values.artifacts.hsmClientZip }}
+  cache_provider_url_env: {{ printf "%s/%s" (include "artifactory.baseUrl" .) .Values.artifacts.cacheProvider }}
