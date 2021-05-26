@@ -200,6 +200,17 @@ All env variables that are accessed from mosip config properties
     secretKeyRef:
       name: {{ printf "%s-various" (include "config-server.fullname" .) }}
       key: ida-websub-hotlist-callback-secret
-{{- end }}
 
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_KERNEL_TOKENID_UIN_SALT
+  valueFrom:
+    secretKeyRef:
+      name: {{ printf "%s-various" (include "config-server.fullname" .) }}
+      key: mosip-kernel-tokenid-uin-salt
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_KERNEL_TOKENID_PARTNERCODE_SALT
+  valueFrom:
+    secretKeyRef:
+      name: {{ printf "%s-various" (include "config-server.fullname" .) }}
+      key: mosip-kernel-tokenid-partnercode-salt
+{{- end }}
 
