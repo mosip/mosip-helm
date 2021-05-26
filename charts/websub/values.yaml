@@ -399,10 +399,10 @@ metrics:
     #       severity: error
     rules: []
 
-## Only internal access
+## Websub needs public access.
 istio:
   enabled: true
-  gateway: istio-system/internal
+  gateway: istio-system/public
 
 ## TODO: read postgres hostname from configmap 
 ## TODO: implement a dynamic way of providing republish_time

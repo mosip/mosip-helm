@@ -19,7 +19,7 @@ spec:
   http:
   - match:
       - uri:
-          prefix: /commons/v1/websub/
+          prefix: /websub/
     route:
     - destination:
         host: {{ template "common.names.fullname" . }}
