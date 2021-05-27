@@ -6,7 +6,7 @@ Helm chart for running IDA keygen job.
 
 ```console
 $ helm repo add mosip https://mosip.github.io
-$ helm install my-release mosip/ida-keygen
+$ helm -n ida install my-release mosip/ida-keygen
 ```
 
 ## Introduction
