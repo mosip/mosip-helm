@@ -73,7 +73,7 @@ springServicePort: 8090
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
 livenessProbe:
-  enabled: true
+  enabled: false
   httpGet:
     path: /idauthentication/v1/auth/actuator/health
     port: 8090
@@ -401,3 +401,11 @@ metrics:
     #     labels:
     #       severity: error
     rules: []
+
+## IDA Auth needs both internal & external access.
+istio:
+  enabled: true
+  gateways: 
+    - istio-system/public
+    - istio-system/internal
+  prefix:  /idauthentication/v1/auth/
