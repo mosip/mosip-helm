@@ -24,6 +24,7 @@ spec:
   ports:
     - name: http
       port: {{ .Values.service.port }}
+      targetPort: {{ .Values.springServicePort }}
       protocol: TCP 
   selector: {{- include "common.labels.matchLabels" . | nindent 4 }}
     app.kubernetes.io/component: artifactory
