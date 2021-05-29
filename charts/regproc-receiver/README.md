@@ -9,7 +9,7 @@ $ helm repo add mosip https://mosip.github.io
 $ helm install my-release mosip/regproc-receiver
 ```
 ## Persistence
-Static proivisioning of the landing folder has been done as the folder should not get deleted and must be accessible on restart of the pods/cluster. The annotation `"helm.sh/resource-policy": keep` has been applied in `pv.yaml` to make sure helm does not delete PV.  This is required as packet servers PVC would be bound to this PV. 
+Static provisioning of the landing folder has been done as the folder should not get deleted and must be accessible on restart of the pods/cluster. The annotation `"helm.sh/resource-policy": keep` has been applied in `pv.yaml` and `pvc.yaml` to make sure helm does not delete PV and PVC.  This is required as packet server would use the same PVC.
 
 ## Prerequisites
 
