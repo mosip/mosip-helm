@@ -408,10 +408,8 @@ metrics:
     #       severity: error
     rules: []
 
-## Partner management needs public access.
 istio:
   enabled: true
   gateways: 
-    - istio-system/public
     - istio-system/internal
-  prefix: /registrationprocessor/v1/packetreceiver/
+  prefix: /registrationprocessor/v1/packetserver/
