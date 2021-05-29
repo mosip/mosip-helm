@@ -405,6 +405,8 @@ metrics:
 ## Partner management needs public access.
 istio:
   enabled: true
-  gateway: istio-system/public
+  gateways: 
+    - istio-system/public
+    - istio-system/internal
   prefix: /v1/partnermanager/
 
