@@ -408,8 +408,9 @@ metrics:
     #       severity: error
     rules: []
 
+## pktserver does not require any ingress access.
 istio:
-  enabled: true
+  enabled: false
   gateways: 
     - istio-system/internal
   prefix: /registrationprocessor/v1/packetserver/
