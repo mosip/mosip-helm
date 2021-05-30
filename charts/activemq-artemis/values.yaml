@@ -196,8 +196,8 @@ ports:
 istio:
   enabled: true
   hosts:
-    -  activemq.sandbox.mosip.net
-  ingressGateway: ingressgateway-internal
-  gateways: 
-    - istio-system/internal
+    -  activemq.sandbox.xyz.net
+  ## Associate with either public or internal ingress controllers
+  ingressController: 
+    name: ingressgateway-internal
   prefix: / 
