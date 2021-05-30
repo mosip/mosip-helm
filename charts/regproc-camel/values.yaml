@@ -52,8 +52,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipid/registration-processor-dmz-packet-server
-  tag: 1.0.9
+  repository: mosipid/registration-processor-common-camel-bridge
+  tag: 1.1.5
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -67,7 +67,7 @@ image:
   #   - myRegistryKeySecretName
 
 ## Port on which this particular spring service module is running. 
-springServicePort: 8082
+springServicePort: 8022
 
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
@@ -76,8 +76,8 @@ springServicePort: 8082
 livenessProbe:
   enabled: false
   httpGet:
-    path: 
-    port: 8082
+    path: /registrationprocessor/v1/camelbridge/actuator/health
+    port: 8022
   initialDelaySeconds: 120 
   periodSeconds: 10
   timeoutSeconds: 5 
@@ -87,9 +87,9 @@ livenessProbe:
 readinessProbe:
   enabled: false
   httpGet:
-    path: 
-    port: 8082
-  initialDelaySeconds: 30 
+    path: /registrationprocessor/v1/camelbridge/actuator/health
+    port: 8022
+  initialDelaySeconds: 60 
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -231,7 +231,9 @@ updateStrategy:
 ##   - name: FOO
 ##     value: "bar"
 ##
-extraEnvVars: []
+extraEnvVars: 
+  - name: zone_env
+    value: default
 
 ## ConfigMap with extra environment variables that used
 ##
@@ -258,7 +260,7 @@ extraVolumeMounts: []
 ##   - name: your-image-name
 ##     image: your-image
 ##     imagePullPolicy: Always
-##     ports:
+#true#     ports:
 ##       - name: portname
 ##         containerPort: 1234
 ##
@@ -277,7 +279,7 @@ initContainers: {}
 sidecars: {}
 
 persistence:
-  enabled: true
+  enabled: false 
   ## If defined, storageClassName: <storageClass>
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
@@ -293,14 +295,13 @@ persistence:
   ## We use EFS storage class as that supports ReadWriteMany. Make sure you have installed the same as given
   ## here: https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html
   ## Packet landing zone requires ReadWriteMany 
-  storageClass: efs-sc 
+  storageClass: 
   accessModes:
     - ReadWriteMany
-  size: 5Gi
-  ## Asume that this PVC already exists for receiver.
-  existingClaim: regproc-receiver  
-  # Hardcoded in Dockerfile.
-  mountDir: /home/ftp1/LANDING_ZONE
+  size: 
+  existingClaim: 
+  reclaimPolicy: 
+  mountDir:
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
@@ -361,7 +362,7 @@ metrics:
   podAnnotations: 
     prometheus.io/scrape: "true"
   
-  endpointPath: 
+  endpointPath:
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator
@@ -408,9 +409,9 @@ metrics:
     #       severity: error
     rules: []
 
-## pktserver does NOT require any external access.
+## Requires only internal access for swagger 
 istio:
-  enabled: false
+  enabled: true
   gateways: 
     - istio-system/internal
-  prefix: /registrationprocessor/v1/packetserver/
+  prefix: /registrationprocessor/v1/camelbridge/
