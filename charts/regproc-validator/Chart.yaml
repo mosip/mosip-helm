@@ -1,6 +1,6 @@
 apiVersion: v2
 name: regproc-validator
-description: A Helm chart for MOSIP Registration Processor Camel stage
+description: A Helm chart for MOSIP Registration Processor Validator stage
 type: application
 version: 1.1.5
 appVersion: "1.1.5"
@@ -14,7 +14,7 @@ home: https://mosip.io
 keywords:
   - mosip
   - regproc-validator
-  - kernel
+  - regproc
 maintainers:
   - email: info@mosip.io
     name: MOSIP 
