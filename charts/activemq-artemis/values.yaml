@@ -70,13 +70,8 @@ resources:
     memory: 256Mi
     cpu: 100m
 
-# A load balander might confuse Minikube when installing with Helm and --wait
-# Probably this is only useful for minikube environments and CI
-loadbalancer:
-  enabled: true
-
 service:
-  type: LoadBalancer
+  type: ClusterIP
   annotations: {}
 
 ## Prometheus Exporters / Metrics
@@ -193,8 +188,16 @@ ingress:
   ## Default is http. Alternative is https.
   servicePort: http
 
-istioinjection:
-  enabled: false
-  hostname: activemq.xyz.net
-  selector:
-    istio: ingressgateway
+ports:
+  activemq: 61616
+  webconsole: 8161
+  amqp: 5672
+  
+istio:
+  enabled: true
+  hosts:
+    -  activemq.sandbox.mosip.net
+  ingressGateway: ingressgateway-internal
+  gateways: 
+    - istio-system/internal
+  prefix: / 

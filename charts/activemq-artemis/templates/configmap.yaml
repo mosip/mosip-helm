@@ -17,11 +17,11 @@ data:
         {{- $fullname := include "artemis.fullname" . -}}
         {{- $releaseName := printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" -}}
         {{- $releaseNamespace := .Release.Namespace -}}
-
+        {{- $port := .Values.ports.activemq -}}
         <connectors>
           {{ range $i,$t := until (int .Values.replicas) }}
           {{ range tuple "master" "slave" }}
-          <connector name="{{ $fullname }}-{{ . }}-{{ $i }}">tcp://{{ $fullname }}-{{ . }}-{{ $i }}.{{ $releaseName }}-{{ . }}.{{ $releaseNamespace }}.svc.cluster.local:61616</connector>
+          <connector name="{{ $fullname }}-{{ . }}-{{ $i }}">tcp://{{ $fullname }}-{{ . }}-{{ $i }}.{{ $releaseName }}-{{ . }}.{{ $releaseNamespace }}.svc.cluster.local:{{ $port }}</connector>
           {{ end }}
           {{end}}
         </connectors>

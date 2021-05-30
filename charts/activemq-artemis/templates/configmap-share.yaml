@@ -7,5 +7,5 @@ metadata:
   labels:
 {{ include "artemis.labels.standard" . | indent 4 }}
 data:
-  activemq-host: ""
-  activemq-core-port: "61616"
+  activemq-host: {{ printf "%s.%s" (include "artemis.fullname" .) .Release.Namespace }}
+  activemq-core-port: {{ .Values.ports.activemq | quote }}

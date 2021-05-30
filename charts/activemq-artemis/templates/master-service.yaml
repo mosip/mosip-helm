@@ -11,19 +11,19 @@ metadata:
 spec:
   ports:
   - name: http
-    port: 8161
+    port: {{ .Values.ports.webconsole }}
     targetPort: http
   - name: core
-    port: 61616
+    port: {{ .Values.ports.activemq }}
     targetPort: core
   - name: amqp
-    port: 5672
+    port: {{ .Values.ports.amqp }}
     targetPort: amqp
   - name: jmx
     port: 9494
     targetPort: jmxexporter
-  clusterIP: None
   selector:
     app: {{ template "artemis.name" . }}
     release: {{ .Release.Name | quote }}
     component: master
+

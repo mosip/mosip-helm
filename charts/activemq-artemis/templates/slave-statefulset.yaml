@@ -65,11 +65,11 @@ spec:
           value: "true"
         ports:
         - name: http
-          containerPort: 8161
+          containerPort: {{ .Values.ports.webconsole }}
         - name: core
-          containerPort: 61616
+          containerPort: {{ .Values.ports.activemq }}
         - name: amqp
-          containerPort: 5672
+          containerPort: {{ .Values.ports.amqp }}
         - name: jmxexporter
           containerPort: 9404
         livenessProbe:
