@@ -5,19 +5,18 @@ metadata:
   name: {{ include "artemis.fullname" . }}
 spec:
   selector:
-    istio: {{ .Values.istio.ingressGateway }}
+    istio: {{ .Values.istio.ingressController.name }}
   servers:
   - port:
-      name: activemq
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+      {{- include "common.tplvalues.render" ( dict "value" .Values.istio.hosts "context" $ ) | nindent 6 }}
+  - port:
       number: {{ .Values.ports.activemq }}
+      name: core
       protocol: TCP
     hosts:
       {{- include "common.tplvalues.render" ( dict "value" .Values.istio.hosts "context" $ ) | nindent 6 }}
-
-  - port:
-      name: webconsole
-      number: {{ .Values.ports.webconsole }}
-      protocol: HTTP
-    hosts:
-      {{- include "common.tplvalues.render" ( dict "value" .Values.istio.hosts "context" $ ) | nindent 6 }} 
 {{- end }}
