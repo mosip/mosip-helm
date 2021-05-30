@@ -117,11 +117,11 @@ overrides:
     keycloakClients: keycloak-client-secrets
     softhsmKernel: softhsm-kernel  
     softhsmIDA: softhsm-ida
-#    activemq: activemq-activemq-artemis
+    activemq: activemq-activemq-artemis
   configmaps:
     keycloakHost: keycloak-host
     global: global
-#    activemq: activemq-activemq-artemis-share
+    activemq: activemq-activemq-artemis-share
 ## The active profile env if you have another set of properties. Correspondingly, properties in Git repo will 
 ## have names of type "*-default.properties"
 activeProfileEnv: default  
