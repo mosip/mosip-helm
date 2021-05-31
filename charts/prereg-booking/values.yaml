@@ -355,7 +355,7 @@ metrics:
   podAnnotations: 
     prometheus.io/scrape: "true"
   
-  endpointPath: /v1/prereg-booking/actuator/prometheus
+  endpointPath: /preregistration/v1/actuator/prometheus
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator
@@ -401,3 +401,8 @@ metrics:
     #     labels:
     #       severity: error
     rules: []
+istio:
+  enabled: true
+  gateways: 
+    - istio-system/internal
+  prefix: /preregistration/v1/appointment

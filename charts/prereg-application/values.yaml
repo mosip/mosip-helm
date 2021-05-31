@@ -77,7 +77,7 @@ livenessProbe:
   httpGet:
     path: /preregistration/v1/actuator/health
     port: 9090
-  initialDelaySeconds: 60
+  initialDelaySeconds: 120
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -88,7 +88,7 @@ readinessProbe:
   httpGet:
     path: /preregistration/v1/actuator/health
     port: 9090
-  initialDelaySeconds: 30 
+  initialDelaySeconds: 60
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -355,7 +355,7 @@ metrics:
   podAnnotations: 
     prometheus.io/scrape: "true"
   
-  endpointPath: /v1/prereg-application/actuator/prometheus
+  endpointPath: /preregistration/v1/actuator/prometheus
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator
@@ -401,3 +401,9 @@ metrics:
     #     labels:
     #       severity: error
     rules: []
+
+istio:
+  enabled: true
+  gateways: 
+    - istio-system/internal
+  prefix: /preregistration/v1/
