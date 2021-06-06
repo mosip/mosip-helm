@@ -177,7 +177,7 @@ All env variables that are accessed from mosip config properties
       name: {{ printf "%s-various" (include "config-server.fullname" .) }}
       key: ida-websub-authtype-callback-secret
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_CREDENTIAL_ISSUE_CALLBACK-SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_CREDENTIAL_ISSUE_CALLBACK_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ printf "%s-various" (include "config-server.fullname" .) }}
