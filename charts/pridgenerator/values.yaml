@@ -78,7 +78,7 @@ livenessProbe:
   httpGet:
     path: /v1/pridgenerator/actuator/health 
     port: 8100
-  initialDelaySeconds: 60
+  initialDelaySeconds: 120
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -89,7 +89,7 @@ readinessProbe:
   httpGet:
     path: /v1/pridgenerator/actuator/health 
     port: 8100
-  initialDelaySeconds: 30 
+  initialDelaySeconds: 60 
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6

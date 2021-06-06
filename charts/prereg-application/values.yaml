@@ -406,4 +406,5 @@ istio:
   enabled: true
   gateways: 
     - istio-system/internal
-  prefix: /preregistration/v1/
+    - istio-system/public
+  prefix: /preregistration/v1
