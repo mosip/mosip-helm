@@ -1,3 +1,3 @@
 # mosip-helm
 
-THIS REPOSITORY IS WORK-IN-PROGRESS
+Helm charts for all MOSIP services
