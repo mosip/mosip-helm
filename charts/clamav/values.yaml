@@ -114,9 +114,9 @@ resources:
   limits: {}
   #   cpu: 200m
   #   memory: 256Mi
-  requests: {}
-  #   cpu: 200m
-  #   memory: 10Mi
+  requests: 
+    cpu: 200m
+    memory: 2000Mi
 
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
 ## Clamav containerr already runs as 'clamav' user, so we may not need to enable this

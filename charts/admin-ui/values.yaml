@@ -118,9 +118,9 @@ resources:
   limits: {}
   #   cpu: 200m
   #   memory: 256Mi
-  requests: {}
-  #   cpu: 200m
-  #   memory: 10Mi
+  requests: 
+    cpu: 100m
+    memory: 50Mi
 
 additionalResources: 
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
