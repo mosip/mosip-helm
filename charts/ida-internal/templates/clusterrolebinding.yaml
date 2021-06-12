@@ -15,5 +15,5 @@ roleRef:
   name: {{ template "common.names.fullname" . }}
 subjects:
   - kind: ServiceAccount
-    name: {{ template "ida-internal-auth.serviceAccountName" . }}
+    name: {{ template "ida-internal.serviceAccountName" . }}
     namespace: {{ .Release.Namespace }}

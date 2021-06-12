@@ -6,7 +6,7 @@ Helm chart for installing IDA Auth service.
 
 ```console
 $ helm repo add mosip https://mosip.github.io
-$ helm install my-release mosip/ida-internal-auth
+$ helm install my-release mosip/ida-internal
 ```
 
 ## Introduction

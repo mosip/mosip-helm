@@ -1,28 +1,28 @@
 {{/*
 Return the proper  image name
 */}}
-{{- define "ida-internal-auth.image" -}}
+{{- define "ida-internal.image" -}}
 {{ include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global) }}
 {{- end -}}
 
 {{/*
 Return the proper image name (for the init container volume-permissions image)
 */}}
-{{- define "ida-internal-auth.volumePermissions.image" -}}
+{{- define "ida-internal.volumePermissions.image" -}}
 {{- include "common.images.image" ( dict "imageRoot" .Values.volumePermissions.image "global" .Values.global ) -}}
 {{- end -}}
 
 {{/*
 Return the proper Docker Image Registry Secret Names
 */}}
-{{- define "ida-internal-auth.imagePullSecrets" -}}
+{{- define "ida-internal.imagePullSecrets" -}}
 {{- include "common.images.pullSecrets" (dict "images" (list .Values.image .Values.volumePermissions.image) "global" .Values.global) -}}
 {{- end -}}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "ida-internal-auth.serviceAccountName" -}}
+{{- define "ida-internal.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
     {{ default (printf "%s" (include "common.names.fullname" .)) .Values.serviceAccount.name }}
 {{- else -}}
@@ -33,10 +33,10 @@ Create the name of the service account to use
 {{/*
 Compile all warnings into a single message.
 */}}
-{{- define "ida-internal-auth.validateValues" -}}
+{{- define "ida-internal.validateValues" -}}
 {{- $messages := list -}}
-{{- $messages := append $messages (include "ida-internal-auth.validateValues.foo" .) -}}
-{{- $messages := append $messages (include "ida-internal-auth.validateValues.bar" .) -}}
+{{- $messages := append $messages (include "ida-internal.validateValues.foo" .) -}}
+{{- $messages := append $messages (include "ida-internal.validateValues.bar" .) -}}
 {{- $messages := without $messages "" -}}
 {{- $message := join "\n" $messages -}}
 
@@ -48,7 +48,7 @@ Compile all warnings into a single message.
 {{/*
 Return podAnnotations
 */}}
-{{- define "ida-internal-auth.podAnnotations" -}}
+{{- define "ida-internal.podAnnotations" -}}
 {{- if .Values.podAnnotations }}
 {{ include "common.tplvalues.render" (dict "value" .Values.podAnnotations "context" $) }}
 {{- end }}
