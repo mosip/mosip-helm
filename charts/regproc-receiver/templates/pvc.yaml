@@ -29,8 +29,4 @@ spec:
   {{- if .Values.persistence.dataSource }}
   dataSource: {{- include "common.tplvalues.render" (dict "value" .Values.persistence.dataSource "context" $) | nindent 4 }}
   {{- end }}
-  selector:
-    matchLabels:
-      {{- include "common.tplvalues.render" (dict "value" .Values.persistence.labels "context" $) | nindent 6 }}
-      
 {{- end }}

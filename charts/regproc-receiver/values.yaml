@@ -293,7 +293,6 @@ persistence:
   ## We use EFS storage class as that supports ReadWriteMany. Make sure you have installed the same as given
   ## here: https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html
   ## Packet landing zone requires ReadWriteMany 
-  storageClass: efs-sc 
   accessModes:
     - ReadWriteMany
   size: 5Gi
@@ -303,13 +302,8 @@ persistence:
   mountDir: /mnt/landing 
   labels:
     purpose: landing-folder
-  volumeMode: Filesystem
   reclaimPolicy: Retain
-  csi:
-    driver: efs.csi.aws.com
-    ## Volume handle will be specific to the EFS that is mounted. Make you set it right for you cluster. Details
-    ## here: https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.htm
-    volumeHandle: fs-108fbfc1
+
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
 ##

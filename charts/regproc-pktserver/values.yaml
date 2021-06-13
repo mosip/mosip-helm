@@ -293,7 +293,6 @@ persistence:
   ## We use EFS storage class as that supports ReadWriteMany. Make sure you have installed the same as given
   ## here: https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html
   ## Packet landing zone requires ReadWriteMany 
-  storageClass: efs-sc 
   accessModes:
     - ReadWriteMany
   size: 5Gi
