@@ -19,6 +19,7 @@ spec:
         {{- if .Values.commonLabels }}
         {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 8 }}
         {{- end }}
+        sidecar.istio.io/inject: "false"
     spec:
       {{- include "idrepo-saltgen.imagePullSecrets" . | nindent 6 }}
       {{- if .Values.hostAliases }}
