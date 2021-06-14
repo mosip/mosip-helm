@@ -12,6 +12,6 @@ metadata:
   {{- end }}
 data:
   config.json: |-
-    {"baseUrl":"{{ tpl .Values.admin.hostUrl . }}",  "adminUrl" : "/admin-ui/", "primaryLangCode": "eng", "secondaryLangCode": "ara", "validateToken": "authmanager/authorize/admin/validateToken",    "login": "admin/login/",       "logout": "admin/logout/user"}
+    {"baseUrl":"{{ tpl .Values.admin.hostUrl . }}",  "adminUrl" : "/admin-ui/", "primaryLangCode": "eng", "secondaryLangCode": "fra", "validateToken": "authmanager/authorize/admin/validateToken",    "login": "admin/login/",       "logout": "admin/logout/user"}
 
 
