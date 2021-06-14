@@ -186,6 +186,7 @@ keycloak:
          saroles:
            - RESIDENT
            - CREDENTIAL_REQUEST
+      users: []
     
     preregistration:  # realm
       roles: 
@@ -201,6 +202,7 @@ keycloak:
            - REGISTRATION_PROCESSOR
            - INDIVIDUAL
            - PRE_REGISTRATION_ADMIN 
+      users: []
 
 ## These will be passed as environments variables to keycloak-init docker. Note the expected naming convention is 
 ## <realm name>_<clientname>_<secret>.  If empty secret is passed, it shall be randomly generated
