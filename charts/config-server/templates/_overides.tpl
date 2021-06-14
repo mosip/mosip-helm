@@ -7,7 +7,7 @@ All env variables that are accessed from mosip config properties
   valueFrom:
     configMapKeyRef:
       name: {{ .Values.overrides.configmaps.global }}
-      key: mosip-api-host-url
+      key: mosip-api-url
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_API_INTERNAL_URL 
   valueFrom:
