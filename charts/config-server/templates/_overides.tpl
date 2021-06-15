@@ -212,5 +212,11 @@ All env variables that are accessed from mosip config properties
     secretKeyRef:
       name: {{ printf "%s-various" (include "config-server.fullname" .) }}
       key: mosip-kernel-tokenid-partnercode-salt
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_PRINT_WEBSUB_HUB_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: {{ printf "%s-various" (include "config-server.fullname" .) }}
+      key: print-websub-hub-secret
 {{- end }}
 
