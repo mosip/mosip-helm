@@ -345,8 +345,9 @@ serviceAccount:
 
 ## Prometheus Metrics
 ##
+## TODO: Enable later when monitoring is enabled.
 metrics:
-  enabled: true
+  enabled: false
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
@@ -400,12 +401,15 @@ metrics:
     #       severity: error
     rules: []
 
+## Url for prereg backend modules (internal url)
 prereg:
-  host: https://api.sandbox.xyz.net
+  apiUrl: https://api-internal.sandbox.xyz.net  
 
 istio:
-  enabled: true
-  gateways: 
-    - istio-system/public
-    - istio-system/internal
-  prefix: /pre-registration-ui
+  enabled: true 
+  ingressController:
+    name: ingressgateway
+  hosts:
+    ## prereg ui host. External facing
+    - prereg.sandbox.xyz.net  
+  prefix: /pre-registration-ui/

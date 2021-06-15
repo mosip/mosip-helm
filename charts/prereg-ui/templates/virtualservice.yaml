@@ -15,7 +15,7 @@ spec:
   hosts:
   - "*"
   gateways:
-  {{- include "common.tplvalues.render" ( dict "value" .Values.istio.gateways "context" $ ) | nindent 4 }}
+    - {{ template "common.names.fullname" . }}
   http:
   - match:
       - uri:
