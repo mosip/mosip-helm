@@ -19,7 +19,7 @@ spec:
   http:
   - match:
       - uri:
-          prefix: /v1/masterdata
+          prefix: {{ .Values.istio.prefix }}
     route:
     - destination:
         host: {{ template "common.names.fullname" . }}
