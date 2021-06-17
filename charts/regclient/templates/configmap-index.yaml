@@ -16,11 +16,18 @@ data:
   index.html: |-
     <!DOCTYPE html>
     <html>
+    <style>
+    .content {
+      max-width: 500px;
+      margin: auto;
+    }
+    </style>
     <body>
-    <img src="https://mosip.github.io/mosip-helm/mosip_logo.png">
-    <h2 style="font-family:verdana;"> Registration Client</h2>
-    <h4 style="font-family:verdana;"> Download</h4>
-    <a href="https://{{ .Values.istio.host }}/registration-client/{{ .Values.regclient.version  }}/reg-client.zip" style="font-family:verdana;">Windows 10</a>
+      <div class="content">
+        <img src="https://mosip.github.io/mosip-helm/mosip_logo.png">
+        <h2 style="font-family:verdana;"> Registration Client</h2>
+        <h4 style="font-family:verdana;"> Download</h4>
+        <a href="https://{{ .Values.istio.host }}/registration-client/{{ .Values.regclient.version  }}/reg-client.zip" style="font-family:verdana;">Windows 10</a>
+      </div>
     </body>
     </html>
-
