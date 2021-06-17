@@ -65,6 +65,15 @@ image:
   # pullSecrets:
   #   - myRegistryKeySecretName
 
+regclient:
+  version: 1.1.5.3-SNAPSHOT
+  mountDir: /build_files
+  ## Currently this is hardcoded. Will change in the future
+  cryptoKey: bBQX230Wskq6XpoZ1c+Ep1D+znxfT89NxLQ7P4KFkc4=
+  upgradeServerUrl: https://regclient.sandbox.xzy.net
+  ## Here we check the health of syncdata service. The service must be accessible over internal channel.
+  healthCheckUrl:  http://api-internal.sandbox.v3box1.net/v1/syncdata/actuator/health
+
 ## Port on which this particular spring service module is running. 
 containerPort: 80
 
@@ -74,23 +83,23 @@ containerPort: 80
 livenessProbe:
   enabled: false
   httpGet:
-    path: /v1/regclient/actuator/health 
+    path: "/registration-client/{{ tpl .Values.regclient.version . }}/reg-client.zip"
     port: 80
-  initialDelaySeconds: 120
-  periodSeconds: 10
+  initialDelaySeconds: 240 
+  periodSeconds: 60 
   timeoutSeconds: 5 
-  failureThreshold: 6
+  failureThreshold: 2 
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
+  enabled: true
   httpGet:
-    path: /v1/regclient/actuator/health 
+    path: "/registration-client/{{ tpl .Values.regclient.version . }}/reg-client.zip"
     port: 80
-  initialDelaySeconds: 60
-  periodSeconds: 10
+  initialDelaySeconds: 120 
+  periodSeconds: 60 
   timeoutSeconds: 5 
-  failureThreshold: 6
+  failureThreshold: 2  
   successThreshold: 1
 
 ##
@@ -398,21 +407,12 @@ metrics:
     #       severity: error
     rules: []
 
-regclient:
-  version: 1.1.5.3-SNAPSHOT
-  mountDir: /build_files
-  ## Currently this is hardcoded. Will change in the future
-  cryptoKey: bBQX230Wskq6XpoZ1c+Ep1D+znxfT89NxLQ7P4KFkc4=
-  upgradeServerUrl: https://regclient.sandbox.xzy.net
-  ## Here we check the health of syncdata service. The service must be accessible over internal channel.
-  healthCheckUrl:  http://api-internal.sandbox.xyz.net/v1/syncdata/actuator/health
 
 ## Only internal access
 istio:
   enabled: true 
   ingressController:
     name: ingressgateway-internal
-  hosts:
-    - regclient.sandbox.xyz.net
-  prefix: /registration-client
+  host: regclient.sandbox.xyz.net
+  prefix: /
 

@@ -13,16 +13,13 @@ metadata:
 
 data:
   maven-metadata.xml: |-
-   <metadata>
-     <groupId>io.mosip.registration</groupId>
-     <artifactId>registration-services</artifactId>
-     <versioning>
-       <versions>
-          <version>{{ .Values.regclient.version }}</version>
-       </versions>
-     <lastUpdated>20200729125958</lastUpdated>
-     </versioning>
-   </metadata>
-
-
-
+    <metadata>
+      <groupId>io.mosip.registration</groupId>
+      <artifactId>registration-services</artifactId>
+      <versioning>
+        <versions>
+           <version>{{ .Values.regclient.version }}</version>
+        </versions>
+      <lastUpdated>20200729125958</lastUpdated>
+      </versioning>
+    </metadata>

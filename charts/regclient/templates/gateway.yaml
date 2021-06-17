@@ -12,5 +12,5 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-      {{- include "common.tplvalues.render" ( dict "value" .Values.istio.hosts "context" $ ) | nindent 6 }}
+      - {{ .Values.istio.host }} 
 {{- end }}

@@ -115,6 +115,9 @@ spec:
             - name: maven
               mountPath:  {{ .Values.regclient.mountDir }}/maven-metadata.xml
               subPath: maven-metadata.xml
+            - name: landing-page
+              mountPath:  /var/www/html/index.html
+              subPath: index.html
           ports:
             - name: container-port
               containerPort: {{ .Values.containerPort }}
@@ -138,3 +141,7 @@ spec:
         - name: maven
           configMap:
             name: {{ template "common.names.fullname" . }}  
+
+        - name: landing-page
+          configMap:
+            name: {{ template "common.names.fullname" . }}-index
