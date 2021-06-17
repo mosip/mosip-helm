@@ -18,7 +18,8 @@ data:
     <html>
     <body>
     <img src="https://mosip.github.io/mosip-helm/mosip_logo.png">
-    <h2 style="font-family:verdana;"> Registration Client Downloads </h2>
+    <h2 style="font-family:verdana;"> Registration Client</h2>
+    <h4 style="font-family:verdana;"> Download</h4>
     <a href="https://{{ .Values.istio.host }}/registration-client/{{ .Values.regclient.version  }}/reg-client.zip" style="font-family:verdana;">Windows 10</a>
     </body>
     </html>
