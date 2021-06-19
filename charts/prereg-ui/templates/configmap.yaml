@@ -13,6 +13,6 @@ metadata:
 
 data:
   config.json: |-
-   {"BASE_URL":"{{ tpl .Values.prereg.apiUrl . }}",  "PRE_REG_URL" : "/preregistration/v1/"}
+   {"BASE_URL":"https://{{ tpl .Values.prereg.apiHost . }}",  "PRE_REG_URL" : "/preregistration/v1/"}
 
 
