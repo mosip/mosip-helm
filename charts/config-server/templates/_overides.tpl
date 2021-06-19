@@ -3,18 +3,6 @@ All env variables that are accessed from mosip config properties
 */}}
 {{- define "config-server.overrides" -}}
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_API_PUBLIC_URL 
-  valueFrom:
-    configMapKeyRef:
-      name: {{ .Values.overrides.configmaps.global }}
-      key: mosip-api-url
-
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_API_INTERNAL_URL 
-  valueFrom:
-    configMapKeyRef:
-      name: {{ .Values.overrides.configmaps.global }}
-      key: mosip-api-internal-url
-
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_DBUSER_PASSWORD
   valueFrom:
     secretKeyRef:
@@ -122,12 +110,6 @@ All env variables that are accessed from mosip config properties
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: preregistration_mosip_prereg_client_secret
-
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_KEYCLOAK_HOST
-  valueFrom:
-    configMapKeyRef:
-      name: {{ .Values.overrides.configmaps.keycloakHost }}
-      key: keycloak-host-url
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_KEYCLOAK_ADMIN_PASSWORD
   valueFrom:
