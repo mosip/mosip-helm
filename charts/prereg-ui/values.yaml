@@ -401,15 +401,10 @@ metrics:
     #       severity: error
     rules: []
 
-## Url for prereg backend modules (internal url)
 prereg:
-  apiHost: api-internal.sandbox.xyz.net  
-
+  apiHost: prereg.sandbox.xyz.net
 istio:
-  enabled: true 
-  ingressController:
-    name: ingressgateway
-  hosts:
-    ## prereg ui host. External facing
-    - prereg.sandbox.xyz.net  
+  enabled: true
+  gateways: 
+    - prereg-gateway
   prefix: /pre-registration-ui/

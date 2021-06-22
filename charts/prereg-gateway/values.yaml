@@ -52,8 +52,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipid/pre-registration-application-service
-  tag: 1.1.5
+  repository: 
+  tag:
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -67,16 +67,15 @@ image:
   #   - myRegistryKeySecretName
 
 ## Port on which this particular spring service module is running. 
-springServicePort: 9090
+springServicePort: 80
 
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
 livenessProbe:
   enabled: true
-  httpGet:
-    path: /preregistration/v1/actuator/health
-    port: 9090
+  tcpSocket:
+    port: 80
   initialDelaySeconds: 120
   periodSeconds: 10
   timeoutSeconds: 5 
@@ -85,10 +84,9 @@ livenessProbe:
 
 readinessProbe:
   enabled: true
-  httpGet:
-    path: /preregistration/v1/actuator/health
-    port: 9090
-  initialDelaySeconds: 60
+  tcpSocket:
+    port: 80
+  initialDelaySeconds: 30
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -119,7 +117,7 @@ resources:
   #   memory: 256Mi
   requests: 
     cpu: 200m
-    memory: 1500Mi
+    memory: 20Mi
 
 additionalResources: 
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
@@ -347,8 +345,9 @@ serviceAccount:
 
 ## Prometheus Metrics
 ##
+## TODO: Enable later when monitoring is enabled.
 metrics:
-  enabled: true
+  enabled: false
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
@@ -402,9 +401,10 @@ metrics:
     #       severity: error
     rules: []
 
+## External facing gateway with a specific domain name
 istio:
-  enabled: true
-  gateways: 
-    - istio-system/internal
-    - prereg-gateway
-  prefix: /preregistration/v1
+  enabled: true 
+  ingressController:
+    name: ingressgateway
+  hosts:
+    - prereg.sandbox.xyz.net  

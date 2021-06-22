@@ -2,7 +2,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: {{ template "common.names.fullname" . }}
+  name: prereg-gateway
 spec:
   selector:
     istio: {{ .Values.istio.ingressController.name }}
