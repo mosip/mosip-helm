@@ -51,8 +51,10 @@ service:
 
 image:
   registry: docker.io
-  repository: ckm007/registration-client
-  tag: temp_v3_deployment
+  #repository: ckm007/registration-client
+  #tag: temp_v3_deployment
+  repository: mosipid/registration-client
+  tag: 1.1.5.4
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -66,7 +68,7 @@ image:
   #   - myRegistryKeySecretName
 
 regclient:
-  version: 1.1.5.3-SNAPSHOT
+  version: 1.1.5.4
   mountDir: /build_files
   ## Currently this is hardcoded. Will change in the future
   cryptoKey: bBQX230Wskq6XpoZ1c+Ep1D+znxfT89NxLQ7P4KFkc4=
