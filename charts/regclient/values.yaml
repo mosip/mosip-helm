@@ -51,8 +51,6 @@ service:
 
 image:
   registry: docker.io
-  #repository: ckm007/registration-client
-  #tag: temp_v3_deployment
   repository: mosipid/registration-client
   tag: 1.1.5.4
   ## Specify a imagePullPolicy
@@ -239,7 +237,10 @@ updateStrategy:
 ##   - name: FOO
 ##     value: "bar"
 ##
-extraEnvVars: [] 
+## TODO: the below env variable is not used, but required.  Remove it later
+extraEnvVars: 
+  - name: client_certificate_env
+    value: mosip_cer.cer
 
 ## ConfigMap with extra environment variables
 ##
