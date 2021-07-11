@@ -53,7 +53,7 @@ service:
 image:
   registry: docker.io
   repository: mosipdev/artifactory-server
-  tag: test
+  tag: 1.1.5_biosdk
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -338,6 +338,10 @@ serviceAccount:
 ## There are various jars and libs in artifactory.  Listing their locations here.  The locations are vis-a-vis
 ## /usr/share/nginx/html/artifactory path in artifactory docker
 artifacts:
-  iamAdapter: artifactory/libs-snapshot-local/io/mosip/kernel/kernel-auth-adapter/1.2.0-SNAPSHOT/kernel-auth-adapter-1.2.0-SNAPSHOT-regproc-20201209055103.jar
+  iamAdapter: artifactory/libs-release-local/io/mosip/kernel/kernel-auth-adapter.jar
+  iamAdapterRegproc: artifactory/libs-snapshot-local/io/mosip/kernel/kernel-auth-adapter/1.2.0-SNAPSHOT/kernel-auth-adapter-1.2.0-SNAPSHOT-regproc-20201209055103.jar
+  iamAdapterRegprocExt: artifactory/libs-snapshot-local/io/mosip/kernel/kernel-auth-adapter/1.2.0-SNAPSHOT/kernel-auth-adapter-1.2.0-SNAPSHOT-regproc-20201209055103.jar
   hsmClientZip: artifactory/libs-release-local/hsm/client.zip  
   cacheProvider: artifactory/libs-release-local/cache/cache-provider.jar
+  runtimeDep: artifactory/libs-release-local/io/mosip/kernel/
+
