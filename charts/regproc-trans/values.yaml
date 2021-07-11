@@ -230,14 +230,24 @@ updateStrategy:
 ##   - name: FOO
 ##     value: "bar"
 ##
-extraEnvVars: []
+extraEnvVars: 
+  - name: artifactory_url_env
+    valueFrom:
+      configMapKeyRef:
+        name: artifactory-share
+        key: artifactory_url_env
+  - name: iam_adapter_url_env
+    valueFrom:
+      configMapKeyRef:
+        name: artifactory-share
+        key: iam_adapter_regproc_url_env
 
 ## ConfigMap with extra environment variables that used
-##
+## NOTE: we have removed artifactory from this list and passed artifactory parameters as above
+## This is done as auth adapter url required by Trans service is different from the default.
 extraEnvVarsCM:
   - global
   - config-server-share 
-  - artifactory-share
 
 ## Secret with extra environment variables
 ##
