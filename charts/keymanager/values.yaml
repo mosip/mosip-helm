@@ -52,8 +52,8 @@ service:
 
 image:
   registry: docker.io
-  repository:  mohdtaheer/keymanager-service
-  tag: 1153
+  repository: mosipid/kernel-keymanager-service
+  tag: 1.1.5.3
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
