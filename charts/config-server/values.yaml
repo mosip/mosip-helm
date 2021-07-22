@@ -106,6 +106,8 @@ installedModules:
   prereg: true
   regproc: true  
   ida: true
+  ## s3 or minio
+  objectStore: s3  
 
 ## Various secrets and configamaps that used as "overrides" in config server.  The are assumed to 'copied' to 
 ## config-server name space by a separate process/scripts. 
@@ -118,10 +120,12 @@ overrides:
     softhsmKernel: softhsm-kernel  
     softhsmIDA: softhsm-ida
     activemq: activemq-activemq-artemis
+    s3: s3
   configmaps:
     keycloakHost: keycloak-host
     global: global
     activemq: activemq-activemq-artemis-share
+    s3: s3
 ## The active profile env if you have another set of properties. Correspondingly, properties in Git repo will 
 ## have names of type "*-default.properties"
 activeProfileEnv: default  
