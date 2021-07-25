@@ -220,19 +220,19 @@ All env variables that are accessed from mosip config properties
       key: print-websub-hub-secret
 
 {{- if eq .Values.installedModules.objectStore "s3" }}
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_OBJECT_STORE_S3_ACCESSKEY
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_S3_ACCESSKEY
   valueFrom:
     configMapKeyRef:
       name: {{ .Values.overrides.configmaps.s3 }}
       key: s3-user-key
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_OBJECT_STORE_S3_REGION
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_S3_REGION
   valueFrom:
     configMapKeyRef:
       name: {{ .Values.overrides.configmaps.s3 }}
       key: s3-region
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_OBJECT_STORE_S3_SECRETKEY
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_S3_SECRETKEY
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.s3 }}
