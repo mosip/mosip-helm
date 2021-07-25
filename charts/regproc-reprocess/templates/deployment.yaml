@@ -89,8 +89,6 @@ spec:
           args: {{- include "common.tplvalues.render" (dict "value" .Values.args "context" $) | nindent 12 }}
           {{- end }}
           env:
-            - name: container_user
-              value: {{ .Values.containerSecurityContext.runAsUser }}
             - name: JDK_JAVA_OPTIONS
               value: {{ .Values.additionalResources.javaOpts }}
             {{- if .Values.extraEnvVars }}

@@ -299,7 +299,7 @@ persistence:
   ## Asume that this PVC already exists for receiver.
   existingClaim: regproc-receiver  
   # Hardcoded in Dockerfile.
-  mountDir: /home/ftp1/LANDING_ZONE
+  mountDir: /home/mosip/landing
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
