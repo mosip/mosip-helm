@@ -401,3 +401,10 @@ metrics:
     #     labels:
     #       severity: error
     rules: []
+
+## Internal access
+istio:
+  enabled: true
+  gateways: 
+    - istio-system/internal
+  prefix:  /idauthentication/v1/internal/
