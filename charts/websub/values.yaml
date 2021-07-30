@@ -400,7 +400,8 @@ metrics:
 ## Websub needs public access.
 istio:
   enabled: true
-  gateway: istio-system/public
+  gateway: istio-system/internal
+  prefix: /websub
 
 ## TODO: read postgres hostname from configmap 
 ## TODO: implement a dynamic way of providing republish_time

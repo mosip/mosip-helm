@@ -19,7 +19,7 @@ spec:
   http:
   - match:
       - uri:
-          prefix: /websub/
+          prefix: {{ .Values.istio.prefix }}
     route:
     - destination:
         host: {{ template "common.names.fullname" . }}
