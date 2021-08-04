@@ -23,6 +23,33 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
+## Port on which this particular spring service module is running. 
+springServicePort: 51000
+
+## Configure extra options for liveness and readiness probes
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
+##
+livenessProbe:
+  enabled: true
+  httpGet:
+    path: "/config/*/*"
+    port: 51000
+  initialDelaySeconds: 120
+  periodSeconds: 10
+  timeoutSeconds: 5 
+  failureThreshold: 6
+  successThreshold: 1
+
+readinessProbe:
+  enabled: true
+  httpGet:
+    path: "/config/*/*"
+    port: 51000 
+  initialDelaySeconds: 60
+  periodSeconds: 10
+  timeoutSeconds: 5 
+  failureThreshold: 6
+  successThreshold: 1
 
 podAnnotations: {}
 
@@ -45,7 +72,6 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 80
-  targetPort: 51000
 
 ingress:
   enabled: false
