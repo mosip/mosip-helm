@@ -225,7 +225,7 @@ All env variables that are accessed from mosip config properties
       name: {{ printf "%s-various" (include "config-server.fullname" .) }}
       key: print-websub-hub-secret
 
-{{- if eq .Values.installedModules.objectStore "s3" }}
+{{- if .Values.installedModules.objectStore }}
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_S3_ACCESSKEY
   valueFrom:
     configMapKeyRef:
@@ -243,8 +243,6 @@ All env variables that are accessed from mosip config properties
     secretKeyRef:
       name: {{ .Values.overrides.secrets.s3 }}
       key: s3-user-secret
-
-{{- else if eq .Values.installedModules.objectStore "minio" }}
 {{- end }}
 
 {{- end }}

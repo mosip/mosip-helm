@@ -132,8 +132,7 @@ installedModules:
   prereg: true
   regproc: true  
   ida: true
-  ## s3 or minio
-  objectStore: s3  
+  objectStore: true
 
 ## Various secrets and configamaps that used as "overrides" in config server.  The are assumed to 'copied' to 
 ## config-server name space by a separate process/scripts. 
