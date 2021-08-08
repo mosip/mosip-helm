@@ -122,9 +122,9 @@ keycloak:
       clients: 
        - name: mosip-abis-client
          saroles: []
+       #TODO: Roles of admin need to be defined
        - name: mosip-admin-client
-         saroles:
-           - MASTERDATA_ADMIN
+         saroles: []
        - name: mosip-admin-services-client
          saroles: []
        - name: mosip-auth-client
@@ -169,7 +169,6 @@ keycloak:
        - name: mosip-reg-client
          saroles:
            - GLOBAL_ADMIN
-           - REGISTRATION_ADMIN
            - REGISTRATION_OFFICER
            - REGISTRATION_SUPERVISOR
        - name: mosip-regproc-client
