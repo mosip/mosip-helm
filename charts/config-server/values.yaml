@@ -26,18 +26,29 @@ serviceAccount:
 ## Port on which this particular spring service module is running. 
 springServicePort: 51000
 
-## Configure extra options for liveness and readiness probes
+## Configure extra options for startup, liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
+startupProbe:
+  enabled: true
+  httpGet:
+    path: "/config/*/*"
+    port: 51000
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 1 
+  failureThreshold: 30
+  successThreshold: 1
+
 livenessProbe:
   enabled: true
   httpGet:
     path: "/config/*/*"
     port: 51000
-  initialDelaySeconds: 120
-  periodSeconds: 10
-  timeoutSeconds: 5 
-  failureThreshold: 6
+  initialDelaySeconds: 0
+  periodSeconds: 10 
+  timeoutSeconds: 1 
+  failureThreshold: 1 
   successThreshold: 1
 
 readinessProbe:
@@ -45,10 +56,10 @@ readinessProbe:
   httpGet:
     path: "/config/*/*"
     port: 51000 
-  initialDelaySeconds: 60
+  initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 5 
-  failureThreshold: 6
+  timeoutSeconds: 1 
+  failureThreshold: 1 
   successThreshold: 1
 
 podAnnotations: {}
