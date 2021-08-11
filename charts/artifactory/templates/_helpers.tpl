@@ -49,5 +49,5 @@ Compile all warnings into a single message.
 Baseurl for artifactory service
 */}}
 {{- define "artifactory.baseUrl" -}}
-{{ printf "http://%s.%s.svc.cluster.local:%s" (include "common.names.fullname" .) .Release.Namespace (.Values.service.port | toString) }}
+{{ printf "http://%s.%s:%s" (include "common.names.fullname" .) .Release.Namespace (.Values.service.port | toString) }}
 {{- end -}}

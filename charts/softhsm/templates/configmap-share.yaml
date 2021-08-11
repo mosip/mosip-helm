@@ -12,6 +12,6 @@ metadata:
   annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
   {{- end }}
 data:
-  PKCS11_PROXY_SOCKET: {{ printf "tcp://%s.%s.svc.cluster.local:%s" (include "softhsm.fullname" .) .Release.Namespace (.Values.service.port | toString) }}
+  PKCS11_PROXY_SOCKET: {{ printf "tcp://%s.%s:%s" (include "softhsm.fullname" .) .Release.Namespace (.Values.service.port | toString) }}
 
 
