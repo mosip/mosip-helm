@@ -36,7 +36,7 @@ startupProbe:
     port: 51000
   initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 1 
+  timeoutSeconds: 5 
   failureThreshold: 30
   successThreshold: 1
 
@@ -47,7 +47,7 @@ livenessProbe:
     port: 51000
   initialDelaySeconds: 0
   periodSeconds: 10 
-  timeoutSeconds: 1 
+  timeoutSeconds: 5 
   failureThreshold: 1 
   successThreshold: 1
 
@@ -58,8 +58,8 @@ readinessProbe:
     port: 51000 
   initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 1 
-  failureThreshold: 1 
+  timeoutSeconds: 5
+  failureThreshold: 1
   successThreshold: 1
 
 podAnnotations: {}
@@ -97,7 +97,7 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
-resources: 
+resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -126,7 +126,7 @@ affinity: {}
 ## For private repos access token is required.
 ## version: branch/tag of the repo to be used
 gitRepo:
-  uri: https://github.com/mosip/mosip-config 
+  uri: https://github.com/mosip/mosip-config
   version: 1.1.5_v3
   ## Folders within the base repo where properties may be found.
   searchFolders: ""
@@ -141,19 +141,19 @@ encryptKey: ""
 installedModules:
   kernel: true
   prereg: true
-  regproc: true  
+  regproc: true
   ida: true
   objectStore: true
 
-## Various secrets and configamaps that used as "overrides" in config server.  The are assumed to 'copied' to 
+## Various secrets and configamaps that used as "overrides" in config server.  The are assumed to 'copied' to
 ## config-server name space by a separate process/scripts. 
 ## Refer to instructions to install config-server helm chart in mosip-infra repo.
 overrides:
   secrets:
-    db: db-common-secrets 
+    db: db-common-secrets
     keycloak: keycloak
     keycloakClients: keycloak-client-secrets
-    softhsmKernel: softhsm-kernel  
+    softhsmKernel: softhsm-kernel
     softhsmIDA: softhsm-ida
     activemq: activemq-activemq-artemis
     s3: s3
@@ -164,4 +164,4 @@ overrides:
     s3: s3
 ## The active profile env if you have another set of properties. Correspondingly, properties in Git repo will 
 ## have names of type "*-default.properties"
-activeProfileEnv: default  
+activeProfileEnv: default

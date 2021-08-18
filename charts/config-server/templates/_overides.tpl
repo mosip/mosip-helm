@@ -207,6 +207,18 @@ All env variables that are accessed from mosip config properties
       name: {{ printf "%s-various" (include "config-server.fullname" .) }}
       key: ida-websub-hotlist-callback-secret
 
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_MASTERDATA_TEMPLATES_CALLBACK_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: {{ printf "%s-various" (include "config-server.fullname" .) }}
+      key: ida-websub-masterdata-templates-callback-secret
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_MASTERDATA_TITLES_CALLBACK_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: {{ printf "%s-various" (include "config-server.fullname" .) }}
+      key: ida-websub-masterdata-titles-callback-secret
+
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDREPO_WEBSUB_VID_CREDENTIAL_UPDATE_SECRET
   valueFrom:
     secretKeyRef:
