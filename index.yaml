@@ -3,7 +3,7 @@ entries:
   activemq-artemis:
   - apiVersion: v2
     appVersion: 2.6.2
-    created: "2021-08-18T22:09:45.657611+05:30"
+    created: "2021-08-18T22:20:26.770321+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -35,7 +35,7 @@ entries:
   admin-service:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.659378+05:30"
+    created: "2021-08-18T22:20:26.772008+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -60,7 +60,7 @@ entries:
   admin-ui:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.661278+05:30"
+    created: "2021-08-18T22:20:26.773839+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -85,7 +85,7 @@ entries:
   artifactory:
   - apiVersion: v2
     appVersion: 1.2.0
-    created: "2021-08-18T22:09:45.665388+05:30"
+    created: "2021-08-18T22:20:26.778039+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -109,7 +109,7 @@ entries:
     version: 1.2.0
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.663688+05:30"
+    created: "2021-08-18T22:20:26.776343+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -134,7 +134,7 @@ entries:
   auditmanager:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.66696+05:30"
+    created: "2021-08-18T22:20:26.779612+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -159,7 +159,7 @@ entries:
   authmanager:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.668537+05:30"
+    created: "2021-08-18T22:20:26.781273+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -184,8 +184,32 @@ entries:
     version: 1.1.5
   biosdk-service:
   - apiVersion: v2
+    appVersion: 1.2.0
+    created: "2021-08-18T22:20:26.784859+05:30"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Auditmanager module
+    digest: d99abdf381c1a2a114d82394f3c0c43d68f1a89e8dd6af6d9ab1695ba5abbef6
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - biosdk-service
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: biosdk-service
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/biosdk-service-1.2.0.tgz
+    version: 1.2.0
+  - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.670096+05:30"
+    created: "2021-08-18T22:20:26.783052+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -210,7 +234,7 @@ entries:
   clamav:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.67154+05:30"
+    created: "2021-08-18T22:20:26.786637+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -235,7 +259,7 @@ entries:
   config-server:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2021-08-18T22:09:45.673762+05:30"
+    created: "2021-08-18T22:20:26.788878+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -258,7 +282,7 @@ entries:
   credential:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.675356+05:30"
+    created: "2021-08-18T22:20:26.790451+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -283,7 +307,7 @@ entries:
   credentialrequest:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.676876+05:30"
+    created: "2021-08-18T22:20:26.792067+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -308,7 +332,7 @@ entries:
   datashare:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.678356+05:30"
+    created: "2021-08-18T22:20:26.793538+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -332,7 +356,7 @@ entries:
   ida-auth:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.679846+05:30"
+    created: "2021-08-18T22:20:26.795026+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -357,7 +381,7 @@ entries:
   ida-internal:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.681322+05:30"
+    created: "2021-08-18T22:20:26.796539+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -382,7 +406,7 @@ entries:
   ida-keygen:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.682618+05:30"
+    created: "2021-08-18T22:20:26.798508+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -408,7 +432,7 @@ entries:
   ida-kyc:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.684689+05:30"
+    created: "2021-08-18T22:20:26.800193+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -433,7 +457,7 @@ entries:
   ida-otp:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.686087+05:30"
+    created: "2021-08-18T22:20:26.801674+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -458,7 +482,7 @@ entries:
   identity:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.687447+05:30"
+    created: "2021-08-18T22:20:26.803169+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -483,7 +507,7 @@ entries:
   idgenerator:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.688731+05:30"
+    created: "2021-08-18T22:20:26.804611+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -508,7 +532,7 @@ entries:
   idrepo-saltgen:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.689787+05:30"
+    created: "2021-08-18T22:20:26.805783+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -533,7 +557,7 @@ entries:
   kernel-keygen:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.691031+05:30"
+    created: "2021-08-18T22:20:26.807822+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -559,7 +583,7 @@ entries:
   keycloak-init:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.693003+05:30"
+    created: "2021-08-18T22:20:26.809187+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -583,7 +607,7 @@ entries:
   keymanager:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.694274+05:30"
+    created: "2021-08-18T22:20:26.81056+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -608,7 +632,7 @@ entries:
   masterdata:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.695508+05:30"
+    created: "2021-08-18T22:20:26.811879+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -633,7 +657,7 @@ entries:
   mock-abis:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.696685+05:30"
+    created: "2021-08-18T22:20:26.813131+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -658,7 +682,7 @@ entries:
   notifier:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.697978+05:30"
+    created: "2021-08-18T22:20:26.814501+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -683,7 +707,7 @@ entries:
   otpmanager:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.699202+05:30"
+    created: "2021-08-18T22:20:26.815873+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -708,7 +732,7 @@ entries:
   packetmanager:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.700439+05:30"
+    created: "2021-08-18T22:20:26.817836+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -733,7 +757,7 @@ entries:
   pms-partner:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.702703+05:30"
+    created: "2021-08-18T22:20:26.819285+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -758,7 +782,7 @@ entries:
   pms-policy:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.704064+05:30"
+    created: "2021-08-18T22:20:26.820596+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -783,7 +807,7 @@ entries:
   postgres-init:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.705406+05:30"
+    created: "2021-08-18T22:20:26.821998+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -808,7 +832,7 @@ entries:
   prereg-application:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.706649+05:30"
+    created: "2021-08-18T22:20:26.823336+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -833,7 +857,7 @@ entries:
   prereg-batchjob:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.707869+05:30"
+    created: "2021-08-18T22:20:26.824701+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -858,7 +882,7 @@ entries:
   prereg-booking:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.710191+05:30"
+    created: "2021-08-18T22:20:26.826649+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -883,7 +907,7 @@ entries:
   prereg-datasync:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.711838+05:30"
+    created: "2021-08-18T22:20:26.827958+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -907,7 +931,7 @@ entries:
   prereg-gateway:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.71307+05:30"
+    created: "2021-08-18T22:20:26.829212+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -932,7 +956,7 @@ entries:
   prereg-ui:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.714464+05:30"
+    created: "2021-08-18T22:20:26.830672+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -957,7 +981,7 @@ entries:
   pridgenerator:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.715706+05:30"
+    created: "2021-08-18T22:20:26.831985+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -982,7 +1006,7 @@ entries:
   print-service:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.716957+05:30"
+    created: "2021-08-18T22:20:26.833291+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1007,7 +1031,7 @@ entries:
   regclient:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.718319+05:30"
+    created: "2021-08-18T22:20:26.835318+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1033,7 +1057,7 @@ entries:
   regproc-abishandler:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.720281+05:30"
+    created: "2021-08-18T22:20:26.836679+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1058,7 +1082,7 @@ entries:
   regproc-abismid:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.721595+05:30"
+    created: "2021-08-18T22:20:26.838033+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1083,7 +1107,7 @@ entries:
   regproc-bioauth:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.723078+05:30"
+    created: "2021-08-18T22:20:26.839375+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1108,7 +1132,7 @@ entries:
   regproc-biodedupe:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.724413+05:30"
+    created: "2021-08-18T22:20:26.840787+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1133,7 +1157,7 @@ entries:
   regproc-camel:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.72574+05:30"
+    created: "2021-08-18T22:20:26.842158+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1159,7 +1183,7 @@ entries:
   regproc-demo:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.72708+05:30"
+    created: "2021-08-18T22:20:26.844087+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1184,7 +1208,7 @@ entries:
   regproc-eis:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.729065+05:30"
+    created: "2021-08-18T22:20:26.845441+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1209,7 +1233,7 @@ entries:
   regproc-external:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.730388+05:30"
+    created: "2021-08-18T22:20:26.846809+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1234,7 +1258,7 @@ entries:
   regproc-manual:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.731702+05:30"
+    created: "2021-08-18T22:20:26.84817+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1259,7 +1283,7 @@ entries:
   regproc-msg:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.733011+05:30"
+    created: "2021-08-18T22:20:26.84957+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1284,7 +1308,7 @@ entries:
   regproc-osi:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.734331+05:30"
+    created: "2021-08-18T22:20:26.85101+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1309,7 +1333,7 @@ entries:
   regproc-pktserver:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.735753+05:30"
+    created: "2021-08-18T22:20:26.852369+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1334,7 +1358,7 @@ entries:
   regproc-print:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.737708+05:30"
+    created: "2021-08-18T22:20:26.854203+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1359,7 +1383,7 @@ entries:
   regproc-quality:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.739102+05:30"
+    created: "2021-08-18T22:20:26.855576+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1384,7 +1408,7 @@ entries:
   regproc-receiver:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.740506+05:30"
+    created: "2021-08-18T22:20:26.856942+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1409,7 +1433,7 @@ entries:
   regproc-reprocess:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.741888+05:30"
+    created: "2021-08-18T22:20:26.85829+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1434,7 +1458,7 @@ entries:
   regproc-status:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.74324+05:30"
+    created: "2021-08-18T22:20:26.859655+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1459,7 +1483,7 @@ entries:
   regproc-trans:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.744587+05:30"
+    created: "2021-08-18T22:20:26.861056+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1484,7 +1508,7 @@ entries:
   regproc-uin:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.745899+05:30"
+    created: "2021-08-18T22:20:26.86302+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1509,7 +1533,7 @@ entries:
   regproc-uploader:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.748039+05:30"
+    created: "2021-08-18T22:20:26.864367+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1534,7 +1558,7 @@ entries:
   regproc-validator:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.749342+05:30"
+    created: "2021-08-18T22:20:26.865722+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1559,7 +1583,7 @@ entries:
   ridgenerator:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.750652+05:30"
+    created: "2021-08-18T22:20:26.867051+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1584,7 +1608,7 @@ entries:
   softhsm:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.751727+05:30"
+    created: "2021-08-18T22:20:26.868235+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1608,7 +1632,7 @@ entries:
   syncdata:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.753062+05:30"
+    created: "2021-08-18T22:20:26.869594+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1633,7 +1657,7 @@ entries:
   vid:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.754369+05:30"
+    created: "2021-08-18T22:20:26.871449+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1658,7 +1682,7 @@ entries:
   websub:
   - apiVersion: v2
     appVersion: 1.1.5
-    created: "2021-08-18T22:09:45.755816+05:30"
+    created: "2021-08-18T22:20:26.872853+05:30"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1680,4 +1704,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-1.1.5.tgz
     version: 1.1.5
-generated: "2021-08-18T22:09:45.655543+05:30"
+generated: "2021-08-18T22:20:26.76855+05:30"
