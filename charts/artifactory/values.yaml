@@ -52,8 +52,8 @@ service:
 ## with biosdk 'develop' version.  TODO: Change this later
 image:
   registry: docker.io
-  repository: mosipdev/artifactory-server
-  tag: 1.1.5_biosdk
+  repository: mosipid/artifactory-server
+  tag: 1.2.0-rc1
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -71,22 +71,34 @@ springServicePort: 8080
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
+startupProbe:
+  enabled: true
+  httpGet:
+    path: /
+    port: 8080
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5 
+  failureThreshold: 30
+  successThreshold: 1
+
 livenessProbe:
   enabled: true
   httpGet:
     path: /
     port: 8080
-  initialDelaySeconds: 60 
+  initialDelaySeconds: 0 
   periodSeconds: 10
   timeoutSeconds: 1 
   failureThreshold: 3 
   successThreshold: 1
+
 readinessProbe:
   enabled: true
   httpGet:
     path: /
     port: 8080
-  initialDelaySeconds: 30 
+  initialDelaySeconds: 0 
   periodSeconds: 10
   timeoutSeconds: 1 
   failureThreshold: 3 
