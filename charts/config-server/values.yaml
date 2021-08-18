@@ -45,7 +45,7 @@ livenessProbe:
   httpGet:
     path: "/config/*/*"
     port: 51000
-  initialDelaySeconds: 0
+  initialDelaySeconds: 20 
   periodSeconds: 10 
   timeoutSeconds: 5 
   failureThreshold: 1 
