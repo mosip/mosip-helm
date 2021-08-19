@@ -53,7 +53,7 @@ service:
 image:
   registry: docker.io
   repository: mosipid/kernel-pridgenerator-service
-  tag: 1.1.5.3
+  tag: 1.2.0-rc1
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -73,12 +73,23 @@ springServicePort: 8100
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
 ## TODO: probes disabled as the health url does not seem to work. FIX.
+startupProbe:
+  enabled: false
+  httpGet:
+    path: /v1/pridgenerator/actuator/health 
+    port: 8100
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5 
+  failureThreshold: 30
+  successThreshold: 1
+
 livenessProbe:
   enabled: false
   httpGet:
     path: /v1/pridgenerator/actuator/health 
     port: 8100
-  initialDelaySeconds: 120
+  initialDelaySeconds: 20
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -89,7 +100,7 @@ readinessProbe:
   httpGet:
     path: /v1/pridgenerator/actuator/health 
     port: 8100
-  initialDelaySeconds: 60 
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
