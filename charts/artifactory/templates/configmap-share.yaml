@@ -18,5 +18,6 @@ data:
   zip_file_path: {{ .Values.artifacts.hsmClientZip }}
   cache_provider_url_env: {{ printf "%s/%s" (include "artifactory.baseUrl" .) .Values.artifacts.cacheProvider }}
   runtime_dep_url_env: {{ printf "%s/%s" (include "artifactory.baseUrl" .) .Values.artifacts.runtimeDep}}
-
+  regproc_jars_env:  {{ .Values.artifacts.regprocJars}}
+  runtime_dep_url_env: {{ printf "%s/%s" (include "artifactory.baseUrl" .) .Values.artifacts.runtimeDepUrl }}
 
