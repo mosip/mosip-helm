@@ -243,9 +243,7 @@ updateStrategy:
 ##     value: "bar"
 ##
 ## The runtime url below is assumed to be artifactory url for default installation. Change as per your deployment.
-extraEnvVars: 
-  - name: runtime_dep_url_env
-    value: http://artifactory.artifactory/artifactory/libs-release-local/io/mosip/kernel/
+extraEnvVars: []
 
 ## ConfigMap with extra environment variables that used
 ##
