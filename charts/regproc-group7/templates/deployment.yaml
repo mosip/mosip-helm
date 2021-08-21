@@ -21,15 +21,15 @@ spec:
     metadata:
       annotations:
         {{- if or .Values.podAnnotations .Values.metrics.enabled }}
-        {{- include "regproc-uploader.podAnnotations" . | nindent 8 }}
+        {{- include "regproc-group7.podAnnotations" . | nindent 8 }}
         {{- end }}
       labels: {{- include "common.labels.standard" . | nindent 8 }}
         {{- if .Values.podLabels }}
         {{- include "common.tplvalues.render" (dict "value" .Values.podLabels "context" $) | nindent 8 }}
         {{- end }}
     spec:
-      serviceAccountName: {{ template "regproc-uploader.serviceAccountName" . }}
-      {{- include "regproc-uploader.imagePullSecrets" . | nindent 6 }}
+      serviceAccountName: {{ template "regproc-group7.serviceAccountName" . }}
+      {{- include "regproc-group7.imagePullSecrets" . | nindent 6 }}
       {{- if .Values.hostAliases }}
       hostAliases: {{- include "common.tplvalues.render" (dict "value" .Values.hostAliases "context" $) | nindent 8 }}
       {{- end }}
@@ -73,8 +73,8 @@ spec:
           {{- include "common.tplvalues.render" (dict "value" .Values.initContainers "context" $) | nindent 8 }}
         {{- end }}
       containers:
-        - name: regproc-uploader
-          image: {{ template "regproc-uploader.image" . }}
+        - name: regproc-group7
+          image: {{ template "regproc-group7.image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- if .Values.lifecycleHooks }}
           lifecycle: {{- include "common.tplvalues.render" (dict "value" .Values.lifecycleHooks "context" $) | nindent 12 }}
@@ -107,11 +107,14 @@ spec:
             - secretRef:
                 name: {{ include "common.tplvalues.render" (dict "value" .Values.extraEnvVarsSecret "context" $) }}
             {{- end }}
-          ports:
-            - name: spring-service
-              containerPort: {{ .Values.springServicePort }}
+          ports: []
           {{- if .Values.resources }}
           resources: {{- toYaml .Values.resources | nindent 12 }}
+          {{- end }}
+          {{- if .Values.startupProbe.enabled }}
+          startupProbe: {{- include "common.tplvalues.render" (dict "value" (omit .Values.startupProbe "enabled") "context" $) | nindent 12 }}
+          {{- else if .Values.customStartupProbe }}
+          startupProbe: {{- include "common.tplvalues.render" (dict "value" .Values.customStartupProbe "context" $) | nindent 12 }}
           {{- end }}
           {{- if .Values.livenessProbe.enabled }}
           livenessProbe: {{- include "common.tplvalues.render" (dict "value" (omit .Values.livenessProbe "enabled") "context" $) | nindent 12 }}
