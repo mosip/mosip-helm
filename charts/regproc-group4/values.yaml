@@ -420,7 +420,7 @@ metrics:
 
 ## Requires only internal access for swagger 
 istio:
-  enabled: true
+  enabled: false
   gateways: 
     - istio-system/internal
   prefix: /registrationprocessor/v1/demodedupe/

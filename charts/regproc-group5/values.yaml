@@ -52,8 +52,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipid/registration-processor-packet-validator-stage
-  tag: 1.1.5.2
+  repository: mosipid/registration-processor-stage-group-5
+  tag: 1.2.0-rc1
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -67,18 +67,29 @@ image:
   #   - myRegistryKeySecretName
 
 ## Port on which this particular spring service module is running. 
-springServicePort: 8088
+springServicePort: 8091
 
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
 ## TODO: enable probles once health urls are available
+startupProbe:
+  enabled: false
+  httpGet:
+    path: /registrationprocessor/v1/group5/actuator/health
+    port: 8081
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5 
+  failureThreshold: 30
+  successThreshold: 1
+
 livenessProbe:
   enabled: false
   httpGet:
-    path: /registrationprocessor/v1/packetvalidator/actuator/health
-    port: 8088
-  initialDelaySeconds: 120 
+    path: /registrationprocessor/v1/group5/actuator/health
+    port: 8091
+  initialDelaySeconds: 20 
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -87,9 +98,9 @@ livenessProbe:
 readinessProbe:
   enabled: false
   httpGet:
-    path: /registrationprocessor/v1/packetvalidator/actuator/health
-    port: 8088
-  initialDelaySeconds: 60 
+    path: /registrationprocessor/v1/group5/actuator/health
+    port: 8091
+  initialDelaySeconds: 0 
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -360,7 +371,7 @@ metrics:
   podAnnotations: 
     prometheus.io/scrape: "true"
   
-  endpointPath: /registrationprocessor/v1/uploader/actuator/prometheus
+  endpointPath: /registrationprocessor/v1/demodedupe/actuator/prometheus 
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator
@@ -409,7 +420,7 @@ metrics:
 
 ## Requires only internal access for swagger 
 istio:
-  enabled: true
+  enabled: false
   gateways: 
     - istio-system/internal
-  prefix: /registrationprocessor/v1/packetvalidator/
+  prefix: /registrationprocessor/v1/demodedupe/
