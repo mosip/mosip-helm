@@ -52,7 +52,7 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipid/registration-processor-stage-group-3
+  repository: mosipid/registration-processor-stage-group-6
   tag: 1.2.0-rc1
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -70,12 +70,11 @@ image:
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
 ## TODO: enable probles once health urls are available
-
 startupProbe:
   enabled: false
   httpGet:
-    path: /registrationprocessor/v1/abishandler/actuator/health
-    port: 9071
+    path: /registrationprocessor/v1/group6/actuator/health
+    port: 8081
   initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
@@ -85,8 +84,8 @@ startupProbe:
 livenessProbe:
   enabled: false
   httpGet:
-    path: /registrationprocessor/v1/abishandler/actuator/health
-    port: 9071
+    path: /registrationprocessor/v1/group6/actuator/health
+    port: 8091
   initialDelaySeconds: 20 
   periodSeconds: 10
   timeoutSeconds: 5 
@@ -96,8 +95,8 @@ livenessProbe:
 readinessProbe:
   enabled: false
   httpGet:
-    path: /registrationprocessor/v1/abishandler/actuator/health
-    port: 9071
+    path: /registrationprocessor/v1/group6/actuator/health
+    port: 8091
   initialDelaySeconds: 0 
   periodSeconds: 10
   timeoutSeconds: 5 
@@ -369,7 +368,7 @@ metrics:
   podAnnotations: 
     prometheus.io/scrape: "true"
   
-  endpointPath: /registrationprocessor/v1/abishandler/actuator/prometheus
+  endpointPath: /registrationprocessor/v1/group6/actuator/prometheus 
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator
@@ -417,9 +416,8 @@ metrics:
     rules: []
 
 ## Requires only internal access for swagger 
-## TODO: Enable once access is available
 istio:
   enabled: false
   gateways: 
     - istio-system/internal
-  prefix: /registrationprocessor/v1/abishandler/ 
+  prefix: /registrationprocessor/v1/group6/
