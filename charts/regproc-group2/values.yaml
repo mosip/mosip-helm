@@ -52,8 +52,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipid/registration-processor-quality-checker-stage
-  tag: 1.1.5.2
+  repository: mosipid/registration-processor-stage-group-2
+  tag: 1.2.0-rc1
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -73,12 +73,24 @@ springServicePort: 9072
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
 ## TODO: enable probles once health urls are available
+startupProbe:
+  enabled: false 
+  httpGet:
+    path: /registrationprocessor/v1/group2/actuator/health
+    port: 9072
+    port: 51000
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5 
+  failureThreshold: 30
+  successThreshold: 1
+
 livenessProbe:
   enabled: false
   httpGet:
-    path: /registrationprocessor/v1/qualitychecker/actuator/health
+    path: /registrationprocessor/v1/group2/actuator/health
     port: 9072
-  initialDelaySeconds: 120 
+  initialDelaySeconds: 20 
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -87,9 +99,9 @@ livenessProbe:
 readinessProbe:
   enabled: false
   httpGet:
-    path: /registrationprocessor/v1/qualitychecker/actuator/health
+    path: /registrationprocessor/v1/group2/actuator/health
     port: 9072
-  initialDelaySeconds: 60 
+  initialDelaySeconds: 0 
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -408,8 +420,9 @@ metrics:
     rules: []
 
 ## Requires only internal access for swagger 
+## TODO: Enable once access is available
 istio:
-  enabled: true
+  enabled: false
   gateways: 
     - istio-system/internal
-  prefix: /registrationprocessor/v1/qualitychecker/
+  prefix: /registrationprocessor/v1/group2/
