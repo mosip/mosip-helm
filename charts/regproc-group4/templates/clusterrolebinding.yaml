@@ -15,5 +15,5 @@ roleRef:
   name: {{ template "common.names.fullname" . }}
 subjects:
   - kind: ServiceAccount
-    name: {{ template "regproc-bioauth.serviceAccountName" . }}
+    name: {{ template "regproc-group4.serviceAccountName" . }}
     namespace: {{ .Release.Namespace }}
