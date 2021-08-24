@@ -1,0 +1,74 @@
+debezium:
+  enabled: true
+  replicaCount: 1
+  image: debezium/connect
+  port: 8083
+  kafka:
+    server: "kafka:9092"
+    groupId: "1"
+    topics:
+      offset: debez-connect-offsets
+      config: debez-connect-configs
+      status: debez-connect-status
+
+kafkaClient:
+  enabled: true
+  image: confluentinc/cp-kafka
+  db_secretref:
+    name: db-common-secrets
+    key: db-dbuser-password
+
+bitnami-kafka:
+  enabled: true
+  replicaCount: 4
+  persistence:
+    enabled: false
+  zookeeper:
+    enabled: true
+    replicaCount: 4
+    persistence:
+      enabled: false
+
+confluentinc:
+  cp-zookeeper:
+    enabled: false
+  cp-kafka:
+    enabled: false
+  cp-kafka-rest:
+    enabled: false
+  cp-schema-registry:
+    enabled: false
+  cp-ksql-server:
+    enabled: false
+  cp-control-center:
+    enabled: false
+
+  cp-kafka-connect:
+    enabled: true
+
+    nameOverride: es-connect
+    fullnameOverride: es-connect
+
+    replicaCount: 1
+
+    image: mosipdev/cp-kafka-connect-es
+    imageTag: develop
+    imagePullPolicy: IfNotPresent
+
+    kafka:
+      bootstrapServers: kafka:9092
+
+    prometheus:
+      jmx:
+        enabled: false
+
+    configurationOverrides:
+      config.storage.replication.factor: "1"
+      key.converter.schemas.enable: "false"
+      offset.storage.replication.factor: "1"
+      plugin.path: /usr/share/java,/usr/share/confluent-hub-components
+      replication.factor: "1"
+      status.storage.replication.factor: "1"
+      value.converter.schemas.enable: "false"
+      zookeeper.connect: zookeeper:2181
+    customEnv: {}
