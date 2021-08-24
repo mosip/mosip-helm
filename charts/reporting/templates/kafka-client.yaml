@@ -1,0 +1,21 @@
+{{ if eq .Values.kafkaClient.enabled "true" }}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kafka-client
+spec:
+  containers:
+  - name: kafka-client
+    image: {{ .Values.kafkaClient.image }}
+    command:
+      - sh
+      - -c
+      - "exec tail -f /dev/null"
+    env:
+    - name: DB_PASS
+      valueFrom:
+        secretKeyRef:
+          name: {{ .Values.kafkaClient.db_secretref.name }}
+          key: {{ .Values.kafkaClient.db_secretref.key }}
+
+{{ end }}
