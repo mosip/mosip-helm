@@ -1,4 +1,4 @@
-{{ if eq .Values.debezium.enabled "true" }}
+{{ if .Values.debezium.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:

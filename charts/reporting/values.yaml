@@ -19,11 +19,13 @@ kafkaClient:
     key: db-dbuser-password
 
 bitnami-kafka:
+  fullnameOverride: kafka
   enabled: true
   replicaCount: 4
   persistence:
     enabled: false
   zookeeper:
+    fullnameOverride: kafka-zookeeper
     enabled: true
     replicaCount: 4
     persistence:
