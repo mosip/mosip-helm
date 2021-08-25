@@ -1,4 +1,4 @@
-{{ if eq .Values.kafkaClient.enabled "true" }}
+{{ if .Values.kafkaClient.enabled }}
 apiVersion: v1
 kind: Pod
 metadata:
