@@ -52,8 +52,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipid/pre-registration-ui
-  tag: 1.2.0-rc1
+  repository: mosipdev/pre-registration-ui
+  tag: develop
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -67,7 +67,7 @@ image:
   #   - myRegistryKeySecretName
 
 ## Port on which this particular spring service module is running. 
-springServicePort: 80
+springServicePort: 8080
 
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
@@ -75,7 +75,7 @@ springServicePort: 80
 startupProbe:
   enabled: true
   tcpSocket:
-    port: 80
+    port: 8080
   initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
@@ -85,7 +85,7 @@ startupProbe:
 livenessProbe:
   enabled: true
   tcpSocket:
-    port: 80
+    port: 8080
   initialDelaySeconds: 20
   periodSeconds: 10
   timeoutSeconds: 5 
@@ -95,7 +95,7 @@ livenessProbe:
 readinessProbe:
   enabled: true
   tcpSocket:
-    port: 80
+    port: 8080
   initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
