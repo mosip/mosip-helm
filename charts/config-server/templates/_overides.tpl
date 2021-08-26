@@ -263,5 +263,23 @@ All env variables that are accessed from mosip config properties
       key: s3-user-secret
 {{- end }}
 
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_EMAIL_SMTP_HOST
+  valueFrom:
+    configMapKeyRef:
+      name: {{ .Values.overrides.configmaps.email }}
+      key: email-smtp-host
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_EMAIL_SMTP_USERNAME
+  valueFrom:
+    configMapKeyRef:
+      name: {{ .Values.overrides.configmaps.email }}
+      key: email-smtp-username
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_EMAIL_SMTP_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.email }}
+      key: email-smtp-secret
+
 {{- end }}
 

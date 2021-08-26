@@ -157,11 +157,13 @@ overrides:
     softhsmIDA: softhsm-ida
     activemq: activemq-activemq-artemis
     s3: s3
+    email: email-gateway
   configmaps:
     keycloakHost: keycloak-host
     global: global
     activemq: activemq-activemq-artemis-share
     s3: s3
+    email: email-gateway
 ## The active profile env if you have another set of properties. Correspondingly, properties in Git repo will 
 ## have names of type "*-default.properties"
 activeProfileEnv: default
