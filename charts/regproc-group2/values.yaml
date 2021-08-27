@@ -66,6 +66,8 @@ image:
   # pullSecrets:
   #   - myRegistryKeySecretName
 
+springServicePort: 8090
+
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
@@ -422,4 +424,4 @@ istio:
   enabled: false
   gateways: 
     - istio-system/internal
-  prefix: /registrationprocessor/v1/group2/
+  prefix: /registrationprocessor/v1/securezone
