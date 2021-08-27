@@ -281,5 +281,17 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.secrets.email }}
       key: email-smtp-secret
 
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_PREREG_CAPTCHA_SITE_KEY
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.captcha }}
+      key: prereg-captcha-site-key
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_PREREG_CAPTCHA_SECRET_KEY
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.captcha }}
+      key: prereg-captcha-secret-key
+
 {{- end }}
 
