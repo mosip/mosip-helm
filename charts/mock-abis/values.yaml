@@ -69,12 +69,23 @@ containerPort: 8081
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
+startupProbe:
+  enabled: true
+  httpGet:
+    path: /v1/mock-abis-service/actuator/health
+    port: 8081
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5 
+  failureThreshold: 30
+  successThreshold: 1
+
 livenessProbe:
   enabled: true
   httpGet:
     path: /v1/mock-abis-service/actuator/health
     port: 8081
-  initialDelaySeconds: 60
+  initialDelaySeconds: 20
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -85,7 +96,7 @@ readinessProbe:
   httpGet:
     path: /v1/mock-abis-service/actuator/health
     port: 8081
-  initialDelaySeconds: 30 
+  initialDelaySeconds: 0 
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
