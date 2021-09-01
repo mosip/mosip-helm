@@ -74,7 +74,7 @@ affinity: {}
 ## Some common set of users are created across all postgres servers with same password.  TODO: change this later.
 ## These user names are currently hardcoded in the sql scripts, so can't change from here.
 dbUserPasswords:
-  dbuserPassword: "PhhMcg3yER"
+  dbuserPassword: ""
     
 ## Superuser secret is required to setup DB. It is assumed that the secret was created while creating
 ## DB server(s) and is available in the same namespace.
@@ -86,7 +86,7 @@ dbUserPasswords:
 
 databases:
   mosip_master:
-    enabled: false
+    enabled: true
     host: "postgres-postgresql"
     port: 5432
     su:
@@ -97,7 +97,7 @@ databases:
     dml: 0
 
   mosip_audit:
-    enabled: false
+    enabled: true
     host: "postgres-postgresql"
     port: 5432
     su:
@@ -108,7 +108,7 @@ databases:
     dml: 0
 
   mosip_keymgr:
-    enabled: false 
+    enabled: true 
     host: "postgres-postgresql"
     port: 5432
     su:
@@ -119,7 +119,7 @@ databases:
     dml: 1 
 
   mosip_kernel:
-    enabled: false
+    enabled: true
     host: "postgres-postgresql"
     port: 5432
     su:
@@ -130,7 +130,7 @@ databases:
     dml: 0 
 
   mosip_idmap:
-    enabled: false
+    enabled: true
     host: "postgres-postgresql"
     port: 5432
     su:
@@ -141,7 +141,7 @@ databases:
     dml: 0 
 
   mosip_prereg:
-    enabled: false
+    enabled: true
     host: "postgres-postgresql"
     port: 5432
     su:
@@ -152,7 +152,7 @@ databases:
     dml: 0
 
   mosip_idrepo:
-    enabled: false
+    enabled: true
     host: "postgres-postgresql"
     port: 5432
     su:
@@ -163,7 +163,7 @@ databases:
     dml: 0
 
   mosip_ida:
-    enabled: false
+    enabled: true
     host: "postgres-postgresql"
     port: 5432
     su:
@@ -174,7 +174,7 @@ databases:
     dml: 1 
 
   mosip_credential:
-    enabled: false
+    enabled: true
     host: "postgres-postgresql"
     port: 5432
     su:
@@ -185,7 +185,7 @@ databases:
     dml: 0 
 
   mosip_regprc:
-    enabled: false
+    enabled: true
     host: "postgres-postgresql"
     port: 5432
     su:
@@ -196,7 +196,7 @@ databases:
     dml: 1
 
   mosip_regdevice:
-    enabled: false
+    enabled: true
     host: "postgres-postgresql"
     port: 5432
     su:
@@ -207,7 +207,7 @@ databases:
     dml: 1
 
   mosip_authdevice:
-    enabled: false
+    enabled: true
     host: "postgres-postgresql"
     port: 5432
     su:
@@ -218,7 +218,7 @@ databases:
     dml: 1
 
   mosip_pms:
-    enabled: false
+    enabled: true
     host: "postgres-postgresql"
     port: 5432
     su:
@@ -229,7 +229,7 @@ databases:
     dml: 1
 
   mosip_websub:
-    enabled: false
+    enabled: true
     host: "postgres-postgresql"
     port: 5432
     su:
