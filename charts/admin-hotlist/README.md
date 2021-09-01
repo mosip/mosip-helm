@@ -1,6 +1,6 @@
-# Admin Service
+# Admin Hotlist 
 
-Helm chart for installing MOSIP Admin module
+Helm chart for installing MOSIP Admin Hotlist
 
 ## TL;DR
 
