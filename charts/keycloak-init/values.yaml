@@ -122,11 +122,12 @@ keycloak:
       clients: 
        - name: mosip-abis-client
          saroles: []
-       #TODO: Roles of admin need to be defined
        - name: mosip-admin-client
-         saroles: []
+         saroles: 
+           - GLOBAL_ADMIN
        - name: mosip-admin-services-client
-         saroles: []
+         saroles:
+           - GLOBAL_ADMIN
        - name: mosip-auth-client
          saroles:
            - AUTH
