@@ -55,7 +55,7 @@ confluentinc:
 
     image: mosipdev/cp-kafka-connect-es
     imageTag: develop
-    imagePullPolicy: IfNotPresent
+    imagePullPolicy: Always
 
     kafka:
       bootstrapServers: kafka:9092
