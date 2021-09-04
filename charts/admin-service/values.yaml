@@ -417,4 +417,9 @@ istio:
   enabled: true
   gateways: 
     - istio-system/internal
-  prefix:  /v1/admin
+  prefix: /v1/admin
+  corsPolicy:
+    allowOrigins:
+    - exact: https://admin.sandbox.xyz.net
+    allowCredentials: true
+

@@ -417,5 +417,10 @@ metrics:
 ## Only internal access
 istio:
   enabled: true
-  gateway: istio-system/internal
+  gateways: 
+    - istio-system/internal
   prefix: /v1/masterdata
+  corsPolicy:
+    allowOrigins:
+    - exact: https://admin.sandbox.xyz.net
+    allowCredentials: true
