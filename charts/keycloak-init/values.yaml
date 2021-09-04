@@ -125,9 +125,11 @@ keycloak:
        - name: mosip-admin-client
          saroles: 
            - GLOBAL_ADMIN
+           - ZONAL_ADMIN
        - name: mosip-admin-services-client
          saroles:
            - GLOBAL_ADMIN
+           - ZONAL_ADMIN
        - name: mosip-auth-client
          saroles:
            - AUTH
