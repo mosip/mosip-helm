@@ -52,7 +52,7 @@ service:
 image:
   registry: docker.io
   repository: mosipid/admin-ui
-  tag: 1.1.5
+  tag: 1.2.0-rc1
 
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -67,18 +67,29 @@ image:
   #   - myRegistryKeySecretName
 
 ## Port on which this particular spring service module is running. 
-springServicePort: 80
+springServicePort: 8080
 
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
 ## TODO: health probes don't exist. Check.
+startupProbe:
+  enabled: false
+  httpGet:
+    path: /v1/admin/actuator/health 
+    port: 8080
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5 
+  failureThreshold: 30
+  successThreshold: 1
+
 livenessProbe:
   enabled: false
   httpGet:
     path: /v1/admin/actuator/health 
-    port: 80
-  initialDelaySeconds: 60
+    port: 8080
+  initialDelaySeconds: 20 
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -88,8 +99,8 @@ readinessProbe:
   enabled: false 
   httpGet:
     path: /v1/admin/actuator/health 
-    port: 80
-  initialDelaySeconds: 30 
+    port: 8080
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -402,12 +413,20 @@ metrics:
     #       severity: error
     rules: []
 
+## The url below is to access Admin API services. 
 ## CAUTION: Domain name to acess Admin UI must be secure/internal/over vpn.   
 ## Slash is important!
 admin:
-   hostUrl: https://your-internal-domain-name/v1/
+   apiHost: https://your-internal-domain-name/v1/
 
 ## Admin UI swagger should have only internal access. Hence linked to internal gateway
+## We create a gateway for admin specific URL(s) listed under `hosts`
 istio:
   enabled: true
-  gateway: istio-system/internal
+  ingressController:
+    name: ingressgateway-internal
+  gateways: 
+    - admin-gateway
+  hosts:
+    - admin.sandbox.xyz.net  
+  prefix:  /admin-ui
