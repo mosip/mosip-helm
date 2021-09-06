@@ -11,11 +11,12 @@ spec:
       - sh
       - -c
       - "exec tail -f /dev/null"
+    {{ if .Values.kafkaClient.db_secretref }}
     env:
     - name: DB_PASS
       valueFrom:
         secretKeyRef:
           name: {{ .Values.kafkaClient.db_secretref.name }}
           key: {{ .Values.kafkaClient.db_secretref.key }}
-
+    {{ end }}
 {{ end }}
