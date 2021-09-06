@@ -52,7 +52,7 @@ service:
 image:
   registry: docker.io
   repository: mosipid/registration-client
-  tag: 1.1.5.4
+  tag: 1.2.0-rc1
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -66,7 +66,7 @@ image:
   #   - myRegistryKeySecretName
 
 regclient:
-  version: 1.1.5.4
+  version: 1.2.0-rc1
   mountDir: /build_files
   ## Currently this is hardcoded. Will change in the future
   cryptoKey: bBQX230Wskq6XpoZ1c+Ep1D+znxfT89NxLQ7P4KFkc4=
@@ -80,23 +80,34 @@ containerPort: 80
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
+startupProbe:
+  enabled: false
+  httpGet:
+    path: "/registration-client/{{ tpl .Values.regclient.version . }}/reg-client.zip"
+    port: 80
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5 
+  failureThreshold: 30
+  successThreshold: 1
+
 livenessProbe:
   enabled: false
   httpGet:
     path: "/registration-client/{{ tpl .Values.regclient.version . }}/reg-client.zip"
     port: 80
-  initialDelaySeconds: 240 
+  initialDelaySeconds: 20
   periodSeconds: 60 
   timeoutSeconds: 5 
   failureThreshold: 2 
   successThreshold: 1
 
 readinessProbe:
-  enabled: true
+  enabled: false
   httpGet:
     path: "/registration-client/{{ tpl .Values.regclient.version . }}/reg-client.zip"
     port: 80
-  initialDelaySeconds: 120 
+  initialDelaySeconds: 0
   periodSeconds: 60 
   timeoutSeconds: 5 
   failureThreshold: 2  
