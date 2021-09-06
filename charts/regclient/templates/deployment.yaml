@@ -113,8 +113,7 @@ spec:
             {{- end }}
           volumeMounts:
             - name: maven
-              mountPath:  {{ .Values.regclient.mountDir }}/maven-metadata.xml
-              subPath: maven-metadata.xml
+              mountPath:  {{ .Values.regclient.mountDir }}/
             - name: landing-page
               mountPath:  /var/www/html/index.html
               subPath: index.html
@@ -146,7 +145,12 @@ spec:
         - name: maven
           configMap:
             name: {{ template "common.names.fullname" . }}  
-
+            items:
+              - key: maven-metadata.xml
+                path: maven-metadata.xml
+              - key: logback.xml
+                path: logback.xml
+    
         - name: landing-page
           configMap:
             name: {{ template "common.names.fullname" . }}-index
