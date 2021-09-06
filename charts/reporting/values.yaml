@@ -32,6 +32,8 @@ bitnami-kafka:
       enabled: false
 
 confluentinc:
+  enabled: true
+
   cp-zookeeper:
     enabled: false
   cp-kafka:
