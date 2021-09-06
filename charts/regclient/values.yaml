@@ -86,9 +86,9 @@ startupProbe:
     path: "/registration-client/{{ tpl .Values.regclient.version . }}/reg-client.zip"
     port: 80
   initialDelaySeconds: 0
-  periodSeconds: 10
+  periodSeconds: 30 
   timeoutSeconds: 5 
-  failureThreshold: 30
+  failureThreshold: 10 
   successThreshold: 1
 
 livenessProbe:
