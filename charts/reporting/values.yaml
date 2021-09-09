@@ -15,8 +15,8 @@ kafkaClient:
   enabled: true
   image: confluentinc/cp-kafka
   db_secretref:
-    name: db-common-secrets
-    key: db-dbuser-password
+    name: postgres-postgresql
+    key: postgresql-password
 
 bitnami-kafka:
   fullnameOverride: kafka
@@ -76,3 +76,30 @@ confluentinc:
       value.converter.schemas.enable: "false"
       zookeeper.connect: zookeeper:2181
     customEnv: {}
+
+bitnami-elasticsearch:
+  enabled: true
+  global:
+    kibanaEnabled: true
+  data:
+    fullnameOverride: elasticsearch-data
+    heapSize: 728m
+    persistence:
+      enabled: false
+    resources:
+      requests:
+        memory: 512Mi
+  master:
+    fullnameOverride: elasticsearch-master
+    heapSize: 1024m
+    persistence:
+      enabled: false
+    resources:
+      requests:
+        memory: 728Mi
+  coordinating:
+    fullnameOverride: elasticsearch-coordinating-only
+  kibana:
+    fullnameOverride: kibana
+    persistence:
+      enabled: false
