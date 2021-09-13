@@ -73,6 +73,17 @@ springServicePort: 8080
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
 ## TODO: probes disabled as they don't work for some reason
+startupProbe:
+  enabled: false
+  httpGet:
+    path: /v1/idgenerator/actuator/health 
+    port: 8080
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 30
+  successThreshold: 1
+
 livenessProbe:
   enabled: false
   httpGet:

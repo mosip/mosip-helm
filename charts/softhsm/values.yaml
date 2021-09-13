@@ -110,11 +110,21 @@ persistence:
 
 ## Configure extra options for startup, liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
+startupProbe:
+  enabled: true
+  tcpSocket:
+    port: tcp
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 30
+  successThreshold: 1
+
 readinessProbe:
   enabled: true
   tcpSocket:
     port: tcp
-  initialDelaySeconds: 5
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5
   failureThreshold: 6
@@ -124,7 +134,7 @@ livenessProbe:
   enabled: true
   tcpSocket:
     port: tcp
-  initialDelaySeconds: 30
+  initialDelaySeconds: 20 
   periodSeconds: 10
   timeoutSeconds: 5
   failureThreshold: 6

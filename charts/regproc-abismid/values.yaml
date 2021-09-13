@@ -73,12 +73,23 @@ springServicePort: 8091
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
 ## TODO: enable probles once health urls are available
+startupProbe:
+  enabled: false
+  httpGet:
+    path: /registrationprocessor/v1/abismiddleware/actuator/health 
+    port: 8091
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 30
+  successThreshold: 1
+
 livenessProbe:
   enabled: false
   httpGet:
     path: /registrationprocessor/v1/abismiddleware/actuator/health 
     port: 8091
-  initialDelaySeconds: 120 
+  initialDelaySeconds: 20 
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -89,7 +100,7 @@ readinessProbe:
   httpGet:
     path: /registrationprocessor/v1/abismiddleware/actuator/health 
     port: 8091
-  initialDelaySeconds: 60 
+  initialDelaySeconds: 0 
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6

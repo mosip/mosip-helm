@@ -69,27 +69,38 @@ containerPort: 3310
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
+startupProbe:
+  enabled: true
+  exec:
+    command:
+      - ./check.sh
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 30
+  successThreshold: 1
+
 livenessProbe:
   enabled: true
   exec:
     command:
       - ./check.sh
-  initialDelaySeconds: 60
-  periodSeconds: 10
-  timeoutSeconds: 5 
-  failureThreshold: 6
-  successThreshold: 1
-readinessProbe:
-  enabled: true
-  exec:
-    command:
-      - ./check.sh
-  initialDelaySeconds: 30
+  initialDelaySeconds: 20
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
   successThreshold: 1
 
+readinessProbe:
+  enabled: true
+  exec:
+    command:
+      - ./check.sh
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5 
+  failureThreshold: 6
+  successThreshold: 1
 
 ##
 # existingConfigmap:

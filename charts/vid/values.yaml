@@ -73,12 +73,23 @@ springServicePort: 8091
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
 ## TODO: health url needs correction in code. It does not have 'vid'
+startupProbe:
+  enabled: true
+  httpGet:
+    path: /idrepository/v1/actuator/health
+    port: 8091
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 30
+  successThreshold: 1
+
 livenessProbe:
   enabled: true
   httpGet:
     path: /idrepository/v1/actuator/health
     port: 8091
-  initialDelaySeconds: 120 
+  initialDelaySeconds: 20 
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -89,7 +100,7 @@ readinessProbe:
   httpGet:
     path: /idrepository/v1/actuator/health
     port: 8091
-  initialDelaySeconds: 30 
+  initialDelaySeconds: 0 
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
