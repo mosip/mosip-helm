@@ -13,7 +13,9 @@ base:
     name: postgres-postgresql
     key: postgresql-password
   es_url: http://elasticsearch-master.cattle-logging-system:9200
-
+  kibana_url: http://mykibana.cattle-logging-system:5601
+  is_connectors_enabled: true
+  is_kibana_enabled: true
 
 connectors_enabled:
   prereg_applicant_demographic: true
@@ -22,4 +24,6 @@ connectors_enabled:
   prereg_reg_appointment: true
   prereg_reg_available_slot: true
 
-kib_dashboards: {}
+other_connectors: {}
+
+kibana_enabled: {}

@@ -22,11 +22,9 @@ spec:
         - name: DB_HOSTNAME
           value: {{ .Values.base.db_hostname }}
         - name: DB_PORT
-          value: {{ .Values.base.db_port }}
+          value: {{ .Values.base.db_port | quote }}
         - name: DB_USER
           value: {{ .Values.base.db_user }}
-        - name: ES_URL
-          value: {{ .Values.base.es_url }}
         - name: DB_PASS
           {{ if .Values.base.db_pass_direct }}
           value: {{ .Values.base.db_pass_direct }}
@@ -36,7 +34,47 @@ spec:
               name: {{ .Values.base.db_pass_secretref.name }}
               key: {{ .Values.base.db_pass_secretref.key }}
           {{ end }}
+        - name: ES_URL
+          value: {{ .Values.base.es_url }}
+        - name: KIBANA_URL
+          value: {{ .Values.base.kibana_url }}
+        {{ if .Values.base.is_connectors_enabled }}
         {{- range $key, $val := .Values.connectors_enabled }}
         - name: connector_{{ $key }}
-          value: {{ $value | quote }}
+          value: {{ $val | quote }}
         {{- end }}
+        {{ end }}
+        {{ if .Values.base.is_kibana_enabled }}
+        {{- range $key, $val := .Values.kibana_enabled }}
+        - name: kibana_saved_object_{{ $key }}
+          value: {{ $val | quote }}
+        {{- end }}
+        {{ end }}
+        volumeMounts:
+        {{- range $key, $val := .Values.other_connectors }}
+        {{ if $val }}
+        - name: {{ $key }}
+          mountPath: "/other_connectors/{{ $key }}"
+        {{ end }}
+        {{- end }}
+        {{- range $key, $val := .Values.other_kibana }}
+        {{ if $val }}
+        - name: {{ $key }}
+          mountPath: "/other_kibana_saved_objects/{{ $key }}"
+        {{ end }}
+        {{- end }}
+      volumes:
+      {{- range $key, $val := .Values.other_connectors }}
+      {{ if $val }}
+      - name: {{ $key }}
+        configMap:
+          name: {{ $key }}
+      {{ end }}
+      {{- end }}
+      {{- range $key, $val := .Values.other_kibana }}
+      {{ if $val }}
+      - name: {{ $key }}
+        configMap:
+          name: {{ $key }}
+      {{ end }}
+      {{- end }}
