@@ -18,12 +18,22 @@ base:
   is_kibana_enabled: true
 
 connectors_enabled:
+  master_doc_type: true
+  master_registration_center: true
+  audit_app_audit_log: true
   prereg_applicant_demographic: true
   prereg_applicant_document: true
   prereg_otp_transaction: true
   prereg_reg_appointment: true
   prereg_reg_available_slot: true
+  ida_auth_transaction: true
+  regprc_registration: true
+  regprc_registration_list: true
 
 other_connectors: {}
 
-kibana_enabled: {}
+kibana_enabled: 
+  prereg: true
+  prereg_operations: true
+
+other_kibana: {}
