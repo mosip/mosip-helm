@@ -419,4 +419,16 @@ istio:
   gateways: 
     - istio-system/internal
     - prereg-gateway
-  prefix: /preregistration/v1
+  match:
+    - uri:
+        prefix: /preregistration/v1/login
+    - uri:
+        prefix: /preregistration/v1/proxy
+    - uri:
+        prefix: /preregistration/v1/applications
+    - uri:
+        prefix: /preregistration/v1/documents
+    - uri:
+        prefix: /preregistration/v1/qrCode
+    - uri:
+        prefix: /preregistration/v1/notification

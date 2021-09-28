@@ -416,5 +416,5 @@ istio:
   enabled: true
   gateways: 
     - istio-system/internal
-    - istio-system/public
+    - prereg-gateway
   prefix: /preregistration/v1/appointment
