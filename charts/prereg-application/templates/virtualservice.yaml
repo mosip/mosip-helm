@@ -18,8 +18,7 @@ spec:
   {{- include "common.tplvalues.render" ( dict "value" .Values.istio.gateways "context" $ ) | nindent 4 }}
   http:
   - match:
-      - uri:
-          prefix: {{ .Values.istio.prefix }}
+  {{- include "common.tplvalues.render" ( dict "value" .Values.istio.match "context" $ ) | nindent 4 }}
     route:
     - destination:
         host: {{ template "common.names.fullname" . }}
