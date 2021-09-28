@@ -1,0 +1,56 @@
+{{ if .Values.es_kafka_connectors.enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Release.Name }}-es-kafka-conn-job
+  labels:
+    app.kubernetes.io/name: {{ .Release.Name }}-es-kafka-conn-job
+spec:
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ .Release.Name }}-es-kafka-conn-job
+        sidecar.istio.io/inject: "false"
+    spec:
+      restartPolicy: Never  # This is one time job
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.es_kafka_connectors.image }}:{{ .Values.es_kafka_connectors.imageTag }}"
+        imagePullPolicy: {{ .Values.es_kafka_connectors.imagePullPolicy }}
+        env:
+        - name: DB_PREFIX_INDEX
+          value: {{ .Values.base.db_prefix }}
+        - name: DB_HOSTNAME
+          value: {{ .Values.base.db_hostname }}
+        - name: DB_PORT
+          value: {{ .Values.base.db_port | quote }}
+        - name: DB_USER
+          value: {{ .Values.base.db_user }}
+        - name: DB_PASS
+          {{ if .Values.base.db_pass_direct }}
+          value: {{ .Values.base.db_pass_direct }}
+          {{ else }}
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.base.db_pass_secretref.name }}
+              key: {{ .Values.base.db_pass_secretref.key }}
+          {{ end }}
+        - name: ES_URL
+          value: {{ .Values.base.es_url }}
+        - name: KIBANA_URL
+          value: {{ .Values.base.kibana_url }}
+
+        - name: DELAY_BETWEEN_CONNECTORS
+          value: {{ .Values.es_kafka_connectors.delay_between_connectors | quote }}
+        volumeMounts:
+        - name: {{ .Release.Name }}-es-kafka-connectors
+          mountPath: "/connectors/{{ .Release.Name }}-es-kafka-connectors"
+      volumes:
+      - name: {{ .Release.Name }}-es-kafka-connectors
+        configMap:
+          {{ if .Values.es_kafka_connectors.existingConfigMap }}
+          name: {{ .Values.es_kafka_connectors.existingConfigMap }}
+          {{ else }}
+          name: {{ .Release.Name }}-es-kafka-connectors-conf
+          {{ end }}
+{{ end }}

@@ -1,0 +1,64 @@
+{{ if .Values.debezium_connectors.enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Release.Name }}-debezium-job
+  labels:
+    app.kubernetes.io/name: {{ .Release.Name }}-debezium-job
+spec:
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ .Release.Name }}-debezium-job
+        sidecar.istio.io/inject: "false"
+    spec:
+      restartPolicy: Never  # This is one time job
+      containers:
+      - name: debezium-init
+        image: "{{ .Values.debezium_connectors.image }}:{{ .Values.debezium_connectors.imageTag }}"
+        imagePullPolicy: {{ .Values.debezium_connectors.imagePullPolicy }}
+        env:
+        - name: DB_PREFIX_INDEX
+          value: {{ .Values.base.db_prefix }}
+        - name: DB_HOSTNAME
+          value: {{ .Values.base.db_hostname }}
+        - name: DB_PORT
+          value: {{ .Values.base.db_port | quote }}
+        - name: DB_USER
+          value: {{ .Values.base.db_user }}
+        - name: DB_PASS
+          {{ if .Values.base.db_pass_direct }}
+          value: {{ .Values.base.db_pass_direct }}
+          {{ else }}
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.base.db_pass_secretref.name }}
+              key: {{ .Values.base.db_pass_secretref.key }}
+          {{ end }}
+        - name: ES_URL
+          value: {{ .Values.base.es_url }}
+        - name: KIBANA_URL
+          value: {{ .Values.base.kibana_url }}
+
+        - name: NUMBER_DEBEZ_CONN
+          value: {{ len .Values.debezium_connectors.dbs | quote }}
+        - name: DELAY_BETWEEN_CONNECTORS
+          value: {{ .Values.debezium_connectors.delay_between_connectors | quote }}
+        {{- range $i, $item := .Values.debezium_connectors.dbs }}
+        - name: DEBEZ_DB_NAME_{{ add $i 1 }}
+          value: {{ $item.name | quote }}
+        - name: DEBEZ_TABLE_LIST_{{ add $i 1 }}
+          value: {{ $item.tables | quote }}
+        {{- end }}
+        volumeMounts:
+        - name: debez-sample-file
+          mountPath: "/debez-connector"
+      volumes:
+      - name: debez-sample-file
+        configMap:
+          {{ if .Values.debezium_connectors.existingConfigMap }}
+          name: {{ .Values.debezium_connectors.existingConfigMap }}
+          {{ else }}
+          name: {{ .Release.Name }}-debezium-sample-conf
+          {{ end }}
+{{ end }}
