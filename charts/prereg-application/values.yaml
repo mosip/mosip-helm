@@ -52,8 +52,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipid/pre-registration-application-service
-  tag: 1.2.0-rc1
+  repository: mosipqa/pre-registration-application-service
+  tag: 1.2.0-rc2
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -435,3 +435,13 @@ istio:
         prefix: /preregistration/v1/uispec
     - uri:
         prefix: /preregistration/v1/logAudit
+    - uri:
+        prefix: /preregistration/v1/swagger-ui.html
+    - uri:
+        prefix: /preregistration/v1/webjars
+    - uri:
+        prefix: /preregistration/v1/swagger-resources
+    - uri:
+        prefix: /preregistration/v1/v2/api-docs
+    - uri:
+        prefix: /preregistration/v1/csrf
