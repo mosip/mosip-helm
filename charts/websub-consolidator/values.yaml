@@ -52,7 +52,7 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipqa/websub-service
+  repository: mosipqa/consolidator-websub-service
   tag: 1.2.0-rc2
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -69,9 +69,9 @@ image:
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
-## TODO: Better probes to be added.
+## TODO: Ports here are not correct. Update them when available
 startupProbe:
-  enabled: true
+  enabled: false
   tcpSocket:
     port: 9191
   initialDelaySeconds: 0
@@ -81,7 +81,7 @@ startupProbe:
   successThreshold: 1
 
 livenessProbe:
-  enabled: true
+  enabled: false
   tcpSocket:
     port: 9191
   initialDelaySeconds: 20
@@ -91,7 +91,7 @@ livenessProbe:
   successThreshold: 1
 
 readinessProbe:
-  enabled: true
+  enabled: false
   tcpSocket:
     port: 9191
   initialDelaySeconds: 0
@@ -125,7 +125,7 @@ resources:
   #   memory: 256Mi
   requests:
     cpu: 200m
-    memory: 1000Mi
+    memory: 500Mi
 
 additionalResources: 
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
@@ -361,7 +361,7 @@ metrics:
   podAnnotations: 
     prometheus.io/scrape: "true"
   
-  endpointPath: /v1/websub/actuator/prometheus
+  endpointPath: /v1/websub-consolidator-consolidator/actuator/prometheus
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator
@@ -408,11 +408,5 @@ metrics:
     #       severity: error
     rules: []
 
-## Websub needs public access.
-istio:
-  enabled: true
-  gateway: istio-system/internal
-  prefix: /websub
+# NOTE: No one connects to this service, so both service and virtualservice don't exist for this service.
 
-websub:
-  port: 9191
