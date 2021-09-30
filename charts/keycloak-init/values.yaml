@@ -165,10 +165,6 @@ keycloak:
            - PARTNER_ADMIN
        - name: mosip-policymanager-client
          saroles: []
-       - name: mosip-prereg-client
-         saroles:
-           - PREREG
-           - REGISTRATION_PROCESSOR
        - name: mosip-reg-client
          saroles:
            - GLOBAL_ADMIN
@@ -203,6 +199,7 @@ keycloak:
            - REGISTRATION_PROCESSOR
            - INDIVIDUAL
            - PRE_REGISTRATION_ADMIN 
+           - GLOBAL_ADMIN
       users: []
 
 ## These will be passed as environments variables to keycloak-init docker. Note the expected naming convention is 
