@@ -52,8 +52,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipid/authentication-service
-  tag: 1.2.0-rc1
+  repository: mosipqa/authentication-service
+  tag: 1.2.0-rc2
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -419,4 +419,4 @@ istio:
   gateways: 
     - istio-system/public
     - istio-system/internal
-  prefix:  /idauthentication/v1/auth/
+  prefix:  /idauthentication/v1/auth
