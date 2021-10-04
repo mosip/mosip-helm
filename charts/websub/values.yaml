@@ -412,7 +412,7 @@ metrics:
 istio:
   enabled: true
   gateway: istio-system/internal
-  prefix: /websub
+  prefix: /hub
 
 websub:
   port: 9191
