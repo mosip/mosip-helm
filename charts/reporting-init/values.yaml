@@ -25,7 +25,7 @@ debezium_connectors:
   - name: "mosip_audit"
     tables: "audit.app_audit_log"
   - name: "mosip_prereg"
-    tables: "prereg.applicant_demographic,prereg.applicant_document,prereg.reg_appointment,prereg.reg_available_slot,prereg.otp_transaction"
+    tables: "prereg.applicant_demographic,prereg.applicant_demographic_consumed,prereg.applicant_document,prereg.applicant_document_consumed,prereg.reg_appointment,prereg.reg_appointment_consumed,prereg.reg_available_slot,prereg.otp_transaction"
   - name: "mosip_ida"
     tables: "ida.auth_transaction"
   - name: "mosip_regprc"
