@@ -3,6 +3,18 @@ debezium:
   replicaCount: 1
   image: debezium/connect
   port: 8083
+  livenessProbe:
+    enabled: true
+    initialDelaySeconds: 20
+    periodSeconds: 10
+    timeoutSeconds: 10
+    failureThreshold: 1
+    successThreshold: 1
+    exec:
+      command:
+      - /bin/bash
+      - -c
+      - for i in $(curl -s $MY_POD_IP:8083/connectors | sed "s/\[\]//g; s/\[\"//g; s/\"\]/\n/g; s/\",\"/\n/g"); do if [ ! -z "$(curl -s $MY_POD_IP:8083/connectors/$i/status | grep -i failed)" ]; then exit 237; fi ; done
   kafka:
     server: "kafka:9092"
     groupId: "1"
