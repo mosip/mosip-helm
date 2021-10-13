@@ -69,7 +69,7 @@ image:
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
-## TODO: enable probles once health urls are available
+## TODO: enable probes once health urls are available
 startupProbe:
   enabled: false
   httpGet:
