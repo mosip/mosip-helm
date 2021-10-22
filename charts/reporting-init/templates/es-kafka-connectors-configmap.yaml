@@ -826,6 +826,73 @@ data:
               "transforms.tsconvert06.output.field": "@timestamp_gen"
           }
     }';
+  60.idrepo_anon_profile.api: |
+    # these following will be taken from env
+    #DB_USER=
+    #DB_PORT=
+    #DB_HOSTNAME=
+    #DB_PASS=
+    #DB_PREFIX_INDEX=
+    #ES_URL=
+
+    CONN_NAME="idrepo_anon_profile_$DB_PREFIX_INDEX"; # change this.. give unique name for each db/table
+
+    DEBEZ_CONN_URL='debezium-service.reporting:8083'; # needn't change .. this is the debezium-connector service name
+    ES_CONN_URL='es-connect.reporting:8083'; # needn't change .. this is the ES-connector service name
+
+    DB_NAME='mosip_idrepo'; # change this
+    DB_TABLES='idrepo.anonymous_profile'
+    ES_INDICES=$(echo $DB_TABLES | sed -E "s/([^,]+)/$DB_PREFIX_INDEX.\1/g")
+
+    curl \
+      -X POST \
+      http://$ES_CONN_URL/connectors \
+      -H 'Content-Type: application/json' \
+      -d \
+      '{
+          "name": '\"$CONN_NAME\"',
+          "config": {
+              "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
+              "name": '\"$CONN_NAME\"',
+              "connection.url": '\"$ES_URL\"',
+              "tasks.max": "1",
+              "topics": '\"$ES_INDICES\"',
+              "key.ignore": "false",
+              "schema.ignore": "true",
+              "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+              "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+              "key.converter.schemas.enable": "false",
+              "value.converter.schemas.enable": "false",
+
+              "behavior.on.null.values": "DELETE",
+
+              "transforms": "ext1,ext2,tsconvert01,tsconvert02,tsconvert03,tsSelect,stringtojson01",
+
+              "transforms.ext1.type": "org.apache.kafka.connect.transforms.ExtractField$Value",
+              "transforms.ext1.field": "payload",
+              "transforms.ext2.type": "org.apache.kafka.connect.transforms.ExtractField$Value",
+              "transforms.ext2.field": "after",
+
+              "transforms.tsconvert01.type": "io.mosip.kafka.connect.transforms.TimestampConverterAdv$Value",
+              "transforms.tsconvert01.field": "cr_dtimes",
+              "transforms.tsconvert01.input.type": "micro_sec",
+
+              "transforms.tsconvert02.type": "io.mosip.kafka.connect.transforms.TimestampConverterAdv$Value",
+              "transforms.tsconvert02.field": "upd_dtimes",
+              "transforms.tsconvert02.input.type": "micro_sec",
+
+              "transforms.tsconvert03.type": "io.mosip.kafka.connect.transforms.TimestampConverterAdv$Value",
+              "transforms.tsconvert03.field": "del_dtimes",
+              "transforms.tsconvert03.input.type": "micro_sec",
+
+              "transforms.tsSelect.type": "io.mosip.kafka.connect.transforms.TimestampSelector$Value",
+              "transforms.tsSelect.ts.order": "upd_dtimes,cr_dtimes",
+              "transforms.tsSelect.output.field": "@timestamp_gen",
+
+              "transforms.stringtojson01.type": "io.mosip.kafka.connect.transforms.StringToJson$Value",
+              "transforms.stringtojson01.input.field": "profile"
+          }
+    }';
 
 {{ end }}
 {{ end }}
