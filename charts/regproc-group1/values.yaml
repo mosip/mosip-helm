@@ -73,7 +73,7 @@ image:
 startupProbe:
   enabled: false
   httpGet:
-    path: /registrationprocessor/v1/group1/actuator/health
+    path: /registrationprocessor/v1/packetreceiver/actuator/health
     port: 8081
   initialDelaySeconds: 0
   periodSeconds: 10
@@ -84,7 +84,7 @@ startupProbe:
 livenessProbe:
   enabled: false
   httpGet:
-    path: /registrationprocessor/v1/group1/actuator/health
+    path: /registrationprocessor/v1/packetreceiver/actuator/health
     port: 8081
   initialDelaySeconds: 120 
   periodSeconds: 10
@@ -95,7 +95,7 @@ livenessProbe:
 readinessProbe:
   enabled: false
   httpGet:
-    path: /registrationprocessor/v1/group1/actuator/health
+    path: /registrationprocessor/v1/packetreceiver/actuator/health
     port: 8081
   initialDelaySeconds: 30 
   periodSeconds: 10
@@ -420,10 +420,8 @@ metrics:
     rules: []
 
 ## Requires public access.
-## TODO: Enable once access is available
 istio:
-  enabled: false
+  enabled: true
   gateways: 
-    - istio-system/public
     - istio-system/internal
-  prefix: /registrationprocessor/v1/group1
+  prefix: /registrationprocessor/v1/packetreceiver
