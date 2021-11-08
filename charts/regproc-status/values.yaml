@@ -431,6 +431,5 @@ metrics:
 istio:
   enabled: true
   gateways: 
-    - istio-system/public
     - istio-system/internal
   prefix: /registrationprocessor/v1/registrationstatus
