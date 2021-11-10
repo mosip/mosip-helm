@@ -359,8 +359,9 @@ serviceAccount:
 
 ## Prometheus Metrics
 ##
+## TODO: Enable later.
 metrics:
-  enabled: true
+  enabled: false
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
@@ -417,4 +418,6 @@ metrics:
 ## Only internal access
 istio:
   enabled: true
-  gateway: istio-system/internal
+  gateways: 
+    - istio-system/internal
+  prefix: /commons/v1/packetmanager
