@@ -420,3 +420,10 @@ istio:
     - istio-system/public
     - istio-system/internal
   prefix:  /idauthentication/v1/auth
+  match:
+    - uri:
+        prefix:  /idauthentication/v1/auth
+    - uri:
+        prefix:  /idauthentication/v1/swagger-ui.html
+    - uri:
+        prefix:  /idauthentication/v1/v3/api-docs
