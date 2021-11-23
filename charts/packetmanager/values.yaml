@@ -359,16 +359,15 @@ serviceAccount:
 
 ## Prometheus Metrics
 ##
-## TODO: Enable later.
 metrics:
-  enabled: false
+  enabled: true
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
   podAnnotations: 
     prometheus.io/scrape: "true"
   
-  endpointPath: /v1/packetmanager/actuator/prometheus
+  endpointPath: /commons/v1/packetmanager/actuator/prometheus
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator
