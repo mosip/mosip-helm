@@ -73,11 +73,10 @@ springServicePort: 8090
 ##
 ## TODO: enable probes once health urls are available
 startupProbe:
-  enabled: false 
+  enabled: true
   httpGet:
-    path: /registrationprocessor/v1/group2/actuator/health
-    port: 9072
-    port: 51000
+    path: registrationprocessor/v1/securezone/actuator/health
+    port: 8090
   initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
@@ -87,8 +86,8 @@ startupProbe:
 livenessProbe:
   enabled: false
   httpGet:
-    path: /registrationprocessor/v1/group2/actuator/health
-    port: 9072
+    path: registrationprocessor/v1/securezone/actuator/health
+    port: 8090
   initialDelaySeconds: 20 
   periodSeconds: 10
   timeoutSeconds: 5 
@@ -98,8 +97,8 @@ livenessProbe:
 readinessProbe:
   enabled: false
   httpGet:
-    path: /registrationprocessor/v1/group2/actuator/health
-    port: 9072
+    path: registrationprocessor/v1/securezone/actuator/health
+    port: 8090
   initialDelaySeconds: 0 
   periodSeconds: 10
   timeoutSeconds: 5 
@@ -419,9 +418,8 @@ metrics:
     rules: []
 
 ## Requires only internal access for swagger 
-## TODO: enable if required.
 istio:
-  enabled: false
+  enabled: true
   gateways: 
     - istio-system/internal
   prefix: /registrationprocessor/v1/securezone
