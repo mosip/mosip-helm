@@ -16,30 +16,36 @@ spec:
         app: debezium
     spec:
       containers:
-        - name: debezium-container
-          image: {{ .Values.debezium.image }}
-          env:
-            - name: BOOTSTRAP_SERVERS
-              value: {{ .Values.debezium.kafka.server }}
-            - name: GROUP_ID
-              value: {{ .Values.debezium.kafka.groupId | quote }}
-            - name: OFFSET_STORAGE_TOPIC
-              value: {{ .Values.debezium.kafka.topics.offset }}
-            - name: CONFIG_STORAGE_TOPIC
-              value: {{ .Values.debezium.kafka.topics.config }}
-            - name: STATUS_STORAGE_TOPIC
-              value: {{ .Values.debezium.kafka.topics.status }}
-            - name: MY_POD_IP
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.podIP
-          ports:
-          - containerPort: {{ .Values.debezium.port }}
-          {{- if .Values.debezium.livenessProbe.enabled }}
-          livenessProbe: {{- include "common.tplvalues.render" (dict "value" (omit .Values.debezium.livenessProbe "enabled") "context" $) | nindent 12 }}
-          {{- else if .Values.debezium.customLivenessProbe }}
-          livenessProbe: {{- include "common.tplvalues.render" (dict "value" .Values.debezium.customLivenessProbe "context" $) | nindent 12 }}
-          {{- end }}
+      - name: debezium-container
+        image: {{ .Values.debezium.image }}
+        env:
+          - name: BOOTSTRAP_SERVERS
+            value: {{ .Values.debezium.kafka.server }}
+          - name: GROUP_ID
+            value: {{ .Values.debezium.kafka.groupId | quote }}
+          - name: OFFSET_STORAGE_TOPIC
+            value: {{ .Values.debezium.kafka.topics.offset }}
+          - name: CONFIG_STORAGE_TOPIC
+            value: {{ .Values.debezium.kafka.topics.config }}
+          - name: STATUS_STORAGE_TOPIC
+            value: {{ .Values.debezium.kafka.topics.status }}
+        ports:
+        - containerPort: {{ .Values.debezium.port }}
+      - name: debezium-fixer
+        image: {{ .Values.debezium.fixer_container.image }}
+        env:
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: STARTUP_DELAY
+          value: {{ .Values.debezium.fixer_container.startup_delay }}
+        - name: PROBE_TIME_PERIOD
+          value: {{ .Values.debezium.fixer_container.probe_time_period }}
+        - name: ERROR_LEVEL1
+          value: {{ .Values.debezium.fixer_container.error_level1 }}
+        - name: ERROR_LEVEL2
+          value: {{ .Values.debezium.fixer_container.error_level2 }}
 ---
 apiVersion: v1
 kind: Service
