@@ -4,11 +4,11 @@ debezium:
   image: debezium/connect
   port: 8083
   fixer_container:
-    image: mosipdev/debezium-fixer:develop
+    image: gandharvsuri/debezium-fixer:develop
     startup_delay: "30s"
     probe_time_period: "30s"
     error_level1: "failed"
-    error_level2: "PSQLException: An I/O error occurred while sending to the backend"
+    error_level2: "PSQLException"
   kafka:
     server: "kafka:9092"
     groupId: "1"
