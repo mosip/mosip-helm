@@ -2,9 +2,11 @@ debezium:
   enabled: true
   replicaCount: 1
   image: debezium/connect
+  imagePullPolicy: Always
   port: 8083
   fixer_container:
     image: mosipdev/debezium-fixer:develop
+    imagePullPolicy: Always
     startup_delay: "30s"
     probe_time_period: "30s"
     error_level1: "failed"
