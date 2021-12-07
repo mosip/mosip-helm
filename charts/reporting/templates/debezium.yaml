@@ -18,6 +18,7 @@ spec:
       containers:
       - name: debezium-container
         image: {{ .Values.debezium.image }}
+        imagePullPolicy: {{ .Values.debezium.imagePullPolicy }}
         env:
           - name: BOOTSTRAP_SERVERS
             value: {{ .Values.debezium.kafka.server }}
@@ -33,6 +34,7 @@ spec:
         - containerPort: {{ .Values.debezium.port }}
       - name: debezium-fixer
         image: {{ .Values.debezium.fixer_container.image }}
+        imagePullPolicy: {{ .Values.debezium.fixer_container.imagePullPolicy }}
         env:
         - name: MY_POD_IP
           valueFrom:
@@ -43,9 +45,9 @@ spec:
         - name: PROBE_TIME_PERIOD
           value: {{ .Values.debezium.fixer_container.probe_time_period }}
         - name: ERROR_LEVEL1
-          value: {{ .Values.debezium.fixer_container.error_level1 }}
+          value: {{ .Values.debezium.fixer_container.error_level1 | quote }}
         - name: ERROR_LEVEL2
-          value: {{ .Values.debezium.fixer_container.error_level2 }}
+          value: {{ .Values.debezium.fixer_container.error_level2 | quote }}
 ---
 apiVersion: v1
 kind: Service
