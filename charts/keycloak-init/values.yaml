@@ -191,7 +191,8 @@ keycloak:
         - PREREG
         - REGISTRATION_PROCESSOR
         - INDIVIDUAL
-        - PRE_REGISTRATION_ADMIN 
+        - PRE_REGISTRATION_ADMIN
+        - GLOBAL_ADMIN
       clients: 
         - name: mosip-prereg-client
           saroles:
