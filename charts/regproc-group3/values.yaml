@@ -69,38 +69,44 @@ image:
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
-## TODO: enable probes once health urls are available
+## When configuring Probe, please make sure to remove from the url paths that are not required from the probe list 
 
 startupProbe:
-  enabled: false
-  httpGet:
-    path: /registrationprocessor/v1/abishandler/actuator/health
-    port: 9071
+  enabled: true
+  exec:
+    command:
+    - /bin/bash
+    - -c
+    - MY_PROBE_CHECK_PATHS="http://localhost:9096/registrationprocessor/v1/biodedupe/actuator/health,http://localhost:9071/registrationprocessor/v1/abishandler/actuator/health,http://localhost:8091/registrationprocessor/v1/abismiddleware/actuator/health,http://localhost:8084/registrationprocessor/v1/manualverification/actuator/health"; i=1; for str in $(echo $MY_PROBE_CHECK_PATHS | sed "s/,/\n/g"); do curl_output="$(curl -w %{http_code} -o /dev/null -s $str)"; if ! [ "$curl_output" = "200" ]; then echo "$str failed with status code $curl_output" >> /dev/stderr && exit $i; fi; ((i++)); done
   initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 30
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
-  httpGet:
-    path: /registrationprocessor/v1/abishandler/actuator/health
-    port: 9071
-  initialDelaySeconds: 20 
+  enabled: true
+  exec:
+    command:
+    - /bin/bash
+    - -c
+    - MY_PROBE_CHECK_PATHS="http://localhost:9096/registrationprocessor/v1/biodedupe/actuator/health,http://localhost:9071/registrationprocessor/v1/abishandler/actuator/health,http://localhost:8091/registrationprocessor/v1/abismiddleware/actuator/health,http://localhost:8084/registrationprocessor/v1/manualverification/actuator/health"; i=1; for str in $(echo $MY_PROBE_CHECK_PATHS | sed "s/,/\n/g"); do curl_output="$(curl -w %{http_code} -o /dev/null -s $str)"; if ! [ "$curl_output" = "200" ]; then echo "$str failed with status code $curl_output" >> /dev/stderr && exit $i; fi; ((i++)); done
+  initialDelaySeconds: 20
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
-  httpGet:
-    path: /registrationprocessor/v1/abishandler/actuator/health
-    port: 9071
-  initialDelaySeconds: 0 
+  enabled: true
+  exec:
+    command:
+    - /bin/bash
+    - -c
+    - MY_PROBE_CHECK_PATHS="http://localhost:9096/registrationprocessor/v1/biodedupe/actuator/health,http://localhost:9071/registrationprocessor/v1/abishandler/actuator/health,http://localhost:8091/registrationprocessor/v1/abismiddleware/actuator/health,http://localhost:8084/registrationprocessor/v1/manualverification/actuator/health"; i=1; for str in $(echo $MY_PROBE_CHECK_PATHS | sed "s/,/\n/g"); do curl_output="$(curl -w %{http_code} -o /dev/null -s $str)"; if ! [ "$curl_output" = "200" ]; then echo "$str failed with status code $curl_output" >> /dev/stderr && exit $i; fi; ((i++)); done
+  initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
@@ -127,11 +133,11 @@ resources:
   limits: {}
   #   cpu: 200m
   #   memory: 256Mi
-  requests: 
+  requests:
     cpu: 100m
     memory: 1000Mi
 
-additionalResources: 
+additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
   javaOpts: ""
@@ -218,11 +224,11 @@ podAnnotations: {}
 ##
 lifecycleHooks: {}
 
-## Custom Liveness probes for 
+## Custom Liveness probes for
 ##
 customLivenessProbe: {}
 
-## Custom Rediness probes 
+## Custom Rediness probes
 ##
 customReadinessProbe: {}
 
@@ -246,7 +252,7 @@ extraEnvVars: []
 ##
 extraEnvVarsCM:
   - global
-  - config-server-share 
+  - config-server-share
   - artifactory-share
 
 ## Secret with extra environment variables
@@ -286,12 +292,12 @@ initContainers: {}
 sidecars: {}
 
 persistence:
-  enabled: false 
+  enabled: false
   ## If defined, storageClassName: <storageClass>
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-  ##   GKE, AWS & OpenStack).  
+  ##   GKE, AWS & OpenStack).
   ##
   # storageClass: "-"
   ##
@@ -301,13 +307,13 @@ persistence:
   ## ReadWriteMany not supported by AWS gp2
   ## We use EFS storage class as that supports ReadWriteMany. Make sure you have installed the same as given
   ## here: https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html
-  ## Packet landing zone requires ReadWriteMany 
-  storageClass: 
+  ## Packet landing zone requires ReadWriteMany
+  storageClass:
   accessModes:
     - ReadWriteMany
-  size: 
-  existingClaim: 
-  reclaimPolicy: 
+  size:
+  existingClaim:
+  reclaimPolicy:
   mountDir:
 
 ## Init containers parameters:
@@ -366,9 +372,9 @@ metrics:
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
-  podAnnotations: 
+  podAnnotations:
     prometheus.io/scrape: "true"
-  
+
   endpointPath: /registrationprocessor/v1/abishandler/actuator/prometheus
 
   ## Prometheus Service Monitor
@@ -416,10 +422,10 @@ metrics:
     #       severity: error
     rules: []
 
-## Requires only internal access for swagger 
+## Requires only internal access for swagger
 ## TODO: Enable once access is available
 istio:
   enabled: false
-  gateways: 
+  gateways:
     - istio-system/internal
   prefix: /registrationprocessor/v1/abishandler
