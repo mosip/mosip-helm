@@ -27,6 +27,12 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.configmaps.keycloakHost }}
       key: keycloak-host-url
 
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_KEYCLOAK_EXTERNAL_HOST
+  valueFrom:
+    configMapKeyRef:
+      name: {{ .Values.overrides.configmaps.keycloakHost }}
+      key: keycloak-external-url
+
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_ABIS_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
