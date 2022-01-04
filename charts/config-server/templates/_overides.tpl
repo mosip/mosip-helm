@@ -21,13 +21,13 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.secrets.db }}
       key: db-dbuser-password
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_KEYCLOAK_HOST
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_KEYCLOAK_INTERNAL_URL
   valueFrom:
     configMapKeyRef:
       name: {{ .Values.overrides.configmaps.keycloakHost }}
-      key: keycloak-host-url
+      key: keycloak-internal-url
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_KEYCLOAK_EXTERNAL_HOST
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_KEYCLOAK_EXTERNAL_URL
   valueFrom:
     configMapKeyRef:
       name: {{ .Values.overrides.configmaps.keycloakHost }}
