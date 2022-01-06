@@ -93,6 +93,8 @@ keycloak:
        - AUTH
        - AUTH_PARTNER
        - BIOMETRIC_READ
+       - CENTRAL_ADMIN
+       - CENTRAL_APPROVER
        - CREATE_SHARE
        - CREDENTIAL_ISSUANCE
        - CREDENTIAL_PARTNER
@@ -103,46 +105,112 @@ keycloak:
        - FTM_PROVIDER
        - GLOBAL_ADMIN
        - ID_AUTHENTICATION
+       - ID_REPOSITORY
+       - INDIVIDUAL
        - KEY_MAKER
+       - MASTERDATA_ADMIN
        - METADATA_READ
        - MISP
+       - MISP_PARTNER
+       - offline_access
        - ONLINE_VERIFICATION_PARTNER
        - PARTNER
-       - PARTNERMANAGER
        - PARTNER_ADMIN
+       - PARTNERMANAGER
+       - PMS_ADMIN
        - PMS_USER
        - POLICYMANAGER
        - PREREG
        - PRE_REGISTRATION
+       - PRE_REGISTRATION_ADMIN
+       - PUBLISH_ACTIVATE_ID_ALL_INDIVIDUAL
+       - PUBLISH_ANONYMOUS_PROFILE_GENERAL
+       - PUBLISH_APIKEY_APPROVED_GENERAL
+       - PUBLISH_APIKEY_UPDATED_GENERAL
+       - PUBLISH_AUTHENTICATION_TRANSACTION_STATUS_GENERAL
+       - PUBLISH_AUTH_TYPE_STATUS_UPDATE_ACK_GENERAL
+       - PUBLISH_AUTH_TYPE_STATUS_UPDATE_ALL_INDIVIDUAL
+       - PUBLISH_CA_CERTIFICATE_UPLOADED_GENERAL
+       - PUBLISH_CREDENTIAL_ISSUED_ALL_INDIVIDUAL
+       - PUBLISH_CREDENTIAL_STATUS_UPDATE_GENERAL
+       - PUBLISH_DEACTIVATE_ID_ALL_INDIVIDUAL
+       - PUBLISH_MASTERDATA_IDAUTHENTICATION_TEMPLATES_GENERAL
+       - PUBLISH_MASTERDATA_TITLES_GENERAL
+       - PUBLISH_MISP_LICENSE_GENERATED_GENERAL
+       - PUBLISH_MISP_LICENSE_UPDATED_GENERAL
+       - PUBLISH_MOSIP_HOTLIST_GENERAL
+       - PUBLISH_PARTNER_UPDATED_GENERAL
+       - PUBLISH_POLICY_UPDATED_GENERAL
+       - PUBLISH_REGISTRATION_PROCESSOR_WORKFLOW_COMPLETED_EVENT_GENERAL
+       - PUBLISH_REGISTRATION_PROCESSOR_WORKFLOW_PAUSED_FOR_ADDITIONAL_INFO_EVENT_GENERAL
+       - PUBLISH_REMOVE_ID_ALL_INDIVIDUAL
+       - PUBLISH_VID_CRED_STATUS_UPDATE_GENERAL
+       - REGISTRATION_ADMIN
        - REGISTRATION_OFFICER
+       - REGISTRATION_OPERATOR
        - REGISTRATION_PROCESSOR
        - REGISTRATION_SUPERVISOR
        - RESIDENT
+       - SUBSCRIBE_ACTIVATE_ID_INDIVIDUAL
+       - SUBSCRIBE_APIKEY_APPROVED_GENERAL
+       - SUBSCRIBE_APIKEY_UPDATED_GENERAL
+       - SUBSCRIBE_AUTH_TYPE_STATUS_UPDATE_ACK_GENERAL
+       - SUBSCRIBE_AUTH_TYPE_STATUS_UPDATE_INDIVIDUAL
+       - SUBSCRIBE_CA_CERTIFICATE_UPLOADED_GENERAL
+       - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
+       - SUBSCRIBE_CREDENTIAL_STATUS_UPDATE_GENERAL
+       - SUBSCRIBE_DEACTIVATE_ID_INDIVIDUAL
+       - SUBSCRIBE_MASTERDATA_IDAUTHENTICATION_TEMPLATES_GENERAL
+       - SUBSCRIBE_MASTERDATA_TITLES_GENERAL
+       - SUBSCRIBE_MISP_LICENSE_GENERATED_GENERAL
+       - SUBSCRIBE_MISP_LICENSE_UPDATED_GENERAL
+       - SUBSCRIBE_MOSIP_HOTLIST_GENERAL
+       - SUBSCRIBE_PARTNER_UPDATED_GENERAL
+       - SUBSCRIBE_POLICY_UPDATED_GENERAL
+       - SUBSCRIBE_REMOVE_ID_INDIVIDUAL
+       - SUBSCRIBE_VID_CRED_STATUS_UPDATE_GENERAL
+       - uma_authorization
        - ZONAL_ADMIN
+       - ZONAL_APPROVER
       clients: 
        - name: mosip-abis-client
          saroles: []
+
        - name: mosip-admin-client
          saroles: 
+           - MASTERDATA_ADMIN
            - GLOBAL_ADMIN
-           - ZONAL_ADMIN
+           - PUBLISH_MASTERDATA_IDAUTHENTICATION_TEMPLATES_GENERAL
+           - MASTERDATA_ADMIN
+           - offline_access
+           - PUBLISH_MOSIP_HOTLIST_GENERAL
+           - uma_authorization
+           - PUBLISH_MASTERDATA_TITLES_GENERAL
+
        - name: mosip-admin-services-client
-         saroles:
-           - GLOBAL_ADMIN
-           - ZONAL_ADMIN
+         saroles: []
+
        - name: mosip-auth-client
          saroles:
            - AUTH
+
        - name: mosip-crereq-client
          saroles:
            - CREDENTIAL_ISSUANCE
-           - CREDENTIAL_REQUEST 
+           - CREDENTIAL_REQUEST
+           - SUBSCRIBE_CREDENTIAL_STATUS_UPDATE_GENERAL
+           - offline_access
+           - uma_authorization
+    
        - name: mosip-creser-client 
          saroles:
            - CREDENTIAL_ISSUANCE
            - REGISTRATION_PROCESSOR
            - POLICYMANAGER
            - CREATE_SHARE
+           - offline_access
+           - PUBLISH_CREDENTIAL_ISSUED_ALL_INDIVIDUAL
+           - uma_authorization
        - name: mosip-creser-idpass-client
          saroles: []
        - name: mosip-datsha-client
@@ -150,39 +218,142 @@ keycloak:
            - CREATE_SHARE
            - REGISTRATION_PROCESSOR
            - POLICYMANAGER
+    
        - name: mosip-ida-client
          saroles:
+           - CREDENTIAL_REQUEST
+           - GLOBAL_ADMIN
            - ID_AUTHENTICATION
+
        - name: mosip-misp-client
          saroles: []
+
        - name: mosip-partner-client
          saroles:
            - REGISTRATION_PROCESSOR
+           - CREATE_SHARE
+           - PMS_USER
+           - PMS_ADMIN
+           - SUBSCRIBE_CA_CERTIFICATE_UPLOADED_GENERAL
+           - PUBLISH_MISP_LICENSE_UPDATED_GENERAL
+           - PUBLISH_PARTNER_UPDATED_GENERAL
+           - PUBLISH_MISP_LICENSE_GENERATED_GENERAL
+           - PUBLISH_APIKEY_APPROVED_GENERAL
+           - PUBLISH_APIKEY_UPDATED_GENERAL
+           - PUBLISH_CA_CERTIFICATE_UPLOADED_GENERAL
+           - PUBLISH_POLICY_UPDATED_GENERAL
+
        - name: mosip-partnermanager-client
          saroles: []
+
        - name: mosip-pms-client
          saroles: 
            - PARTNER_ADMIN
+
        - name: mosip-policymanager-client
          saroles: []
+
        - name: mosip-reg-client
          saroles:
            - GLOBAL_ADMIN
+           - REGISTRATION_ADMIN
            - REGISTRATION_OFFICER
+           - REGISTRATION_OPERATOR
            - REGISTRATION_SUPERVISOR
+
        - name: mosip-regproc-client
          saroles:
-           - REGISTRATION_PROCESSOR 
-           - DATA_READ 
-           - DOCUMENT_READ 
+           - REGISTRATION_PROCESSOR
+           - DATA_READ
+           - DOCUMENT_READ
            - BIOMETRIC_READ
-           - METADATA_READ 
-           - CREATE_SHARE 
+           - METADATA_READ
+           - CREATE_SHARE
            - CREDENTIAL_REQUEST
+           - PUBLISH_REGISTRATION_PROCESSOR_WORKFLOW_COMPLETED_EVENT_GENERAL
+           - PUBLISH_CREDENTIAL_STATUS_UPDATE_GENERAL
+           - PUBLISH_REGISTRATION_PROCESSOR_WORKFLOW_PAUSED_FOR_ADDITIONAL_INFO_EVENT_GENERAL
+
        - name: mosip-resident-client
          saroles:
            - RESIDENT
+           - PARTNER_ADMIN
            - CREDENTIAL_REQUEST
+           - CREDENTIAL_REQUEST
+           - RESIDENT
+           - offline_access
+           - PARTNER_ADMIN
+           - uma_authorization
+
+       - name: preregistration-mosip-prereg-client
+         saroles:
+           - INDIVIDUAL
+           - PRE_REGISTRATION_ADMIN
+           - PREREG
+           - REGISTRATION_PROCESSOR
+
+       - name: mosip-creser-idpass-client
+         saroles: 
+           - REGISTRATION_PROCESSOR
+           - DATA_READ
+           - DOCUMENT_READ
+           - BIOMETRIC_READ
+           - METADATA_READ
+           - CREATE_SHARE
+           - CREDENTIAL_REQUEST
+
+       - name: mosip-syncdata-client
+         saroles: 
+           - REGISTRATION_ADMIN
+           - GLOBAL_ADMIN
+           - SUBSCRIBE_CA_CERTIFICATE_UPLOADED_GENERAL
+           - REGISTRATION_SUPERVISOR
+           - REGISTRATION_OFFICER
+
+       - name: mpartner-default-auth
+         saroles: 
+           - SUBSCRIBE_AUTH_TYPE_STATUS_UPDATE_INDIVIDUAL
+           - SUBSCRIBE_POLICY_UPDATED_GENERAL
+           - SUBSCRIBE_MISP_LICENSE_GENERATED_GENERAL
+           - CREDENTIAL_REQUEST
+           - SUBSCRIBE_MOSIP_HOTLIST_GENERAL
+           - PUBLISH_ANONYMOUS_PROFILE_GENERAL
+           - SUBSCRIBE_ACTIVATE_ID_INDIVIDUAL
+           - SUBSCRIBE_REMOVE_ID_INDIVIDUAL
+           - SUBSCRIBE_MASTERDATA_TITLES_GENERAL
+           - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
+           - SUBSCRIBE_MISP_LICENSE_UPDATED_GENERAL
+           - ID_AUTHENTICATION
+           - PUBLISH_CREDENTIAL_STATUS_UPDATE_GENERAL
+           - SUBSCRIBE_AUTH_TYPE_STATUS_UPDATE_ACK_GENERAL
+           - SUBSCRIBE_PARTNER_UPDATED_GENERAL
+           - offline_access
+           - SUBSCRIBE_APIKEY_APPROVED_GENERAL
+           - PUBLISH_AUTH_TYPE_STATUS_UPDATE_ACK_GENERAL
+           - SUBSCRIBE_MASTERDATA_IDAUTHENTICATION_TEMPLATES_GENERAL
+           - uma_authorization
+           - SUBSCRIBE_APIKEY_UPDATED_GENERAL
+           - SUBSCRIBE_DEACTIVATE_ID_INDIVIDUAL
+           - SUBSCRIBE_CA_CERTIFICATE_UPLOADED_GENERAL
+
+       - name: mosip-idrepo-client
+         saroles: 
+           - PUBLISH_DEACTIVATE_ID_ALL_INDIVIDUAL
+           - SUBSCRIBE_VID_CRED_STATUS_UPDATE_GENERAL
+           - ID_REPOSITORY
+           - PUBLISH_ACTIVATE_ID_ALL_INDIVIDUAL
+           - offline_access
+           - PUBLISH_REMOVE_ID_ALL_INDIVIDUAL
+           - PUBLISH_AUTHENTICATION_TRANSACTION_STATUS_GENERAL
+           - uma_authorization
+           - PUBLISH_VID_CRED_STATUS_UPDATE_GENERAL
+           - PUBLISH_AUTH_TYPE_STATUS_UPDATE_ALL_INDIVIDUAL
+
+       - name: mpartner-default-print
+         saroles: 
+           - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
+           - PUBLISH_CREDENTIAL_STATUS_UPDATE_GENERAL
+
       users: []
     
     preregistration:  # realm
@@ -200,7 +371,6 @@ keycloak:
            - REGISTRATION_PROCESSOR
            - INDIVIDUAL
            - PRE_REGISTRATION_ADMIN 
-           - GLOBAL_ADMIN
       users: []
 
 ## These will be passed as environments variables to keycloak-init docker. Note the expected naming convention is 
@@ -239,4 +409,14 @@ clientSecrets:
   - name: mosip_mosip_resident_client_secret
     secret: ""
   - name: preregistration_mosip_prereg_client_secret
+    secret: ""
+  - name: mosip_mosip_creser_idpass_client_secret
+    secret: ""
+  - name: mosip_mosip_syncdata_client_secret
+    secret: ""
+  - name: mosip_mpartner_default_auth_secret
+    secret: ""
+  - name: mosip_mosip_idrepo_client_secret
+    secret: ""
+  - name: mosip_mpartner_default_print_secret
     secret: ""
