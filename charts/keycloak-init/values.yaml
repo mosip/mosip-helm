@@ -76,7 +76,7 @@ affinity: {}
 keycloak:
   host: 
     existingConfigMap: keycloak-host
-    key: keycloak-host-url
+    key: keycloak-internal-url
   admin:
     userName:
       existingConfigMap: keycloak-env-vars
