@@ -351,8 +351,8 @@ serviceAccount:
 ## /usr/share/nginx/html/artifactory path in artifactory docker
 artifacts:
   iamAdapter: /artifactory/libs-release-local/io/mosip/kernel/kernel-auth-adapter.jar
-  iamAdapterRegproc: /artifactory/libs-snapshot-local/io/mosip/kernel/kernel-auth-adapter/1.2.0-SNAPSHOT/kernel-auth-adapter-1.2.0-SNAPSHOT-regproc-20201209055103.jar
-  iamAdapterRegprocExt: /artifactory/libs-snapshot-local/io/mosip/kernel/kernel-auth-adapter/1.2.0-SNAPSHOT/kernel-auth-adapter-1.2.0-SNAPSHOT-regproc-20201209055103.jar
+  iamAdapterRegproc: /artifactory/libs-release-local/io/mosip/kernel/kernel-auth-adapter.jar
+  iamAdapterRegprocExt: /artifactory/libs-release-local/io/mosip/kernel/kernel-auth-adapter.jar
   hsmClientZip: /artifactory/libs-release-local/hsm/client.zip  
   cacheProvider: /artifactory/libs-release-local/cache/cache-provider.jar
   runtimeDep: /artifactory/libs-release-local/io/mosip/kernel/
