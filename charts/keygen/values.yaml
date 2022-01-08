@@ -181,6 +181,7 @@ updateStrategy:
 ##   - name: FOO
 ##     value: "bar"
 ##
+
 extraEnvVars: []
 
 ## ConfigMap with extra environment variables that used
@@ -298,3 +299,6 @@ serviceAccount:
   ## If not set and create is true, a name is generated using the fullname template
   ##
   name:
+
+# kernel or id-authentication
+springConfigNameEnv: 

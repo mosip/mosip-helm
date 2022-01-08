@@ -62,7 +62,10 @@ spec:
             - name: JDK_JAVA_OPTIONS
               value: {{ .Values.additionalResources.javaOpts }}
             - name: spring_config_name_env
-              value: kernel
+              value: {{ .Values.springConfigNameEnv }}
+          {{- if .Values.extraEnvVars }}
+          {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
+          {{- end }}
           envFrom:
             {{- if .Values.extraEnvVarsCM }}
             {{- range .Values.extraEnvVarsCM }}
