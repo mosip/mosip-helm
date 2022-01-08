@@ -185,11 +185,13 @@ extraEnvVars: []
 
 ## ConfigMap with extra environment variables that used
 ##
+## IMPORTANT: softhsm name needs to be set if not default as mentioned below.  This applies if softhsm name
+## is different
 extraEnvVarsCM:
   - global
   - config-server-share 
   - artifactory-share
-  - softhsm-kernel-share
+  - softhsm-share
 
 ## Secret with extra environment variables
 ##
@@ -296,4 +298,3 @@ serviceAccount:
   ## If not set and create is true, a name is generated using the fullname template
   ##
   name:
-
