@@ -165,6 +165,12 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: preregistration_mosip_prereg_client_secret
 
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_HOTLIST_CLIENT_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.keycloakClients }}
+      key: mosip_mosip_hotlist_client_secret
+
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_KEYCLOAK_ADMIN_PASSWORD
   valueFrom:
     secretKeyRef:

@@ -354,6 +354,12 @@ keycloak:
            - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
            - PUBLISH_CREDENTIAL_STATUS_UPDATE_GENERAL
 
+       - name: mosip-hotlist-client
+         saroles:
+           - HOTLIST_ADMIN
+           - uma_authorization
+           - offline_access
+
       users: []
     
     preregistration:  # realm
@@ -419,4 +425,6 @@ clientSecrets:
   - name: mosip_mosip_idrepo_client_secret
     secret: ""
   - name: mosip_mpartner_default_print_secret
+    secret: ""
+  - name: mosip_mosip_hotlist_client_secret
     secret: ""
