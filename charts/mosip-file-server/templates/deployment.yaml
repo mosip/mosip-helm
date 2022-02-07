@@ -89,14 +89,8 @@ spec:
           args: {{- include "common.tplvalues.render" (dict "value" .Values.args "context" $) | nindent 12 }}
           {{- end }}
           env:
-            - name: client_version_env
-              value: {{ .Values.mosip_file_server.version }} 
-            - name: crypto_key_env
-              value: {{ .Values.mosip_file_server.cryptoKey }}
-            - name: client_upgrade_server_env
-              value: {{ .Values.mosip_file_server.upgradeServerUrl }}
             - name: healthcheck_url_env
-              value: {{ .Values.mosip_file_server.healthCheckUrl }} 
+              value: {{ .Values.mosip_file_server.healthCheckUrl }}
             {{- if .Values.extraEnvVars }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}
@@ -112,7 +106,7 @@ spec:
                 name: {{ include "common.tplvalues.render" (dict "value" .Values.extraEnvVarsSecret "context" $) }}
             {{- end }}
           volumeMounts:
-            - name: maven
+            - name: mosipvc
               mountPath:  {{ .Values.mosip_file_server.mountDir }}/
 
           ports:

@@ -250,7 +250,6 @@ extraEnvVars:
 ## ConfigMap with extra environment variables
 ##
 extraEnvVarsCM:
-  - artifactory-share
 
 ## Secret with extra environment variables
 ##
@@ -418,7 +417,7 @@ metrics:
 
 ## Only internal access
 istio:
-  enabled: true 
+  enabled: false
   ingressController:
     name: ingressgateway-internal
   host: fileserver.sandbox.xyz.net
