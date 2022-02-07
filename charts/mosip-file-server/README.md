@@ -1,4 +1,4 @@
-# Registration Client Downloader
+# MOSIP-FILE-SERVER 
 
 Helm chart for installing for mosip-file-server .
 
