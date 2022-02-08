@@ -33,19 +33,19 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.configmaps.keycloakHost }}
       key: keycloak-external-url
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_ABIS_CLIENT_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_ABIS_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_mosip_abis_client_secret
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_SYNCDATA_CLIENT_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_SYNCDATA_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_mosip_syncdata_client_secret
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_CRESER_IDPASS_CLIENT_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_CRESER_IDPASS_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
@@ -57,7 +57,7 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_mpartner_default_auth_secret
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_IDREPO_CLIENT_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_IDREPO_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
@@ -69,91 +69,91 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_mpartner_default_print_secret
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_ADMIN_CLIENT_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_ADMIN_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_mosip_admin_client_secret
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_AUTH_CLIENT_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_AUTH_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_mosip_auth_client_secret
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_CREREQ_CLIENT_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_CREREQ_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_mosip_crereq_client_secret
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_CRESER_CLIENT_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_CRESER_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_mosip_creser_client_secret
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_DATSHA_CLIENT_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_DATSHA_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_mosip_datsha_client_secret
     
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_IDA_CLIENT_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_IDA_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_mosip_ida_client_secret
     
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_MISP_CLIENT_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MISP_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_mosip_misp_client_secret
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_PARTNER_CLIENT_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_PARTNER_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_mosip_partner_client_secret
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_PARTNERMANAGER_CLIENT_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_PARTNERMANAGER_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_mosip_partnermanager_client_secret
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_PMS_CLIENT_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_PMS_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_mosip_pms_client_secret
     
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_POLICYMANAGER_CLIENT_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_POLICYMANAGER_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_mosip_policymanager_client_secret
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_REG_CLIENT_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_REG_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_mosip_reg_client_secret
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_REGPROC_CLIENT_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_REGPROC_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_mosip_regproc_client_secret
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_CREREQ_CLIENT_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_CREREQ_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_mosip_crereq_client_secret
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_RESIDENT_CLIENT_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_RESIDENT_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
@@ -165,7 +165,7 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: preregistration_mosip_prereg_client_secret
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MOSIP_HOTLIST_CLIENT_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_HOTLIST_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
