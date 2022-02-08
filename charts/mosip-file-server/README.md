@@ -1,6 +1,6 @@
-# MOSIP-FILE-SERVER 
+# MOSIP File Server
 
-Helm chart for installing for mosip-file-server .
+Helm chart for installing for file server.
 
 ## Install
 
