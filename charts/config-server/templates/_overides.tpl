@@ -51,11 +51,11 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_creser_idpass_client_secret
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MPARTNER_DEFAULT_AUTH_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MPARTNER_DEFAULT_AUTH_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
-      key: mosip_mpartner_default_auth_secret
+      key: mpartner_default_auth_secret
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_IDREPO_CLIENT_SECRET
   valueFrom:
@@ -63,11 +63,11 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_idrepo_client_secret
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MPARTNER_DEFAULT_PRINT_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MPARTNER_DEFAULT_PRINT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
-      key: mosip_mpartner_default_print_secret
+      key: mpartner_default_print_secret
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_ADMIN_CLIENT_SECRET
   valueFrom:
