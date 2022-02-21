@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - 1.1.5
     paths:
       - 'charts/**'
 
@@ -22,4 +23,4 @@ jobs:
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.2.0
         env:
-          CR_TOKEN: '${{ secrets.CR_TOKEN }}'
+          CR_TOKEN: '${{ secrets.ACTION_PAT }}'
