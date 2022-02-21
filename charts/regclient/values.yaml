@@ -51,8 +51,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipqa/registration-client
-  tag: 1.2.0-rc2
+  repository: mosipdev/registration-client
+  tag: develop
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -66,7 +66,7 @@ image:
   #   - myRegistryKeySecretName
 
 regclient:
-  version: 1.2.0-rc2-SNAPSHOT
+  version: develop-SNAPSHOT
   mountDir: /home/mosip/build_files
   ## Currently this is hardcoded. Will change in the future
   cryptoKey: bBQX230Wskq6XpoZ1c+Ep1D+znxfT89NxLQ7P4KFkc4=

@@ -51,8 +51,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipqa/hotlist-service
-  tag: 1.2.0-rc2
+  repository: mosipdev/hotlist-service
+  tag: develop
 
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
