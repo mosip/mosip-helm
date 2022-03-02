@@ -188,7 +188,7 @@ All env variables that are accessed from mosip config properties
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.softhsmIDA }}
-      key: softhsm-security-pin
+      key: security-pin
 {{- end }}
 
 {{- if .Values.overrides.configmaps.activemq }}
