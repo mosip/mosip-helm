@@ -42,7 +42,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{ include "softhsm.fullname" . }}
-                  key: {{ include "softhsm.fullname" . }}-security-pin 
+                  key: security-pin 
   
           volumeMounts:
             - name: softhsm-keys
