@@ -123,6 +123,7 @@ keycloak:
        - PREREG
        - PRE_REGISTRATION
        - PRE_REGISTRATION_ADMIN
+       - PRINT_PARTNER
        - PUBLISH_ACTIVATE_ID_ALL_INDIVIDUAL
        - PUBLISH_ANONYMOUS_PROFILE_GENERAL
        - PUBLISH_APIKEY_APPROVED_GENERAL
@@ -355,8 +356,10 @@ keycloak:
 
        - name: mpartner-default-print
          saroles: 
-           - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
+           - CREATE_SHARE
+           - PRINT_PARTNER
            - PUBLISH_CREDENTIAL_STATUS_UPDATE_GENERAL
+           - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
 
        - name: mosip-hotlist-client
          saroles:
