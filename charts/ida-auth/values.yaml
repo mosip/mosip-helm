@@ -423,6 +423,8 @@ istio:
     - uri:
         prefix: /idauthentication/v1/auth
     - uri:
+        prefix: /idauthentication/v1/kyc
+    - uri:
         prefix: /idauthentication/v1/swagger-ui
     - uri:
         prefix: /idauthentication/v1/v3/api-docs
