@@ -417,7 +417,7 @@ metrics:
 ## CAUTION: Domain name to acess Admin UI must be secure/internal/over vpn.   
 ## Slash is important!
 admin:
-   apiUrl: https://your-internal-domain-name/v1/
+   apiUrl: https://api-internal.sandbox.mosip.net/v1/
 
 ## Admin UI swagger should have only internal access. Hence linked to internal gateway
 ## We create a gateway for admin specific URL(s) listed under `hosts`
@@ -429,4 +429,4 @@ istio:
     - admin-gateway
   hosts:
     - admin.sandbox.xyz.net  
-  prefix:  /admin-ui
+  prefix:  /
