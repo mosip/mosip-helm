@@ -15,5 +15,5 @@ roleRef:
   name: {{ template "common.names.fullname" . }}
 subjects:
   - kind: ServiceAccount
-    name: {{ template "mosip_file_server.serviceAccountName" . }}
+    name: {{ template "mosipfileserver.serviceAccountName" . }}
     namespace: {{ .Release.Namespace }}
