@@ -254,12 +254,10 @@ extraEnvVars:
 ##
 extraEnvVarsCM:
   - config-server-share
-  - artifactory-share
 
 ## Secret with extra environment variables
 ##
 extraEnvVarsSecret:
-  - keycloak-client-secrets
 
 ## Extra volumes to add to the deployment
 ##
