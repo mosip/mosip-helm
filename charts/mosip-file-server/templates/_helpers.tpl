@@ -1,28 +1,28 @@
 {{/*
 Return the proper  image name
 */}}
-{{- define "mosip_file_server.image" -}}
+{{- define "mosipfileserver.image" -}}
 {{ include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global) }}
 {{- end -}}
 
 {{/*
 Return the proper image name (for the init container volume-permissions image)
 */}}
-{{- define "mosip_file_server.volumePermissions.image" -}}
+{{- define "mosipfileserver.volumePermissions.image" -}}
 {{- include "common.images.image" ( dict "imageRoot" .Values.volumePermissions.image "global" .Values.global ) -}}
 {{- end -}}
 
 {{/*
 Return the proper Docker Image Registry Secret Names
 */}}
-{{- define "mosip_file_server.imagePullSecrets" -}}
+{{- define "mosipfileserver.imagePullSecrets" -}}
 {{- include "common.images.pullSecrets" (dict "images" (list .Values.image .Values.volumePermissions.image) "global" .Values.global) -}}
 {{- end -}}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "mosip_file_server.serviceAccountName" -}}
+{{- define "mosipfileserver.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
     {{ default (printf "%s-foo" (include "common.names.fullname" .)) .Values.serviceAccount.name }}
 {{- else -}}
@@ -33,10 +33,10 @@ Create the name of the service account to use
 {{/*
 Compile all warnings into a single message.
 */}}
-{{- define "mosip_file_server.validateValues" -}}
+{{- define "mosipfileserver.validateValues" -}}
 {{- $messages := list -}}
-{{- $messages := append $messages (include "mosip_file_server.validateValues.foo" .) -}}
-{{- $messages := append $messages (include "mosip_file_server.validateValues.bar" .) -}}
+{{- $messages := append $messages (include "mosipfileserver.validateValues.foo" .) -}}
+{{- $messages := append $messages (include "mosipfileserver.validateValues.bar" .) -}}
 {{- $messages := without $messages "" -}}
 {{- $message := join "\n" $messages -}}
 
@@ -48,7 +48,7 @@ Compile all warnings into a single message.
 {{/*
 Return podAnnotations
 */}}
-{{- define "mosip_file_server.podAnnotations" -}}
+{{- define "mosipfileserver.podAnnotations" -}}
 {{- if .Values.podAnnotations }}
 {{ include "common.tplvalues.render" (dict "value" .Values.podAnnotations "context" $) }}
 {{- end }}

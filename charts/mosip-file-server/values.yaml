@@ -64,10 +64,10 @@ image:
   ##
   # pullSecrets:
   #   - myRegistryKeySecretName
-mosip_file_server:
-  mountDir: "/home/mosip/mosipvc"  # path inside docker
+mosipfileserver:
+  host: ''
+  mountDir: "/mnt/files/mosipvc/"  # path inside docker
   healthCheckUrl:  http://localhost:8080/mosipvc/
-  upgradeServerUrl: https://fileserver.sandbox.xyz.net
 
 ## Port on which this particular spring service module is running. 
 containerPort: 8080
@@ -78,7 +78,7 @@ containerPort: 8080
 startupProbe:
   enabled: true
   httpGet:
-    path: "/mosipvc/"
+    path: "/files/mosipvc/"
     port: 8080
   initialDelaySeconds: 0
   periodSeconds: 30 
@@ -113,8 +113,8 @@ readinessProbe:
 
 ## Command and args for running the container (set to default if not set). Use array form
 ##
-command: []
-args: []
+command: ["/bin/bash"]
+args: ["-c", "mkdir -p ~/files/mosipvc/ ~/files/mobileapp/ && cp /mnt/files/mosipvc/* /home/mosip/files/mosipvc/ && /bin/bash  /home/mosip/get-cert.sh && echo 'starting nginx'&& nginx && sleep infinity;"]
 
 ## Deployment pod host aliases
 ## https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/
@@ -244,12 +244,16 @@ updateStrategy:
 ##     value: "bar"
 ##
 ## TODO: the below env variable is not used, but required.  Remove it later
-extraEnvVars: 
-
+extraEnvVars:
+  - name: auth_url_env
+    value: http://authmanager.kernel/
+  - name: key_url_env
+    value: http://keymanager.keymanager/
 
 ## ConfigMap with extra environment variables
 ##
 extraEnvVarsCM:
+  - config-server-share
 
 ## Secret with extra environment variables
 ##
@@ -417,9 +421,11 @@ metrics:
 
 ## Only internal access
 istio:
-  enabled: false
+  enabled: true
+  existingGateway: ''             ## istio-system/public or istio-system/internal
+  # ingressController is only valid if existingGateway is null/empty
   ingressController:
-    name: ingressgateway-internal
-  host: fileserver.sandbox.xyz.net
-  prefix: /mosipvc
+    # for public, istio: ingressgateway && for internal, istio: ingressgateway-internal
+    istio: ingressgateway
+  prefix: /files/mosipvc/
 

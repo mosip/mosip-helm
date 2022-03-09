@@ -108,12 +108,14 @@ spec:
             {{- end }}
             {{- end }}
             {{- if .Values.extraEnvVarsSecret }}
+            {{- range .Values.extraEnvVarsSecret }}
             - secretRef:
-                name: {{ include "common.tplvalues.render" (dict "value" .Values.extraEnvVarsSecret "context" $) }}
+                name: {{ . }}
+            {{- end }}
             {{- end }}
           volumeMounts:
-            - name: maven
-              mountPath:  {{ .Values.regclient.mountDir }}/
+            - name: maven-xml-and-regclient-certs
+              mountPath:  {{ .Values.regclient.mountDir }}
             - name: landing-page
               mountPath:  /var/www/html/index.html
               subPath: index.html
@@ -142,14 +144,18 @@ spec:
         {{- include "common.tplvalues.render" ( dict "value" .Values.sidecars "context" $) | nindent 8 }}
         {{- end }}
       volumes:
-        - name: maven
-          configMap:
-            name: {{ template "common.names.fullname" . }}  
-            items:
-              - key: maven-metadata.xml
-                path: maven-metadata.xml
-              - key: logback.xml
-                path: logback.xml
+        - name: maven-xml-and-regclient-certs
+          projected:
+            sources:
+              - configMap:
+                  name: regclient-certs
+              - configMap:
+                  name: {{ template "common.names.fullname" . }}
+                  items:
+                    - key: maven-metadata.xml
+                      path: maven-metadata.xml
+                    - key: logback.xml
+                      path: logback.xml
     
         - name: landing-page
           configMap:

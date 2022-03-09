@@ -21,15 +21,15 @@ spec:
     metadata:
       annotations:
         {{- if or .Values.podAnnotations .Values.metrics.enabled }}
-        {{- include "mosip_file_server.podAnnotations" . | nindent 8 }}
+        {{- include "mosipfileserver.podAnnotations" . | nindent 8 }}
         {{- end }}
       labels: {{- include "common.labels.standard" . | nindent 8 }}
         {{- if .Values.podLabels }}
         {{- include "common.tplvalues.render" (dict "value" .Values.podLabels "context" $) | nindent 8 }}
         {{- end }}
     spec:
-      serviceAccountName: {{ template "mosip_file_server.serviceAccountName" . }}
-      {{- include "mosip_file_server.imagePullSecrets" . | nindent 6 }}
+      serviceAccountName: {{ template "mosipfileserver.serviceAccountName" . }}
+      {{- include "mosipfileserver.imagePullSecrets" . | nindent 6 }}
       {{- if .Values.hostAliases }}
       hostAliases: {{- include "common.tplvalues.render" (dict "value" .Values.hostAliases "context" $) | nindent 8 }}
       {{- end }}
@@ -73,8 +73,8 @@ spec:
           {{- include "common.tplvalues.render" (dict "value" .Values.initContainers "context" $) | nindent 8 }}
         {{- end }}
       containers:
-        - name: mosip_file_server
-          image: {{ template "mosip_file_server.image" . }}
+        - name: mosipfileserver
+          image: {{ template "mosipfileserver.image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- if .Values.lifecycleHooks }}
           lifecycle: {{- include "common.tplvalues.render" (dict "value" .Values.lifecycleHooks "context" $) | nindent 12 }}
@@ -90,7 +90,9 @@ spec:
           {{- end }}
           env:
             - name: healthcheck_url_env
-              value: {{ .Values.mosip_file_server.healthCheckUrl }}
+              value: {{ .Values.mosipfileserver.healthCheckUrl }}
+            - name: host
+              value: {{ .Values.mosipfileserver.host }}
             {{- if .Values.extraEnvVars }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}
@@ -102,13 +104,14 @@ spec:
             {{- end }}
             {{- end }}
             {{- if .Values.extraEnvVarsSecret }}
+            {{- range .Values.extraEnvVarsSecret }}
             - secretRef:
-                name: {{ include "common.tplvalues.render" (dict "value" .Values.extraEnvVarsSecret "context" $) }}
+                name: {{ . }}
+            {{- end }}
             {{- end }}
           volumeMounts:
             - name: mosipvc
-              mountPath:  {{ .Values.mosip_file_server.mountDir }}/
-
+              mountPath:  {{ .Values.mosipfileserver.mountDir }}
           ports:
             - name: container-port
               containerPort: {{ .Values.containerPort }}
@@ -133,3 +136,7 @@ spec:
         {{- if .Values.sidecars }}
         {{- include "common.tplvalues.render" ( dict "value" .Values.sidecars "context" $) | nindent 8 }}
         {{- end }}
+      volumes:
+        - name: mosipvc
+          configMap:
+            name: mosipfileserver
