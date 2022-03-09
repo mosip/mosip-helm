@@ -111,7 +111,7 @@ spec:
             {{- end }}
           volumeMounts:
             - name: mosipvc
-              mountPath:  {{ .Values.mosipfileserver.mountDir }}
+              mountPath:  {{ .Values.mosipfileserver.mountDir }}/.well-known/mosipvc/
           ports:
             - name: container-port
               containerPort: {{ .Values.containerPort }}

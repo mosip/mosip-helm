@@ -15,9 +15,9 @@ data:
   controller.json: |-
     {
        "@context": "https://w3id.org/security/v2",
-       "id": "https://{{ .Values.mosipfileserver.host }}/mosipvc/controller.json",
+       "id": "https://{{ .Values.mosipfileserver.host }}/.well-known/controller.json",
        "assertionMethod": [
-          "https://{{ .Values.mosipfileserver.host }}/mosipvc/public-key.json"
+          "https://{{ .Values.mosipfileserver.host }}/.well-known/public-key.json"
         ]
     }
   mosip-context.json: |-
@@ -28,7 +28,7 @@ data:
          },
         "https://www.w3.org/ns/odrl.jsonld", 
          {
-           "mosip": "https://{{ .Values.mosipfileserver.host }}/mosip#",
+           "mosip": "https://{{ .Values.mosipfileserver.host }}/.well-known/",
            "schema": "http://schema.org/",
            "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
            "vcVer": "mosip:vcVer",
@@ -52,7 +52,7 @@ data:
     {
       "@context": "https://w3id.org/security/v2",
       "type": "RsaVerificationKey2018",
-      "id": "https://{{ .Values.mosipfileserver.host }}/mosipvc/public-key.json",
-      "controller": "https://{{ .Values.mosipfileserver.host }}/mosipvc/controller.json",
+      "id": "https://{{ .Values.mosipfileserver.host }}/.well-known/public-key.json",
+      "controller": "https://{{ .Values.mosipfileserver.host }}/.well-known/controller.json",
       "publicKeyPem": "replace-public-key"
     }
