@@ -66,8 +66,8 @@ image:
   #   - myRegistryKeySecretName
 mosipfileserver:
   host: ''
-  mountDir: "/mnt/files/mosipvc/"  # path inside docker
-  healthCheckUrl:  http://localhost:8080/mosipvc/
+  mountDir: "/mnt/mosip-file-server"  # path inside docker
+  healthCheckUrl:  http://localhost:8080/.well-known/
 
 ## Port on which this particular spring service module is running. 
 containerPort: 8080
@@ -78,7 +78,7 @@ containerPort: 8080
 startupProbe:
   enabled: true
   httpGet:
-    path: "/files/mosipvc/"
+    path: "/.well-known/"
     port: 8080
   initialDelaySeconds: 0
   periodSeconds: 30 
@@ -89,7 +89,7 @@ startupProbe:
 livenessProbe:
   enabled: false
   httpGet:
-    path: "/mosipvc/"
+    path: "/.well-known/"
     port: 8080
   initialDelaySeconds: 20
   periodSeconds: 60 
@@ -100,7 +100,7 @@ livenessProbe:
 readinessProbe:
   enabled: false
   httpGet:
-    path: "/mosipvc/"
+    path: "/.well-known/"
     port: 8080
   initialDelaySeconds: 0
   periodSeconds: 60 
@@ -114,7 +114,7 @@ readinessProbe:
 ## Command and args for running the container (set to default if not set). Use array form
 ##
 command: ["/bin/bash"]
-args: ["-c", "mkdir -p ~/files/mosipvc/ ~/files/mobileapp/ && cp /mnt/files/mosipvc/* /home/mosip/files/mosipvc/ && /bin/bash  /home/mosip/get-cert.sh && echo 'starting nginx'&& nginx && sleep infinity;"]
+args: ["-c", "mkdir -p /home/mosip/mosip-file-server/.well-known/mosipvc/ /home/mosip/mosip-file-server/files/mobileapp/ && cp {{ .Values.mosipfileserver.mountDir }}/.well-known/mosipvc/*  /home/mosip/mosip-file-server/.well-known/mosipvc/ && /bin/bash  /home/mosip/get-cert.sh && echo 'starting nginx'&& nginx && sleep infinity;"]
 
 ## Deployment pod host aliases
 ## https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/
@@ -427,5 +427,5 @@ istio:
   ingressController:
     # for public, istio: ingressgateway && for internal, istio: ingressgateway-internal
     istio: ingressgateway
-  prefix: /files/mosipvc/
+  prefix: /.well-known/
 
