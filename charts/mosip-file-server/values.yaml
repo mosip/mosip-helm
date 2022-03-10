@@ -114,7 +114,7 @@ readinessProbe:
 ## Command and args for running the container (set to default if not set). Use array form
 ##
 command: ["/bin/bash"]
-args: ["-c", "mkdir -p /home/mosip/mosip-file-server/.well-known/mosipvc/ /home/mosip/mosip-file-server/.well-known/mobileapp/ && cp {{ .Values.mosipfileserver.mountDir }}/.well-known/mosipvc/*  /home/mosip/mosip-file-server/.well-known/mosipvc/ && /bin/bash  /home/mosip/get-cert.sh && echo 'starting nginx'&& nginx && sleep infinity;"]
+args: ["-c", "mkdir -p /home/mosip/mosip-file-server/.well-known/mosipvc/ /home/mosip/mosip-file-server/files/mobileapp/ && cp {{ .Values.mosipfileserver.mountDir }}/.well-known/mosipvc/*  /home/mosip/mosip-file-server/.well-known/mosipvc/ && /bin/bash  /home/mosip/get-cert.sh && echo 'starting nginx'&& nginx && sleep infinity;"]
 
 ## Deployment pod host aliases
 ## https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/
