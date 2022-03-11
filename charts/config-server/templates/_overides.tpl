@@ -181,7 +181,7 @@ All env variables that are accessed from mosip config properties
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.softhsmKernel }}
-      key: softhsm-security-pin
+      key: security-pin
 
 {{- if .Values.installedModules.ida }}
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SOFTHSM_IDA_PIN
