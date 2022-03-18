@@ -420,6 +420,6 @@ istio:
   prefix: /v1/admin
   corsPolicy:
     allowOrigins:
-    - exact: https://admin.sandbox.xyz.net
+    - prefix: https://admin.sandbox.xyz.net
     allowCredentials: true
 
