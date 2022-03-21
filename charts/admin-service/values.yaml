@@ -422,4 +422,17 @@ istio:
     allowOrigins:
     - prefix: https://admin.sandbox.xyz.net
     allowCredentials: true
+    allowHeaders:
+    - Accept
+    - Accept-Encoding
+    - Accept-Language
+    - Connection
+    - Cookie
+    - Host
+    - Sec-Fetch-Dest
+    - Sec-Fetch-Mode
+    - Sec-Fetch-Site
+    - Sec-Fetch-User
+    - Upgrade-Insecure-Requests
+    - User-Agent
 
