@@ -423,20 +423,22 @@ istio:
     - prefix: https://admin.sandbox.xyz.net
     allowCredentials: true
     allowHeaders:
-    - Accept
-    - Accept-Encoding
-    - Accept-Language
-    - Content-Type
-    - Connection
-    - Cookie
-    - Host
-    - Sec-Fetch-Dest
-    - Sec-Fetch-Mode
-    - Sec-Fetch-Site
-    - Sec-Fetch-User
-    - Upgrade-Insecure-Requests
-    - User-Agent
-    - Referer
-    - sec-ch-ua
-    - sec-ch-ua-mobile
-    - sec-ch-ua-platform
+      - Accept
+      - Accept-Encoding
+      - Accept-Language
+      - Connection
+      - Content-Type
+      - Cookie
+      - Host
+      - Referer
+      - Sec-Fetch-Dest
+      - Sec-Fetch-Mode
+      - Sec-Fetch-Site
+      - Sec-Fetch-User
+      - Origin
+      - Upgrade-Insecure-Requests
+      - User-Agent
+      - sec-ch-ua
+      - sec-ch-ua-mobile
+      - sec-ch-ua-platform
+
