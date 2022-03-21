@@ -426,6 +426,7 @@ istio:
     - Accept
     - Accept-Encoding
     - Accept-Language
+    - Content-Type
     - Connection
     - Cookie
     - Host
@@ -435,4 +436,7 @@ istio:
     - Sec-Fetch-User
     - Upgrade-Insecure-Requests
     - User-Agent
-
+    - Referer
+    - sec-ch-ua
+    - sec-ch-ua-mobile
+    - sec-ch-ua-platform
