@@ -8,7 +8,7 @@ image:
   repository: mosipdev/postgres-init
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: develop
+  tag: 1.2.0.1
 
 imagePullSecrets: []
 nameOverride: ""
@@ -221,6 +221,7 @@ databases:
     enabled: true
     host: "postgres-postgresql"
     port: 5432
+    ENV_VERSION_FLAG: false
     su:
       user: postgres
       secret: 
