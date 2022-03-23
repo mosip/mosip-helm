@@ -43,7 +43,7 @@ jobs:
             echo "Pullpath: $fullpath"
             fullname=$(basename "$line")
             echo "Filename: $fullname"
-            tar -cvzf ~/tar_files/$fullname.tgz ./$fullpath
+            tar -cvzf ~/tar_files/$fullname-${{ github.event.inputs.git-ref }}.tgz ./$fullpath
           done < tmp.txt
 
       - name: Upload tar as Artifact
@@ -62,7 +62,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: tar_charts
-          path: ./${{ github.event.inputs.git-ref }}/
+          path: ./
 
       - name: Commit Changes to mosip-helm Repository
         uses: EndBug/add-and-commit@v7
