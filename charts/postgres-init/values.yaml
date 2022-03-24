@@ -221,6 +221,8 @@ databases:
     enabled: true
     host: "postgres-postgresql"
     port: 5432
+    # Note: This flag is used update datashare domain in partner policies according to deployment version( i.e v2/v3 )
+    # Set flag ENV_VERSION_FLAG to true for v2 envs and false to v3 envs.
     ENV_VERSION_FLAG: false
     su:
       user: postgres
