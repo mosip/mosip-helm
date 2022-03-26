@@ -1,0 +1,67 @@
+{{ if .Values.debezium.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: debezium-deploy
+  labels:
+    app: debezium
+spec:
+  replicas: {{ .Values.debezium.replicaCount }}
+  selector:
+    matchLabels:
+      app: debezium
+  template:
+    metadata:
+      labels:
+        app: debezium
+    spec:
+      containers:
+      - name: debezium-container
+        image: {{ .Values.debezium.image }}
+        imagePullPolicy: {{ .Values.debezium.imagePullPolicy }}
+        env:
+          - name: BOOTSTRAP_SERVERS
+            value: {{ .Values.debezium.kafka.server }}
+          - name: GROUP_ID
+            value: {{ .Values.debezium.kafka.groupId | quote }}
+          - name: OFFSET_STORAGE_TOPIC
+            value: {{ .Values.debezium.kafka.topics.offset }}
+          - name: CONFIG_STORAGE_TOPIC
+            value: {{ .Values.debezium.kafka.topics.config }}
+          - name: STATUS_STORAGE_TOPIC
+            value: {{ .Values.debezium.kafka.topics.status }}
+        ports:
+        - containerPort: {{ .Values.debezium.port }}
+      - name: debezium-fixer
+        image: {{ .Values.debezium.fixer_container.image }}
+        imagePullPolicy: {{ .Values.debezium.fixer_container.imagePullPolicy }}
+        env:
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: STARTUP_DELAY
+          value: {{ .Values.debezium.fixer_container.startup_delay }}
+        - name: PROBE_TIME_PERIOD
+          value: {{ .Values.debezium.fixer_container.probe_time_period }}
+        - name: ERROR_LEVEL1
+          value: {{ .Values.debezium.fixer_container.error_level1 | quote }}
+        - name: ERROR_LEVEL2
+          value: {{ .Values.debezium.fixer_container.error_level2 | quote }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: debezium-service
+  labels:
+    app: debezium-service
+spec:
+  type: ClusterIP
+  ports:
+    - name: debezium
+      protocol: TCP
+      port: {{ .Values.debezium.port }}
+  selector:
+      app: debezium
+
+{{ end }}

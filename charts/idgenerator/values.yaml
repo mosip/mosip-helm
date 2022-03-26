@@ -52,8 +52,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipid/kernel-idgenerator-service
-  tag: 1.1.5.3
+  repository: mosipdev/kernel-idgenerator-service
+  tag: 1.2.0.1
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -73,12 +73,24 @@ springServicePort: 8080
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
 ## TODO: probes disabled as they don't work for some reason
+
+startupProbe:
+  enabled: false
+  httpGet:
+    path: /v1/idgenerator/actuator/health 
+    port: 8080
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 30
+  successThreshold: 1
+
 livenessProbe:
   enabled: false
   httpGet:
     path: /v1/idgenerator/actuator/health 
     port: 8080
-  initialDelaySeconds: 120
+  initialDelaySeconds: 20
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -89,12 +101,11 @@ readinessProbe:
   httpGet:
     path: /v1/idgenerator/actuator/health 
     port: 8080
-  initialDelaySeconds: 60 
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
   successThreshold: 1
-
 
 ##
 # existingConfigmap:
@@ -408,4 +419,4 @@ metrics:
 istio:
   enabled: true 
   gateway: istio-system/internal
-  prefix:  /v1/auditmanager
+  prefix:  /v1/idgenerator

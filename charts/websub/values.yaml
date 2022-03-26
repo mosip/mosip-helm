@@ -52,8 +52,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipid/websub-service
-  tag: 1.1.5.1
+  repository: mosipdev/websub-service
+  tag: 1.2.0.1
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -66,18 +66,25 @@ image:
   # pullSecrets:
   #   - myRegistryKeySecretName
 
-## Port on which this particular spring service module is running. 
-springServicePort: 80
-
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
 ## TODO: Better probes to be added.
+startupProbe:
+  enabled: true
+  tcpSocket:
+    port: 9191
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5 
+  failureThreshold: 30
+  successThreshold: 1
+
 livenessProbe:
   enabled: true
   tcpSocket:
     port: 9191
-  initialDelaySeconds: 120 
+  initialDelaySeconds: 20
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -87,7 +94,7 @@ readinessProbe:
   enabled: true
   tcpSocket:
     port: 9191
-  initialDelaySeconds: 30 
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -235,6 +242,7 @@ extraEnvVars: []
 ##
 extraEnvVarsCM:
   - global
+  - config-server-share
 
 ## Secret with extra environment variables
 ##
@@ -403,21 +411,8 @@ metrics:
 ## Websub needs public access.
 istio:
   enabled: true
-  gateway: istio-system/public
+  gateway: istio-system/internal
+  prefix: /hub
 
-## TODO: read postgres hostname from configmap 
-## TODO: implement a dynamic way of providing republish_time
-## datasource_secret:  Kubernetes secret for websubuser
 websub:
-  datasource_url: jdbc:postgresql://postgres-postgresql.postgres:5432/mosip_websub 
-  datasource_username: websubuser
-  datasource_secret:
-    name: db-common-secrets
-    key: db-dbuser-password 
-  retry_count: 7
-  retry_interval: 1000
-  retry_backofffactor: 2.0
-  retry_maxwaitinterval: 65000
   port: 9191
-  republish_time: 2021-05-25T08:07:11.645Z
-

@@ -1,0 +1,12 @@
+dependencies:
+- name: cp-helm-charts
+  repository: https://confluentinc.github.io/cp-helm-charts/
+  version: 0.6.1
+- name: kafka
+  repository: https://charts.bitnami.com/bitnami
+  version: 16.1.0
+- name: elasticsearch
+  repository: https://charts.bitnami.com/bitnami
+  version: 17.9.16
+digest: sha256:90fee1f80d1b6b385468d2dc36e95a0874d16384fb625d307d6b6af38836b341
+generated: "2022-03-26T11:54:57.319196+05:30"

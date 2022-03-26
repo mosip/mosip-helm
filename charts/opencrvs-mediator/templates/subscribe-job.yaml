@@ -1,0 +1,48 @@
+{{- if .Values.mediator.opencrvsSubscribeOnStartup }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ template "common.names.fullname" . }}-subscribe
+  labels:
+    {{- include "common.labels.standard" . | nindent 4 }}
+    {{- if .Values.commonLabels }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
+    {{- end }}
+  annotations:
+    {{- if .Values.commonAnnotations }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
+    {{- end }}
+    "helm.sh/hook": post-install
+spec:
+  template:
+    metadata:
+      annotations:
+        {{- if .Values.commonAnnotations }}
+        {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 8 }}
+        {{- end }}
+        {{- if .Values.podAnnotations }}
+        {{- include "common.tplvalues.render" ( dict "value" .Values.podAnnotations "context" $ ) | nindent 8 }}
+        {{- end }}
+      labels:
+        sidecar.istio.io/inject: "false"
+        {{- include "common.labels.standard" . | nindent 8 }}
+        {{- if .Values.commonLabels }}
+        {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
+        {{- end }}
+        {{- if .Values.podLabels }}
+        {{- include "common.tplvalues.render" ( dict "value" .Values.podLabels "context" $ ) | nindent 8 }}
+        {{- end }}
+    spec:
+      serviceAccountName: {{- include "mediator.serviceAccountName" . | nindent 8 }}
+      {{- include "mediator.imagePullSecrets" . | nindent 6 }}
+      restartPolicy: OnFailure
+      containers:
+      - name: subscriber
+        image: alpine
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        command:
+        - /bin/sh
+        args:
+        - -c
+        - 'echo "Waiting for services.." && sleep {{ .Values.mediator.opencrvsSubscribeOnStartupDelay }} && apk add curl jq && curl -s -v -XPOST http://{{ template "common.names.fullname" . }}/subscribe'
+{{- end }}

@@ -52,8 +52,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipid/data-share-service
-  tag: 1.1.5.2
+  repository: mosipdev/data-share-service
+  tag: 1.2.0.1
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -72,12 +72,23 @@ springServicePort: 8097
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
+startupProbe:
+  enabled: true
+  httpGet:
+    path: /v1/datashare/actuator/health
+    port: 8097
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5 
+  failureThreshold: 30
+  successThreshold: 1
+
 livenessProbe:
   enabled: true
   httpGet:
     path: /v1/datashare/actuator/health
     port: 8097
-  initialDelaySeconds: 120
+  initialDelaySeconds: 20
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -88,7 +99,7 @@ readinessProbe:
   httpGet:
     path: /v1/datashare/actuator/health
     port: 8097
-  initialDelaySeconds: 60 
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -407,4 +418,4 @@ metrics:
 istio:
   enabled: true 
   gateway: istio-system/internal
-  prefix: /v1/datashare/
+  prefix: /v1/datashare

@@ -1,0 +1,111 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mosipfileserver
+  namespace: {{ .Release.Namespace }}
+  labels: {{- include "common.labels.standard" . | nindent 4 }}
+    {{- if .Values.commonLabels }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
+    {{- end }}
+  {{- if .Values.commonAnnotations }}
+  annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
+  {{- end }}
+
+data:
+  controller.json: |-
+    {
+       "@context": "https://w3id.org/security/v2",
+       "id": "https://{{ .Values.mosipfileserver.host }}/.well-known/controller.json",
+       "assertionMethod": [
+          "https://{{ .Values.mosipfileserver.host }}/.well-known/public-key.json"
+        ]
+    }
+  mosip-context.json: |-
+    {
+      "@context": [{ "@version": 1.1 },
+                     "https://www.w3.org/ns/odrl.jsonld", 
+                     { "mosip": "https://{{  .Values.mosipfileserver.host  }}/.well-known#",
+                       "schema": "http://schema.org/",
+                       "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+                       "vcVer": "mosip:vcVer",
+                       "UIN": "mosip:UIN",
+                       "addressLine1": {
+                                          "@id": "https://{{ .Values.mosipfileserver.host }}/.well-known#addressLine1",
+                                          "@context": {"value": "rdf:value", "lang": "@language"}
+                       },
+                      "addressLine2": {
+                                          "@id": "https://{{ .Values.mosipfileserver.host }}/.well-known#addressLine2",
+                                          "@context": {"value": "rdf:value", "lang": "@language"}
+                      },
+                      "addressLine3": {
+                                          "@id": "https://{{ .Values.mosipfileserver.host }}/.well-known#addressLine3",
+                                          "@context": {"value": "rdf:value", "lang": "@language"}
+                      },
+                      "city": {
+                                          "@id": "https://{{ .Values.mosipfileserver.host }}/.well-known#city",
+                                          "@context": {"value": "rdf:value", "lang": "@language"}
+                      },
+                      "dateOfBirth": "mosip:dateOfBirth",
+                      "email": "mosip:email",
+                      "fullName": {
+                                          "@id": "https://{{ .Values.mosipfileserver.host }}/.well-known#fullName",
+                                          "@context": {"value": "rdf:value", "lang": "@language"
+                                  }
+                      },
+                      "gender": {
+                                          "@id": "https://{{ .Values.mosipfileserver.host }}/.well-known#gender",
+                                          "@context": {"value": "rdf:value", "lang": "@language"
+                                }
+                      },
+                      "phone": "mosip:phone",
+                      "postalCode": "mosip:postalCode",
+                      "province": {
+                                          "@id": "https://{{ .Values.mosipfileserver.host }}/.well-known#province",
+                                          "@context": {"value": "rdf:value", "lang": "@language"
+                      }
+                     },
+                    "region": {
+                                          "@id": "https://{{ .Values.mosipfileserver.host }}/.well-known#region",
+                                          "@context": {"value": "rdf:value", "lang": "@language"
+                              }
+                    },
+                    "biometrics": "mosip:biometrics"
+      }]
+    }
+
+  mosip-context-1.json: |-
+    {
+      "@context": [
+         { 
+           "@version": 1.1 
+         },
+        "https://www.w3.org/ns/odrl.jsonld", 
+         {
+           "mosip": "https://{{ .Values.mosipfileserver.host }}/.well-known/",
+           "schema": "http://schema.org/",
+           "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+           "vcVer": "mosip:vcVer",
+           "UIN": "mosip:UIN",
+           "addressLine1": "mosip:addressLine1",
+           "addressLine2": "mosip:addressLine2",
+           "addressLine3": "mosip:addressLine3",
+           "city": "mosip:city",
+           "dateOfBirth": "mosip:dateOfBirth",
+           "email": "mosip:email",
+           "fullName": "mosip:fullName",
+           "gender": "mosip:gender",
+           "phone": "mosip:phone",
+           "postalCode": "mosip:postalCode",
+           "province": "mosip:province",
+           "region": "mosip:region",
+           "biometrics": "mosip:biometrics"
+         }]
+    }
+  public-key.json: |-
+    {
+      "@context": "https://w3id.org/security/v2",
+      "type": "RsaVerificationKey2018",
+      "id": "https://{{ .Values.mosipfileserver.host }}/.well-known/public-key.json",
+      "controller": "https://{{ .Values.mosipfileserver.host }}/.well-known/controller.json",
+      "publicKeyPem": "replace-public-key"
+    }

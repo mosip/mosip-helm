@@ -94,25 +94,6 @@ spec:
               value: {{ .Values.containerSecurityContext.runAsUser }}
             - name: JDK_JAVA_OPTIONS
               value: {{ .Values.additionalResources.javaOpts }}
-            - name: hub_datasource_url_env
-              value: {{ .Values.websub.datasource_url }}
-            - name: hub_datasource_username_env
-              value: {{ .Values.websub.datasource_username }}
-            - name: hub_datasource_password_env
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.websub.datasource_secret.name }}
-                  key: {{ .Values.websub.datasource_secret.key }}
-            - name: hub_retry_count_env
-              value: {{ .Values.websub.retry_count | quote}}
-            - name: hub_retry_interval_env
-              value: {{ .Values.websub.retry_interval | quote}}
-            - name: hub_retry_backoff_factor_env
-              value: {{ .Values.websub.retry_backofffactor | quote }}
-            - name: hub_retry_max_wait_interval_env
-              value: {{ .Values.websub.retry_maxwaitinterval | quote}}
-            - name: hub_restart_republish_time_offset_env
-              value: {{ .Values.websub.republish_time }}
             {{- if .Values.extraEnvVars }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}
@@ -129,10 +110,15 @@ spec:
             {{- end }}
           ports:
             - name: spring-service
-              containerPort: {{ .Values.springServicePort }}
+              containerPort: {{ .Values.websub.port }}
            
           {{- if .Values.resources }}
           resources: {{- toYaml .Values.resources | nindent 12 }}
+          {{- end }}
+          {{- if .Values.startupProbe.enabled }}
+          startupProbe: {{- include "common.tplvalues.render" (dict "value" (omit .Values.startupProbe "enabled") "context" $) | nindent 12 }}
+          {{- else if .Values.customStartupProbe }}
+          startupProbe: {{- include "common.tplvalues.render" (dict "value" .Values.customStartupProbe "context" $) | nindent 12 }}
           {{- end }}
           {{- if .Values.livenessProbe.enabled }}
           livenessProbe: {{- include "common.tplvalues.render" (dict "value" (omit .Values.livenessProbe "enabled") "context" $) | nindent 12 }}

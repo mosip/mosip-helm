@@ -1,0 +1,21 @@
+apiVersion: v2
+name: keygen
+description: A Helm chart to generate keys
+type: application
+version: 12.0.1
+appVersion: ""
+dependencies:
+  - name: common
+    repository: https://charts.bitnami.com/bitnami
+    tags:
+      - bitnami-common
+    version: 1.x.x
+home: https://mosip.io
+keywords:
+  - mosip
+  - keymanager 
+  - keygen
+  - kernel
+maintainers:
+  - email: info@mosip.io
+    name: MOSIP 
