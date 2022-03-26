@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: mosipid/keycloak-init 
+  repository: mosipdev/keycloak-init 
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 1.2.0
+  tag: develop
 
 imagePullSecrets: []
 nameOverride: ""
