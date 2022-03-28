@@ -34,7 +34,7 @@ jobs:
 
       - name: Generate tar files
         run: |
-          mkdir -p ~/tar_files
+          helm repo add mosip https://mosip.github.io/mosip-helm
           cd charts &&
           find * -prune -type d > ../tmp.txt
           cd ..
