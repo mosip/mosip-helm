@@ -44,6 +44,7 @@ jobs:
             echo "Pullpath: $fullpath"
             fullname=$(basename "$line")
             echo "Filename: $fullname"
+            helm dependency update charts/$fullpath/
             helm package charts/$fullpath
           done < tmp.txt
 
