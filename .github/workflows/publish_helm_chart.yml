@@ -37,20 +37,21 @@ jobs:
           mkdir -p ~/tar_files
           cd charts &&
           find * -prune -type d > tmp.txt
+          cd ..
           while IFS= read -r line
           do
             fullpath=$line
             echo "Pullpath: $fullpath"
             fullname=$(basename "$line")
             echo "Filename: $fullname"
-            tar -cvzf ~/tar_files/$fullname.tgz ./$fullpath
+            helm package charts/$fullpath
           done < tmp.txt
 
       - name: Upload tar as Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: tar_charts
-          path: ~/tar_files/*.tgz
+          name: charts
+          path: ./*.tgz
           retention-days: 1
 
       - name: Checkout branch for publishing
@@ -61,8 +62,8 @@ jobs:
       - name: Download tar from Artifacts
         uses: actions/download-artifact@v2
         with:
-          name: tar_charts
-          path: ./${{ github.event.inputs.git-ref }}/
+          name: charts
+          path: ./
 
       - name: Commit Changes to mosip-helm Repository
         uses: EndBug/add-and-commit@v7
