@@ -36,7 +36,7 @@ jobs:
         run: |
           mkdir -p ~/tar_files
           cd charts &&
-          find * -prune -type d > tmp.txt
+          find * -prune -type d > ../tmp.txt
           cd ..
           while IFS= read -r line
           do
