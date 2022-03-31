@@ -412,12 +412,14 @@ metrics:
 ## Override these while installing this Helm.
 landing:
   name: dev3
+  version: develop
   api: api.sandbox.mosip.net
   apiInternal: api-internal.sandbox.mosip.net
   admin: admin.sandbox.mosip.net
   prereg: prereg.sandbox.mosip.net
   kafka: kafka.sandbox.mosip.net
   activemq: activemq.sandbox.mosip.net
+  kibana: kibana.sandbox.mosip.net
   minio: minio.sandbox.mosip.net
   keycloak: iam.sandbox.mosip.net
   regclient: reclient.sandbox.mosip.net

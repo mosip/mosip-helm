@@ -30,6 +30,7 @@ data:
         <img src="https://mosip.github.io/mosip-helm/mosip_logo.png" width="100px">
         <h1>MOSIP Deployment</h1>
         <h2><b>{{ .Values.landing.name }}</b></h2>
+        <h3>Version: {{ .Values.landing.version }}</h3>
       </div>
     </header>
     <ul class="w3-ul w3-large w3-padding">
@@ -37,6 +38,7 @@ data:
       <li><a href="https://{{ .Values.landing.admin }}">Admin<a></li>
       <li><a href="https://{{ .Values.landing.kafka }}">Kafka<a></li>
       <li><a href="https://{{ .Values.landing.keycloak }}">Keycloak<a></li>
+      <li><a href="https://{{ .Values.landing.kibana }}">Kibana<a></li>
       <li><a href="https://{{ .Values.landing.minio }}">MinIO<a></li>
       <li><a href="https://{{ .Values.landing.prereg }}/pre-registration-ui/">Pre-registration<a></li>
       <li><a href="https://{{ .Values.landing.regclient }}">Registration Client<a></li>
