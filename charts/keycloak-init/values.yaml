@@ -406,6 +406,11 @@ keycloak:
            - CREATE_SHARE
            - PRINT_PARTNER
 
+       - name: mpartner-default-mobile
+         mappers: []
+         saroles: 
+           - CREDENTIAL_PARTNER
+
        - name: mosip-hotlist-client
 
          saroles:
@@ -464,4 +469,6 @@ clientSecrets:
   - name: mpartner_default_print_secret
     secret: ""
   - name: mosip_hotlist_client_secret
+    secret: ""
+  - name: mpartner_default_mobile_secret
     secret: ""
