@@ -12,6 +12,13 @@ metadata:
   {{- end }}
 data:
   artifactory_url_env: {{ include "artifactory.baseUrl" . }}
-  iam_adapter_url_env: {{ printf "%s/%s" (include "artifactory.baseUrl" .) .Values.artifacts.iamAdapter }}
+  iam_adapter_url_env: {{ printf "%s%s" (include "artifactory.baseUrl" .) .Values.artifacts.iamAdapter }}
+  iam_adapter_regproc_url_env: {{ printf "%s%s" (include "artifactory.baseUrl" .) .Values.artifacts.iamAdapterRegproc }}
+  iam_adapter_regproc_ext_url_env: {{ printf "%s%s" (include "artifactory.baseUrl" .) .Values.artifacts.iamAdapterRegprocExt }}
   zip_file_path: {{ .Values.artifacts.hsmClientZip }}
-  cache_provider_url_env: {{ printf "%s/%s" (include "artifactory.baseUrl" .) .Values.artifacts.cacheProvider }}
+  cache_provider_url_env: {{ printf "%s%s" (include "artifactory.baseUrl" .) .Values.artifacts.cacheProvider }}
+  runtime_dep_url_env: {{ printf "%s%s" (include "artifactory.baseUrl" .) .Values.artifacts.runtimeDep}}
+  regproc_jars_env:  {{ .Values.artifacts.regprocJars}}
+  runtime_dep_url_env: {{ printf "%s%s" (include "artifactory.baseUrl" .) .Values.artifacts.runtimeDepUrl }}
+  preregistration_i18n_bundle_url_env: {{ printf "%s%s" (include "artifactory.baseUrl" .) .Values.artifacts.preregistrationBundleUrl }}
+  virusscanner_url_env: {{ printf "%s%s" (include "artifactory.baseUrl" .) .Values.artifacts.virusscannerUrl }}

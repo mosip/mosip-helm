@@ -52,8 +52,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipid/kernel-notification-service
-  tag: 1.1.5.3
+  repository: mosipdev/kernel-notification-service
+  tag: develop
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -72,12 +72,23 @@ springServicePort: 8083
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
+startupProbe:
+  enabled: true
+  httpGet:
+    path: /v1/notifier/actuator/health 
+    port: 8083
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5 
+  failureThreshold: 30
+  successThreshold: 1
+
 livenessProbe:
   enabled: true
   httpGet:
     path: /v1/notifier/actuator/health 
     port: 8083
-  initialDelaySeconds: 60
+  initialDelaySeconds: 20
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -88,7 +99,7 @@ readinessProbe:
   httpGet:
     path: /v1/notifier/actuator/health 
     port: 8083
-  initialDelaySeconds: 30 
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -232,9 +243,7 @@ updateStrategy:
 ##     value: "bar"
 ##
 ## The runtime url below is assumed to be artifactory url for default installation. Change as per your deployment.
-extraEnvVars: 
-  - name: runtime_dep_url_env
-    value: http://artifactory.artifactory/artifactory/libs-release-local/io/mosip/kernel/
+extraEnvVars: []
 
 ## ConfigMap with extra environment variables that used
 ##

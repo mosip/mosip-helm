@@ -15,11 +15,11 @@ spec:
   hosts:
   - "*"
   gateways:
-  - {{ .Values.istio.gateway }}
+  {{- include "common.tplvalues.render" ( dict "value" .Values.istio.gateways "context" $ ) | nindent 4 }}
   http:
   - match:
       - uri:
-          prefix: /commons/v1/packetmanager/
+          prefix: {{ .Values.istio.prefix }}
     route:
     - destination:
         host: {{ template "common.names.fullname" . }}

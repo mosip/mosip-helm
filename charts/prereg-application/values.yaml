@@ -52,8 +52,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipid/pre-registration-application-service
-  tag: 1.1.5.2
+  repository: mosipdev/pre-registration-application-service
+  tag: develop
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -72,12 +72,23 @@ springServicePort: 9090
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
+startupProbe:
+  enabled: true
+  httpGet:
+    path: /preregistration/v1/actuator/health
+    port: 9090
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5 
+  failureThreshold: 30
+  successThreshold: 1
+
 livenessProbe:
   enabled: true
   httpGet:
     path: /preregistration/v1/actuator/health
     port: 9090
-  initialDelaySeconds: 120
+  initialDelaySeconds: 20
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -88,7 +99,7 @@ readinessProbe:
   httpGet:
     path: /preregistration/v1/actuator/health
     port: 9090
-  initialDelaySeconds: 60
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -407,4 +418,30 @@ istio:
   gateways: 
     - istio-system/internal
     - prereg-gateway
-  prefix: /preregistration/v1
+  match:
+    - uri:
+        prefix: /preregistration/v1/login
+    - uri:
+        prefix: /preregistration/v1/proxy
+    - uri:
+        prefix: /preregistration/v1/applications
+    - uri:
+        prefix: /preregistration/v1/documents
+    - uri:
+        prefix: /preregistration/v1/qrCode
+    - uri:
+        prefix: /preregistration/v1/notification
+    - uri:
+        prefix: /preregistration/v1/uispec
+    - uri:
+        prefix: /preregistration/v1/logAudit
+    - uri:
+        prefix: /preregistration/v1/swagger-ui.html
+    - uri:
+        prefix: /preregistration/v1/webjars
+    - uri:
+        prefix: /preregistration/v1/swagger-resources
+    - uri:
+        prefix: /preregistration/v1/v2/api-docs
+    - uri:
+        prefix: /preregistration/v1/csrf

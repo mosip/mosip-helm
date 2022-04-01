@@ -53,7 +53,7 @@ service:
 image:
   registry: docker.io
   repository: mosipid/registration-processor-dmz-packet-server
-  tag: 1.0.9
+  tag: 1.1.5.2
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -72,13 +72,24 @@ springServicePort: 8082
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
-## TODO: enable probles once health urls are available
+## TODO: enable probes once health urls are available
+startupProbe:
+  enabled: false
+  httpGet:
+    path: 
+    port: 8082
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5 
+  failureThreshold: 30
+  successThreshold: 1
+
 livenessProbe:
   enabled: false
   httpGet:
     path: 
     port: 8082
-  initialDelaySeconds: 120 
+  initialDelaySeconds: 20 
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -89,7 +100,7 @@ readinessProbe:
   httpGet:
     path: 
     port: 8082
-  initialDelaySeconds: 30 
+  initialDelaySeconds: 0 
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -297,9 +308,9 @@ persistence:
     - ReadWriteMany
   size: 5Gi
   ## Asume that this PVC already exists for receiver.
-  existingClaim: regproc-receiver  
+  existingClaim: regproc-group1
   # Hardcoded in Dockerfile.
-  mountDir: /home/ftp1/LANDING_ZONE
+  mountDir: /home/mosip/landing
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
@@ -412,4 +423,4 @@ istio:
   enabled: false
   gateways: 
     - istio-system/internal
-  prefix: /registrationprocessor/v1/packetserver/
+  prefix: /registrationprocessor/v1/packetserver

@@ -52,8 +52,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipid/registration-processor-registration-status-service
-  tag: 1.1.5
+  repository: mosipdev/registration-processor-registration-status-service
+  tag: develop
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -72,12 +72,23 @@ springServicePort: 8083
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
+startupProbe:
+  enabled: true
+  httpGet:
+    path: /registrationprocessor/v1/registrationstatus/actuator/health
+    port: 8083
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5 
+  failureThreshold: 30
+  successThreshold: 1
+
 livenessProbe:
   enabled: true
   httpGet:
     path: /registrationprocessor/v1/registrationstatus/actuator/health
     port: 8083
-  initialDelaySeconds: 120 
+  initialDelaySeconds: 20 
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -88,7 +99,7 @@ readinessProbe:
   httpGet:
     path: /registrationprocessor/v1/registrationstatus/actuator/health
     port: 8083
-  initialDelaySeconds: 30 
+  initialDelaySeconds: 0 
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -230,14 +241,27 @@ updateStrategy:
 ##   - name: FOO
 ##     value: "bar"
 ##
-extraEnvVars: []
+extraEnvVars:
+  - name: artifactory_url_env
+    valueFrom:
+      configMapKeyRef:
+        name: artifactory-share
+        key: artifactory_url_env
+  - name: iam_adapter_url_env
+    valueFrom:
+      configMapKeyRef:
+        name: artifactory-share
+        key: iam_adapter_regproc_ext_url_env 
+
+## ConfigMap with extra environment variables that used
+## NOTE: we have removed artifactory from this list and passed artifactory parameters as above
+## This is done as auth adapter url required by this service is different from the default.
+extraEnvVarsCM:
+  - global
+  - config-server-share
 
 ## ConfigMap with extra environment variables that used
 ##
-extraEnvVarsCM:
-  - global
-  - config-server-share 
-  - artifactory-share
 
 ## Secret with extra environment variables
 ##
@@ -407,6 +431,5 @@ metrics:
 istio:
   enabled: true
   gateways: 
-    - istio-system/public
     - istio-system/internal
-  prefix: /registrationprocessor/v1/registrationstatus/
+  prefix: /registrationprocessor/v1/registrationstatus

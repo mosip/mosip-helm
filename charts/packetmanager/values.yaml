@@ -52,8 +52,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipid/commons-packet-service
-  tag: 1.1.5.3
+  repository: mosipdev/commons-packet-service
+  tag: develop
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -72,12 +72,23 @@ springServicePort: 8093
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
+startupProbe:
+  enabled: true
+  httpGet:
+    path: /commons/v1/packetmanager/actuator/health 
+    port: 8093
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5 
+  failureThreshold: 30
+  successThreshold: 1
+
 livenessProbe:
   enabled: true
   httpGet:
     path: /commons/v1/packetmanager/actuator/health 
     port: 8093
-  initialDelaySeconds: 120 
+  initialDelaySeconds: 20
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -88,7 +99,7 @@ readinessProbe:
   httpGet:
     path: /commons/v1/packetmanager/actuator/health
     port: 8093
-  initialDelaySeconds: 30 
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -356,7 +367,7 @@ metrics:
   podAnnotations: 
     prometheus.io/scrape: "true"
   
-  endpointPath: /v1/packetmanager/actuator/prometheus
+  endpointPath: /commons/v1/packetmanager/actuator/prometheus
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator
@@ -406,4 +417,6 @@ metrics:
 ## Only internal access
 istio:
   enabled: true
-  gateway: istio-system/internal
+  gateways: 
+    - istio-system/internal
+  prefix: /commons/v1/packetmanager

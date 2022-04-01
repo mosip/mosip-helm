@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "common.names.fullname" . }}
+  labels:
+    {{- include "common.labels.standard" . | nindent 4 }}
+    {{- if .Values.commonLabels }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
+    {{- end }}
+  annotations:
+    {{- if .Values.commonAnnotations }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
+    {{- end }}
+data:
+  opencrvs_auth_url: {{ .Values.mediator.opencrvs.authUrl }}
+  opencrvs_birth_callback_url: "https://{{ .Values.mediator.opencrvs.birthCallback.host }}{{ .Values.mediator.opencrvs.birthCallback.uri }}"
+  opencrvs_webhooks_url: {{ .Values.mediator.opencrvs.webhooksUrl }}
+  kernel_auth_adapter_available: {{ .Values.mediator.kernelAuthAdapterAvailable | quote }}
+  opencrvs_subscribe_startup: {{ .Values.mediator.opencrvsSubscribeOnStartup | quote }}
+  opencrvs_subscribe_startup_delay: {{ .Values.mediator.opencrvsSubscribeOnStartupDelay | quote }}

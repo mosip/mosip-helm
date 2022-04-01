@@ -15,16 +15,18 @@ spec:
   hosts:
   - "*"
   gateways:
-  - {{ .Values.istio.gateway }}
+  {{- include "common.tplvalues.render" ( dict "value" .Values.istio.gateways "context" $ ) | nindent 4 }}
   http:
   - match:
       - uri:
-          prefix: /v1/admin
+          prefix: {{ .Values.istio.prefix }}
     route:
     - destination:
         host: {{ template "common.names.fullname" . }}
         port:
           number: {{ .Values.service.port }}
+    corsPolicy:
+    {{- include "common.tplvalues.render" ( dict "value" .Values.istio.corsPolicy "context" $ ) | nindent 6 }}
     headers:
       request:
         set:

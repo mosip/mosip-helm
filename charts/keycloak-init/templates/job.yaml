@@ -42,14 +42,16 @@ spec:
                configMapKeyRef:
                  name: {{ .Values.keycloak.admin.userName.existingConfigMap }} 
                  key:  {{ .Values.keycloak.admin.userName.key }} 
+          - name:  INPUT_FILE
+            value: input.yaml  # Must match below file name in the mount
           envFrom:
               - secretRef:
                   name: keycloak-client-secrets
 
           volumeMounts:
             - name: keycloak-init-input
-              mountPath: /opt/mosip/input/input.yaml
-              subPath: input.yaml
+              mountPath: /opt/mosip/input/input.yaml # Same as INPUT_DIR/INPUT_FILE in docker
+              subPath: input.yaml # INPUT_FILE in docker
       volumes:
         - name: keycloak-init-input
           configMap:

@@ -21,7 +21,7 @@ data:
         <connectors>
           {{ range $i,$t := until (int .Values.replicas) }}
           {{ range tuple "master" "slave" }}
-          <connector name="{{ $fullname }}-{{ . }}-{{ $i }}">tcp://{{ $fullname }}-{{ . }}-{{ $i }}.{{ $releaseName }}-{{ . }}.{{ $releaseNamespace }}.svc.cluster.local:{{ $port }}</connector>
+          <connector name="{{ $fullname }}-{{ . }}-{{ $i }}">tcp://{{ $fullname }}-{{ . }}-{{ $i }}.{{ $releaseName }}-{{ . }}.{{ $releaseNamespace }}:{{ $port }}</connector>
           {{ end }}
           {{end}}
         </connectors>

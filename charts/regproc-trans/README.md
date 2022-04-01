@@ -1,11 +1,17 @@
-# Transaction Service
+# Regproc Transaction Service
 
-Helm chart for installing Registration Processor Transaction Service.
+Helm chart for installing Reg Proc Transaction Service.
 
-## Install
+## TL;DR
+
 ```console
-$ kubectl create namespace regproc
 $ helm repo add mosip https://mosip.github.io
-$ helm -n regproc install my-release mosip/regproc-trans
+$ helm install my-release mosip/regproc-trans
 ```
+## Prerequisites
+
+- Kubernetes 1.12+
+- Helm 3.1.0
+- PV provisioner support in the underlying infrastructure
+- ReadWriteMany volumes for deployment scaling
 

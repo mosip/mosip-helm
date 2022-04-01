@@ -1,0 +1,21 @@
+{{- if .Values.databases.mosip_hotlist.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-hotlist-init-env-config
+  namespace: {{ .Release.Namespace }}
+  labels: {{- include "common.labels.standard" . | nindent 4 }}
+    app.kubernetes.io/component: postgres
+    {{- if .Values.commonLabels }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
+    {{- end }}
+  {{- if .Values.commonAnnotations }}
+  annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
+  {{- end }}
+data:
+  MOSIP_DB_NAME: mosip_hotlist
+  DB_SERVERIP: {{ .Values.databases.mosip_hotlist.host | quote }}
+  DB_PORT: {{ .Values.databases.mosip_hotlist.port | quote }}
+  SU_USER: {{ .Values.databases.mosip_hotlist.su.user | quote }}
+  DML_FLAG: {{ .Values.databases.mosip_hotlist.dml | quote }}
+{{- end }}

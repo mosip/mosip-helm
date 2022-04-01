@@ -50,7 +50,7 @@ service:
 
 image:
   registry: docker.io
-  repository: mkodockx/docker-clamav
+  repository: clamav/clamav
   tag: latest
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -69,22 +69,34 @@ containerPort: 3310
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
+## TODO: enable proper probes. These don't work, so disabled for now.
+startupProbe:
+  enabled: false
+  httpGet:
+    port: 3310
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5 
+  failureThreshold: 30
+  successThreshold: 1
+
 livenessProbe:
-  enabled: true
+  enabled: false
   exec:
     command:
       - ./check.sh
-  initialDelaySeconds: 60
+  initialDelaySeconds: 20
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
   successThreshold: 1
+
 readinessProbe:
-  enabled: true
+  enabled: false
   exec:
     command:
       - ./check.sh
-  initialDelaySeconds: 30
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6

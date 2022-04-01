@@ -18,16 +18,18 @@ data:
     <html>
     <style>
     .content {
-      max-width: 500px;
+      max-width: 700px;
       margin: auto;
+      text-align: center;
     }
     </style>
     <body>
       <div class="content">
         <img src="https://mosip.github.io/mosip-helm/mosip_logo.png">
         <h2 style="font-family:verdana;"> Registration Client</h2>
-        <h4 style="font-family:verdana;"> Download</h4>
         <a href="https://{{ .Values.istio.host }}/registration-client/{{ .Values.regclient.version  }}/reg-client.zip" style="font-family:verdana;">Windows 10</a>
+        <h4 style="font-family:verdana;"> Registration Client Test Utility</h2>
+        <a href="https://{{ .Values.istio.host }}/registration-client/{{ .Values.regclient.version  }}/registration-test-utility.zip" style="font-family:verdana;">Windows 10</a>
       </div>
     </body>
     </html>
