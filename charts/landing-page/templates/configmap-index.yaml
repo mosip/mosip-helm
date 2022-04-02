@@ -109,7 +109,9 @@ data:
                  <td class="w3-monospace">https://{{ .Values.landing.apiInternal }}</td>
                </tr>
                <tr>
-                 <img src="https://www.clipartmax.com/png/full/242-2423721_logo-postgresql.png" height="30px">
+                 <td>
+                   <img src="https://www.clipartmax.com/png/full/242-2423721_logo-postgresql.png" height="30px">
+                 </td>
                  <td class="w3-monospace">{{ .Values.landing.postgres.host }}:{{ .Values.landing.postgres.port }}</td>
                </tr>
              </table>
