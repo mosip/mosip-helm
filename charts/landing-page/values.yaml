@@ -423,7 +423,9 @@ landing:
   minio: minio.sandbox.mosip.net
   keycloak: iam.sandbox.mosip.net
   regclient: reclient.sandbox.mosip.net
-  postgresPort: 5432
+  postgres:
+    host: postgres.sandbox.mosip.net
+    port: 5432
   
 ## Only internal access
 istio:
