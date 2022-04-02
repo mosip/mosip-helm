@@ -16,7 +16,7 @@ data:
   index.html: |-
     <!DOCTYPE html>
     <html>
-    <title>Laning Page</title> 
+    <title>MOSIP {{ .Values.landing.name }}</title> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
@@ -74,7 +74,7 @@ data:
           </a>
         </div>
         <div class="w3-col l2 w3-center">
-          <a href="https://{{ .Values.landing.prereg }}">
+          <a href="https://{{ .Values.landing.prereg }}/pre-registration-ui/">
           <img src="https://3588228898-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4EyCrLbFom7vj7UcMIUZ%2Fuploads%2Fgit-blob-b51834a1cad1adb1f95cd8817ec64da49471f67b%2Fpre-reg-login.png?alt=media" style="height:80px">
           <p>Pre-registration</p>
           </a>
@@ -98,7 +98,7 @@ data:
       <div class="w3-row-padding w3-padding-16">
         <div class="w3-col l4 w3-center"><p></p></div> 
         <div class="w3-col l4 w3-left">
-          <div class="w3-panel w3-pale-yellow w3-round-large">
+          <div class="w3-panel w3-khaki w3-round-large">
              <table class="w3-table">
                <tr>
                  <td>External API</td>
@@ -109,7 +109,7 @@ data:
                  <td class="w3-monospace">https://{{ .Values.landing.apiInternal }}</td>
                </tr>
                <tr>
-                 <td>Postgres</td>
+                 <img src="https://www.clipartmax.com/png/full/242-2423721_logo-postgresql.png" height="30px">
                  <td class="w3-monospace">{{ .Values.landing.postgres.host }}:{{ .Values.landing.postgres.port }}</td>
                </tr>
              </table>
