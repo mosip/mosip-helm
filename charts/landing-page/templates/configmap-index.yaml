@@ -29,7 +29,7 @@ data:
       <div class="w3-padding">
         <img src="https://mosip.github.io/mosip-helm/mosip_logo.png" width="50px">
         <h3>MOSIP Deployment</h3>
-        <h2><b>dev3</b></h2>
+        <h2><b>{{ .Values.landing.name }}</b></h2>
         <h3>Version: develop</h3>
       </div>
     </header>
