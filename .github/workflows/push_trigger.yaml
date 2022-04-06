@@ -23,12 +23,11 @@ jobs:
             - name: Setup Branch and Env
               run: |
                   # Strip git ref prefix from version
-                  echo "BRANCH_NAME=${{ github.event.inputs.git-ref }}" >> $GITHUB_ENV
+                  echo "BRANCH_NAME=$(echo ${{ github.ref }} | sed -e 's,.*/\(.*\),\1,')" >> $GITHUB_ENV
 
             - name: Generate tar files
               run: |
-                  ls 
-                  echo $GITHUB_ENV
+                  echo "BRANCH_NAME=$BRANCH_NAME";
                   helm repo add mosip https://mosip.github.io/mosip-helm
                   cd charts &&
                   find * -prune -type d > ../tmp.txt
