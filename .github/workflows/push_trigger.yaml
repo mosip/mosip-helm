@@ -24,8 +24,11 @@ jobs:
               run: |
                   # Strip git ref prefix from version
                   echo "BRANCH_NAME=${{ github.event.inputs.git-ref }}" >> $GITHUB_ENV
+
             - name: Generate tar files
               run: |
+                  ls 
+                  echo $GITHUB_ENV
                   helm repo add mosip https://mosip.github.io/mosip-helm
                   cd charts &&
                   find * -prune -type d > ../tmp.txt
@@ -39,6 +42,7 @@ jobs:
                     helm dependency update charts/$fullpath/
                     helm package charts/$fullpath
                   done < tmp.txt
+
             - name: Upload tar as Artifact
               uses: actions/upload-artifact@v2
               with:
