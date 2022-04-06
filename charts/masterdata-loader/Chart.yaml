@@ -1,0 +1,21 @@
+apiVersion: v2
+name: masterdata-loader
+description: A Helm chart to upload default masterdata to mosip_master DB.
+type: application
+version: 12.0.2
+appVersion: 1.2.0
+dependencies:
+  - name: common
+    repository: https://charts.bitnami.com/bitnami
+    tags:
+      - bitnami-common
+    version: 1.x.x
+
+home: https://mosip.io
+keywords:
+  - postgres
+  - db
+  - database
+maintainers:
+  - email: info@mosip.io
+    name: MOSIP 
