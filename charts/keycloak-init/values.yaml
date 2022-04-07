@@ -419,6 +419,20 @@ keycloak:
            - offline_access
            - PUBLISH_MOSIP_HOTLIST_GENERAL
 
+       -name: globaladmin
+
+        saroles:
+          - default
+          - default-roles-mosip
+          - GLOBAL_ADMIN
+          - ID_AUTHENTICATION
+          - REGISTRATION_ADMIN
+          - REGISTRATION_OFFICER
+          - REGISTRATION_OPERATOR
+          - REGISTRATION_PROCESSOR
+          - REGISTRATION_SUPERVISOR
+          - ZONAL_ADMIN
+
       users: []
     
 ## These will be passed as environments variables to keycloak-init docker. Note the expected naming convention is 
