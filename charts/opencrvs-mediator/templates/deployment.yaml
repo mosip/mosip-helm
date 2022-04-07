@@ -101,8 +101,16 @@ spec:
           args: {{- include "common.tplvalues.render" (dict "value" .Values.args "context" $) | nindent 12 }}
           {{- end }}
           env:
+            - name: opencrvs_auth_url
+              value: {{ .Values.mediator.opencrvs.authUrl }}
+            - name: kernel_auth_adapter_available
+              value: {{ .Values.mediator.kernelAuthAdapterAvailable | quote }}
             - name: mosip_opencrvs_client_id
               value: {{ .Values.mediator.mosipOpencrvsKeycloakClientId }}
+            - name: opencrvs_receive_credential_url
+              value: {{ .Values.mediator.opencrvs.receiveCredentialUrl }}
+            - name: mosip_receive_credential_url
+              value: http://{{ template "common.names.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/receiveCredentialBirth
             - name: mosip_opencrvs_client_secret_key
               valueFrom:
                 secretKeyRef:
@@ -118,10 +126,10 @@ spec:
             {{- end }}
 
           envFrom:
-            - configMapRef:
-                name: {{ template "common.names.fullname" . }}
             - secretRef:
-                name: {{ .Values.mediator.opencrvs.client.secretName }}
+                name: {{ .Values.mediator.opencrvs.clientSecretName }}
+            - secretRef:
+                name: {{ .Values.mediator.opencrvs.partnerClientSecretName }}
             {{- if .Values.extraEnvVarsCM }}
             {{- range .Values.extraEnvVarsCM }}
             - configMapRef:
@@ -155,6 +163,13 @@ spec:
           {{- else if .Values.customReadinessProbe }}
           readinessProbe: {{- include "common.tplvalues.render" (dict "value" .Values.customReadinessProbe "context" $) | nindent 12 }}
           {{- end }}
-        {{- if .Values.sidecars }}
-        {{- include "common.tplvalues.render" ( dict "value" .Values.sidecars "context" $) | nindent 8 }}
-        {{- end }}
+          volumeMounts:
+          - name: certs-keys
+            mountPath: {{ .Values.mediator.opencrvs.certsKeysMountPath }}
+      {{- if .Values.sidecars }}
+      {{- include "common.tplvalues.render" ( dict "value" .Values.sidecars "context" $) | nindent 8 }}
+      {{- end }}
+      volumes:
+      - name: certs-keys
+        secret:
+          secretName: {{ .Values.mediator.opencrvs.certsKeysSecretName }}
