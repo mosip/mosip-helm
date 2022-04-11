@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: mosipid/keycloak-init 
+  repository: mosipdev/keycloak-init 
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 1.2.0
+  tag: develop
 
 imagePullSecrets: []
 nameOverride: ""
@@ -268,7 +268,9 @@ keycloak:
 
        - name: mosip-partnermanager-client
          mappers: []
-         saroles: []
+         saroles: 
+           - PARTNERMANAGER
+           - KEY_MAKER
 
        - name: mosip-pms-client
          mappers: 
@@ -310,6 +312,11 @@ keycloak:
            - METADATA_READ
            - CREATE_SHARE
            - CREDENTIAL_REQUEST
+
+       - name: mpartner-default-mobile
+         mappers: []
+         saroles: 
+           - CREDENTIAL_PARTNER
            - SUBSCRIBE_REGISTRATION_PROCESSOR_WORKFLOW_COMPLETED_EVENT_GENERAL
            - SUBSCRIBE_REGISTRATION_PROCESSOR_WORKFLOW_PAUSED_FOR_ADDITIONAL_INFO_EVENT_GENERAL
            - PUBLISH_REGISTRATION_PROCESSOR_WORKFLOW_COMPLETED_EVENT_GENERAL
@@ -464,4 +471,6 @@ clientSecrets:
   - name: mpartner_default_print_secret
     secret: ""
   - name: mosip_hotlist_client_secret
+    secret: ""
+  - name: mpartner_default_mobile_secret
     secret: ""
