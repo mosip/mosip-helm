@@ -245,6 +245,7 @@ keycloak:
            - CREDENTIAL_REQUEST
            - GLOBAL_ADMIN
            - ID_AUTHENTICATION
+           - PARTNERMANAGER  # Added only for cert upload using postman during install. Not required otherwise.
 
        - name: mosip-misp-client
          mappers: []
