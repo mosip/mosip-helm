@@ -31,17 +31,14 @@ replicaCount: 1
 mediator:
   opencrvs:
     authUrl: ""
-    webhooksUrl: ""
-    birthCallback:
-      host: ""
-      uri: "/opencrvs-mediator/birth"
-    client:
-      secretName: opencrvs-client-creds
+    partnerClientSecretName: opencrvs-partner-client-creds
+    clientSecretName: opencrvs-client-creds
+    receiveCredentialUrl: ""
+    certsKeysSecretName: opencrvs-partner-certs-keys
+    certsKeysMountPath: "/certs/mnt"
 
   mosipOpencrvsKeycloakClientId: mosip-opencrvs-client
   kernelAuthAdapterAvailable: false
-  opencrvsSubscribeOnStartup: true
-  opencrvsSubscribeOnStartupDelay: 20
 
 service:
   type: ClusterIP
@@ -65,8 +62,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipdev/mosip-opencrvs-mediator
-  tag: develop
+  repository: mosipqa/mosip-opencrvs-mediator
+  tag: 1.2.0.1
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -418,7 +415,10 @@ istio:
   enabled: true
   # existingGateway example values: istio-system/public , istio-system/internal
   existingGateway: ""
-  # ingressController is only valid if existingGateway is null/empty
-  ingressController:
-    # for public, istio: ingressgateway && for internal, istio: ingressgateway-internal
-    istio: ingressgateway
+  # the following newGateway option is only valid if above existingGateway is null/empty
+  newGateway:
+    # host example value: opencrvs.sandbox.mosip.net
+    host: ""
+    ingressController:
+      # for public, istio: ingressgateway && for internal, istio: ingressgateway-internal
+      istio: ingressgateway

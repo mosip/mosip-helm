@@ -51,7 +51,7 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipdev/mosip-file-server
+  repository: mosipqa/mosip-file-server
   tag: 1.2.0.1
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
