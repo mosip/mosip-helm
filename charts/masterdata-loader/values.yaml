@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: mosipdev/masterdata-loader
+  repository: mosipqa/masterdata-loader
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: develop
+  tag: 1.2.0.1
 
 imagePullSecrets: []
 nameOverride: ""
