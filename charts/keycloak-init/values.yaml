@@ -268,7 +268,9 @@ keycloak:
 
        - name: mosip-partnermanager-client
          mappers: []
-         saroles: []
+         saroles: 
+           - PARTNERMANAGER
+           - KEY_MAKER
 
        - name: mosip-pms-client
          mappers: 
