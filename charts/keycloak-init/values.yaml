@@ -115,9 +115,7 @@ keycloak:
        - offline_access
        - ONLINE_VERIFICATION_PARTNER
        - PARTNER
-       - PARTNER_ADMIN
        - PMS_ADMIN
-       - PMS_USER
        - POLICYMANAGER
        - PREREG
        - PRE_REGISTRATION
@@ -264,10 +262,8 @@ keycloak:
              mapper_user_attribute: address
              token_claim_name: addressTest
          saroles: 
-           - PARTNER_ADMIN
            - REGISTRATION_PROCESSOR
            - CREATE_SHARE
-           - PMS_USER
            - PMS_ADMIN
            - SUBSCRIBE_CA_CERTIFICATE_UPLOADED_GENERAL
            - PUBLISH_MISP_LICENSE_UPDATED_GENERAL
@@ -316,7 +312,6 @@ keycloak:
          mappers: []
          saroles:
            - RESIDENT
-           - PARTNER_ADMIN
            - CREDENTIAL_REQUEST
            - offline_access
            - uma_authorization
