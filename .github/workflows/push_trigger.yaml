@@ -3,7 +3,8 @@ name: Publish mosip-helm charts
 on:
     push:
         branches:
-            - '*'
+            - 1.2.0.*
+            - develop
 
 jobs:
     Generate_Documentation:
