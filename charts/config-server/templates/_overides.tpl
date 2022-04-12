@@ -15,6 +15,18 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.configmaps.global }}
       key: mosip-api-internal-host
 
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_ADMIN_HOST
+  valueFrom:
+    configMapKeyRef:
+      name: {{ .Values.overrides.configmaps.global }}
+      key: mosip-admin-host
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_PMP_HOST
+  valueFrom:
+    configMapKeyRef:
+      name: {{ .Values.overrides.configmaps.global }}
+      key: mosip-pmp-host
+
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_DBUSER_PASSWORD
   valueFrom:
     secretKeyRef:
