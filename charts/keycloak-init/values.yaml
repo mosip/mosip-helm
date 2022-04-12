@@ -116,7 +116,6 @@ keycloak:
        - ONLINE_VERIFICATION_PARTNER
        - PARTNER
        - PARTNER_ADMIN
-       - PARTNERMANAGER
        - PMS_ADMIN
        - PMS_USER
        - POLICYMANAGER
@@ -245,33 +244,10 @@ keycloak:
            - CREDENTIAL_REQUEST
            - GLOBAL_ADMIN
            - ID_AUTHENTICATION
-           - PARTNERMANAGER  # Added only for cert upload using postman during install. Not required otherwise.
 
        - name: mosip-misp-client
          mappers: []
          saroles: []
-
-       - name: mosip-partner-client
-         mappers: []
-         saroles:
-           - REGISTRATION_PROCESSOR
-           - CREATE_SHARE
-           - PMS_USER
-           - PMS_ADMIN
-           - SUBSCRIBE_CA_CERTIFICATE_UPLOADED_GENERAL
-           - PUBLISH_MISP_LICENSE_UPDATED_GENERAL
-           - PUBLISH_PARTNER_UPDATED_GENERAL
-           - PUBLISH_MISP_LICENSE_GENERATED_GENERAL
-           - PUBLISH_APIKEY_APPROVED_GENERAL
-           - PUBLISH_APIKEY_UPDATED_GENERAL
-           - PUBLISH_CA_CERTIFICATE_UPLOADED_GENERAL
-           - PUBLISH_POLICY_UPDATED_GENERAL
-
-       - name: mosip-partnermanager-client
-         mappers: []
-         saroles: 
-           - PARTNERMANAGER
-           - KEY_MAKER
 
        - name: mosip-pms-client
          mappers: 
@@ -289,6 +265,18 @@ keycloak:
              token_claim_name: addressTest
          saroles: 
            - PARTNER_ADMIN
+           - REGISTRATION_PROCESSOR
+           - CREATE_SHARE
+           - PMS_USER
+           - PMS_ADMIN
+           - SUBSCRIBE_CA_CERTIFICATE_UPLOADED_GENERAL
+           - PUBLISH_MISP_LICENSE_UPDATED_GENERAL
+           - PUBLISH_PARTNER_UPDATED_GENERAL
+           - PUBLISH_MISP_LICENSE_GENERATED_GENERAL
+           - PUBLISH_APIKEY_APPROVED_GENERAL
+           - PUBLISH_APIKEY_UPDATED_GENERAL
+           - PUBLISH_CA_CERTIFICATE_UPLOADED_GENERAL
+           - PUBLISH_POLICY_UPDATED_GENERAL
 
        - name: mosip-policymanager-client
          mappers: []
@@ -444,10 +432,6 @@ clientSecrets:
   - name: mosip_ida_client_secret
     secret: ""
   - name: mosip_misp_client_secret
-    secret: ""
-  - name: mosip_partner_client_secret
-    secret: ""
-  - name: mosip_partnermanager_client_secret
     secret: ""
   - name: mosip_pms_client_secret
     secret: ""
