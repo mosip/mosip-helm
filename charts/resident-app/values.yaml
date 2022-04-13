@@ -73,7 +73,7 @@ image:
 ## TODO: enable probes once health urls are available
 
 startupProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /v1/resident/actuator/health
     port: 8088

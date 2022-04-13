@@ -1,6 +1,6 @@
 # Group 1 stage
 
-Helm chart for installing RegProc Group 1 stage.  
+Helm chart for installing MOSIP Resident Application.  
 
 ## TL;DR
 

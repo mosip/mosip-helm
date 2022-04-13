@@ -2,8 +2,8 @@ apiVersion: v2
 name: resident-app
 description: A Helm chart for MOSIP Resident Application
 type: application
-version: 1.2.0
-appVersion: "1.2.0"
+version: 12.0.1
+appVersion: ""
 dependencies:
   - name: common
     repository: https://charts.bitnami.com/bitnami
@@ -14,7 +14,7 @@ home: https://mosip.io
 keywords:
   - mosip
   - resident-app
-  - regproc
+  - resident
 maintainers:
   - email: info@mosip.io
     name: MOSIP 
