@@ -115,7 +115,7 @@ keycloak:
        - offline_access
        - ONLINE_VERIFICATION_PARTNER
        - PARTNER
-       - PMS_ADMIN
+       - PARTNER_ADMIN
        - POLICYMANAGER
        - PREREG
        - PRE_REGISTRATION
@@ -264,7 +264,7 @@ keycloak:
          saroles: 
            - REGISTRATION_PROCESSOR
            - CREATE_SHARE
-           - PMS_ADMIN
+           - PARTNER_ADMIN
            - SUBSCRIBE_CA_CERTIFICATE_UPLOADED_GENERAL
            - PUBLISH_MISP_LICENSE_UPDATED_GENERAL
            - PUBLISH_PARTNER_UPDATED_GENERAL
