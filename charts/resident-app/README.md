@@ -1,4 +1,4 @@
-# Group 1 stage
+# Resident Application
 
 Helm chart for installing MOSIP Resident Application.  
 
