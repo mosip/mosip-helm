@@ -417,10 +417,10 @@ metrics:
 
 onboarding:
   # Internal API URL of sandbox e.g. https://api-internal.sandbox.xyz.net
-  apiUrl: https://api-internal.soil.mosip.net
+  apiUrl: 
   # This client with appropriate roles must exist in Keycloak 
   certManager: mosip-deployment-client
-  certManagerPassword: 5af40758-f08e-4568-911a-0d20a7381afe 
+  certManagerPassword: 
 
 ## Only internal access
 istio:
@@ -429,5 +429,5 @@ istio:
     name: ingressgateway-internal
   gateway: partner-onboarder-gateway
   hosts:
-    - onboarder.soil.mosip.net  
+    - onboarder.sandbox.xyz.net  
   prefix: /
