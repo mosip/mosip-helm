@@ -398,13 +398,21 @@ keycloak:
            - PRINT_PARTNER
 
        - name: mosip-hotlist-client
-
          saroles:
            - HOTLIST_ADMIN
            - uma_authorization
            - offline_access
            - PUBLISH_MOSIP_HOTLIST_GENERAL
 
+       # Used only for initial deployment purposes. Maybe deleted from installation later.
+       - name: mosip-deployment-client
+         saroles:
+           - ID_AUTHENTICATION
+           - GLOBAL_ADMIN # TODO: do we need this?
+           - PARTNER_ADMIN
+           - uma_authorization
+           - offline_access
+       
       users: []
     
 ## These will be passed as environments variables to keycloak-init docker. Note the expected naming convention is 
@@ -443,6 +451,8 @@ clientSecrets:
   - name: mosip_creser_idpass_client_secret
     secret: ""
   - name: mosip_syncdata_client_secret
+    secret: ""
+  - name: mosip_deployment_client_secret
     secret: ""
   - name: mpartner_default_auth_secret
     secret: ""
