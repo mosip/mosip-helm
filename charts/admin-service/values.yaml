@@ -441,4 +441,11 @@ istio:
       - sec-ch-ua
       - sec-ch-ua-mobile
       - sec-ch-ua-platform
-
+      - x-xsrf-token
+      - xsrf-token
+    allowedMethods:
+      - GET
+      - POST
+      - PATCH
+      - PUT
+      - DELETE
