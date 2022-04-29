@@ -97,6 +97,8 @@ spec:
               value: {{ .Values.regclient.upgradeServerUrl }}
             - name: healthcheck_url_env
               value: {{ .Values.regclient.healthCheckUrl }} 
+            - name: host_name_env
+              value: {{ .Values.regclient.hostName }}
             {{- if .Values.extraEnvVars }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}
