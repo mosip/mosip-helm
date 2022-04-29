@@ -2,15 +2,19 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: pmp-gateway
+  {{- with (first .Values.istio.gateways) }}
+  name:  {{ .name }}
+  {{- end }}
 spec:
   selector:
     istio: {{ .Values.istio.ingressController.name }}
   servers:
   - port:
-      number: 80
-      name: http
-      protocol: HTTP
+      {{- with (first .Values.istio.gateways) }}
+      number: {{ .port }}
+      name: {{ .portName }}
+      protocol: {{ .protocol }}
+      {{- end }}
     hosts:
       {{- include "common.tplvalues.render" ( dict "value" .Values.istio.hosts "context" $ ) | nindent 6 }}
 {{- end }}
