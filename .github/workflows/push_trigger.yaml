@@ -31,6 +31,7 @@ jobs:
                   echo "BRANCH_NAME=$BRANCH_NAME";
                   helm repo add mosip https://mosip.github.io/mosip-helm
                   cd charts &&
+                  helm repo index --url https://mosip.github.io/mosip-helm/ .
                   find * -prune -type d > ../tmp.txt
                   cd ..
                   while IFS= read -r line
