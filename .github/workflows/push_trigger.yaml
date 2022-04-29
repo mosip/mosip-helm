@@ -17,16 +17,18 @@ jobs:
 
             - name: Checkout Repository
               uses: actions/checkout@v2
-              if: github.event.inputs.git-ref != ''
-              with:
-                  ref: ${{ github.event.inputs.git-ref }}
+                #if: github.event.inputs.git-ref != ''
+                #with:
+                #    ref: ${{ github.event.inputs.git-ref }}
 
             - name: Setup Branch and Env
               run: |
                   # Strip git ref prefix from version
-                  echo "BRANCH_NAME=${{ github.event.inputs.git-ref }}" >> $GITHUB_ENV
+                  echo "BRANCH_NAME=$(echo ${{ github.ref }} | sed -e 's,.*/\(.*\),\1,')" >> $GITHUB_ENV
+
             - name: Generate tar files
               run: |
+                  echo "BRANCH_NAME=$BRANCH_NAME";
                   helm repo add mosip https://mosip.github.io/mosip-helm
                   cd charts &&
                   find * -prune -type d > ../tmp.txt
@@ -40,6 +42,7 @@ jobs:
                     helm dependency update charts/$fullpath/
                     helm package charts/$fullpath
                   done < tmp.txt
+
             - name: Upload tar as Artifact
               uses: actions/upload-artifact@v2
               with:
