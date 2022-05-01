@@ -32,7 +32,6 @@ replicaCount: 1
 service:
   type: ClusterIP
   port: 80
-  containerPort: 8088
   ## loadBalancerIP for the SuiteCRM Service (optional, cloud specific)
   ## ref: http://kubernetes.io/docs/user-guide/services/#type-loadbalancer
   ##
@@ -42,7 +41,6 @@ service:
   ##   http: <to set explicitly, choose port between 30000-32767>
   ##   https: <to set explicitly, choose port between 30000-32767>
   ##
-
   nodePorts:
     http: ""
     https: ""
@@ -53,8 +51,9 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipqa/mimoto
+  repository: mosipdev/pmp-ui
   tag: develop
+
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -67,16 +66,18 @@ image:
   # pullSecrets:
   #   - myRegistryKeySecretName
 
+## Port on which this particular spring service module is running. 
+springServicePort: 8080
+
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
-## TODO: enable probes once health urls are available
-
+## TODO: health probes don't exist. Check.
 startupProbe:
   enabled: true
   httpGet:
-    path: /v1/mimoto/actuator/health
-    port: 8088
+    path: /pmp-ui/
+    port: 8080
   initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
@@ -86,20 +87,20 @@ startupProbe:
 livenessProbe:
   enabled: true
   httpGet:
-    path: /v1/mimoto/actuator/health
-    port: 8088
-  initialDelaySeconds: 120 
+    path: /pmp-ui/
+    port: 8080
+  initialDelaySeconds: 20 
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
+  enabled: true 
   httpGet:
-    path: /v1/mimoto/actuator/health
-    port: 8088
-  initialDelaySeconds: 30 
+    path: /pmp-ui/
+    port: 8080
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
@@ -130,13 +131,12 @@ resources:
   #   memory: 256Mi
   requests: 
     cpu: 100m
-    memory: 1000Mi
+    memory: 50Mi
 
 additionalResources: 
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
   javaOpts: ""
-
 
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
 ## Clamav container already runs as 'mosip' user, so we may not need to enable this
@@ -243,7 +243,7 @@ updateStrategy:
 ##
 extraEnvVars: []
 
-## ConfigMap with extra environment variables that used
+## ConfigMap with extra environment variables
 ##
 extraEnvVarsCM:
   - global
@@ -252,7 +252,7 @@ extraEnvVarsCM:
 
 ## Secret with extra environment variables
 ##
-extraEnvVarsSecret: []
+extraEnvVarsSecret:
 
 ## Extra volumes to add to the deployment
 ##
@@ -268,7 +268,7 @@ extraVolumeMounts: []
 ##   - name: your-image-name
 ##     image: your-image
 ##     imagePullPolicy: Always
-#true#     ports:
+##     ports:
 ##       - name: portname
 ##         containerPort: 1234
 ##
@@ -288,7 +288,6 @@ sidecars: {}
 
 persistence:
   enabled: false
-  storageClass: longhorn
   ## If defined, storageClassName: <storageClass>
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
@@ -301,19 +300,13 @@ persistence:
   ## the existingClaim variable
   # existingClaim: your-claim
   ## ReadWriteMany not supported by AWS gp2
-  ## We use EFS storage class as that supports ReadWriteMany. Make sure you have installed the same as given
-  ## here: https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html
-  ## Packet landing zone requires ReadWriteMany 
+  storageClass: 
   accessModes:
-    - ReadWriteMany
-  size: 1Gi
+    - ReadWriteOnce
+  size: 10M
   existingClaim: 
-  # Dir where all incoming packets are stored
-  # Make sure this matches with what is given in the config properties
-  mountDir: /mnt/landing 
-  labels:
-    purpose: landing-folder
-  reclaimPolicy: Retain
+  # Dir where config and keys are written inside container
+  mountDir: 
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
@@ -361,11 +354,10 @@ serviceAccount:
   ## The name of the ServiceAccount to use.
   ## If not set and create is true, a name is generated using the fullname template
   ##
-  name: resident-app
+  name:
 
 ## Prometheus Metrics
 ##
-## TODO: Enable when prometheus url is available
 metrics:
   enabled: false
   ## Prometheus pod annotations
@@ -421,10 +413,23 @@ metrics:
     #       severity: error
     rules: []
 
-## Requires public access.
+## The url below is to access pmp API services.
+## CAUTION: Domain name to acess pmp UI must be secure/internal/over vpn.
+## Slash is important!
+pmp:
+   apiUrl: https://pmp.sandbox.mosip.net/
+
+## pmp UI swagger should have only internal access. Hence linked to internal gateway
+## We create a gateway for pmp specific URL(s) listed under `hosts`
 istio:
   enabled: true
-  gateways: 
-    - istio-system/internal
-  prefix: /residentmobileapp
-  rewrite: /v1/mimoto
+  ingressController:
+    name: ingressgateway-internal
+  gateways:
+    - name: pmp-gateway
+      protocol: HTTP
+      portName: http
+      port: 80
+  hosts:
+    - pmp.sandbox.xyz.net
+  prefix: /pmp-ui

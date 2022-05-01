@@ -15,13 +15,13 @@ spec:
   hosts:
   - "*"
   gateways:
-  {{- include "common.tplvalues.render" ( dict "value" .Values.istio.gateways "context" $ ) | nindent 4 }}
+    {{ range $index, $service := .Values.istio.gateways }}
+    - {{ .name }}
+    {{ end }}
   http:
   - match:
       - uri:
           prefix: {{ .Values.istio.prefix }}
-    rewrite:
-      uri: {{ .Values.istio.rewrite }}
     route:
     - destination:
         host: {{ template "common.names.fullname" . }}
