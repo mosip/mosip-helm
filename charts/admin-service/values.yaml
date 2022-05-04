@@ -443,7 +443,7 @@ istio:
       - sec-ch-ua-platform
       - x-xsrf-token
       - xsrf-token
-    allowedMethods:
+    allowMethods:
       - GET
       - POST
       - PATCH
