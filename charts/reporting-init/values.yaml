@@ -12,7 +12,7 @@ base:
   kibana_url: http://kibana.cattle-logging-system:5601
 
 debezium_connectors:
-  image: mosipdev/debezium-init
+  image: mosipqa/debezium-init
   imageTag: develop
   imagePullPolicy: Always
 
@@ -33,7 +33,7 @@ debezium_connectors:
 
 
 es_kafka_connectors:
-  image: mosipdev/es-kafka-connect-init
+  image: mosipqa/es-kafka-connect-init
   imageTag: develop
   imagePullPolicy: Always
 
