@@ -420,7 +420,7 @@ istio:
   prefix: /v1/admin
   corsPolicy:
     allowOrigins:
-    - prefix: https://admin.sandbox.xyz.net
+      - prefix: https://admin.sandbox.xyz.net
     allowCredentials: true
     allowHeaders:
       - Accept
@@ -443,7 +443,7 @@ istio:
       - sec-ch-ua-platform
       - x-xsrf-token
       - xsrf-token
-    allowedMethods:
+    allowMethods:
       - GET
       - POST
       - PATCH

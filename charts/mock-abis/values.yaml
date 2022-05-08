@@ -50,8 +50,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mandeepdhiman90/mock-abis
-  tag: 1.2.0.1
+  repository: mosipqa/mock-abis
+  tag: develop
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
