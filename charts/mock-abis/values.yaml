@@ -353,3 +353,10 @@ serviceAccount:
   ##
   name:
 
+
+## Only internal access
+istio:
+  enabled: true
+  gateways:
+    - istio-system/internal
+  prefix: /v1/mock-abis-service
