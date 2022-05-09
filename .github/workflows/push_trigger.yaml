@@ -63,7 +63,7 @@ jobs:
 
             - name: Update index.yaml
               run: |
-                  helm repo index --url https://mosip.github.io/mosip-helm/ .
+                  helm repo index --url https://mosip.github.io/mosip-helm/ ./mosip-helm
 
             - name: Commit Changes to mosip-helm Repository
               uses: EndBug/add-and-commit@v7
