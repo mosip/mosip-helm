@@ -5,7 +5,7 @@ debezium:
   imagePullPolicy: Always
   port: 8083
   fixer_container:
-    image: mosipqa/debezium-fixer:develop
+    image: mosipdev/debezium-fixer:develop
     imagePullPolicy: Always
     startup_delay: "30s"
     probe_time_period: "30s"
