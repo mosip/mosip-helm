@@ -76,7 +76,7 @@ springServicePort: 8080
 startupProbe:
   enabled: true
   httpGet:
-    path: /pmp-ui/
+    path: /
     port: 8080
   initialDelaySeconds: 0
   periodSeconds: 10
@@ -87,7 +87,7 @@ startupProbe:
 livenessProbe:
   enabled: true
   httpGet:
-    path: /pmp-ui/
+    path: /
     port: 8080
   initialDelaySeconds: 20 
   periodSeconds: 10
@@ -98,7 +98,7 @@ livenessProbe:
 readinessProbe:
   enabled: true 
   httpGet:
-    path: /pmp-ui/
+    path: /
     port: 8080
   initialDelaySeconds: 0
   periodSeconds: 10
@@ -432,4 +432,4 @@ istio:
       port: 80
   hosts:
     - pmp.sandbox.xyz.net
-  prefix: /pmp-ui
+  prefix: /
