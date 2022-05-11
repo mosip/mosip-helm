@@ -12,7 +12,7 @@ metadata:
   {{- end }}
 data:
   config.json: |-
-   {"baseUrl": "{{ tpl .Values.pmp.apiUrl . }}",  "pmpUrl" : "/", "primaryLangCode": "{{ tpl .Values.pmp.primaryLangCode . }}", "secondaryLangCode": "", "version": "/v1/"}
+   {"baseUrl": "{{ tpl .Values.pmp.apiUrl . }}",  "pmpUrl" : "/", "primaryLangCode": "eng", "secondaryLangCode": "ara", "version": "/v1/"}
   default.conf: |-
     server {
       listen       8080;
