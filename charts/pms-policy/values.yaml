@@ -420,4 +420,34 @@ istio:
     - istio-system/public
     - istio-system/internal
   prefix: /v1/policymanager
-
+  corsPolicy:
+    allowOrigins:
+      - prefix: https://pmp.sandbox.xyz.net
+    allowCredentials: true
+    allowHeaders:
+      - Accept
+      - Accept-Encoding
+      - Accept-Language
+      - Connection
+      - Content-Type
+      - Cookie
+      - Host
+      - Referer
+      - Sec-Fetch-Dest
+      - Sec-Fetch-Mode
+      - Sec-Fetch-Site
+      - Sec-Fetch-User
+      - Origin
+      - Upgrade-Insecure-Requests
+      - User-Agent
+      - sec-ch-ua
+      - sec-ch-ua-mobile
+      - sec-ch-ua-platform
+      - x-xsrf-token
+      - xsrf-token
+    allowMethods:
+      - GET
+      - POST
+      - PATCH
+      - PUT
+      - DELETE
