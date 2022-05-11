@@ -418,6 +418,7 @@ metrics:
 ## Slash is important!
 pmp:
    apiUrl: https://pmp.sandbox.mosip.net/
+   primaryLangCode:
 
 ## pmp UI swagger should have only internal access. Hence linked to internal gateway
 ## We create a gateway for pmp specific URL(s) listed under `hosts`
