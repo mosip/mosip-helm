@@ -1,6 +1,6 @@
-# Pmp-ui
+# PMP-UI
 
-Helm chart for installing MOSIP pmp UI module
+Helm chart for installing MOSIP PMP UI module
 
 ## TL;DR
 

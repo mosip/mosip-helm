@@ -12,4 +12,19 @@ metadata:
   {{- end }}
 data:
   config.json: |-
-   '{"baseUrl": "{{ tpl .Values.pmp.apiUrl . }}",  "pmpUrl" : "/pmp-ui/", "primaryLangCode": "eng", "secondaryLangCode": "ara", "version": "/v1/"}'
+   {"baseUrl": "{{ tpl .Values.pmp.apiUrl . }}",  "pmpUrl" : "/", "primaryLangCode": "eng", "secondaryLangCode": "ara", "version": "/v1/"}
+  default.conf: |-
+    server {
+      listen       8080;
+      server_name  localhost;
+      add_header X-Frame-Options DENY;
+      
+      #charset koi8-r;
+      #access_log  /var/log/nginx/host.access.log  main;
+      #index  index.html index.htm;
+      
+      location / {
+          root   /usr/share/nginx/html;
+      }
+
+    }
