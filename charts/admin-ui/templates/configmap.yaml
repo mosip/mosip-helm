@@ -12,7 +12,7 @@ metadata:
   {{- end }}
 data:
   config.json: |-
-    {"baseUrl":"{{ tpl .Values.admin.apiUrl . }}",  "adminUrl" : "/", "primaryLangCode": "eng", "secondaryLangCode": "fra", "validateToken": "authmanager/authorize/admin/validateToken", "login": "admin/login/",  "logout": "admin/logout/user", "templateRepoUrl": "/admin-ui/templates/" }
+    {"baseUrl":"{{ tpl .Values.admin.apiUrl . }}",  "adminUrl" : "/", "primaryLangCode": "eng", "secondaryLangCode": "fra", "validateToken": "authmanager/authorize/admin/validateToken", "login": "admin/login/",  "logout": "admin/logout/user", "templateRepoUrl": "/templates/" }
 
   default.conf: |-
     server {
