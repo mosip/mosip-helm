@@ -427,5 +427,6 @@ istio:
   ingressController:
     # for public, istio: ingressgateway && for internal, istio: ingressgateway-internal
     istio: ingressgateway
-  prefix: /.well-known/
-
+  wellKnownPrefix: /.well-known/
+  mobileappPrefix: /mobileapp/
+  reWriteMobileappPrefix: /files/mobileapp/
