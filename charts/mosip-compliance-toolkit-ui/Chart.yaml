@@ -1,0 +1,21 @@
+apiVersion: v2
+name: mosip-compliance-toolkit-ui
+description: A Helm chart for MOSIP mosip-compliance-toolkit-ui
+type: application
+version: 12.0.2
+appVersion: ""
+dependencies:
+  - name: common
+    repository: https://charts.bitnami.com/bitnami
+    tags:
+      - bitnami-common
+    version: 1.x.x
+home: https://mosip.io
+keywords:
+  - mosip
+  - mosip-compliance-toolkit-ui
+  - kernel
+maintainers:
+  - email: info@mosip.io
+    name: MOSIP
+
