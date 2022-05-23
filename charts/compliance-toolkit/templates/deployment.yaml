@@ -57,7 +57,7 @@ spec:
       initContainers:
         {{- if and .Values.volumePermissions.enabled .Values.persistence.enabled }}
         - name: volume-permissions
-          image: {{ include "clamav.volumePermissions.image" . }}
+          image: {{ include "compliance-toolkit.volumePermissions.image" . }}
           imagePullPolicy: {{ .Values.volumePermissions.image.pullPolicy | quote }}
           command:
             - %%commands%%
