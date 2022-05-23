@@ -110,7 +110,7 @@ spec:
             {{- end }}
           volumeMounts:
             - name: conf-file
-              mountPath:  usr/share/nginx/html/assets/config.json
+              mountPath:  /usr/share/nginx/html/assets/config.json
               subPath: config.json
           ports:
             - name: spring-service

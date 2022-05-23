@@ -410,8 +410,13 @@ metrics:
     #     labels:
     #       severity: error
     rules: []
+ingress:
+  enabled: false
 
-resident-ui:
+autoscaling:
+  enabled: false
+
+residentUi:
   apiHost: resident-ui.sandbox.xyz.net
 istio:
   enabled: true

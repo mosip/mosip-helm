@@ -14,8 +14,7 @@ metadata:
 spec:
   hosts:
   - "*"
-  gateways:
-  {{- include "common.tplvalues.render" ( dict "value" .Values.istio.gateways "context" $ ) | nindent 4 }}
+  gateways: {{- include "common.tplvalues.render" ( dict "value" .Values.istio.gateways "context" $ ) | nindent 4 }}
   http:
   - match:
       - uri:
@@ -25,8 +24,6 @@ spec:
         host: {{ template "common.names.fullname" . }}
         port:
           number: {{ .Values.service.port }}
-    corsPolicy:
-    { { - include "common.tplvalues.render" ( dict "value" .Values.istio.corsPolicy "context" $ ) | nindent 6 } }
     headers:
       request:
         set:
