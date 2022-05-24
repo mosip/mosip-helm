@@ -2,10 +2,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: "{{ include "resident-ui.fullname" . }}-test-connection"
-  labels: {{- include "common.labels.standard" . | nindent 4 }}
-    {{- if .Values.commonLabels }}
-    {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
-    {{- end }}
+  labels:
+    {{- include "resident-ui.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": test
 spec:
@@ -13,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      ['{{ template "common.names.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "resident-ui.fullname" . }}:{{ .Values.service.port }}']
   restartPolicy: Never
