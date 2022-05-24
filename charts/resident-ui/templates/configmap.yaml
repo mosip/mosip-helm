@@ -13,6 +13,6 @@ metadata:
 
 data:
   config.json: |-
-   {"baseUrl":"https://{{ .Values.residentUi.apiHost }}/resident/v1/"}
+   {"baseUrl":"https://{{ .Values.resident.apiHost }}/resident/v1/"}
 
 
