@@ -57,7 +57,7 @@ spec:
       initContainers:
         {{- if and .Values.volumePermissions.enabled .Values.persistence.enabled }}
         - name: volume-permissions
-          image: {{ include "clamav.volumePermissions.image" . }}
+          image: {{ include "resident-ui.volumePermissions.image" . }}
           imagePullPolicy: {{ .Values.volumePermissions.image.pullPolicy | quote }}
           command:
             - %%commands%%
@@ -110,7 +110,7 @@ spec:
             {{- end }}
           volumeMounts:
             - name: conf-file
-              mountPath:  usr/share/nginx/html/assets/config.json
+              mountPath:  /usr/share/nginx/html/assets/config.json
               subPath: config.json
           ports:
             - name: spring-service
