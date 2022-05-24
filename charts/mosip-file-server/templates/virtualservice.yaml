@@ -21,14 +21,31 @@ spec:
     - {{ template "common.names.fullname" . }}
     {{- end }}
   http:
-  - match:
+  - name: .well-known
+    match:
       - uri:
-          prefix: {{ .Values.istio.prefix }}
+          prefix: {{ .Values.istio.wellKnownPrefix }}
     route:
     - destination:
         host: {{ template "common.names.fullname" . }}
         port:
           number: {{ .Values.service.port }}
+    headers:
+      request:
+        set:
+          x-forwarded-proto: https
+
+  - name: mobileapp
+    match:
+      - uri:
+          prefix: {{ .Values.istio.mobileappPrefix }}
+    rewrite:
+      uri: {{ .Values.istio.reWriteMobileappPrefix }}
+    route:
+      - destination:
+          host: {{ template "common.names.fullname" . }}
+          port:
+            number: {{ .Values.service.port }}
     headers:
       request:
         set:
