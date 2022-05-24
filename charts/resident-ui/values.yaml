@@ -423,3 +423,5 @@ istio:
   gateways: 
     - resident-ui-gateway
   prefix: /resident-ui
+  hosts:
+    - resident.sandbox.xyz.net
