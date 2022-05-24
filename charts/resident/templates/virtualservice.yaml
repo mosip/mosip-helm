@@ -26,7 +26,7 @@ spec:
         port:
           number: {{ .Values.service.port }}
     corsPolicy:
-    {{ - include "common.tplvalues.render" ( dict "value" .Values.istio.corsPolicy "context" $ ) | nindent 6 }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.istio.corsPolicy "context" $ ) | nindent 6 }}
     headers:
       request:
         set:
