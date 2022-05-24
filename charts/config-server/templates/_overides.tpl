@@ -338,7 +338,7 @@ All env variables that are accessed from mosip config properties
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_RESIDENT_WEBSUB_AUTHTYPE_STATUS_SECRET
   valueFrom:
     secretKeyRef:
-      name: {{ .Values.overrides.secrets.resident }}
+      name: {{ printf "%s-various" (include "config-server.fullname" .) }}
       key: resident-websub-authtype-status-secret
 
 {{- end }}
