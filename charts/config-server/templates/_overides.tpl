@@ -27,6 +27,12 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.configmaps.global }}
       key: mosip-prereg-host
 
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_RESIDENT_HOST
+  valueFrom:
+    configMapKeyRef:
+      name: {{ .Values.overrides.configmaps.global }}
+      key: mosip-resident-host
+
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_PMP_HOST
   valueFrom:
     configMapKeyRef:
@@ -346,5 +352,11 @@ All env variables that are accessed from mosip config properties
     secretKeyRef:
       name: {{ printf "%s-various" (include "config-server.fullname" .) }}
       key: resident-websub-authtype-status-secret
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_RESIDENT_WEBSUB_AUTH_TRANSACTION_STATUS_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: {{ printf "%s-various" (include "config-server.fullname" .) }}
+      key: resident-websub-auth-transaction-status-secret
 
 {{- end }}
