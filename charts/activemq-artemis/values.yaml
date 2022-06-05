@@ -66,6 +66,9 @@ persistence:
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
 ##
 resources:
+  limits:
+     cpu: 2000m
+     memory: 8000Mi
   requests:
     memory: 512Mi
     cpu: 200m

@@ -126,17 +126,17 @@ resources:
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  limits: {}
-  #   cpu: 200m
-  #   memory: 256Mi
-  requests: {}
-  #   cpu: 200m
-  #   memory: 10Mi
+  limits:
+     cpu: 1000m
+     memory: 5000Mi
+  requests:
+     cpu: 500m
+     memory: 1500Mi
 
 additionalResources: 
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
-  javaOpts: ""
+  javaOpts: "-Xms4000M -Xmx4000M"
 
 
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
