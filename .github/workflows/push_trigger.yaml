@@ -31,7 +31,12 @@ jobs:
                   echo "BRANCH_NAME=$BRANCH_NAME";
                   helm repo add mosip https://mosip.github.io/mosip-helm
                   
-                  git diff-tree --no-commit-id --name-only -r $(git log -n 1 branchName | awk '/commit/{print $2}' ) | awk -F '/' '/^[charts]/{print $2}' > ./tmp.txt
+                  git diff-tree --no-commit-id --name-only -r $(git log -n 1 $BRANCH_NAME | awk '/commit/{print $2}' ) | awk -F '/' '/^[charts]/{print $2}' > ./tmp.txt
+                  echo "SKIP=FALSE" >> $GITHUB_ENV
+                  if [[ ! -s ./tmp.txt ]]; then 
+                    echo "No Charts to publish"; 
+                    echo "SKIP=TRUE" >> $GITHUB_ENV
+                  fi
                   #cd charts &&
                   #find * -prune -type d > ../tmp.txt
                   #cd ..
@@ -51,22 +56,26 @@ jobs:
                   name: charts
                   path: ./*.tgz
                   retention-days: 1
+              if: env.SKIP != 'TRUE'
 
             - name: Checkout branch for publishing
               uses: actions/checkout@v2
               with:
                   ref: gh-pages
+              if: env.SKIP != 'TRUE'
 
             - name: Download tar from Artifacts
               uses: actions/download-artifact@v2
               with:
                   name: charts
                   path: ./
+              if: env.SKIP != 'TRUE'
 
             - name: Update index.yaml
               run: |
                   git status
                   helm repo index --url https://mosip.github.io/mosip-helm/ .
+              if: env.SKIP != 'TRUE'
 
             - name: Commit Changes to mosip-helm Repository
               uses: EndBug/add-and-commit@v7
@@ -75,3 +84,4 @@ jobs:
                   default_author: github_actions
                   message: 'added helm charts for release ${{ github.event.inputs.git-ref }}'
                   add: './*.tgz ./index.yaml'
+              if: env.SKIP != 'TRUE'
