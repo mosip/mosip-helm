@@ -30,6 +30,7 @@ jobs:
               run: |
                   echo "BRANCH_NAME=$BRANCH_NAME";
                   helm repo add mosip https://mosip.github.io/mosip-helm
+
                   
                   git diff-tree --no-commit-id --name-only -r $(git log -n 1 $BRANCH_NAME | awk '/commit/{print $2}' ) | awk -F '/' '/^[charts]/{print $2}' > ./tmp.txt
                   echo "SKIP=FALSE" >> $GITHUB_ENV
@@ -40,6 +41,7 @@ jobs:
                   #cd charts &&
                   #find * -prune -type d > ../tmp.txt
                   #cd ..
+
                   while IFS= read -r line
                   do
                     fullpath=$line
