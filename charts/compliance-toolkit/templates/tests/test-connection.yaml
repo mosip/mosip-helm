@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{ include "mosip-compliance-toolkit.fullname" . }}-test-connection"
+  name: "{{ include "compliance-toolkit.fullname" . }}-test-connection"
   labels:
-    {{- include "mosip-compliance-toolkit.labels" . | nindent 4 }}
+    {{- include "compliance-toolkit.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": test
 spec:
@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "mosip-compliance-toolkit.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "compliance-toolkit.fullname" . }}:{{ .Values.service.port }}']
   restartPolicy: Never
