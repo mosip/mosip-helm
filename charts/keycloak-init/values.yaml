@@ -422,6 +422,9 @@ keycloak:
            - PARTNER_ADMIN
            - uma_authorization
            - offline_access
+    
+       - name: mosip-toolkit-client
+         saroles: []  
        
       users: []
     
@@ -473,4 +476,6 @@ clientSecrets:
   - name: mosip_hotlist_client_secret
     secret: ""
   - name: mpartner_default_mobile_secret
+    secret: ""
+  - name: mosip_toolkit_client_secret
     secret: ""
