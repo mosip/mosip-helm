@@ -267,7 +267,8 @@ keycloak:
          saroles: 
            - REGISTRATION_PROCESSOR
            - CREATE_SHARE
-           - PARTNER_ADMIN
+           - PMS_ADMIN
+           - PMS_USER
            - SUBSCRIBE_CA_CERTIFICATE_UPLOADED_GENERAL
            - PUBLISH_MISP_LICENSE_UPDATED_GENERAL
            - PUBLISH_PARTNER_UPDATED_GENERAL
