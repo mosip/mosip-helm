@@ -15,9 +15,7 @@ spec:
   hosts:
   - "*"
   gateways:
-    {{ range $index, $service := .Values.istio.gateways }}
-    - {{ .name }}
-    {{ end }}
+  {{- include "common.tplvalues.render" ( dict "value" .Values.istio.gateways "context" $ ) | nindent 4 }}
   http:
   - match:
       - uri:

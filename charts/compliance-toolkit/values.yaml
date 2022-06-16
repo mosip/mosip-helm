@@ -31,7 +31,7 @@ replicaCount: 1
 
 service:
   type: ClusterIP
-  port: 8099
+  port: 80
   ## loadBalancerIP for the SuiteCRM Service (optional, cloud specific)
   ## ref: http://kubernetes.io/docs/user-guide/services/#type-loadbalancer
   ##
@@ -52,8 +52,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipdev/compliance-toolkit
-  tag: develop
+  repository: mosipdev/compliance-toolkit-service
+  tag: latest
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -73,7 +73,7 @@ springServicePort: 8099
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
 startupProbe:
-  enabled: true
+  enabled: false
   httpGet:
     path: /compliance-toolkit/v1/actuator/health
     port: 8099
@@ -84,7 +84,7 @@ startupProbe:
   successThreshold: 1
 
 livenessProbe:
-  enabled: true
+  enabled: false
   httpGet:
     path: /compliance-toolkit/v1/actuator/health
     port: 8090
@@ -95,7 +95,7 @@ livenessProbe:
   successThreshold: 1
 
 readinessProbe:
-  enabled: true
+  enabled: false
   httpGet:
     path: /compliance-toolkit/v1/actuator/health
     port: 8099
