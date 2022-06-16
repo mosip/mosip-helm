@@ -15,8 +15,8 @@ spec:
   hosts:
   - "*"
   gateways:
-    {{- if .Values.istio.existingGateway }}
-    - {{ .Values.istio.existingGateway }}
+    {{- if .Values.istio.gateways }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.istio.gateways "context" $ ) | nindent 6 }}
     {{- else }}
     - {{ template "common.names.fullname" . }}
     {{- end }}
@@ -30,6 +30,8 @@ spec:
         host: {{ template "common.names.fullname" . }}
         port:
           number: {{ .Values.service.port }}
+    corsPolicy:
+    {{- include "common.tplvalues.render" ( dict "value" .Values.istio.corsPolicy "context" $ ) | nindent 6 }}
     headers:
       request:
         set:
