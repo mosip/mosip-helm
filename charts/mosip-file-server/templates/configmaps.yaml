@@ -128,9 +128,19 @@ data:
   index.html: |-
     <html>
     <h1>Links to download MOBILE APP: </h1>
-    {{- if .Values.mosipfileserver.urls }}
-    {{- range .Values.mosipfileserver.urls }}
-    <a href="{{ . }}">{{ . }}</a> <br>
+    {{- if .Values.mosipfileserver.puburl }}
+    {{- range .Values.mosipfileserver.puburl }}
+    <div>
+        <span>Link for publicly accessible APK    : <a href="{{ . }}">Download</a> </span>
+    <div>
+    {{- end }}
+    {{- end }}
+    
+    {{- if .Values.mosipfileserver.privurl }}
+    {{- range .Values.mosipfileserver.privurl }}
+    <div>
+        <span>Link for privately accessible APK   : <a href="{{ . }}">Download</a> </span>
+    <div>
     {{- end }}
     {{- end }}
     </html>
