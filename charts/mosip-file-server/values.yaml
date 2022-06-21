@@ -68,6 +68,9 @@ mosipfileserver:
   host: ''
   mountDir: "/mnt/mosip-file-server"  # path inside docker
   healthCheckUrl:  http://localhost:8080/.well-known/
+  mobileAppMountDIr: /home/mosip/mosip-file-server/files/mobileapp/
+  puburl:
+  privurl:
 
 ## Port on which this particular spring service module is running. 
 containerPort: 8080
@@ -246,9 +249,9 @@ updateStrategy:
 ## TODO: the below env variable is not used, but required.  Remove it later
 extraEnvVars:
   - name: auth_url_env
-    value: http://authmanager.kernel/
+    value: http://authmanager.kernel
   - name: key_url_env
-    value: http://keymanager.keymanager/
+    value: http://keymanager.keymanager
 
 ## ConfigMap with extra environment variables
 ##
@@ -422,11 +425,44 @@ metrics:
 ## Only internal access
 istio:
   enabled: true
+  gateways:
+    - istio-system/public
+    - istio-system/internal
   existingGateway: ''             ## istio-system/public or istio-system/internal
   # ingressController is only valid if existingGateway is null/empty
   ingressController:
     # for public, istio: ingressgateway && for internal, istio: ingressgateway-internal
-    istio: ingressgateway
-  wellKnownPrefix: /.well-known/
-  mobileappPrefix: /mobileapp/
-  reWriteMobileappPrefix: /files/mobileapp/
+    - ingressgateway
+    - ingressgateway-internal
+  wellKnownPrefix: '/.well-known/'
+  mobileappPrefix: '/files/mobileapp/'
+  reWriteMobileappPrefix: '/files/mobileapp/'
+  corsPolicy:
+    allowOrigins:
+      - prefix: https://api.sandbox.xyz.net
+      - prefix: https://api-internal.sandbox.xyz.net
+      - prefix: https://verifiablecredential.io
+    allowCredentials: true
+    allowHeaders:
+      - Accept
+      - Accept-Encoding
+      - Accept-Language
+      - Connection
+      - Content-Type
+      - Cookie
+      - Host
+      - Referer
+      - Sec-Fetch-Dest
+      - Sec-Fetch-Mode
+      - Sec-Fetch-Site
+      - Sec-Fetch-User
+      - Origin
+      - Upgrade-Insecure-Requests
+      - User-Agent
+      - sec-ch-ua
+      - sec-ch-ua-mobile
+      - sec-ch-ua-platform
+      - x-xsrf-token
+      - xsrf-token
+    allowMethods:
+      - GET
