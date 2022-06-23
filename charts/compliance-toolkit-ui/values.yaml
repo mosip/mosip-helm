@@ -67,41 +67,43 @@ image:
   #   - myRegistryKeySecretName
 
 ## Port on which this particular spring service module is running. 
-springServicePort: 8099
+springServicePort: 8080
 
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
 startupProbe:
-  enabled: false
-  tcpSocket:
-    port: 8099
+  enabled: true
+  httpGet:
+    path: /
+    port: 8080
   initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 30
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
-  tcpSocket:
-    port: 8099
+  enabled: true
+  httpGet:
+    path: /
+    port: 8080
   initialDelaySeconds: 20
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
-  tcpSocket:
-    port: 8099
+  enabled: true
+  httpGet:
+    path: /
+    port: 8080
   initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
-
 ##
 # existingConfigmap:
 
@@ -410,6 +412,8 @@ metrics:
     #     labels:
     #       severity: error
     rules: []
+compliance:
+  apiHost: compliance.sandbox.xyz.net
 
 istio:
   enabled: true
@@ -420,6 +424,4 @@ istio:
       protocol: HTTP
       portName: http
       port: 80
-  hosts:
-    - compliance.sandbox.xyz.net
-  prefix: /compliance-toolkit-ui
+  prefix: /mosip-compliance-toolkit-ui
