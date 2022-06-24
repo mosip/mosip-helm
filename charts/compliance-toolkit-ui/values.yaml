@@ -412,8 +412,8 @@ metrics:
     #     labels:
     #       severity: error
     rules: []
-compliance:
-  apiHost: compliance.sandbox.xyz.net
+compliance-toolkit-ui:
+  apiHost: compliance-toolkit-ui.sandbox.xyz.net
 
 istio:
   enabled: true
@@ -424,4 +424,6 @@ istio:
       protocol: HTTP
       portName: http
       port: 80
-  prefix: /mosip-compliance-toolkit-ui
+  hosts:
+    - compliance.sandbox.xyz.net
+  prefix: /compliance-toolkit-ui
