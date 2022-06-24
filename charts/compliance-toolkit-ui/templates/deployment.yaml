@@ -108,7 +108,10 @@ spec:
             - secretRef:
                 name: {{ include "common.tplvalues.render" (dict "value" .Values.extraEnvVarsSecret "context" $) }}
             {{- end }}
-
+          volumeMounts:
+            - name: ui-config
+              mountPath: /usr/share/nginx/html/assets/config.json
+              subPath: config.json
           ports:
             - name: spring-service
               containerPort: {{ .Values.springServicePort }}
