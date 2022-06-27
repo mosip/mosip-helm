@@ -12,7 +12,13 @@ metadata:
   {{- end }}
 
 data:
-  config.json: |-
-   {"SERVICES_BASE_URL":"https://{{ tpl .Values.compliance-toolkit-ui.apiHost . }}", "SBI_BASE_URL": "http://127.0.0.1", "SDK_BASE_URL": "http://localhost:9099/biosdk-service/", "toolkitUiUrl":"/toolkit-ui/", "login": "login/", "logout": "logout/user"  }
+  config.json: |
+      { "SERVICES_BASE_URL":"https://{{ .Values.compliance_toolkit_ui.apiHost }}/v1/", 
+        "SBI_BASE_URL": "http://127.0.0.1", 
+        "SDK_BASE_URL": "http://localhost:9099/biosdk-service/", 
+        "toolkitUiUrl":"/toolkit-ui/", 
+        "login": "login/", 
+        "logout": "logout/user"
+      }
 
 

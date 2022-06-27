@@ -412,7 +412,7 @@ metrics:
     #     labels:
     #       severity: error
     rules: []
-compliance-toolkit-ui:
+compliance_toolkit_ui:
   apiHost: compliance-toolkit-ui.sandbox.xyz.net
 
 istio:
@@ -426,4 +426,4 @@ istio:
       port: 80
   hosts:
     - compliance.sandbox.xyz.net
-  prefix: /compliance-toolkit-ui
+  prefix: /
