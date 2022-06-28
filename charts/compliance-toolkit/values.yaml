@@ -418,7 +418,7 @@ istio:
   gateways: 
     - istio-system/internal
     - compliance-toolkit-gateway
-  prefix: /v1/
+  prefix: /v1/toolkit/
   corsPolicy:
     allowOrigins:
       - prefix: https://compliance.sandbox.xyz.net
