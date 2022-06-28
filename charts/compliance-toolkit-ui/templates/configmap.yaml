@@ -14,7 +14,7 @@ metadata:
 data:
   config.json: |-
     { 
-        "SERVICES_BASE_URL":"https://{{ .Values.compliance.host }}/v1/toolkit/", 
+        "SERVICES_BASE_URL":"https://{{ .Values.compliance.apiHost }}/v1/toolkit/", 
         "SBI_BASE_URL": "http://127.0.0.1", 
         "SDK_BASE_URL": "http://localhost:9099/biosdk-service/", 
         "toolkitUiUrl":"/toolkit-ui/", 

@@ -417,7 +417,7 @@ istio:
   enabled: true
   gateways: 
     - istio-system/internal
-    - compliance-toolkit-gateway
+    - compliance-toolkit-ui-gateway
   prefix: /v1/toolkit/
   corsPolicy:
     allowOrigins:
