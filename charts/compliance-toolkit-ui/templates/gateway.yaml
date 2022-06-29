@@ -16,5 +16,5 @@ spec:
       protocol: {{ .protocol }}
       {{- end }}
     hosts:
-      {{- include "common.tplvalues.render" ( dict "value" .Values.compliance.apiHosts "context" $ ) | nindent 6 }}
+      {{- include "common.tplvalues.render" ( dict "value" .Values.istio.hosts "context" $ ) | nindent 6 }}
 {{- end }}

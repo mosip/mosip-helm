@@ -417,8 +417,7 @@ istio:
   enabled: true
   gateways: 
     - istio-system/internal
-    - compliance-toolkit-gateway
-  prefix: /compliance-toolkit/v1/
+  prefix: /v1/toolkit
   corsPolicy:
     allowOrigins:
       - prefix: https://compliance.sandbox.xyz.net
@@ -444,6 +443,7 @@ istio:
       - sec-ch-ua-platform
       - x-xsrf-token
       - xsrf-token
+      - Access-Control-Allow-Origin
     allowMethods:
       - GET
       - POST
