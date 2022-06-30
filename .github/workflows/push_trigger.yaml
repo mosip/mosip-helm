@@ -39,6 +39,10 @@ jobs:
                           echo "Saved $( echo ${changed_file} | awk -F '/' '/^[charts]/{print $2}') chart to tmp.txt"
                       fi
                   done
+                  cat tmp.txt | sort | uniq > ./tmp1.txt
+                  mv ./tmp1.txt ./tmp.txt
+                  echo "List of charts to be published";
+                  cat ./tmp.txt
 
             - name: Generate tar files
               run: |
