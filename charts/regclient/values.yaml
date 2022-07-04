@@ -86,7 +86,7 @@ startupProbe:
   httpGet:
     path: "/registration-client/{{ tpl .Values.regclient.version . }}/reg-client.zip"
     port: 80
-  initialDelaySeconds: 0
+  initialDelaySeconds: 420
   periodSeconds: 30 
   timeoutSeconds: 5 
   failureThreshold: 10 
