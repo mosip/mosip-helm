@@ -249,9 +249,9 @@ updateStrategy:
 ## TODO: the below env variable is not used, but required.  Remove it later
 extraEnvVars:
   - name: auth_url_env
-    value: http://authmanager.kernel
+    value: 'http://authmanager.kernel'
   - name: key_url_env
-    value: http://keymanager.keymanager
+    value: 'http://keymanager.keymanager'
 
 ## ConfigMap with extra environment variables
 ##
