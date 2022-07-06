@@ -413,15 +413,17 @@ metrics:
     #       severity: error
     rules: []
 compliance:
-  apiHost: compliance.sandbox.xyz.net
+  apiHost: api-internal.sandbox.xyz.net
 
 istio:
   enabled: true
   ingressController:
     name: ingressgateway-internal
+  hosts:
+    - compliance.sandbox.xyz.net
   gateways:
     - name: compliance-toolkit-ui-gateway
       protocol: HTTP
       portName: http
       port: 80
-  prefix: /mosip-compliance-toolkit-ui
+  prefix: /
