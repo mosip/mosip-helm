@@ -71,6 +71,8 @@ tolerations: []
 
 affinity: {}
 
+frontend: https://iam.sandbox.xyz.net/auth
+
 ## It is assumed that these configmaps are created when Keycloak was installed and available in the same namespace
 ## as this chart 
 keycloak:

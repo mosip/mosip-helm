@@ -42,6 +42,8 @@ spec:
                configMapKeyRef:
                  name: {{ .Values.keycloak.admin.userName.existingConfigMap }} 
                  key:  {{ .Values.keycloak.admin.userName.key }} 
+          - name: FRONTEND_URL
+            value: {{ .Values.frontend }}
           - name:  INPUT_FILE
             value: input.yaml  # Must match below file name in the mount
           envFrom:
