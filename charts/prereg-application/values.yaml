@@ -447,3 +447,7 @@ istio:
         prefix: /preregistration/v1/csrf
     - uri:
         prefix: /preregistration/v1/transliteration
+    - uri:
+        prefix: /preregistration/v1/application-service/swagger-ui.html
+    - uri:
+        prefix: /preregistration/v1/application-service/v3/api-docs
