@@ -21,59 +21,59 @@ data:
         ]
     }
   mosip-context.json: |-
-  {
-    "@context": [{
-      "@version": 1.1
-    },"https://www.w3.org/ns/odrl.jsonld", {
-      "mosip": "https://{{ .Values.mosipfileserver.host }}/mosip#",
-      "schema": "http://schema.org/",
-      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-      "vcVer": "mosip:vcVer",
-      "UIN": "mosip:UIN",
-      "addressLine1": {
-        "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#addressLine1",
-        "@context": {"value": "rdf:value", "lang": "@language"}
-      },
-      "addressLine2": {
-        "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#addressLine2",
-        "@context": {"value": "rdf:value", "lang": "@language"}
-      },
-      "addressLine3": {
-        "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#addressLine3",
-        "@context": {"value": "rdf:value", "lang": "@language"}
-      },
-      "city": {
-        "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#city",
-        "@context": {"value": "rdf:value", "lang": "@language"}
-      },
-      "gender": {
-        "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#gender",
-        "@context": {"value": "rdf:value", "lang": "@language"}
-      },
-      "residenceStatus": {
-        "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#residenceStatus",
-        "@context": {"value": "rdf:value", "lang": "@language"}
-      },
-
-      "dateOfBirth": "mosip:dateOfBirth",
-      "email": "mosip:email",
-      "fullName": {
-        "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#fullName",
-        "@context": {"value": "rdf:value", "lang": "@language"}
-      },
-      "phone": "mosip:phone",
-      "postalCode": "mosip:postalCode",
-      "province": {
-        "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#province",
-        "@context": {"value": "rdf:value", "lang": "@language"}
-      },
-      "region": {
-        "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#region",
-        "@context": {"value": "rdf:value", "lang": "@language"}
-      },
-      "biometrics": "mosip:biometrics"
-    }]
-  }
+    {
+      "@context": [{
+        "@version": 1.1
+      },"https://www.w3.org/ns/odrl.jsonld", {
+        "mosip": "https://{{ .Values.mosipfileserver.host }}/mosip#",
+        "schema": "http://schema.org/",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "vcVer": "mosip:vcVer",
+        "UIN": "mosip:UIN",
+        "addressLine1": {
+          "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#addressLine1",
+          "@context": {"value": "rdf:value", "lang": "@language"}
+        },
+        "addressLine2": {
+          "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#addressLine2",
+          "@context": {"value": "rdf:value", "lang": "@language"}
+        },
+        "addressLine3": {
+          "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#addressLine3",
+          "@context": {"value": "rdf:value", "lang": "@language"}
+        },
+        "city": {
+          "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#city",
+          "@context": {"value": "rdf:value", "lang": "@language"}
+        },
+        "gender": {
+          "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#gender",
+          "@context": {"value": "rdf:value", "lang": "@language"}
+        },
+        "residenceStatus": {
+          "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#residenceStatus",
+          "@context": {"value": "rdf:value", "lang": "@language"}
+        },
+  
+        "dateOfBirth": "mosip:dateOfBirth",
+        "email": "mosip:email",
+        "fullName": {
+          "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#fullName",
+          "@context": {"value": "rdf:value", "lang": "@language"}
+        },
+        "phone": "mosip:phone",
+        "postalCode": "mosip:postalCode",
+        "province": {
+          "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#province",
+          "@context": {"value": "rdf:value", "lang": "@language"}
+        },
+        "region": {
+          "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#region",
+          "@context": {"value": "rdf:value", "lang": "@language"}
+        },
+        "biometrics": "mosip:biometrics"
+      }]
+    }
 
   mosip-context-1.json: |-
     {
