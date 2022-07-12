@@ -405,6 +405,6 @@ metrics:
 istio:
   enabled: true 
   ingressController:
-    name: ingressgateway-internal
+    name: ingressgateway
   hosts:
     - prereg.sandbox.xyz.net  
