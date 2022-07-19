@@ -255,7 +255,19 @@ keycloak:
          saroles: []
 
        - name: mosip-partner-client
-         mappers: []
+         mappers: 
+           - mapper_name: phoneNumber
+             mapper_user_attribute: phoneNumber
+             token_claim_name: phoneNumber
+           - mapper_name: organizationName
+             mapper_user_attribute: organizationName
+             token_claim_name: organizationName
+           - mapper_name: partnerType
+             mapper_user_attribute: partnerType
+             token_claim_name: partnerType
+           - mapper_name: addressTest
+             mapper_user_attribute: address
+             token_claim_name: addressTest
          saroles:
            - REGISTRATION_PROCESSOR
            - CREATE_SHARE
@@ -278,19 +290,7 @@ keycloak:
            - KEY_MAKER
 
        - name: mosip-pms-client
-         mappers: 
-           - mapper_name: phoneNumber
-             mapper_user_attribute: phoneNumber
-             token_claim_name: phoneNumber
-           - mapper_name: organizationName
-             mapper_user_attribute: organizationName
-             token_claim_name: organizationName
-           - mapper_name: partnerType
-             mapper_user_attribute: partnerType
-             token_claim_name: partnerType
-           - mapper_name: addressTest
-             mapper_user_attribute: address
-             token_claim_name: addressTest
+         mappers: []
          saroles: 
            - PARTNER_ADMIN
 
