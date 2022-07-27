@@ -1,7 +1,7 @@
-apiVersion: batch/v1
+apiVersion: {{ include "common.capabilities.cronjob.apiVersion" $ }}
 kind: CronJob
 metadata:
-  name: cronjob-rollout-restart
+  name: {{ template "apitestrig.cronjob" . }}
   namespace: {{ .Release.Namespace }}
 
 spec:
@@ -19,7 +19,7 @@ spec:
       # "waiting for rollout" variant specified below
       template:
         spec:
-          serviceAccountName: sa-deployment-restart # name of the service
+          serviceAccountName: {{ template "apitestrig.sa.cronjob" . }} # name of the service
           # account configured above
           restartPolicy: Never
           containers:
