@@ -1,0 +1,48 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cronjob-rollout-restart
+  namespace: {{ .Release.Namespace }}
+
+spec:
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1  # remove jobs which are successfully executed
+  failedJobsHistoryLimit: 1      # except 1 recent failed job, remove jobs which are not successfully executed
+  #schedule: '*/3 * * * *' # cron spec of time, here, 8 o'clock
+  schedule: {{ .Values.schedule }}
+  jobTemplate:
+    spec:
+      backoffLimit: 2 # this has very low chance of failing, as all this does
+                      # is prompt kubernetes to schedule new replica set for
+      # the deployment
+      # activeDeadlineSeconds: 600 # timeout, makes most sense with
+      # "waiting for rollout" variant specified below
+      template:
+        spec:
+          serviceAccountName: sa-deployment-restart # name of the service
+          # account configured above
+          restartPolicy: Never
+          containers:
+            - name: kubectl
+              image: bitnami/kubectl # probably any kubectl image will do,
+              # optionaly specify version, but this
+              # should not be necessary, as long the
+              # version of kubectl is new enough to
+              # have `rollout restart`
+              command:
+              - bash
+              - -c
+              - >-
+                 kubectl -n {{ .Release.Namespace }} rollout restart
+                 {{- range $module := $.Values.modules }}
+                 {{- if $module.enabled }}
+                 deployment/{{ template "common.names.fullname" $ }}-{{ $module.name }}
+                 {{- end }}
+                 {{- end }}
+                 &&
+                 kubectl -n {{ .Release.Namespace }} rollout status
+                 {{- range $module := $.Values.modules }}
+                 {{- if $module.enabled }}
+                 deployment/{{ template "common.names.fullname" $ }}-{{ $module.name }}
+                 {{- end }}
+                 {{- end }}
