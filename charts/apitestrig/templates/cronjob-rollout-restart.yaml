@@ -9,7 +9,7 @@ spec:
   successfulJobsHistoryLimit: 1  # remove jobs which are successfully executed
   failedJobsHistoryLimit: 1      # except 1 recent failed job, remove jobs which are not successfully executed
   #schedule: '*/3 * * * *' # cron spec of time, here, 8 o'clock
-  schedule: {{ .Values.schedule }}
+  schedule: {{ .Values.crontime }}
   jobTemplate:
     spec:
       backoffLimit: 2 # this has very low chance of failing, as all this does
