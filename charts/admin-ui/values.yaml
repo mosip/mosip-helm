@@ -74,29 +74,29 @@ springServicePort: 8080
 ##
 ## TODO: health probes don't exist. Check.
 startupProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /v1/admin/actuator/health 
     port: 8080
-  initialDelaySeconds: 0
+  initialDelaySeconds: 60
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 30
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /v1/admin/actuator/health 
     port: 8080
-  initialDelaySeconds: 20 
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
   successThreshold: 1
 
 readinessProbe:
-  enabled: false 
+  enabled: true 
   httpGet:
     path: /v1/admin/actuator/health 
     port: 8080

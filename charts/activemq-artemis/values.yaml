@@ -77,6 +77,44 @@ service:
   type: ClusterIP
   annotations: {}
 
+startupProbe:
+  enabled: true
+  exec:
+    command:
+      - "/bin/netcat"
+      - "-z"
+      - "localhost"
+      - "61616"
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 30
+  successThreshold: 1
+
+readinessProbe:
+  enabled: true
+  exec:
+    command:
+      - "/bin/netcat"
+      - "-z"
+      - "localhost"
+      - "61616"
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+  successThreshold: 1
+
+livenessProbe:
+  enabled: true
+  httpGet:
+    port: http
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+  successThreshold: 1
+
 ## Prometheus Exporters / Metrics
 ##
 prometheus:

@@ -74,7 +74,7 @@ startupProbe:
   httpGet:
     path: /v1/mock-abis-service/actuator/health
     port: 8081
-  initialDelaySeconds: 0
+  initialDelaySeconds: 60
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 30
@@ -85,7 +85,7 @@ livenessProbe:
   httpGet:
     path: /v1/mock-abis-service/actuator/health
     port: 8081
-  initialDelaySeconds: 20
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6

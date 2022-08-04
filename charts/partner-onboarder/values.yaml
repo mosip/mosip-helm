@@ -79,7 +79,7 @@ startupProbe:
     command:
     - ls
     - /home/mosip/reports/abis.html
-  initialDelaySeconds: 0
+  initialDelaySeconds: 60
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 30
@@ -87,12 +87,12 @@ startupProbe:
 
 ## Liveness probe does not apply as this is a job which is kept alive only to see reports
 livenessProbe:
-  enabled: false
+  enabled: true
   exec:
     command:
     - ls
     - /home/mosip/reports/abis.html
-  initialDelaySeconds: 20
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6

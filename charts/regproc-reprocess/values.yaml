@@ -74,29 +74,29 @@ springServicePort: 8021
 ##
 ## TODO: enable probes once health urls are available
 startupProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /registrationprocessor/v1/reprocessor/actuator/health
     port: 8021
-  initialDelaySeconds: 0
+  initialDelaySeconds: 60
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 30
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /registrationprocessor/v1/reprocessor/actuator/health
     port: 8021
-  initialDelaySeconds: 20 
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /registrationprocessor/v1/reprocessor/actuator/health
     port: 8021

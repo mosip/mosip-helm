@@ -80,25 +80,25 @@ startupProbe:
   httpGet:
     path: "/.well-known/"
     port: 8080
-  initialDelaySeconds: 0
+  initialDelaySeconds: 60
   periodSeconds: 30 
   timeoutSeconds: 5 
   failureThreshold: 10 
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: "/.well-known/"
     port: 8080
-  initialDelaySeconds: 20
+  initialDelaySeconds: 0
   periodSeconds: 60 
   timeoutSeconds: 5 
   failureThreshold: 2 
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: "/.well-known/"
     port: 8080

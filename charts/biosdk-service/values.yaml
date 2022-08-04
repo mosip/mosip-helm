@@ -76,17 +76,17 @@ startupProbe:
   enabled: true
   tcpSocket:
     port: 9099
-  initialDelaySeconds: 0
+  initialDelaySeconds: 60
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 30
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
+  enabled: true
   tcpSocket:
     port: 9099
-  initialDelaySeconds: 20 
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6

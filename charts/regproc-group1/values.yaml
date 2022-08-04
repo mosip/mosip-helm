@@ -74,33 +74,33 @@ image:
 springServicePort: 8081
 
 startupProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /registrationprocessor/v1/packetreceiver/actuator/health
     port: 8081
-  initialDelaySeconds: 0
+  initialDelaySeconds: 60
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 30
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /registrationprocessor/v1/packetreceiver/actuator/health
     port: 8081
-  initialDelaySeconds: 120 
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /registrationprocessor/v1/packetreceiver/actuator/health
     port: 8081
-  initialDelaySeconds: 30 
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6

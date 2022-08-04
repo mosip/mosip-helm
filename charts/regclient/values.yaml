@@ -86,32 +86,32 @@ startupProbe:
   httpGet:
     path: "/registration-client/{{ tpl .Values.regclient.version . }}/reg-client.zip"
     port: 80
-  initialDelaySeconds: 420
-  periodSeconds: 30 
+  initialDelaySeconds: 300
+  periodSeconds: 10
   timeoutSeconds: 5 
-  failureThreshold: 10 
+  failureThreshold: 30
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
-  httpGet:
-    path: "/registration-client/{{ tpl .Values.regclient.version . }}/reg-client.zip"
-    port: 80
-  initialDelaySeconds: 20
-  periodSeconds: 60 
-  timeoutSeconds: 5 
-  failureThreshold: 2 
-  successThreshold: 1
-
-readinessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: "/registration-client/{{ tpl .Values.regclient.version . }}/reg-client.zip"
     port: 80
   initialDelaySeconds: 0
-  periodSeconds: 60 
+  periodSeconds: 10
   timeoutSeconds: 5 
-  failureThreshold: 2  
+  failureThreshold: 6
+  successThreshold: 1
+
+readinessProbe:
+  enabled: true
+  httpGet:
+    path: "/registration-client/{{ tpl .Values.regclient.version . }}/reg-client.zip"
+    port: 80
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5 
+  failureThreshold: 6
   successThreshold: 1
 
 ##

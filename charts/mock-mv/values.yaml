@@ -74,29 +74,29 @@ springServicePort: 8081
 ##
 ## TODO: Enable probes when they are functional
 startupProbe:
-  enabled: false 
+  enabled: true 
   httpGet:
     path: /v1/mockmv/actuator/health 
     port: 8081
-  initialDelaySeconds: 0
+  initialDelaySeconds: 60
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 30
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /v1/mockmv/actuator/health 
     port: 8081
-  initialDelaySeconds: 20 
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /v1/mockmv/actuator/health 
     port: 8081

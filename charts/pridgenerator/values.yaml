@@ -74,29 +74,29 @@ springServicePort: 8100
 ##
 ## TODO: probes disabled as the health url does not seem to work. FIX.
 startupProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /v1/pridgenerator/actuator/health 
     port: 8100
-  initialDelaySeconds: 0
+  initialDelaySeconds: 60
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 30
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /v1/pridgenerator/actuator/health 
     port: 8100
-  initialDelaySeconds: 20
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /v1/pridgenerator/actuator/health 
     port: 8100

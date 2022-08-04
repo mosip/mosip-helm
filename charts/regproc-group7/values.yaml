@@ -72,7 +72,20 @@ image:
 ## When configuring Probe, please make sure to remove from the url paths that are not required from the probe list
 #### The following probes are not working and are hence disabled. TODO: debug this
 startupProbe:
-  enabled: false
+  enabled: true
+  exec:
+    command:
+    - /bin/bash
+    - -c
+    - MY_PROBE_CHECK_PATHS="http://localhost:8099/registrationprocessor/v1/uin-generator/actuator/health,http://localhost:8099/registrationprocessor/v1/print-stage/actuator/health"; i=1; for str in $(echo $MY_PROBE_CHECK_PATHS | sed "s/,/\n/g"); do curl_output="$(curl -w %{http_code} -o /dev/null -s $str)"; if ! [ "$curl_output" = "200" ]; then echo "$str failed with status code $curl_output" >> /dev/stderr && exit $i; fi; ((i++)); done
+  initialDelaySeconds: 60
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 30
+  successThreshold: 1
+
+livenessProbe:
+  enabled: true
   exec:
     command:
     - /bin/bash
@@ -81,24 +94,11 @@ startupProbe:
   initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5
-  failureThreshold: 30
-  successThreshold: 1
-
-livenessProbe:
-  enabled: false
-  exec:
-    command:
-    - /bin/bash
-    - -c
-    - MY_PROBE_CHECK_PATHS="http://localhost:8099/registrationprocessor/v1/uin-generator/actuator/health,http://localhost:8099/registrationprocessor/v1/print-stage/actuator/health"; i=1; for str in $(echo $MY_PROBE_CHECK_PATHS | sed "s/,/\n/g"); do curl_output="$(curl -w %{http_code} -o /dev/null -s $str)"; if ! [ "$curl_output" = "200" ]; then echo "$str failed with status code $curl_output" >> /dev/stderr && exit $i; fi; ((i++)); done
-  initialDelaySeconds: 20
-  periodSeconds: 10
-  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
+  enabled: true
   exec:
     command:
     - /bin/bash

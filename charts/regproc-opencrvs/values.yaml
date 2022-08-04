@@ -75,7 +75,7 @@ startupProbe:
   httpGet:
     path: "/registrationprocessor/v1/opencrvs-stage/actuator/health"
     port: 8045
-  initialDelaySeconds: 0
+  initialDelaySeconds: 60
   periodSeconds: 30
   timeoutSeconds: 5
   failureThreshold: 10
@@ -86,7 +86,7 @@ livenessProbe:
   httpGet:
     path: "/registrationprocessor/v1/opencrvs-stage/actuator/health"
     port: 8045
-  initialDelaySeconds: 20
+  initialDelaySeconds: 0
   periodSeconds: 60
   timeoutSeconds: 5
   failureThreshold: 2

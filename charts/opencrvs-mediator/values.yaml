@@ -87,10 +87,10 @@ startupProbe:
   httpGet:
     path: "/ping"
     port: 4545
-  initialDelaySeconds: 0
-  periodSeconds: 30
+  initialDelaySeconds: 60
+  periodSeconds: 10
   timeoutSeconds: 5
-  failureThreshold: 10
+  failureThreshold: 30
   successThreshold: 1
 
 livenessProbe:
@@ -98,10 +98,10 @@ livenessProbe:
   httpGet:
     path: "/ping"
     port: 4545
-  initialDelaySeconds: 20
-  periodSeconds: 60
+  initialDelaySeconds: 0
+  periodSeconds: 10
   timeoutSeconds: 5
-  failureThreshold: 2
+  failureThreshold: 6
   successThreshold: 1
 
 readinessProbe:
@@ -110,9 +110,9 @@ readinessProbe:
     path: "/ping"
     port: 4545
   initialDelaySeconds: 0
-  periodSeconds: 20
+  periodSeconds: 10
   timeoutSeconds: 5
-  failureThreshold: 2
+  failureThreshold: 6
   successThreshold: 1
 
 ##

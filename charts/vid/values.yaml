@@ -79,7 +79,7 @@ startupProbe:
   httpGet:
     path: /idrepository/v1/actuator/health
     port: 8091
-  initialDelaySeconds: 0
+  initialDelaySeconds: 60
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 30
@@ -90,7 +90,7 @@ livenessProbe:
   httpGet:
     path: /idrepository/v1/actuator/health
     port: 8091
-  initialDelaySeconds: 20
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6

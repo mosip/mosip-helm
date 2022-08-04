@@ -77,7 +77,7 @@ startupProbe:
   httpGet:
     path: /v1/keymanager/actuator/health 
     port: 8088
-  initialDelaySeconds: 0
+  initialDelaySeconds: 60
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 30
@@ -88,7 +88,7 @@ livenessProbe:
   httpGet:
     path: /v1/keymanager/actuator/health 
     port: 8088
-  initialDelaySeconds: 20
+  initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
   failureThreshold: 6
