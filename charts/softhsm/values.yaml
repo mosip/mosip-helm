@@ -130,7 +130,7 @@ livenessProbe:
   tcpSocket:
     port: tcp
   initialDelaySeconds: 30
-  periodSeconds: 10
+  periodSeconds: 30
   timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1

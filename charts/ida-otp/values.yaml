@@ -89,7 +89,7 @@ livenessProbe:
     path: /idauthentication/v1/otp/actuator/health
     port: 8092
   initialDelaySeconds: 20
-  periodSeconds: 10
+  periodSeconds: 30
   timeoutSeconds: 5 
   failureThreshold: 6
   successThreshold: 1

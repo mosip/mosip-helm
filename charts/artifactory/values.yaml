@@ -88,7 +88,7 @@ livenessProbe:
     path: /
     port: 8080
   initialDelaySeconds: 20 
-  periodSeconds: 10
+  periodSeconds: 30
   timeoutSeconds: 1 
   failureThreshold: 3 
   successThreshold: 1

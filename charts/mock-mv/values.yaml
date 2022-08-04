@@ -90,7 +90,7 @@ livenessProbe:
     path: /v1/mockmv/actuator/health 
     port: 8081
   initialDelaySeconds: 20 
-  periodSeconds: 10
+  periodSeconds: 30
   timeoutSeconds: 5 
   failureThreshold: 6
   successThreshold: 1

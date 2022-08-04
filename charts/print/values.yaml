@@ -78,7 +78,7 @@ livenessProbe:
     path: /v1/print/actuator/health 
     port: 8088
   initialDelaySeconds: 120 
-  periodSeconds: 10
+  periodSeconds: 30
   timeoutSeconds: 5 
   failureThreshold: 6
   successThreshold: 1

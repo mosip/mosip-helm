@@ -91,7 +91,7 @@ livenessProbe:
     path: /v1/idgenerator/actuator/health 
     port: 8080
   initialDelaySeconds: 20
-  periodSeconds: 10
+  periodSeconds: 30
   timeoutSeconds: 5 
   failureThreshold: 6
   successThreshold: 1
