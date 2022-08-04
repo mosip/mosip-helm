@@ -434,6 +434,25 @@ keycloak:
            - uma_authorization
            - offline_access
        
+       - name: mosip-testrig-client
+         saroles:
+           - ID_AUTHENTICATION
+           - GLOBAL_ADMIN # TODO: do we need this?
+           - PARTNER_ADMIN
+           - REGISTRATION_PROCESSOR
+           - CREATE_SHARE
+           - PMS_ADMIN
+           - PMS_USER
+           - uma_authorization
+           - offline_access
+          sa_client_roles:
+            - realm-management:  ## realm-management client id
+                - view-users     # realm-management client roles
+                - view-clients
+                - view-realms
+                - manage-users
+
+       
       users: []
     
 ## These will be passed as environments variables to keycloak-init docker. Note the expected naming convention is 
