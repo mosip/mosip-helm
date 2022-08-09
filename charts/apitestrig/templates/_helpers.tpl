@@ -59,20 +59,5 @@ Return podAnnotations
 
 {{/* Create the name for restart cronjob */}}
 {{- define "apitestrig.cronjob" -}}
-{{ default (printf "cronjob-%s-restart" (include "common.names.fullname" .)) .Values.serviceAccount.name }}
-{{- end -}}
-
-{{/* Create the name for service account for restart cronjob */}}
-{{- define "apitestrig.sa.cronjob" -}}
-{{ default (printf "sa-%s-restart" (include "common.names.fullname" .)) .Values.serviceAccount.name }}
-{{- end -}}
-
-{{/* Create the name for role for restart cronjob */}}
-{{- define "apitestrig.role.cronjob" -}}
-{{ default (printf "role-%s-restart" (include "common.names.fullname" .)) .Values.serviceAccount.name }}
-{{- end -}}
-
-{{/* Create the name for rolebinding for restart cronjob */}}
-{{- define "apitestrig.rolebinding.cronjob" -}}
-{{ default (printf "rb-%s-restart" (include "common.names.fullname" .)) .Values.serviceAccount.name }}
+{{ default (printf "cronjob-%s" (include "common.names.fullname" .)) .Values.serviceAccount.name }}
 {{- end -}}
