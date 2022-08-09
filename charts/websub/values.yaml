@@ -72,7 +72,8 @@ image:
 ## TODO: Better probes to be added.
 startupProbe:
   enabled: true
-  tcpSocket:
+  httpGet:
+    path: /hub/actuator/health
     port: 9191
   initialDelaySeconds: 0
   periodSeconds: 10
@@ -82,7 +83,8 @@ startupProbe:
 
 livenessProbe:
   enabled: true
-  tcpSocket:
+  httpGet:
+    path: /hub/actuator/health
     port: 9191
   initialDelaySeconds: 20
   periodSeconds: 30
@@ -92,7 +94,8 @@ livenessProbe:
 
 readinessProbe:
   enabled: true
-  tcpSocket:
+  httpGet:
+    path: /hub/actuator/health
     port: 9191
   initialDelaySeconds: 0
   periodSeconds: 10
