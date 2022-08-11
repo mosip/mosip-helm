@@ -420,6 +420,8 @@ resident:
   apiHost: api-internal.sandbox.xyz.net
 istio:
   enabled: true
+  ingressController:
+    name: ingressgateway-internal
   gateways: 
     - resident-ui-gateway
   prefix: /resident-ui
