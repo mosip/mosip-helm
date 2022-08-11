@@ -429,7 +429,10 @@ keycloak:
            - offline_access
     
        - name: mosip-toolkit-client
-         saroles: []  
+         saroles: []
+      
+       - name: mosip-digitalcard-client
+         saroles: []
 
        - name: mosip-testrig-client
          saroles:
@@ -501,4 +504,6 @@ clientSecrets:
   - name: mpartner_default_mobile_secret
     secret: ""
   - name: mosip_toolkit_client_secret
+    secret: ""
+  - name: mosip_digitalcard_client_secret
     secret: ""
