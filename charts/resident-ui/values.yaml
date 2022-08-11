@@ -424,6 +424,6 @@ istio:
     name: ingressgateway-internal
   gateways: 
     - resident-ui-gateway
-  prefix: /resident-ui
+  prefix: /
   hosts:
     - resident.sandbox.xyz.net
