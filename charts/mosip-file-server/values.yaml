@@ -87,7 +87,7 @@ startupProbe:
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: "/.well-known/"
     port: 8080
@@ -98,7 +98,7 @@ livenessProbe:
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: "/.well-known/"
     port: 8080

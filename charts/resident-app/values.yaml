@@ -75,7 +75,7 @@ image:
 startupProbe:
   enabled: true
   httpGet:
-    path: /v1/resident/actuator/health
+    path: /v1/mimoto/actuator/health
     port: 8088
   initialDelaySeconds: 0
   periodSeconds: 10
@@ -84,9 +84,9 @@ startupProbe:
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
+  enabled: true
   httpGet:
-    path: /v1/resident/actuator/health
+    path: /v1/mimoto/actuator/health
     port: 8088
   initialDelaySeconds: 120 
   periodSeconds: 30
@@ -95,9 +95,9 @@ livenessProbe:
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
+  enabled: true
   httpGet:
-    path: /v1/resident/actuator/health
+    path: /v1/mimoto/actuator/health
     port: 8088
   initialDelaySeconds: 30 
   periodSeconds: 10

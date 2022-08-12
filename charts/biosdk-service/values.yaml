@@ -74,7 +74,8 @@ springServicePort: 9099
 ##
 startupProbe:
   enabled: true
-  tcpSocket:
+  httpGet:
+    path: /biosdk-service/actuator/health
     port: 9099
   initialDelaySeconds: 0
   periodSeconds: 10
@@ -83,8 +84,9 @@ startupProbe:
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
-  tcpSocket:
+  enabled: true
+  httpGet:
+    path: /biosdk-service/actuator/health
     port: 9099
   initialDelaySeconds: 20 
   periodSeconds: 30
@@ -94,7 +96,8 @@ livenessProbe:
 
 readinessProbe:
   enabled: true
-  tcpSocket:
+  httpGet:
+    path: /biosdk-service/actuator/health
     port: 9099
   initialDelaySeconds: 0
   periodSeconds: 10
