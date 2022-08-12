@@ -67,7 +67,7 @@ image:
   #   - myRegistryKeySecretName
 
 ## Port on which this particular spring service module is running.
-springServicePort: 8088
+springServicePort: 9092
 
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
@@ -76,7 +76,7 @@ livenessProbe:
   enabled: true
   httpGet:
     path: /v1/digitalcard/actuator/health
-    port: 8088
+    port: 9092
   initialDelaySeconds: 120
   periodSeconds: 10
   timeoutSeconds: 5
@@ -87,7 +87,7 @@ readinessProbe:
   enabled: true
   httpGet:
     path: /v1/digitalcard/actuator/health
-    port: 8088
+    port: 9092
   initialDelaySeconds: 60
   periodSeconds: 10
   timeoutSeconds: 5
