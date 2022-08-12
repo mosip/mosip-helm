@@ -426,5 +426,6 @@ istio:
   enabled: true
   gateways: 
     - istio-system/internal
+    - istio-system/public
   prefix: /residentmobileapp
   rewrite: /v1/mimoto
