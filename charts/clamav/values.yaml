@@ -71,7 +71,7 @@ containerPort: 3310
 ##
 ## TODO: enable proper probes. These don't work, so disabled for now.
 startupProbe:
-  enabled: false
+  enabled: true
   httpGet:
     port: 3310
   initialDelaySeconds: 0
@@ -81,7 +81,7 @@ startupProbe:
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
+  enabled: true
   exec:
     command:
       - ./check.sh
@@ -92,7 +92,7 @@ livenessProbe:
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
+  enabled: true
   exec:
     command:
       - ./check.sh
