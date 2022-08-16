@@ -76,7 +76,7 @@ springServicePort: 8082
 startupProbe:
   enabled: true
   httpGet:
-    path: 
+    path: /healthcheck.txt
     port: 8082
   initialDelaySeconds: 0
   periodSeconds: 10
@@ -87,7 +87,7 @@ startupProbe:
 livenessProbe:
   enabled: true
   httpGet:
-    path: 
+    path: /healthcheck.txt
     port: 8082
   initialDelaySeconds: 20 
   periodSeconds: 30
@@ -98,7 +98,7 @@ livenessProbe:
 readinessProbe:
   enabled: true
   httpGet:
-    path: 
+    path: /healthcheck.txt
     port: 8082
   initialDelaySeconds: 0 
   periodSeconds: 10
