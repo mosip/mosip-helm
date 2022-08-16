@@ -20,6 +20,8 @@ spec:
   - match:
       - uri:
           prefix: {{ .Values.istio.prefix }}
+    rewrite:
+      uri: {{ .Values.istio.rewrite }}
     route:
     - destination:
         host: {{ template "common.names.fullname" . }}
