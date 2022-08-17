@@ -95,7 +95,7 @@ livenessProbe:
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /v1/mimoto/actuator/health
     port: 8088
