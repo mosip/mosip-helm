@@ -71,7 +71,7 @@ image:
 ##
 ## When configuring Probe, please make sure to remove from the url paths that are not required from the probe list 
 startupProbe:
-  enabled: false
+  enabled: true
   exec:
     command:
     - /bin/bash

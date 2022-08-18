@@ -84,7 +84,7 @@ startupProbe:
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /idauthentication/v1/actuator/health
     port: 8090

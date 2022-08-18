@@ -75,7 +75,7 @@ springServicePort: 8080
 ## TODO: probes disabled as they don't work for some reason
 
 startupProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /v1/idgenerator/actuator/health 
     port: 8080
@@ -86,7 +86,7 @@ startupProbe:
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /v1/idgenerator/actuator/health 
     port: 8080
@@ -97,7 +97,7 @@ livenessProbe:
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /v1/idgenerator/actuator/health 
     port: 8080
