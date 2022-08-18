@@ -12,8 +12,8 @@ base:
   kibana_url: http://kibana.cattle-logging-system:5601
 
 debezium_connectors:
-  image: mosipdev/debezium-init
-  imageTag: develop
+  image: mosipqa/debezium-init
+  imageTag: 1.2.0
   imagePullPolicy: Always
 
   enabled: true
@@ -33,8 +33,8 @@ debezium_connectors:
 
 
 es_kafka_connectors:
-  image: mosipdev/es-kafka-connect-init
-  imageTag: develop
+  image: mosipqa/es-kafka-connect-init
+  imageTag: 1.2.0
   imagePullPolicy: Always
 
   enabled: true
