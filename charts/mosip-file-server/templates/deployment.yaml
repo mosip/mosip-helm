@@ -110,8 +110,13 @@ spec:
             {{- end }}
             {{- end }}
           volumeMounts:
-            - name: mosipvc
+            - name: wellknown
               mountPath:  {{ .Values.mosipfileserver.mountDir }}/.well-known/mosipvc/
+
+            - name: mobileapp
+              mountPath:  {{ .Values.mosipfileserver.mobileAppMountDIr }}/index.html
+              subPath: index.html
+
           ports:
             - name: container-port
               containerPort: {{ .Values.containerPort }}
@@ -137,6 +142,12 @@ spec:
         {{- include "common.tplvalues.render" ( dict "value" .Values.sidecars "context" $) | nindent 8 }}
         {{- end }}
       volumes:
-        - name: mosipvc
+        - name: wellknown
           configMap:
-            name: mosipfileserver
+            name: wellknown-cm
+        - name: mobileapp
+          configMap:
+            name: mobileapp-cm
+            items:
+              - key: index.html
+                path: index.html
