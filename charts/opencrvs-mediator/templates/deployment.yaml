@@ -110,12 +110,19 @@ spec:
             - name: opencrvs_receive_credential_url
               value: {{ .Values.mediator.opencrvs.receiveCredentialUrl }}
             - name: mosip_receive_credential_url
-              value: http://{{ template "common.names.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/receiveCredentialBirth
+              value: http://{{ template "common.names.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/opencrvs/v1/receiveCredentialBirth
             - name: mosip_opencrvs_client_secret_key
               valueFrom:
                 secretKeyRef:
                   name: keycloak-client-secrets
                   key: {{ .Values.mediator.mosipOpencrvsKeycloakClientId | replace "-" "_" }}_secret
+            - name: mosip_opencrvs_death_client_id
+              value: {{ .Values.mediator.mosipOpencrvsDeathClientId }}
+            - name: mosip_opencrvs_death_client_secret
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-client-secrets
+                  key: {{ .Values.mediator.mosipOpencrvsDeathClientId | replace "-" "_" }}_secret
             - name: mosip_opencrvs_db_datasource_password
               valueFrom:
                 secretKeyRef:

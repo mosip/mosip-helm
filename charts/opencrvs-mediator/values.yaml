@@ -38,6 +38,7 @@ mediator:
     certsKeysMountPath: "/certs/mnt"
 
   mosipOpencrvsKeycloakClientId: mosip-opencrvs-client
+  mosipOpencrvsDeathClientId: mosip-opencrvs-client
   kernelAuthAdapterAvailable: false
 
 service:
@@ -62,7 +63,7 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipqa/mosip-opencrvs-mediator
+  repository: mosipdev/mosip-opencrvs-mediator
   tag: develop
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -85,10 +86,10 @@ containerPort: 4545
 startupProbe:
   enabled: true
   httpGet:
-    path: "/ping"
+    path: "/opencrvs/v1/actuator/health"
     port: 4545
-  initialDelaySeconds: 0
-  periodSeconds: 30
+  initialDelaySeconds: 5
+  periodSeconds: 10
   timeoutSeconds: 5
   failureThreshold: 10
   successThreshold: 1
@@ -96,9 +97,9 @@ startupProbe:
 livenessProbe:
   enabled: true
   httpGet:
-    path: "/ping"
+    path: "/opencrvs/v1/actuator/health"
     port: 4545
-  initialDelaySeconds: 20
+  initialDelaySeconds: 5
   periodSeconds: 60
   timeoutSeconds: 5
   failureThreshold: 2
@@ -107,9 +108,9 @@ livenessProbe:
 readinessProbe:
   enabled: true
   httpGet:
-    path: "/ping"
+    path: "/opencrvs/v1/actuator/health"
     port: 4545
-  initialDelaySeconds: 0
+  initialDelaySeconds: 5
   periodSeconds: 20
   timeoutSeconds: 5
   failureThreshold: 2
