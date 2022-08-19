@@ -75,9 +75,16 @@ springServicePort: 8082
 ## TODO: enable probes once health urls are available
 startupProbe:
   enabled: true
-  httpGet:
-    path: /healthcheck.txt
-    port: 8082
+  exec:
+    command:
+    - /bin/bash
+    - -c
+    - echo "regproc packet server is up !!!" > /home/mosip/landing/healthcheck.txt;
+      url=http://localhost:8082/healthcheck.txt;
+      curl_output="$(curl -w %{http_code} -o /dev/null -s $url)";
+      if ! [ "$curl_output" = "200" ]; then
+        echo "$str failed with status code $curl_output" >> /dev/stderr && exit $i;
+      fi;
   initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
