@@ -73,7 +73,7 @@ springServicePort: 8083
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
 startupProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path:
     port: 8083
@@ -84,7 +84,7 @@ startupProbe:
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path:
     port: 8083
@@ -95,7 +95,7 @@ livenessProbe:
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path:
     port: 8083
