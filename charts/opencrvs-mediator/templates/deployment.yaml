@@ -110,7 +110,7 @@ spec:
             - name: opencrvs_receive_credential_url
               value: {{ .Values.mediator.opencrvs.receiveCredentialUrl }}
             - name: mosip_receive_credential_url
-              value: http://{{ template "common.names.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/opencrvs/v1/receiveCredentialBirth
+              value: http://{{ template "common.names.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/opencrvs/v1/internal/receiveCredentialBirth
             - name: mosip_opencrvs_client_secret_key
               valueFrom:
                 secretKeyRef:

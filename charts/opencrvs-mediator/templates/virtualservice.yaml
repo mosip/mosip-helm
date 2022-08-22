@@ -24,7 +24,7 @@ spec:
   http:
   - match:
     - uri:
-        prefix: /opencrvs/v1
+        regex: \/opencrvs\/v1\/[^(internal)].*
     route:
     - destination:
         host: {{ template "common.names.fullname" . }}
