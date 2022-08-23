@@ -71,6 +71,15 @@ data:
           "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#region",
           "@context": {"value": "rdf:value", "lang": "@language"}
         },
+         "bestTwoFingers": {
+         "@id": "https://${mosip.api.public.host}/mosip#bestTwoFingers",
+         "@context": {
+           "id": "@id",
+           "type": "@type",
+           "subType": "https://${mosip.api.public.host}/mosip#subType",
+           "rank": "https://${mosip.api.public.host}/mosip#rank"
+      }
+  },
         "biometrics": "mosip:biometrics"
       }]
     }
