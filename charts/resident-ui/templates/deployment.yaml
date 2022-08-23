@@ -109,15 +109,23 @@ spec:
                 name: {{ include "common.tplvalues.render" (dict "value" .Values.extraEnvVarsSecret "context" $) }}
             {{- end }}
           volumeMounts:
-            - name: conf-file
-              mountPath:  /usr/share/nginx/html/assets/config.json
+            - name: ui-config
+              mountPath: /usr/share/nginx/html/assets/config.json
               subPath: config.json
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d/default.conf
+              subPath: default.conf
           ports:
             - name: spring-service
               containerPort: {{ .Values.springServicePort }}
            
           {{- if .Values.resources }}
           resources: {{- toYaml .Values.resources | nindent 12 }}
+          {{- end }}
+          {{- if .Values.startupProbe.enabled }}
+          startupProbe: {{- include "common.tplvalues.render" (dict "value" (omit .Values.startupProbe "enabled") "context" $) | nindent 12 }}
+          {{- else if .Values.customStartupProbe }}
+          startupProbe: {{- include "common.tplvalues.render" (dict "value" .Values.customStartupProbe "context" $) | nindent 12 }}
           {{- end }}
           {{- if .Values.livenessProbe.enabled }}
           livenessProbe: {{- include "common.tplvalues.render" (dict "value" (omit .Values.livenessProbe "enabled") "context" $) | nindent 12 }}
@@ -133,6 +141,15 @@ spec:
         {{- include "common.tplvalues.render" ( dict "value" .Values.sidecars "context" $) | nindent 8 }}
         {{- end }}
       volumes:
-        - name: conf-file
+        - name: ui-config
           configMap:
             name: {{ template "common.names.fullname" . }}
+            items:
+              - key: config.json
+                path: config.json
+        - name: nginx-config
+          configMap:
+            name: {{ template "common.names.fullname" . }}
+            items:
+              - key: default.conf
+                path: default.conf

@@ -93,7 +93,7 @@ startupProbe:
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: "/registration-client/{{ tpl .Values.regclient.version . }}/reg-client.zip"
     port: 80
@@ -104,7 +104,7 @@ livenessProbe:
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: "/registration-client/{{ tpl .Values.regclient.version . }}/reg-client.zip"
     port: 80

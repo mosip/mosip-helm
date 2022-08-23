@@ -72,8 +72,9 @@ image:
 ## TODO: Ports here are not correct. Update them when available
 startupProbe:
   enabled: false
-  tcpSocket:
-    port: 9191
+  httpGet:
+    path: /consolidator/actuator/health
+    port: 9192
   initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
@@ -82,8 +83,9 @@ startupProbe:
 
 livenessProbe:
   enabled: false
-  tcpSocket:
-    port: 9191
+  httpGet:
+    path: /consolidator/actuator/health
+    port: 9192
   initialDelaySeconds: 20
   periodSeconds: 10
   timeoutSeconds: 5 
@@ -92,8 +94,9 @@ livenessProbe:
 
 readinessProbe:
   enabled: false
-  tcpSocket:
-    port: 9191
+  httpGet:
+    path: /consolidator/actuator/health
+    port: 9192
   initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
@@ -410,3 +413,5 @@ metrics:
 
 # NOTE: No one connects to this service, so both service and virtualservice don't exist for this service.
 
+websub_consolidator:
+  port: 9192

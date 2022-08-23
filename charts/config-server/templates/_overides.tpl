@@ -99,6 +99,12 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mpartner_default_print_secret
 
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MPARTNER_DEFAULT_DIGITALCARD_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.keycloakClients }}
+      key: mpartner_default_digitalcard_secret
+
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_ADMIN_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
@@ -188,6 +194,12 @@ All env variables that are accessed from mosip config properties
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_toolkit_client_secret
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_DIGITALCARD_CLIENT_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.keycloakClients }}
+      key: mosip_digitalcard_client_secret
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_KEYCLOAK_ADMIN_PASSWORD
   valueFrom:

@@ -320,6 +320,7 @@ keycloak:
            - PUBLISH_REGISTRATION_PROCESSOR_WORKFLOW_COMPLETED_EVENT_GENERAL
            - PUBLISH_CREDENTIAL_STATUS_UPDATE_GENERAL
            - PUBLISH_REGISTRATION_PROCESSOR_WORKFLOW_PAUSED_FOR_ADDITIONAL_INFO_EVENT_GENERAL
+           - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
 
        - name: mosip-resident-client
          mappers: []
@@ -411,6 +412,15 @@ keycloak:
            - PUBLISH_CREDENTIAL_STATUS_UPDATE_GENERAL
            - CREATE_SHARE
            - PRINT_PARTNER
+    
+       - name: mpartner-default-digitalcard
+         mappers: []
+         saroles: 
+           - SUBSCRIBE_CREDENTIAL_STATUS_UPDATE_GENERAL
+           - SUBSCRIBE_IDENTITY_CREATED_GENERAL
+           - SUBSCRIBE_IDENTITY_UPDATED_GENERAL
+           - PUBLISH_CREDENTIAL_STATUS_UPDATE_GENERAL
+           - CREATE_SHARE
 
        - name: mosip-hotlist-client
          saroles:
@@ -429,7 +439,33 @@ keycloak:
            - offline_access
     
        - name: mosip-toolkit-client
-         saroles: []  
+         saroles: []
+      
+       - name: mosip-digitalcard-client
+         saroles:
+           - CREATE_SHARE
+           - PUBLISH_CREDENTIAL_STATUS_UPDATE_GENERAL
+           - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
+           - SUBSCRIBE_IDENTITY_CREATED_GENERAL
+           - SUBSCRIBE_IDENTITY_UPDATED_GENERAL
+
+       - name: mosip-testrig-client
+         saroles:
+           - ID_AUTHENTICATION
+           - GLOBAL_ADMIN # TODO: do we need this?
+           - PARTNER_ADMIN
+           - REGISTRATION_PROCESSOR
+           - CREATE_SHARE
+           - PMS_ADMIN
+           - PMS_USER
+           - uma_authorization
+           - offline_access
+         sa_client_roles:
+           - realm-management:  ## realm-management client id
+               - view-users     # realm-management client roles
+               - view-clients
+               - view-realm
+               - manage-users
        
       users: []
     
@@ -483,4 +519,8 @@ clientSecrets:
   - name: mpartner_default_mobile_secret
     secret: ""
   - name: mosip_toolkit_client_secret
+    secret: ""
+  - name: mosip_digitalcard_client_secret
+    secret: ""
+  - name: mpartner_default_digitalcard_secret
     secret: ""

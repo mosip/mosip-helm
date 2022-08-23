@@ -74,7 +74,7 @@ springServicePort: 9097
 ##
 ## TODO: Probes have been disabled as they are not working. FIX.
 startupProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /preregistration/v1/actuator/health
     port: 9097
@@ -85,7 +85,7 @@ startupProbe:
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /preregistration/v1/actuator/health
     port: 9097
@@ -96,7 +96,7 @@ livenessProbe:
   successThreshold: 1
 
 readinessProbe:
-  enabled: false 
+  enabled: true 
   httpGet:
     path: /preregistration/v1/actuator/health
     port: 9097

@@ -95,7 +95,7 @@ livenessProbe:
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /v1/mimoto/actuator/health
     port: 8088
@@ -426,5 +426,6 @@ istio:
   enabled: true
   gateways: 
     - istio-system/internal
+    - istio-system/public
   prefix: /residentmobileapp
   rewrite: /v1/mimoto

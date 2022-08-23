@@ -13,6 +13,20 @@ metadata:
 
 data:
   config.json: |-
-   {"baseUrl":"https://{{ .Values.resident.apiHost }}/resident/v1/"}
+   {"baseUrl":"https://{{ .Values.resident.apiHost }}/resident/v1"}
+  default.conf: |-
+    server {
+      listen       8080;
+      server_name  localhost;
+      add_header X-Frame-Options DENY;
+
+      #charset koi8-r;
+      #access_log  /var/log/nginx/host.access.log  main;
+      #index  index.html index.htm;
+
+      location / {
+          root   /usr/share/nginx/html;
+      }
+    }
 
 
