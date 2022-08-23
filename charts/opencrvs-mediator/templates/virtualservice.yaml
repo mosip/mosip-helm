@@ -24,23 +24,7 @@ spec:
   http:
   - match:
     - uri:
-        exact: /opencrvs-mediator/birth
-    rewrite:
-      uri: /birth
-    route:
-    - destination:
-        host: {{ template "common.names.fullname" . }}
-        port:
-          number: {{ .Values.service.port }}
-    headers:
-      request:
-        set:
-          x-forwarded-proto: https
-  - match:
-    - uri:
-        exact: /opencrvs-mediator/death
-    rewrite:
-      uri: /death
+        regex: \/opencrvs\/v1\/[^(internal)].*
     route:
     - destination:
         host: {{ template "common.names.fullname" . }}
