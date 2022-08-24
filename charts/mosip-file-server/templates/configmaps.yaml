@@ -12,6 +12,7 @@ metadata:
   {{- end }}
 
 data:
+
   controller.json: |-
     {
        "@context": "https://w3id.org/security/v2",
@@ -113,6 +114,7 @@ data:
            "biometrics": "mosip:biometrics"
          }]
     }
+
   public-key.json: |-
     {
       "@context": "https://w3id.org/security/v2",
