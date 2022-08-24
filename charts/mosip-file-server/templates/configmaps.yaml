@@ -12,95 +12,6 @@ metadata:
   {{- end }}
 
 data:
-  controller.json: |-
-    {
-       "@context": "https://w3id.org/security/v2",
-       "id": "https://{{ .Values.mosipfileserver.host }}/.well-known/controller.json",
-       "assertionMethod": [
-          "https://{{ .Values.mosipfileserver.host }}/.well-known/public-key.json"
-        ]
-    }
-  mosip-context.json: |-
-    {
-      "@context": [{ "@version": 1.1 },
-                     "https://www.w3.org/ns/odrl.jsonld", 
-                     { "mosip": "https://{{  .Values.mosipfileserver.host  }}/mosip#",
-                       "schema": "http://schema.org/",
-                       "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-                       "vcVer": "mosip:vcVer",
-                       "UIN": "mosip:UIN",
-                       "addressLine1": {
-                                          "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#addressLine1",
-                                          "@context": {"value": "rdf:value", "lang": "@language"}
-                       },
-                      "addressLine2": {
-                                          "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#addressLine2",
-                                          "@context": {"value": "rdf:value", "lang": "@language"}
-                      },
-                      "addressLine3": {
-                                          "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#addressLine3",
-                                          "@context": {"value": "rdf:value", "lang": "@language"}
-                      },
-                      "city": {
-                                          "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#city",
-                                          "@context": {"value": "rdf:value", "lang": "@language"}
-                      },
-                      "dateOfBirth": "mosip:dateOfBirth",
-                      "email": "mosip:email",
-                      "fullName": {
-                                          "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#fullName",
-                                          "@context": {"value": "rdf:value", "lang": "@language"
-                                  }
-                      },
-                      "gender": {
-                                          "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#gender",
-                                          "@context": {"value": "rdf:value", "lang": "@language"
-                                }
-                      },
-                      "phone": "mosip:phone",
-                      "postalCode": "mosip:postalCode",
-                      "province": {
-                                          "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#province",
-                                          "@context": {"value": "rdf:value", "lang": "@language"
-                      }
-                     },
-                    "region": {
-                                          "@id": "https://{{ .Values.mosipfileserver.host }}/mosip#region",
-                                          "@context": {"value": "rdf:value", "lang": "@language"
-                              }
-                    },
-                    "biometrics": "mosip:biometrics"
-      }]
-    }
-
-  mosip-context-1.json: |-
-    {
-      "@context": [
-         { 
-           "@version": 1.1 
-         },
-        "https://www.w3.org/ns/odrl.jsonld", 
-         {
-           "mosip": "https://{{ .Values.mosipfileserver.host }}/.well-known/",
-           "schema": "http://schema.org/",
-           "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-           "vcVer": "mosip:vcVer",
-           "UIN": "mosip:UIN",
-           "addressLine1": "mosip:addressLine1",
-           "addressLine2": "mosip:addressLine2",
-           "addressLine3": "mosip:addressLine3",
-           "city": "mosip:city",
-           "dateOfBirth": "mosip:dateOfBirth",
-           "email": "mosip:email",
-           "fullName": "mosip:fullName",
-           "gender": "mosip:gender",
-           "phone": "mosip:phone",
-           "postalCode": "mosip:postalCode",
-           "province": "mosip:province",
-           "region": "mosip:region",
-           "biometrics": "mosip:biometrics"
-         }]
-    }
   public-key.json: |-
     {
       "@context": "https://w3id.org/security/v2",
@@ -128,9 +39,19 @@ data:
   index.html: |-
     <html>
     <h1>Links to download MOBILE APP: </h1>
-    {{- if .Values.mosipfileserver.urls }}
-    {{- range .Values.mosipfileserver.urls }}
-    <a href="{{ . }}">{{ . }}</a> <br>
+    {{- if .Values.mosipfileserver.puburl }}
+    {{- range .Values.mosipfileserver.puburl }}
+    <div>
+        <span>Link for publicly accessible APK    : <a href="{{ . }}">Download</a> </span>
+    <div>
+    {{- end }}
+    {{- end }}
+    
+    {{- if .Values.mosipfileserver.privurl }}
+    {{- range .Values.mosipfileserver.privurl }}
+    <div>
+        <span>Link for privately accessible APK   : <a href="{{ . }}">Download</a> </span>
+    <div>
     {{- end }}
     {{- end }}
     </html>
