@@ -1,0 +1,40 @@
+{{- if .Values.istio.enabled }}
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ template "common.names.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels: {{- include "common.labels.standard" . | nindent 4 }}
+    {{- if .Values.commonLabels }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
+    {{- end }}
+  {{- if .Values.commonAnnotations }}
+  annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
+  {{- end }}
+spec:
+  hosts:
+    - "*"
+  gateways:
+    {{- if .Values.istio.gateways }}
+      {{- include "common.tplvalues.render" ( dict "value" .Values.istio.gateways "context" $ ) | nindent 6 }}
+      {{- else }}
+      - {{ template "common.names.fullname" . }}
+      {{- end }}
+  http:
+    - match:
+        - uri:
+            prefix: {{ .Values.istio.tusdPrefix }}
+      {{- if .Values.istio.reWriteTusdPrefix }}
+      rewrite:
+        uri: {{ .Values.istio.reWriteTusdPrefix }}
+      {{- end }}
+      route:
+        - destination:
+            host: {{ template "common.names.fullname" . }}
+            port:
+              number: {{ .Values.service.port }}
+      headers:
+        request:
+          set:
+            x-forwarded-proto: https
+  {{- end }}
