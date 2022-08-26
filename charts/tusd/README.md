@@ -1,6 +1,6 @@
 # tusd server
 
-Helm chart for installing for file server.
+Helm chart for installing for tusd server.
 
 ## Install
 
