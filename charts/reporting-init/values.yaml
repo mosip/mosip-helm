@@ -13,7 +13,7 @@ base:
 
 debezium_connectors:
   image: mosipqa/debezium-init
-  imageTag: 1.2.0
+  imageTag: 1.2.0.1
   imagePullPolicy: Always
 
   enabled: true
@@ -34,7 +34,7 @@ debezium_connectors:
 
 es_kafka_connectors:
   image: mosipqa/es-kafka-connect-init
-  imageTag: 1.2.0
+  imageTag: 1.2.0.1
   imagePullPolicy: Always
 
   enabled: true
