@@ -1,6 +1,6 @@
 apiVersion: v2
-name: pms-115-120
-description: A Helm chart for pms-115-120 migration utility service.
+name: pms-migration-utility
+description: A Helm chart for pms-migration-utility migration utility service.
 type: application
 version: 12.0.2
 appVersion: ""
@@ -13,8 +13,7 @@ dependencies:
 home: https://mosip.io
 keywords:
   - mosip
-  - pms-115-120
-  - migration-utility
+  - pms-migration-utility
 maintainers:
   - email: info@mosip.io
     name: MOSIP

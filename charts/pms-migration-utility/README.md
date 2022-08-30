@@ -1,12 +1,12 @@
-# pms-115-120 migration utility
+# pms migration utility
 
-Helm chart for installing pms-115-120.
+Helm chart for installing pms-migration-utility.
 
 ## TL;DR
 
 ```console
 $ helm repo add mosip https://mosip.github.io
-$ helm install my-release mosip/pms-115-120
+$ helm install my-release mosip/pms-migration-utility
 ```
 ## Prerequisites
 

@@ -21,7 +21,7 @@ spec:
         {{- end }}
         sidecar.istio.io/inject: "false"
     spec:
-      {{- include "pms-115-120.imagePullSecrets" . | nindent 6 }}
+      {{- include "pms-migration-utility.imagePullSecrets" . | nindent 6 }}
       {{- if .Values.hostAliases }}
       hostAliases: {{- include "common.tplvalues.render" (dict "value" .Values.hostAliases "context" $) | nindent 8 }}
       {{- end }}
@@ -50,11 +50,11 @@ spec:
            {{- toYaml .Values.podSecurityContext.sysctls | nindent 8 }}
         {{- end }}
       {{- end }}
-      serviceAccountName: {{ include "pms-115-120.serviceAccountName" . }}
+      serviceAccountName: {{ include "pms-migration-utility.serviceAccountName" . }}
       restartPolicy: Never  # This is one time job
       containers:
-        - name: pms-115-120
-          image: {{ template "pms-115-120.image" . }}
+        - name: pms-migration-utility
+          image: {{ template "pms-migration-utility.image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: container_user
