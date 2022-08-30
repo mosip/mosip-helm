@@ -1,0 +1,20 @@
+apiVersion: v2
+name: pms-115-120
+description: A Helm chart for pms-115-120 migration utility service.
+type: application
+version: 12.0.2
+appVersion: ""
+dependencies:
+  - name: common
+    repository: https://charts.bitnami.com/bitnami
+    tags:
+      - bitnami-common
+    version: 1.x.x
+home: https://mosip.io
+keywords:
+  - mosip
+  - pms-115-120
+  - migration-utility
+maintainers:
+  - email: info@mosip.io
+    name: MOSIP
