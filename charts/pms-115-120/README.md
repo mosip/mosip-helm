@@ -6,7 +6,7 @@ Helm chart for installing pms-115-120.
 
 ```console
 $ helm repo add mosip https://mosip.github.io
-$ helm install my-release mosip/pms-partner
+$ helm install my-release mosip/pms-115-120
 ```
 ## Prerequisites
 
