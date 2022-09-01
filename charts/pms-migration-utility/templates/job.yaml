@@ -62,7 +62,7 @@ spec:
             - name: JDK_JAVA_OPTIONS
               value: {{ .Values.additionalResources.javaOpts }}
             - name: spring_config_name_env
-              value: {{ .Values.springConfigNameEnv }}
+              value: {{ .Values.springConfigNameEnv.name }}
 
           envFrom:
             {{- if .Values.extraEnvVarsCM }}
