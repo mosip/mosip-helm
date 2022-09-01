@@ -1,0 +1,18 @@
+{{- if .Values.istio.enabled  }}
+{{- if not .Values.istio.gateways }}
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: {{ template "common.names.fullname" . }}
+spec:
+  selector:
+    {{- include "common.tplvalues.render" (dict "value" .Values.istio.ingressController "context" $) | nindent 4 }}
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+      - {{ .Values.tusd.host }}
+{{- end }}
+{{- end }}
