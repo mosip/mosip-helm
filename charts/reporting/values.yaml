@@ -1,7 +1,7 @@
 debezium:
   enabled: true
   replicaCount: 1
-  image: debezium/connect
+  image: debezium/connect:1.7.0.Final
   imagePullPolicy: Always
   port: 8083
   fixer_container:
