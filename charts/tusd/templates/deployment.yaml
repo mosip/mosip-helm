@@ -105,6 +105,11 @@ spec:
                   name: {{ . }}
               {{- end }}
               {{- end }}
+          volumeMounts:
+            - name: tusd
+              mountPath: {{ .Values.persistence.mountDir }}/files
+            - name: conf-file
+              mountPath: {{ .Values.persistence.mountDir }}/
           ports: []
           {{- if .Values.resources }}
           resources: {{- toYaml .Values.resources | nindent 12 }}
@@ -124,7 +129,19 @@ spec:
           {{- else if .Values.customReadinessProbe }}
           readinessProbe: {{- include "common.tplvalues.render" (dict "value" .Values.customReadinessProbe "context" $) | nindent 12 }}
           {{- end }}
-        {{- if .Values.sidecars }}
+      volumes:
+        - name: conf-file
+          configMap:
+            name: {{ include "tusd.fullname" . }}
+        - name: tusd
+          {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.existingClaim | default (include "tusd.fullname" .) }}
+          {{- else }}
+          emptyDir: {}
+          {{ end }}
+      {{- with .Values.nodeSelector }}
+      {{- if .Values.sidecars }}
         {{- include "common.tplvalues.render" ( dict "value" .Values.sidecars "context" $) | nindent 8 }}
         {{- end }}
 
