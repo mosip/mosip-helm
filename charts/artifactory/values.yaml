@@ -233,7 +233,16 @@ customReadinessProbe: {}
 ##
 updateStrategy:
   type: RollingUpdate
+envVars: []
 
+## ConfigMap with environment variables
+##
+envVarsCM: []
+
+## Secret with environment variables
+##
+envVarsSecret:
+  - keycloak-client-secret
 ## Additional environment variables to set
 ## Example:
 ## extraEnvVars:

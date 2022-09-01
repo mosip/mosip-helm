@@ -11,7 +11,6 @@ metadata:
     {{- if .Values.commonAnnotations }}
     {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
     {{- end }}
-    
 spec:
   template:
     metadata:
@@ -45,28 +44,43 @@ spec:
       {{- if .Values.podSecurityContext.enabled }}
       securityContext:
         fsGroup: {{ .Values.podSecurityContext.fsGroup }}
-        {{- if .Values.podSecurityContext.sysctls }}
+      {{- if .Values.podSecurityContext.sysctls }}
         sysctls:
-          {{- toYaml .Values.podSecurityContext.sysctls | nindent 8 }}
-        {{- end }}
+      {{- toYaml .Values.podSecurityContext.sysctls | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "keygen.serviceAccountName" . }}
-      restartPolicy: Never  # This is one time job
-      containers:
-        - name: keygen
-          image: {{ template "keygen.image" . }}
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-            - name: container_user
-              value: {{ .Values.containerSecurityContext.runAsUser }}
-            - name: JDK_JAVA_OPTIONS
-              value: {{ .Values.additionalResources.javaOpts }}
-            - name: spring_config_name_env
-              value: {{ .Values.springConfigNameEnv }}
-          {{- if .Values.extraEnvVars }}
-          {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
-          {{- end }}
+      {{- end }}
+        serviceAccountName: {{ include "keygen.serviceAccountName" . }}
+        restartPolicy: Never  # This is one time job
+        containers:
+          - name: keygen
+            image: {{ template "keygen.image" . }}
+            imagePullPolicy: {{ .Values.image.pullPolicy }}
+            env:
+              - name: container_user
+                value: {{ .Values.containerSecurityContext.runAsUser }}
+              - name: JDK_JAVA_OPTIONS
+                value: {{ .Values.additionalResources.javaOpts }}
+              - name: spring_config_name_env
+                value: {{ .Values.springConfigNameEnv }}
+            {{- if .Values.extraEnvVars }}
+            {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
+            {{- end }}
+            {{- if .Values.envVars }}
+            {{- include "common.tplvalues.render" (dict "value" .Values.envVars "context" $) | nindent 12 }}
+            {{- end }}
           envFrom:
+            {{- if .Values.envVarsCM }}
+            {{- range .Values.envVarsCM }}
+            - configMapRef:
+                name: {{ . }}
+            {{- end }}
+            {{- end }}
+            {{- if .Values.envVarsSecret }}
+            {{- range .Values.envVarsSecret }}
+            - secretRef:
+                name: {{ . }}
+            {{- end }}
+            {{- end }}
             {{- if .Values.extraEnvVarsCM }}
             {{- range .Values.extraEnvVarsCM }}
             - configMapRef:

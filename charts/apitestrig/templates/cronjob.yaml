@@ -1,5 +1,5 @@
 {{- range $module := $.Values.modules }}
-{{- if $module.enabled }}
+  {{- if $module.enabled }}
 ---
 apiVersion: {{ include "common.capabilities.cronjob.apiVersion" $ }}
 kind: CronJob
@@ -16,7 +16,7 @@ spec:
   jobTemplate:
     spec:
       backoffLimit: 2 # this has very low chance of failing, as all this does
-                      # is prompt kubernetes to schedule new replica set for
+      # is prompt kubernetes to schedule new replica set for
       # the deployment
       # activeDeadlineSeconds: 600 # timeout, makes most sense with
       # "waiting for rollout" variant specified below
@@ -25,47 +25,62 @@ spec:
           # account configured above
           restartPolicy: Never
           containers:
-          - name: {{ template "apitestrig.serviceAccountName" $ }}-{{ $module.name }}
-            image: {{ template "apitestrig.image" $ }}
-            imagePullPolicy: {{ $.Values.image.pullPolicy }}
-            {{- if $.Values.lifecycleHooks }}
-            lifecycle: {{- include "common.tpvalues.render" (dict "value" $.Values.lifecycleHooks "context" $) | nindent 12 }}
-            {{- end }}
-            {{- if $.Values.containerSecurityContext.enabled }}
-            securityContext: {{- omit $.Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
-            {{- end }}
-            {{- if $.Values.command }}
-            command: {{- include "common.tpvalues.render" (dict "value" $.Values.command "context" $) | nindent 12 }}
-            {{- end }}
-            {{- if $.Values.args }}
-            args: {{- include "common.tpvalues.render" (dict "value" $.Values.args "context" $) | nindent 12 }}
-            {{- end }}
-            env:
+            - name: {{ template "apitestrig.serviceAccountName" $ }}-{{ $module.name }}
+              image: {{ template "apitestrig.image" $ }}
+              imagePullPolicy: {{ $.Values.image.pullPolicy }}
+              {{- if $.Values.lifecycleHooks }}
+              lifecycle: {{- include "common.tpvalues.render" (dict "value" $.Values.lifecycleHooks "context" $) | nindent 12 }}
+              {{- end }}
+              {{- if $.Values.containerSecurityContext.enabled }}
+              securityContext: {{- omit $.Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
+              {{- end }}
+              {{- if $.Values.command }}
+              command: {{- include "common.tpvalues.render" (dict "value" $.Values.command "context" $) | nindent 12 }}
+              {{- end }}
+              {{- if $.Values.args }}
+              args: {{- include "common.tpvalues.render" (dict "value" $.Values.args "context" $) | nindent 12 }}
+              {{- end }}
+              env:
                 - name: container_user
                   value: {{ $.Values.containerSecurityContext.runAsUser }}
                 - name: JDK_JAVA_OPTIONS
                   value: {{ $.Values.additionalResources.javaOpts }}
                 - name: MODULES
                   value: {{ $module.name }}
-              {{- if $.Values.extraEnvVars }}
-              {{- include "common.tpvalues.render" (dict "value" $.Values.extraEnvVars "context" $) | nindent 12 }}
-              {{- end }}
-            envFrom:
-              {{- if $.Values.extraEnvVarsCM }}
+                {{- if $.Values.extraEnvVars }}
+                {{- include "common.tpvalues.render" (dict "value" $.Values.extraEnvVars "context" $) | nindent 12 }}
+                {{- end }}
+                {{- if .Values.envVars }}
+                {{- include "common.tplvalues.render" (dict "value" .Values.envVars "context" $) | nindent 12 }}
+                {{- end }}
+              envFrom:
+                {{- if .Values.envVarsCM }}
+                {{- range .Values.envVarsCM }}
+                - configMapRef:
+                    name: {{ . }}
+                {{- end }}
+                {{- end }}
+                {{- if .Values.envVarsSecret }}
+                {{- range .Values.envVarsSecret }}
+                - secretRef:
+                    name: {{ . }}
+                {{- end }}
+                {{- end }}
+                {{- if $.Values.extraEnvVarsCM }}
                 {{- range $.Values.extraEnvVarsCM }}
-                  - configMapRef:
-                        name: {{ . }}
+                - configMapRef:
+                    name: {{ . }}
                 {{- end }}
                 {{- end }}
                 {{- if $.Values.extraEnvVarsSecret }}
                 {{- range $.Values.extraEnvVarsSecret }}
-                  - secretRef:
-                        name: {{ . }}
+                - secretRef:
+                    name: {{ . }}
                 {{- end }}
                 {{- end }}
-            ports:
+              ports:
                 - name: spring-service
                   containerPort: {{ $.Values.springServicePort }}
 
-{{- end }}
-{{- end }}
+  {{- end }}
+  {{- end }}
