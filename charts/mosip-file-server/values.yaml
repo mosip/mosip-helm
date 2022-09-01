@@ -240,6 +240,26 @@ customReadinessProbe: {}
 updateStrategy:
   type: RollingUpdate
 
+## Environment variables to set
+## Example:
+## envVars:
+##  - name: FOO
+##    value: "bar"
+##
+## TODO: the below env variable is not used, but required.  Remove it later
+envVars: []
+
+## ConfigMap with environment variables
+##
+envVarsCM:
+  - config-server-share
+  - mosip-file-server
+
+## Secret with environment variables
+##
+envVarsSecret:
+  - keycloak-client-secret
+
 ## Additional environment variables to set
 ## Example:
 ## extraEnvVars:
@@ -247,20 +267,15 @@ updateStrategy:
 ##     value: "bar"
 ##
 ## TODO: the below env variable is not used, but required.  Remove it later
-extraEnvVars:
-  - name: auth_url_env
-    value: 'http://authmanager.kernel'
-  - name: key_url_env
-    value: 'http://keymanager.keymanager'
+extraEnvVars: []
 
 ## ConfigMap with extra environment variables
 ##
-extraEnvVarsCM:
-  - config-server-share
+extraEnvVarsCM: []
 
 ## Secret with extra environment variables
 ##
-extraEnvVarsSecret:
+extraEnvVarsSecret: []
 
 ## Extra volumes to add to the deployment
 ##
