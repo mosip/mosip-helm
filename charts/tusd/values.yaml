@@ -292,7 +292,7 @@ initContainers: {}
 sidecars: {}
 
 persistence:
-  enabled: false
+  enabled: true
   ## If defined, storageClassName: <storageClass>
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
@@ -311,13 +311,13 @@ persistence:
   size: 10M
   existingClaim: 
   # Dir where config and keys are written inside container
-  mountDir: 
+  mountDir: /tusd
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
 ##
 volumePermissions:
-  enabled: false
+  enabled: true
   image:
     registry: docker.io
     repository: bitnami/bitnami-shell
