@@ -135,9 +135,6 @@ gitRepo:
   username: ""
   token: ""
 
-## Key used to encrypt fields in the config properties. A random key is generated if not specified.
-encryptKey: ""
-
 installedModules:
   kernel: true
   prereg: true
@@ -159,6 +156,7 @@ overrides:
     s3: s3
     email: email-gateway
     captcha: prereg-captcha
+    confSecretsVarious: conf-secrets-various
   configmaps:
     keycloakHost: keycloak-host
     global: global
