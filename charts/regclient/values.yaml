@@ -243,39 +243,6 @@ customReadinessProbe: {}
 updateStrategy:
   type: RollingUpdate
 
-## Environment variables to set
-## Example:
-## envVars:
-##  - name: FOO
-##    value: "bar"
-##
-## TODO: the below env variable is not used, but required.  Remove it later
-envVars:
-  - name: client_certificate_env
-    value: mosip_cer.cer
-  - name: signer_timestamp_url_env
-    value: http://timestamp.comodoca.com/rfc3161
-  - name: client_version_env
-    value: 1.2.0.1-SNAPSHOT
-  - name: crypto_key_env
-    value: bBQX230Wskq6XpoZ1c+Ep1D+znxfT89NxLQ7P4KFkc4=
-  - name: client_upgrade_server_env
-    value: https://regclient.sandbox.xzy.net
-  - name: healthcheck_url_env
-    value: http://api-internal.sandbox.mosip.net/v1/syncdata/actuator/health
-  - name: host_name_env
-    value: https://api-internal.sandbox.mosip.net
-
-## ConfigMap with environment variables
-##
-envVarsCM:
-  - artifactory-share
-
-## Secret with environment variables
-##
-envVarsSecret:
-  - keystore-secret-env
-
 ## Additional environment variables to set
 ## Example:
 ## extraEnvVars:
@@ -283,15 +250,21 @@ envVarsSecret:
 ##     value: "bar"
 ##
 ## TODO: the below env variable is not used, but required.  Remove it later
-extraEnvVars: []
+extraEnvVars: 
+  - name: client_certificate_env
+    value: mosip_cer.cer
+  - name: signer_timestamp_url_env
+    value: http://timestamp.comodoca.com/rfc3161
 
 ## ConfigMap with extra environment variables
 ##
-extraEnvVarsCM: []
+extraEnvVarsCM:
+  - artifactory-share
 
 ## Secret with extra environment variables
 ##
-extraEnvVarsSecret: []
+extraEnvVarsSecret:
+  - keystore-secret-env
 
 ## Extra volumes to add to the deployment
 ##
