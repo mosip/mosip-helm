@@ -57,7 +57,7 @@ spec:
       initContainers:
         {{- if and .Values.volumePermissions.enabled .Values.persistence.enabled }}
         - name: volume-permissions
-          image: {{ include "partner-onboarder.volumePermissions.image" . }}
+          image: {{- include "partner-onboarder.volumePermissions.image" . }}
           imagePullPolicy: {{ .Values.volumePermissions.image.pullPolicy | quote }}
           command:
             - %%commands%%
@@ -95,11 +95,26 @@ spec:
             {{- if .Values.extraEnvVars }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}
+            {{- if .Values.envVars }}
+            {{- include "common.tplvalues.render" (dict "value" .Values.envVars "context" $) | nindent 12 }}
+            {{- end }}
           envFrom:
-             - configMapRef:
-                 name: env-config
-             - secretRef:
-                 name: {{ template "common.names.fullname" . }}
+            {{- if .Values.envVarsCM }}
+            {{- range .Values.envVarsCM }}
+            - configMapRef:
+                name: {{ . }}
+            {{- end }}
+            {{- end }}
+            {{- if .Values.envVarsSecret }}
+            {{- range .Values.envVarsSecret }}
+            - secretRef:
+                name: {{ . }}
+            {{- end }}
+            {{- end }}
+            - configMapRef:
+                name: env-config
+            - secretRef:
+                name: {{ template "common.names.fullname" . }}
             {{- if .Values.extraEnvVarsCM }}
             {{- range .Values.extraEnvVarsCM }}
             - configMapRef:
