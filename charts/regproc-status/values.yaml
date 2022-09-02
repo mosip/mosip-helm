@@ -235,14 +235,13 @@ customReadinessProbe: {}
 updateStrategy:
   type: RollingUpdate
 
-## Environment variables to set
+## Additional environment variables to set
 ## Example:
-## envVars:
-##  - name: FOO
-##    value: "bar"
+## extraEnvVars:
+##   - name: FOO
+##     value: "bar"
 ##
-## TODO: the below env variable is not used, but required.  Remove it later
-envVars:
+extraEnvVars:
   - name: artifactory_url_env
     valueFrom:
       configMapKeyRef:
@@ -252,38 +251,21 @@ envVars:
     valueFrom:
       configMapKeyRef:
         name: artifactory-share
-        key: iam_adapter_regproc_ext_url_env
-
-## ConfigMap with environment variables
-##
-envVarsCM:
-  - global
-  - config-server-share
-
-## Secret with environment variables
-##
-envVarsSecret:
-  - keycloak-client-secret
-
-## Additional environment variables to set
-## Example:
-## extraEnvVars:
-##   - name: FOO
-##     value: "bar"
-##
-extraEnvVars: []
+        key: iam_adapter_regproc_ext_url_env 
 
 ## ConfigMap with extra environment variables that used
 ## NOTE: we have removed artifactory from this list and passed artifactory parameters as above
 ## This is done as auth adapter url required by this service is different from the default.
-extraEnvVarsCM: []
+extraEnvVarsCM:
+  - global
+  - config-server-share
 
 ## ConfigMap with extra environment variables that used
 ##
 
 ## Secret with extra environment variables
 ##
-extraEnvVarsSecret: []
+extraEnvVarsSecret:
 
 ## Extra volumes to add to the deployment
 ##

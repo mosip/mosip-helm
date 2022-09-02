@@ -236,44 +236,26 @@ customReadinessProbe: {}
 updateStrategy:
   type: RollingUpdate
 
-## Environment variables to set
-## Example:
-## envVars:
-##  - name: FOO
-##    value: "bar"
-##
-## TODO: the below env variable is not used, but required.  Remove it later
-envVars:
-  - name: zone_env
-    value: default
-
-## ConfigMap with environment variables
-##
-envVarsCM:
-  - global
-  - config-server-share
-  - artifactory-share
-
-## Secret with environment variables
-##
-envVarsSecret:
-  - keycloak-client-secret
-
 ## Additional environment variables to set
 ## Example:
 ## extraEnvVars:
 ##   - name: FOO
 ##     value: "bar"
 ##
-extraEnvVars: []
+extraEnvVars: 
+  - name: zone_env
+    value: default
 
 ## ConfigMap with extra environment variables that used
 ##
-extraEnvVarsCM: []
+extraEnvVarsCM:
+  - global
+  - config-server-share 
+  - artifactory-share
 
 ## Secret with extra environment variables
 ##
-extraEnvVarsSecret: []
+extraEnvVarsSecret:
 
 ## Extra volumes to add to the deployment
 ##
