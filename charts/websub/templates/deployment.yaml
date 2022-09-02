@@ -97,7 +97,22 @@ spec:
             {{- if .Values.extraEnvVars }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}
+            {{- if .Values.envVars }}
+            {{- include "common.tplvalues.render" (dict "value" .Values.envVars "context" $) | nindent 12 }}
+            {{- end }}
           envFrom:
+            {{- if .Values.envVarsCM }}
+            {{- range .Values.envVarsCM }}
+            - configMapRef:
+                name: {{ . }}
+            {{- end }}
+            {{- end }}
+            {{- if .Values.envVarsSecret }}
+            {{- range .Values.envVarsSecret }}
+            - secretRef:
+                name: {{ . }}
+            {{- end }}
+            {{- end }}
             {{- if .Values.extraEnvVarsCM }}
             {{- range .Values.extraEnvVarsCM }}
             - configMapRef:
@@ -106,7 +121,7 @@ spec:
             {{- end }}
             {{- if .Values.extraEnvVarsSecret }}
             - secretRef:
-                name: {{ include "common.tplvalues.render" (dict "value" .Values.extraEnvVarsSecret "context" $) }}
+               name: {{ include "common.tplvalues.render" (dict "value" .Values.extraEnvVarsSecret "context" $) }}
             {{- end }}
           ports:
             - name: spring-service
