@@ -240,6 +240,24 @@ customReadinessProbe: {}
 updateStrategy:
   type: RollingUpdate
 
+## Environment variables to set
+## Example:
+## envVars:
+##  - name: FOO
+##    value: "bar"
+##
+## TODO: the below env variable is not used, but required.  Remove it later
+envVars: []
+
+## ConfigMap with environment variables
+##
+envVarsCM: []
+
+## Secret with environment variables
+##
+envVarsSecret:
+  - keycloak-client-secret
+
 ## Additional environment variables to set
 ## Example:
 ## extraEnvVars:
@@ -254,7 +272,7 @@ extraEnvVarsCM: []
 
 ## Secret with extra environment variables
 ##
-extraEnvVarsSecret:
+extraEnvVarsSecret: []
 
 ## Extra volumes to add to the deployment
 ##
@@ -420,7 +438,7 @@ onboarding:
   apiUrl: 
   # This client with appropriate roles must exist in Keycloak 
   certManager: mosip-deployment-client
-  certManagerPassword: 
+  certManagerPassword: ""
 
 ## Only internal access
 istio:
