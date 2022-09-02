@@ -60,14 +60,3 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
-
-{{/*
-Return config servr encrypt key
-*/}}
-{{- define "config-server.encryptKey" -}}
-{{- if .Values.encryptKey -}}
-    {{- .Values.encryptKey -}}
-{{- else -}}
-    {{- randAlphaNum 10 -}}
-{{- end -}}
-{{- end -}}
