@@ -227,6 +227,16 @@ customReadinessProbe: {}
 updateStrategy:
   type: RollingUpdate
 
+envVars: []
+
+## ConfigMap with environment variables
+##
+envVarsCM: []
+
+## Secret with environment variables
+##
+envVarsSecret:
+  - keycloak-client-secret
 ## Additional environment variables to set
 ## Example:
 ## extraEnvVars:
@@ -237,11 +247,11 @@ extraEnvVars: []
 
 ## ConfigMap with extra environment variables
 ##
-extraEnvVarsCM:
+extraEnvVarsCM: []
 
 ## Secret with extra environment variables
 ##
-extraEnvVarsSecret:
+extraEnvVarsSecret: []
 
 ## Extra volumes to add to the deployment
 ##
