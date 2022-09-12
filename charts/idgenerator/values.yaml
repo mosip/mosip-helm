@@ -79,7 +79,7 @@ startupProbe:
   httpGet:
     path: /v1/idgenerator/actuator/health 
     port: 8080
-  initialDelaySeconds: 0
+  initialDelaySeconds: 480
   periodSeconds: 10
   timeoutSeconds: 5
   failureThreshold: 30
