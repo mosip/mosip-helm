@@ -227,13 +227,14 @@ All env variables that are accessed from mosip config properties
     configMapKeyRef:
       name: {{ .Values.overrides.configmaps.activemq }}
       key: activemq-host
+      {{- end }}
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_ACTIVEMQ_CORE_PORT
   valueFrom:
     configMapKeyRef:
       name: {{ .Values.overrides.configmaps.activemq }}
       key: activemq-core-port
-{{- end }}
+
     
 {{- if .Values.overrides.secrets.activemq }}
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_ACTIVEMQ_PASSWORD
@@ -241,72 +242,72 @@ All env variables that are accessed from mosip config properties
     secretKeyRef:
       name: {{ .Values.overrides.secrets.activemq }}
       key: artemis-password
-{{- end }}
+      {{- end }}
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_AUTHTYPE_CALLBACK_SECRET
   valueFrom:
     secretKeyRef:
-      name: {{- if .Values.overrides.secrets.confSecretsVarious }}
+      name: {{ .Values.overrides.secrets.confSecretsVarious }}
       key: ida-websub-authtype-callback-secret
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_CREDENTIAL_ISSUE_CALLBACK_SECRET
   valueFrom:
     secretKeyRef:
-      name: {{- if .Values.overrides.secrets.confSecretsVarious }}
+      name: {{ .Values.overrides.secrets.confSecretsVarious }}
       key: ida-websub-credential-issue-callback-secret
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_PARTNER_SERVICE_CALLBACK_SECRET
   valueFrom:
     secretKeyRef:
-      name: {{- if .Values.overrides.secrets.confSecretsVarious }}
+      name: {{ .Values.overrides.secrets.confSecretsVarious }}
       key: ida-websub-partner-service-callback-secret
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_CA_CERTIFICATE_CALLBACK_SECRET
   valueFrom:
     secretKeyRef:
-      name: {{- if .Values.overrides.secrets.confSecretsVarious }}
+      name: {{ .Values.overrides.secrets.confSecretsVarious }}
       key: ida-websub-ca-certificate-callback-secret
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_HOTLIST_CALLBACK_SECRET
   valueFrom:
     secretKeyRef:
-      name: {{- if .Values.overrides.secrets.confSecretsVarious }}
+      name: {{ .Values.overrides.secrets.confSecretsVarious }}
       key: ida-websub-hotlist-callback-secret
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_MASTERDATA_TEMPLATES_CALLBACK_SECRET
   valueFrom:
     secretKeyRef:
-      name: {{- if .Values.overrides.secrets.confSecretsVarious }}
+      name: {{ .Values.overrides.secrets.confSecretsVarious }}
       key: ida-websub-masterdata-templates-callback-secret
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_MASTERDATA_TITLES_CALLBACK_SECRET
   valueFrom:
     secretKeyRef:
-      name: {{- if .Values.overrides.secrets.confSecretsVarious }}
+      name: {{ .Values.overrides.secrets.confSecretsVarious }}
       key: ida-websub-masterdata-titles-callback-secret
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDREPO_WEBSUB_VID_CREDENTIAL_UPDATE_SECRET
   valueFrom:
     secretKeyRef:
-      name: {{- if .Values.overrides.secrets.confSecretsVarious }}
+      name: {{ .Values.overrides.secrets.confSecretsVarious }}
       key: idrepo-websub-vid-credential-update-secret
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_KERNEL_TOKENID_UIN_SALT
   valueFrom:
     secretKeyRef:
-      name: {{- if .Values.overrides.secrets.confSecretsVarious }}
+      name: {{ .Values.overrides.secrets.confSecretsVarious }}
       key: mosip-kernel-tokenid-uin-salt
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_KERNEL_TOKENID_PARTNERCODE_SALT
   valueFrom:
     secretKeyRef:
-      name: {{- if .Values.overrides.secrets.confSecretsVarious }}
+      name: {{ .Values.overrides.secrets.confSecretsVarious }}
       key: mosip-kernel-tokenid-partnercode-salt
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_PRINT_WEBSUB_HUB_SECRET
   valueFrom:
     secretKeyRef:
-      name: {{- if .Values.overrides.secrets.confSecretsVarious }}
+      name: {{ .Values.overrides.secrets.confSecretsVarious }}
       key: print-websub-hub-secret
 
 {{- if .Values.installedModules.objectStore }}
@@ -377,4 +378,4 @@ All env variables that are accessed from mosip config properties
       name: {{ printf "%s-various" (include "config-server.fullname" .) }}
       key: resident-websub-auth-transaction-status-secret
 
-{{- end }}
+{{- end -}}
