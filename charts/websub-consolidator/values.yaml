@@ -71,7 +71,7 @@ image:
 ##
 ## TODO: Ports here are not correct. Update them when available
 startupProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /consolidator/actuator/health
     port: 9192
@@ -82,7 +82,7 @@ startupProbe:
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /consolidator/actuator/health
     port: 9192
@@ -93,7 +93,7 @@ livenessProbe:
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /consolidator/actuator/health
     port: 9192
