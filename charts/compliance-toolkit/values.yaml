@@ -87,7 +87,7 @@ livenessProbe:
   enabled: true
   httpGet:
     path: /v1/toolkit/actuator/health
-    port: 8090
+    port: 8099
   initialDelaySeconds: 20
   periodSeconds: 10
   timeoutSeconds: 5 
