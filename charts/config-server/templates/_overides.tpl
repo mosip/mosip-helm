@@ -45,11 +45,107 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.configmaps.global }}
       key: mosip-compliance-host
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_DBUSER_PASSWORD
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_MOSIP_MASTER_PASSWORD
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.db }}
-      key: db-dbuser-password
+      key: db-mosip-master-password
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_MOSIP_AUDIT_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.db }}
+      key: db-mosip-audit-password
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_MOSIP_KEYMGR_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.db }}
+      key: db-mosip-keymgr-password
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_MOSIP_KERNEL_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.db }}
+      key: db-mosip-kernel-password
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_IDMAP_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.db }}
+      key: db-mosip-idmap-password
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_MOSIP_PREREG_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.db }}
+      key: db-mosip-prereg-password
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_MOSIP_IDREPO_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.db }}
+      key: db-mosip-idrepo-password
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_MOSIP_IDA_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.db }}
+      key: db-mosip-ida-password
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_MOSIP_CREDENTIAL_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.db }}
+      key: db-mosip-credential-password
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_MOSIP-REGPRC_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.db }}
+      key: db-mosip-regprc-password
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_MOSIP_REGDEVICE_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.db }}
+      key: db-mosip-regdevice-password
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_MOSIP_AUTHDEVICE_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.db }}
+      key: db-mosip-authdevice-password
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_MOSIP_PMS_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.db }}
+      key: db-mosip-pms-password
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_MOSIP_HOTLIST_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.db }}
+      key: db-mosip-hotlist-password
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_MOSIP_RESIDENT_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.db }}
+      key: db-mosip-resident-password
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_MOSIP_TOOLKIT_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.db }}
+      key: db-mosip-toolkit-password
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_MOSIP_DIGITALCARD_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.db }}
+      key: db-mosip-digitalcard-password
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_KEYCLOAK_INTERNAL_URL
   valueFrom:

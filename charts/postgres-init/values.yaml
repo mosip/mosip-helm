@@ -94,6 +94,8 @@ databases:
       secret: 
         name: postgres-postgresql
         key: postgresql-password
+    dbuser:
+      password: ""
     dml: 0
 
   mosip_audit:
@@ -105,6 +107,8 @@ databases:
       secret: 
         name: postgres-postgresql
         key: postgresql-password
+    dbuser:
+      password: ""
     dml: 0
 
   mosip_keymgr:
@@ -116,6 +120,8 @@ databases:
       secret: 
         name: postgres-postgresql
         key: postgresql-password
+    dbuser:
+      password: ""
     dml: 1 
 
   mosip_kernel:
@@ -127,6 +133,8 @@ databases:
       secret: 
         name: postgres-postgresql
         key: postgresql-password
+    dbuser:
+      password: ""
     dml: 0 
 
   mosip_idmap:
@@ -138,6 +146,8 @@ databases:
       secret: 
         name: postgres-postgresql
         key: postgresql-password
+    dbuser:
+      password: ""
     dml: 0 
 
   mosip_prereg:
@@ -149,6 +159,8 @@ databases:
       secret: 
         name: postgres-postgresql
         key: postgresql-password
+    dbuser:
+      password: ""
     dml: 0
 
   mosip_idrepo:
@@ -160,6 +172,8 @@ databases:
       secret: 
         name: postgres-postgresql
         key: postgresql-password
+    dbuser:
+      password: ""
     dml: 0
 
   mosip_ida:
@@ -171,6 +185,8 @@ databases:
       secret: 
         name: postgres-postgresql
         key: postgresql-password
+    dbuser:
+      password: ""
     dml: 1 
 
   mosip_credential:
@@ -182,6 +198,8 @@ databases:
       secret: 
         name: postgres-postgresql
         key: postgresql-password
+    dbuser:
+      password: ""
     dml: 0 
 
   mosip_regprc:
@@ -193,6 +211,8 @@ databases:
       secret: 
         name: postgres-postgresql
         key: postgresql-password
+    dbuser:
+      password: ""
     dml: 1
 
   mosip_regdevice:
@@ -204,6 +224,8 @@ databases:
       secret: 
         name: postgres-postgresql
         key: postgresql-password
+    dbuser:
+      password: ""
     dml: 1
 
   mosip_authdevice:
@@ -215,6 +237,8 @@ databases:
       secret: 
         name: postgres-postgresql
         key: postgresql-password
+    dbuser:
+      password: ""
     dml: 1
 
   mosip_pms:
@@ -229,6 +253,8 @@ databases:
       secret: 
         name: postgres-postgresql
         key: postgresql-password
+    dbuser:
+      password: ""
     dml: 1
 
   mosip_hotlist:
@@ -240,6 +266,8 @@ databases:
       secret: 
         name: postgres-postgresql
         key: postgresql-password
+    dbuser:
+      password: ""
     dml: 0 
 
   mosip_resident:
@@ -251,6 +279,8 @@ databases:
       secret:
         name: postgres-postgresql
         key: postgresql-password
+    dbuser:
+      password: ""
     dml: 0
 
   mosip_toolkit:
@@ -262,6 +292,8 @@ databases:
       secret:
         name: postgres-postgresql
         key: postgresql-password
+    dbuser:
+      password: ""
     dml: 0
 
   mosip_digitalcard:
@@ -273,4 +305,6 @@ databases:
       secret:
         name: postgres-postgresql
         key: postgresql-password
+    dbuser:
+      password: ""
     dml: 0

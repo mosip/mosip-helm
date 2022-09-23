@@ -147,7 +147,7 @@ installedModules:
 ## Refer to instructions to install config-server helm chart in mosip-infra repo.
 overrides:
   secrets:
-    db: db-common-secrets
+    db: db-secrets
     keycloak: keycloak
     keycloakClients: keycloak-client-secrets
     softhsmKernel: softhsm-kernel
