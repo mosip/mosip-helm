@@ -5,7 +5,7 @@ metadata:
     {{- if .Values.commonLabels }}
     {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
     {{- end }}
-  name: {{ template "common.names.fullname" . }}
+  name: {{ .Values.auth_demo.servicename }}
   {{- if .Values.commonAnnotations }}
   annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
   {{- end }}
@@ -24,5 +24,5 @@ spec:
     - name: http
       port: {{ .Values.service.port }}
       protocol: TCP 
-      targetPort: {{ .Values.springServicePort }}
+      targetPort: {{ .Values.auth_demo.springServicePort }}
   selector: {{- include "common.labels.matchLabels" . | nindent 4 }}

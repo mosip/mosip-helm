@@ -4,6 +4,9 @@ Return the proper  image name
 {{- define "apitestrig.image" -}}
 {{ include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global) }}
 {{- end -}}
+{{- define "apitestrig.auth.image" -}}
+{{ include "common.images.image" (dict "imageRoot" .Values.auth_demo "global" .Values.global) }}
+{{- end -}}
 
 {{/*
 Return the proper image name (for the init container volume-permissions image)
