@@ -68,7 +68,7 @@ image:
 auth_demo:
   registry: docker.io
   repository: mosipqa/authentication-demo-service
-  tag: develop
+  tag: 1.2.0.1
   pullPolicy: Always
   springServicePort: 8082
   servicename: authdemo
