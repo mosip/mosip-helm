@@ -65,6 +65,21 @@ image:
   ##
   # pullSecrets:
   #   - myRegistryKeySecretName
+auth_demo:
+  registry: docker.io
+  repository: mosipqa/authentication-demo-service
+  tag: develop
+  pullPolicy: Always
+  springServicePort: 8082
+  servicename: authdemo
+  javaOpts: "-Xms1500M -Xmx1500M"
+  resources:
+    limits:
+      cpu: 300m
+      memory: 2000Mi
+    requests:
+      cpu: 300m
+      memory: 2000Mi
 
 ## Port on which this particular spring service module is running. 
 springServicePort: 8083
@@ -75,8 +90,8 @@ springServicePort: 8083
 startupProbe:
   enabled: true
   httpGet:
-    path:
-    port: 8083
+    path: '/v1/identity/actuator/health'
+    port: 8082
   initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
@@ -86,8 +101,8 @@ startupProbe:
 livenessProbe:
   enabled: true
   httpGet:
-    path:
-    port: 8083
+    path: '/v1/identity/actuator/health'
+    port: 8082
   initialDelaySeconds: 20
   periodSeconds: 10
   timeoutSeconds: 5 
@@ -97,8 +112,8 @@ livenessProbe:
 readinessProbe:
   enabled: true
   httpGet:
-    path:
-    port: 8083
+    path: '/v1/identity/actuator/health'
+    port: 8082
   initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
@@ -250,6 +265,8 @@ extraEnvVarsCM:
   - keycloak-host
   - db-cm
   - apitestrig
+  - config-server-share
+  - artifactory-share
 ## Secret with extra environment variables
 ##
 extraEnvVarsSecret:
