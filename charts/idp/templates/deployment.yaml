@@ -108,6 +108,9 @@ spec:
             - secretRef:
                 name: {{ include "common.tplvalues.render" (dict "value" .Values.extraEnvVarsSecret "context" $) }}
             {{- end }}
+          volumeMounts:
+            - name: mockida
+              mountPath:  {{ .Values.idp.mountdir }}
           ports:
             - name: spring-service
               containerPort: {{ .Values.springServicePort }}
@@ -133,3 +136,9 @@ spec:
         {{- if .Values.sidecars }}
         {{- include "common.tplvalues.render" ( dict "value" .Values.sidecars "context" $) | nindent 8 }}
         {{- end }}
+      volumes:
+        - name: mockida
+          projected:
+            sources:
+              - configMap:
+                  name: mockida

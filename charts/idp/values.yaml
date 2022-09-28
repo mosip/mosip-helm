@@ -414,6 +414,8 @@ metrics:
     #       severity: error
     rules: []
 
+idp:
+  mountdir: '/home/mosip/mockida'
 ## Only internal access
 istio:
   enabled: true
