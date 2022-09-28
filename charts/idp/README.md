@@ -1,6 +1,6 @@
-# idp
+# IDP
 
-Helm chart for installing Kernel module idp.
+Helm chart for installing IDP module.
 
 ## TL;DR
 
@@ -11,7 +11,7 @@ $ helm install my-release mosip/idp
 
 ## Introduction
 
-idp is  part of the kernel modules, but has a separate Helm chart so as to install and manage it in a completely indepedent namespace.
+IDP is part of the IDP modules, but has a separate Helm chart so as to install and manage it in a completely indepedent namespace.
 
 ## Prerequisites
 
