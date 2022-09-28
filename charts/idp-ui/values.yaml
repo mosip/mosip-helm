@@ -427,7 +427,7 @@ idp_ui:
 istio:
   enabled: true
   ingressController:
-    name: ingressgateway-internal
+    name: ingressgateway
   gateways:
     - name: idp-ui-gateway
       protocol: HTTP
