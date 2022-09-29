@@ -28,7 +28,7 @@ spec:
         - destination:
             host: {{ template "common.names.fullname" . }}
             port:
-              number: {{ .Values.services.websocket.port }}
+              number: {{ index .Values.services "http-websocket" "port" }}
       headers:
         request:
           set:
@@ -36,10 +36,6 @@ spec:
     - match:
         - uri:
             prefix: {{ .Values.istio.mock_smtp_prefix }}
-      {{- if .Values.istio.rewrite_mock_smtp_prefix }}
-      rewrite:
-        uri: {{ .Values.istio.rewrite_mock_smtp_prefix }}
-      {{- end }}
       route:
         - destination:
             host: {{ template "common.names.fullname" . }}
