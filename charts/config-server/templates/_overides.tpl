@@ -69,7 +69,7 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.secrets.db }}
       key: db-mosip-kernel-password
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_IDMAP_PASSWORD
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_MOSIP_IDMAP_PASSWORD
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.db }}
@@ -99,7 +99,7 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.secrets.db }}
       key: db-mosip-credential-password
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_MOSIP-REGPRC_PASSWORD
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_MOSIP_REGPRC_PASSWORD
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.db }}
