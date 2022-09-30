@@ -117,13 +117,34 @@ data:
         </div>
         <div class="w3-col l2 w3-center">
           <a href="https://{{ .Values.landing.resident }}">
-          <img src="https://3588228898-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4EyCrLbFom7vj7UcMIUZ%2Fuploads%2Fgit-blob-b51834a1cad1adb1f95cd8817ec64da49471f67b%2Fresident-login.png?alt=media" style="height:80px">
+             <img src="https://3588228898-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4EyCrLbFom7vj7UcMIUZ%2Fuploads%2Fgit-blob-2c24c3f4e382ba1cf51742d878d98d1e15f39b2a%2Fadmin-view-device.png?alt=media" style="height:80px">
           <p>resident</p>
           </a>
         </div>
         <div class="w3-col l2 w3-center"><p></p></div>
       </div>
+
       <!-- row 4 -->
+      <div class="w3-row-padding w3-padding-16">
+        <div class="w3-col l2 w3-center"><p></p></div> 
+        <div class="w3-col l2 w3-center">
+          <a href="https://{{ .Values.landing.idp }}">
+             <img src="https://3588228898-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4EyCrLbFom7vj7UcMIUZ%2Fuploads%2Fgit-blob-2c24c3f4e382ba1cf51742d878d98d1e15f39b2a%2Fadmin-view-device.png?alt=media" style="height:80px">
+             <p>IDP</p>
+          </a>
+        </div>
+    {{- if .Values.landing.smtp }}
+        <div class="w3-col l2 w3-center">
+          <a href="https://{{ .Values.landing.smtp }}">
+             <img src="https://3588228898-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4EyCrLbFom7vj7UcMIUZ%2Fuploads%2Fgit-blob-2c24c3f4e382ba1cf51742d878d98d1e15f39b2a%2Fadmin-view-device.png?alt=media" style="height:80px">
+             <p>SMTP</p>
+          </a>
+        </div>
+    {{- end }}
+        <div class="w3-col l2 w3-center"><p></p></div>
+      </div>
+
+      <!-- row 5 -->
       <div class="w3-row-padding w3-padding-16">
         <div class="w3-col l4 w3-center"><p></p></div> 
         <div class="w3-col l4 w3-left">

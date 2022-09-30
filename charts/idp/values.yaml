@@ -41,6 +41,7 @@ service:
   ##   http: <to set explicitly, choose port between 30000-32767>
   ##   https: <to set explicitly, choose port between 30000-32767>
   ##
+
   nodePorts:
     http: ""
     https: ""
@@ -51,8 +52,8 @@ service:
 
 image:
   registry: docker.io
-  repository: nginx
-  tag: latest
+  repository: mosipdev/idp
+  tag: develop
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -66,7 +67,7 @@ image:
   #   - myRegistryKeySecretName
 
 ## Port on which this particular spring service module is running. 
-containerPort: 80
+springServicePort: 8088
 
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
@@ -74,35 +75,36 @@ containerPort: 80
 startupProbe:
   enabled: true
   httpGet:
-    path: "/"
-    port: 80
+    path: /v1/idp/actuator/health
+    port: 8088
   initialDelaySeconds: 0
-  periodSeconds: 30 
+  periodSeconds: 10
   timeoutSeconds: 5 
-  failureThreshold: 10 
+  failureThreshold: 30
   successThreshold: 1
 
 livenessProbe:
   enabled: true
   httpGet:
-    path: "/"
-    port: 80
+    path: /v1/idp/actuator/health
+    port: 8088
   initialDelaySeconds: 20
-  periodSeconds: 60 
+  periodSeconds: 10
   timeoutSeconds: 5 
-  failureThreshold: 2 
+  failureThreshold: 6
   successThreshold: 1
 
 readinessProbe:
   enabled: true
   httpGet:
-    path: "/"
-    port: 80
+    path: /v1/idp/actuator/health
+    port: 8088
   initialDelaySeconds: 0
-  periodSeconds: 60 
+  periodSeconds: 10
   timeoutSeconds: 5 
-  failureThreshold: 2  
+  failureThreshold: 6
   successThreshold: 1
+
 
 ##
 # existingConfigmap:
@@ -125,16 +127,17 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-     cpu: 100m
-     memory: 1500Mi
-  requests: 
+     cpu: 500m
+     memory: 2250Mi
+  requests:
     cpu: 100m
     memory: 1500Mi
 
 additionalResources: 
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
-  javaOpts: ""
+  javaOpts: "-Xms1500M -Xmx1500M"
+
 
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
 ## Clamav container already runs as 'mosip' user, so we may not need to enable this
@@ -241,14 +244,16 @@ updateStrategy:
 ##
 extraEnvVars: []
 
-## ConfigMap with extra environment variables
+## ConfigMap with extra environment variables that used
 ##
 extraEnvVarsCM:
   - global
+  - config-server-share 
+  - artifactory-share
 
 ## Secret with extra environment variables
 ##
-extraEnvVarsSecret: []
+extraEnvVarsSecret:
 
 ## Extra volumes to add to the deployment
 ##
@@ -355,14 +360,14 @@ serviceAccount:
 ## Prometheus Metrics
 ##
 metrics:
-  enabled: false
+  enabled: true
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
   podAnnotations: 
     prometheus.io/scrape: "true"
   
-  endpointPath: /v1/landing-page/actuator/prometheus
+  endpointPath: /v1/notifier/actuator/prometheus
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator
@@ -409,33 +414,11 @@ metrics:
     #       severity: error
     rules: []
 
-## Override these while installing this Helm.
-landing:
-  name: dev3
-  version: develop
-  api: api.sandbox.mosip.net
-  apiInternal: api-internal.sandbox.mosip.net
-  admin: admin.sandbox.mosip.net
-  prereg: prereg.sandbox.mosip.net
-  kafka: kafka.sandbox.mosip.net
-  activemq: activemq.sandbox.mosip.net
-  kibana: kibana.sandbox.mosip.net
-  minio: minio.sandbox.mosip.net
-  keycloak: iam.sandbox.mosip.net
-  regclient: reclient.sandbox.mosip.net
-  pmp: pmp.sandbox.mosip.net
-  resident: resident.sandbox.mosip.net
-  idp: idp.sandbox.xyz.net
-  smtp:
-  postgres:
-    host: postgres.sandbox.mosip.net
-    port: 5432
-  
+idp:
+  mountdir: '/home/mosip/mock-auth-data'
 ## Only internal access
 istio:
-  enabled: true 
-  ingressController:
-    name: ingressgateway-internal
-  host: dev3.mosip.net
-  prefix: /
-
+  enabled: true
+  gateways: 
+    - istio-system/public
+  prefix: /v1/idp

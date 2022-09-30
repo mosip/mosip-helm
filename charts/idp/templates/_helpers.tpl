@@ -1,33 +1,30 @@
 {{/*
 Return the proper  image name
 */}}
-{{- define "apitestrig.image" -}}
+{{- define "idp.image" -}}
 {{ include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global) }}
-{{- end -}}
-{{- define "apitestrig.auth.image" -}}
-{{ include "common.images.image" (dict "imageRoot" .Values.auth_demo "global" .Values.global) }}
 {{- end -}}
 
 {{/*
 Return the proper image name (for the init container volume-permissions image)
 */}}
-{{- define "apitestrig.volumePermissions.image" -}}
+{{- define "idp.volumePermissions.image" -}}
 {{- include "common.images.image" ( dict "imageRoot" .Values.volumePermissions.image "global" .Values.global ) -}}
 {{- end -}}
 
 {{/*
 Return the proper Docker Image Registry Secret Names
 */}}
-{{- define "apitestrig.imagePullSecrets" -}}
+{{- define "idp.imagePullSecrets" -}}
 {{- include "common.images.pullSecrets" (dict "images" (list .Values.image .Values.volumePermissions.image) "global" .Values.global) -}}
 {{- end -}}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "apitestrig.serviceAccountName" -}}
+{{- define "idp.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
-    {{ default (printf "%s-foo" (include "common.names.fullname" .)) .Values.serviceAccount.name }}
+    {{ default (printf "%s" (include "common.names.fullname" .)) .Values.serviceAccount.name }}
 {{- else -}}
     {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}
@@ -36,10 +33,10 @@ Create the name of the service account to use
 {{/*
 Compile all warnings into a single message.
 */}}
-{{- define "apitestrig.validateValues" -}}
+{{- define "idp.validateValues" -}}
 {{- $messages := list -}}
-{{- $messages := append $messages (include "apitestrig.validateValues.foo" .) -}}
-{{- $messages := append $messages (include "apitestrig.validateValues.bar" .) -}}
+{{- $messages := append $messages (include "idp.validateValues.foo" .) -}}
+{{- $messages := append $messages (include "idp.validateValues.bar" .) -}}
 {{- $messages := without $messages "" -}}
 {{- $message := join "\n" $messages -}}
 
@@ -51,7 +48,7 @@ Compile all warnings into a single message.
 {{/*
 Return podAnnotations
 */}}
-{{- define "apitestrig.podAnnotations" -}}
+{{- define "idp.podAnnotations" -}}
 {{- if .Values.podAnnotations }}
 {{ include "common.tplvalues.render" (dict "value" .Values.podAnnotations "context" $) }}
 {{- end }}
@@ -60,7 +57,4 @@ Return podAnnotations
 {{- end }}
 {{- end -}}
 
-{{/* Create the name for restart cronjob */}}
-{{- define "apitestrig.cronjob" -}}
-{{ default (printf "cronjob-%s" (include "common.names.fullname" .)) .Values.serviceAccount.name }}
-{{- end -}}
+
