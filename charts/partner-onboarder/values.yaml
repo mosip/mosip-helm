@@ -82,7 +82,7 @@ startupProbe:
   initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5 
-  failureThreshold: 30
+  failureThreshold: 60
   successThreshold: 1
 
 ## Liveness probe does not apply as this is a job which is kept alive only to see reports
