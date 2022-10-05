@@ -72,7 +72,7 @@ tusd:
   puburl:
   privurl:
 
-## Port on which this particular spring service module is running. 
+## Port on which this particular spring service module is running.
 containerPort: 1080
 
 ## Configure extra options for liveness and readiness probes
@@ -131,11 +131,11 @@ resources:
   limits: {}
   #   cpu: 200m
   #   memory: 256Mi
-  requests: 
+  requests:
     cpu: 100m
     memory: 1500Mi
 
-additionalResources: 
+additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
   javaOpts: ""
@@ -215,17 +215,17 @@ podAnnotations: {}
 ##  pods' priority.
 ## ref: https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
 ##
-# priorityClassName: ""
+#priorityClassName: ""
 
 ## lifecycleHooks for the  container to automate configuration before or after startup.
 ##
 lifecycleHooks: {}
 
-## Custom Liveness probes for 
+## Custom Liveness probes for
 ##
 customLivenessProbe: {}
 
-## Custom Rediness probes 
+## Custom Rediness probes
 ##
 customReadinessProbe: {}
 
@@ -292,12 +292,13 @@ initContainers: {}
 sidecars: {}
 
 persistence:
-  enabled: false
+  enabled: true
+  storageClass: "longhorn"
   ## If defined, storageClassName: <storageClass>
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-  ##   GKE, AWS & OpenStack).  
+  ##   GKE, AWS & OpenStack).
   ##
   # storageClass: "-"
   ##
@@ -305,19 +306,18 @@ persistence:
   ## the existingClaim variable
   # existingClaim: your-claim
   ## ReadWriteMany not supported by AWS gp2
-  storageClass: 
   accessModes:
     - ReadWriteOnce
-  size: 10M
-  existingClaim: 
+  size: 8G
+  existingClaim:
   # Dir where config and keys are written inside container
-  mountDir: 
+  mountDir: /srv/tusd-hooks
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
 ##
 volumePermissions:
-  enabled: false
+  enabled: true
   image:
     registry: docker.io
     repository: bitnami/bitnami-shell
@@ -368,9 +368,9 @@ metrics:
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
-  podAnnotations: 
+  podAnnotations:
     prometheus.io/scrape: "true"
-  
+
   endpointPath:
 
   ## Prometheus Service Monitor
