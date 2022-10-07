@@ -8,7 +8,7 @@ image:
   repository: mosipid/masterdata-loader
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 1.2.0.1
+  tag: 1.2.0.1-B1
 
 imagePullSecrets: []
 nameOverride: ""
@@ -79,4 +79,4 @@ db:
     name: db-common-secrets
     key: db-dbuser-password
 
-mosipDataGithubBranch: 1.2.0.1
+mosipDataGithubBranch: 1.2.0.1-B1
