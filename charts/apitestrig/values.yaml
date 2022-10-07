@@ -52,7 +52,7 @@ service:
 image:
   registry: docker.io
   repository: mosipid/automationtests
-  tag: 1.2.0.1
+  tag: 1.2.0.1-B1
 
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -68,7 +68,7 @@ image:
 auth_demo:
   registry: docker.io
   repository: mosipid/authentication-demo-service
-  tag: 1.2.0.1
+  tag: 1.2.0.1-B1
   pullPolicy: Always
   springServicePort: 8082
   servicename: authdemo
