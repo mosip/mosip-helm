@@ -31,7 +31,7 @@ replicaCount: 1
 
 image:
   registry: docker.io
-  repository: mosipqa/id-repository-salt-generator
+  repository: mosipid/id-repository-salt-generator
   tag: 1.2.0.1
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
