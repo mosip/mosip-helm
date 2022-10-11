@@ -37,7 +37,7 @@ spec:
           - name: DBUSER_PWD
             valueFrom:
               secretKeyRef:
-                name: db-secrets
+                name: db-mosip-regdevice-secret
                 key: db-mosip-regdevice-password
 
           envFrom:

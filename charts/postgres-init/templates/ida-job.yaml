@@ -37,7 +37,7 @@ spec:
           - name: DBUSER_PWD
             valueFrom:
               secretKeyRef:
-                name: db-secrets
+                name: db-mosip-ida-secret
                 key: db-mosip-ida-password
 
           envFrom:

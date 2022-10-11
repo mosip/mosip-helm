@@ -147,7 +147,24 @@ installedModules:
 ## Refer to instructions to install config-server helm chart in mosip-infra repo.
 overrides:
   secrets:
-    db: db-secrets
+    dbMosipAuditSecret: db-mosip-audit-secret
+    dbMosipAuthdeviceSecret: db-mosip-authdevice-secret
+    dbMosipCredentialSecret: db-mosip-credential-secret
+    dbMosipDigitalcardSecret: db-mosip-digitalcard-secret
+    dbMosipHotlistSecret: db-mosip-hotlist-secret
+    dbMosipIdaSecret: db-mosip-ida-secret
+    dbMosipIdmapSecret: db-mosip-idmap-secret
+    dbMosipIdpSecret: db-mosip-idp-secret
+    dbMosipIdrepoSecret: db-mosip-idrepo-secret
+    dbMosipKernelSecret: db-mosip-kernel-secret
+    dbMosipKeymgrSecret: db-mosip-keymgr-secret
+    dbMosipMasterSecret: db-mosip-master-secret
+    dbMosipPmsSecret: db-mosip-pms-secret
+    dbMosipPreregSecret: db-mosip-prereg-secret
+    dbMosipRegdeviceSecret: db-mosip-regdevice-secret
+    dbMosipRegprcSecret: db-mosip-regprc-secret
+    dbMosipResidentSecret: db-mosip-resident-secret
+    dbMosipToolkitSecret: db-mosip-toolkit-secret
     keycloak: keycloak
     keycloakClients: keycloak-client-secrets
     softhsmKernel: softhsm-kernel

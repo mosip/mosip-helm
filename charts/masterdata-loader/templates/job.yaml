@@ -30,8 +30,8 @@ spec:
           - name: DB_PWD
             valueFrom:
               secretKeyRef:
-                name: {{ .Values.db.secret.name }}
-                key: {{ .Values.db.secret.key }}
+                name: db-mosip-master-secret
+                key: db-mosip-master-password
 
           envFrom:
               - configMapRef:
