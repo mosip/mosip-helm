@@ -186,6 +186,7 @@ keycloak:
        - CARD_DISBURSEMENT_ADMIN
        - PMS_ADMIN
        - PMS_USER
+       - SUBSCRIBE_AUTHENTICATION_TRANSACTION_STATUS_GENERAL
       clients: 
        - name: mosip-abis-client
          mappers: []
