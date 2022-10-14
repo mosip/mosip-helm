@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: mosipid/config-server
+  repository: mosipqa/config-server
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: 1.1.2
