@@ -88,6 +88,10 @@ spec:
           args: {{- include "common.tplvalues.render" (dict "value" .Values.args "context" $) | nindent 12 }}
           {{- end }}
           env:
+            - name: auth_url_env
+              value: {{ .Values.tusd.auth_url }}
+            - name: key_url_env
+              value: {{ .Values.tusd.key_url }}
             {{- if .Values.extraEnvVars }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}

@@ -47,6 +47,10 @@ image:
 
 ##
 # existingConfigmap:
+regproc_salt:
+  salt_gen_schema_name: regprc
+  salt_gen_db_alias: mosip.regproc.db
+  spring_config_name: registration-processor
 
 ## Command and args for running the container (set to default if not set). Use array form
 ##
@@ -181,13 +185,7 @@ updateStrategy:
 ##   - name: FOO
 ##     value: "bar"
 ##
-extraEnvVars: 
-  - name: salt_gen_schema_name_env
-    value: regprc
-  - name: salt_gen_db_alias_env
-    value: mosip.regproc.db 
-  - name: spring_config_name_env
-    value: registration-processor 
+extraEnvVars: []
 
 ## ConfigMap with extra environment variables that used
 ##

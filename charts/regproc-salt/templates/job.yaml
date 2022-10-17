@@ -61,6 +61,12 @@ spec:
               value: {{ .Values.containerSecurityContext.runAsUser }}
             - name: JDK_JAVA_OPTIONS
               value: {{ .Values.additionalResources.javaOpts }}
+            - name: salt_gen_schema_name_env
+              value: {{ .Values.regproc_salt.salt_gen_schema_name }}
+            - name: salt_gen_db_alias_env
+              value: {{ .Values.regproc_salt.salt_gen_db_alias }}
+            - name: spring_config_name_env
+              value: {{ .Values.regproc_salt.spring_config_name }}
             {{- if .Values.extraEnvVars }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}

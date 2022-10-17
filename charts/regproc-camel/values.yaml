@@ -69,6 +69,9 @@ image:
 ## Port on which this particular spring service module is running. 
 springServicePort: 8022
 
+regproc_camel:
+  zone: default
+
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
@@ -242,9 +245,7 @@ updateStrategy:
 ##   - name: FOO
 ##     value: "bar"
 ##
-extraEnvVars: 
-  - name: zone_env
-    value: default
+extraEnvVars: []
 
 ## ConfigMap with extra environment variables that used
 ##

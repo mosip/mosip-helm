@@ -71,6 +71,8 @@ tusd:
   tusdMountDIr: /home/mosip/tusd/
   puburl:
   privurl:
+  auth_url: 'http://authmanager.kernel'
+  key_url: 'http://keymanager.keymanager'
 
 ## Port on which this particular spring service module is running.
 containerPort: 1080
@@ -244,11 +246,7 @@ updateStrategy:
 ##     value: "bar"
 ##
 ## TODO: the below env variable is not used, but required.  Remove it later
-extraEnvVars:
-  - name: auth_url_env
-    value: 'http://authmanager.kernel'
-  - name: key_url_env
-    value: 'http://keymanager.keymanager'
+extraEnvVars: []
 
 ## ConfigMap with extra environment variables
 ##
