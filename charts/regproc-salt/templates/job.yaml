@@ -62,11 +62,11 @@ spec:
             - name: JDK_JAVA_OPTIONS
               value: {{ .Values.additionalResources.javaOpts }}
             - name: salt_gen_schema_name_env
-              value: {{ .Values.regproc_salt.salt_gen_schema_name }}
+              value: regprc
             - name: salt_gen_db_alias_env
-              value: {{ .Values.regproc_salt.salt_gen_db_alias }}
+              value: mosip.regproc.db
             - name: spring_config_name_env
-              value: {{ .Values.regproc_salt.spring_config_name }}
+              value: registration-processor
             {{- if .Values.extraEnvVars }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}

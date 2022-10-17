@@ -74,8 +74,6 @@ regclient:
   hostName: https://api-internal.sandbox.mosip.net
   ## Here we check the health of syncdata service. The service must be accessible over internal channel.
   healthCheckUrl:  http://api-internal.sandbox.mosip.net/v1/syncdata/actuator/health
-  certificate: mosip_cer.cer
-  signer_url: http://timestamp.comodoca.com/rfc3161
 
 ## Port on which this particular spring service module is running. 
 containerPort: 80

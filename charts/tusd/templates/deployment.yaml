@@ -89,9 +89,9 @@ spec:
           {{- end }}
           env:
             - name: auth_url_env
-              value: {{ .Values.tusd.auth_url }}
+              value: 'http://authmanager.kernel'
             - name: key_url_env
-              value: {{ .Values.tusd.key_url }}
+              value: 'http://keymanager.keymanager'
             {{- if .Values.extraEnvVars }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}

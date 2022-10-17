@@ -100,9 +100,9 @@ spec:
             - name: host_name_env
               value: {{ .Values.regclient.hostName }}
             - name: client_certificate_env
-              value: {{ .Values.regclient.certificate }}
+              value: mosip_cer.cer
             - name: signer_timestamp_url_env
-              value: {{ .Values.regclient.signer_url }}
+              value: http://timestamp.comodoca.com/rfc3161
             {{- if .Values.extraEnvVars }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}
