@@ -250,11 +250,7 @@ updateStrategy:
 ##     value: "bar"
 ##
 ## TODO: the below env variable is not used, but required.  Remove it later
-extraEnvVars: 
-  - name: client_certificate_env
-    value: mosip_cer.cer
-  - name: signer_timestamp_url_env
-    value: http://timestamp.comodoca.com/rfc3161
+extraEnvVars: []
 
 ## ConfigMap with extra environment variables
 ##

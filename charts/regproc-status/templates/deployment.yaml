@@ -93,6 +93,16 @@ spec:
               value: {{ .Values.containerSecurityContext.runAsUser }}
             - name: JDK_JAVA_OPTIONS
               value: {{ .Values.additionalResources.javaOpts }}
+            - name: artifactory_url_env
+              valueFrom:
+                configMapKeyRef:
+                  name: artifactory-share
+                  key: artifactory_url_env
+            - name: iam_adapter_url_env
+              valueFrom:
+                configMapKeyRef:
+                  name: artifactory-share
+                  key: iam_adapter_regproc_ext_url_env
             {{- if .Values.extraEnvVars }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}
