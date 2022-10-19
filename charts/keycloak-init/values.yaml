@@ -186,6 +186,7 @@ keycloak:
        - CARD_DISBURSEMENT_ADMIN
        - PMS_ADMIN
        - PMS_USER
+       - SUBSCRIBE_AUTHENTICATION_TRANSACTION_STATUS_GENERAL
       clients: 
        - name: mosip-abis-client
          mappers: []
@@ -335,7 +336,7 @@ keycloak:
            - CREDENTIAL_REQUEST
            - offline_access
            - uma_authorization
-           - SUBSCRIBE_AUTHENTICATION_TRANSACTION_STATUS
+           - SUBSCRIBE_AUTHENTICATION_TRANSACTION_STATUS_GENERAL
            - SUBSCRIBE_AUTH_TYPE_STATUS_UPDATE_ACK_GENERAL
 
        - name: mosip-prereg-client

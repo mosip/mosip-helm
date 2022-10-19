@@ -219,6 +219,12 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.secrets.softhsmKernel }}
       key: security-pin
 
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SOFTHSM_IDP_PIN
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.softhsmIDP }}
+      key: security-pin
+
 {{- if .Values.installedModules.ida }}
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SOFTHSM_IDA_PIN
   valueFrom:
@@ -340,6 +346,12 @@ All env variables that are accessed from mosip config properties
     configMapKeyRef:
       name: {{ .Values.overrides.configmaps.email }}
       key: email-smtp-host
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_EMAIL_SMTP_PORT
+  valueFrom:
+    configMapKeyRef:
+      name: {{ .Values.overrides.configmaps.email }}
+      key: email-smtp-port
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_EMAIL_SMTP_USERNAME
   valueFrom:

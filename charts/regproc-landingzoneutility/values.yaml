@@ -52,7 +52,7 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipqa/registration-processor-registration-transaction-service
+  repository: mosipdev/registration-processor-landing-zone-utility
   tag: develop
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -66,42 +66,44 @@ image:
   # pullSecrets:
   #   - myRegistryKeySecretName
 
-## Port on which this particular spring service module is running. 
-springServicePort: 8110
+## Port on which this particular spring service module is running.
+springServicePort: 8098
 
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
+## When configuring Probe, please make sure to remove from the url paths that are not required from the probe list
+#### The following probes are not working and are hence disabled. TODO: debug this
 startupProbe:
   enabled: true
   httpGet:
-    path: /registrationprocessor/v1/registrationtransaction/actuator/health
-    port: 8110
+    path: /registrationprocessor/v1/landingzoneutility/actuator/health
+    port: 8098
   initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 30
   successThreshold: 1
 
 livenessProbe:
   enabled: true
   httpGet:
-    path: /registrationprocessor/v1/registrationtransaction/actuator/health
-    port: 8110
-  initialDelaySeconds: 20 
+    path: /registrationprocessor/v1/landingzoneutility/actuator/health
+    port: 8098
+  initialDelaySeconds: 20
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
 readinessProbe:
   enabled: true
   httpGet:
-    path: /registrationprocessor/v1/registrationtransaction/actuator/health
-    port: 8110
-  initialDelaySeconds: 0 
+    path: /registrationprocessor/v1/landingzoneutility/actuator/health
+    port: 8098
+  initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
@@ -127,15 +129,15 @@ resources:
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
      cpu: 500m
-     memory: 2500Mi
-  requests: 
+     memory: 4000Mi
+  requests:
     cpu: 100m
     memory: 1000Mi
 
-additionalResources: 
+additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
-  javaOpts: "-Xms2000M -Xmx2000M"
+  javaOpts: "-Xms3000M -Xmx3000M"
 
 
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
@@ -219,11 +221,11 @@ podAnnotations: {}
 ##
 lifecycleHooks: {}
 
-## Custom Liveness probes for 
+## Custom Liveness probes for
 ##
 customLivenessProbe: {}
 
-## Custom Rediness probes 
+## Custom Rediness probes
 ##
 customReadinessProbe: {}
 
@@ -244,14 +246,11 @@ updateStrategy:
 extraEnvVars: []
 
 ## ConfigMap with extra environment variables that used
-## NOTE: we have removed artifactory from this list and passed artifactory parameters as above
-## This is done as auth adapter url required by this service is different from the default.
+##
 extraEnvVarsCM:
   - global
   - config-server-share
-
-## ConfigMap with extra environment variables that used
-##
+  - artifactory-share
 
 ## Secret with extra environment variables
 ##
@@ -271,7 +270,7 @@ extraVolumeMounts: []
 ##   - name: your-image-name
 ##     image: your-image
 ##     imagePullPolicy: Always
-##     ports:
+#true#     ports:
 ##       - name: portname
 ##         containerPort: 1234
 ##
@@ -295,7 +294,7 @@ persistence:
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-  ##   GKE, AWS & OpenStack).  
+  ##   GKE, AWS & OpenStack).
   ##
   # storageClass: "-"
   ##
@@ -303,13 +302,16 @@ persistence:
   ## the existingClaim variable
   # existingClaim: your-claim
   ## ReadWriteMany not supported by AWS gp2
-  storageClass: 
+  ## We use EFS storage class as that supports ReadWriteMany. Make sure you have installed the same as given
+  ## here: https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html
+  ## Packet landing zone requires ReadWriteMany
+  storageClass:
   accessModes:
-    - ReadWriteOnce
-  size: 10M
-  existingClaim: 
-  # Dir where config and keys are written inside container
-  mountDir: 
+    - ReadWriteMany
+  size:
+  existingClaim:
+  reclaimPolicy:
+  mountDir:
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
@@ -361,16 +363,16 @@ serviceAccount:
 
 ## Prometheus Metrics
 ##
-## TODO: Enable once prometheus url is available
+## TODO: Enable when prometheus url is available
 metrics:
   enabled: false
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
-  podAnnotations: 
+  podAnnotations:
     prometheus.io/scrape: "true"
-  
-  endpointPath: 
+
+  endpointPath: /registrationprocessor/v1/landingzoneutility/actuator/prometheus
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator
@@ -417,9 +419,9 @@ metrics:
     #       severity: error
     rules: []
 
-## Needs external access as is connected by reg clients
+## Requires only internal access for swagger
 istio:
   enabled: true
-  gateways: 
+  gateways:
     - istio-system/internal
-  prefix: /registrationprocessor/v1/registrationtransaction
+  prefix: /registrationprocessor/v1/landingzoneutility

@@ -1,9 +1,9 @@
 {{- if .Values.istio.enabled  }}
-{{- if not .Values.istio.gateways }}
+{{- if .Values.istio.gateways }}
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: {{ template "common.names.fullname" . }}
+  name: {{ template "common.names.fullname" . }}-gateway
 spec:
   selector:
     {{- include "common.tplvalues.render" (dict "value" .Values.istio.ingressController "context" $) | nindent 4 }}
@@ -13,6 +13,6 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-      - {{ .Values.istio.host }}
+      {{- include "common.tplvalues.render" ( dict "value" .Values.istio.hosts "context" $) | nindent 6  }}
 {{- end }}
 {{- end }}
