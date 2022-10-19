@@ -422,15 +422,16 @@ keycloak:
            - CREATE_SHARE
            - PRINT_PARTNER
     
-       - name: mpartner-default-digitalcard
+       - name: Mpartner-default-digitalcard
          mappers: []
          saroles: 
-           - SUBSCRIBE_CREDENTIAL_STATUS_UPDATE_GENERAL
            - SUBSCRIBE_IDENTITY_CREATED_GENERAL
            - SUBSCRIBE_IDENTITY_UPDATED_GENERAL
            - PUBLISH_CREDENTIAL_STATUS_UPDATE_GENERAL
            - CREATE_SHARE
            - PRINT_PARTNER
+           - CREDENTIAL_REQUEST
+           - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
     
        - name: mosip-hotlist-client
          saroles:
@@ -478,8 +479,8 @@ keycloak:
                - manage-users
        
       users: []
-    
-## These will be passed as environments variables to keycloak-init docker. Note the expected naming convention is 
+
+## These will be passed as environments variables to keycloak-init docker. Note the expected naming convention is
 ## <clientname>_<secret>.  If empty secret is passed, it shall be randomly generated
 clientSecrets:
   - name: mosip_abis_client_secret
