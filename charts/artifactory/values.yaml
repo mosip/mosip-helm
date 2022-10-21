@@ -53,7 +53,7 @@ service:
 image:
   registry: docker.io
   repository: mosipid/artifactory-server
-  tag: 1.2.0.1-B1 
+  tag: 1.2.0.1-B2
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
