@@ -1,9 +1,18 @@
-name: Lint and Test Charts
+name: Run Lint and Test Charts manually
 
 on:
-  pull_request:
-    paths:
-      - 'charts/**'
+  workflow_dispatch:
+    inputs:
+      target_repo:
+        description: 'target repo'
+        required: true
+        default: 'https://github.com/mosip/mosip-helm'
+        type: string
+      target_branch:
+        description: 'target branch'
+        required: true
+        default: 'gh-pages'
+        type: string
 
 jobs:
   lint-chart:
@@ -32,10 +41,8 @@ jobs:
 
       - name: Set environment variables
         run: |
-          # echo "TARGET BRANCH : ${{ github.event.pull_request.base.ref }}"
-          echo "TARGET_BRANCH=$(echo ${{ github.base_ref }})" >> $GITHUB_ENV
-          echo "COMMIT_ID=${GITHUB_SHA}" >> $GITHUB_ENV
-          echo "TARGET_REPO=$( echo ${{ github.event.pull_request.base.repo.html_url }} )" >> $GITHUB_ENV
+          echo "TARGET_BRANCH=$(echo ${{ github.event.inputs.target_branch }} )" >> $GITHUB_ENV
+          echo "TARGET_REPO=$( echo ${{ github.event.inputs.target_repo }} )" >> $GITHUB_ENV
 
       - name: Add Target repo to git remotes
         run: | 

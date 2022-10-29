@@ -1,0 +1,8 @@
+# See https://github.com/helm/chart-testing#configuration
+helm-extra-args: --timeout 600s
+check-version-increment: true
+debug: true
+lint-conf: .github/lintconf.yaml
+chart-yaml-schema: .github/chart_schema.yaml
+chart-repos:
+  - bitnami=https://charts.bitnami.com/bitnami
