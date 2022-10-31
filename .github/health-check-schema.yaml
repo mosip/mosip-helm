@@ -1,5 +1,5 @@
 apiVersion: str()
-kind: str()
+kind: str(matches='Deployment|StatefulSet')
 metadata: any()
 spec:
   template:

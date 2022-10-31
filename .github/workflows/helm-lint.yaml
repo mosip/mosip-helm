@@ -62,7 +62,7 @@ jobs:
           while read -r chart; do
             echo -e "\nCHART: $chart\n";
             
-            ls $chart/templates/ | grep -E '*deploy*|*statefulset*' > yaml_list;
+            ls $chart/templates/ > yaml_list;
             chart_name=$( echo $chart | awk -F / '{print $2}' );
             
             mkdir "$chart_name-yaml";
