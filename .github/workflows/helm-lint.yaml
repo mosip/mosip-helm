@@ -57,32 +57,46 @@ jobs:
             ct lint --config=.github/chart-testing-config.yaml --charts=$chart/ --remote=target_repo;
           done < ./list.txt
 
-      - name: Create deploy / statefulset yaml
+      - name: Create yaml files for helm charts
         run: |
           while read -r chart; do
             echo -e "\nCHART: $chart\n";
             
-            ls $chart/templates/ > yaml_list;
+            yaml_file='./chart-template.yaml'
             chart_name=$( echo $chart | awk -F / '{print $2}' );
-            
             mkdir "$chart_name-yaml";
             
-            while read -r yaml; do
-              helm template $chart -s templates/$yaml > "$chart_name-yaml"/$yaml;
-            done < ./yaml_list
+            helm template $chart > $yaml_file
+            line_nos="$( cat -n $yaml_file | awk '/---/{print $1}' ) $( cat -n $yaml_file| tail -n 1 | awk '{print $1}' )"
+            start_of_file=0
+            
+            for line in $line_nos; do
+              if [[ $line -eq 1 ]]; then
+                continue;
+                start_of_file=$line
+              fi
+              filename=$( head -n +$(( line-1)) $yaml_file | tail -n $(( line-start_of_file )) | awk -F '/' '/# Source/{print $3}' )
+              head -n +$(( line-1 )) $yaml_file | tail -n $(( line-start_of_file )) > "$chart_name-yaml"/$filename
+              start_of_file=$line
+            done
             
           done < ./list.txt
 
       - name: Run Health Check Test
         run: |
           while read -r chart; do
-            echo -e "\nCHART: $chart\n";
+            echo -e "\n\nCHART: $chart\n";
+            
             chart_name=$( echo $chart | awk -F / '{print $2}' );
+            list=$( grep -rinlE "kind:\ Statefulset|kind:\ Deployment" $chart_name-yaml );
+            
+            echo -e "YAML LIST :";
+            echo -e "$list\n"
             
             while read -r yaml; do
-              echo "YAML : $yaml";
-              yamale -s .github/health-check-schema.yaml $chart_name-yaml/$yaml  --no-strict
-            done <<< $( ls "$chart_name-yaml" ) 
+              echo -e "YAML : $yaml";
+              yamale -s .github/health-check-schema.yaml $yaml  --no-strict
+            done <<< $list
           
           done < ./list.txt
 
