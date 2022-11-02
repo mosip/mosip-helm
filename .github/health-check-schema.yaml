@@ -7,25 +7,34 @@ spec:
       containers: list(include('probes'))
 ---
 probes:
-  startupProbe: any( include('exec_command'), include('httpget') )
-  livenessProbe: any( include('httpget'), include('exec_command') )
-  readinessProbe: any( include('httpget'), include('exec_command') )
+  startupProbe: any( include('httpget'), include('exec_command'), include('tcp_socket') )
+  livenessProbe: any( include('httpget'), include('exec_command'), include('tcp_socket') )
+  readinessProbe: any( include('httpget'), include('exec_command'), include('tcp_socket') )
 ---
 httpget:
   httpGet:
     path: str(required=False)
     port: any( str(), int())
-  initialDelaySeconds: int()
+  initialDelaySeconds: int(required=False)
   periodSeconds: int()
-  successThreshold: int()
+  successThreshold: int(required=False)
   timeoutSeconds: int()
   failureThreshold: int()
 ---
 exec_command:
   exec:
     command: list(str())
-  initialDelaySeconds: int()
+  initialDelaySeconds: int(required=False)
   periodSeconds: int()
-  successThreshold: int()
+  successThreshold: int(required=False)
+  timeoutSeconds: int()
+  failureThreshold: int()
+---
+tcp_socket:
+  tcpSocket:
+    port: any( str(), int())
+  initialDelaySeconds: int(required=False)
+  periodSeconds: int()
+  successThreshold: int(required=False)
   timeoutSeconds: int()
   failureThreshold: int()
