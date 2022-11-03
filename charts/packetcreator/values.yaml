@@ -409,9 +409,15 @@ metrics:
     #       severity: error
     rules: []
 
+## Ingress
+ingress:
+  enabled: false
+  prefix: '/v1/packetcreator/(.*)'
+  rewrite_prefix_uri: '/$1'
+
 ## Admin swagger should have only internal access. Hence linked to internal gateway
 istio:
-  enabled: true
+  enabled: false
   gateways: 
     - istio-system/internal
   prefix: '/v1/packetcreator'
