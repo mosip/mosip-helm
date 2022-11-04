@@ -187,6 +187,8 @@ keycloak:
        - PMS_ADMIN
        - PMS_USER
        - SUBSCRIBE_AUTHENTICATION_TRANSACTION_STATUS_GENERAL
+       - PUBLISH_OIDC_CLIENT_CREATED_GENERAL
+       - PUBLISH_OIDC_CLIENT_UPDATED_GENERAL
       clients: 
        - name: mosip-abis-client
          mappers: []
@@ -288,6 +290,8 @@ keycloak:
            - PUBLISH_CA_CERTIFICATE_UPLOADED_GENERAL
            - PUBLISH_POLICY_UPDATED_GENERAL
            - PARTNER_ADMIN
+           - PUBLISH_OIDC_CLIENT_CREATED_GENERAL
+           - PUBLISH_OIDC_CLIENT_UPDATED_GENERAL
 
        - name: mosip-policymanager-client
          mappers: []
