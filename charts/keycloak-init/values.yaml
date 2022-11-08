@@ -189,6 +189,25 @@ keycloak:
        - SUBSCRIBE_AUTHENTICATION_TRANSACTION_STATUS_GENERAL
        - PUBLISH_OIDC_CLIENT_CREATED_GENERAL
        - PUBLISH_OIDC_CLIENT_UPDATED_GENERAL
+
+      client_scopes:
+       - name: add_oidc_client
+         description: Scope required to create OIDC client
+         protocol: openid-connect
+         Include In Token Scope : on
+         attributes: {
+           display.on.consent.screen: "false",
+           include.in.token.scope: "true"
+         }
+       - name: update_oidc_client
+         description: ''
+         protocol: openid-connect
+         Include In Token Scope : on
+         attributes: {
+           display.on.consent.screen: "false",
+           include.in.token.scope: "true"
+         }
+
       clients:
        - name: mosip-abis-client
          mappers: []
@@ -292,6 +311,9 @@ keycloak:
            - PARTNER_ADMIN
            - PUBLISH_OIDC_CLIENT_CREATED_GENERAL
            - PUBLISH_OIDC_CLIENT_UPDATED_GENERAL
+         assign_client_scopes:
+           - update_oidc_client
+           - add_oidc_client
 
        - name: mosip-policymanager-client
          mappers: []
