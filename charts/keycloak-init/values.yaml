@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: mosipqa/keycloak-init 
+  repository: mosipqa/keycloak-init
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: develop
@@ -74,22 +74,22 @@ affinity: {}
 frontend: https://iam.sandbox.xyz.net/auth
 
 ## It is assumed that these configmaps are created when Keycloak was installed and available in the same namespace
-## as this chart 
+## as this chart
 keycloak:
-  host: 
+  host:
     existingConfigMap: keycloak-host
     key: keycloak-internal-url
   admin:
     userName:
       existingConfigMap: keycloak-env-vars
-      key: KEYCLOAK_ADMIN_USER 
+      key: KEYCLOAK_ADMIN_USER
     secret:
       existingSecret: keycloak
-      key: admin-password 
+      key: admin-password
 
   realms: |-
     mosip: # realm
-      roles:  
+      roles:
        - Default
        - ABIS_PARTNER
        - SDK_PARTNER
@@ -187,14 +187,35 @@ keycloak:
        - PMS_ADMIN
        - PMS_USER
        - SUBSCRIBE_AUTHENTICATION_TRANSACTION_STATUS_GENERAL
-      clients: 
+       - PUBLISH_OIDC_CLIENT_CREATED_GENERAL
+       - PUBLISH_OIDC_CLIENT_UPDATED_GENERAL
+
+      client_scopes:
+       - name: add_oidc_client
+         description: Scope required to create OIDC client
+         protocol: openid-connect
+         Include In Token Scope : on
+         attributes: {
+           display.on.consent.screen: "false",
+           include.in.token.scope: "true"
+         }
+       - name: update_oidc_client
+         description: ''
+         protocol: openid-connect
+         Include In Token Scope : on
+         attributes: {
+           display.on.consent.screen: "false",
+           include.in.token.scope: "true"
+         }
+
+      clients:
        - name: mosip-abis-client
          mappers: []
          saroles: []
 
        - name: mosip-admin-client
          mappers: []
-         saroles: 
+         saroles:
            - MASTERDATA_ADMIN
            - GLOBAL_ADMIN
            - PUBLISH_MASTERDATA_IDAUTHENTICATION_TEMPLATES_GENERAL
@@ -220,8 +241,8 @@ keycloak:
            - SUBSCRIBE_CREDENTIAL_STATUS_UPDATE_GENERAL
            - offline_access
            - uma_authorization
-    
-       - name: mosip-creser-client 
+
+       - name: mosip-creser-client
          mappers: []
          saroles:
            - CREDENTIAL_ISSUANCE
@@ -233,7 +254,7 @@ keycloak:
            - uma_authorization
        - name: mosip-creser-idpass-client
          mappers: []
-         saroles: 
+         saroles:
            - REGISTRATION_PROCESSOR
            - DATA_READ
            - DOCUMENT_READ
@@ -248,7 +269,7 @@ keycloak:
            - CREATE_SHARE
            - REGISTRATION_PROCESSOR
            - POLICYMANAGER
-    
+
        - name: mosip-ida-client
          mappers: []
          saroles:
@@ -261,7 +282,7 @@ keycloak:
          saroles: []
 
        - name: mosip-pms-client
-         mappers: 
+         mappers:
            - mapper_name: phoneNumber
              mapper_user_attribute: phoneNumber
              token_claim_name: phoneNumber
@@ -274,7 +295,7 @@ keycloak:
            - mapper_name: addressTest
              mapper_user_attribute: address
              token_claim_name: addressTest
-         saroles: 
+         saroles:
            - REGISTRATION_PROCESSOR
            - CREATE_SHARE
            - PMS_ADMIN
@@ -288,6 +309,11 @@ keycloak:
            - PUBLISH_CA_CERTIFICATE_UPLOADED_GENERAL
            - PUBLISH_POLICY_UPDATED_GENERAL
            - PARTNER_ADMIN
+           - PUBLISH_OIDC_CLIENT_CREATED_GENERAL
+           - PUBLISH_OIDC_CLIENT_UPDATED_GENERAL
+         assign_client_scopes:
+           - update_oidc_client
+           - add_oidc_client
 
        - name: mosip-policymanager-client
          mappers: []
@@ -320,7 +346,7 @@ keycloak:
 
        - name: mpartner-default-mobile
          mappers: []
-         saroles: 
+         saroles:
            - CREDENTIAL_PARTNER
            - SUBSCRIBE_REGISTRATION_PROCESSOR_WORKFLOW_COMPLETED_EVENT_GENERAL
            - SUBSCRIBE_REGISTRATION_PROCESSOR_WORKFLOW_PAUSED_FOR_ADDITIONAL_INFO_EVENT_GENERAL
@@ -348,7 +374,7 @@ keycloak:
 
        - name: mosip-creser-idpass-client
          mappers: []
-         saroles: 
+         saroles:
            - REGISTRATION_PROCESSOR
            - DATA_READ
            - DOCUMENT_READ
@@ -359,7 +385,7 @@ keycloak:
 
        - name: mosip-syncdata-client
          mappers: []
-         saroles: 
+         saroles:
            - REGISTRATION_ADMIN
            - GLOBAL_ADMIN
            - SUBSCRIBE_CA_CERTIFICATE_UPLOADED_GENERAL
@@ -367,11 +393,11 @@ keycloak:
            - REGISTRATION_OFFICER
 
        - name: mpartner-default-auth
-         mappers: 
+         mappers:
            - mapper_name: langCode
-             mapper_user_attribute: langCode 
+             mapper_user_attribute: langCode
              token_claim_name: langCode
-         saroles: 
+         saroles:
            - SUBSCRIBE_AUTH_TYPE_STATUS_UPDATE_INDIVIDUAL
            - SUBSCRIBE_POLICY_UPDATED_GENERAL
            - SUBSCRIBE_MISP_LICENSE_GENERATED_GENERAL
@@ -400,7 +426,7 @@ keycloak:
 
        - name: mosip-idrepo-client
          mappers: []
-         saroles: 
+         saroles:
            - PUBLISH_DEACTIVATE_ID_ALL_INDIVIDUAL
            - SUBSCRIBE_VID_CRED_STATUS_UPDATE_GENERAL
            - ID_REPOSITORY
@@ -416,15 +442,15 @@ keycloak:
 
        - name: mpartner-default-print
          mappers: []
-         saroles: 
+         saroles:
            - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
            - PUBLISH_CREDENTIAL_STATUS_UPDATE_GENERAL
            - CREATE_SHARE
            - PRINT_PARTNER
-    
+
        - name: Mpartner-default-digitalcard
          mappers: []
-         saroles: 
+         saroles:
            - SUBSCRIBE_IDENTITY_CREATED_GENERAL
            - SUBSCRIBE_IDENTITY_UPDATED_GENERAL
            - PUBLISH_CREDENTIAL_STATUS_UPDATE_GENERAL
@@ -432,7 +458,7 @@ keycloak:
            - PRINT_PARTNER
            - CREDENTIAL_REQUEST
            - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
-    
+
        - name: mosip-hotlist-client
          saroles:
            - HOTLIST_ADMIN
@@ -448,10 +474,10 @@ keycloak:
            - PARTNER_ADMIN
            - uma_authorization
            - offline_access
-    
+
        - name: mosip-toolkit-client
          saroles: []
-      
+
        - name: mosip-digitalcard-client
          saroles:
            - CREATE_SHARE
@@ -472,12 +498,12 @@ keycloak:
            - uma_authorization
            - offline_access
          sa_client_roles:
-           - realm-management:  ## realm-management client id
+           - realm-management: ## realm-management client id
                - view-users     # realm-management client roles
                - view-clients
                - view-realm
                - manage-users
-       
+
       users: []
 
 ## These will be passed as environments variables to keycloak-init docker. Note the expected naming convention is

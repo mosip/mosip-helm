@@ -1,20 +1,19 @@
 apiVersion: v2
-name: keycloak-init
-description: A Helm chart for Kubernetes to initialize Keycloak  (updating for test)
+name: packetcreator
+description: A Helm chart for DSL orchestrator
 type: application
 version: 12.0.2
-appVersion: 1.2.0
+appVersion: ""
 dependencies:
   - name: common
     repository: https://charts.bitnami.com/bitnami
     tags:
       - bitnami-common
     version: 1.x.x
-
 home: https://mosip.io
 keywords:
-  - keycloak
-  - access-management
+  - mosip
+  - packetcreator
 maintainers:
   - email: info@mosip.io
     name: MOSIP

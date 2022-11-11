@@ -51,7 +51,7 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipqa/automationtests
+  repository: mosipdev/mosip-packet-creator
   tag: develop
 
   ## Specify a imagePullPolicy
@@ -65,24 +65,9 @@ image:
   ##
   # pullSecrets:
   #   - myRegistryKeySecretName
-auth_demo:
-  registry: docker.io
-  repository: mosipqa/authentication-demo-service
-  tag: develop
-  pullPolicy: Always
-  springServicePort: 8082
-  servicename: authdemo
-  javaOpts: "-Xms1500M -Xmx1500M"
-  resources:
-    limits:
-      cpu: 300m
-      memory: 2000Mi
-    requests:
-      cpu: 300m
-      memory: 2000Mi
 
-## Port on which this particular spring service module is running. 
-springServicePort: 8083
+## Port on which this particular spring service module is running.
+springServicePort: 8080
 
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
@@ -90,33 +75,33 @@ springServicePort: 8083
 startupProbe:
   enabled: true
   httpGet:
-    path: '/v1/identity/actuator/health'
-    port: 8082
+    path: /actuator/health
+    port: 8080
   initialDelaySeconds: 0
-  periodSeconds: 10
-  timeoutSeconds: 5 
-  failureThreshold: 30
+  periodSeconds: 20
+  timeoutSeconds: 5
+  failureThreshold: 60
   successThreshold: 1
 
 livenessProbe:
   enabled: true
   httpGet:
-    path: '/v1/identity/actuator/health'
-    port: 8082
+    path: /actuator/health
+    port: 8080
   initialDelaySeconds: 20
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
 readinessProbe:
   enabled: true
   httpGet:
-    path: '/v1/identity/actuator/health'
-    port: 8082
+    path: /actuator/health
+    port: 8080
   initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
@@ -141,16 +126,16 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-     cpu: 1000m
-     memory: 3500Mi
+    cpu: 300m
+    memory: 3000Mi
   requests:
-     cpu: 1000m
-     memory: 3500Mi
+    cpu: 200m
+    memory: 1500Mi
 
-additionalResources: 
+additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
-  javaOpts: "-Xms2600M -Xmx2600M"
+  javaOpts: "-Xms1250M -Xmx1250M"
 
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
 ## Clamav container already runs as 'mosip' user, so we may not need to enable this
@@ -233,11 +218,11 @@ podAnnotations: {}
 ##
 lifecycleHooks: {}
 
-## Custom Liveness probes for 
+## Custom Liveness probes for
 ##
 customLivenessProbe: {}
 
-## Custom Rediness probes 
+## Custom Rediness probes
 ##
 customReadinessProbe: {}
 
@@ -259,20 +244,11 @@ extraEnvVars: []
 
 ## ConfigMap with extra environment variables
 ##
-extraEnvVarsCM:
-  - global
-  - s3
-  - keycloak-host
-  - db-cm
-  - apitestrig
-  - config-server-share
-  - artifactory-share
+extraEnvVarsCM: []
+
 ## Secret with extra environment variables
 ##
 extraEnvVarsSecret:
-  - s3
-  - keycloak-client-secrets
-  - db-secrets
 
 ## Extra volumes to add to the deployment
 ##
@@ -307,12 +283,12 @@ initContainers: {}
 sidecars: {}
 
 persistence:
-  enabled: false
+  enabled: true
   ## If defined, storageClassName: <storageClass>
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-  ##   GKE, AWS & OpenStack).  
+  ##   GKE, AWS & OpenStack).
   ##
   # storageClass: "-"
   ##
@@ -320,13 +296,13 @@ persistence:
   ## the existingClaim variable
   # existingClaim: your-claim
   ## ReadWriteMany not supported by AWS gp2
-  storageClass: 
+  storageClass:
   accessModes:
     - ReadWriteOnce
-  size: 10M
-  existingClaim: 
+  size: 2G
+  existingClaim:
   # Dir where config and keys are written inside container
-  mountDir: 
+  mountDir: /mnt/packets/
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
@@ -379,14 +355,14 @@ serviceAccount:
 ## Prometheus Metrics
 ##
 metrics:
-  enabled: false
+  enabled: true
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
-  podAnnotations: 
+  podAnnotations:
     prometheus.io/scrape: "true"
-  
-  endpointPath:
+
+  endpointPath: /v1/admin/actuator/prometheus
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator
@@ -433,12 +409,19 @@ metrics:
     #       severity: error
     rules: []
 
+## Ingress
+ingress:
+  enabled: false
+  prefix: '/v1/packetcreator/(.*)'
+  rewrite_prefix_uri: '/$1'
+
 ## Admin swagger should have only internal access. Hence linked to internal gateway
 istio:
   enabled: false
-  gateways: 
+  gateways:
     - istio-system/internal
-  prefix:
+  prefix: '/v1/packetcreator'
+  rewrite_prefix_uri: '/'
   corsPolicy:
     allowOrigins:
       - prefix: https://api-internal.sandbox.xyz.net
@@ -470,21 +453,3 @@ istio:
       - PATCH
       - PUT
       - DELETE
-
-modules:
-  - name: prereg
-    enabled: true
-  - name: masterdata
-    enabled: true
-  - name: idrepo
-    enabled: true
-  - name: partner
-    enabled: true
-  - name: resident
-    enabled: true
-  - name: auth
-    enabled: true
-  - name: idp
-    enabled: true
-
-crontime: "0 3 * * *"    ## run cronjob every day at 3 AM (time hr: 0-23 )
