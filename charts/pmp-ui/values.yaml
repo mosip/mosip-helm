@@ -417,7 +417,7 @@ metrics:
 ## CAUTION: Domain name to acess pmp UI must be secure/internal/over vpn.
 ## Slash is important!
 pmp:
-   apiUrl: https://pmp.sandbox.mosip.net/
+  apiUrl: https://pmp.sandbox.mosip.net/
 
 ## pmp UI swagger should have only internal access. Hence linked to internal gateway
 ## We create a gateway for pmp specific URL(s) listed under `hosts`

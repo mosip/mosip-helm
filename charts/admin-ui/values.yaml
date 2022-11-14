@@ -127,8 +127,8 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-     cpu: 300m
-     memory: 1500Mi
+    cpu: 300m
+    memory: 1500Mi
   requests:
     cpu: 100m
     memory: 500Mi
@@ -417,7 +417,7 @@ metrics:
 ## CAUTION: Domain name to acess Admin UI must be secure/internal/over vpn.
 ## Slash is important!
 admin:
-   apiUrl: https://api-internal.sandbox.mosip.net/v1/
+  apiUrl: https://api-internal.sandbox.mosip.net/v1/
 
 ## Admin UI swagger should have only internal access. Hence linked to internal gateway
 ## We create a gateway for admin specific URL(s) listed under `hosts`

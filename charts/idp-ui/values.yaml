@@ -142,7 +142,7 @@ containerSecurityContext:
   enabled: true
   runAsUser: 0
   allowPrivilegeEscalation: false
-  #runAsNonRoot: true
+  # runAsNonRoot: true
 
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
 ##

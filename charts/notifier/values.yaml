@@ -236,7 +236,7 @@ updateStrategy:
 
 ## Additional environment variables to set
 ## Example:
-#extraEnvVars:
+# extraEnvVars:
 ##   - name: FOO
 ##     value: "bar"
 ##
@@ -413,7 +413,7 @@ metrics:
     #       severity: error
     rules: []
 
-#runtimeDepUrlpath: http://artifactory-service/artifactory/libs-release-local/io/mosip/kernel/
+# runtimeDepUrlpath: http://artifactory-service/artifactory/libs-release-local/io/mosip/kernel/
 
 ## Only internal access
 istio:

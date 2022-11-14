@@ -419,7 +419,7 @@ onboarding:
   apiUrl:
   # This client with appropriate roles must exist in Keycloak
   certManager: mosip-deployment-client
-  certManagerPassword:
+  certManagerPassword: b64enc
 
 ## Only internal access
 istio:
