@@ -31,7 +31,6 @@ debezium_connectors:
   - name: "mosip_regprc"
     tables: "regprc.registration,regprc.registration_list"
 
-
 es_kafka_connectors:
   image: mosipqa/es-kafka-connect-init
   imageTag: develop

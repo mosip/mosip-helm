@@ -80,7 +80,7 @@ startupProbe:
     port: 8081
   initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 30
   successThreshold: 1
 
@@ -89,9 +89,9 @@ livenessProbe:
   httpGet:
     path: /registrationprocessor/v1/packetreceiver/actuator/health
     port: 8081
-  initialDelaySeconds: 120 
+  initialDelaySeconds: 120
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
@@ -100,9 +100,9 @@ readinessProbe:
   httpGet:
     path: /registrationprocessor/v1/packetreceiver/actuator/health
     port: 8081
-  initialDelaySeconds: 30 
+  initialDelaySeconds: 30
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
@@ -129,15 +129,14 @@ resources:
   limits:
      cpu: 1000m
      memory: 5000Mi
-  requests: 
+  requests:
     cpu: 100m
     memory: 1000Mi
 
-additionalResources: 
+additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
   javaOpts: "-Xms4000M -Xmx4000M"
-
 
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
 ## Clamav container already runs as 'mosip' user, so we may not need to enable this
@@ -220,11 +219,11 @@ podAnnotations: {}
 ##
 lifecycleHooks: {}
 
-## Custom Liveness probes for 
+## Custom Liveness probes for
 ##
 customLivenessProbe: {}
 
-## Custom Rediness probes 
+## Custom Rediness probes
 ##
 customReadinessProbe: {}
 
@@ -248,7 +247,7 @@ extraEnvVars: []
 ##
 extraEnvVarsCM:
   - global
-  - config-server-share 
+  - config-server-share
   - artifactory-share
 
 ## Secret with extra environment variables
@@ -294,7 +293,7 @@ persistence:
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-  ##   GKE, AWS & OpenStack).  
+  ##   GKE, AWS & OpenStack).
   ##
   # storageClass: "-"
   ##
@@ -304,14 +303,14 @@ persistence:
   ## ReadWriteMany not supported by AWS gp2
   ## We use EFS storage class as that supports ReadWriteMany. Make sure you have installed the same as given
   ## here: https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html
-  ## Packet landing zone requires ReadWriteMany 
+  ## Packet landing zone requires ReadWriteMany
   accessModes:
     - ReadWriteMany
   size: 5Gi
-  existingClaim: 
+  existingClaim:
   # Dir where all incoming packets are stored
   # Make sure this matches with what is given in the config properties
-  mountDir: /mnt/landing 
+  mountDir: /mnt/landing
   labels:
     purpose: landing-folder
   reclaimPolicy: Retain
@@ -372,9 +371,9 @@ metrics:
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
-  podAnnotations: 
+  podAnnotations:
     prometheus.io/scrape: "true"
-  
+
   endpointPath:
 
   ## Prometheus Service Monitor
@@ -425,6 +424,6 @@ metrics:
 ## Requires public access.
 istio:
   enabled: true
-  gateways: 
+  gateways:
     - istio-system/internal
   prefix: /registrationprocessor/v1/packetreceiver

@@ -71,7 +71,7 @@ springServicePort: 8090
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
-## When configuring Probe, please make sure to remove from the url paths that are not required from the probe list 
+## When configuring Probe, please make sure to remove from the url paths that are not required from the probe list
 startupProbe:
   enabled: true
   exec:

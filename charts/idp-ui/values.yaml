@@ -66,7 +66,6 @@ image:
   # pullSecrets:
   #   - myRegistryKeySecretName
 
-
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
@@ -78,7 +77,7 @@ startupProbe:
     port: 3000
   initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 30
   successThreshold: 1
 
@@ -87,20 +86,20 @@ livenessProbe:
   httpGet:
     path: /
     port: 3000
-  initialDelaySeconds: 20 
+  initialDelaySeconds: 20
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
 readinessProbe:
-  enabled: true 
+  enabled: true
   httpGet:
     path: /
     port: 3000
   initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
@@ -127,11 +126,11 @@ resources:
   limits:
      cpu: 300m
      memory: 1500Mi
-  requests: 
+  requests:
     cpu: 100m
     memory: 50Mi
 
-additionalResources: 
+additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
   javaOpts: "-Xms750M -Xmx750M"
@@ -219,11 +218,11 @@ podAnnotations: {}
 ##
 lifecycleHooks: {}
 
-## Custom Liveness probes for 
+## Custom Liveness probes for
 ##
 customLivenessProbe: {}
 
-## Custom Rediness probes 
+## Custom Rediness probes
 ##
 customReadinessProbe: {}
 
@@ -247,7 +246,7 @@ extraEnvVars: []
 ##
 extraEnvVarsCM:
   - global
-  - config-server-share 
+  - config-server-share
   - artifactory-share
   - softhsm-idp-share
   - idp-ui-cm
@@ -294,7 +293,7 @@ persistence:
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-  ##   GKE, AWS & OpenStack).  
+  ##   GKE, AWS & OpenStack).
   ##
   # storageClass: "-"
   ##
@@ -302,13 +301,13 @@ persistence:
   ## the existingClaim variable
   # existingClaim: your-claim
   ## ReadWriteMany not supported by AWS gp2
-  storageClass: 
+  storageClass:
   accessModes:
     - ReadWriteOnce
   size: 10M
-  existingClaim: 
+  existingClaim:
   # Dir where config and keys are written inside container
-  mountDir: 
+  mountDir:
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
@@ -365,9 +364,9 @@ metrics:
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
-  podAnnotations: 
+  podAnnotations:
     prometheus.io/scrape: "true"
-  
+
   endpointPath:
 
   ## Prometheus Service Monitor
@@ -421,7 +420,6 @@ metrics:
 idp_ui:
   idp_ui_port: '3000'
   idp_service_host: 'idp.idp'
-
 
 ## idp UI swagger should have only internal access. Hence linked to internal gateway
 ## We create a gateway for idp specific URL(s) listed under `hosts`

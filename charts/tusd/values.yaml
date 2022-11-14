@@ -414,7 +414,6 @@ metrics:
     #       severity: error
     rules: []
 
-
 ## Only internal access
 istio:
   enabled: true
@@ -427,4 +426,3 @@ istio:
     istio: ingressgateway-internal
   tusdPrefix: /files
   reWriteTusdPrefix: ""
-

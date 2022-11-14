@@ -66,7 +66,7 @@ image:
   # pullSecrets:
   #   - myRegistryKeySecretName
 
-## Port on which this particular spring service module is running. 
+## Port on which this particular spring service module is running.
 springServicePort: 8094
 
 ## Configure extra options for liveness and readiness probes
@@ -79,7 +79,7 @@ startupProbe:
     port: 8094
   initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 30
   successThreshold: 1
 
@@ -88,9 +88,9 @@ livenessProbe:
   httpGet:
     path: /v1/credentialrequest/actuator/health
     port: 8094
-  initialDelaySeconds: 20 
+  initialDelaySeconds: 20
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
@@ -99,9 +99,9 @@ readinessProbe:
   httpGet:
     path: /v1/credentialrequest/actuator/health
     port: 8094
-  initialDelaySeconds: 0 
+  initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
@@ -128,15 +128,14 @@ resources:
   limits:
      cpu: 1000m
      memory: 4000Mi
-  requests: 
+  requests:
     cpu: 100m
     memory: 1000Mi
 
-additionalResources: 
+additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
   javaOpts: "-Xms3000M -Xmx3000M"
-
 
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
 ## Clamav container already runs as 'mosip' user, so we may not need to enable this
@@ -219,11 +218,11 @@ podAnnotations: {}
 ##
 lifecycleHooks: {}
 
-## Custom Liveness probes for 
+## Custom Liveness probes for
 ##
 customLivenessProbe: {}
 
-## Custom Rediness probes 
+## Custom Rediness probes
 ##
 customReadinessProbe: {}
 
@@ -247,7 +246,7 @@ extraEnvVars: []
 ##
 extraEnvVarsCM:
   - global
-  - config-server-share 
+  - config-server-share
   - artifactory-share
 
 ## Secret with extra environment variables
@@ -292,7 +291,7 @@ persistence:
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-  ##   GKE, AWS & OpenStack).  
+  ##   GKE, AWS & OpenStack).
   ##
   # storageClass: "-"
   ##
@@ -300,13 +299,13 @@ persistence:
   ## the existingClaim variable
   # existingClaim: your-claim
   ## ReadWriteMany not supported by AWS gp2
-  storageClass: 
+  storageClass:
   accessModes:
     - ReadWriteOnce
   size: 10M
-  existingClaim: 
+  existingClaim:
   # Dir where config and keys are written inside container
-  mountDir: 
+  mountDir:
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
@@ -363,9 +362,9 @@ metrics:
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
-  podAnnotations: 
+  podAnnotations:
     prometheus.io/scrape: "true"
-  
+
   endpointPath: /v1/credentialrequest/actuator/prometheus
 
   ## Prometheus Service Monitor
@@ -418,4 +417,3 @@ istio:
   enabled: true
   gateway: istio-system/internal
   prefix: /v1/credentialrequest
-
