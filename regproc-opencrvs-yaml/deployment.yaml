@@ -1,0 +1,95 @@
+---
+# Source: regproc-opencrvs/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: release-name-regproc-opencrvs
+  labels:
+    app.kubernetes.io/name: regproc-opencrvs
+    helm.sh/chart: regproc-opencrvs-12.0.2
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: regproc-opencrvs
+      app.kubernetes.io/instance: release-name
+  template:
+    metadata:
+      annotations:
+      labels:
+        app.kubernetes.io/name: regproc-opencrvs
+        helm.sh/chart: regproc-opencrvs-12.0.2
+        app.kubernetes.io/instance: release-name
+        app.kubernetes.io/managed-by: Helm
+    spec:
+      serviceAccountName:
+        release-name-regproc-opencrvs-foo
+      
+      affinity:
+        podAffinity:
+          
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: regproc-opencrvs
+                    app.kubernetes.io/instance: release-name
+                namespaces:
+                  - "default"
+                topologyKey: kubernetes.io/hostname
+              weight: 1
+        nodeAffinity:
+          
+      initContainers:
+      containers:
+        - name: regproc-opencrvs
+          image: docker.io/mosipqa/registration-processor-opencrvs-stage:develop
+          imagePullPolicy: Always
+          env:
+
+          envFrom:
+            - configMapRef:
+                name: global
+            - configMapRef:
+                name: config-server-share
+            - configMapRef:
+                name: artifactory-share
+          ports:
+          - name: container-port
+            containerPort: 4545
+          resources:
+            limits: {}
+            requests: {}
+          startupProbe:
+            failureThreshold: 10
+            httpGet:
+              path: /registrationprocessor/v1/opencrvs-stage/actuator/health
+              port: 8045
+            initialDelaySeconds: 0
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 5
+          livenessProbe:
+            failureThreshold: 2
+            httpGet:
+              path: /registrationprocessor/v1/opencrvs-stage/actuator/health
+              port: 8045
+            initialDelaySeconds: 20
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 5
+          readinessProbe:
+            failureThreshold: 2
+            httpGet:
+              path: /registrationprocessor/v1/opencrvs-stage/actuator/health
+              port: 8045
+            initialDelaySeconds: 0
+            periodSeconds: 20
+            successThreshold: 1
+            timeoutSeconds: 5

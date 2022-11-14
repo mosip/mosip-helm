@@ -1,0 +1,122 @@
+---
+# Source: pmp-ui/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: pmp-ui
+    helm.sh/chart: pmp-ui-12.0.2
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: mosip
+  name: release-name-pmp-ui
+  annotations:
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: pmp-ui
+      app.kubernetes.io/instance: release-name
+  template:
+    metadata:
+      annotations:
+      labels:
+        app.kubernetes.io/name: pmp-ui
+        helm.sh/chart: pmp-ui-12.0.2
+        app.kubernetes.io/instance: release-name
+        app.kubernetes.io/managed-by: Helm
+    spec:
+      serviceAccountName: release-name-pmp-ui-foo
+      
+      affinity:
+        podAffinity:
+          
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: pmp-ui
+                    app.kubernetes.io/instance: release-name
+                namespaces:
+                  - "default"
+                topologyKey: kubernetes.io/hostname
+              weight: 1
+        nodeAffinity:
+          
+      initContainers:
+      containers:
+        - name: pmp-ui
+          image: docker.io/mosipqa/pmp-ui:develop
+          imagePullPolicy: Always
+          env:
+            - name: container_user
+              value: mosip
+            - name: JDK_JAVA_OPTIONS
+              value: -Xms750M -Xmx750M
+          envFrom:
+            - configMapRef:
+                name: global
+            - configMapRef:
+                name: config-server-share
+            - configMapRef:
+                name: artifactory-share
+          volumeMounts:
+            - name: ui-config
+              mountPath: /usr/share/nginx/html/assets/config.json
+              subPath: config.json
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d/default.conf
+              subPath: default.conf
+          ports:
+            - name: spring-service
+              containerPort: 8080
+          resources:
+            limits:
+              cpu: 300m
+              memory: 1500Mi
+            requests:
+              cpu: 100m
+              memory: 50Mi
+          startupProbe:
+            failureThreshold: 30
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          livenessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          readinessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+      volumes:
+        - name: ui-config
+          configMap:
+            name: release-name-pmp-ui
+            items:
+              - key: config.json
+                path: config.json
+        - name: nginx-config
+          configMap:
+            name: release-name-pmp-ui
+            items:
+              - key: default.conf
+                path: default.conf
