@@ -1,0 +1,87 @@
+---
+# Source: artifactory/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: artifactory
+    helm.sh/chart: artifactory-12.0.2
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: artifactory
+  name: release-name-artifactory
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: artifactory
+      app.kubernetes.io/instance: release-name
+      app.kubernetes.io/component: artifactory
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: artifactory
+        helm.sh/chart: artifactory-12.0.2
+        app.kubernetes.io/instance: release-name
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/component: artifactory
+    spec:
+      serviceAccountName: release-name-artifactory-foo
+      
+      affinity:
+        podAffinity:
+          
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: artifactory
+                    app.kubernetes.io/instance: release-name
+                namespaces:
+                  - "default"
+                topologyKey: kubernetes.io/hostname
+              weight: 1
+        nodeAffinity:
+          
+      initContainers:
+      containers:
+        - name: artifactory
+          image: docker.io/mosipqa/artifactory-server:develop
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: 200m
+              memory: 1500Mi
+            requests:
+              cpu: 50m
+              memory: 200Mi
+          startupProbe:
+            failureThreshold: 30
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1

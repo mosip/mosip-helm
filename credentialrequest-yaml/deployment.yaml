@@ -1,0 +1,104 @@
+---
+# Source: credentialrequest/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: credentialrequest
+    helm.sh/chart: credentialrequest-12.0.2
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: mosip
+  name: release-name-credentialrequest
+  annotations:
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: credentialrequest
+      app.kubernetes.io/instance: release-name
+  template:
+    metadata:
+      annotations:
+        
+        prometheus.io/scrape: "true"
+      labels:
+        app.kubernetes.io/name: credentialrequest
+        helm.sh/chart: credentialrequest-12.0.2
+        app.kubernetes.io/instance: release-name
+        app.kubernetes.io/managed-by: Helm
+    spec:
+      serviceAccountName: release-name-credentialrequest
+      
+      affinity:
+        podAffinity:
+          
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: credentialrequest
+                    app.kubernetes.io/instance: release-name
+                namespaces:
+                  - "default"
+                topologyKey: kubernetes.io/hostname
+              weight: 1
+        nodeAffinity:
+          
+      initContainers:
+      containers:
+        - name: credentialrequest
+          image: docker.io/mosipqa/credential-request-generator:develop
+          imagePullPolicy: Always
+          env:
+            - name: container_user
+              value: mosip
+            - name: JDK_JAVA_OPTIONS
+              value: -Xms3000M -Xmx3000M
+          envFrom:
+            - configMapRef:
+                name: global
+            - configMapRef:
+                name: config-server-share
+            - configMapRef:
+                name: artifactory-share
+          ports:
+            - name: spring-service
+              containerPort: 8094
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 4000Mi
+            requests:
+              cpu: 100m
+              memory: 1000Mi
+          startupProbe:
+            failureThreshold: 30
+            httpGet:
+              path: /v1/credentialrequest/actuator/health
+              port: 8094
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          livenessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /v1/credentialrequest/actuator/health
+              port: 8094
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          readinessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /v1/credentialrequest/actuator/health
+              port: 8094
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5

@@ -1,0 +1,109 @@
+---
+# Source: compliance-toolkit-ui/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: compliance-toolkit-ui
+    helm.sh/chart: compliance-toolkit-ui-12.0.2
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: mosip
+  name: release-name-compliance-toolkit-ui
+  annotations:
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: compliance-toolkit-ui
+      app.kubernetes.io/instance: release-name
+  template:
+    metadata:
+      annotations:
+       
+      labels:
+        app.kubernetes.io/name: compliance-toolkit-ui
+        helm.sh/chart: compliance-toolkit-ui-12.0.2
+        app.kubernetes.io/instance: release-name
+        app.kubernetes.io/managed-by: Helm
+    spec:
+      serviceAccountName: release-name-compliance-toolkit-ui
+      
+      affinity:
+        podAffinity:
+          
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: compliance-toolkit-ui
+                    app.kubernetes.io/instance: release-name
+                namespaces:
+                  - "default"
+                topologyKey: kubernetes.io/hostname
+              weight: 1
+        nodeAffinity:
+          
+      initContainers:
+      containers:
+        - name: compliance-toolkit-ui
+          image: docker.io/mosipdev/compliance-toolkit-ui:latest
+          imagePullPolicy: Always
+          env:
+            - name: container_user
+              value: mosip
+            - name: JDK_JAVA_OPTIONS
+              value: 
+          envFrom:
+            - configMapRef:
+                name: global
+            - configMapRef:
+                name: config-server-share
+            - configMapRef:
+                name: artifactory-share
+          volumeMounts:
+            - name: ui-config
+              mountPath: /usr/share/nginx/html/assets/config.json
+              subPath: config.json
+          ports:
+            - name: spring-service
+              containerPort: 8080
+          resources:
+            limits: {}
+            requests:
+              cpu: 200m
+              memory: 20Mi
+          startupProbe:
+            failureThreshold: 30
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          livenessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          readinessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+      volumes:
+        - name: ui-config
+          configMap:
+            name: release-name-compliance-toolkit-ui
