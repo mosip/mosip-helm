@@ -59,6 +59,50 @@ jobs:
           ls -d charts/* > list.txt;
           ct lint --config=.github/chart-testing-config.yaml --chart-dirs=charts --remote=target_repo --target-branch=$TARGET_BRANCH;
           
+      - name: Create yaml files for helm charts
+        run: |
+          while read -r chart; do
+            echo -e "\nCHART: $chart\n";
+          
+            yaml_file='./chart-template.yaml'
+            chart_name=$( echo $chart | awk -F / '{print $2}' );
+            mkdir "$chart_name-yaml";
+          
+            helm template $chart > $yaml_file
+            last_line=$( cat -n $yaml_file| tail -n 1 | awk '{print $1}' )
+            line_nos="$( cat -n $yaml_file | awk '/---/{print $1}' ) $last_line"
+            start_of_file=0
+          
+            for line in $line_nos; do
+              if [[ $line -eq 1 ]]; then
+                start_of_file=$line;
+                continue;
+              fi
+          
+              head_line=$(( line-1 ));
+              tail_line=$(( line-start_of_file ));
+          
+              if [[ $line -eq $last_line ]]; then
+                head_line=$line;
+                tail_line=$(( line-start_of_file+1 ));
+              fi
+          
+              start_of_file=$line;
+              # echo "HEAD LINE: $head_line, TAIL LINE: $tail_line";
+          
+              yaml_type=$( head -n +$head_line $yaml_file | tail -n $tail_line | grep -c -E "kind\:\ Deployment|kind\:\ StatefulSet" || true );  # used "true" to return exit code as 0
+              # echo "YAML TYPE: $yaml_type";
+              if [[ "$yaml_type" -eq 0 ]]; then
+                 # echo "if YAML TYPE: $yaml_type";
+                 continue;
+              fi
+          
+              filename=$( head -n +$head_line $yaml_file | tail -n $tail_line | awk -F '/' '/# Source/{print $3}' );
+              echo "$filename";
+              head -n +$head_line $yaml_file | tail -n $tail_line > "$chart_name-yaml/$filename";
+            done
+          done < ./list.txt 
+  
       - name: Run Health Check Test
         run: |
           while read -r chart; do
