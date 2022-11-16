@@ -207,6 +207,23 @@ keycloak:
            display.on.consent.screen: "false",
            include.in.token.scope: "true"
          }
+      client_scopes:
+       - name: individual_id
+         description: Scope required to create resident client
+         protocol: openid-connect
+         Include In Token Scope : on
+         attributes: {
+           display.on.consent.screen: "true",
+           include.in.token.scope: "true"
+         }
+       - name: ida_token
+         description: ''
+         protocol: openid-connect
+         Include In Token Scope : on
+         attributes: {
+           display.on.consent.screen: "true",
+           include.in.token.scope: "true"
+         }
 
       clients:
        - name: mosip-abis-client
@@ -356,7 +373,13 @@ keycloak:
            - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
 
        - name: mosip-resident-client
-         mappers: []
+         mappers:
+           - mapper_name: individual_id
+             mapper_user_attribute: individual_id
+             token_claim_name: individual_id
+           - mapper_name: ida_token
+             mapper_user_attribute: ida_token
+             token_claim_name: ida_token
          saroles:
            - RESIDENT
            - CREDENTIAL_REQUEST
