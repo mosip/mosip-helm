@@ -364,6 +364,9 @@ keycloak:
            - uma_authorization
            - SUBSCRIBE_AUTHENTICATION_TRANSACTION_STATUS_GENERAL
            - SUBSCRIBE_AUTH_TYPE_STATUS_UPDATE_ACK_GENERAL
+         assign_client_scopes:
+           - individual_id
+           - ida_token
 
        - name: mosip-prereg-client
          mappers: []
