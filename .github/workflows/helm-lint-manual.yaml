@@ -58,7 +58,7 @@ jobs:
         run: |
           ls -d charts/* > list.txt;
           ct lint --config=.github/chart-testing-config.yaml --chart-dirs=charts --remote=target_repo --target-branch=$TARGET_BRANCH;
-
+          
       - name: Run Health Check Test
         run: |
           while read -r chart; do
