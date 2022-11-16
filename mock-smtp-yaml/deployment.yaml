@@ -1,0 +1,87 @@
+---
+# Source: mock-smtp/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: mock-smtp
+    helm.sh/chart: mock-smtp-12.0.2
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: mosip
+  name: release-name-mock-smtp
+  annotations:
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: mock-smtp
+      app.kubernetes.io/instance: release-name
+  template:
+    metadata:
+      annotations:
+      labels:
+        app.kubernetes.io/name: mock-smtp
+        helm.sh/chart: mock-smtp-12.0.2
+        app.kubernetes.io/instance: release-name
+        app.kubernetes.io/managed-by: Helm
+    spec:
+      serviceAccountName: release-name-mock-smtp-foo
+      
+      affinity:
+        podAffinity:
+          
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: mock-smtp
+                    app.kubernetes.io/instance: release-name
+                namespaces:
+                  - "default"
+                topologyKey: kubernetes.io/hostname
+              weight: 1
+        nodeAffinity:
+          
+      initContainers:
+      containers:
+        - name: mock-smtp
+          image: docker.io/mosipdev/mock-smtp:latest
+          imagePullPolicy: Always
+          env:
+          envFrom:
+              - configMapRef:
+                  name: mock-smtp
+          ports: []
+          resources:
+            limits: {}
+            requests:
+              cpu: 100m
+              memory: 500Mi
+          startupProbe:
+            failureThreshold: 10
+            httpGet:
+              port: 8080
+            initialDelaySeconds: 0
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 5
+          livenessProbe:
+            failureThreshold: 2
+            httpGet:
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 5
+          readinessProbe:
+            failureThreshold: 2
+            httpGet:
+              port: 8080
+            initialDelaySeconds: 0
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 5

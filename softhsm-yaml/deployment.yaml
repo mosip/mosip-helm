@@ -1,0 +1,92 @@
+---
+# Source: softhsm/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: release-name-softhsm
+  labels:
+    helm.sh/chart: softhsm-12.0.2
+    app.kubernetes.io/name: softhsm
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: softhsm
+      app.kubernetes.io/instance: release-name
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: softhsm
+        app.kubernetes.io/instance: release-name
+    spec:
+      serviceAccountName: release-name-softhsm
+      securityContext:
+        fsGroup: 3001
+        runAsGroup: 2001
+        runAsUser: 1001
+      containers:
+        - name: softhsm
+          securityContext:
+            {}
+          image: "mosipqa/softhsm:v2"
+          imagePullPolicy: Always
+          env:
+            - name: SOFTHSM2_CONF
+              value: /softhsm/softhsm.conf
+
+            - name: SECURITY_OFFICER_PIN 
+              valueFrom:
+                secretKeyRef:
+                  name: release-name-softhsm
+                  key: security-pin 
+  
+          volumeMounts:
+            - name: softhsm-keys
+              mountPath: /softhsm/tokens
+            - name: conf-file
+              mountPath: /softhsm/
+          ports:
+            - name: tcp 
+              containerPort: 5666
+              protocol: TCP
+          startupProbe:
+            failureThreshold: 10
+            initialDelaySeconds: 0
+            periodSeconds: 30
+            successThreshold: 1
+            tcpSocket:
+              port: tcp
+            timeoutSeconds: 5
+          livenessProbe:
+            failureThreshold: 6
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            tcpSocket:
+              port: tcp
+            timeoutSeconds: 5
+          readinessProbe:
+            failureThreshold: 6
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            tcpSocket:
+              port: tcp
+            timeoutSeconds: 5
+ 
+          resources:
+            limits:
+              cpu: 200m
+              memory: 1500Mi
+            requests:
+              cpu: 100m
+              memory: 750Mi
+      volumes:
+        - name: conf-file
+          configMap:
+            name: release-name-softhsm
+        - name: softhsm-keys
+          persistentVolumeClaim:
+            claimName: release-name-softhsm
