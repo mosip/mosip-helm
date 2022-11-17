@@ -81,7 +81,7 @@ auth_demo:
       cpu: 300m
       memory: 2000Mi
 
-## Port on which this particular spring service module is running. 
+## Port on which this particular spring service module is running.
 springServicePort: 8083
 
 ## Configure extra options for liveness and readiness probes
@@ -94,7 +94,7 @@ startupProbe:
     port: 8082
   initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 30
   successThreshold: 1
 
@@ -105,7 +105,7 @@ livenessProbe:
     port: 8082
   initialDelaySeconds: 20
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
@@ -116,7 +116,7 @@ readinessProbe:
     port: 8082
   initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
@@ -141,13 +141,13 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-     cpu: 1000m
-     memory: 3500Mi
+    cpu: 1000m
+    memory: 3500Mi
   requests:
-     cpu: 1000m
-     memory: 3500Mi
+    cpu: 1000m
+    memory: 3500Mi
 
-additionalResources: 
+additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
   javaOpts: "-Xms2600M -Xmx2600M"
@@ -233,11 +233,11 @@ podAnnotations: {}
 ##
 lifecycleHooks: {}
 
-## Custom Liveness probes for 
+## Custom Liveness probes for
 ##
 customLivenessProbe: {}
 
-## Custom Rediness probes 
+## Custom Rediness probes
 ##
 customReadinessProbe: {}
 
@@ -312,7 +312,7 @@ persistence:
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-  ##   GKE, AWS & OpenStack).  
+  ##   GKE, AWS & OpenStack).
   ##
   # storageClass: "-"
   ##
@@ -320,13 +320,13 @@ persistence:
   ## the existingClaim variable
   # existingClaim: your-claim
   ## ReadWriteMany not supported by AWS gp2
-  storageClass: 
+  storageClass:
   accessModes:
     - ReadWriteOnce
   size: 10M
-  existingClaim: 
+  existingClaim:
   # Dir where config and keys are written inside container
-  mountDir: 
+  mountDir:
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
@@ -383,9 +383,9 @@ metrics:
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
-  podAnnotations: 
+  podAnnotations:
     prometheus.io/scrape: "true"
-  
+
   endpointPath:
 
   ## Prometheus Service Monitor
@@ -436,7 +436,7 @@ metrics:
 ## Admin swagger should have only internal access. Hence linked to internal gateway
 istio:
   enabled: false
-  gateways: 
+  gateways:
     - istio-system/internal
   prefix:
   corsPolicy:
@@ -490,3 +490,4 @@ modules:
     enabled: true
 
 crontime: "0 3 * * *"    ## run cronjob every day at 3 AM (time hr: 0-23 )
+
