@@ -107,7 +107,7 @@ jobs:
             echo -e "\n\nCHART: $chart\n";
             
             chart_name=$( echo $chart | awk -F / '{print $2}' );
-            list=$( ls $chart_name-yaml );
+            list=$( ls $chart_name-yaml || true );
             
             echo -e "YAML LIST :";
             echo -e "$list\n"
