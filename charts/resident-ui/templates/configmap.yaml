@@ -14,10 +14,10 @@ metadata:
 data:
   config.json: |-
    {"baseUrl":"https://{{ .Values.resident.apiHost }}/resident/v1",
-     "version": "v1",
-     "validateToken": "admin/authorize/admin/validateToken",
-     "login": "/login/",
-     "logout": "/logout/user"}
+    "version": "v1",
+    "validateToken": "admin/authorize/admin/validateToken",
+    "login": "/login/",
+    "logout": "/logout/user"}
   default.conf: |-
     server {
       listen       8080;
