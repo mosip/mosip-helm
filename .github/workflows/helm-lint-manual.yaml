@@ -58,7 +58,7 @@ jobs:
         run: |
           ls -d charts/* > list.txt;
           ct lint --config=.github/chart-testing-config.yaml --chart-dirs=charts --remote=target_repo --target-branch=$TARGET_BRANCH;
-
+  
       - name: Create yaml files for helm charts
         run: |
           while read -r chart; do
@@ -101,8 +101,8 @@ jobs:
               echo "$filename";
               head -n +$head_line $yaml_file | tail -n $tail_line > "$chart_name-yaml/$filename";
             done
-          done < ./list.txt
-
+          done < ./list.txt 
+  
       - name: Run Health Check Test
         run: |
           while read -r chart; do

@@ -1,0 +1,100 @@
+---
+# Source: regproc-reprocess/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: regproc-reprocess
+    helm.sh/chart: regproc-reprocess-12.0.2
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: mosip
+  name: release-name-regproc-reprocess
+  annotations:
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: regproc-reprocess
+      app.kubernetes.io/instance: release-name
+  template:
+    metadata:
+      annotations:
+      labels:
+        app.kubernetes.io/name: regproc-reprocess
+        helm.sh/chart: regproc-reprocess-12.0.2
+        app.kubernetes.io/instance: release-name
+        app.kubernetes.io/managed-by: Helm
+    spec:
+      serviceAccountName: release-name-regproc-reprocess
+      
+      affinity:
+        podAffinity:
+          
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: regproc-reprocess
+                    app.kubernetes.io/instance: release-name
+                namespaces:
+                  - "default"
+                topologyKey: kubernetes.io/hostname
+              weight: 1
+        nodeAffinity:
+          
+      initContainers:
+      containers:
+        - name: regproc-reprocess
+          image: docker.io/mosipqa/registration-processor-reprocessor:develop
+          imagePullPolicy: Always
+          env:
+            - name: JDK_JAVA_OPTIONS
+              value: -Xms2000M -Xmx2000M
+          envFrom:
+            - configMapRef:
+                name: global
+            - configMapRef:
+                name: config-server-share
+            - configMapRef:
+                name: artifactory-share
+          ports:
+            - name: spring-service
+              containerPort: 8021
+          resources:
+            limits:
+              cpu: 500m
+              memory: 2500Mi
+            requests:
+              cpu: 100m
+              memory: 1000Mi
+          startupProbe:
+            failureThreshold: 30
+            httpGet:
+              path: /registrationprocessor/v1/reprocessor/actuator/health
+              port: 8021
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          livenessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /registrationprocessor/v1/reprocessor/actuator/health
+              port: 8021
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          readinessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /registrationprocessor/v1/reprocessor/actuator/health
+              port: 8021
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5

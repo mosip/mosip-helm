@@ -1,4 +1,3 @@
-
 image:
   # image.registry is the repository where the ActiveMQ Artemis image is stored
   registry: docker.io
@@ -20,19 +19,19 @@ artemisUser: artemis
 # artemisPassword sets the artemis admin user password
 artemisPassword: ""
 
-replicas: 1 
+replicas: 1
 
 # antiAffinity sets an anti affinity policy between masters and slaves as either hard or soft, default is hard
 antiAffinity: "soft"
 
-# nameOverride replaces the computed chart name with this given name. 
-# nameOverride: 
+# nameOverride replaces the computed chart name with this given name.
+# nameOverride:
 
 # namePrefix sets the prefix for the fullname in the template "global prefix + prefix + name + suffix + global suffix"
 # namePrefix:
 
 # nameSuffix sets the suffix for the fullname in the template "global prefix + prefix + name + suffix + global suffix"
-# nameSuffix: 
+# nameSuffix:
 
 global: {}
 # namePrefix sets the global prefix for the fullname in the template "global prefix + prefix + name + suffix + global suffix"
@@ -67,8 +66,8 @@ persistence:
 ##
 resources:
   limits:
-     cpu: 2000m
-     memory: 8000Mi
+    cpu: 2000m
+    memory: 8000Mi
   requests:
     memory: 512Mi
     cpu: 200m
@@ -109,7 +108,7 @@ prometheus:
 ## Ingress configuration
 ## Ingress is only enabled for external access of web console. Usually, activemq's load balancer that exposes 61616
 ## will has internal IP as in production deployments ABIS is assumed to be inside the network.  However, for debugging
-## and testing we may need the console to have external access.  
+## and testing we may need the console to have external access.
 ##
 ingress:
   ## Set to true to enable ingress record generation
@@ -195,12 +194,12 @@ ports:
   activemq: 61616
   webconsole: 8161
   amqp: 5672
-  
+
 istio:
   enabled: true
   hosts:
-    -  activemq.sandbox.xyz.net
+    - activemq.sandbox.xyz.net
   ## Associate with either public or internal ingress controllers
-  ingressController: 
+  ingressController:
     name: ingressgateway-internal
-  prefix: / 
+  prefix: /

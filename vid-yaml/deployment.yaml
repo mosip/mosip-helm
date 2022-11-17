@@ -1,0 +1,104 @@
+---
+# Source: vid/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: vid
+    helm.sh/chart: vid-12.0.2
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: mosip
+  name: release-name-vid
+  annotations:
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: vid
+      app.kubernetes.io/instance: release-name
+  template:
+    metadata:
+      annotations:
+        
+        prometheus.io/scrape: "true"
+      labels:
+        app.kubernetes.io/name: vid
+        helm.sh/chart: vid-12.0.2
+        app.kubernetes.io/instance: release-name
+        app.kubernetes.io/managed-by: Helm
+    spec:
+      serviceAccountName: release-name-vid
+      
+      affinity:
+        podAffinity:
+          
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: vid
+                    app.kubernetes.io/instance: release-name
+                namespaces:
+                  - "default"
+                topologyKey: kubernetes.io/hostname
+              weight: 1
+        nodeAffinity:
+          
+      initContainers:
+      containers:
+        - name: vid
+          image: docker.io/mosipqa/id-repository-vid-service:develop
+          imagePullPolicy: Always
+          env:
+            - name: container_user
+              value: mosip
+            - name: JDK_JAVA_OPTIONS
+              value: -Xms1000M -Xmx1000M
+          envFrom:
+            - configMapRef:
+                name: global
+            - configMapRef:
+                name: config-server-share
+            - configMapRef:
+                name: artifactory-share
+          ports:
+            - name: spring-service
+              containerPort: 8091
+          resources:
+            limits:
+              cpu: 500m
+              memory: 3000Mi
+            requests:
+              cpu: 100m
+              memory: 1500Mi
+          startupProbe:
+            failureThreshold: 30
+            httpGet:
+              path: /idrepository/v1/actuator/health
+              port: 8091
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          livenessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /idrepository/v1/actuator/health
+              port: 8091
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          readinessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /idrepository/v1/actuator/health
+              port: 8091
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
