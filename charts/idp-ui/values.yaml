@@ -124,8 +124,8 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-     cpu: 300m
-     memory: 1500Mi
+    cpu: 300m
+    memory: 1500Mi
   requests:
     cpu: 100m
     memory: 50Mi
@@ -142,7 +142,7 @@ containerSecurityContext:
   enabled: true
   runAsUser: 0
   allowPrivilegeEscalation: false
-  #runAsNonRoot: true
+  # runAsNonRoot: true
 
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
 ##
