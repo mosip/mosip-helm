@@ -70,7 +70,7 @@ jobs:
           
             helm template $chart > $yaml_file
             last_line=$( cat -n $yaml_file| tail -n 1 | awk '{print $1}' )
-            line_nos="$( cat -n $yaml_file | awk '/---/{print $1}' ) $last_line"
+            line_nos="$( awk '/^---/{print NR}' $yaml_file ) $last_line"
             start_of_file=0
           
             for line in $line_nos; do
