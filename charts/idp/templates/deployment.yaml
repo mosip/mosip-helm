@@ -140,5 +140,5 @@ spec:
         - name: mock-auth-data
           projected:
             sources:
-              - configMap:
+              - secret:
                   name: mock-auth-data
