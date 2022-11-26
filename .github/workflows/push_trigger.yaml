@@ -5,6 +5,8 @@ on:
         branches:
             - 1.2.0.*
             - develop
+        paths:
+            - 'charts/**'
 
 jobs:
     Generate_Documentation:

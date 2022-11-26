@@ -13,6 +13,16 @@ on:
         required: true
         default: 'gh-pages'
         type: string
+      ignore_charts:
+        description: 'Ignore linting for list of charts separated by pipe(|)'
+        required: true
+        default: 'reporting|reporting-init'
+        type: string
+      lint_all_charts:
+        description: 'Run chart linting for all charts (yes|no)'
+        required: true
+        default: 'no'
+        type: string
 
 jobs:
   lint-chart:
@@ -56,8 +66,15 @@ jobs:
 
       - name: Run chart-testing (lint)
         run: |
-          ls -d charts/* > list.txt;
-          ct lint --config=.github/chart-testing-config.yaml --chart-dirs=charts --remote=target_repo --target-branch=$TARGET_BRANCH;
+          if [ ${{ github.event.inputs.lint_all_charts }} = "yes" ]; then
+            ct lint --config=.github/chart-testing-config.yaml --chart-dirs=charts --remote=target_repo --target-branch=$TARGET_BRANCH;
+          else          
+            find charts -maxdepth 1 -type d |grep -Ev "^charts$|${{ github.event.inputs.ignore_charts }}" > list.txt;
+            while read -r chart; do
+              echo -e "\nCHART: $chart\n";
+              ct lint --config=.github/chart-testing-config.yaml --charts=$chart --remote=target_repo --target-branch=$TARGET_BRANCH;
+            done < ./list.txt
+          fi
 
       - name: Create yaml files for helm charts
         run: |
