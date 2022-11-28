@@ -7,7 +7,7 @@ spec:
       containers: list(include('probes'))
 ---
 probes:
-  startupProbe: any( include('httpget'), include('exec_command'), include('tcp_socket'), required=False)
+  startupProbe: any( include('httpget'), include('exec_command'), include('tcp_socket') )
   livenessProbe: any( include('httpget'), include('exec_command'), include('tcp_socket') )
   readinessProbe: any( include('httpget'), include('exec_command'), include('tcp_socket') )
 ---

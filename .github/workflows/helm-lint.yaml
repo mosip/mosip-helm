@@ -48,7 +48,9 @@ jobs:
       - name: Run chart-testing (list-changed)
         id: list-changed
         run: |
-          ct list-changed --remote=target_repo --since=HEAD --target-branch=$TARGET_BRANCH --chart-dirs=charts | tee -a list.txt 
+          ignore_charts="charts/reporting|charts/reporting-init"
+          echo "Ignore charts: $ignore_charts"
+          ct list-changed --remote=target_repo --since=HEAD --target-branch=$TARGET_BRANCH --chart-dirs=charts |grep -Ev "$ignore_charts" |tee -a list.txt 
 
       - name: Run chart-testing (lint)
         run: |
