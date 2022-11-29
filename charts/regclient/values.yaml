@@ -73,9 +73,9 @@ regclient:
   upgradeServerUrl: https://regclient.sandbox.xzy.net
   hostName: https://api-internal.sandbox.mosip.net
   ## Here we check the health of syncdata service. The service must be accessible over internal channel.
-  healthCheckUrl:  http://api-internal.sandbox.mosip.net/v1/syncdata/actuator/health
+  healthCheckUrl: http://api-internal.sandbox.mosip.net/v1/syncdata/actuator/health
 
-## Port on which this particular spring service module is running. 
+## Port on which this particular spring service module is running.
 containerPort: 80
 
 ## Configure extra options for liveness and readiness probes
@@ -87,9 +87,9 @@ startupProbe:
     path: "/registration-client/{{ tpl .Values.regclient.version . }}/reg-client.zip"
     port: 80
   initialDelaySeconds: 0
-  periodSeconds: 30 
-  timeoutSeconds: 5 
-  failureThreshold: 10 
+  periodSeconds: 30
+  timeoutSeconds: 5
+  failureThreshold: 10
   successThreshold: 1
 
 livenessProbe:
@@ -98,9 +98,9 @@ livenessProbe:
     path: "/registration-client/{{ tpl .Values.regclient.version . }}/reg-client.zip"
     port: 80
   initialDelaySeconds: 20
-  periodSeconds: 60 
-  timeoutSeconds: 5 
-  failureThreshold: 2 
+  periodSeconds: 60
+  timeoutSeconds: 5
+  failureThreshold: 2
   successThreshold: 1
 
 readinessProbe:
@@ -109,9 +109,9 @@ readinessProbe:
     path: "/registration-client/{{ tpl .Values.regclient.version . }}/reg-client.zip"
     port: 80
   initialDelaySeconds: 0
-  periodSeconds: 60 
-  timeoutSeconds: 5 
-  failureThreshold: 2  
+  periodSeconds: 60
+  timeoutSeconds: 5
+  failureThreshold: 2
   successThreshold: 1
 
 ##
@@ -135,13 +135,13 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-     cpu: 200m
-     memory: 2000Mi
-  requests: 
+    cpu: 200m
+    memory: 2000Mi
+  requests:
     cpu: 100m
     memory: 1500Mi
 
-additionalResources: 
+additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
   javaOpts: "-Xms1250M -Xmx1250M"
@@ -227,11 +227,11 @@ podAnnotations: {}
 ##
 lifecycleHooks: {}
 
-## Custom Liveness probes for 
+## Custom Liveness probes for
 ##
 customLivenessProbe: {}
 
-## Custom Rediness probes 
+## Custom Rediness probes
 ##
 customReadinessProbe: {}
 
@@ -300,7 +300,7 @@ persistence:
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-  ##   GKE, AWS & OpenStack).  
+  ##   GKE, AWS & OpenStack).
   ##
   # storageClass: "-"
   ##
@@ -308,13 +308,13 @@ persistence:
   ## the existingClaim variable
   # existingClaim: your-claim
   ## ReadWriteMany not supported by AWS gp2
-  storageClass: 
+  storageClass:
   accessModes:
     - ReadWriteOnce
   size: 10M
-  existingClaim: 
+  existingClaim:
   # Dir where config and keys are written inside container
-  mountDir: 
+  mountDir:
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
@@ -371,9 +371,9 @@ metrics:
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
-  podAnnotations: 
+  podAnnotations:
     prometheus.io/scrape: "true"
-  
+
   endpointPath: /v1/regclient/actuator/prometheus
 
   ## Prometheus Service Monitor
@@ -421,12 +421,10 @@ metrics:
     #       severity: error
     rules: []
 
-
 ## Only internal access
 istio:
-  enabled: true 
+  enabled: true
   ingressController:
     name: ingressgateway-internal
   host: regclient.sandbox.xyz.net
   prefix: /
-

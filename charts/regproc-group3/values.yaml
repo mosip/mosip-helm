@@ -69,7 +69,7 @@ image:
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
-## When configuring Probe, please make sure to remove from the url paths that are not required from the probe list 
+## When configuring Probe, please make sure to remove from the url paths that are not required from the probe list
 
 startupProbe:
   enabled: true
@@ -131,8 +131,8 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-     cpu: 500m
-     memory: 4000Mi
+    cpu: 500m
+    memory: 4000Mi
   requests:
     cpu: 100m
     memory: 1000Mi
@@ -272,7 +272,7 @@ extraVolumeMounts: []
 ##   - name: your-image-name
 ##     image: your-image
 ##     imagePullPolicy: Always
-#true#     ports:
+# true #     ports:
 ##       - name: portname
 ##         containerPort: 1234
 ##

@@ -215,7 +215,7 @@ podAnnotations: {}
 ##  pods' priority.
 ## ref: https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
 ##
-#priorityClassName: ""
+# priorityClassName: ""
 
 ## lifecycleHooks for the  container to automate configuration before or after startup.
 ##
@@ -414,7 +414,6 @@ metrics:
     #       severity: error
     rules: []
 
-
 ## Only internal access
 istio:
   enabled: true
@@ -427,4 +426,3 @@ istio:
     istio: ingressgateway-internal
   tusdPrefix: /files
   reWriteTusdPrefix: ""
-
