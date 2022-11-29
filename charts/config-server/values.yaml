@@ -23,7 +23,7 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
-## Port on which this particular spring service module is running. 
+## Port on which this particular spring service module is running.
 springServicePort: 51000
 
 ## Configure extra options for startup, liveness and readiness probes
@@ -36,7 +36,7 @@ startupProbe:
     port: 51000
   initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 30
   successThreshold: 1
 
@@ -45,21 +45,21 @@ livenessProbe:
   httpGet:
     path: "/config/*/*"
     port: 51000
-  initialDelaySeconds: 20 
-  periodSeconds: 10 
-  timeoutSeconds: 5 
-  failureThreshold: 6 
+  initialDelaySeconds: 20
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
   successThreshold: 1
 
 readinessProbe:
   enabled: true
   httpGet:
     path: "/config/*/*"
-    port: 51000 
+    port: 51000
   initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5
-  failureThreshold: 6 
+  failureThreshold: 6
   successThreshold: 1
 
 podAnnotations: {}
@@ -143,7 +143,7 @@ installedModules:
   objectStore: true
 
 ## Various secrets and configamaps that used as "overrides" in config server.  The are assumed to 'copied' to
-## config-server name space by a separate process/scripts. 
+## config-server name space by a separate process/scripts.
 ## Refer to instructions to install config-server helm chart in mosip-infra repo.
 overrides:
   secrets:
@@ -164,6 +164,6 @@ overrides:
     activemq: activemq-activemq-artemis-share
     s3: s3
     email: email-gateway
-## The active profile env if you have another set of properties. Correspondingly, properties in Git repo will 
+## The active profile env if you have another set of properties. Correspondingly, properties in Git repo will
 ## have names of type "*-default.properties"
 activeProfileEnv: default
