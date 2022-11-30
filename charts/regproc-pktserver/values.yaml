@@ -66,7 +66,7 @@ image:
   # pullSecrets:
   #   - myRegistryKeySecretName
 
-## Port on which this particular spring service module is running. 
+## Port on which this particular spring service module is running.
 springServicePort: 8082
 
 ## Configure extra options for liveness and readiness probes
@@ -87,7 +87,7 @@ startupProbe:
       fi;
   initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 30
   successThreshold: 1
 
@@ -96,9 +96,9 @@ livenessProbe:
   httpGet:
     path: /healthcheck.txt
     port: 8082
-  initialDelaySeconds: 20 
+  initialDelaySeconds: 20
   periodSeconds: 30
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
@@ -107,9 +107,9 @@ readinessProbe:
   httpGet:
     path: /healthcheck.txt
     port: 8082
-  initialDelaySeconds: 0 
+  initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
@@ -134,17 +134,16 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-     cpu: 500m
-     memory: 1250Mi
-  requests: 
+    cpu: 500m
+    memory: 1250Mi
+  requests:
     cpu: 100m
     memory: 100Mi
 
-additionalResources: 
+additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
   javaOpts: "-Xms1000M -Xmx1000M"
-
 
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
 ## Clamav container already runs as 'mosip' user, so we may not need to enable this
@@ -227,11 +226,11 @@ podAnnotations: {}
 ##
 lifecycleHooks: {}
 
-## Custom Liveness probes for 
+## Custom Liveness probes for
 ##
 customLivenessProbe: {}
 
-## Custom Rediness probes 
+## Custom Rediness probes
 ##
 customReadinessProbe: {}
 
@@ -255,7 +254,7 @@ extraEnvVars: []
 ##
 extraEnvVarsCM:
   - global
-  - config-server-share 
+  - config-server-share
   - artifactory-share
 
 ## Secret with extra environment variables
@@ -300,7 +299,7 @@ persistence:
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-  ##   GKE, AWS & OpenStack).  
+  ##   GKE, AWS & OpenStack).
   ##
   # storageClass: "-"
   ##
@@ -310,7 +309,7 @@ persistence:
   ## ReadWriteMany not supported by AWS gp2
   ## We use EFS storage class as that supports ReadWriteMany. Make sure you have installed the same as given
   ## here: https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html
-  ## Packet landing zone requires ReadWriteMany 
+  ## Packet landing zone requires ReadWriteMany
   accessModes:
     - ReadWriteMany
   size: 5Gi
@@ -375,10 +374,10 @@ metrics:
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
-  podAnnotations: 
+  podAnnotations:
     prometheus.io/scrape: "true"
-  
-  endpointPath: 
+
+  endpointPath:
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator
@@ -428,6 +427,6 @@ metrics:
 ## pktserver does NOT require any external access.
 istio:
   enabled: false
-  gateways: 
+  gateways:
     - istio-system/internal
   prefix: /registrationprocessor/v1/packetserver

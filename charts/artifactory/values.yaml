@@ -53,7 +53,7 @@ service:
 image:
   registry: docker.io
   repository: mosipqa/artifactory-server
-  tag: 1.2.0.1 
+  tag: 1.2.0.1
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -78,7 +78,7 @@ startupProbe:
     port: 8080
   initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 30
   successThreshold: 1
 
@@ -87,10 +87,10 @@ livenessProbe:
   httpGet:
     path: /
     port: 8080
-  initialDelaySeconds: 20 
+  initialDelaySeconds: 20
   periodSeconds: 30
-  timeoutSeconds: 1 
-  failureThreshold: 3 
+  timeoutSeconds: 1
+  failureThreshold: 3
   successThreshold: 1
 
 readinessProbe:
@@ -98,12 +98,11 @@ readinessProbe:
   httpGet:
     path: /
     port: 8080
-  initialDelaySeconds: 0 
+  initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 1 
-  failureThreshold: 3 
+  timeoutSeconds: 1
+  failureThreshold: 3
   successThreshold: 1
-
 
 ##
 # existingConfigmap:
@@ -126,9 +125,9 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-     cpu: 200m
-     memory: 1500Mi
-  requests: 
+    cpu: 200m
+    memory: 1500Mi
+  requests:
     cpu: 50m
     memory: 200Mi
 
@@ -218,11 +217,11 @@ podAnnotations: {}
 ##
 lifecycleHooks: {}
 
-## Custom Liveness probes for 
+## Custom Liveness probes for
 ##
 customLivenessProbe: {}
 
-## Custom Rediness probes 
+## Custom Rediness probes
 ##
 customReadinessProbe: {}
 
@@ -288,7 +287,7 @@ persistence:
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-  ##   GKE, AWS & OpenStack).  
+  ##   GKE, AWS & OpenStack).
   ##
   # storageClass: "-"
   ##
@@ -296,13 +295,13 @@ persistence:
   ## the existingClaim variable
   # existingClaim: your-claim
   ## ReadWriteMany not supported by AWS gp2
-  storageClass: 
+  storageClass:
   accessModes:
     - ReadWriteOnce
   size: 10M
-  existingClaim: 
+  existingClaim:
   # Dir where config and keys are written inside container
-  mountDir: 
+  mountDir:
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
@@ -358,7 +357,7 @@ artifacts:
   iamAdapter: /artifactory/libs-release-local/io/mosip/kernel/kernel-auth-adapter.jar
   iamAdapterRegproc: /artifactory/libs-release-local/io/mosip/kernel/kernel-auth-adapter.jar
   iamAdapterRegprocExt: /artifactory/libs-release-local/io/mosip/kernel/kernel-auth-adapter.jar
-  hsmClientZip: /artifactory/libs-release-local/hsm/client.zip  
+  hsmClientZip: /artifactory/libs-release-local/hsm/client.zip
   cacheProvider: /artifactory/libs-release-local/cache/cache-provider.jar
   runtimeDep: /artifactory/libs-release-local/io/mosip/kernel/
   regprocJars: /artifactory/libs-release-local/clamav/kernel-virusscanner-clamav.jar
