@@ -1,9 +1,28 @@
-name: Lint and Test Charts
+name: Run Lint and Test Charts manually
 
 on:
-  pull_request:
-    paths:
-      - 'charts/**'
+  workflow_dispatch:
+    inputs:
+      target_repo:
+        description: 'target repo'
+        required: true
+        default: 'https://github.com/mosip/mosip-helm'
+        type: string
+      target_branch:
+        description: 'target branch'
+        required: true
+        default: 'gh-pages'
+        type: string
+      ignore_charts:
+        description: 'Ignore linting for list of charts separated by pipe(|)'
+        required: true
+        default: 'reporting|reporting-init'
+        type: string
+      lint_all_charts:
+        description: 'Run chart linting for all charts (yes|no)'
+        required: true
+        default: 'no'
+        type: string
 
 jobs:
   lint-chart:
@@ -32,10 +51,10 @@ jobs:
 
       - name: Set environment variables
         run: |
-          # echo "TARGET BRANCH : ${{ github.event.pull_request.base.ref }}"
-          echo "TARGET_BRANCH=$(echo ${{ github.base_ref }})" >> $GITHUB_ENV
+          # echo "TARGET BRANCH : ${{ github.event.inputs.target_branch }}"
+          echo "TARGET_BRANCH=$(echo ${{ github.event.inputs.target_branch }} )" >> $GITHUB_ENV
           echo "COMMIT_ID=${GITHUB_SHA}" >> $GITHUB_ENV
-          echo "TARGET_REPO=$( echo ${{ github.event.pull_request.base.repo.html_url }} )" >> $GITHUB_ENV
+          echo "TARGET_REPO=$( echo ${{ github.event.inputs.target_repo }} )" >> $GITHUB_ENV
 
       - name: Add Target repo to git remotes
         run: |
@@ -45,19 +64,17 @@ jobs:
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2.3.1
 
-      - name: Run chart-testing (list-changed)
-        id: list-changed
-        run: |
-          ignore_charts="charts/reporting|charts/reporting-init"
-          echo "Ignore charts: $ignore_charts"
-          ct list-changed --remote=target_repo --since=HEAD --target-branch=$TARGET_BRANCH --chart-dirs=charts |grep -Ev "$ignore_charts" |tee -a list.txt 
-
       - name: Run chart-testing (lint)
         run: |
-          while read -r chart; do
-            echo "CHART: $chart";
-            ct lint --config=.github/chart-testing-config.yaml --charts=$chart/ --remote=target_repo;
-          done < ./list.txt
+          if [ ${{ github.event.inputs.lint_all_charts }} = "yes" ]; then
+            ct lint --config=.github/chart-testing-config.yaml --chart-dirs=charts --remote=target_repo --target-branch=$TARGET_BRANCH;
+          else          
+            find charts -maxdepth 1 -type d |grep -Ev "^charts$|${{ github.event.inputs.ignore_charts }}" > list.txt;
+            while read -r chart; do
+              echo -e "\nCHART: $chart\n";
+              ct lint --config=.github/chart-testing-config.yaml --charts=$chart --remote=target_repo --target-branch=$TARGET_BRANCH;
+            done < ./list.txt
+          fi
 
       - name: Create yaml files for helm charts
         run: |
