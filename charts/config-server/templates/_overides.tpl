@@ -377,17 +377,17 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.secrets.captcha }}
       key: prereg-captcha-secret-key
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_CAPTCHA_MSITE_KEY
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_CAPTCHA_SITE_KEY
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.mcaptcha }}
-      key: mosip-captcha-msite-key
+      key: mosip-captcha-site-key
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_CAPTCHA_MSECRET_KEY
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_CAPTCHA_SECRET_KEY
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.mcaptcha }}
-      key: mosip-captcha-msecret-key
+      key: mosip-captcha-secret-key
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MPARTNER_DEFAULT_MOBILE_SECRET
   valueFrom:
