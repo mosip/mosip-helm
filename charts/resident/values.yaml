@@ -53,7 +53,7 @@ service:
 image:
   registry: docker.io
   repository: mosipqa/resident-service
-  tag: 1.2.0.1
+  tag: develop
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -89,7 +89,7 @@ livenessProbe:
     path: /resident/v1/actuator/health
     port: 8099
   initialDelaySeconds: 20
-  periodSeconds: 30
+  periodSeconds: 10
   timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
@@ -423,3 +423,34 @@ istio:
     - istio-system/public
     - istio-system/internal
   prefix: /resident/v1
+  corsPolicy:
+    allowOrigins:
+      - prefix: https://resident.sandbox.xyz.net
+    allowCredentials: true
+    allowHeaders:
+      - Accept
+      - Accept-Encoding
+      - Accept-Language
+      - Connection
+      - Content-Type
+      - Cookie
+      - Host
+      - Referer
+      - Sec-Fetch-Dest
+      - Sec-Fetch-Mode
+      - Sec-Fetch-Site
+      - Sec-Fetch-User
+      - Origin
+      - Upgrade-Insecure-Requests
+      - User-Agent
+      - sec-ch-ua
+      - sec-ch-ua-mobile
+      - sec-ch-ua-platform
+      - x-xsrf-token
+      - xsrf-token
+    allowMethods:
+      - GET
+      - POST
+      - PATCH
+      - PUT
+      - DELETE
