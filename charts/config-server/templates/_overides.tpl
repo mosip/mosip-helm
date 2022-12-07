@@ -27,6 +27,30 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.configmaps.global }}
       key: mosip-pmp-host
 
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_PREREG_HOST
+  valueFrom:
+    configMapKeyRef:
+      name: {{ .Values.overrides.configmaps.global }}
+      key: mosip-prereg-host
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_RESIDENT_HOST
+  valueFrom:
+    configMapKeyRef:
+      name: {{ .Values.overrides.configmaps.global }}
+      key: mosip-resident-host
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_IDP_HOST
+  valueFrom:
+    configMapKeyRef:
+      name: {{ .Values.overrides.configmaps.global }}
+      key: mosip-idp-host
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_COMPLIANCE_HOST
+  valueFrom:
+    configMapKeyRef:
+      name: {{ .Values.overrides.configmaps.global }}
+      key: mosip-compliance-host
+
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_DBUSER_PASSWORD
   valueFrom:
     secretKeyRef:
@@ -329,5 +353,23 @@ All env variables that are accessed from mosip config properties
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mpartner_default_mobile_secret
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_RESIDENT_WEBSUB_AUTHTYPE_STATUS_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.confSecretsVarious }}
+      key: resident-websub-authtype-status-secret
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_RESIDENT_WEBSUB_AUTH_TRANSACTION_STATUS_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.confSecretsVarious }}
+      key: resident-websub-auth-transaction-status-secret
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MPARTNER_DEFAULT_DIGITALCARD_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.keycloakClients }}
+      key: mpartner_default_digitalcard_secret
 
 {{- end -}}
