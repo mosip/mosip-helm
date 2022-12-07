@@ -423,6 +423,27 @@ keycloak:
            - CREATE_SHARE
            - PRINT_PARTNER
 
+       - name: mpartner-default-digitalcard
+         mappers: []
+         saroles:
+           - SUBSCRIBE_IDENTITY_CREATED_GENERAL
+           - SUBSCRIBE_IDENTITY_UPDATED_GENERAL
+           - PUBLISH_CREDENTIAL_STATUS_UPDATE_GENERAL
+           - CREATE_SHARE
+           - PRINT_PARTNER
+           - CREDENTIAL_REQUEST
+           - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
+
+       - name: mosip-toolkit-client
+         saroles: []
+       - name: mosip-digitalcard-client
+         saroles:
+           - CREATE_SHARE
+           - PUBLISH_CREDENTIAL_STATUS_UPDATE_GENERAL
+           - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
+           - SUBSCRIBE_IDENTITY_CREATED_GENERAL
+           - SUBSCRIBE_IDENTITY_UPDATED_GENERAL
+
        - name: mosip-hotlist-client
          saroles:
            - HOTLIST_ADMIN
