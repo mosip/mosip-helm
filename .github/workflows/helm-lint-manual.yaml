@@ -16,7 +16,7 @@ on:
       ignore_charts:
         description: 'Ignore linting for list of charts separated by pipe(|)'
         required: true
-        default: 'reporting|reporting-init'
+        default: 'reporting|reporting-init|activemq-artemis'
         type: string
       lint_all_charts:
         description: 'Run chart linting for all charts (yes|no)'
