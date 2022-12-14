@@ -63,24 +63,6 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.configmaps.keycloakHost }}
       key: keycloak-internal-url
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SPRING_CONFIG_URL
-  valueFrom:
-    configMapKeyRef:
-      name: config-server-share
-      key: spring_config_url_env
-
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SPRING_CONFIG_LABEL
-  valueFrom:
-    configMapKeyRef:
-      name: config-server-share
-      key: spring_config_label_env
-
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SPRING_CONFIG_ACTIVE_PROFILE
-  valueFrom:
-    configMapKeyRef:
-      name: config-server-share
-      key: active_profile_env
-
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_KEYCLOAK_EXTERNAL_HOST
   valueFrom:
     configMapKeyRef:
