@@ -241,3 +241,47 @@ databases:
         name: postgres-postgresql
         key: postgresql-password
     dml: 0
+  mosip_resident:
+    enabled: true
+    host: "postgres-postgresql"
+    port: 5432
+    su:
+      user: postgres
+      secret:
+        name: postgres-postgresql
+        key: postgresql-password
+    dml: 0
+
+  mosip_toolkit:
+    enabled: true
+    host: "postgres-postgresql"
+    port: 5432
+    su:
+      user: postgres
+      secret:
+        name: postgres-postgresql
+        key: postgresql-password
+    dml: 0
+
+  mosip_digitalcard:
+    enabled: true
+    host: "postgres-postgresql"
+    port: 5432
+    su:
+      user: postgres
+      secret:
+        name: postgres-postgresql
+        key: postgresql-password
+    dml: 0
+
+  mosip_idp:
+    enabled: true
+    host: "postgres-postgresql"
+    port: 5432
+    su:
+      user: postgres
+      secret:
+        name: postgres-postgresql
+        key: postgresql-password
+    dml: 1
+
