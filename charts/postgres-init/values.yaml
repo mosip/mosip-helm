@@ -254,7 +254,7 @@ databases:
     dml: 0
 
   mosip_toolkit:
-    enabled: true
+    enabled: false
     host: "postgres-postgresql"
     port: 5432
     su:
@@ -265,7 +265,7 @@ databases:
     dml: 0
 
   mosip_digitalcard:
-    enabled: true
+    enabled: false
     host: "postgres-postgresql"
     port: 5432
     su:
@@ -276,7 +276,7 @@ databases:
     dml: 0
 
   mosip_idp:
-    enabled: true
+    enabled: false
     host: "postgres-postgresql"
     port: 5432
     su:
