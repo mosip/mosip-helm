@@ -18,4 +18,4 @@ data:
   DB_PORT: {{ .Values.databases.mosip_resident.port | quote }}
   SU_USER: {{ .Values.databases.mosip_resident.su.user | quote }}
   DML_FLAG: {{ .Values.databases.mosip_resident.dml | quote }}
-  {{- end }
+  {{- end }}
