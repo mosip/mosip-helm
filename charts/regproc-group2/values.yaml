@@ -366,16 +366,20 @@ serviceAccount:
 
 ## Prometheus Metrics
 ##
-## TODO: Enable when prometheus url is available
 metrics:
-  enabled: false
+  enabled: true
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
   podAnnotations:
     prometheus.io/scrape: "true"
 
-  endpointPath: /registrationprocessor/v1/qualitychecker/actuator/prometheus
+
+  exec:
+    command:
+    - /bin/bash
+    - -c
+    - MY_PROMETHEUS_CHECK_PATHS="http://localhost:8090/registrationprocessor/v1/securezone/actuator/prometheus,http://localhost:9072/registrationprocessor/v1/qualityclassifier/actuator/prometheus,http://localhost:8088/registrationprocessor/v1/sender-stage/actuator/prometheus"; i=1; for str in $(echo $MY_PROMETHEUS_CHECK_PATHS | sed "s/,/\n/g"); do curl_output="$(curl -w %{http_code} -o /dev/null -s $str)"; if ! [ "$curl_output" = "200" ]; then echo "$str failed with status code $curl_output" >> /dev/stderr && exit $i; fi; ((i++)); done
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator
