@@ -71,6 +71,14 @@ mosipfileserver:
   mobileAppMountDIr: /home/mosip/mosip-file-server/files/mobileapp/
   puburl:
   privurl:
+  configmaps:
+    AUTHMANAGER_URL: http://authmanager.kernel
+    KEYMANAGER_URL: http://keymanager.keymanager
+    IDA_INTERNAL_URL: http://ida-internal.ida
+    KEYCLOAK_CLIENT_ID: mosip-regproc-client
+    AUTH_APP_ID: regproc
+  secrets:
+    KEYCLOAK_CLIENT_SECRET: ''
 
 ## Port on which this particular spring service module is running.
 containerPort: 8080
@@ -116,8 +124,6 @@ readinessProbe:
 
 ## Command and args for running the container (set to default if not set). Use array form
 ##
-command: ["/bin/bash"]
-args: ["-c", "mkdir -p /home/mosip/mosip-file-server/.well-known/mosipvc/ /home/mosip/mosip-file-server/files/mobileapp/ && cp {{ .Values.mosipfileserver.mountDir }}/.well-known/mosipvc/*  /home/mosip/mosip-file-server/.well-known/mosipvc/ && /bin/bash  /home/mosip/get-cert.sh && echo 'starting nginx'&& nginx && sleep infinity;"]
 
 ## Deployment pod host aliases
 ## https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/
@@ -448,9 +454,10 @@ istio:
     # for public, istio: ingressgateway && for internal, istio: ingressgateway-internal
     - ingressgateway
     - ingressgateway-internal
-  wellKnownPrefix: '/.well-known/'
-  mobileappPrefix: '/files/mobileapp/'
-  reWriteMobileappPrefix: '/files/mobileapp/'
+  prefix:
+    wellKnownPrefix: '/.well-known/'
+    mobileappPrefix: '/mobileapp/'
+    mosipCerts: '/mosip-certs/'
   corsPolicy:
     allowOrigins:
       - prefix: https://api.sandbox.xyz.net
