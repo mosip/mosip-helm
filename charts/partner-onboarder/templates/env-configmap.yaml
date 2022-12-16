@@ -14,3 +14,4 @@ metadata:
 data:
   URL: {{ .Values.onboarding.apiUrl | quote}} 
   CERT_MANAGER: {{ .Values.onboarding.certManager | quote }}
+  ENABLE_INSECURE: {{ .Values.onboarding.enableInsecure | quote }}

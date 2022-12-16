@@ -420,6 +420,7 @@ onboarding:
   # This client with appropriate roles must exist in Keycloak
   certManager: mosip-deployment-client
   certManagerPassword: b64enc
+  enableInsecure: false
 
 ## Only internal access
 istio:
