@@ -362,9 +362,8 @@ serviceAccount:
 
 ## Prometheus Metrics
 ##
-## TODO: Enable when prometheus url is available
 metrics:
-  enabled: false
+  enabled: true
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
