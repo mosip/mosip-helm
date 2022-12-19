@@ -75,7 +75,7 @@ affinity: {}
 ## These user names are currently hardcoded in the sql scripts, so can't change from here.
 dbUserPasswords:
   dbuserPassword: ""
-    
+
 ## Superuser secret is required to setup DB. It is assumed that the secret was created while creating
 ## DB server(s) and is available in the same namespace.
 ## host: It could be in-cluster service name of postgres if running as pods inside cluster.
@@ -91,7 +91,7 @@ databases:
     port: 5432
     su:
       user: postgres
-      secret: 
+      secret:
         name: postgres-postgresql
         key: postgresql-password
     dml: 0
@@ -102,21 +102,21 @@ databases:
     port: 5432
     su:
       user: postgres
-      secret: 
+      secret:
         name: postgres-postgresql
         key: postgresql-password
     dml: 0
 
   mosip_keymgr:
-    enabled: true 
+    enabled: true
     host: "postgres-postgresql"
     port: 5432
     su:
       user: postgres
-      secret: 
+      secret:
         name: postgres-postgresql
         key: postgresql-password
-    dml: 1 
+    dml: 1
 
   mosip_kernel:
     enabled: true
@@ -124,10 +124,10 @@ databases:
     port: 5432
     su:
       user: postgres
-      secret: 
+      secret:
         name: postgres-postgresql
         key: postgresql-password
-    dml: 0 
+    dml: 0
 
   mosip_idmap:
     enabled: true
@@ -135,10 +135,10 @@ databases:
     port: 5432
     su:
       user: postgres
-      secret: 
+      secret:
         name: postgres-postgresql
         key: postgresql-password
-    dml: 0 
+    dml: 0
 
   mosip_prereg:
     enabled: true
@@ -146,7 +146,7 @@ databases:
     port: 5432
     su:
       user: postgres
-      secret: 
+      secret:
         name: postgres-postgresql
         key: postgresql-password
     dml: 0
@@ -157,7 +157,7 @@ databases:
     port: 5432
     su:
       user: postgres
-      secret: 
+      secret:
         name: postgres-postgresql
         key: postgresql-password
     dml: 0
@@ -168,10 +168,10 @@ databases:
     port: 5432
     su:
       user: postgres
-      secret: 
+      secret:
         name: postgres-postgresql
         key: postgresql-password
-    dml: 1 
+    dml: 1
 
   mosip_credential:
     enabled: true
@@ -179,10 +179,10 @@ databases:
     port: 5432
     su:
       user: postgres
-      secret: 
+      secret:
         name: postgres-postgresql
         key: postgresql-password
-    dml: 0 
+    dml: 0
 
   mosip_regprc:
     enabled: true
@@ -190,7 +190,7 @@ databases:
     port: 5432
     su:
       user: postgres
-      secret: 
+      secret:
         name: postgres-postgresql
         key: postgresql-password
     dml: 1
@@ -201,7 +201,7 @@ databases:
     port: 5432
     su:
       user: postgres
-      secret: 
+      secret:
         name: postgres-postgresql
         key: postgresql-password
     dml: 1
@@ -212,7 +212,7 @@ databases:
     port: 5432
     su:
       user: postgres
-      secret: 
+      secret:
         name: postgres-postgresql
         key: postgresql-password
     dml: 1
@@ -226,7 +226,7 @@ databases:
     ENV_VERSION_FLAG: false
     su:
       user: postgres
-      secret: 
+      secret:
         name: postgres-postgresql
         key: postgresql-password
     dml: 1
@@ -237,10 +237,10 @@ databases:
     port: 5432
     su:
       user: postgres
-      secret: 
+      secret:
         name: postgres-postgresql
         key: postgresql-password
-    dml: 0 
+    dml: 0
 
   mosip_resident:
     enabled: true

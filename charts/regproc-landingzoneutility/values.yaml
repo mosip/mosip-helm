@@ -128,8 +128,8 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-     cpu: 500m
-     memory: 4000Mi
+    cpu: 500m
+    memory: 4000Mi
   requests:
     cpu: 100m
     memory: 1000Mi
@@ -138,7 +138,6 @@ additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
   javaOpts: "-Xms3000M -Xmx3000M"
-
 
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
 ## Clamav container already runs as 'mosip' user, so we may not need to enable this
@@ -270,7 +269,7 @@ extraVolumeMounts: []
 ##   - name: your-image-name
 ##     image: your-image
 ##     imagePullPolicy: Always
-#true#     ports:
+# true #     ports:
 ##       - name: portname
 ##         containerPort: 1234
 ##
@@ -363,9 +362,8 @@ serviceAccount:
 
 ## Prometheus Metrics
 ##
-## TODO: Enable when prometheus url is available
 metrics:
-  enabled: false
+  enabled: true
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
