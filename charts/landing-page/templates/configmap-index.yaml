@@ -106,8 +106,11 @@ data:
           <a href="https://{{ .Values.landing.api }}/.well-known/">
             <p>.well-known</p>
           </a>
-          <a href="https://{{ .Values.landing.api }}/files/mobileapp/">
-            <p>mobileapp</p>
+          <a href="https://{{ .Values.landing.api }}/mobileapp/">
+            <p>MOBILE APP</p>
+          </a>
+          <a href="https://{{ .Values.landing.api }}/mosip-certs/">
+            <p>MOSIP certs</p>
           </a>
         </div>
         <div class="w3-col l2 w3-center"><p></p></div> 
