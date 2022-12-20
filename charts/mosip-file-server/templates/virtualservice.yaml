@@ -23,8 +23,12 @@ spec:
   http:
   - name: .well-known
     match:
+      {{- if .Values.istio.prefix }}
+      {{- range $key, $value := .Values.istio.prefix }}
       - uri:
-          prefix: {{ .Values.istio.wellKnownPrefix }}
+          prefix: {{ $value }}
+      {{- end }}
+      {{- end }}
     route:
     - destination:
         host: {{ template "common.names.fullname" . }}
@@ -32,22 +36,6 @@ spec:
           number: {{ .Values.service.port }}
     corsPolicy:
     {{- include "common.tplvalues.render" ( dict "value" .Values.istio.corsPolicy "context" $ ) | nindent 6 }}
-    headers:
-      request:
-        set:
-          x-forwarded-proto: https
-
-  - name: mobileapp
-    match:
-      - uri:
-          prefix: {{ .Values.istio.mobileappPrefix }}
-    rewrite:
-      uri: {{ .Values.istio.reWriteMobileappPrefix }}
-    route:
-      - destination:
-          host: {{ template "common.names.fullname" . }}
-          port:
-            number: {{ .Values.service.port }}
     headers:
       request:
         set:
