@@ -426,6 +426,10 @@ istio:
   corsPolicy:
     allowOrigins:
       - prefix: https://resident.sandbox.xyz.net
+    exposeHeaders:
+      - content-disposition
+      - Content-Disposition
+      - eventId
     allowCredentials: true
     allowHeaders:
       - Accept
