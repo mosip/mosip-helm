@@ -332,6 +332,7 @@ keycloak:
            - PARTNER_ADMIN
            - PUBLISH_OIDC_CLIENT_CREATED_GENERAL
            - PUBLISH_OIDC_CLIENT_UPDATED_GENERAL
+           - ZONAL_ADMIN
          assign_client_scopes:
            - update_oidc_client
            - add_oidc_client
@@ -453,6 +454,8 @@ keycloak:
            - SUBSCRIBE_CA_CERTIFICATE_UPLOADED_GENERAL
            - PUBLISH_AUTHENTICATION_TRANSACTION_STATUS_GENERAL
            - PUBLISH_IDA_FRAUD_ANALYTICS_GENERAL
+           - SUBSCRIBE_OIDC_CLIENT_CREATED_GENERAL
+           - SUBSCRIBE_OIDC_CLIENT_UPDATED_GENERAL
 
        - name: mosip-idrepo-client
          mappers: []
