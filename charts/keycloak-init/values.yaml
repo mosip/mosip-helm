@@ -182,6 +182,10 @@ keycloak:
        - SUBSCRIBE_REGISTRATION_PROCESSOR_WORKFLOW_PAUSED_FOR_ADDITIONAL_INFO_EVENT_GENERAL
        - SUBSCRIBE_IDENTITY_CREATED_GENERAL
        - SUBSCRIBE_IDENTITY_UPDATED_GENERAL
+       - PUBLISH_OIDC_CLIENT_CREATED_GENERAL
+       - PUBLISH_OIDC_CLIENT_UPDATED_GENERAL
+       - SUBSCRIBE_OIDC_CLIENT_CREATED_GENERAL
+       - SUBSCRIBE_OIDC_CLIENT_UPDATED_GENERAL
       client_scopes:
        - name: add_oidc_client
          description: Scope required to create OIDC client
@@ -300,7 +304,8 @@ keycloak:
            - GLOBAL_ADMIN
            - ID_AUTHENTICATION
            - PARTNERMANAGER  # Added only for cert upload using postman during install. Not required otherwise.
-
+           - SUBSCRIBE_OIDC_CLIENT_CREATED_GENERAL
+           - SUBSCRIBE_OIDC_CLIENT_UPDATED_GENERAL
        - name: mosip-misp-client
          mappers: []
          saroles: []
@@ -344,6 +349,8 @@ keycloak:
          mappers: []
          saroles:
            - PARTNER_ADMIN
+           - PUBLISH_OIDC_CLIENT_CREATED_GENERAL
+           - PUBLISH_OIDC_CLIENT_UPDATED_GENERAL
          assign_client_scopes:
            - update_oidc_client
            - add_oidc_client
