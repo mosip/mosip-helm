@@ -360,6 +360,11 @@ keycloak:
            - PUBLISH_POLICY_UPDATED_GENERAL
            - ZONAL_ADMIN
            - CREATE_SHARE
+           - DEVICE_PROVIDER
+           - PARTNER
+           - PMS_ADMIN
+           - PMS_USER
+           - REGISTRATION_PROCESSOR
          assign_client_scopes:
            - update_oidc_client
            - add_oidc_client
