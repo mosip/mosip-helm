@@ -374,7 +374,6 @@ metrics:
   podAnnotations:
     prometheus.io/scrape: "true"
 
-
   exec:
     command:
     - /bin/bash
