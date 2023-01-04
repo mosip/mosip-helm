@@ -75,8 +75,8 @@ db:
   host: "postgres-postgresql.postgres"
   port: 5432
   user: masteruser
-  secret:
-    name: db-common-secrets
-    key: db-dbuser-password
+  secret: 
+    name: db-mosip-master-secret
+    key: db-mosip-master-password
 
 mosipDataGithubBranch: develop

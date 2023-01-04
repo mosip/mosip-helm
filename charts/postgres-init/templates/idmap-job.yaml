@@ -37,8 +37,8 @@ spec:
           - name: DBUSER_PWD
             valueFrom:
               secretKeyRef:
-                name: db-common-secrets
-                key: db-dbuser-password
+                name: db-mosip-idmap-secret
+                key: db-mosip-idmap-password
 
           envFrom:
               - configMapRef:
