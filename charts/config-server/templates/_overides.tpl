@@ -384,6 +384,18 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.secrets.confSecretsVarious }}
       key: resident-websub-auth-transaction-status-secret
 
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_IDA_KYC_TOKEN_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.confSecretsVarious }}
+      key: mosip-ida-kyc-token-secret
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_PARTNER_CRYPTO_P12_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.confSecretsVarious }}
+      key: mosip-partner-crypto-p12-password
+
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MPARTNER_DEFAULT_DIGITALCARD_SECRET
   valueFrom:
     secretKeyRef:
