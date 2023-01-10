@@ -272,6 +272,7 @@ extraEnvVarsCM:
 extraEnvVarsSecret:
   - s3
   - keycloak-client-secrets
+  - postgres-postgresql
 
 ## Extra volumes to add to the deployment
 ##
