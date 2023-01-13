@@ -263,7 +263,7 @@ extraEnvVarsCM:
   - global
   - s3
   - keycloak-host
-  - db-cm
+  - db
   - apitestrig
   - config-server-share
   - artifactory-share
@@ -272,7 +272,7 @@ extraEnvVarsCM:
 extraEnvVarsSecret:
   - s3
   - keycloak-client-secrets
-  - db-secrets
+  - postgres-postgresql
 
 ## Extra volumes to add to the deployment
 ##
@@ -505,5 +505,3 @@ apitestrig:
       ENV_TESTLEVEL: 'smokeAndRegression'
       ENABLE_INSECURE: 'false'
   secrets:
-    db:
-      db-su-password: ''
