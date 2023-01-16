@@ -366,6 +366,18 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.secrets.captcha }}
       key: prereg-captcha-secret-key
 
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_RESIDENT_CAPTCHA_SITE_KEY
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.captcha }}
+      key: resident-captcha-site-key
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_RESIDENT_CAPTCHA_SECRET_KEY
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.captcha }}
+      key: resident-captcha-secret-key
+
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MPARTNER_DEFAULT_MOBILE_SECRET
   valueFrom:
     secretKeyRef:
@@ -383,6 +395,18 @@ All env variables that are accessed from mosip config properties
     secretKeyRef:
       name: {{ .Values.overrides.secrets.confSecretsVarious }}
       key: resident-websub-auth-transaction-status-secret
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_IDA_KYC_TOKEN_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.confSecretsVarious }}
+      key: mosip-ida-kyc-token-secret
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_PARTNER_CRYPTO_P12_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.confSecretsVarious }}
+      key: mosip-partner-crypto-p12-password
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MPARTNER_DEFAULT_DIGITALCARD_SECRET
   valueFrom:

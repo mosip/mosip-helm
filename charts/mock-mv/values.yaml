@@ -53,7 +53,7 @@ service:
 image:
   registry: docker.io
   repository: mosipqa/mock-mv
-  tag: 1.2.0.1
+  tag: develop
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -359,16 +359,15 @@ serviceAccount:
 
 ## Prometheus Metrics
 ##
-## TODO: Enable once prometheus url is available
 metrics:
-  enabled: false
+  enabled: true
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
   podAnnotations:
     prometheus.io/scrape: "true"
 
-  endpointPath:
+  endpointPath: /v1/mockmv/actuator/prometheus
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator

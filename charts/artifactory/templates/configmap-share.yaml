@@ -22,3 +22,4 @@ data:
   runtime_dep_url_env: {{ printf "%s%s" (include "artifactory.baseUrl" .) .Values.artifacts.runtimeDepUrl }}
   preregistration_i18n_bundle_url_env: {{ printf "%s%s" (include "artifactory.baseUrl" .) .Values.artifacts.preregistrationBundleUrl }}
   virusscanner_url_env: {{ printf "%s%s" (include "artifactory.baseUrl" .) .Values.artifacts.virusscannerUrl }}
+  auth_wrapper_url_env: {{ printf "%s%s" (include "artifactory.baseUrl" .) .Values.artifacts.authwrapperUrl }}

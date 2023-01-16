@@ -62,8 +62,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipqa/mosip-opencrvs-mediator
-  tag: 1.2.0.1
+  repository: mosipid/mosip-opencrvs-mediator
+  tag: 1.2.0.1-B1
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images

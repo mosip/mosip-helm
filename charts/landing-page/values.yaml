@@ -412,7 +412,7 @@ metrics:
 ## Override these while installing this Helm.
 landing:
   name: sandbox
-  version: 1.2.0.1
+  version: 1.2.0.1-B1
   api: api.sandbox.mosip.net
   apiInternal: api-internal.sandbox.mosip.net
   admin: admin.sandbox.mosip.net
@@ -425,6 +425,8 @@ landing:
   regclient: reclient.sandbox.mosip.net
   pmp: pmp.sandbox.mosip.net
   smtp: smtp.sandbox.mosip.net
+  resident: resident.sandbox.mosip.net
+  idp: idp.sandbox.xyz.net
   postgres:
     host: postgres.sandbox.mosip.net
     port: 5432
