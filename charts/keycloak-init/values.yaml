@@ -209,7 +209,22 @@ keycloak:
            display.on.consent.screen: "false",
            include.in.token.scope: "true"
          }
-      client_scopes:
+       - name: get_certificate
+         description: Scope required to create OIDC client
+         protocol: openid-connect
+         Include In Token Scope : on
+         attributes: {
+           display.on.consent.screen: "false",
+           include.in.token.scope: "true"
+         }
+       - name: upload_certificate
+         description: ''
+         protocol: openid-connect
+         Include In Token Scope : on
+         attributes: {
+           display.on.consent.screen: "false",
+           include.in.token.scope: "true"
+         }
        - name: individual_id
          description: Scope required to create resident client
          protocol: openid-connect
@@ -338,6 +353,8 @@ keycloak:
          assign_client_scopes:
            - update_oidc_client
            - add_oidc_client
+           - get_certificate
+           - upload_certificate
 
        - name: mosip-policymanager-client
          mappers: []
