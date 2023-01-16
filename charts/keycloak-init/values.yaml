@@ -209,7 +209,6 @@ keycloak:
            display.on.consent.screen: "false",
            include.in.token.scope: "true"
          }
-      client_scopes:
        - name: individual_id
          description: Scope required to create resident client
          protocol: openid-connect
