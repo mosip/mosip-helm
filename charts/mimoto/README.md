@@ -6,6 +6,6 @@ Helm chart for installing MOSIP Resident Application.
 
 ```console
 $ helm repo add mosip https://mosip.github.io
-$ helm install my-release mosip/resident-app
+$ helm install my-release mosip/mimoto
 ```
 
