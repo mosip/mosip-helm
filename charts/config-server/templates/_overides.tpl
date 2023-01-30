@@ -225,14 +225,14 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.secrets.keycloak }}
       key: admin-password
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SOFTHSM_KERNEL_PIN
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SOFTHSM_KERNEL_SECURITY_PIN
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.softhsmKernel }}
       key: security-pin
 
 {{- if .Values.installedModules.ida }}
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SOFTHSM_IDA_PIN
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SOFTHSM_IDA_SECURITY_PIN
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.softhsmIDA }}
