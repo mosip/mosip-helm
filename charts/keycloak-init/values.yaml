@@ -8,7 +8,7 @@ image:
   repository: mosipid/keycloak-init
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 1.2.0.1-B2
+  tag: 1.2.0.1-B3
 
 imagePullSecrets: []
 nameOverride: ""
@@ -519,8 +519,6 @@ keycloak:
            - CREDENTIAL_REQUEST
            - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
 
-       - name: mosip-toolkit-client
-         saroles: []
        - name: mosip-digitalcard-client
          saroles:
            - CREATE_SHARE
@@ -619,8 +617,6 @@ clientSecrets:
   - name: mpartner_default_mobile_secret
     secret: ""
   - name: mosip_testrig_client_secret
-    secret: ""
-  - name: mosip_toolkit_client_secret
     secret: ""
   - name: mpartner_default_digitalcard_secret
     secret: ""
