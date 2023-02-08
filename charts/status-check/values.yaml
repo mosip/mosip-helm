@@ -11,7 +11,6 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: develop
 
-    
 schedule: "0 0 * * *"
 command: ["/bin/sh"]
 args:
@@ -22,15 +21,13 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-
-
 failedJobsHistoryLimit: 1
 successfulJobsHistoryLimit: 1
 concurrencyPolicy: Forbid
 restartPolicy: OnFailure  
 
 serviceAccount:
-  # Specifies whether a service account should be created
+   # Specifies whether a service account should be created
   create: true
   # Annotations to add to the service account
   annotations: {}
@@ -95,4 +92,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
