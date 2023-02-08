@@ -24,7 +24,7 @@ fullnameOverride: ""
 failedJobsHistoryLimit: 1
 successfulJobsHistoryLimit: 1
 concurrencyPolicy: Forbid
-restartPolicy: OnFailure  
+restartPolicy: OnFailure
 
 serviceAccount:
    # Specifies whether a service account should be created
