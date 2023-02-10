@@ -339,7 +339,7 @@ All env variables that are accessed from mosip config properties
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_S3_PRETEXT_VALUE
   valueFrom:
     secretKeyRef:
-      name: {{ .Values.overrides.secrets.pretext }}
+      name: {{ .Values.overrides.secrets.s3 }}
       key: s3-pretext-value
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_EMAIL_SMTP_HOST
