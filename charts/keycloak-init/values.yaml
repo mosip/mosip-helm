@@ -246,7 +246,7 @@ keycloak:
          protocol: openid-connect
          Include In Token Scope : on
          attributes: {
-           display.on.consent.screen: "true",
+           display.on.consent.screen: "false",
            include.in.token.scope: "true"
          }
        - name: wallet_binding
@@ -254,7 +254,7 @@ keycloak:
          protocol: openid-connect
          Include In Token Scope : on
          attributes: {
-           display.on.consent.screen: "true",
+           display.on.consent.screen: "false",
            include.in.token.scope: "true"
          }
 
