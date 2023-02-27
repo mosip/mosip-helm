@@ -241,22 +241,22 @@ keycloak:
            display.on.consent.screen: "true",
            include.in.token.scope: "true"
          }
-        - name: send_binding_otp
-          description: ''          
-          protocol: openid-connect
-          Include In Token Scope : on
-          attributes: {
-            display.on.consent.screen: "false",
-            include.in.token.scope: "true"
-          }
-        - name: wallet_binding
-          description: ''
-          protocol: openid-connect
-          Include In Token Scope : on
-          attributes: {
-            display.on.consent.screen: "false",
-            include.in.token.scope: "true"
-          }
+       - name: individual_id
+         description: Scope required to create mpartner-default-mobile client
+         protocol: openid-connect
+         Include In Token Scope : on
+         attributes: {
+           display.on.consent.screen: "true",
+           include.in.token.scope: "true"
+         }
+       - name: individual_id
+         description: Scope required to create mpartner-default-mobile client
+         protocol: openid-connect
+         Include In Token Scope : on
+         attributes: {
+           display.on.consent.screen: "true",
+           include.in.token.scope: "true"
+         }
 
       clients:
        - name: mosip-abis-client
