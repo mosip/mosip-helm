@@ -128,10 +128,6 @@ spec:
             - name: wellknown
               mountPath:  {{ .Values.mosipfileserver.mountDir }}/.well-known/mosipvc/
 
-            - name: mobileapp
-              mountPath:  {{ .Values.mosipfileserver.mobileAppMountDIr }}/index.html
-              subPath: index.html
-
           ports:
             - name: container-port
               containerPort: {{ .Values.containerPort }}
@@ -160,9 +156,3 @@ spec:
         - name: wellknown
           configMap:
             name: wellknown-cm
-        - name: mobileapp
-          configMap:
-            name: mobileapp-cm
-            items:
-              - key: index.html
-                path: index.html
