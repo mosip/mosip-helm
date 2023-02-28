@@ -68,9 +68,6 @@ mosipfileserver:
   host: ''
   mountDir: "/mnt/mosip-file-server"  # path inside docker
   healthCheckUrl: http://localhost:8080/.well-known/
-  mobileAppMountDIr: /home/mosip/mosip-file-server/files/mobileapp/
-  puburl:
-  privurl:
   configmaps:
     AUTHMANAGER_URL: http://authmanager.kernel
     KEYMANAGER_URL: http://keymanager.keymanager
@@ -456,7 +453,7 @@ istio:
     - ingressgateway-internal
   prefix:
     wellKnownPrefix: '/.well-known/'
-    mobileappPrefix: '/mobileapp/'
+    injiPrefix: '/inji/'
     mosipCerts: '/mosip-certs/'
   corsPolicy:
     allowOrigins:
