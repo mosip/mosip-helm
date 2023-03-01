@@ -15,7 +15,7 @@ metadata:
 spec:
   endpoints:
     {{- range $ep := .Values.metrics.endpointPathList }}
-    - targetPort: {{ $ep.port }}
+    - port: {{ $ep.port }}
       path: {{ $ep.endpointPath }}
       {{- if $.Values.metrics.serviceMonitor.interval }}
       interval: {{ $.Values.metrics.serviceMonitor.interval }}
