@@ -376,11 +376,14 @@ metrics:
 
   endpointPathList:
   - endpointPath: '/registrationprocessor/v1/securezone/actuator/prometheus'
-    port: securezone
+    port_name: securezone
+    port: 8090
   - endpointPath: '/registrationprocessor/v1/qualityclassifier/actuator/prometheus'
-    port: qualityclassifier
+    port_name: qualityclassifier
+    port: 9072
   - endpointPath: '/registrationprocessor/v1/sender-stage/actuator/prometheus'
-    port: sender-stage
+    port_name: sender-stage
+    port: 8088
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator
