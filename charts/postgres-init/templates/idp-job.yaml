@@ -1,8 +1,8 @@
-{{- if .Values.databases.mosip_idp.enabled }}
+{{- if .Values.databases.mosip_esignet.enabled }}
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: db-idp-init-job
+  name: db-esignet-init-job
   labels:
     {{- include "postgres-init.labels" . | nindent 4 }}
 spec:
@@ -10,7 +10,7 @@ spec:
     metadata:
       labels:
         {{- include "postgres-init.selectorLabels" . | nindent 8 }}
-        app.kubernetes.io/name: db-idp-init-job
+        app.kubernetes.io/name: db-esignet-init-job
         sidecar.istio.io/inject: "false"
     spec:
       {{- with .Values.imagePullSecrets }}
@@ -31,8 +31,8 @@ spec:
           - name: SU_USER_PWD
             valueFrom:
               secretKeyRef:
-                name: {{ .Values.databases.mosip_idp.su.secret.name }}
-                key: {{ .Values.databases.mosip_idp.su.secret.key }}
+                name: {{ .Values.databases.mosip_esignet.su.secret.name }}
+                key: {{ .Values.databases.mosip_esignet.su.secret.key }}
 
           - name: DBUSER_PWD
             valueFrom:
@@ -42,5 +42,5 @@ spec:
 
           envFrom:
               - configMapRef:
-                  name: db-idp-init-env-config
+                  name: db-esignet-init-env-config
 {{- end }}
