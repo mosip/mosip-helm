@@ -6,10 +6,10 @@ metadata:
     {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
     {{- end }}
   name: {{ template "common.names.fullname" . }}
-  annotations: 
+  annotations:
     {{- if .Values.commonAnnotations }}
-    {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
-    {{- end }}
+      {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
+      {{- end }}
 spec:
   type: {{ .Values.service.type }}
   {{- if (or (eq .Values.service.type "LoadBalancer") (eq .Values.service.type "NodePort")) }}
@@ -22,14 +22,9 @@ spec:
   loadBalancerIP: {{ .Values.service.loadBalancerIP }}
   {{- end }}
   ports:
-    - name: securezone
-      port: 80
-      protocol: TCP
-      targetPort: 8090
-    - name: qualityclassifier
-      port: 9072
-      protocol: TCP
-    - name: sender-stage
-      port: 8088
-      protocol: TCP
+  {{- range $ep := .Values.metrics.endpointPathList }}
+  - name: {{ $ep.port_name }}
+    port: {{ $ep.port }}
+    protocol: TCP
+  {{- end }}
   selector: {{- include "common.labels.matchLabels" . | nindent 4 }}

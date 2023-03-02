@@ -375,14 +375,19 @@ metrics:
 
   endpointPathList:
     - endpointPath: '/registrationprocessor/v1/packetvalidator/actuator/prometheus'
+      port_name: packetvalidator
       port: 8088
     - endpointPath: '/registrationprocessor/v1/cmdvalidator/actuator/prometheus'
+      port_name: cmdvalidator
       port: 8089
     - endpointPath: '/registrationprocessor/v1/operatorvalidator/actuator/prometheus'
+      port_name: operatorvalidator
       port: 8093
     - endpointPath: '/registrationprocessor/v1/supervisorvalidator/actuator/prometheus'
+      port_name: supervisorvalidator
       port: 8094
     - endpointPath: '/registrationprocessor/v1/introducervalidator/actuator/prometheus'
+      port_name: introducervalidator
       port: 8095
 
   ## Prometheus Service Monitor

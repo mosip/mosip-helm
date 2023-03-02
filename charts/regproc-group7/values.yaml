@@ -375,8 +375,10 @@ metrics:
 
   endpointPathList:
     - endpointPath: '/registrationprocessor/v1/uin-generator/actuator/prometheus'
+      port_name: uin-generator
       port: 8099
     - endpointPath: '/registrationprocessor/v1/print-stage/actuator/prometheus'
+      port_name: print-stage
       port: 8097
 
   ## Prometheus Service Monitor
