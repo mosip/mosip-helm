@@ -26,5 +26,6 @@ spec:
   - name: {{ $ep.port_name }}
     port: {{ $ep.port }}
     protocol: TCP
+    targetPort: {{ $ep.targetPort }}
   {{- end }}
   selector: {{- include "common.labels.matchLabels" . | nindent 4 }}

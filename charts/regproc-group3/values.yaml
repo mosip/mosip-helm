@@ -377,12 +377,15 @@ metrics:
     - endpointPath: '/registrationprocessor/v1/biodedupe/actuator/prometheus'
       port_name: biodedupe
       port: 9096
+      targetPort: 9096
     - endpointPath: '/registrationprocessor/v1/abishandler/actuator/prometheus'
       port_name: abishandler
       port: 9071
+      targetPort: 9071
     - endpointPath: '/registrationprocessor/v1/manualverification/actuator/prometheus'
       port_name: manualverification
       port: 8084
+      targetPort: 8084
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator
