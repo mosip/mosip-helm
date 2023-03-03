@@ -521,6 +521,10 @@ keycloak:
            - uma_authorization
            - offline_access
            - PUBLISH_MOSIP_HOTLIST_GENERAL
+    
+       - name: mosip-toolkit-android-client
+         mappers: []
+         saroles: []    
 
        # Used only for initial deployment purposes. Maybe deleted from installation later.
        - name: mosip-deployment-client
@@ -613,4 +617,6 @@ clientSecrets:
   - name: mpartner_default_digitalcard_secret
     secret: ""
   - name: mosip_testrig_client_secret
+    secret: ""
+  - name: mosip_toolkit_android_client_secret
     secret: ""
