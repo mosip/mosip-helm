@@ -372,11 +372,15 @@ metrics:
   podAnnotations:
     prometheus.io/scrape: "true"
 
-  exec:
-    command:
-    - /bin/bash
-    - -c
-    - MY_PROMETHEUS_CHECK_PATHS="http://localhost:8020/registrationprocessor/v1/bioauth/actuator/prometheus,http://localhost:8091/registrationprocessor/v1/demodedupe/actuator/prometheus"; for str in $(echo $MY_PROMETHEUS_CHECK_PATHS | sed "s/,/\n/g"); do curl_output="$(curl -w %{http_code} -o /dev/null -s $str)"; if ! [ "$curl_output" = "200" ]; then exit 1; fi; done
+  endpointPathList:
+    - endpointPath: '/registrationprocessor/v1/bioauth/actuator/prometheus'
+      port_name: bioauth
+      port: 8020
+      targetPort: 8020
+    - endpointPath: '/registrationprocessor/v1/demodedupe/actuator/prometheus'
+      port_name: demodedupe
+      port: 8091
+      targetPort: 8091
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator
