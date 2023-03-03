@@ -158,13 +158,13 @@ All env variables that are accessed from mosip config properties
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_datsha_client_secret
-    
+
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_IDA_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_ida_client_secret
-    
+
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MISP_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
@@ -176,7 +176,7 @@ All env variables that are accessed from mosip config properties
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_pms_client_secret
-    
+
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_POLICYMANAGER_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
@@ -200,7 +200,7 @@ All env variables that are accessed from mosip config properties
     secretKeyRef:
       name: {{ .Values.overrides.secrets.keycloakClients }}
       key: mosip_resident_client_secret
-    
+
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_PREREG_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
@@ -264,7 +264,7 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.configmaps.activemq }}
       key: activemq-core-port
 {{- end }}
-    
+
 {{- if .Values.overrides.secrets.activemq }}
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_ACTIVEMQ_PASSWORD
   valueFrom:
