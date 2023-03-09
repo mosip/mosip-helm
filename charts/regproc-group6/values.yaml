@@ -375,9 +375,13 @@ metrics:
 
   endpointPathList:
     - endpointPath: '/registrationprocessor/v1/uploader/actuator/prometheus'
+      port_name: uploader
       port: 8087
+      targetPort: 8087
     - endpointPath: '/registrationprocessor/v1/packetclassifier/actuator/prometheus'
+      port_name: packetclassifier
       port: 8092
+      targetPort: 8092
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator
