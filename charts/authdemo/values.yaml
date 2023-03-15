@@ -48,10 +48,12 @@ service:
   ## ref http://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip
   ##
   externalTrafficPolicy: Cluster
+  ## Port on which this particular spring service module is running.
+  springServicePort: 8082
 
 image:
   registry: docker.io
-  repository: mosipdev/dsl-packetcreator
+  repository: mosipdev/authentication-demo-service
   tag: develop
 
   ## Specify a imagePullPolicy
@@ -66,28 +68,25 @@ image:
   # pullSecrets:
   #   - myRegistryKeySecretName
 
-## Port on which this particular spring service module is running.
-springServicePort: 8080
-
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
 startupProbe:
   enabled: true
   httpGet:
-    path: /v1/packetcreator/actuator/health
-    port: 8080
+    path: '/v1/identity/actuator/health'
+    port: 8082
   initialDelaySeconds: 0
-  periodSeconds: 20
+  periodSeconds: 10
   timeoutSeconds: 5
-  failureThreshold: 60
+  failureThreshold: 30
   successThreshold: 1
 
 livenessProbe:
   enabled: true
   httpGet:
-    path: /v1/packetcreator/actuator/health
-    port: 8080
+    path: '/v1/identity/actuator/health'
+    port: 8082
   initialDelaySeconds: 20
   periodSeconds: 10
   timeoutSeconds: 5
@@ -97,8 +96,8 @@ livenessProbe:
 readinessProbe:
   enabled: true
   httpGet:
-    path: /v1/packetcreator/actuator/health
-    port: 8080
+    path: '/v1/identity/actuator/health'
+    port: 8082
   initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5
@@ -126,16 +125,16 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-    cpu: 700m
-    memory: 3000Mi
+    cpu: 500m
+    memory: 2800Mi
   requests:
-    cpu: 700m
-    memory: 3000Mi
+    cpu: 500m
+    memory: 2800Mi
 
 additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
-  javaOpts: "-Xms2500M -Xmx2500M"
+  javaOpts: "-Xms2000M -Xmx2000M"
 
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
 ## Clamav container already runs as 'mosip' user, so we may not need to enable this
@@ -244,11 +243,14 @@ extraEnvVars: []
 
 ## ConfigMap with extra environment variables
 ##
-extraEnvVarsCM: []
+extraEnvVarsCM:
+  - config-server-share
+
 
 ## Secret with extra environment variables
 ##
 extraEnvVarsSecret:
+  - keycloak-client-secrets
 
 ## Extra volumes to add to the deployment
 ##
@@ -304,17 +306,15 @@ persistence:
 
   nfs:
     path: '/srv/nfs/mosip/packetcreator-authdemo-authcerts'
-    packetcreator_data_path: '/srv/nfs/mosip/packetcreator-data'
     server: ''
   # Dir where config and keys are written inside container
   mountDir: '/home/mosip/authcerts'
-  packetcreator_data_mount_dir: '/home/mosip/mountvolume/'
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
 ##
 volumePermissions:
-  enabled: true
+  enabled: enable
   image:
     registry: docker.io
     repository: bitnami/bitnami-shell
@@ -361,14 +361,14 @@ serviceAccount:
 ## Prometheus Metrics
 ##
 metrics:
-  enabled: true
+  enabled: false
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
   podAnnotations:
     prometheus.io/scrape: "true"
 
-  endpointPath: /v1/admin/actuator/prometheus
+  endpointPath:
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator
@@ -414,22 +414,3 @@ metrics:
     #     labels:
     #       severity: error
     rules: []
-
-packetcreator:
-  configmaps:
-    packetcreator:
-      authCertsPath: /home/mosip/authcerts
-      mountPath: /home/mosip/mountvolume
-  secrets:
-
-## Ingress
-ingress:
-  enabled: false
-  prefix: '/v1/packetcreator/(.*)'
-
-## Admin swagger should have only internal access. Hence linked to internal gateway
-istio:
-  enabled: true
-  gateways:
-    - istio-system/internal
-  prefix: '/v1/packetcreator'

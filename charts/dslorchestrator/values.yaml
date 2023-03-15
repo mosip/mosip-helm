@@ -51,7 +51,7 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipdev/dsl-packetcreator
+  repository: mosipdev/dsl-orchestrator
   tag: develop
 
   ## Specify a imagePullPolicy
@@ -67,43 +67,11 @@ image:
   #   - myRegistryKeySecretName
 
 ## Port on which this particular spring service module is running.
-springServicePort: 8080
+springServicePort: 8083
 
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
-startupProbe:
-  enabled: true
-  httpGet:
-    path: /v1/packetcreator/actuator/health
-    port: 8080
-  initialDelaySeconds: 0
-  periodSeconds: 20
-  timeoutSeconds: 5
-  failureThreshold: 60
-  successThreshold: 1
-
-livenessProbe:
-  enabled: true
-  httpGet:
-    path: /v1/packetcreator/actuator/health
-    port: 8080
-  initialDelaySeconds: 20
-  periodSeconds: 10
-  timeoutSeconds: 5
-  failureThreshold: 6
-  successThreshold: 1
-
-readinessProbe:
-  enabled: true
-  httpGet:
-    path: /v1/packetcreator/actuator/health
-    port: 8080
-  initialDelaySeconds: 0
-  periodSeconds: 10
-  timeoutSeconds: 5
-  failureThreshold: 6
-  successThreshold: 1
 
 ##
 # existingConfigmap:
@@ -126,16 +94,16 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-    cpu: 700m
-    memory: 3000Mi
+    cpu: 1000m
+    memory: 3500Mi
   requests:
-    cpu: 700m
-    memory: 3000Mi
+    cpu: 1000m
+    memory: 3500Mi
 
 additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
-  javaOpts: "-Xms2500M -Xmx2500M"
+  javaOpts: "-Xms2600M -Xmx2600M"
 
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
 ## Clamav container already runs as 'mosip' user, so we may not need to enable this
@@ -244,11 +212,20 @@ extraEnvVars: []
 
 ## ConfigMap with extra environment variables
 ##
-extraEnvVarsCM: []
-
+extraEnvVarsCM:
+  - global
+  - s3
+  - keycloak-host
+  - db
+  - dslorchestrator
+  - config-server-share
+  - artifactory-share
 ## Secret with extra environment variables
 ##
 extraEnvVarsSecret:
+  - s3
+  - keycloak-client-secrets
+  - postgres-postgresql
 
 ## Extra volumes to add to the deployment
 ##
@@ -299,16 +276,14 @@ persistence:
   storageClass:
   accessModes:
     - ReadWriteOnce
-  size: 50G
+  size: 100m
   existingClaim:
-
   nfs:
-    path: '/srv/nfs/mosip/packetcreator-authdemo-authcerts'
-    packetcreator_data_path: '/srv/nfs/mosip/packetcreator-data'
+    path: '/srv/nfs/mosip/dsl-scenarios/<sandbox.xyz.net>'
     server: ''
   # Dir where config and keys are written inside container
-  mountDir: '/home/mosip/authcerts'
-  packetcreator_data_mount_dir: '/home/mosip/mountvolume/'
+  mountDir: '/home/mosip/mountvolume/scenarios'
+
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
@@ -361,14 +336,14 @@ serviceAccount:
 ## Prometheus Metrics
 ##
 metrics:
-  enabled: true
+  enabled: false
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
   podAnnotations:
     prometheus.io/scrape: "true"
 
-  endpointPath: /v1/admin/actuator/prometheus
+  endpointPath:
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator
@@ -415,21 +390,71 @@ metrics:
     #       severity: error
     rules: []
 
-packetcreator:
-  configmaps:
-    packetcreator:
-      authCertsPath: /home/mosip/authcerts
-      mountPath: /home/mosip/mountvolume
-  secrets:
-
-## Ingress
-ingress:
-  enabled: false
-  prefix: '/v1/packetcreator/(.*)'
-
 ## Admin swagger should have only internal access. Hence linked to internal gateway
 istio:
-  enabled: true
+  enabled: false
   gateways:
     - istio-system/internal
-  prefix: '/v1/packetcreator'
+  prefix:
+  corsPolicy:
+    allowOrigins:
+      - prefix: https://api-internal.sandbox.xyz.net
+    allowCredentials: true
+    allowHeaders:
+      - Accept
+      - Accept-Encoding
+      - Accept-Language
+      - Connection
+      - Content-Type
+      - Cookie
+      - Host
+      - Referer
+      - Sec-Fetch-Dest
+      - Sec-Fetch-Mode
+      - Sec-Fetch-Site
+      - Sec-Fetch-User
+      - Origin
+      - Upgrade-Insecure-Requests
+      - User-Agent
+      - sec-ch-ua
+      - sec-ch-ua-mobile
+      - sec-ch-ua-platform
+      - x-xsrf-token
+      - xsrf-token
+    allowMethods:
+      - GET
+      - POST
+      - PATCH
+      - PUT
+      - DELETE
+
+
+crontime: "0 3 * * *"    ## run cronjob every day at 3 AM (time hr: 0-23 )
+
+dslorchestrator:
+  configmaps:
+    s3:
+      s3-host: 'http://minio.minio:9000'
+      s3-user-key: 'admin'
+      s3-region: ''
+    db:
+      db-port: '5432'
+      db-su-user: 'postgres'
+      db-server: 'api-internal.sandbox.xyz.net'
+    dslorchestrator:
+      ENABLE_INSECURE: "false"
+      ENDPOINT: "https://api-internal.sandbox.xyz.net"
+      LANG_CODE: "eng"
+      # TESTLEVEL: sanity or full
+      TESTLEVEL: "full"
+      USER: "api-internal.sandbox.xyz.net"
+      authCertsPath: "/home/mosip/authcerts"
+      authDemoServiceBaseURL: "http://authdemo.authdemo"
+      authDemoServicePort: "80"
+      # authdemo volume mountPath
+      mountPath: "/home/mosip/mountvolume"
+      # dslorchestrator scenario mountPath
+      mountPathForScenario: "/home/mosip/mountvolume/"
+      packetUtilityBaseUrl: https://<server-host>/v1/packetcreator
+      s3-account: "dslreports"
+  secrets:
