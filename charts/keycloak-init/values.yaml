@@ -346,9 +346,22 @@ keycloak:
            - KEY_MAKER
 
        - name: mosip-pms-client
-         mappers: []
+         mappers:
+           - mapper_name: phoneNumber
+             mapper_user_attribute: phoneNumber
+             token_claim_name: phoneNumber
+           - mapper_name: organizationName
+             mapper_user_attribute: organizationName
+             token_claim_name: organizationName
+           - mapper_name: partnerType
+             mapper_user_attribute: partnerType
+             token_claim_name: partnerType
+           - mapper_name: addressTest
+             mapper_user_attribute: address
+             token_claim_name: addressTest
          saroles:
            - PARTNER_ADMIN
+           - SUBSCRIBE_CA_CERTIFICATE_UPLOADED_GENERAL
            - PUBLISH_OIDC_CLIENT_CREATED_GENERAL
            - PUBLISH_OIDC_CLIENT_UPDATED_GENERAL
            - PUBLISH_APIKEY_APPROVED_GENERAL
