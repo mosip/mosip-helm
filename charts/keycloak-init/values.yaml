@@ -346,7 +346,7 @@ keycloak:
            - KEY_MAKER
 
        - name: mosip-pms-client
-         mappers: 
+         mappers:
            - mapper_name: phoneNumber
              mapper_user_attribute: phoneNumber
              token_claim_name: phoneNumber
