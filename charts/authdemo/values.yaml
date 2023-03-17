@@ -48,10 +48,12 @@ service:
   ## ref http://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip
   ##
   externalTrafficPolicy: Cluster
+  ## Port on which this particular spring service module is running.
+  springServicePort: 8082
 
 image:
   registry: docker.io
-  repository: mosipqa/automationtests
+  repository: mosipdev/authentication-demo-service
   tag: develop
 
   ## Specify a imagePullPolicy
@@ -66,12 +68,41 @@ image:
   # pullSecrets:
   #   - myRegistryKeySecretName
 
-## Port on which this particular spring service module is running.
-springServicePort: 8083
-
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
+startupProbe:
+  enabled: true
+  httpGet:
+    path: '/v1/identity/actuator/health'
+    port: 8082
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 30
+  successThreshold: 1
+
+livenessProbe:
+  enabled: true
+  httpGet:
+    path: '/v1/identity/actuator/health'
+    port: 8082
+  initialDelaySeconds: 20
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+  successThreshold: 1
+
+readinessProbe:
+  enabled: true
+  httpGet:
+    path: '/v1/identity/actuator/health'
+    port: 8082
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+  successThreshold: 1
 
 ##
 # existingConfigmap:
@@ -94,16 +125,16 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-    cpu: 1000m
-    memory: 3500Mi
+    cpu: 500m
+    memory: 2800Mi
   requests:
-    cpu: 1000m
-    memory: 3500Mi
+    cpu: 500m
+    memory: 2800Mi
 
 additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
-  javaOpts: "-Xms2600M -Xmx2600M"
+  javaOpts: "-Xms2000M -Xmx2000M"
 
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
 ## Clamav container already runs as 'mosip' user, so we may not need to enable this
@@ -213,19 +244,13 @@ extraEnvVars: []
 ## ConfigMap with extra environment variables
 ##
 extraEnvVarsCM:
-  - global
-  - s3
-  - keycloak-host
-  - db
-  - apitestrig
   - config-server-share
-  - artifactory-share
+
+
 ## Secret with extra environment variables
 ##
 extraEnvVarsSecret:
-  - s3
   - keycloak-client-secrets
-  - postgres-postgresql
 
 ## Extra volumes to add to the deployment
 ##
@@ -260,7 +285,7 @@ initContainers: {}
 sidecars: {}
 
 persistence:
-  enabled: false
+  enabled: true
   ## If defined, storageClassName: <storageClass>
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
@@ -276,16 +301,20 @@ persistence:
   storageClass:
   accessModes:
     - ReadWriteOnce
-  size: 10M
+  size: 50G
   existingClaim:
+
+  nfs:
+    path: '/srv/nfs/mosip/packetcreator-authdemo-authcerts'
+    server: ''
   # Dir where config and keys are written inside container
-  mountDir:
+  mountDir: '/home/mosip/authcerts'
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
 ##
 volumePermissions:
-  enabled: false
+  enabled: enable
   image:
     registry: docker.io
     repository: bitnami/bitnami-shell
@@ -385,78 +414,3 @@ metrics:
     #     labels:
     #       severity: error
     rules: []
-
-## Admin swagger should have only internal access. Hence linked to internal gateway
-istio:
-  enabled: false
-  gateways:
-    - istio-system/internal
-  prefix:
-  corsPolicy:
-    allowOrigins:
-      - prefix: https://api-internal.sandbox.xyz.net
-    allowCredentials: true
-    allowHeaders:
-      - Accept
-      - Accept-Encoding
-      - Accept-Language
-      - Connection
-      - Content-Type
-      - Cookie
-      - Host
-      - Referer
-      - Sec-Fetch-Dest
-      - Sec-Fetch-Mode
-      - Sec-Fetch-Site
-      - Sec-Fetch-User
-      - Origin
-      - Upgrade-Insecure-Requests
-      - User-Agent
-      - sec-ch-ua
-      - sec-ch-ua-mobile
-      - sec-ch-ua-platform
-      - x-xsrf-token
-      - xsrf-token
-    allowMethods:
-      - GET
-      - POST
-      - PATCH
-      - PUT
-      - DELETE
-
-modules:
-  - name: prereg
-    enabled: true
-  - name: masterdata
-    enabled: true
-  - name: idrepo
-    enabled: true
-  - name: partner
-    enabled: true
-  - name: resident
-    enabled: true
-  - name: auth
-    enabled: true
-  - name: mobileid
-    enabled: true
-
-crontime: "0 3 * * *"    ## run cronjob every day at 3 AM (time hr: 0-23 )
-
-apitestrig:
-  configmaps:
-    s3:
-      s3-host: 'http://minio.minio:9000'
-      s3-user-key: 'admin'
-      s3-region: ''
-    db:
-      db-port: '5432'
-      db-su-user: 'postgres'
-      db-server: 'api-internal.sandbox.xyz.net'
-    apitestrig:
-      ENV_USER: 'api-internal.sandbox'
-      ENV_ENDPOINT: 'https://api-internal.sandbox.xyz.net'
-      ENV_TESTLEVEL: 'smokeAndRegression'
-      ENABLE_INSECURE: 'false'
-      authDemoServiceBaseURL: http://authdemo.authdemo
-      authDemoServicePort: 80
-  secrets:

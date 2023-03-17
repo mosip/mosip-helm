@@ -1,0 +1,19 @@
+apiVersion: v2
+name: dslorchestrator
+description: A Helm chart to deploy dslorchestrator to test working of MOSIP modules
+type: application
+version: 12.0.1-B3
+appVersion: ""
+dependencies:
+  - name: common
+    repository: https://charts.bitnami.com/bitnami
+    tags:
+      - bitnami-common
+    version: 1.x.x
+home: https://mosip.io
+keywords:
+  - mosip
+  - dslorchestrator
+maintainers:
+  - email: info@mosip.io
+    name: MOSIP

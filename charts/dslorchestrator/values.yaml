@@ -51,7 +51,7 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipqa/automationtests
+  repository: mosipdev/dsl-orchestrator
   tag: develop
 
   ## Specify a imagePullPolicy
@@ -217,7 +217,7 @@ extraEnvVarsCM:
   - s3
   - keycloak-host
   - db
-  - apitestrig
+  - dslorchestrator
   - config-server-share
   - artifactory-share
 ## Secret with extra environment variables
@@ -260,7 +260,7 @@ initContainers: {}
 sidecars: {}
 
 persistence:
-  enabled: false
+  enabled: true
   ## If defined, storageClassName: <storageClass>
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
@@ -276,16 +276,20 @@ persistence:
   storageClass:
   accessModes:
     - ReadWriteOnce
-  size: 10M
+  size: 100m
   existingClaim:
+  nfs:
+    path: '/srv/nfs/mosip/dsl-scenarios/<sandbox.xyz.net>'
+    server: ''
   # Dir where config and keys are written inside container
-  mountDir:
+  mountDir: '/home/mosip/mountvolume/scenarios'
+
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
 ##
 volumePermissions:
-  enabled: false
+  enabled: true
   image:
     registry: docker.io
     repository: bitnami/bitnami-shell
@@ -424,25 +428,10 @@ istio:
       - PUT
       - DELETE
 
-modules:
-  - name: prereg
-    enabled: true
-  - name: masterdata
-    enabled: true
-  - name: idrepo
-    enabled: true
-  - name: partner
-    enabled: true
-  - name: resident
-    enabled: true
-  - name: auth
-    enabled: true
-  - name: mobileid
-    enabled: true
 
 crontime: "0 3 * * *"    ## run cronjob every day at 3 AM (time hr: 0-23 )
 
-apitestrig:
+dslorchestrator:
   configmaps:
     s3:
       s3-host: 'http://minio.minio:9000'
@@ -452,11 +441,20 @@ apitestrig:
       db-port: '5432'
       db-su-user: 'postgres'
       db-server: 'api-internal.sandbox.xyz.net'
-    apitestrig:
-      ENV_USER: 'api-internal.sandbox'
-      ENV_ENDPOINT: 'https://api-internal.sandbox.xyz.net'
-      ENV_TESTLEVEL: 'smokeAndRegression'
-      ENABLE_INSECURE: 'false'
-      authDemoServiceBaseURL: http://authdemo.authdemo
-      authDemoServicePort: 80
+    dslorchestrator:
+      ENABLE_INSECURE: "false"
+      ENDPOINT: "https://api-internal.sandbox.xyz.net"
+      LANG_CODE: "eng"
+      # TESTLEVEL: sanity or full
+      TESTLEVEL: "full"
+      USER: "api-internal.sandbox.xyz.net"
+      authCertsPath: "/home/mosip/authcerts"
+      authDemoServiceBaseURL: "http://authdemo.authdemo"
+      authDemoServicePort: "80"
+      # authdemo volume mountPath
+      mountPath: "/home/mosip/mountvolume"
+      # dslorchestrator scenario mountPath
+      mountPathForScenario: "/home/mosip/mountvolume/"
+      packetUtilityBaseUrl: https://<server-host>/v1/packetcreator
+      s3-account: "dslreports"
   secrets:
