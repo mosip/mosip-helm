@@ -65,21 +65,6 @@ image:
   ##
   # pullSecrets:
   #   - myRegistryKeySecretName
-auth_demo:
-  registry: docker.io
-  repository: mosipqa/authentication-demo-service
-  tag: develop
-  pullPolicy: Always
-  springServicePort: 8082
-  servicename: authdemo
-  javaOpts: "-Xms1500M -Xmx1500M"
-  resources:
-    limits:
-      cpu: 300m
-      memory: 2000Mi
-    requests:
-      cpu: 300m
-      memory: 2000Mi
 
 ## Port on which this particular spring service module is running.
 springServicePort: 8083
@@ -87,38 +72,6 @@ springServicePort: 8083
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
-startupProbe:
-  enabled: true
-  httpGet:
-    path: '/v1/identity/actuator/health'
-    port: 8082
-  initialDelaySeconds: 0
-  periodSeconds: 10
-  timeoutSeconds: 5
-  failureThreshold: 30
-  successThreshold: 1
-
-livenessProbe:
-  enabled: true
-  httpGet:
-    path: '/v1/identity/actuator/health'
-    port: 8082
-  initialDelaySeconds: 20
-  periodSeconds: 10
-  timeoutSeconds: 5
-  failureThreshold: 6
-  successThreshold: 1
-
-readinessProbe:
-  enabled: true
-  httpGet:
-    path: '/v1/identity/actuator/health'
-    port: 8082
-  initialDelaySeconds: 0
-  periodSeconds: 10
-  timeoutSeconds: 5
-  failureThreshold: 6
-  successThreshold: 1
 
 ##
 # existingConfigmap:
@@ -500,10 +453,12 @@ apitestrig:
     db:
       db-port: '5432'
       db-su-user: 'postgres'
-      db-server: 'postgres.sandbox.xyz.net'
+      db-server: 'api-internal.sandbox.xyz.net'
     apitestrig:
       ENV_USER: 'api-internal.sandbox'
       ENV_ENDPOINT: 'https://api-internal.sandbox.xyz.net'
       ENV_TESTLEVEL: 'smokeAndRegression'
       ENABLE_INSECURE: 'false'
+      authDemoServiceBaseURL: http://authdemo.authdemo
+      authDemoServicePort: 80
   secrets:
