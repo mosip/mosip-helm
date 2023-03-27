@@ -1,0 +1,123 @@
+---
+apiVersion: {{ include "common.capabilities.cronjob.apiVersion" . }}
+kind: CronJob
+metadata:
+  name: {{ template "dslorchestrator.cronjob" . }}
+  namespace: {{ .Release.Namespace }}
+
+spec:
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1  # remove jobs which are successfully executed
+  failedJobsHistoryLimit: 1      # except 1 recent failed job, remove jobs which are not successfully executed
+  #schedule: '*/3 * * * *' # cron spec of time
+  schedule: {{ .Values.crontime }}
+  jobTemplate:
+    spec:
+      backoffLimit: 2 # this has very low chance of failing, as all this does
+                      # is prompt kubernetes to schedule new replica set for
+      # the deployment
+      # activeDeadlineSeconds: 600 # timeout, makes most sense with
+      # "waiting for rollout" variant specified below
+      template:
+        spec:
+          # account configured above
+          restartPolicy: Never
+          initContainers:
+            {{- if and .Values.volumePermissions.enabled .Values.persistence.enabled }}
+            - name: volume-permissions
+              image: {{ template "dslorchestrator.image" . }}
+              imagePullPolicy: {{ .Values.volumePermissions.image.pullPolicy | quote }}
+              command:
+                - /bin/bash
+                - -c
+                - chown -R mosip:mosip {{ .Values.persistence.mountDir }}
+              securityContext:
+                runAsUser: 0
+              {{- if .Values.volumePermissions.resources }}
+              resources: {{- toYaml .Values.volumePermissions.resources | nindent 16 }}
+              {{- end }}
+              volumeMounts:
+                - name: {{ template "common.names.fullname" . }}
+                  mountPath: {{ .Values.persistence.mountDir }}
+            - name: authdemo-packetcreator-accessibility-check
+              image: rancher/curl
+              imagePullPolicy: {{ .Values.volumePermissions.image.pullPolicy | quote }}
+              command:
+                - /bin/sh
+                - -c
+                - MY_PROBE_CHECK_PATHS="$packetUtilityBaseUrl/actuator/health,$authDemoServiceBaseURL:$authDemoServicePort/v1/identity/actuator/health"; for str in $(echo $MY_PROBE_CHECK_PATHS | sed "s/,/\n/g"); do curl_output="$(curl -w %{http_code} -o /dev/null -s -k $str)"; if ! [ "$curl_output" = "200" ]; then echo "$str failed with status code $curl_output" >> /dev/stderr && exit 1; fi;done
+              securityContext:
+                runAsUser: 0
+              {{- if .Values.volumePermissions.resources }}
+              resources: {{- toYaml .Values.volumePermissions.resources | nindent 16 }}
+              env:
+                {{- if .Values.extraEnvVars }}
+                {{- include "common.tpvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
+                {{- end }}
+              envFrom:
+                {{- if .Values.extraEnvVarsCM }}
+                  {{- range .Values.extraEnvVarsCM }}
+                  - configMapRef:
+                      name: {{ . }}
+                  {{- end }}
+                  {{- end }}
+                  {{- if .Values.extraEnvVarsSecret }}
+                  {{- range .Values.extraEnvVarsSecret }}
+                  - secretRef:
+                      name: {{ . }}
+                  {{- end }}
+                  {{- end }}
+              {{- end }}
+            {{- end }}
+            {{- if .Values.initContainers }}
+            {{- include "common.tplvalues.render" (dict "value" .Values.initContainers "context" $) | nindent 8 }}
+            {{- end }}
+          containers:
+          - name: {{ template "dslorchestrator.serviceAccountName" . }}
+            image: {{ template "dslorchestrator.image" . }}
+            imagePullPolicy: {{ .Values.image.pullPolicy }}
+            {{- if .Values.lifecycleHooks }}
+            lifecycle: {{- include "common.tpvalues.render" (dict "value" .Values.lifecycleHooks "context" $) | nindent 12 }}
+            {{- end }}
+            {{- if .Values.containerSecurityContext.enabled }}
+            securityContext: {{- omit .Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
+            {{- end }}
+            {{- if .Values.command }}
+            command: {{- include "common.tpvalues.render" (dict "value" .Values.command "context" $) | nindent 12 }}
+            {{- end }}
+            {{- if .Values.args }}
+            args: {{- include "common.tpvalues.render" (dict "value" .Values.args "context" $) | nindent 12 }}
+            {{- end }}
+            env:
+                - name: container_user
+                  value: {{ .Values.containerSecurityContext.runAsUser }}
+                - name: JDK_JAVA_OPTIONS
+                  value: {{ .Values.additionalResources.javaOpts }}
+              {{- if .Values.extraEnvVars }}
+              {{- include "common.tpvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
+              {{- end }}
+            envFrom:
+              {{- if .Values.extraEnvVarsCM }}
+                {{- range .Values.extraEnvVarsCM }}
+                  - configMapRef:
+                        name: {{ . }}
+                {{- end }}
+                {{- end }}
+                {{- if .Values.extraEnvVarsSecret }}
+                {{- range .Values.extraEnvVarsSecret }}
+                  - secretRef:
+                        name: {{ . }}
+                {{- end }}
+                {{- end }}
+            ports:
+                - name: spring-service
+                  containerPort: {{ .Values.springServicePort }}
+            volumeMounts:
+                - name: {{ template "common.names.fullname" . }}
+                  mountPath: {{ .Values.persistence.mountDir }}
+          volumes:
+          {{- if .Values.persistence.enabled }}
+          - name: {{ template "common.names.fullname" . }}
+            persistentVolumeClaim:
+              claimName: {{ template "common.names.fullname" . }}-pvc
+          {{- end }}
