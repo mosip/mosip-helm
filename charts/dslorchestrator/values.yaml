@@ -457,4 +457,5 @@ dslorchestrator:
       mountPathForScenario: "/home/mosip/mountvolume/"
       packetUtilityBaseUrl: https://<server-host>/v1/packetcreator
       s3-account: "dslreports"
+      THREAD_COUNT: '8'
   secrets:
