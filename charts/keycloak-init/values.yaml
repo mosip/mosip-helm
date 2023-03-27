@@ -256,7 +256,7 @@ keycloak:
          attributes: {
            display.on.consent.screen: "false",
            include.in.token.scope: "true"
-         }    
+         }
 
       clients:
        - name: mosip-abis-client
@@ -418,7 +418,7 @@ keycloak:
          assign_client_scopes:
            - send_binding_otp
            - wallet_binding
-    
+
        - name: mosip-resident-client
          mappers:
            - mapper_name: individual_id
