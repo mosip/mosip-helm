@@ -1,0 +1,21 @@
+{{- if .Values.databases.mosip_esignet.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-esignet-init-env-config
+  namespace: {{ .Release.Namespace }}
+  labels: {{- include "common.labels.standard" . | nindent 4 }}
+    app.kubernetes.io/component: postgres
+    {{- if .Values.commonLabels }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
+    {{- end }}
+  {{- if .Values.commonAnnotations }}
+  annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
+  {{- end }}
+data:
+  MOSIP_DB_NAME: mosip_esignet
+  DB_SERVERIP: {{ .Values.databases.mosip_esignet.host | quote }}
+  DB_PORT: {{ .Values.databases.mosip_esignet.port | quote }}
+  SU_USER: {{ .Values.databases.mosip_esignet.su.user | quote }}
+  DML_FLAG: {{ .Values.databases.mosip_esignet.dml | quote }}
+{{- end }}
