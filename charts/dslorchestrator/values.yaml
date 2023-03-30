@@ -458,4 +458,5 @@ dslorchestrator:
       packetUtilityBaseUrl: https://<server-host>/v1/packetcreator
       s3-account: "dslreports"
       THREAD_COUNT: '8'
+      push_reports_to_s3: 'yes'
   secrets:
