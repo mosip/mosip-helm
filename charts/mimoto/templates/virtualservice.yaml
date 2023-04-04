@@ -28,7 +28,5 @@ spec:
         port:
           number: {{ .Values.service.port }}
     headers:
-      request:
-        set:
-          x-forwarded-proto: https
+    {{- include "common.tplvalues.render" ( dict "value" .Values.istio.headers "context" $ ) | nindent 6 }}
 {{- end }}
