@@ -100,16 +100,18 @@ spec:
                  name: env-config
              - secretRef:
                  name: {{ template "common.names.fullname" . }}
-            {{- if .Values.extraEnvVarsCM }}
-            {{- range .Values.extraEnvVarsCM }}
-            - configMapRef:
-                name: {{ . }}
-            {{- end }}
-            {{- end }}
-            {{- if .Values.extraEnvVarsSecret }}
-            - secretRef:
-                name: {{ include "common.tplvalues.render" (dict "value" .Values.extraEnvVarsSecret "context" $) }}
-            {{- end }}
+             {{- if .Values.extraEnvVarsCM }}
+             {{- range .Values.extraEnvVarsCM }}
+             - configMapRef:
+                 name: {{ . }}
+             {{- end }}
+             {{- end }}
+             {{- if .Values.extraEnvVarsSecret }}
+             {{- range .Values.extraEnvVarsSecret }}
+             - secretRef:
+                 name: {{ . }}
+             {{- end }}
+             {{- end }}
           ports:
             - name: spring-service
               containerPort: {{ .Values.springServicePort }}
