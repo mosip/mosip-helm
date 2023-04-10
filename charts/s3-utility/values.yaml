@@ -31,7 +31,7 @@ replicaCount: 1
 
 image:
   registry: docker.io
-  repository: akila18/minio-client
+  repository: mosipdev/s3-utility
   tag: latest
 
   ## Specify a imagePullPolicy
@@ -311,4 +311,4 @@ minioclient:
       s3_region: ''
   secrets:
   bucket_name: automation
-  no_of_days: 3d
+  retention_days: 3d
