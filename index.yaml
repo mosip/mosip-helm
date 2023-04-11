@@ -2460,7 +2460,7 @@ entries:
     version: 17.9.25
   esignet:
   - apiVersion: v2
-    created: "2023-04-11T07:19:00.504657336Z"
+    created: "2023-04-11T08:01:07.569570496Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -2468,7 +2468,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP esignet module
-    digest: 10d9e512c6e7df17f6120c8cfe2ea69bf57b2ca761f1974f282c3f1d1b35d837
+    digest: ec5d5081ba667ab22f21d72913610cddef8b71b72a5c464832c04971313caea2
     home: https://mosip.io
     keywords:
     - mosip
@@ -2479,7 +2479,7 @@ entries:
     name: esignet
     type: application
     urls:
-    - https://mosip.github.io/mosip-helm/esignet-1.0.0.tgz
+    - https://github.com/mosip/esignet-1.0.0.tgz
     version: 1.0.0
   - apiVersion: v2
     created: "2023-04-11T07:19:00.501564505Z"
@@ -5701,7 +5701,7 @@ entries:
     - https://mosip.github.io/mosip-helm/oidc-ui-12.0.2.tgz
     version: 12.0.2
   - apiVersion: v2
-    created: "2023-04-11T07:19:00.940138418Z"
+    created: "2023-04-11T08:01:07.572189351Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -5709,7 +5709,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP OIDC UI module
-    digest: cbfc1f90f8066413d50cc071bcb80c4ed00aa6770e636ceb4788192f7c3c1161
+    digest: f934b6fa8c773bf4315ef1caa7c7d552303f6ab8cd9231e2b8aebec065485b52
     home: https://mosip.io
     keywords:
     - mosip
@@ -5720,7 +5720,7 @@ entries:
     name: oidc-ui
     type: application
     urls:
-    - https://mosip.github.io/mosip-helm/oidc-ui-1.0.0.tgz
+    - https://github.com/mosip/oidc-ui-1.0.0.tgz
     version: 1.0.0
   opencrvs-mediator:
   - apiVersion: v2
@@ -13436,4 +13436,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2023-04-11T07:19:00.201746857Z"
+generated: "2023-04-11T08:01:07.56640083Z"
