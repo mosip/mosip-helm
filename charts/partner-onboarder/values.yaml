@@ -15,7 +15,8 @@ commonLabels:
 
 ## Add annotations to all the deployed resources
 ##
-commonAnnotations: {}
+commonAnnotations:
+  sidecar.istio.io/inject: "false"
 
 ## Kubernetes Cluster Domain
 ##
@@ -74,7 +75,7 @@ springServicePort: 8080
 ##
 ## abis.html is the last file in the sequence that is created.
 startupProbe:
-  enabled: true
+  enabled: false
   exec:
     command:
     - ls
@@ -87,7 +88,7 @@ startupProbe:
 
 ## Liveness probe does not apply as this is a job which is kept alive only to see reports
 livenessProbe:
-  enabled: true
+  enabled: false
   exec:
     command:
     - ls
@@ -99,7 +100,7 @@ livenessProbe:
   successThreshold: 1
 
 readinessProbe:
-  enabled: true
+  enabled: false
   exec:
     command:
     - ls
@@ -249,11 +250,17 @@ extraEnvVars: []
 
 ## ConfigMap with extra environment variables that used
 ##
-extraEnvVarsCM: []
+extraEnvVarsCM:
+  - global
+  - keycloak-env-vars
+  - keycloak-host
 
 ## Secret with extra environment variables
 ##
 extraEnvVarsSecret:
+  - s3
+  - keycloak
+  - keycloak-client-secrets
 
 ## Extra volumes to add to the deployment
 ##
@@ -415,19 +422,29 @@ metrics:
     rules: []
 
 onboarding:
-  # Internal API URL of sandbox e.g. https://api-internal.sandbox.xyz.net
-  apiUrl:
-  # This client with appropriate roles must exist in Keycloak
-  certManager: mosip-deployment-client
-  certManagerPassword: b64enc
-  enableInsecure: false
+  modules:
+    - name: ida
+      enabled: true
+    - name: print
+      enabled: true
+    - name: abis
+      enabled: true
+    - name: resident
+      enabled: true
+    - name: mobileid
+      enabled: true
+    - name: digitalcard
+      enabled: true
+    - name: esignet
+      enabled: false
+    - name: demo-oidc
+      enabled: false
+    - name: resident-oidc
+      enabled: false
 
-## Only internal access
-istio:
-  enabled: true
-  ingressController:
-    name: ingressgateway-internal
-  gateway: partner-onboarder-gateway
-  hosts:
-    - onboarder.sandbox.xyz.net
-  prefix: /
+  configmaps:
+    s3:
+      s3-host: 'http://minio.minio:9000'
+      s3-user-key: 'admin'
+      s3-region: ''
+  secrets:
