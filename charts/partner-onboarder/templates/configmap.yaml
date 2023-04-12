@@ -1,10 +1,10 @@
-{{- if .Values.onboarding.secrets }}
-{{- range $secret_name, $secret_value := .Values.onboarding.secrets }}
+{{- if .Values.onboarding.configmaps }}
+{{- range $cm_name, $cm_value := .Values.onboarding.configmaps }}
 ---
 apiVersion: v1
-kind: Secret
+kind: ConfigMap
 metadata:
-  name: {{ $secret_name }}
+  name: {{ $cm_name }}
   namespace: {{ $.Release.Namespace }}
   labels: {{- include "common.labels.standard" $ | nindent 8 }}
     {{- if $.Values.commonLabels }}
@@ -13,10 +13,9 @@ metadata:
   {{- if $.Values.commonAnnotations }}
   annotations: {{- include "common.tplvalues.render" ( dict "value" $.Values.commonAnnotations "context" $ ) | nindent 8 }}
   {{- end }}
-type: Opaque
 data:
-  {{- range $key, $value := $secret_value }}
-  {{ $key }}: {{ $value  | b64enc | quote  }}
+  {{- range $key, $value := $cm_value }}
+  {{ $key }}: {{ $value | quote }}
   {{- end }}
 {{- end }}
 {{- end }}
