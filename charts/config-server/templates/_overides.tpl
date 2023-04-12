@@ -45,12 +45,6 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.configmaps.global }}
       key: mosip-compliance-host
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_IDP_HOST
-  valueFrom:
-    configMapKeyRef:
-      name: {{ .Values.overrides.configmaps.global }}
-      key: mosip-idp-host
-
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_ESIGNET_HOST
   valueFrom:
     configMapKeyRef:
