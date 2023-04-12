@@ -1,0 +1,66 @@
+{{- range $module := $.Values.onboarding.modules }}
+{{- if $module.enabled }}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ template "common.names.fullname" $ }}-{{ $module.name }}
+  labels: {{- include "common.labels.standard" $ | nindent 4 }}
+    {{- if $.Values.commonLabels }}
+    {{- include "common.tplvalues.render" ( dict "value" $.Values.commonLabels "context" $ ) | nindent 4 }}
+    {{- end }}
+  annotations:
+    {{- if $.Values.commonAnnotations }}
+    {{- include "common.tplvalues.render" ( dict "value" $.Values.commonAnnotations "context" $ ) | nindent 4 }}
+    {{- end }}
+spec:
+  template:
+    metadata:
+      labels: {{- include "common.labels.standard" $ | nindent 10 }}
+        {{- if $.Values.commonLabels }}
+        {{- include "common.tplvalues.render" ( dict "value" $.Values.commonLabels "context" $ ) | nindent 10 }}
+        {{- end }}
+      annotations:
+        {{- if $.Values.commonAnnotations }}
+        {{- include "common.tplvalues.render" ( dict "value" $.Values.commonAnnotations "context" $ ) | nindent 10 }}
+        {{- end }}
+    spec:
+      serviceAccountName: {{ template "partner-onboarder.serviceAccountName" $ }}
+      securityContext:
+        {{- toYaml $.Values.jobSecurityContext | nindent 8 }}
+      restartPolicy: Never  # This is one time job
+      containers:
+        - name: {{ template "common.names.fullname" $ }}-{{ $module.name }}
+          securityContext: {{- toYaml $.Values.securityContext | nindent 12 }}
+          image: {{ template "partner-onboarder.image" $ }}
+          imagePullPolicy: {{ $.Values.image.pullPolicy }}
+          env:
+            - name: MODULE
+              value: {{ $module.name }}
+          envFrom:
+            {{- if $.Values.onboarding.configmaps }}
+            {{- range $cm_name, $cm_value := $.Values.onboarding.configmaps }}
+            - configMapRef:
+                name: {{ $cm_name }}
+            {{- end }}
+            {{- end }}
+            {{- if $.Values.onboarding.secrets }}
+            {{- range $secret_name, $secret_value := $.Values.onboarding.secrets }}
+            - secretRef:
+                name: {{ $secret_name }}
+            {{- end }}
+            {{- end }}
+            {{- if $.Values.extraEnvVarsSecret }}
+            {{- range $.Values.extraEnvVarsSecret }}
+            - secretRef:
+                name: {{ . }}
+            {{- end }}
+            {{- end }}
+              {{- if $.Values.extraEnvVarsCM }}
+              {{- range $.Values.extraEnvVarsCM }}
+            - configMapRef:
+                name: {{ . }}
+              {{- end }}
+              {{- end }}
+{{- end }}
+{{- end }}
