@@ -284,7 +284,6 @@ persistence:
   # Dir where config and keys are written inside container
   mountDir: '/home/mosip/mountvolume/scenarios'
 
-
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
 ##
@@ -428,7 +427,6 @@ istio:
       - PUT
       - DELETE
 
-
 crontime: "0 3 * * *"    ## run cronjob every day at 3 AM (time hr: 0-23 )
 
 dslorchestrator:
@@ -459,5 +457,5 @@ dslorchestrator:
       threadCount:
       push-reports-to-s3:
       enableDebug:
-      langselect:    
+      langselect:
   secrets:
