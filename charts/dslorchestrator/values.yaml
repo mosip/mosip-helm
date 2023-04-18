@@ -454,8 +454,8 @@ dslorchestrator:
       mountPathForScenario: "/home/mosip/mountvolume/"
       packetUtilityBaseUrl: https://<server-host>/v1/packetcreator
       s3-account: "dslreports"
-      threadCount:
-      push-reports-to-s3:
-      enableDebug:
-      langselect:
+      threadCount: "8"
+      push-reports-to-s3: "yes"
+      enableDebug: "yes"
+      langselect: "0"
   secrets:
