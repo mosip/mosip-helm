@@ -1,0 +1,32 @@
+# Default values for cronjob-rigs.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+cronjob:
+  name: restart-cronjob
+
+deployments:
+  deploymentName_1: "authdemo"
+  deploymentName_2: "packetcreator"
+
+namespaces:
+  namespace_1: "authdemo"
+  namespace_2: "packetcreator"
+
+schedule:
+  crontime: "0 3 * * *"   ## run cronjob every day at 3 AM (time hr: 0-23 )
+
+serviceAccount:
+  create: true
+  name: pod-deleter
+  namespace: dslrig
+
+rbac:
+  create: true
+  name: pod-deleter-rolebinding
+  namespace: dslrig
+  apiGroup: rbac.authorization.k8s.io
+
+role:
+  create: true
+  name: 'pod-deleter-role'
