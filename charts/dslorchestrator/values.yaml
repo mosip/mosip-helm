@@ -284,7 +284,6 @@ persistence:
   # Dir where config and keys are written inside container
   mountDir: '/home/mosip/mountvolume/scenarios'
 
-
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
 ##
@@ -428,7 +427,6 @@ istio:
       - PUT
       - DELETE
 
-
 crontime: "0 3 * * *"    ## run cronjob every day at 3 AM (time hr: 0-23 )
 
 dslorchestrator:
@@ -444,7 +442,6 @@ dslorchestrator:
     dslorchestrator:
       ENABLE_INSECURE: "false"
       ENDPOINT: "https://api-internal.sandbox.xyz.net"
-      LANG_CODE: "eng"
       # TESTLEVEL: sanity or full
       TESTLEVEL: "full"
       USER: "api-internal.sandbox.xyz.net"
@@ -457,6 +454,8 @@ dslorchestrator:
       mountPathForScenario: "/home/mosip/mountvolume/"
       packetUtilityBaseUrl: https://<server-host>/v1/packetcreator
       s3-account: "dslreports"
-      THREAD_COUNT: '8'
-      push-reports-to-s3: 'yes'
+      threadCount: "8"
+      push-reports-to-s3: "yes"
+      enableDebug: "yes"
+      langselect: "0"
   secrets:
