@@ -444,7 +444,6 @@ dslorchestrator:
     dslorchestrator:
       ENABLE_INSECURE: "false"
       ENDPOINT: "https://api-internal.sandbox.xyz.net"
-      LANG_CODE: "eng"
       # TESTLEVEL: sanity or full
       TESTLEVEL: "full"
       USER: "api-internal.sandbox.xyz.net"
@@ -457,6 +456,9 @@ dslorchestrator:
       mountPathForScenario: "/home/mosip/mountvolume/"
       packetUtilityBaseUrl: https://<server-host>/v1/packetcreator
       s3-account: "dslreports"
-      THREAD_COUNT: '8'
-      push-reports-to-s3: 'yes'
+      threadCount:
+      push-reports-to-s3:
+      enableDebug:
+      langselect:
+      
   secrets:
