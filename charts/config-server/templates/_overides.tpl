@@ -309,6 +309,12 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.secrets.confSecretsVarious }}
       key: idrepo-websub-vid-credential-update-secret
 
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_RESIDENT_WEBSUB_CREDENTIAL_STATUS_UPDATE_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.confSecretsVarious }}
+      key: resident_websub_credential_status_update_secret
+
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_KERNEL_TOKENID_UIN_SALT
   valueFrom:
     secretKeyRef:
