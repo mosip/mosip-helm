@@ -185,13 +185,11 @@ extraEnvVars: []
 
 ## ConfigMap with extra environment variables
 ##
-extraEnvVarsCM:
-  - s3
+extraEnvVarsCM: []
 
 ## Secret with extra environment variables
 ##
-extraEnvVarsSecret:
-  - s3
+extraEnvVarsSecret: []
 
 ## Extra volumes to add to the deployment
 ##
