@@ -313,7 +313,7 @@ All env variables that are accessed from mosip config properties
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.confSecretsVarious }}
-      key: resident_websub_credential_status_update_secret
+      key: resident-websub-credential-status-update-secret
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_KERNEL_TOKENID_UIN_SALT
   valueFrom:
