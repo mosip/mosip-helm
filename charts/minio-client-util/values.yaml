@@ -307,8 +307,8 @@ minioclient:
   configmaps:
     s3:
       s3_host: 'http://minio.minio:9000'
-      s3_user_key: 'admin'
+      s3_access_key: 'admin'
+      s3_secret_key: 'minio'
+      s3_bucket_name: automation
       s3_region: ''
-  secrets:
-  bucket_name: automation
   retention_days: 3d
