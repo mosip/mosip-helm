@@ -20,4 +20,6 @@ spec:
                    - bash
                    - -c
                    - "kubectl rollout restart deployment {{ .Values.deployments.deploymentName_1 }} -n {{ .Values.namespaces.namespace_1 }} &&
-                      kubectl rollout restart deployment {{ .Values.deployments.deploymentName_2 }} -n {{ .Values.namespaces.namespace_2 }}"
+                      kubectl rollout status deployment/{{ .Values.deployments.deploymentName_1 }} -n {{ .Values.namespaces.namespace_1 }} &&
+                      kubectl rollout restart deployment {{ .Values.deployments.deploymentName_2 }} -n {{ .Values.namespaces.namespace_2 }} &&
+                      kubectl rollout status deployment/{{ .Values.deployments.deploymentName_2 }} -n {{ .Values.namespaces.namespace_2 }}"
