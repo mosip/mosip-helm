@@ -443,7 +443,7 @@ dslorchestrator:
     dslorchestrator:
       ENABLE_INSECURE: "false"
       ENDPOINT: "https://api-internal.sandbox.xyz.net"
-      TESTLEVEL: "full,sanity"
+      # TESTLEVEL: "full,sanity"
       USER: "api-internal.sandbox.xyz.net"
       authCertsPath: "/home/mosip/authcerts"
       authDemoServiceBaseURL: "http://authdemo.authdemo"
