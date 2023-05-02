@@ -1,8 +1,8 @@
 apiVersion: v2
 name: gc-util
-description: A Helm chart to deploy s3 utility to remove apitestrig reports from minio
+description: A Helm chart to clear completed jobs from the kubernetes cluster
 type: application
-version: 1.0.0
+version: 0.0.8
 appVersion: ""
 dependencies:
   - name: common
