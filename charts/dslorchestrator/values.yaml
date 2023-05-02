@@ -427,6 +427,16 @@ istio:
       - PUT
       - DELETE
 
+types:
+  - name: full
+    enabled: true
+    env:
+      TESTLEVEL: "full"
+  - name: sanity
+    enabled: true
+    env:
+      TESTLEVEL: "sanity"
+
 crontime: "0 3 * * *"    ## run cronjob every day at 3 AM (time hr: 0-23 )
 
 dslorchestrator:
@@ -443,7 +453,7 @@ dslorchestrator:
       ENABLE_INSECURE: "false"
       ENDPOINT: "https://api-internal.sandbox.xyz.net"
       # TESTLEVEL: sanity or full
-      TESTLEVEL: "full"
+      # TESTLEVEL: "full"
       USER: "api-internal.sandbox.xyz.net"
       authCertsPath: "/home/mosip/authcerts"
       authDemoServiceBaseURL: "http://authdemo.authdemo"
