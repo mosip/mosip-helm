@@ -101,10 +101,14 @@ spec:
               {{- if eq $type.name "full" }}
                 - name: TESTLEVEL
                   value: "full"
+                - name: suspend
+                  value: "false"
               {{- end }}
               {{- if eq $type.name "sanity" }}
                 - name: TESTLEVEL
                   value: "sanity"
+                - name: suspend
+                  value: "true"
               {{- end }}
             envFrom:
               {{- if $.Values.extraEnvVarsCM }}

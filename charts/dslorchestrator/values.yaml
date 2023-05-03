@@ -430,12 +430,8 @@ istio:
 types:
   - name: full
     enabled: true
-    env:
-      TESTLEVEL: "full"
   - name: sanity
     enabled: true
-    env:
-      TESTLEVEL: "sanity"
 
 crontime: "0 3 * * *"    ## run cronjob every day at 3 AM (time hr: 0-23 )
 
