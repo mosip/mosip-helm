@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ .Values.cronjob.name }}
+spec:
+  concurrencyPolicy: Replace
+  schedule: {{ .Values.schedule.crontime }}
+  jobTemplate:
+    spec:
+      backoffLimit: 2
+      activeDeadlineSeconds: 600
+      template:
+          spec:
+            serviceAccountName: pod-deleter
+            restartPolicy: Never
+            containers:
+              - name: kubectl
+                image: bitnami/kubectl
+                command:
+                   - bash
+                   - -c
+                   - "kubectl rollout restart deployment {{ .Values.deployments.deploymentName_1 }} -n {{ .Values.namespaces.namespace_1 }} &&
+                      kubectl rollout restart deployment {{ .Values.deployments.deploymentName_2 }} -n {{ .Values.namespaces.namespace_2 }} &&
+                      kubectl rollout status deployment/{{ .Values.deployments.deploymentName_1 }} -n {{ .Values.namespaces.namespace_1 }} &&
+                      kubectl rollout status deployment/{{ .Values.deployments.deploymentName_2 }} -n {{ .Values.namespaces.namespace_2 }}"
