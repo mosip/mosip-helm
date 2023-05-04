@@ -454,6 +454,7 @@ keycloak:
            - CREDENTIAL_REQUEST
            - offline_access
            - uma_authorization
+           - SUBSCRIBE_CREDENTIAL_STATUS_UPDATE_GENERAL
          assign_client_scopes:
            - individual_id
            - ida_token
