@@ -58,10 +58,6 @@ spec:
                 runAsUser: 0
               {{- if $.Values.volumePermissions.resources }}
               resources: {{- toYaml $.Values.volumePermissions.resources | nindent 16 }}
-              env:
-                {{- if $.Values.extraEnvVars }}
-                {{- include "common.tpvalues.render" (dict "value" $.Values.extraEnvVars "context" $) | nindent 12 }}
-                {{- end }}
               envFrom:
                 {{- if $.Values.extraEnvVarsCM }}
                   {{- range $.Values.extraEnvVarsCM }}
