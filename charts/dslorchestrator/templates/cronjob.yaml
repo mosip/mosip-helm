@@ -61,7 +61,7 @@ spec:
               env:
                 {{- if $.Values.extraEnvVars }}
                 {{- include "common.tpvalues.render" (dict "value" $.Values.extraEnvVars "context" $) | nindent 12 }}
-                {{- end }}              
+                {{- end }}
               envFrom:
                 {{- if $.Values.extraEnvVarsCM }}
                   {{- range $.Values.extraEnvVarsCM }}
