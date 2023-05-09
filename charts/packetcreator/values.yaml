@@ -425,7 +425,8 @@ packetcreator:
 ## Ingress
 ingress:
   enabled: false
-  prefix: '/v1/packetcreator/(.*)'
+  host: ''
+  prefix: '/v1/packetcreator/'
 
 ## Admin swagger should have only internal access. Hence linked to internal gateway
 istio:
