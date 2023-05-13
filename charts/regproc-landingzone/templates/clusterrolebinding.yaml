@@ -15,5 +15,5 @@ roleRef:
   name: {{ template "common.names.fullname" . }}
 subjects:
   - kind: ServiceAccount
-    name: {{ template "regproc-landingzoneutility.serviceAccountName" . }}
+    name: {{ template "regproc-landingzone.serviceAccountName" . }}
     namespace: {{ .Release.Namespace }}
