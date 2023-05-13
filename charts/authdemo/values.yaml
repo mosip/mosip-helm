@@ -245,7 +245,8 @@ extraEnvVars: []
 ##
 extraEnvVarsCM:
   - config-server-share
-
+  - authdemo
+  - global
 
 ## Secret with extra environment variables
 ##
@@ -414,3 +415,8 @@ metrics:
     #     labels:
     #       severity: error
     rules: []
+
+authdemo:
+  configmaps:
+    authdemo:
+      ENABLE_INSECURE: "false"
