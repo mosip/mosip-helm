@@ -442,7 +442,7 @@ All env variables that are accessed from mosip config properties
     secretKeyRef:
       name: {{ .Values.overrides.secrets.confSecretsVarious }}
       key: mosip-ida-kyc-token-secret
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MIMOTO_WALLET_BINDING_PARTNER_API_KE
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MIMOTO_WALLET_BINDING_PARTNER_API_KEY
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.confSecretsVarious }}
