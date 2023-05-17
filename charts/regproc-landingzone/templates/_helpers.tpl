@@ -1,28 +1,28 @@
 {{/*
 Return the proper  image name
 */}}
-{{- define "regproc-landingzoneutility.image" -}}
+{{- define "regproc-landingzone.image" -}}
 {{ include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global) }}
 {{- end -}}
 
 {{/*
 Return the proper image name (for the init container volume-permissions image)
 */}}
-{{- define "regproc-landingzoneutility.volumePermissions.image" -}}
+{{- define "regproc-landingzone.volumePermissions.image" -}}
 {{- include "common.images.image" ( dict "imageRoot" .Values.volumePermissions.image "global" .Values.global ) -}}
 {{- end -}}
 
 {{/*
 Return the proper Docker Image Registry Secret Names
 */}}
-{{- define "regproc-landingzoneutility.imagePullSecrets" -}}
+{{- define "regproc-landingzone.imagePullSecrets" -}}
 {{- include "common.images.pullSecrets" (dict "images" (list .Values.image .Values.volumePermissions.image) "global" .Values.global) -}}
 {{- end -}}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "regproc-landingzoneutility.serviceAccountName" -}}
+{{- define "regproc-landingzone.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
     {{ default (printf "%s" (include "common.names.fullname" .)) .Values.serviceAccount.name }}
 {{- else -}}
@@ -33,10 +33,10 @@ Create the name of the service account to use
 {{/*
 Compile all warnings into a single message.
 */}}
-{{- define "regproc-landingzoneutility.validateValues" -}}
+{{- define "regproc-landingzone.validateValues" -}}
 {{- $messages := list -}}
-{{- $messages := append $messages (include "regproc-landingzoneutility.validateValues.foo" .) -}}
-{{- $messages := append $messages (include "regproc-landingzoneutility.validateValues.bar" .) -}}
+{{- $messages := append $messages (include "regproc-landingzone.validateValues.foo" .) -}}
+{{- $messages := append $messages (include "regproc-landingzone.validateValues.bar" .) -}}
 {{- $messages := without $messages "" -}}
 {{- $message := join "\n" $messages -}}
 
@@ -48,7 +48,7 @@ Compile all warnings into a single message.
 {{/*
 Return podAnnotations
 */}}
-{{- define "regproc-landingzoneutility.podAnnotations" -}}
+{{- define "regproc-landingzone.podAnnotations" -}}
 {{- if .Values.podAnnotations }}
 {{ include "common.tplvalues.render" (dict "value" .Values.podAnnotations "context" $) }}
 {{- end }}
