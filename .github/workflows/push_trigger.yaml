@@ -67,7 +67,8 @@ jobs:
                     echo "Pullpath: $fullpath"
                     fullname=$(basename "$line")
                     echo "Filename: $fullname"
-                  if [[ ! -d charts/$fullpath/ ]]; then echo "chart directory in list 'tmp.txt' not found; SKIPPING"; continue; fi
+                  if [[ ! -d charts/$fullpath/ ]]; then echo "chart directory fullpath in list 'tmp.txt' not found; SKIPPING"; continue; fi
+                  if [[ -z "$(ls -A charts/$fullpath/)" ]]; then echo "Helm chart directory is empty: charts/$fullpath/" exit 1; fi
                     helm dependency update charts/$fullpath/
                     helm package charts/$fullpath
                   done < tmp.txt
