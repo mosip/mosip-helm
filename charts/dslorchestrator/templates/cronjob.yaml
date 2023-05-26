@@ -78,7 +78,7 @@ spec:
               {{- end }}
             {{- end }}
             {{- if $.Values.initContainers }}
-            {{- include "common.tplvalues.render" (dict "value" $.Values.initContainers "context" $) | nindent 8 }}
+            {{- include "common.tplvalues.render" (dict "value" $.Values.initContainers "context" $) | nindent 12 }}
             {{- end }}
           containers:
           - name: {{ template "dslorchestrator.serviceAccountName" $ }}-{{ $type.name }}
@@ -131,11 +131,20 @@ spec:
             volumeMounts:
                 - name: {{ template "common.names.fullname" $ }}
                   mountPath: {{ $.Values.persistence.mountDir }}
+                {{- if $.Values.initContainers }}
+                - mountPath: /usr/local/openjdk-11/lib/security/cacerts
+                  name: cacerts
+                  subPath: cacerts
+                {{- end }}
           volumes:
           {{- if $.Values.persistence.enabled }}
           - name: {{ template "common.names.fullname" $ }}
             persistentVolumeClaim:
               claimName: {{ template "common.names.fullname" $ }}-pvc
+          {{- end }}
+          {{- if $.Values.initContainers }}
+          - name: cacerts
+            emptyDir: {}
           {{- end }}
 {{- end }}
 {{- end }}

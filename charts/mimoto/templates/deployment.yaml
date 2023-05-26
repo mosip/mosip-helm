@@ -112,6 +112,11 @@ spec:
           volumeMounts:
             - name: landing-folder
               mountPath: {{ .Values.persistence.mountDir }}
+          {{- if .Values.initContainers }}
+          - mountPath: /usr/local/openjdk-11/lib/security/cacerts
+            name: cacerts
+            subPath: cacerts
+          {{- end }}
           ports: []
           {{- if .Values.resources }}
           resources: {{- toYaml .Values.resources | nindent 12 }}
@@ -142,3 +147,7 @@ spec:
           {{- else }}
           emptyDir: {}
           {{ end }}
+        {{- if .Values.initContainers }}
+        - name: cacerts
+          emptyDir: {}
+        {{- end }}
