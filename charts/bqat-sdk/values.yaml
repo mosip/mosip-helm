@@ -73,7 +73,7 @@ springServicePort: 8849
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
 startupProbe:
-  enabled: true
+  enabled: false
   httpGet:
     path: /bqat-sdk/actuator/health
     port: 8849
@@ -84,7 +84,7 @@ startupProbe:
   successThreshold: 1
 
 livenessProbe:
-  enabled: true
+  enabled: false
   httpGet:
     path: /bqat-sdk/actuator/health
     port: 8849
@@ -95,7 +95,7 @@ livenessProbe:
   successThreshold: 1
 
 readinessProbe:
-  enabled: true
+  enabled: false
   httpGet:
     path: /bqat-sdk/actuator/health
     port: 8849
@@ -104,7 +104,6 @@ readinessProbe:
   timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
-
 ##
 # existingConfigmap:
 
@@ -416,8 +415,7 @@ metrics:
 istio:
   enabled: true
   gateway: istio-system/internal
-  prefix: /bqat-sdk
-
+  prefix: /bqatsdk-service
 ## Biosdk server expects an SDK library (zip file). Default is a mock SDK available in the artifactory.
 ## You may specify any url as long as it can be accessed from within the cluster
 ## bioapi_impl: Classpath of SDK implementation within the SDK lib.
