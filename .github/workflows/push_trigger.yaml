@@ -29,22 +29,6 @@ jobs:
                   echo "BRANCH_NAME=$(echo ${{ github.ref }} | sed -e 's,.*/\(.*\),\1,')" >> $GITHUB_ENV
                   echo "COMMIT_ID=${GITHUB_SHA}" >> $GITHUB_ENV
 
-            - id: files
-              uses: jitterbit/get-changed-files@v1
-            - name: save helm/charts to tmp.txt file
-              run: |
-                  touch ./tmp.txt
-                  for changed_file in ${{ steps.files.outputs.all }}; do
-                      echo "File: ${changed_file}."
-                      if [[ $changed_file =~ ^[charts] ]]; then 
-                          echo "${changed_file}" | awk -F '/' '/^[charts]/{print $2}' >> ./tmp.txt; 
-                          echo "Saved $( echo ${changed_file} | awk -F '/' '/^[charts]/{print $2}') chart to tmp.txt"
-                      fi
-                  done
-                  cat tmp.txt | sort | uniq > ./tmp1.txt
-                  mv ./tmp1.txt ./tmp.txt
-                  echo "List of charts to be published";
-                  cat ./tmp.txt
 
             - name: Generate tar files
               run: |
@@ -53,6 +37,7 @@ jobs:
 
                   echo "COMMIT=${{ env.COMMIT_ID }}"
                   echo "SKIP=FALSE" >> $GITHUB_ENV
+                  ls -d charts/* > ./tmp.txt
                   if [[ ! -s ./tmp.txt ]]; then 
                     echo "No Charts to publish"; 
                     echo "SKIP=TRUE" >> $GITHUB_ENV
