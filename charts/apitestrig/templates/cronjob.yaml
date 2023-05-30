@@ -15,7 +15,7 @@ spec:
   schedule: {{ $.Values.crontime }}
   jobTemplate:
     spec:
-      backoffLimit: 2 # this has very low chance of failing, as all this does
+      backoffLimit: 0 # this has very low chance of failing, as all this does
                       # is prompt kubernetes to schedule new replica set for
       # the deployment
       # activeDeadlineSeconds: 600 # timeout, makes most sense with
@@ -24,6 +24,10 @@ spec:
         spec:
           # account configured above
           restartPolicy: Never
+          initContainers:
+              {{- if $.Values.enable_insecure }}
+              {{- include "common.tplvalues.render" (dict "value" $.Values.initContainers "context" $) | nindent 12 }}
+              {{- end }}
           containers:
           - name: {{ template "apitestrig.serviceAccountName" $ }}-{{ $module.name }}
             image: {{ template "apitestrig.image" $ }}
@@ -66,6 +70,16 @@ spec:
             ports:
                 - name: spring-service
                   containerPort: {{ $.Values.springServicePort }}
-
+            volumeMounts:
+              {{- if $.Values.enable_insecure }}
+                - mountPath: /usr/local/openjdk-11/lib/security/cacerts
+                  name: cacerts
+                  subPath: cacerts
+              {{- end }}
+          volumes:
+          {{- if $.Values.enable_insecure }}
+          - name: cacerts
+            emptyDir: {}
+          {{- end }}
 {{- end }}
 {{- end }}
