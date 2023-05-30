@@ -3,6 +3,7 @@
 * Persitence must be enabled for failover and failback to work properly.  See [issue](https://github.com/vromero/activemq-artemis-helm/issues/22)
 * Original chart was modified as below:
 
+
 ```
 diff --git a/stable/activemq-artemis/templates/master-configmap.yaml b/stable/activemq-artemis/templates/master-configmap.yaml
 index df040d3..54aabbc 100644

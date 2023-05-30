@@ -72,6 +72,7 @@ jobs:
                   helm package $fullpath
                 done < tmp.txt
                 if ! ls *.tgz 1> /dev/null 2>&1; then echo "no tar files generated"; fi
+                echo "env.SKIP=FALSE" >> $GITHUB_ENV
 
             - name: Upload tar as Artifact
               uses: actions/upload-artifact@v2
