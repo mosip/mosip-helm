@@ -25,7 +25,7 @@ spec:
           # account configured above
           restartPolicy: Never
           initContainers:
-              {{- if $.Values.initContainers }}
+              {{- if $.Values.enable_insecure }}
               {{- include "common.tplvalues.render" (dict "value" $.Values.initContainers "context" $) | nindent 12 }}
               {{- end }}
           containers:
@@ -71,13 +71,13 @@ spec:
                 - name: spring-service
                   containerPort: {{ $.Values.springServicePort }}
             volumeMounts:
-              {{- if $.Values.initContainers }}
+              {{- if $.Values.enable_insecure }}
                 - mountPath: /usr/local/openjdk-11/lib/security/cacerts
                   name: cacerts
                   subPath: cacerts
               {{- end }}
           volumes:
-          {{- if $.Values.initContainers }}
+          {{- if $.Values.enable_insecure }}
           - name: cacerts
             emptyDir: {}
           {{- end }}
