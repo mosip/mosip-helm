@@ -69,7 +69,7 @@ spec:
             - name: foo
               mountPath: bar
         {{- end }}
-        {{- if .Values.initContainers }}
+        {{- if .Values.enable_insecure }}
           {{- include "common.tplvalues.render" (dict "value" .Values.initContainers "context" $) | nindent 8 }}
         {{- end }}
       containers:
@@ -112,7 +112,7 @@ spec:
           volumeMounts:
             - name: landing-folder
               mountPath: {{ .Values.persistence.mountDir }}
-            {{- if .Values.initContainers }}
+            {{- if .Values.enable_insecure }}
             - mountPath: /usr/local/openjdk-11/lib/security/cacerts
               name: cacerts
               subPath: cacerts
@@ -147,7 +147,7 @@ spec:
           {{- else }}
           emptyDir: {}
           {{ end }}
-        {{- if .Values.initContainers }}
+        {{- if .Values.enable_insecure }}
         - name: cacerts
           emptyDir: {}
         {{- end }}
