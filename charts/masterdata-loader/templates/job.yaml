@@ -5,6 +5,7 @@ metadata:
   labels:
     {{- include "masterdata-loader.labels" . | nindent 4 }}
 spec:
+  backoffLimit: 1
   template:
     metadata:
       labels:
