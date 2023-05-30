@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: ckm007/postgres-upgrade
+  repository: mosipdev/postgres-upgrade
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: v3
+  tag: release-1.2.0.1
 
 imagePullSecrets: []
 nameOverride: ""
