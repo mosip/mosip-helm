@@ -60,16 +60,18 @@ jobs:
                   #cd charts &&
                   #find * -prune -type d > ../tmp.txt
                   #cd ..
-
-                  while IFS= read -r line
-                  do
-                    fullpath=$line
-                    echo "Pullpath: $fullpath"
-                    fullname=$(basename "$line")
-                    echo "Filename: $fullname"
-                    helm dependency update charts/$fullpath/
-                    helm package charts/$fullpath
-                  done < tmp.txt
+                
+                while IFS= read -r line
+                do
+                  fullpath=$line
+                  echo "Pullpath: $fullpath"
+                  fullname=$(basename "$line")
+                  echo "Filename: $fullname"
+                if [[ ! -d $fullpath/ ]]; then echo "chart directory $fullpath in list 'tmp.txt' not found; SKIPPING"; continue; fi
+                  helm dependency update $fullpath/
+                  helm package $fullpath
+                done < tmp.txt
+                if ! ls *.tgz 1> /dev/null 2>&1; then echo "no tar files generated"; fi
 
             - name: Upload tar as Artifact
               uses: actions/upload-artifact@v2
