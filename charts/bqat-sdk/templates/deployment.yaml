@@ -21,7 +21,7 @@ spec:
     metadata:
       annotations:
         {{- if or .Values.podAnnotations .Values.metrics.enabled }}
-        {{- include "bqat-sdk.podAnnotations" . | nindent 8 }}
+        {{- include "bqatsdk-service.podAnnotations" . | nindent 8 }}
         {{- end }}
        
       labels: {{- include "common.labels.standard" . | nindent 8 }}
@@ -29,8 +29,8 @@ spec:
         {{- include "common.tplvalues.render" (dict "value" .Values.podLabels "context" $) | nindent 8 }}
         {{- end }}
     spec:
-      serviceAccountName: {{ template "bqat-sdk.serviceAccountName" . }}
-      {{- include "bqat-sdk.imagePullSecrets" . | nindent 6 }}
+      serviceAccountName: {{ template "bqatsdk-service.serviceAccountName" . }}
+      {{- include "bqatsdk-service.imagePullSecrets" . | nindent 6 }}
       {{- if .Values.hostAliases }}
       hostAliases: {{- include "common.tplvalues.render" (dict "value" .Values.hostAliases "context" $) | nindent 8 }}
       {{- end }}
@@ -57,7 +57,7 @@ spec:
       initContainers:
         {{- if and .Values.volumePermissions.enabled .Values.persistence.enabled }}
         - name: volume-permissions
-          image: {{ include "bqat-sdk.volumePermissions.image" . }}
+          image: {{ include "bqatsdk-service.volumePermissions.image" . }}
           imagePullPolicy: {{ .Values.volumePermissions.image.pullPolicy | quote }}
           command:
             - %%commands%%
@@ -74,8 +74,8 @@ spec:
           {{- include "common.tplvalues.render" (dict "value" .Values.initContainers "context" $) | nindent 8 }}
         {{- end }}
       containers:
-        - name: bqat-sdk
-          image: {{ template "bqat-sdk.image" . }}
+        - name: bqatsdk-service
+          image: {{ template "bqatsdk-service.image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- if .Values.lifecycleHooks }}
           lifecycle: {{- include "common.tplvalues.render" (dict "value" .Values.lifecycleHooks "context" $) | nindent 12 }}

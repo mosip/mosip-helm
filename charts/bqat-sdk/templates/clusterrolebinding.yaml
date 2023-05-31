@@ -15,5 +15,5 @@ roleRef:
   name: {{ template "common.names.fullname" . }}
 subjects:
   - kind: ServiceAccount
-    name: {{ template "bqat-sdk.serviceAccountName" . }}
+    name: {{ template "bqatsdk-service.serviceAccountName" . }}
     namespace: {{ .Release.Namespace }}
