@@ -1,28 +1,28 @@
 {{/*
 Return the proper  image name
 */}}
-{{- define "bqat-sdk.image" -}}
+{{- define "bqatsdk-service.image" -}}
 {{ include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global) }}
 {{- end -}}
 
 {{/*
 Return the proper image name (for the init container volume-permissions image)
 */}}
-{{- define "bqat-sdk.volumePermissions.image" -}}
+{{- define "bqatsdk-service.volumePermissions.image" -}}
 {{- include "common.images.image" ( dict "imageRoot" .Values.volumePermissions.image "global" .Values.global ) -}}
 {{- end -}}
 
 {{/*
 Return the proper Docker Image Registry Secret Names
 */}}
-{{- define "bqat-sdk.imagePullSecrets" -}}
+{{- define "bqatsdk-service.imagePullSecrets" -}}
 {{- include "common.images.pullSecrets" (dict "images" (list .Values.image .Values.volumePermissions.image) "global" .Values.global) -}}
 {{- end -}}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "bqat-sdk.serviceAccountName" -}}
+{{- define "bqatsdk-service.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
     {{ default (printf "%s" (include "common.names.fullname" .)) .Values.serviceAccount.name }}
 {{- else -}}
@@ -33,10 +33,10 @@ Create the name of the service account to use
 {{/*
 Compile all warnings into a single message.
 */}}
-{{- define "bqat-sdk.validateValues" -}}
+{{- define "bqatsdk-service.validateValues" -}}
 {{- $messages := list -}}
-{{- $messages := append $messages (include "bqat-sdk.validateValues.foo" .) -}}
-{{- $messages := append $messages (include "bqat-sdk.validateValues.bar" .) -}}
+{{- $messages := append $messages (include "bqatsdk-service.validateValues.foo" .) -}}
+{{- $messages := append $messages (include "bqatsdk-service.validateValues.bar" .) -}}
 {{- $messages := without $messages "" -}}
 {{- $message := join "\n" $messages -}}
 
@@ -48,7 +48,7 @@ Compile all warnings into a single message.
 {{/*
 Return podAnnotations
 */}}
-{{- define "bqat-sdk.podAnnotations" -}}
+{{- define "bqatsdk-service.podAnnotations" -}}
 {{- if .Values.podAnnotations }}
 {{ include "common.tplvalues.render" (dict "value" .Values.podAnnotations "context" $) }}
 {{- end }}

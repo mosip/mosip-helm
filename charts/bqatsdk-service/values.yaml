@@ -73,7 +73,7 @@ springServicePort: 8849
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
 startupProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /bqatsdk-service/actuator/health
     port: 8849
@@ -84,7 +84,7 @@ startupProbe:
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /bqatsdk-service/actuator/health
     port: 8849
@@ -95,7 +95,7 @@ livenessProbe:
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /bqatsdk-service/actuator/health
     port: 8849
@@ -420,7 +420,7 @@ istio:
 ## You may specify any url as long as it can be accessed from within the cluster
 ## bioapi_impl: Classpath of SDK implementation within the SDK lib.
 bqatsdk:
-  # zippedLibUrl: http://artifactory.artifactory/artifactory/libs-release-local/bqat/bqat-sdk.jar
+  # zippedLibUrl: http://artifactory.artifactory/artifactory/libs-release-local/bqat/bqatsdk-service.jar
   # bioapiImpl: io.mosip.biosdk.client.impl.spec_1_0.Client_V_1_0
-  zippedLibUrl: http://artifactory.artifactory/artifactory/libs-release-local/bqat/bqat-sdk.jar
+  zippedLibUrl: http://artifactory.artifactory/artifactory/libs-release-local/bqat/bqatsdk-service.jar
   bioapiImpl: io.bqat.sdk.services.impl.BqatQualitySdkService

@@ -6,7 +6,7 @@ Helm chart for installing BqatSDK Service.  The service expects an SDK jar provi
 
 ```console
 $ helm repo add mosip https://mosip.github.io
-$ helm install my-release mosip/bqat-sdk
+$ helm install my-release mosip/bqatsdk-service
 ```
 
 
