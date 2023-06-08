@@ -15,4 +15,4 @@ data:
   DB_SERVERIP: {{ .Values.database.host | quote }}
   DB_PORT: {{ .Values.database.port | quote }}
   SU_USER: {{ .Values.database.su.user | quote }}
-  SYS_ADMIN_USER: {{ .Values.database.sysadmin.user | quote }}
+  PRIMARY_LANGUAGE_CODE: {{ .Values.database.plangcode | quote }}

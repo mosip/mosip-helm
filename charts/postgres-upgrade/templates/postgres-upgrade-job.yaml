@@ -30,8 +30,6 @@ spec:
           env:
           - name: SU_USER_PWD
             value: {{ .Values.database.su.su_password }}
-          - name: SYS_ADMIN_PWD
-            value: {{ .Values.database.sysadmin.sysadmin_password }}
 
           envFrom:
             - configMapRef:
