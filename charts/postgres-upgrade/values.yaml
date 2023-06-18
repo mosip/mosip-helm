@@ -1,0 +1,94 @@
+# Default values for postgres-upgrade.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: mosipdev/postgres-upgrade
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: release-1.2.0.1
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+jobAnnotations: {}
+
+jobSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths: []
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+## Some common set of users are created across all postgres servers with same password.  TODO: change this later.
+## These user names are currently hardcoded in the sql scripts, so can't change from here.
+dbUserPasswords:
+  dbuserPassword: ""
+
+## Superuser secret is required to setup DB. It is assumed that the secret was created while creating
+## DB server(s) and is available in the same namespace.
+## host: It could be in-cluster service name of postgres if running as pods inside cluster.
+## su.user: Assumed 'postgres'. Change manually if you have given a different postgres superuser name
+## su.secret.name: Default name 'postgres-postgresql' if you install bitnami postgres within cluster.
+## su.secret.key: Default key 'postgres-password' if you install bitnami postgres within cluster.
+## dml: whether dml is available to be loaded 0/1. Refer SQL scripts in module repos.
+
+database:
+  enabled: true
+  host: ''
+  port: ''
+  plangcode: ''
+  su:
+    user: postgres
+    su_password: ''
