@@ -51,8 +51,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipid/dsl-packetcreator
-  tag: 1.2.0.1-B2
+  repository: mosipqa/dsl-packetcreator
+  tag: release-1.2.0.1
 
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
