@@ -371,6 +371,30 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.secrets.email }}
       key: email-smtp-secret
 
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SMS_SMTP_HOST
+  valueFrom:
+    configMapKeyRef:
+      name: {{ .Values.overrides.configmaps.sms }}
+      key: sms-smtp-host
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SMS_SMTP_PORT
+  valueFrom:
+    configMapKeyRef:
+      name: {{ .Values.overrides.configmaps.sms }}
+      key: sms-smtp-port
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SMS_SMTP_USERNAME
+  valueFrom:
+    configMapKeyRef:
+      name: {{ .Values.overrides.configmaps.sms }}
+      key: sms-smtp-username
+
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SMS_SMTP_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.overrides.secrets.sms }}
+      key: sms-smtp-secret
+
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_PREREG_CAPTCHA_SITE_KEY
   valueFrom:
     secretKeyRef:
