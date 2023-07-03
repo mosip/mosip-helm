@@ -1623,6 +1623,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/compliance-toolkit-ui-12.0.2.tgz
     version: 12.0.2
+  - apiVersion: v2
+    created: "2023-07-03T09:46:25.584189367Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for compliance-toolkit-ui
+    digest: 6385c63cc24b27aef3d90a8fe3b5769fede1289d2a0c7900d2653d6643f0b340
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - compliance-toolkit-ui
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: compliance-toolkit-ui
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/compliance-toolkit-ui-1.2.0.tgz
+    version: 1.2.0
   conf-secrets:
   - apiVersion: v2
     appVersion: 1.1.2
@@ -13734,4 +13757,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2023-06-27T08:08:40.454335895Z"
+generated: "2023-07-03T09:46:25.580674092Z"
