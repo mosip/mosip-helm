@@ -368,7 +368,7 @@ All env variables that are accessed from mosip config properties
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SMS_PORT
   valueFrom:
     configMapKeyRef:
-      name: {{ .Values.overrides.configmaps.smtp }}
+      name: {{ .Values.overrides.configmaps.sms }}
       key: sms-port
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SMTP_USERNAME
