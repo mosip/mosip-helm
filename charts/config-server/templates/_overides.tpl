@@ -347,35 +347,35 @@ All env variables that are accessed from mosip config properties
       key: s3-user-secret
 {{- end }}
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_EMAIL_SMTP_HOST
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SMTP_HOST
   valueFrom:
     configMapKeyRef:
       name: {{ .Values.overrides.configmaps.email }}
-      key: email-smtp-host
+      key: smtp-host
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_EMAIL_SMTP_PORT
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SMTP_PORT
   valueFrom:
     configMapKeyRef:
       name: {{ .Values.overrides.configmaps.email }}
-      key: email-smtp-port
+      key: smtp-port
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SMS_SMTP_PORT
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SMS_PORT
   valueFrom:
     configMapKeyRef:
       name: {{ .Values.overrides.configmaps.email }}
-      key: sms-smtp-port
+      key: sms-port
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_EMAIL_SMTP_USERNAME
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SMTP_USERNAME
   valueFrom:
     configMapKeyRef:
       name: {{ .Values.overrides.configmaps.email }}
-      key: email-smtp-username
+      key: smtp-username
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_EMAIL_SMTP_SECRET
+- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SMTP_SECRET
   valueFrom:
     secretKeyRef:
       name: {{ .Values.overrides.secrets.email }}
-      key: email-smtp-secret
+      key: smtp-secret
 
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_PREREG_CAPTCHA_SITE_KEY
   valueFrom:
