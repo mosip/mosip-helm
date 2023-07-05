@@ -155,6 +155,7 @@ overrides:
     activemq: activemq-activemq-artemis
     s3: s3
     smtp: msg-gateway
+    sms: msg-gateway
     captcha: mosip-captcha
     confSecretsVarious: conf-secrets-various
   configmaps:
@@ -163,6 +164,7 @@ overrides:
     activemq: activemq-activemq-artemis-share
     s3: s3
     smtp: msg-gateway
+    sms: msg-gateway
 ## The active profile env if you have another set of properties. Correspondingly, properties in Git repo will
 ## have names of type "*-default.properties"
 activeProfileEnv: default
