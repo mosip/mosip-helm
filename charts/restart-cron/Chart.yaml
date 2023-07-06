@@ -1,6 +1,6 @@
 apiVersion: v2
-name: testrigs-cron
-description: A Helm chart to deploy cronjob to restart authdemo and packetcreator service.
+name: restart-cron
+description: A Helm chart to deploy cronjob to restart authdemo and packetcreator service and other services.
 type: application
 version: 12.0.2
 appVersion: ""
@@ -13,7 +13,7 @@ dependencies:
 home: https://mosip.io
 keywords:
   - mosip
-  - testrigs-cron
+  - restart-cron
 maintainers:
   - email: info@mosip.io
     name: MOSIP
