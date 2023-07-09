@@ -1,0 +1,19 @@
+apiVersion: v2
+name: bqatsdk-service
+description: A Helm chart for MOSIP bqatsdk-service
+type: application
+version: 1.0.0
+appVersion: ""
+dependencies:
+  - name: common
+    repository: https://charts.bitnami.com/bitnami
+    tags:
+      - bitnami-common
+    version: 1.x.x
+home: https://mosip.io
+keywords:
+  - mosip
+  - bqatsdk-service
+maintainers:
+  - email: info@mosip.io
+    name: MOSIP
