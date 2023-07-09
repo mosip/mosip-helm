@@ -1,6 +1,6 @@
-# PMP-UI
+# Authmanager
 
-Helm chart for installing MOSIP PMP UI module
+Helm chart for installing MOSIP pmp UI module
 
 ## TL;DR
 
@@ -29,3 +29,5 @@ helm install my-release mosip/pmp-ui
 ## Uninstalling the Chart
 
 To uninstall/delete the `my-release` deployment:
+
+
