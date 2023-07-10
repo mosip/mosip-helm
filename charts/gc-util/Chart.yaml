@@ -1,21 +1,20 @@
 apiVersion: v2
-name: postgres-upgrade
-description: A Helm chart for Kubernetes to Upgrade various Postgres DBs.
+name: gc-util
+description: A Helm chart to clear completed jobs from the kubernetes cluster
 type: application
-version: 12.0.1
-appVersion: 1.2.0
+version: 0.0.8
+appVersion: ""
 dependencies:
   - name: common
     repository: https://charts.bitnami.com/bitnami
     tags:
       - bitnami-common
     version: 1.x.x
-
 home: https://mosip.io
 keywords:
-  - postgres-upgrade
-  - db-upgrade
-  - database
+  - mosip
+  - deletecron
+  - gcutil
 maintainers:
   - email: info@mosip.io
     name: MOSIP

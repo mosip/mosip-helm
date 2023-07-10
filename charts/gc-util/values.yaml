@@ -29,30 +29,10 @@ extraDeploy: []
 ##
 replicaCount: 1
 
-service:
-  type: ClusterIP
-  port: 80
-  ## loadBalancerIP for the SuiteCRM Service (optional, cloud specific)
-  ## ref: http://kubernetes.io/docs/user-guide/services/#type-loadbalancer
-  ##
-  ## loadBalancerIP:
-  ##
-  ## nodePorts:
-  ##   http: <to set explicitly, choose port between 30000-32767>
-  ##   https: <to set explicitly, choose port between 30000-32767>
-  ##
-  nodePorts:
-    http: ""
-    https: ""
-  ## Enable client source IP preservation
-  ## ref http://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip
-  ##
-  externalTrafficPolicy: Cluster
-
 image:
   registry: docker.io
-  repository: mosipqa/pmp-ui
-  tag: 1.2.0.1
+  repository: bitnami/kubectl
+  tag: latest
 
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -65,46 +45,6 @@ image:
   ##
   # pullSecrets:
   #   - myRegistryKeySecretName
-
-## Port on which this particular spring service module is running.
-springServicePort: 8080
-
-## Configure extra options for liveness and readiness probes
-## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
-##
-## TODO: health probes don't exist. Check.
-startupProbe:
-  enabled: true
-  httpGet:
-    path: /
-    port: 8080
-  initialDelaySeconds: 0
-  periodSeconds: 10
-  timeoutSeconds: 5
-  failureThreshold: 30
-  successThreshold: 1
-
-livenessProbe:
-  enabled: true
-  httpGet:
-    path: /
-    port: 8080
-  initialDelaySeconds: 20
-  periodSeconds: 10
-  timeoutSeconds: 5
-  failureThreshold: 6
-  successThreshold: 1
-
-readinessProbe:
-  enabled: true
-  httpGet:
-    path: /
-    port: 8080
-  initialDelaySeconds: 0
-  periodSeconds: 10
-  timeoutSeconds: 5
-  failureThreshold: 6
-  successThreshold: 1
 
 ##
 # existingConfigmap:
@@ -127,16 +67,16 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-    cpu: 300m
-    memory: 1500Mi
+    cpu: 200m
+    memory: 500Mi
   requests:
-    cpu: 100m
-    memory: 50Mi
+    cpu: 200m
+    memory: 500Mi
 
 additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
-  javaOpts: "-Xms750M -Xmx750M"
+  javaOpts: "-Xms2600M -Xmx2600M"
 
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
 ## Clamav container already runs as 'mosip' user, so we may not need to enable this
@@ -245,14 +185,11 @@ extraEnvVars: []
 
 ## ConfigMap with extra environment variables
 ##
-extraEnvVarsCM:
-  - global
-  - config-server-share
-  - artifactory-share
+extraEnvVarsCM: []
 
 ## Secret with extra environment variables
 ##
-extraEnvVarsSecret:
+extraEnvVarsSecret: []
 
 ## Extra volumes to add to the deployment
 ##
@@ -356,80 +293,10 @@ serviceAccount:
   ##
   name:
 
-## Prometheus Metrics
-##
-metrics:
-  enabled: false
-  ## Prometheus pod annotations
-  ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
-  ##
-  podAnnotations:
-    prometheus.io/scrape: "true"
-
-  endpointPath:
-
-  ## Prometheus Service Monitor
-  ## ref: https://github.com/coreos/prometheus-operator
-  ##
-  serviceMonitor:
-    ## If the operator is installed in your cluster, set to true to create a Service Monitor Entry
-    ##
-    enabled: true
-    ## Specify the namespace in which the serviceMonitor resource will be created
-    ##
-    # namespace: ""
-    ## Specify the interval at which metrics should be scraped
-    ##
-    interval: 10s
-    ## Specify the timeout after which the scrape is ended
-    ##
-    # scrapeTimeout: 30s
-    ## Specify Metric Relabellings to add to the scrape endpoint
-    ##
-    # relabellings:
-    ## Specify honorLabels parameter to add the scrape endpoint
-    ##
-    honorLabels: false
-    ## Used to pass Labels that are used by the Prometheus installed in your cluster to select Service Monitors to work with
-    ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#prometheusspec
-    ##
-    additionalLabels: {}
-
-  ## Custom PrometheusRule to be defined
-  ## The value is evaluated as a template, so, for example, the value can depend on .Release or .Chart
-  ## ref: https://github.com/coreos/prometheus-operator#customresourcedefinitions
-  ##
-  prometheusRule:
-    enabled: false
-    additionalLabels: {}
-    namespace: ''
-    ## List of rules, used as template by Helm.
-    ## These are just examples rules inspired from https://awesome-prometheus-alerts.grep.to/rules.html
-    # rules:
-    #   - alert: RabbitmqDown
-    #     expr: rabbitmq_up{service="{{ template "rabbitmq.fullname" . }}"} == 0
-    #     for: 5m
-    #     labels:
-    #       severity: error
-    rules: []
-
-## The url below is to access pmp API services.
-## CAUTION: Domain name to acess pmp UI must be secure/internal/over vpn.
-## Slash is important!
-pmp:
-  apiUrl: https://pmp.sandbox.mosip.net/
-
-## pmp UI swagger should have only internal access. Hence linked to internal gateway
-## We create a gateway for pmp specific URL(s) listed under `hosts`
+## Admin swagger should have only internal access. Hence linked to internal gateway
 istio:
-  enabled: true
-  ingressController:
-    name: ingressgateway-internal
+  enabled: false
   gateways:
-    - name: pmp-gateway
-      protocol: HTTP
-      portName: http
-      port: 80
-  hosts:
-    - pmp.sandbox.xyz.net
-  prefix: /
+    - istio-system/internal
+
+crontime: "0 13 * * *"    ## run cronjob every day at 4 AM in GMT which is 9.30 AM in IST (time hr: 0-23 )

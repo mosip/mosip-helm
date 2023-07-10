@@ -51,9 +51,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipqa/pmp-ui
+  repository: mosipqa/tusd-server
   tag: 1.2.0.1
-
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -65,45 +64,48 @@ image:
   ##
   # pullSecrets:
   #   - myRegistryKeySecretName
+tusd:
+  host: ''
+  mountDir: "/mnt/tusd"  # path inside docker
+  healthCheckUrl:
+  tusdMountDIr: /home/mosip/tusd/
+  puburl:
+  privurl:
 
 ## Port on which this particular spring service module is running.
-springServicePort: 8080
+containerPort: 1080
 
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
-## TODO: health probes don't exist. Check.
 startupProbe:
   enabled: true
   httpGet:
-    path: /
-    port: 8080
+    port: 1080
   initialDelaySeconds: 0
-  periodSeconds: 10
+  periodSeconds: 30
   timeoutSeconds: 5
-  failureThreshold: 30
+  failureThreshold: 10
   successThreshold: 1
 
 livenessProbe:
   enabled: true
   httpGet:
-    path: /
-    port: 8080
+    port: 1080
   initialDelaySeconds: 20
-  periodSeconds: 10
+  periodSeconds: 60
   timeoutSeconds: 5
-  failureThreshold: 6
+  failureThreshold: 2
   successThreshold: 1
 
 readinessProbe:
   enabled: true
   httpGet:
-    path: /
-    port: 8080
+    port: 1080
   initialDelaySeconds: 0
-  periodSeconds: 10
+  periodSeconds: 60
   timeoutSeconds: 5
-  failureThreshold: 6
+  failureThreshold: 2
   successThreshold: 1
 
 ##
@@ -126,17 +128,17 @@ resources:
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  limits:
-    cpu: 300m
-    memory: 1500Mi
+  limits: {}
+  #   cpu: 200m
+  #   memory: 256Mi
   requests:
     cpu: 100m
-    memory: 50Mi
+    memory: 1500Mi
 
 additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
-  javaOpts: "-Xms750M -Xmx750M"
+  javaOpts: ""
 
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
 ## Clamav container already runs as 'mosip' user, so we may not need to enable this
@@ -241,14 +243,13 @@ updateStrategy:
 ##   - name: FOO
 ##     value: "bar"
 ##
+## TODO: the below env variable is not used, but required.  Remove it later
 extraEnvVars: []
 
 ## ConfigMap with extra environment variables
 ##
 extraEnvVarsCM:
-  - global
   - config-server-share
-  - artifactory-share
 
 ## Secret with extra environment variables
 ##
@@ -287,7 +288,8 @@ initContainers: {}
 sidecars: {}
 
 persistence:
-  enabled: false
+  enabled: true
+  storageClass: "longhorn"
   ## If defined, storageClassName: <storageClass>
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
@@ -300,19 +302,18 @@ persistence:
   ## the existingClaim variable
   # existingClaim: your-claim
   ## ReadWriteMany not supported by AWS gp2
-  storageClass:
   accessModes:
     - ReadWriteOnce
-  size: 10M
+  size: 8G
   existingClaim:
   # Dir where config and keys are written inside container
-  mountDir:
+  mountDir: /srv/tusd-hooks
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
 ##
 volumePermissions:
-  enabled: false
+  enabled: true
   image:
     registry: docker.io
     repository: bitnami/bitnami-shell
@@ -413,23 +414,15 @@ metrics:
     #       severity: error
     rules: []
 
-## The url below is to access pmp API services.
-## CAUTION: Domain name to acess pmp UI must be secure/internal/over vpn.
-## Slash is important!
-pmp:
-  apiUrl: https://pmp.sandbox.mosip.net/
-
-## pmp UI swagger should have only internal access. Hence linked to internal gateway
-## We create a gateway for pmp specific URL(s) listed under `hosts`
+## Only internal access
 istio:
   enabled: true
-  ingressController:
-    name: ingressgateway-internal
   gateways:
-    - name: pmp-gateway
-      protocol: HTTP
-      portName: http
-      port: 80
-  hosts:
-    - pmp.sandbox.xyz.net
-  prefix: /
+    - istio-system/public
+    - istio-system/internal
+  # ingressController is only valid if gateways is null/empty
+  ingressController:
+    # for public, istio: ingressgateway && for internal, istio: ingressgateway-internal
+    istio: ingressgateway-internal
+  tusdPrefix: /files
+  reWriteTusdPrefix: ""
