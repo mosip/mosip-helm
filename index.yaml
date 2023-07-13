@@ -4843,28 +4843,27 @@ entries:
     - https://mosip.github.io/mosip-helm/mimoto-12.0.1-B3.tgz
     version: 12.0.1-B3
   - apiVersion: v2
-    created: "2023-07-11T13:26:05.891757515Z"
+    created: "2023-07-13T13:07:48.097993467Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
       tags:
       - bitnami-common
       version: 1.x.x
-    description: A Helm chart for MOSIP Resident Application
-    digest: c496dd716569558e08b9e78b7140d18102ea9660f3feb4fa2c5a46cb2df8a19e
+    description: A Helm chart for MOSIP mimoto Application
+    digest: cd0ec99e9d2a7248d8acf923984c8f4f27228d2e3be4bb06f2ff13b870e91583
     home: https://mosip.io
     keywords:
     - mosip
     - mimoto
-    - resident
     maintainers:
     - email: info@mosip.io
       name: MOSIP
     name: mimoto
     type: application
     urls:
-    - https://mosip.github.io/mosip-helm/mimoto-0.9.tgz
-    version: "0.9"
+    - https://mosip.github.io/mosip-helm/mimoto-0.9.1.tgz
+    version: 0.9.1
   minio:
   - annotations:
       category: Infrastructure
@@ -13895,4 +13894,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2023-07-13T12:16:38.34774492Z"
+generated: "2023-07-13T13:07:48.095734173Z"
