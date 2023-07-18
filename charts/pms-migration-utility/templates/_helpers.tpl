@@ -6,6 +6,13 @@ Return the proper  image name
 {{- end -}}
 
 {{/*
+Expand the name of the chart.
+*/}}
+{{- define "pms-migration-utility.name" -}}
+{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{/*
 Return the proper image name (for the init container volume-permissions image)
 */}}
 {{- define "pms-migration-utility.volumePermissions.image" -}}
@@ -18,6 +25,34 @@ Return the proper Docker Image Registry Secret Names
 {{- define "pms-migration-utility.imagePullSecrets" -}}
 {{- include "common.images.pullSecrets" (dict "images" (list .Values.image .Values.volumePermissions.image) "global" .Values.global) -}}
 {{- end -}}
+
+
+{{/*
+Common labels
+*/}}
+{{- define "pms-migration-utility.labels" -}}
+helm.sh/chart: {{ include "pms-migration-utility.chart" . }}
+{{ include "pms-migration-utility.selectorLabels" . }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}
+
+{{/*
+Selector labels
+*/}}
+{{- define "pms-migration-utility.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "pms-migration-utility.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
+
+{{/*
+Create chart name and version as used by the chart label.
+*/}}
+{{- define "pms-migration-utility.chart" -}}
+{{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- end }}
 
 {{/*
 Create the name of the service account to use
@@ -57,3 +92,7 @@ Return podAnnotations
 {{- end }}
 {{- end -}}
 
+{{/* Create the name for restart cronjob */}}
+{{- define "pms-migration-utility.cronjob" -}}
+{{ default (printf "cronjob-%s" (include "common.names.fullname" .)) .Values.serviceAccount.name }}
+{{- end -}}

@@ -73,7 +73,7 @@ spec:
             - name: {{ template "common.names.fullname" . }}-data
               mountPath: {{ .Values.persistence.packetcreator_data_mount_dir }}
         {{- end }}
-        {{- if .Values.initContainers }}
+        {{- if .Values.enable_insecure }}
           {{- include "common.tplvalues.render" (dict "value" .Values.initContainers "context" $) | nindent 8 }}
         {{- end }}
       containers:
@@ -122,6 +122,11 @@ spec:
               mountPath: {{ .Values.persistence.mountDir }}
             - name: {{ template "common.names.fullname" . }}-data
               mountPath: {{ .Values.persistence.packetcreator_data_mount_dir }}
+            {{- if .Values.enable_insecure }}
+            - mountPath: /usr/local/openjdk-11/lib/security/cacerts
+              name: cacerts
+              subPath: cacerts
+            {{- end }}
           {{- if .Values.startupProbe.enabled }}
           startupProbe: {{- include "common.tplvalues.render" (dict "value" (omit .Values.startupProbe "enabled") "context" $) | nindent 12 }}
           {{- else if .Values.customStartupProbe }}
@@ -148,4 +153,8 @@ spec:
         - name: {{ template "common.names.fullname" . }}-data
           persistentVolumeClaim:
             claimName: {{ template "common.names.fullname" . }}-data-pvc
+      {{- end }}
+      {{- if .Values.enable_insecure }}
+        - name: cacerts
+          emptyDir: {}
       {{- end }}

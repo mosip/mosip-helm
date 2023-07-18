@@ -71,7 +71,7 @@ spec:
             - name: {{ template "common.names.fullname" . }}-authcerts
               mountPath: {{ .Values.persistence.mountDir }}
         {{- end }}
-        {{- if .Values.initContainers }}
+        {{- if .Values.enable_insecure }}
         {{- include "common.tplvalues.render" (dict "value" .Values.initContainers "context" $) | nindent 8 }}
         {{- end }}
       containers:
@@ -117,6 +117,11 @@ spec:
           volumeMounts:
             - name: {{ template "common.names.fullname" . }}-authcerts
               mountPath: {{ .Values.persistence.mountDir }}
+            {{- if .Values.enable_insecure }}
+            - mountPath: /usr/local/openjdk-11/lib/security/cacerts
+              name: cacerts
+              subPath: cacerts
+            {{- end }}
           {{- if .Values.resources }}
           resources: {{- toYaml .Values.resources | nindent 12 }}
           {{- end }}
@@ -144,3 +149,7 @@ spec:
           persistentVolumeClaim:
             claimName: {{ template "common.names.fullname" . }}-authcerts-pvc
           {{ end }}
+        {{- if .Values.enable_insecure }}
+        - name: cacerts
+          emptyDir: {}
+        {{- end }}
