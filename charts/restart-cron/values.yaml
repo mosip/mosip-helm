@@ -19,12 +19,12 @@ schedule:
 serviceAccount:
   create: true
   name: pod-deleter
-  namespace: dslrig
+  namespace: infra-admin
 
 rbac:
   create: true
   name: pod-deleter-rolebinding
-  namespace: dslrig
+  namespace: infra-admin
   apiGroup: rbac.authorization.k8s.io
 
 role:
