@@ -419,18 +419,6 @@ All env variables that are accessed from mosip config properties
       name: {{ .Values.overrides.secrets.captcha }}
       key: resident-captcha-secret-key
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_ESIGNET_CAPTCHA_SITE_KEY
-  valueFrom:
-    secretKeyRef:
-      name: {{ .Values.overrides.secrets.eCaptcha }}
-      key: esignet-captcha-site-key
-
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_ESIGNET_CAPTCHA_SECRET_KEY
-  valueFrom:
-    secretKeyRef:
-      name: {{ .Values.overrides.secrets.eCaptcha }}
-      key: esignet-captcha-secret-key
-
 - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_S3_PRETEXT_VALUE
   valueFrom:
     secretKeyRef:
