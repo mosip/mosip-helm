@@ -14,6 +14,8 @@ metadata:
 
 spec:
 
+  backoffLimit: {{ .Values.backoffLimit }}
+
   template:
 
     metadata:

@@ -65,6 +65,10 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
+## "backoff" strategy - It is used when dealing with resources that are retrying or recovering from failures.
+##
+backoffLimit: 0
+
 nodeSelector: {}
 
 tolerations: []

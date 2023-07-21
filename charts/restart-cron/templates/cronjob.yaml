@@ -7,7 +7,7 @@ spec:
   schedule: {{ .Values.schedule.crontime }}
   jobTemplate:
     spec:
-      backoffLimit: 2
+      backoffLimit: {{ .Values.backoffLimit }}
       activeDeadlineSeconds: 600
       template:
           spec:
