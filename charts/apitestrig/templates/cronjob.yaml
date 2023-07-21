@@ -15,7 +15,7 @@ spec:
   schedule: {{ $.Values.crontime }}
   jobTemplate:
     spec:
-      backoffLimit: 0 # this has very low chance of failing, as all this does
+      backoffLimit: {{ .Values.backoffLimit }} # this has very low chance of failing, as all this does
                       # is prompt kubernetes to schedule new replica set for
       # the deployment
       # activeDeadlineSeconds: 600 # timeout, makes most sense with
