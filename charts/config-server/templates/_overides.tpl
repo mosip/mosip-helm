@@ -456,4 +456,3 @@ All env variables that are accessed from mosip config properties
       key: mosip-partner-crypto-p12-password
 
 {{- end }}
-
