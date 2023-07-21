@@ -16,6 +16,10 @@ namespaces:
 schedule:
   crontime: "0 3 * * *"   ## run cronjob every day at 3 AM (time hr: 0-23 )
 
+## "backoff" strategy - It is used when dealing with resources that are retrying or recovering from failures.
+##
+backoffLimit: 0
+
 serviceAccount:
   create: true
   name: pod-deleter

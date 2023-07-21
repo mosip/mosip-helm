@@ -6,6 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: {{ .Release.Name }}-debezium-job
 spec:
+  backoffLimit: {{ .Values.backoffLimit }}
   template:
     metadata:
       labels:

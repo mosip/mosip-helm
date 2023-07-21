@@ -14,6 +14,7 @@ metadata:
     {{- include "common.tplvalues.render" ( dict "value" $.Values.commonAnnotations "context" $ ) | nindent 4 }}
     {{- end }}
 spec:
+  backoffLimit: {{ .Values.backoffLimit }}
   template:
     metadata:
       labels: {{- include "common.labels.standard" $ | nindent 10 }}

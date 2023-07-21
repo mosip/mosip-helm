@@ -41,3 +41,7 @@ es_kafka_connectors:
   delay_between_connectors: "0s"
 
 kibana_enabled: {}
+
+## "backoff" strategy - It is used when dealing with resources that are retrying or recovering from failures.
+##
+backoffLimit: 0
