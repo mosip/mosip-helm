@@ -2449,7 +2449,7 @@ entries:
     version: 1.1.5
   digitalcard:
   - apiVersion: v2
-    created: "2023-07-21T17:34:37.195744816Z"
+    created: "2023-07-24T06:00:23.690982073Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -2457,7 +2457,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for Digital Card Service
-    digest: 33bc82d3e2db7173718c7ab8d6b458c9f19e14a9067a4a0f6c4232ca2ebd88e6
+    digest: 933fe8d6c9302843f454b7cc039e2c00f5c33c4a7783ffa76b8a6d00bd2df50d
     home: https://mosip.io
     keywords:
     - mosip
@@ -4864,29 +4864,6 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/mimoto-0.9.1.tgz
     version: 0.9.1
-  - apiVersion: v2
-    created: "2023-07-21T17:34:37.411442804Z"
-    dependencies:
-    - name: common
-      repository: https://charts.bitnami.com/bitnami
-      tags:
-      - bitnami-common
-      version: 1.x.x
-    description: A Helm chart for MOSIP Resident Application
-    digest: c496dd716569558e08b9e78b7140d18102ea9660f3feb4fa2c5a46cb2df8a19e
-    home: https://mosip.io
-    keywords:
-    - mosip
-    - mimoto
-    - resident
-    maintainers:
-    - email: info@mosip.io
-      name: MOSIP
-    name: mimoto
-    type: application
-    urls:
-    - https://mosip.github.io/mosip-helm/mimoto-0.9.tgz
-    version: "0.9"
   minio:
   - annotations:
       category: Infrastructure
@@ -13917,4 +13894,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2023-07-21T17:34:36.9931742Z"
+generated: "2023-07-24T06:00:23.68807946Z"
