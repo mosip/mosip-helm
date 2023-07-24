@@ -1600,7 +1600,7 @@ entries:
     - https://mosip.github.io/mosip-helm/compliance-toolkit-12.0.2.tgz
     version: 12.0.2
   - apiVersion: v2
-    created: "2023-07-24T11:37:54.522254206Z"
+    created: "2023-07-24T17:00:28.901375316Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1608,7 +1608,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for compliance-toolkit Application service
-    digest: 75f5b388bedd98f71a633d3c672bf403a76b04ae8ee944c60428730595e3d1c4
+    digest: 253ffc45ee5736d2ebbe6c6177ee5d90c72e12ff56c6d83ae416e2b7738ae3b0
     home: https://mosip.io
     keywords:
     - mosip
@@ -4864,29 +4864,6 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/mimoto-0.9.1.tgz
     version: 0.9.1
-  - apiVersion: v2
-    created: "2023-07-24T11:37:54.907395283Z"
-    dependencies:
-    - name: common
-      repository: https://charts.bitnami.com/bitnami
-      tags:
-      - bitnami-common
-      version: 1.x.x
-    description: A Helm chart for MOSIP Resident Application
-    digest: c496dd716569558e08b9e78b7140d18102ea9660f3feb4fa2c5a46cb2df8a19e
-    home: https://mosip.io
-    keywords:
-    - mosip
-    - mimoto
-    - resident
-    maintainers:
-    - email: info@mosip.io
-      name: MOSIP
-    name: mimoto
-    type: application
-    urls:
-    - https://mosip.github.io/mosip-helm/mimoto-0.9.tgz
-    version: "0.9"
   minio:
   - annotations:
       category: Infrastructure
@@ -13917,4 +13894,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2023-07-24T11:37:54.345491484Z"
+generated: "2023-07-24T17:00:28.899092507Z"
