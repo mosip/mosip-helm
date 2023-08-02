@@ -12,6 +12,9 @@ namespaces:
   - name: authdemo
     enabled: true
     deploymentName: authdemo
+  - name: kernel
+    enabled: false
+    deploymentName: idgenerator
 
 schedule:
   crontime: "0 3 * * *"   ## run cronjob every day at 3 AM (time hr: 0-23 )
