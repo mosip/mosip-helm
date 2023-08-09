@@ -5,6 +5,11 @@ type: application
 version: 12.0.2
 appVersion: ""
 dependencies:
+- name: common
+  repository: https://charts.bitnami.com/bitnami
+  tags:
+  - bitnami-common
+  version: 1.x.x
 - name: cp-helm-charts
   alias: confluentinc
   repository: "https://confluentinc.github.io/cp-helm-charts/"
