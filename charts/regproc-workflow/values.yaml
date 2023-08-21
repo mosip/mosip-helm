@@ -68,6 +68,7 @@ image:
 
 ## Port on which this particular spring service module is running.
 springServicePort: 8026
+workflowActionPort: 8023
 
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
@@ -418,3 +419,5 @@ istio:
   gateways:
     - istio-system/internal
   prefix: /registrationprocessor/v1/workflowmanager
+  workflowAction:
+    prefix: /registrationprocessor/v1/workflowmanager/workflowaction
