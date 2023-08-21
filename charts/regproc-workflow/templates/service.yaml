@@ -22,7 +22,12 @@ spec:
   loadBalancerIP: {{ .Values.service.loadBalancerIP }}
   {{- end }}
   ports:
-    - port: {{ .Values.service.port }}
+    - name: spring-service
+      port: {{ .Values.service.port }}
       protocol: TCP 
       targetPort: {{ .Values.springServicePort }}
+    - name: http-workflow-action
+      port: {{ .Values.workflowActionPort }}
+      protocol: TCP
+      targetPort: {{ .Values.workflowActionPort }}
   selector: {{- include "common.labels.matchLabels" . | nindent 4 }}
