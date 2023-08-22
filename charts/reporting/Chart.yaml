@@ -18,7 +18,7 @@ dependencies:
 - name: kafka
   alias: bitnami-kafka
   repository: "https://charts.bitnami.com/bitnami"
-  version: ">= 14.0.3"
+  version: "23.0.7"
   condition: bitnami-kafka.enabled
 - name: elasticsearch
   alias: bitnami-elasticsearch
