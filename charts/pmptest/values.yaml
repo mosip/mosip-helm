@@ -454,8 +454,12 @@ istio:
       - PUT
       - DELETE
 
-types:
-  - name: full
+modules:
+  - name: adminui
+    enabled: true
+  - name: pmpui
+    enabled: true
+  - name: residentui
     enabled: true
 
 crontime: "0 3 * * *"    ## run cronjob every day at 3 AM (time hr: 0-23 )
