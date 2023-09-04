@@ -2619,7 +2619,7 @@ entries:
     version: 17.9.25
   esignet:
   - apiVersion: v2
-    created: "2023-08-31T17:06:56.776027672Z"
+    created: "2023-09-04T06:41:37.834009012Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -2627,7 +2627,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP esignet module
-    digest: 9012d836e68073644326c368f56341292d0e21b9ca8924ead58ff48ac554ef77
+    digest: b40a4b0d7dcf627c3684db5d20d969492184574199b289a1ebfe9c914d03e94e
     home: https://mosip.io
     keywords:
     - mosip
@@ -4910,29 +4910,6 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/mimoto-0.9.1.tgz
     version: 0.9.1
-  - apiVersion: v2
-    created: "2023-08-31T17:06:56.962776622Z"
-    dependencies:
-    - name: common
-      repository: https://charts.bitnami.com/bitnami
-      tags:
-      - bitnami-common
-      version: 1.x.x
-    description: A Helm chart for MOSIP Resident Application
-    digest: c496dd716569558e08b9e78b7140d18102ea9660f3feb4fa2c5a46cb2df8a19e
-    home: https://mosip.io
-    keywords:
-    - mosip
-    - mimoto
-    - resident
-    maintainers:
-    - email: info@mosip.io
-      name: MOSIP
-    name: mimoto
-    type: application
-    urls:
-    - https://mosip.github.io/mosip-helm/mimoto-0.9.tgz
-    version: "0.9"
   minio:
   - annotations:
       category: Infrastructure
@@ -5997,7 +5974,7 @@ entries:
     - https://mosip.github.io/mosip-helm/oidc-ui-12.0.2.tgz
     version: 12.0.2
   - apiVersion: v2
-    created: "2023-08-31T17:06:57.065888218Z"
+    created: "2023-09-04T06:41:37.836964945Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -6005,7 +5982,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP OIDC UI module
-    digest: 7a50199669d79a77fda2bcdce8fca0175d4d6b0602043af8c1e829ab0e4e7777
+    digest: 540c151ae9479e38690e084530e92083f88fe29eb2d596f5f8a4eb44a4cae213
     home: https://mosip.io
     keywords:
     - mosip
@@ -13968,4 +13945,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2023-08-31T17:06:56.525828971Z"
+generated: "2023-09-04T06:41:37.830377627Z"
