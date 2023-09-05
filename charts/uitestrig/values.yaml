@@ -217,7 +217,7 @@ extraEnvVarsCM:
   - s3
   - keycloak-host
   - db
-  - pmptest
+  - uitestrig
   - config-server-share
   - artifactory-share
 ## Secret with extra environment variables
@@ -267,7 +267,7 @@ initContainers:
       - configMapRef:
           name: global
       - configMapRef:
-          name: pmptest
+          name: uitestrig
     image: docker.io/openjdk:11-jre
     imagePullPolicy: Always
     name: cacerts
@@ -457,14 +457,26 @@ istio:
 modules:
   - name: adminui
     enabled: true
+    image:
+      registry: docker.io
+      repository: mosipdev/admintest
+      tag: develop
   - name: pmpui
     enabled: true
+    image:
+      registry: docker.io
+      repository: mosipdev/pmptest
+      tag: develop
   - name: residentui
     enabled: true
+    image:
+      registry: docker.io
+      repository: mosipdev/residenttest
+      tag: develop
 
 crontime: "0 3 * * *"    ## run cronjob every day at 3 AM (time hr: 0-23 )
 
-pmptest:
+uitestrig:
   configmaps:
     s3:
       s3-host: 'http://minio.minio:9000'
@@ -474,7 +486,7 @@ pmptest:
       db-port: '5432'
       db-su-user: 'postgres'
       db-server: 'api-internal.sandbox.xyz.net'
-    pmptest:
+    uitestrig:
       ENABLE_INSECURE: "false"
       apiInternalEndPoint: "https://api-internal.sandbox.xyz.net"
       apiEnvUser: "api-internal.sandbox.xyz.net"

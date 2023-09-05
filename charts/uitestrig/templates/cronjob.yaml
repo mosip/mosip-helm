@@ -4,9 +4,8 @@
 apiVersion: {{ include "common.capabilities.cronjob.apiVersion" $ }}
 kind: CronJob
 metadata:
-  name: {{ template "pmptest.cronjob" $ }}-{{ $module.name }}
+  name: {{ template "uitestrig.cronjob" $ }}-{{ $module.name }}
   namespace: {{ $.Release.Namespace }}
-
 spec:
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 1  # remove jobs which are successfully executed
@@ -24,47 +23,9 @@ spec:
         spec:
           # account configured above
           restartPolicy: Never
-          initContainers:
-            {{- if and $.Values.volumePermissions.enabled $.Values.persistence.enabled }}
-            - name: volume-permissions
-              image: {{ template "pmptest.image" $ }}
-              imagePullPolicy: {{ $.Values.volumePermissions.image.pullPolicy | quote }}
-              command:
-                - /bin/bash
-                - -c
-              securityContext:
-                runAsUser: 0
-              {{- if $.Values.volumePermissions.resources }}
-              resources: {{- toYaml $.Values.volumePermissions.resources | nindent 16 }}
-              {{- end }}
-
-              {{- if $.Values.volumePermissions.resources }}
-              resources: {{- toYaml $.Values.volumePermissions.resources | nindent 16 }}
-              env:
-                {{- if $.Values.extraEnvVars }}
-                {{- include "common.tpvalues.render" (dict "value" $.Values.extraEnvVars "context" $) | nindent 12 }}
-                {{- end }}
-              envFrom:
-                {{- if $.Values.extraEnvVarsCM }}
-                  {{- range $.Values.extraEnvVarsCM }}
-                  - configMapRef:
-                      name: {{ . }}
-                  {{- end }}
-                  {{- end }}
-                  {{- if $.Values.extraEnvVarsSecret }}
-                  {{- range $.Values.extraEnvVarsSecret }}
-                  - secretRef:
-                      name: {{ . }}
-                  {{- end }}
-                  {{- end }}
-              {{- end }}
-            {{- end }}
-            {{- if $.Values.enable_insecure }}
-            {{- include "common.tplvalues.render" (dict "value" $.Values.initContainers "context" $) | nindent 12 }}
-            {{- end }}
           containers:
-          - name: {{ template "pmptest.serviceAccountName" $ }}-{{ $module.name }}
-            image: {{ template "pmptest.image" $ }}
+          - name: {{ $module.name }}
+            image: {{ $module.image.registry }}/{{ $module.image.repository }}:{{ $module.image.tag }}
             imagePullPolicy: {{ $.Values.image.pullPolicy }}
             {{- if $.Values.lifecycleHooks }}
             lifecycle: {{- include "common.tpvalues.render" (dict "value" $.Values.lifecycleHooks "context" $) | nindent 12 }}
@@ -80,11 +41,17 @@ spec:
             {{- end }}
             env:
                 - name: container_user
-                  value: {{ $.Values.containerSecurityContext.runAsUser }}
+                  value: "{{ $.Values.containerSecurityContext.runAsUser }}"
                 - name: JDK_JAVA_OPTIONS
-                  value: {{ $.Values.additionalResources.javaOpts }}
-                - name: MODULES
-                  value: {{ $module.name }}
+                  value: "{{ $.Values.additionalResources.javaOpts }}"
+                - name: modules
+                  value: "{{ $module.name }}"
+                - name: apiInternalEndPoint
+                  value: "{{ $.Values.uitestrig.configmaps.apiInternalEndPoint }}"
+                - name: PmpPortalPath
+                  value: "{{ $.Values.uitestrig.configmaps.PmpPortalPath }}"
+                - name: apiEnvUser
+                  value: "{{ $.Values.uitestrig.configmaps.apiEnvUser }}"
               {{- if $.Values.extraEnvVars }}
               {{- include "common.tpvalues.render" (dict "value" $.Values.extraEnvVars "context" $) | nindent 12 }}
               {{- end }}
@@ -111,3 +78,5 @@ spec:
           {{- end }}
 {{- end }}
 {{- end }}
+
+

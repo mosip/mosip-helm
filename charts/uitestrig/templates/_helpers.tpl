@@ -1,28 +1,28 @@
 {{/*
 Return the proper  image name
 */}}
-{{- define "pmptest.image" -}}
+{{- define "uitestrig.image" -}}
 {{ include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global) }}
 {{- end -}}
 
 {{/*
 Return the proper image name (for the init container volume-permissions image)
 */}}
-{{- define "pmptest.volumePermissions.image" -}}
+{{- define "uitestrig.volumePermissions.image" -}}
 {{- include "common.images.image" ( dict "imageRoot" .Values.volumePermissions.image "global" .Values.global ) -}}
 {{- end -}}
 
 {{/*
 Return the proper Docker Image Registry Secret Names
 */}}
-{{- define "pmptest.imagePullSecrets" -}}
+{{- define "uitestrig.imagePullSecrets" -}}
 {{- include "common.images.pullSecrets" (dict "images" (list .Values.image .Values.volumePermissions.image) "global" .Values.global) -}}
 {{- end -}}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "pmptest.serviceAccountName" -}}
+{{- define "uitestrig.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
     {{ default (printf "%s-foo" (include "common.names.fullname" .)) .Values.serviceAccount.name }}
 {{- else -}}
@@ -33,10 +33,10 @@ Create the name of the service account to use
 {{/*
 Compile all warnings into a single message.
 */}}
-{{- define "pmptest.validateValues" -}}
+{{- define "uitestrig.validateValues" -}}
 {{- $messages := list -}}
-{{- $messages := append $messages (include "pmptest.validateValues.foo" .) -}}
-{{- $messages := append $messages (include "pmptest.validateValues.bar" .) -}}
+{{- $messages := append $messages (include "uitestrig.validateValues.foo" .) -}}
+{{- $messages := append $messages (include "uitestrig.validateValues.bar" .) -}}
 {{- $messages := without $messages "" -}}
 {{- $message := join "\n" $messages -}}
 
@@ -48,7 +48,7 @@ Compile all warnings into a single message.
 {{/*
 Return podAnnotations
 */}}
-{{- define "pmptest.podAnnotations" -}}
+{{- define "uitestrig.podAnnotations" -}}
 {{- if .Values.podAnnotations }}
 {{ include "common.tplvalues.render" (dict "value" .Values.podAnnotations "context" $) }}
 {{- end }}
@@ -58,6 +58,6 @@ Return podAnnotations
 {{- end -}}
 
 {{/* Create the name for restart cronjob */}}
-{{- define "pmptest.cronjob" -}}
+{{- define "uitestrig.cronjob" -}}
 {{ default (printf "cronjob-%s" (include "common.names.fullname" .)) .Values.serviceAccount.name }}
 {{- end -}}
