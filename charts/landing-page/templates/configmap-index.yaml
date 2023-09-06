@@ -57,7 +57,7 @@ data:
         </div>
         <div class="w3-col l2 w3-center">
           <a href="https://{{ .Values.landing.regclient }}">
-          <img src="https://3588228898-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4EyCrLbFom7vj7UcMIUZ%2Fuploads%2Fgit-blob-0083eab88847b64250eb0396931afa327448257f%2Freg-client-biometric-page.png?alt=media" style="height:80px">
+          <img src="https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/reg-client-orig.png"  style="height:80px">
           <p>Registration Client</p>
           </a>
         </div>
@@ -75,7 +75,7 @@ data:
         </div>
         <div class="w3-col l2 w3-center">
           <a href="https://{{ .Values.landing.prereg }}/pre-registration-ui/">
-          <img src="https://3588228898-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4EyCrLbFom7vj7UcMIUZ%2Fuploads%2Fgit-blob-b51834a1cad1adb1f95cd8817ec64da49471f67b%2Fpre-reg-login.png?alt=media" style="height:80px">
+          <img src="https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/pre-reg-login.png" style="height:80px">
           <p>Pre-registration</p>
           </a>
         </div>
@@ -87,7 +87,7 @@ data:
         </div>
         <div class="w3-col l2 w3-center">
           <a href="https://{{ .Values.landing.admin }}">
-          <img src="https://3588228898-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4EyCrLbFom7vj7UcMIUZ%2Fuploads%2Fgit-blob-2c24c3f4e382ba1cf51742d878d98d1e15f39b2a%2Fadmin-view-device.png?alt=media" style="height:80px">
+          <img src="https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/admin-home.png" style="height:80px">
           <p>Admin</p>
           </a>
         </div>
@@ -99,7 +99,7 @@ data:
         <div class="w3-col l2 w3-center"><p></p></div> 
         <div class="w3-col l2 w3-center">
           <a href="https://{{ .Values.landing.pmp }}">
-          <img src="https://3588228898-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4EyCrLbFom7vj7UcMIUZ%2Fuploads%2Fgit-blob-2c24c3f4e382ba1cf51742d878d98d1e15f39b2a%2Fadmin-view-device.png?alt=media" style="height:80px">            <p>PMP</p>
+          <img src="https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/pre-reg-login.png" style="height:80px">            <p>PMP</p>
           </a>
         </div>
         <div class="w3-col l2 w3-center">
@@ -115,12 +115,12 @@ data:
         </div>
         <div class="w3-col l2 w3-center">
           <a href="https://{{ .Values.landing.compliance }}">
-          <img src="https://3588228898-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4EyCrLbFom7vj7UcMIUZ%2Fuploads%2Fgit-blob-2c24c3f4e382ba1cf51742d878d98d1e15f39b2a%2Fadmin-view-device.png?alt=media" style="height:80px">            <p>COMPLIANCE</p>
+          <img src="https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/compliance-home-page.png" style="height:80px">            <p>COMPLIANCE</p>
           </a>
         </div>
         <div class="w3-col l2 w3-center">
           <a href="https://{{ .Values.landing.resident }}">
-             <img src="https://3588228898-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4EyCrLbFom7vj7UcMIUZ%2Fuploads%2Fgit-blob-2c24c3f4e382ba1cf51742d878d98d1e15f39b2a%2Fadmin-view-device.png?alt=media" style="height:80px">
+             <img src="https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/resident-home-page.png" style="height:80px">
           <p>resident</p>
           </a>
         </div>
@@ -132,14 +132,14 @@ data:
         <div class="w3-col l2 w3-center"><p></p></div> 
         <div class="w3-col l2 w3-center">
           <a href="https://{{ .Values.landing.esignet }}">
-             <img src="https://3588228898-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4EyCrLbFom7vj7UcMIUZ%2Fuploads%2Fgit-blob-2c24c3f4e382ba1cf51742d878d98d1e15f39b2a%2Fadmin-view-device.png?alt=media" style="height:80px">
+             <img src="https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/esignet-home-page.png" style="height:80px">
              <p>esignet</p>
           </a>
         </div>
     {{- if .Values.landing.smtp }}
         <div class="w3-col l2 w3-center">
           <a href="https://{{ .Values.landing.smtp }}">
-             <img src="https://3588228898-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4EyCrLbFom7vj7UcMIUZ%2Fuploads%2Fgit-blob-2c24c3f4e382ba1cf51742d878d98d1e15f39b2a%2Fadmin-view-device.png?alt=media" style="height:80px">
+             <img src="https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/smtp-home-page.png" style="height:80px">
              <p>SMTP</p>
           </a>
         </div>
