@@ -139,7 +139,7 @@ data:
     {{- if .Values.landing.smtp }}
         <div class="w3-col l2 w3-center">
           <a href="https://{{ .Values.landing.smtp }}">
-             <img src="hhttps://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/smtp-home-page.png" style="height:80px">
+             <img src="https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/smtp-home-page.png" style="height:80px">
              <p>SMTP</p>
           </a>
         </div>
