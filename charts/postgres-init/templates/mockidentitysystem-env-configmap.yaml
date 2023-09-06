@@ -18,4 +18,6 @@ data:
   DB_PORT: {{ .Values.databases.mosip_mockidentitysystem.port | quote }}
   SU_USER: {{ .Values.databases.mosip_mockidentitysystem.su.user | quote }}
   DML_FLAG: {{ .Values.databases.mosip_mockidentitysystem.dml | quote }}
+  GIT_REPO_URL: {{ .Values.databases.mosip_mockidentitysystem.repoUrl | quote }}
+  GIT_BRANCH: {{ .Values.databases.mosip_mockidentitysystem.branch | quote }}
 {{- end }}
