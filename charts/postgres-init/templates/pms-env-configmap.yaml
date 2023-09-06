@@ -19,4 +19,6 @@ data:
   SU_USER: {{ .Values.databases.mosip_pms.su.user | quote }}
   DML_FLAG: {{ .Values.databases.mosip_pms.dml | quote }}
   ENV_VERSION_FLAG: {{ .Values.databases.mosip_pms.ENV_VERSION_FLAG | quote }}
+  GIT_REPO_URL: {{ .Values.databases.mosip_pms.repoUrl | quote }}
+  GIT_BRANCH: {{ .Values.databases.mosip_pms.branch | quote }}
 {{- end }}

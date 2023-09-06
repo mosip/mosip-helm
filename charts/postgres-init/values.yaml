@@ -95,6 +95,8 @@ databases:
         name: postgres-postgresql
         key: postgresql-password
     dml: 0
+    repoUrl: https://github.com/mosip/admin-services.git
+    branch: develop
 
   mosip_audit:
     enabled: true
@@ -106,6 +108,8 @@ databases:
         name: postgres-postgresql
         key: postgresql-password
     dml: 0
+    repoUrl: https://github.com/mosip/audit-manager.git
+    branch: develop
 
   mosip_keymgr:
     enabled: true
@@ -117,6 +121,8 @@ databases:
         name: postgres-postgresql
         key: postgresql-password
     dml: 1
+    repoUrl: https://github.com/mosip/keymanager.git
+    branch: develop
 
   mosip_kernel:
     enabled: true
@@ -128,6 +134,8 @@ databases:
         name: postgres-postgresql
         key: postgresql-password
     dml: 0
+    repoUrl: https://github.com/mosip/commons.git
+    branch: develop
 
   mosip_idmap:
     enabled: true
@@ -139,6 +147,8 @@ databases:
         name: postgres-postgresql
         key: postgresql-password
     dml: 0
+    repoUrl: https://github.com/mosip/id-repository.git
+    branch: develop
 
   mosip_prereg:
     enabled: true
@@ -150,6 +160,8 @@ databases:
         name: postgres-postgresql
         key: postgresql-password
     dml: 0
+    repoUrl: https://github.com/mosip/pre-registration.git
+    branch: develop
 
   mosip_idrepo:
     enabled: true
@@ -161,6 +173,8 @@ databases:
         name: postgres-postgresql
         key: postgresql-password
     dml: 0
+    repoUrl: https://github.com/mosip/id-repository.git
+    branch: develop
 
   mosip_ida:
     enabled: true
@@ -172,6 +186,8 @@ databases:
         name: postgres-postgresql
         key: postgresql-password
     dml: 1
+    repoUrl: https://github.com/mosip/id-authentication.git
+    branch: develop
 
   mosip_credential:
     enabled: true
@@ -183,6 +199,8 @@ databases:
         name: postgres-postgresql
         key: postgresql-password
     dml: 0
+    repoUrl: https://github.com/mosip/id-repository.git
+    branch: develop
 
   mosip_regprc:
     enabled: true
@@ -194,28 +212,8 @@ databases:
         name: postgres-postgresql
         key: postgresql-password
     dml: 1
-
-  mosip_regdevice:
-    enabled: true
-    host: "postgres-postgresql"
-    port: 5432
-    su:
-      user: postgres
-      secret:
-        name: postgres-postgresql
-        key: postgresql-password
-    dml: 1
-
-  mosip_authdevice:
-    enabled: true
-    host: "postgres-postgresql"
-    port: 5432
-    su:
-      user: postgres
-      secret:
-        name: postgres-postgresql
-        key: postgresql-password
-    dml: 1
+    repoUrl: https://github.com/mosip/registration.git
+    branch: develop
 
   mosip_pms:
     enabled: true
@@ -230,6 +228,8 @@ databases:
         name: postgres-postgresql
         key: postgresql-password
     dml: 1
+    repoUrl: https://github.com/mosip/partner-management-services.git
+    branch: develop
 
   mosip_hotlist:
     enabled: true
@@ -241,6 +241,8 @@ databases:
         name: postgres-postgresql
         key: postgresql-password
     dml: 0
+    repoUrl: https://github.com/mosip/admin-services.git
+    branch: develop
 
   mosip_resident:
     enabled: true
@@ -252,6 +254,8 @@ databases:
         name: postgres-postgresql
         key: postgresql-password
     dml: 0
+    repoUrl: https://github.com/mosip/resident-services.git
+    branch: develop
 
   mosip_toolkit:
     enabled: true
@@ -263,6 +267,8 @@ databases:
         name: postgres-postgresql
         key: postgresql-password
     dml: 0
+    repoUrl: https://github.com/mosip/mosip-compliance-toolkit.git
+    branch: develop
 
   mosip_digitalcard:
     enabled: true
@@ -274,6 +280,8 @@ databases:
         name: postgres-postgresql
         key: postgresql-password
     dml: 0
+    repoUrl: https://github.com/mosip/digital-card-service.git
+    branch: develop
 
   mosip_esignet:
     enabled: false
@@ -285,6 +293,8 @@ databases:
         name: postgres-postgresql
         key: postgresql-password
     dml: 1
+    repoUrl: https://github.com/mosip/esignet.git
+    branch: develop
 
   mosip_mockidentitysystem:
     enabled: false
@@ -296,3 +306,5 @@ databases:
         name: postgres-postgresql
         key: postgresql-password
     dml: 1
+    repoUrl: https://github.com/mosip/esignet-mock-services.git
+    branch: develop
