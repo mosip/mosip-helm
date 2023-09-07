@@ -13,7 +13,7 @@ metadata:
     {{- end }}
     
 spec:
-  backoffLimit: 0
+  backoffLimit: {{ .Values.backoffLimit }}
   template:
     metadata:
       labels: {{- include "common.labels.standard" . | nindent 8 }}
