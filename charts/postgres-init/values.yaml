@@ -97,10 +97,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
     repoUrl: https://github.com/mosip/admin-services.git
-    branch: rlease-1.2.0.1
+    branch: release-1.2.0.1
 
   mosip_audit:
     enabled: true
@@ -110,10 +110,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
     repoUrl: https://github.com/mosip/audit-manager.git
-    branch: rlease-1.2.0.1
+    branch: release-1.2.0.1
 
   mosip_keymgr:
     enabled: true
@@ -123,10 +123,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 1
     repoUrl: https://github.com/mosip/keymanager.git
-    branch: rlease-1.2.0.1
+    branch: release-1.2.0.1
 
   mosip_kernel:
     enabled: true
@@ -136,10 +136,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
     repoUrl: https://github.com/mosip/commons.git
-    branch: rlease-1.2.0.1
+    branch: release-1.2.0.1
 
   mosip_idmap:
     enabled: true
@@ -149,10 +149,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
     repoUrl: https://github.com/mosip/id-repository.git
-    branch: rlease-1.2.0.1
+    branch: release-1.2.0.1
 
   mosip_prereg:
     enabled: true
@@ -162,10 +162,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
     repoUrl: https://github.com/mosip/pre-registration.git
-    branch: rlease-1.2.0.1
+    branch: release-1.2.0.1
 
   mosip_idrepo:
     enabled: true
@@ -175,10 +175,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
     repoUrl: https://github.com/mosip/id-repository.git
-    branch: rlease-1.2.0.1
+    branch: release-1.2.0.1
 
   mosip_ida:
     enabled: true
@@ -188,10 +188,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 1
     repoUrl: https://github.com/mosip/id-authentication.git
-    branch: rlease-1.2.0.1
+    branch: release-1.2.0.1
 
   mosip_credential:
     enabled: true
@@ -201,10 +201,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
     repoUrl: https://github.com/mosip/id-repository.git
-    branch: rlease-1.2.0.1
+    branch: release-1.2.0.1
 
   mosip_regprc:
     enabled: true
@@ -214,10 +214,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 1
     repoUrl: https://github.com/mosip/registration.git
-    branch: rlease-1.2.0.1
+    branch: release-1.2.0.1
 
   mosip_pms:
     enabled: true
@@ -230,10 +230,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 1
     repoUrl: https://github.com/mosip/partner-management-services.git
-    branch: rlease-1.2.0.1
+    branch: release-1.2.0.1
 
   mosip_hotlist:
     enabled: true
@@ -243,10 +243,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
     repoUrl: https://github.com/mosip/admin-services.git
-    branch: rlease-1.2.0.1
+    branch: release-1.2.0.1
 
   mosip_resident:
     enabled: true
@@ -256,7 +256,7 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
     repoUrl: https://github.com/mosip/resident-services.git
     branch: 1.2.0.1-B2
@@ -269,7 +269,7 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
     repoUrl: https://github.com/mosip/mosip-compliance-toolkit.git
     branch: release-1.x.x
@@ -282,7 +282,7 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
     repoUrl: https://github.com/mosip/digital-card-service.git
     branch: develop
@@ -295,7 +295,7 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 1
     repoUrl: https://github.com/mosip/esignet.git
     branch: v1.0.0
@@ -308,7 +308,7 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 1
     repoUrl: https://github.com/mosip/esignet-mock-services.git
     branch: 0.9.0
