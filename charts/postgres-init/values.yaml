@@ -325,3 +325,16 @@ databases:
     dml: 1
     repoUrl: https://github.com/mosip/packet-manager.git
     branch: release-1.2.0.1
+
+  mosip_authdevice:
+    enabled: false
+    host: "postgres-postgresql"
+    port: 5432
+    su:
+      user: postgres
+      secret:
+        name: postgres-postgresql
+        key: postgres-password
+    dml: 1
+    repoUrl: https://github.com/mosip/packet-manager.git
+    branch: release-1.2.0.1
