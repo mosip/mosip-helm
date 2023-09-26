@@ -312,3 +312,16 @@ databases:
     dml: 1
     repoUrl: https://github.com/mosip/esignet-mock-services.git
     branch: 0.9.0
+
+  mosip_regdevice:
+    enabled: false
+    host: "postgres-postgresql"
+    port: 5432
+    su:
+      user: postgres
+      secret:
+        name: postgres-postgresql
+        key: postgres-password
+    dml: 1
+    repoUrl: https://github.com/mosip/packet-manager.git
+    branch: release-1.2.0.1
