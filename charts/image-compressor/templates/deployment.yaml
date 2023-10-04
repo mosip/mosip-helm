@@ -21,7 +21,7 @@ spec:
     metadata:
       annotations:
         {{- if or .Values.podAnnotations .Values.metrics.enabled }}
-        {{- include "biosdk-service.podAnnotations" . | nindent 8 }}
+        {{- include "image-compressor.podAnnotations" . | nindent 8 }}
         {{- end }}
        
       labels: {{- include "common.labels.standard" . | nindent 8 }}
@@ -29,8 +29,8 @@ spec:
         {{- include "common.tplvalues.render" (dict "value" .Values.podLabels "context" $) | nindent 8 }}
         {{- end }}
     spec:
-      serviceAccountName: {{ template "biosdk-service.serviceAccountName" . }}
-      {{- include "biosdk-service.imagePullSecrets" . | nindent 6 }}
+      serviceAccountName: {{ template "image-compressor.serviceAccountName" . }}
+      {{- include "image-compressor.imagePullSecrets" . | nindent 6 }}
       {{- if .Values.hostAliases }}
       hostAliases: {{- include "common.tplvalues.render" (dict "value" .Values.hostAliases "context" $) | nindent 8 }}
       {{- end }}
@@ -57,7 +57,7 @@ spec:
       initContainers:
         {{- if and .Values.volumePermissions.enabled .Values.persistence.enabled }}
         - name: volume-permissions
-          image: {{ include "biosdk-service.volumePermissions.image" . }}
+          image: {{ include "image-compressor.volumePermissions.image" . }}
           imagePullPolicy: {{ .Values.volumePermissions.image.pullPolicy | quote }}
           command:
             - %%commands%%
@@ -74,8 +74,8 @@ spec:
           {{- include "common.tplvalues.render" (dict "value" .Values.initContainers "context" $) | nindent 8 }}
         {{- end }}
       containers:
-        - name: biosdk-service
-          image: {{ template "biosdk-service.image" . }}
+        - name: image-compressor
+          image: {{ template "image-compressor.image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- if .Values.lifecycleHooks }}
           lifecycle: {{- include "common.tplvalues.render" (dict "value" .Values.lifecycleHooks "context" $) | nindent 12 }}
@@ -95,15 +95,15 @@ spec:
             - name: JDK_JAVA_OPTIONS
               value: {{ .Values.additionalResources.javaOpts }}
             - name: server_servlet_context_env
-              value: {{ .Values.biosdk.server_servlet_context_env }}
+              value: {{ .Values.imagecompressor.server_servlet_context_env }}
             - name: spring_application_name_env
-              value: {{ .Values.biosdk.spring_application_name_env }}
+              value: {{ .Values.imagecompressor.spring_application_name_env }}
             - name: spring_cloud_config_name_env
-              value: {{ .Values.biosdk.spring_cloud_config_name_env }}
+              value: {{ .Values.imagecompressor.spring_cloud_config_name_env }}
             - name: biosdk_zip_file_path
-              value: {{ .Values.biosdk.zippedLibUrl }}
+              value: {{ .Values.imagecompressor.zippedLibUrl }}
             - name: biosdk_bioapi_impl
-              value: {{ .Values.biosdk.bioapiImpl }}
+              value: {{ .Values.imagecompressor.bioapiImpl }}
             {{- if .Values.extraEnvVars }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}
