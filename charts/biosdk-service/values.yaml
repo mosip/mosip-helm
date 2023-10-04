@@ -240,7 +240,13 @@ updateStrategy:
 ##   - name: FOO
 ##     value: "bar"
 ##
-extraEnvVars: []
+extraEnvVars:
+  - name: server_servlet_context_env
+    value: /biosdk-service
+  - name: spring_application_name_env
+    value: biosdk-service
+  - name: spring_cloud_config_name_env
+    value: biosdk-service
 
 ## ConfigMap with extra environment variables that used
 ##
@@ -423,9 +429,6 @@ istio:
 ## You may specify any url as long as it can be accessed from within the cluster
 ## bioapi_impl: Classpath of SDK implementation within the SDK lib.
 biosdk:
-  server_servlet_context_env: /biosdk-service
-  spring_application_name_env: biosdk-service
-  spring_cloud_config_name_env: biosdk-service
   # zippedLibUrl: http://artifactory.artifactory/artifactory/libs-release-local/biosdk/mock/0.9/biosdk.zip
   # bioapiImpl: io.mosip.biosdk.client.impl.spec_1_0.Client_V_1_0
   zippedLibUrl: http://artifactory.artifactory/artifactory/libs-release-local/biosdk/biosdk-lib.zip

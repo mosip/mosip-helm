@@ -94,12 +94,6 @@ spec:
               value: {{ .Values.containerSecurityContext.runAsUser }}
             - name: JDK_JAVA_OPTIONS
               value: {{ .Values.additionalResources.javaOpts }}
-            - name: server_servlet_context_env
-              value: {{ .Values.biosdk.server_servlet_context_env }}
-            - name: spring_application_name_env
-              value: {{ .Values.biosdk.spring_application_name_env }}
-            - name: spring_cloud_config_name_env
-              value: {{ .Values.biosdk.spring_cloud_config_name_env }}
             - name: biosdk_zip_file_path
               value: {{ .Values.biosdk.zippedLibUrl }}
             - name: biosdk_bioapi_impl
