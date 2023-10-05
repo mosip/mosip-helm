@@ -240,7 +240,13 @@ updateStrategy:
 ##   - name: FOO
 ##     value: "bar"
 ##
-extraEnvVars: []
+extraEnvVars:
+  - name: server_servlet_context_env
+    value: /biosdk-service
+  - name: spring_application_name_env
+    value: biosdk-service
+  - name: spring_cloud_config_name_env
+    value: biosdk-service
 
 ## ConfigMap with extra environment variables that used
 ##
