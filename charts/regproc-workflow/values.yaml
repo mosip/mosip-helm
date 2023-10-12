@@ -420,4 +420,7 @@ istio:
     - istio-system/internal
   prefix: /registrationprocessor/v1/workflowmanager
   workflowAction:
-    prefix: /registrationprocessor/v1/workflowmanager/workflowaction
+    - uri:
+        prefix: /registrationprocessor/v1/workflowmanager/workflowaction
+    - uri:
+        prefix: /registrationprocessor/v1/workflowmanager/workflow/search
