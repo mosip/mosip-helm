@@ -52,7 +52,7 @@ service:
 image:
   registry: docker.io
   repository: mosipqa/mosip-file-server
-  tag: 1.2.0.1
+  tag: develop
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -69,9 +69,9 @@ mosipfileserver:
   mountDir: "/mnt/mosip-file-server"  # path inside docker
   healthCheckUrl: http://localhost:8080/.well-known/
   configmaps:
-    AUTHMANAGER_URL: http://authmanager.kernel
-    KEYMANAGER_URL: http://keymanager.keymanager
-    IDA_INTERNAL_URL: http://ida-internal.ida
+    AUTHMANAGER_URL: http://authmanager.kernel/v1/authmanager
+    KEYMANAGER_URL: http://keymanager.keymanager/v1/keymanager
+    IDA_INTERNAL_URL: http://ida-internal.ida/idauthentication/v1/internal
     KEYCLOAK_CLIENT_ID: mosip-regproc-client
     AUTH_APP_ID: regproc
   secrets:

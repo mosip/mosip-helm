@@ -15,7 +15,7 @@ metadata:
 spec:
   endpoints:
     - targetPort: {{ .Values.containerPort }}
-      path: {{ .Values.metrics.endpointPath }} 
+      path: {{ .Values.metrics.endpointPath }}
       {{- if .Values.metrics.serviceMonitor.interval }}
       interval: {{ .Values.metrics.serviceMonitor.interval }}
       {{- end }}
@@ -33,4 +33,4 @@ spec:
       - {{ .Release.Namespace | quote }}
   selector:
     matchLabels: {{- include "common.labels.matchLabels" . | nindent 6 }}
-{{- end }}
+  {{- end }}

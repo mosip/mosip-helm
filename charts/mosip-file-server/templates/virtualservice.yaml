@@ -13,32 +13,31 @@ metadata:
   {{- end }}
 spec:
   hosts:
-  - "*"
+    - "*"
   gateways:
     {{- if .Values.istio.gateways }}
-    {{- include "common.tplvalues.render" ( dict "value" .Values.istio.gateways "context" $ ) | nindent 6 }}
-    {{- else }}
-    - {{ template "common.names.fullname" . }}
-    {{- end }}
+      {{- include "common.tplvalues.render" ( dict "value" .Values.istio.gateways "context" $ ) | nindent 6 }}
+      {{- else }}
+      - {{ template "common.names.fullname" . }}
+      {{- end }}
   http:
-  - name: .well-known
-    match:
-      {{- if .Values.istio.prefix }}
-      {{- range $key, $value := .Values.istio.prefix }}
-      - uri:
-          prefix: {{ $value }}
-      {{- end }}
-      {{- end }}
-    route:
-    - destination:
-        host: {{ template "common.names.fullname" . }}
-        port:
-          number: {{ .Values.service.port }}
-    corsPolicy:
-    {{- include "common.tplvalues.render" ( dict "value" .Values.istio.corsPolicy "context" $ ) | nindent 6 }}
-    headers:
-      request:
-        set:
-          x-forwarded-proto: https
-
-{{- end }}
+    - name: .well-known
+      match:
+        {{- if .Values.istio.prefix }}
+          {{- range $key, $value := .Values.istio.prefix }}
+          - uri:
+              prefix: {{ $value }}
+          {{- end }}
+          {{- end }}
+      route:
+        - destination:
+            host: {{ template "common.names.fullname" . }}
+            port:
+              number: {{ .Values.service.port }}
+      corsPolicy:
+      {{- include "common.tplvalues.render" ( dict "value" .Values.istio.corsPolicy "context" $ ) | nindent 6 }}
+      headers:
+        request:
+          set:
+            x-forwarded-proto: https
+  {{- end }}
