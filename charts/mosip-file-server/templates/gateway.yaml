@@ -1,5 +1,5 @@
 {{- if .Values.istio.enabled  }}
-  {{- if not .Values.istio.gateways }}
+{{- if not .Values.istio.gateways }}
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
@@ -8,11 +8,11 @@ spec:
   selector:
     {{- include "common.tplvalues.render" (dict "value" .Values.istio.ingressController "context" $) | nindent 4 }}
   servers:
-    - port:
-        number: 80
-        name: http
-        protocol: HTTP
-      hosts:
-        - {{ .Values.mosipfileserver.host }}
-  {{- end }}
-  {{- end }}
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+      - {{ .Values.mosipfileserver.host }}
+{{- end }}
+{{- end }}

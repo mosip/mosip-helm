@@ -8,8 +8,8 @@ metadata:
   name: {{ template "common.names.fullname" . }}
   annotations:
     {{- if .Values.commonAnnotations }}
-      {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
-      {{- end }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
+    {{- end }}
 spec:
   replicas: {{ .Values.replicaCount }}
   {{- if .Values.updateStrategy }}
@@ -21,8 +21,8 @@ spec:
     metadata:
       annotations:
         {{- if or .Values.podAnnotations .Values.metrics.enabled }}
-          {{- include "mosipfileserver.podAnnotations" . | nindent 8 }}
-          {{- end }}
+        {{- include "mosipfileserver.podAnnotations" . | nindent 8 }}
+        {{- end }}
       labels: {{- include "common.labels.standard" . | nindent 8 }}
         {{- if .Values.podLabels }}
         {{- include "common.tplvalues.render" (dict "value" .Values.podLabels "context" $) | nindent 8 }}
@@ -70,7 +70,7 @@ spec:
               mountPath: bar
         {{- end }}
         {{- if .Values.initContainers }}
-        {{- include "common.tplvalues.render" (dict "value" .Values.initContainers "context" $) | nindent 8 }}
+          {{- include "common.tplvalues.render" (dict "value" .Values.initContainers "context" $) | nindent 8 }}
         {{- end }}
       containers:
         - name: mosipfileserver
@@ -101,29 +101,29 @@ spec:
             {{- end }}
           envFrom:
             {{- if .Values.envVarsCM }}
-              {{- range .Values.envVarsCM }}
-              - configMapRef:
-                  name: {{ . }}
-              {{- end }}
-              {{- end }}
-              {{- if .Values.envVarsSecret }}
-              {{- range .Values.envVarsSecret }}
-              - secretRef:
-                  name: {{ . }}
-              {{- end }}
-              {{- end }}
-              {{- if .Values.extraEnvVarsCM }}
-              {{- range .Values.extraEnvVarsCM }}
-              - configMapRef:
-                  name: {{ . }}
-              {{- end }}
-              {{- end }}
-              {{- if .Values.extraEnvVarsSecret }}
-              {{- range .Values.extraEnvVarsSecret }}
-              - secretRef:
-                  name: {{ . }}
-              {{- end }}
-              {{- end }}
+            {{- range .Values.envVarsCM }}
+            - configMapRef:
+                name: {{ . }}
+            {{- end }}
+            {{- end }}
+            {{- if .Values.envVarsSecret }}
+            {{- range .Values.envVarsSecret }}
+            - secretRef:
+                name: {{ . }}
+            {{- end }}
+            {{- end }}
+            {{- if .Values.extraEnvVarsCM }}
+            {{- range .Values.extraEnvVarsCM }}
+            - configMapRef:
+                name: {{ . }}
+            {{- end }}
+            {{- end }}
+            {{- if .Values.extraEnvVarsSecret }}
+            {{- range .Values.extraEnvVarsSecret }}
+            - secretRef:
+                name: {{ . }}
+            {{- end }}
+            {{- end }}
           volumeMounts:
             - name: wellknown
               mountPath:  {{ .Values.mosipfileserver.mountDir }}/.well-known/mosipvc/
