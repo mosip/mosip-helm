@@ -18,6 +18,17 @@ spec:
   {{- include "common.tplvalues.render" ( dict "value" .Values.istio.gateways "context" $ ) | nindent 4 }}
   http:
   - match:
+  {{- include "common.tplvalues.render" ( dict "value" .Values.istio.workflowAction "context" $ ) | nindent 4 }}
+    route:
+    - destination:
+        host: {{ template "common.names.fullname" . }}
+        port:
+          number: {{ .Values.workflowActionPort }}
+    headers:
+      request:
+        set:
+          x-forwarded-proto: https
+  - match:
       - uri:
           prefix: {{ .Values.istio.prefix }}
     route:
@@ -25,18 +36,6 @@ spec:
         host: {{ template "common.names.fullname" . }}
         port:
           number: {{ .Values.service.port }}
-    headers:
-      request:
-        set:
-          x-forwarded-proto: https
-  - match:
-      - uri:
-          prefix: {{ .Values.istio.workflowAction.prefix }}
-    route:
-    - destination:
-        host: {{ template "common.names.fullname" . }}
-        port:
-          number: {{ .Values.workflowActionPort }}
     headers:
       request:
         set:
