@@ -8,4 +8,3 @@ Helm chart for installing for file server.
 $ helm repo add mosip https://mosip.github.io
 $ helm install my-release mosip/mosip-file-server
 ```
-
