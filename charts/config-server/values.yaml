@@ -509,7 +509,7 @@ envVariables:
         key: print-websub-hub-secret
     enabled: true
 
-- name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_HUB_SECRET_ENCRYPTION_KEY
+  - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_HUB_SECRET_ENCRYPTION_KEY
     valueFrom:
       secretKeyRef:
         name: hub-secret-encryption-key
