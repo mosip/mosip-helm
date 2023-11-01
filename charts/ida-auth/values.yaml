@@ -462,5 +462,7 @@ istio:
         prefix: /idauthentication/v1/actuator
     - uri:
         prefix: /idauthentication/v1/identity-key-binding
+    - uri:
+        prefix: /idauthentication/v1/vci-exchange
 
 enable_insecure: false
