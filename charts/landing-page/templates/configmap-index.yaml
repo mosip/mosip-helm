@@ -136,6 +136,12 @@ data:
              <p>esignet</p>
           </a>
         </div>
+        <div class="w3-col l2 w3-center">
+          <a href="https://{{ .Values.landing.healthservices }}">
+          <img src="https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/healthservices.png" style="height:80px">
+          <p>Healthservices</p>
+          </a>
+        </div>
     {{- if .Values.landing.smtp }}
         <div class="w3-col l2 w3-center">
           <a href="https://{{ .Values.landing.smtp }}">
