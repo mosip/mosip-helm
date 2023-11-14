@@ -11,7 +11,6 @@
 ## Add labels to all the deployed resources
 ##
 commonLabels:
-  app.kubernetes.io/component: mosip
   app.kubernetes.io/component: postgres
 
 ## Add annotations to all the deployed resources
@@ -74,7 +73,7 @@ resources:
     cpu: 1000m
     memory: 3500Mi
 
-#additionalResources:
+# additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
   #javaOpts: "-Xms2600M -Xmx2600M"
@@ -189,12 +188,12 @@ extraEnvVars: []
 
 ## ConfigMap with extra environment variables
 ##
-#extraEnvVarsCM:
-  #- s3
+# extraEnvVarsCM:
+  # - s3
 
 ## Secret with extra environment variables
 ##
-#extraEnvVarsSecret:
+# extraEnvVarsSecret:
  # - s3
 
 ## Extra volumes to add to the deployment
@@ -276,11 +275,11 @@ volumePermissions:
     ## resources, such as Minikube. If you do want to specify resources, uncomment the following
     ## lines, adjust them as necessary, and remove the curly braces after 'resources:'.
     ##
-    limits: {}
+    # limits: {}
     ##   cpu: 100m
     ##   memory: 128Mi
     ##
-    requests: {}
+    # requests: {}
     ##   cpu: 100m
     ##   memory: 128Mi
     ##
