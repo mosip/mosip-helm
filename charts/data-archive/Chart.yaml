@@ -1,16 +1,14 @@
 apiVersion: v2
 name: data-archive
-description: A Helm chart for Kubernetes to initialize mosip_archive Postgres DB and execute py script to archiove data from source db to archive db
+description: A Helm chart for Kubernetes to initialize mosip_archive Postgres DB and execute py script to archive data from source db to archive db
 type: application
 version: 1.0.0
-appVersion: 1.2.0
 dependencies:
   - name: common
     repository: https://charts.bitnami.com/bitnami
     tags:
       - bitnami-common
     version: 1.x.x
-
 home: https://mosip.io
 keywords:
   - postgres
@@ -19,4 +17,3 @@ keywords:
 maintainers:
   - email: info@mosip.io
     name: MOSIP
-
