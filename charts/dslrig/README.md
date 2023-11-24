@@ -1,4 +1,4 @@
-# dslrig
+# dslrig [Work In Progress (WIP)]
 
 Helm chart to deploy dslrig for `MOSIP` modules
 
