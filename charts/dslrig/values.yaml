@@ -1,0 +1,583 @@
+## Global Docker image parameters
+## Please, note that this will override the image parameters, including dependencies, configured to use the global value
+## Current available global Docker image parameters: imageRegistry and imagePullSecrets
+##
+# global:
+#   imageRegistry: myRegistryName
+#   imagePullSecrets:
+#     - myRegistryKeySecretName
+#   storageClass: myStorageClass
+
+## Add labels to all the deployed resources
+##
+commonLabels:
+  app.kubernetes.io/component: mosip
+
+## Add annotations to all the deployed resources
+##
+commonAnnotations: {}
+
+## Kubernetes Cluster Domain
+##
+clusterDomain: cluster.local
+
+## Extra objects to deploy (value evaluated as a template)
+##
+extraDeploy: []
+
+## Number of nodes
+##
+replicaCount: 1
+
+service:
+  type: ClusterIP
+  port: 80
+  ## loadBalancerIP for the SuiteCRM Service (optional, cloud specific)
+  ## ref: http://kubernetes.io/docs/user-guide/services/#type-loadbalancer
+  ##
+  ## loadBalancerIP:
+  ##
+  ## nodePorts:
+  ##   http: <to set explicitly, choose port between 30000-32767>
+  ##   https: <to set explicitly, choose port between 30000-32767>
+  ##
+  nodePorts:
+    http: ""
+    https: ""
+  ## Enable client source IP preservation
+  ## ref http://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip
+  ##
+  externalTrafficPolicy: Cluster
+
+
+## Configure extra options for liveness and readiness probes
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
+##
+
+##
+# existingConfigmap:
+
+## Command and args for running the container (set to default if not set). Use array form
+##
+command: []
+args: []
+
+## Deployment pod host aliases
+## https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/
+##
+hostAliases: []
+
+## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+##
+resources:
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  limits:
+    cpu: 3500m
+    memory: 4500Mi
+  requests:
+    cpu: 1000m
+    memory: 3500Mi
+
+additionalResources:
+  ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
+  ## Example: java_opts: "-Xms500M -Xmx500M"
+  javaOpts: "-Xms2600M -Xmx2600M"
+
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
+## Clamav container already runs as 'mosip' user, so we may not need to enable this
+containerSecurityContext:
+  enabled: false
+  runAsUser: mosip
+  runAsNonRoot: true
+
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
+##
+podSecurityContext:
+  enabled: false
+  fsGroup: 1001
+
+## Pod affinity preset
+## ref: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity
+## Allowed values: soft, hard
+##
+podAffinityPreset: ""
+
+## Pod anti-affinity preset
+## Ref: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity
+## Allowed values: soft, hard
+##
+podAntiAffinityPreset: soft
+
+## Node affinity preset
+## Ref: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
+## Allowed values: soft, hard
+##
+nodeAffinityPreset:
+  ## Node affinity type
+  ## Allowed values: soft, hard
+  ##
+  type: ""
+  ## Node label key to match
+  ## E.g.
+  ## key: "kubernetes.io/e2e-az-name"
+  ##
+  key: ""
+  ## Node label values to match
+  ## E.g.
+  ## values:
+  ##   - e2e-az1
+  ##   - e2e-az2
+  ##
+  values: []
+
+## Affinity for pod assignment. Evaluated as a template.
+## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+##
+affinity: {}
+
+## Node labels for pod assignment. Evaluated as a template.
+## ref: https://kubernetes.io/docs/user-guide/node-selection/
+##
+nodeSelector: {}
+
+## Tolerations for pod assignment. Evaluated as a template.
+## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+##
+tolerations: []
+
+## Pod extra labels
+## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+##
+podLabels: {}
+
+## Annotations for server pods.
+## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+##
+podAnnotations: {}
+
+##  pods' priority.
+## ref: https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
+##
+# priorityClassName: ""
+
+## lifecycleHooks for the  container to automate configuration before or after startup.
+##
+lifecycleHooks: {}
+
+## Custom Liveness probes for
+##
+customLivenessProbe: {}
+
+## Custom Rediness probes
+##
+customReadinessProbe: {}
+
+## Update strategy - only really applicable for deployments with RWO PVs attached
+## If replicas = 1, an update can get "stuck", as the previous pod remains attached to the
+## PV, and the "incoming" pod can never start. Changing the strategy to "Recreate" will
+## terminate the single previous pod, so that the new, incoming pod can attach to the PV
+##
+updateStrategy:
+  type: RollingUpdate
+
+## Additional environment variables to set
+## Example:
+## extraEnvVars:
+##   - name: FOO
+##     value: "bar"
+##
+extraEnvVars: []
+
+## ConfigMap with extra environment variables
+##
+extraEnvVarsCM: []
+## Secret with extra environment variables
+##
+extraEnvVarsSecret: []
+## Extra volumes to add to the deployment
+##
+extraVolumes: []
+
+## Extra volume mounts to add to the container
+##
+extraVolumeMounts: []
+
+## Add init containers to the  pods.
+## Example:
+## initContainers:
+##   - name: your-image-name
+##     image: your-image
+##     imagePullPolicy: Always
+##     ports:
+##       - name: portname
+##         containerPort: 1234
+##
+initContainers:
+  - command:
+      - /bin/bash
+      - -c
+      - if [ "$ENABLE_INSECURE" = "true" ]; then HOST=$( env | grep "mosip-api-internal-host"
+        |sed "s/mosip-api-internal-host=//g"); if [ -z "$HOST" ]; then echo "HOST
+        $HOST is empty; EXITING"; exit 1; fi; openssl s_client -servername "$HOST"
+        -connect "$HOST":443  > "$HOST.cer" 2>/dev/null & sleep 2 ; sed -i -ne '/-BEGIN
+        CERTIFICATE-/,/-END CERTIFICATE-/p' "$HOST.cer"; cat "$HOST.cer"; /usr/local/openjdk-11/bin/keytool
+        -delete -alias "$HOST" -keystore $JAVA_HOME/lib/security/cacerts  -storepass
+        changeit; /usr/local/openjdk-11/bin/keytool -trustcacerts -keystore "$JAVA_HOME/lib/security/cacerts"
+        -storepass changeit -noprompt -importcert -alias "$HOST" -file "$HOST.cer"
+        ; if [ $? -gt 0 ]; then echo "Failed to add SSL certificate for host $host;
+        EXITING"; exit 1; fi; cp /usr/local/openjdk-11/lib/security/cacerts /cacerts;
+        fi
+    env:
+      - name: ENABLE_INSECURE
+        value: "true"
+    envFrom:
+      - configMapRef:
+          name: global
+    image: docker.io/openjdk:11-jre
+    imagePullPolicy: Always
+    name: cacerts
+    resources: {}
+    securityContext:
+      runAsUser: 0
+      capabilities:
+        add:
+          - SYS_PTRACE
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+      - mountPath: /cacerts
+        name: cacerts
+
+## Add sidecars to the  pods.
+## Example:
+## sidecars:
+##   - name: your-image-name
+##     image: your-image
+##     imagePullPolicy: Always
+##     ports:
+##       - name: portname
+##         containerPort: 1234
+##
+sidecars: {}
+
+volumes:
+  authdemo:
+    enabled: true
+    storageClass: 'longhorn'
+    accessModes:
+      - ReadWriteMany
+    size: 1Gi
+    existingClaim:
+  packetcreator-data:
+    enabled: true
+    storageClass: 'longhorn'
+    accessModes:
+      - ReadWriteMany
+    size: 50Gi
+    existingClaim:
+  dslorchestrator:
+    enabled: true
+    storageClass: 'longhorn'
+    accessModes:
+      - ReadWriteMany
+    size: 100Mi
+    existingClaim:
+## Init containers parameters:
+## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
+##
+
+## Specifies whether RBAC resources should be created
+##
+rbac:
+  create: true
+
+## Specifies whether a ServiceAccount should be created
+##
+serviceAccount:
+  create: true
+  ## The name of the ServiceAccount to use.
+  ## If not set and create is true, a name is generated using the fullname template
+  ##
+  name:
+
+## Prometheus Metrics
+##
+metrics:
+  enabled: false
+  ## Prometheus pod annotations
+  ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+  ##
+  podAnnotations:
+    prometheus.io/scrape: "true"
+
+  endpointPath:
+
+  ## Prometheus Service Monitor
+  ## ref: https://github.com/coreos/prometheus-operator
+  ##
+  serviceMonitor:
+    ## If the operator is installed in your cluster, set to true to create a Service Monitor Entry
+    ##
+    enabled: true
+    ## Specify the namespace in which the serviceMonitor resource will be created
+    ##
+    # namespace: ""
+    ## Specify the interval at which metrics should be scraped
+    ##
+    interval: 10s
+    ## Specify the timeout after which the scrape is ended
+    ##
+    # scrapeTimeout: 30s
+    ## Specify Metric Relabellings to add to the scrape endpoint
+    ##
+    # relabellings:
+    ## Specify honorLabels parameter to add the scrape endpoint
+    ##
+    honorLabels: false
+    ## Used to pass Labels that are used by the Prometheus installed in your cluster to select Service Monitors to work with
+    ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#prometheusspec
+    ##
+    additionalLabels: {}
+
+  ## Custom PrometheusRule to be defined
+  ## The value is evaluated as a template, so, for example, the value can depend on .Release or .Chart
+  ## ref: https://github.com/coreos/prometheus-operator#customresourcedefinitions
+  ##
+  prometheusRule:
+    enabled: false
+    additionalLabels: {}
+    namespace: ''
+    ## List of rules, used as template by Helm.
+    ## These are just examples rules inspired from https://awesome-prometheus-alerts.grep.to/rules.html
+    # rules:
+    #   - alert: RabbitmqDown
+    #     expr: rabbitmq_up{service="{{ template "rabbitmq.fullname" . }}"} == 0
+    #     for: 5m
+    #     labels:
+    #       severity: error
+    rules: []
+
+types:
+  - name: full
+    enabled: true
+  - name: sanity
+    enabled: true
+
+crontime: "0 3 * * *"    ## run cronjob every day at 3 AM (time hr: 0-23 )
+
+
+dslrig:
+  configmaps:
+    s3:
+      s3-host: 'http://minio.minio:9000'
+      s3-user-key: 'admin'
+      s3-region: ''
+    db:
+      db-port: '5432'
+      db-su-user: 'postgres'
+      db-server: 'api-internal.dev.mosip.net'
+    dslrig:
+      ENABLE_INSECURE: "false"
+      ENDPOINT: "https://api-internal.dev.mosip.net"
+      USER: "api-internal.dev.mosip.net"
+      DEFAULT_SCENARIOS: "true"
+      authCertsPath: "/home/mosip/authcerts"
+      authDemoServiceBaseURL: "http://localhost"
+      authDemoServicePort: "8082"
+      # authdemo volume mountPath
+      mountPath: "/home/mosip/mountvolume"
+      # dslrig scenario mountPath
+      mountPathForScenario: "/home/mosip/mountvolume/"
+      packetUtilityBaseUrl: http://localhost:8080/v1/packetcreator
+      s3-account: "dslreports"
+      threadCount: "8"
+      push-reports-to-s3: "yes"
+      enableDebug: "yes"
+      langselect: "0"
+    del:
+      del.sh: |
+              #!/bin/bash
+              cd $work_dir;
+              curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl";
+              chmod +x kubectl;
+              ./kubectl -n dslrig exec -it $HOSTNAME -c authdemo -- bash -c "kill -s TERM\$( ps -aux | grep java | awk 'NR==1{print \$2}' ) || true;" ;
+              ./kubectl -n dslrig exec -it $HOSTNAME -c packetcreator-data -- bash -c "kill -9 \$( ps -aux | grep java | awk 'NR==1{print \$2}' ) || true;" ;
+
+  secrets:
+
+enable_insecure: false
+
+containers:
+  dslorchestrator:
+    image:
+      registry: docker.io
+      repository: syedsalman041997/dsl-orchestrator
+      tag: develop
+      pullPolicy: Always
+    volumes:
+      - pvc_name: 'dslorchestrator'
+        mountDir: '/home/mosip/mountvolume/scenarios'
+    envVars:
+      JDK_JAVA_OPTIONS: '-Xms2600M -Xmx2600M'
+      container_user: 'mosip'
+    envVarsCM:
+      - global
+      - s3
+      - keycloak-host
+      - db
+      - dslrig
+      - config-server-share
+      - artifactory-share
+    envVarsSecret:
+      - s3
+      - keycloak-client-secrets
+      - postgres-postgresql
+    springServicePort: 8083
+    healthcheck:
+      startupProbe:
+        enabled: false
+      livenessProbe:
+        enabled: false
+      readinessProbe:
+        enabled: false
+    command: '/bin/bash'
+    args:
+      - '-c'
+      - 'echo "Initial sleep 30 seconds";
+         sleep 30;
+         MY_PROBE_CHECK_PATHS="$packetUtilityBaseUrl/actuator/health,$authDemoServiceBaseURL:$authDemoServicePort/v1/identity/actuator/health";
+         for str in $(echo $MY_PROBE_CHECK_PATHS | tr "," " "); do
+           COUNT=60;
+           while [[ $COUNT -gt 0 ]]; do
+             curl_output=$(curl -w "%{http_code}" -o /dev/null -s -k "$str");
+             if ! [[ "$curl_output" = "200" ]]; then
+               (( COUNT-- ));
+               echo "$str failed with status code $curl_output" >> /dev/stderr && sleep 10 && continue;
+             fi;
+             echo "$str passed with status code $curl_output";
+             COUNT=50;
+             break;
+           done;
+         done;
+         echo "Sleeping for 30 seconds";
+         sleep 30;
+         ./entrypoint.sh
+         bash scripts/del.sh  ## Todo: Requires get api to shutdown authdemo and packetcreator. Currently we are stopping via kubectl command.
+         '
+  authdemo:
+    image:
+      registry: docker.io
+      repository: mosipdev/authentication-demo-service
+      tag: develop
+      pullPolicy: Always
+    springServicePort: 8082
+    volumes:
+    - pvc_name: 'authdemo'
+      mountDir: '/home/mosip/authcerts'
+    envVars:
+      JDK_JAVA_OPTIONS: '-Xms2600M -Xmx2600M'
+      container_user: 'mosip'
+    envVarsCM:
+      - global
+      - s3
+      - keycloak-host
+      - db
+      - dslrig
+      - config-server-share
+      - artifactory-share
+    envVarsSecret:
+      - s3
+      - keycloak-client-secrets
+      - postgres-postgresql
+    healthcheck:
+      startupProbe:
+        enabled: true
+        httpGet:
+          path: /v1/identity/actuator/health
+          port: 8082
+        initialDelaySeconds: 0
+        periodSeconds: 20
+        timeoutSeconds: 5
+        failureThreshold: 60
+        successThreshold: 1
+      livenessProbe:
+        enabled: true
+        httpGet:
+          path: /v1/identity/actuator/health
+          port: 8082
+        initialDelaySeconds: 0
+        periodSeconds: 10
+        timeoutSeconds: 5
+        failureThreshold: 10
+        successThreshold: 1
+      readinessProbe:
+        enabled: true
+        httpGet:
+          path: /v1/identity/actuator/health
+          port: 8082
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        timeoutSeconds: 5
+        failureThreshold: 6
+        successThreshold: 1
+  packetcreator-data:
+    image:
+      registry: docker.io
+      repository: syedsalman041997/dsl-packetcreator
+      tag: develop
+      pullPolicy: Always
+    springServicePort: 8080
+    volumes:
+    - pvc_name: 'packetcreator-data'
+      mountDir: '/home/mosip/mountvolume'
+    - pvc_name: 'authdemo'
+      mountDir: '/home/mosip/authcerts'
+    envVars:
+      JDK_JAVA_OPTIONS: '-Xms2600M -Xmx2600M'
+      container_user: 'mosip'
+    envVarsCM:
+      - global
+      - s3
+      - keycloak-host
+      - db
+      - dslrig
+      - config-server-share
+      - artifactory-share
+    envVarsSecret:
+      - s3
+      - keycloak-client-secrets
+      - postgres-postgresql
+    healthcheck:
+      startupProbe:
+        enabled: true
+        httpGet:
+          path: /v1/packetcreator/actuator/health
+          port: 8080
+        initialDelaySeconds: 0
+        periodSeconds: 20
+        timeoutSeconds: 5
+        failureThreshold: 60
+        successThreshold: 1
+      livenessProbe:
+        enabled: true
+        httpGet:
+          path: /v1/packetcreator/actuator/health
+          port: 8080
+        initialDelaySeconds: 0
+        periodSeconds: 10
+        timeoutSeconds: 5
+        failureThreshold: 6
+        successThreshold: 1
+      readinessProbe:
+        enabled: true
+        httpGet:
+          path: /v1/packetcreator/actuator/health
+          port: 8080
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        timeoutSeconds: 5
+        failureThreshold: 6
+        successThreshold: 1
