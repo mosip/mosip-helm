@@ -2608,6 +2608,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/dslorchestrator-12.0.1-B3.tgz
     version: 12.0.1-B3
+  dslrig:
+  - apiVersion: v2
+    created: "2023-11-24T11:57:14.69061587Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy dslrig to test working of MOSIP modules
+    digest: 89770889a0c3564dd5bd3c34871a9ceee2596efd42a3a0491f9bd1c718a4c082
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - dslrig
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: dslrig
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/dslrig-12.0.2.tgz
+    version: 12.0.2
   elasticsearch:
   - annotations:
       category: Analytics
@@ -14085,4 +14108,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2023-11-24T11:53:00.631000307Z"
+generated: "2023-11-24T11:57:14.687906171Z"
