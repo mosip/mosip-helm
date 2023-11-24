@@ -2336,6 +2336,31 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/credentialrequest-1.1.5.tgz
     version: 1.1.5
+  data-archive:
+  - apiVersion: v2
+    created: "2023-11-24T11:53:00.632573428Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes to initialize mosip_archive Postgres
+      DB and execute py script to archive data from source db to archive db
+    digest: ef4c4106d453ed75f66df362f7f679a78da0b538048800047fc010705bcd5135
+    home: https://mosip.io
+    keywords:
+    - postgres
+    - db
+    - database
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: data-archive
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/data-archive-1.0.0.tgz
+    version: 1.0.0
   datashare:
   - apiVersion: v2
     created: "2023-10-19T04:48:36.806560157Z"
@@ -14060,4 +14085,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2023-11-21T10:07:48.091762743Z"
+generated: "2023-11-24T11:53:00.631000307Z"
