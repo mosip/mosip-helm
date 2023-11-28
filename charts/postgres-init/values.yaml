@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: mosipid/postgres-init
+  repository: mosipdev/postgres-init
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 1.2.0.1-B3
+  tag: release-1.2.0.1-B4
 
 imagePullSecrets: []
 nameOverride: ""
@@ -65,6 +65,10 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
+## "backoff" strategy - It is used when dealing with resources that are retrying or recovering from failures.
+##
+backoffLimit: 0
+
 nodeSelector: {}
 
 tolerations: []
@@ -93,8 +97,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
+    repoUrl: https://github.com/mosip/admin-services.git
+    branch: v1.2.0.1-B1
 
   mosip_audit:
     enabled: true
@@ -104,8 +110,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
+    repoUrl: https://github.com/mosip/audit-manager.git
+    branch: v1.2.0.1-B1
 
   mosip_keymgr:
     enabled: true
@@ -115,8 +123,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 1
+    repoUrl: https://github.com/mosip/keymanager.git
+    branch: release-1.2.0.1
 
   mosip_kernel:
     enabled: true
@@ -126,8 +136,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
+    repoUrl: https://github.com/mosip/commons.git
+    branch: v1.2.0.1-B1
 
   mosip_idmap:
     enabled: true
@@ -137,8 +149,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
+    repoUrl: https://github.com/mosip/id-repository.git
+    branch: v1.2.0.1-B1
 
   mosip_prereg:
     enabled: true
@@ -148,8 +162,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
+    repoUrl: https://github.com/mosip/pre-registration.git
+    branch: v1.2.0.1-B1
 
   mosip_idrepo:
     enabled: true
@@ -159,8 +175,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
+    repoUrl: https://github.com/mosip/id-repository.git
+    branch: v1.2.0.1-B1
 
   mosip_ida:
     enabled: true
@@ -170,8 +188,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 1
+    repoUrl: https://github.com/mosip/id-authentication.git
+    branch: release-1.2.0.1
 
   mosip_credential:
     enabled: true
@@ -181,8 +201,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
+    repoUrl: https://github.com/mosip/id-repository.git
+    branch: v1.2.0.1-B1
 
   mosip_regprc:
     enabled: true
@@ -192,30 +214,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 1
-
-  mosip_regdevice:
-    enabled: true
-    host: "postgres-postgresql"
-    port: 5432
-    su:
-      user: postgres
-      secret:
-        name: postgres-postgresql
-        key: postgresql-password
-    dml: 1
-
-  mosip_authdevice:
-    enabled: true
-    host: "postgres-postgresql"
-    port: 5432
-    su:
-      user: postgres
-      secret:
-        name: postgres-postgresql
-        key: postgresql-password
-    dml: 1
+    repoUrl: https://github.com/mosip/registration.git
+    branch: v1.2.0.1-B2
 
   mosip_pms:
     enabled: true
@@ -228,8 +230,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 1
+    repoUrl: https://github.com/mosip/partner-management-services.git
+    branch: v1.2.0.1-B3
 
   mosip_hotlist:
     enabled: true
@@ -239,8 +243,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
+    repoUrl: https://github.com/mosip/admin-services.git
+    branch: v1.2.0.1-B1
 
   mosip_resident:
     enabled: true
@@ -250,8 +256,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
+    repoUrl: https://github.com/mosip/resident-services.git
+    branch: v1.2.0.1-B2
 
   mosip_toolkit:
     enabled: false
@@ -261,8 +269,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
+    repoUrl: https://github.com/mosip/mosip-compliance-toolkit.git
+    branch: v1.2.1
 
   mosip_digitalcard:
     enabled: false
@@ -272,8 +282,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 0
+    repoUrl: https://github.com/mosip/digital-card-service.git
+    branch: develop
 
   mosip_esignet:
     enabled: false
@@ -283,8 +295,10 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 1
+    repoUrl: https://github.com/mosip/esignet.git
+    branch: release-1.2.x
 
   mosip_mockidentitysystem:
     enabled: false
@@ -294,5 +308,7 @@ databases:
       user: postgres
       secret:
         name: postgres-postgresql
-        key: postgresql-password
+        key: postgres-password
     dml: 1
+    repoUrl: https://github.com/mosip/esignet-mock-services.git
+    branch: 0.9.x
