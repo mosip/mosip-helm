@@ -683,6 +683,29 @@ entries:
     - https://mosip.github.io/mosip-helm/artifactory-12.0.1-beta.tgz
     version: 12.0.1-beta
   - apiVersion: v2
+    created: "2023-11-28T12:31:16.423015633Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Artifactory
+    digest: 23517d1fd759753f4d95d6d4db85e8d3b06e7c32416322af914d89153df94f06
+    home: https://mosip.io
+    keywords:
+    - artifactory
+    - antivirus
+    - anti-virus
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: artifactory
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/artifactory-12.0.1-B6.tgz
+    version: 12.0.1-B6
+  - apiVersion: v2
     created: "2023-10-19T04:48:36.613717666Z"
     dependencies:
     - name: common
@@ -2871,6 +2894,29 @@ entries:
     - https://mosip.github.io/mosip-helm/ida-auth-12.0.1-beta.tgz
     version: 12.0.1-beta
   - apiVersion: v2
+    created: "2023-11-28T12:31:16.424384205Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP IDA module
+    digest: c3e639d34bbb4193cc35be43735a262aef22e7117182cafb04a7ebdfa9b20ab7
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - ida-auth
+    - ida
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: ida-auth
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/ida-auth-12.0.1-B5.tgz
+    version: 12.0.1-B5
+  - apiVersion: v2
     created: "2023-10-19T04:48:36.864420834Z"
     dependencies:
     - name: common
@@ -3057,6 +3103,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/ida-internal-12.0.1-beta.tgz
     version: 12.0.1-beta
+  - apiVersion: v2
+    created: "2023-11-28T12:31:16.425722532Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP IDA module
+    digest: a368173972a6725a0c67cee2de7affbc8754fd86219a790d1e6e12ec46eaf5bd
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - ida-internal
+    - ida
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: ida-internal
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/ida-internal-12.0.1-B5.tgz
+    version: 12.0.1-B5
   - apiVersion: v2
     created: "2023-10-19T04:48:36.887189422Z"
     dependencies:
@@ -3295,6 +3364,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/ida-otp-12.0.1-beta.tgz
     version: 12.0.1-beta
+  - apiVersion: v2
+    created: "2023-11-28T12:31:16.42721226Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP IDA module
+    digest: 343b064e1fb3214f70af494b0a045bc0b4342e100990d8f705f98a7a5acd2598
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - ida-otp
+    - ida
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: ida-otp
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/ida-otp-12.0.1-B5.tgz
+    version: 12.0.1-B5
   - apiVersion: v2
     created: "2023-10-19T04:48:36.917431772Z"
     dependencies:
@@ -4316,6 +4408,30 @@ entries:
     - https://mosip.github.io/mosip-helm/keygen-12.0.1-beta.tgz
     version: 12.0.1-beta
   - apiVersion: v2
+    created: "2023-11-28T12:31:16.429316704Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to generate keys
+    digest: e3b968a98c6f66a0426d7a9c1a0fe734c1988e614b1f74e8619b90f1831de22c
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - keymanager
+    - keygen
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: keygen
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/keygen-12.0.1-B3.tgz
+    version: 12.0.1-B3
+  - apiVersion: v2
     created: "2023-10-19T04:48:37.039511079Z"
     dependencies:
     - name: common
@@ -4458,6 +4574,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/keymanager-12.0.1-beta.tgz
     version: 12.0.1-beta
+  - apiVersion: v2
+    created: "2023-11-28T12:31:16.430989226Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Keymanager module
+    digest: e52c5c1a8a07f6d4b8015c644ca4e7b95230e859a3c9ef0be4f1e9b8c03b5bfe
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - keymanager
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: keymanager
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/keymanager-12.0.1-B3.tgz
+    version: 12.0.1-B3
   - apiVersion: v2
     created: "2023-10-19T04:48:37.057498627Z"
     dependencies:
@@ -5852,6 +5991,29 @@ entries:
     - https://mosip.github.io/mosip-helm/mosip-file-server-12.0.1-beta.tgz
     version: 12.0.1-beta
   - apiVersion: v2
+    created: "2023-11-28T12:31:16.432435934Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to file server application.
+    digest: 5d994820d7fe0ce663d5796c6f4159933be645e49b1df71db1b73295aacd6642
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - mosip-file-server
+    - fileserver
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: mosip-file-server
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/mosip-file-server-12.0.1-B4.tgz
+    version: 12.0.1-B4
+  - apiVersion: v2
     created: "2023-10-19T04:48:37.215645932Z"
     dependencies:
     - name: common
@@ -6806,6 +6968,29 @@ entries:
     - https://mosip.github.io/mosip-helm/partner-onboarder-12.0.1-beta.tgz
     version: 12.0.1-beta
   - apiVersion: v2
+    created: "2023-11-28T12:31:16.433789719Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for onboarding default partners for MOSIP sandbox.
+    digest: b7b543a49c55f29a246ac468ecfc85d0e972235c073e104ba1db73aaa3ac14f8
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - partner-onboarder
+    - partners
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: partner-onboarder
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/partner-onboarder-12.0.1-B4.tgz
+    version: 12.0.1-B4
+  - apiVersion: v2
     created: "2023-10-19T04:48:37.320674399Z"
     dependencies:
     - name: common
@@ -7434,7 +7619,7 @@ entries:
     version: 12.0.1-beta
   - apiVersion: v2
     appVersion: 1.2.0
-    created: "2023-10-19T04:48:37.408704925Z"
+    created: "2023-11-28T12:31:16.43535602Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -7442,7 +7627,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for Kubernetes to initialize various Postgres DBs.
-    digest: 57739a78abd4abbc44a43c43206c5248267d3ede55d7177ca7b5e32571113c10
+    digest: 47d410fc5e1d5f4b247a6ed0f56cb7d58988957445c6647821202b544f648d5f
     home: https://mosip.io
     keywords:
     - postgres
@@ -14218,4 +14403,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2023-11-28T12:30:45.629332583Z"
+generated: "2023-11-28T12:31:16.421404107Z"
