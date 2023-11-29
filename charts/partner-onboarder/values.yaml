@@ -131,12 +131,12 @@ resources:
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  limits: {}
-  #   cpu: 200m
-  #   memory: 256Mi
+  limits:
+    cpu: 3500m
+    memory: 4500Mi
   requests:
-    cpu: 100m
-    memory: 1000Mi
+    cpu: 1000m
+    memory: 1500Mi
 
 additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
@@ -449,4 +449,7 @@ onboarding:
       s3-host: 'http://minio.minio:9000'
       s3-user-key: 'admin'
       s3-region: ''
+    onboarder-namespace:
+      ns_mimoto: mimoto
+      ns_esignet: esignet
   secrets:
