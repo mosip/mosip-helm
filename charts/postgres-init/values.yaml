@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: mosipdev/postgres-init
+  repository: mosipid/postgres-init
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: release-1.2.0.1-B4
+  tag: 1.2.0.1-B4
 
 imagePullSecrets: []
 nameOverride: ""
@@ -126,7 +126,7 @@ databases:
         key: postgres-password
     dml: 1
     repoUrl: https://github.com/mosip/keymanager.git
-    branch: release-1.2.0.1
+    branch: v1.2.0.1-B3
 
   mosip_kernel:
     enabled: true
@@ -191,7 +191,7 @@ databases:
         key: postgres-password
     dml: 1
     repoUrl: https://github.com/mosip/id-authentication.git
-    branch: release-1.2.0.1
+    branch: v1.2.0.1-B5
 
   mosip_credential:
     enabled: true
@@ -298,7 +298,7 @@ databases:
         key: postgres-password
     dml: 1
     repoUrl: https://github.com/mosip/esignet.git
-    branch: release-1.2.x
+    branch: v1.2.0
 
   mosip_mockidentitysystem:
     enabled: false
@@ -311,4 +311,4 @@ databases:
         key: postgres-password
     dml: 1
     repoUrl: https://github.com/mosip/esignet-mock-services.git
-    branch: 0.9.x
+    branch: v0.9.1
