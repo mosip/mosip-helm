@@ -389,7 +389,7 @@ databases:
     source_resident_dbname: "mosip_resident"
     source_resident_schemaname: "resident"
     source_resident_db_pass: ""
-  container_volume_path: "/all-db-info-json"
+  container_volume_path: "/all-db-info-json" #volume mount path for table info inside cronjob container
   all_db_tables_info:
     audit:
       tables_info:
