@@ -60,7 +60,7 @@ data:
   PMS_SOURCE_SCHEMA_NAME: {{ .Values.databases.source_db.source_pms_schemaname | quote }}  
   REGPRC_SOURCE_DB_HOST: {{ .Values.databases.source_db.source_regprc_host | quote }}
   REGPRC_SOURCE_DB_PORT: {{ .Values.databases.source_db.source_regprc_port | quote }}
-  REGPRC_SOURCEC_DB_UNAME: {{ .Values.databases.source_db.source_regprc_uname | quote }}
+  REGPRC_SOURCE_DB_UNAME: {{ .Values.databases.source_db.source_regprc_uname | quote }}
   REGPRC_SOURCE_DB_NAME: {{ .Values.databases.source_db.source_regprc_dbname | quote }}
   REGPRC_SOURCE_SCHEMA_NAME: {{ .Values.databases.source_db.source_regprc_schemaname | quote }}  
   RESIDENT_SOURCE_DB_HOST: {{ .Values.databases.source_db.source_resident_host | quote }}

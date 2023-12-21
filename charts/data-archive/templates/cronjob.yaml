@@ -3,13 +3,12 @@ kind: CronJob
 metadata:
   name: {{ template "data-archive.cronjob" $ }}
   namespace: {{ $.Release.Namespace }}
-
 spec:
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 1  # remove jobs which are successfully executed
   failedJobsHistoryLimit: 1      # except 1 recent failed job, remove jobs which are not successfully executed
   #schedule: '*/3 * * * *' # cron spec of time, here, 8 o'clock
-  schedule: {{ .Values.crontime }}
+  schedule: {{ $.Values.crontime }}
   jobTemplate:
     spec:
       backoffLimit: 2 # this has very low chance of failing, as all this does
@@ -24,26 +23,20 @@ spec:
             - name: {{ template "data-archive.serviceAccountName" $ }}
               image: {{ template "data-archive.image" $ }}
               imagePullPolicy: {{ $.Values.image.pullPolicy }}
-              {{- if $.Values.lifecycleHooks }}
-              lifecycle: {{- include "common.tpvalues.render" (dict "value" $.Values.lifecycleHooks "context" $) | nindent 12 }}
-              {{- end }}
-              {{- if $.Values.containerSecurityContext.enabled }}
-              securityContext: {{- omit $.Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
-              {{- end }}
-              {{- if $.Values.command }}
-              command: {{- include "common.tpvalues.render" (dict "value" $.Values.command "context" $) | nindent 12 }}
-              {{- end }}
-              {{- if $.Values.args }}
-              args: {{- include "common.tpvalues.render" (dict "value" $.Values.args "context" $) | nindent 12 }}
-              {{- end }}
+              volumeMounts:
+              - name: config-volume
+                mountPath: /all-db-info-json
               env:
-
                 - name: container_user
-                  value: {{ $.Values.containerSecurityContext.runAsUser | quote }}
+                  value: {{ $.Values.containerSecurityContext.runAsUser }}
               envFrom:
-                 - configMapRef:
+                - configMapRef:
                     name: db-archive-init-env-config
-                 - secretRef:
+                - secretRef:
                     name: source-db-secrets
-                 - secretRef:
+                - secretRef:
                     name: archive-db-secrets
+          volumes:
+          - name: config-volume
+            configMap:
+              name: {{ .Release.Name }}

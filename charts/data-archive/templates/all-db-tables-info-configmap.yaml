@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    {{- include "common.labels.standard" . | nindent 4 }}
+    app.kubernetes.io/component: your-component-name
+    {{- if .Values.commonLabels }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
+    {{- end }}
+  {{- if .Values.commonAnnotations }}
+  annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
+  {{- end }}
+data:
+  audit_archive_table_info: {{ .Values.databases.all_db_tables_info.audit | toJson | quote }}
+  credential_archive_table_info: {{ .Values.databases.all_db_tables_info.credential | toJson | quote }}
+  esignet_archive_table_info: {{ .Values.databases.all_db_tables_info.esignet | toJson | quote }}
+  ida_archive_table_info: {{ .Values.databases.all_db_tables_info.ida | toJson | quote }}
+  idrepo_archive_table_info: {{ .Values.databases.all_db_tables_info.idrepo | toJson | quote }}
+  kernel_archive_table_info: {{ .Values.databases.all_db_tables_info.kernel | toJson | quote }}
+  master_archive_table_info: {{ .Values.databases.all_db_tables_info.master | toJson | quote }}
+  pms_archive_table_info: {{ .Values.databases.all_db_tables_info.pms | toJson | quote }}
+  prereg_archive_table_info: {{ .Values.databases.all_db_tables_info.prereg | toJson | quote }}
+  regprc_archive_table_info: {{ .Values.databases.all_db_tables_info.regprc | toJson | quote }}
+  resident_archive_table_info: {{ .Values.databases.all_db_tables_info.resident | toJson | quote }}
