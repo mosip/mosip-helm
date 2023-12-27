@@ -61,7 +61,23 @@ spec:
           command:
             - /bin/bash
             - -c
-            - chown -R mosip:mosip {{ .Values.persistence.mountDir }} && chown -R mosip:mosip {{ .Values.persistence.packetcreator_data_mount_dir }}
+            - echo "Disk usage before deletion authcerts directory" &&
+              du -sh {{ .Values.persistence.mountDir }}/* &&
+              echo "Disk usage before deletion packetcreator's packets directory" &&
+              du -sh {{ .Values.persistence.packetcreator_data_mount_dir }}/* &&
+              find {{ .Values.persistence.mountDir }} -type f -mtime +5 -exec rm {} \; &&
+              find {{ .Values.persistence.mountDir }} -type d -empty -delete &&
+              find {{ .Values.persistence.packetcreator_data_mount_dir }}/packets  -type f -mtime +5 -exec rm {} \; &&
+              find {{ .Values.persistence.packetcreator_data_mount_dir }}/packets  -type d -empty -delete &&
+              echo "Disk usage before deletion authcerts directory" &&
+              du -sh {{ .Values.persistence.mountDir }}/* &&
+              echo "Disk usage before deletion packetcreator's packets directory" &&
+              du -sh {{ .Values.persistence.packetcreator_data_mount_dir }}/* &&
+              chown -R mosip:mosip {{ .Values.persistence.mountDir }} &&
+              chown -R mosip:mosip {{ .Values.persistence.packetcreator_data_mount_dir }}
+          env:
+            - name: RETENTION_DAYS
+              value: '2'
           securityContext:
             runAsUser: 0
           {{- if .Values.volumePermissions.resources }}

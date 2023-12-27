@@ -24,6 +24,13 @@ spec:
         spec:
           # account configured above
           restartPolicy: Never
+          initContainers:
+              {{- if $.Values.initContainers }}
+              {{- include "common.tplvalues.render" (dict "value" $.Values.initContainers "context" $) | nindent 12 }}
+              {{- end }}
+              {{- if $.Values.enable_insecure }}
+              {{- include "common.tplvalues.render" (dict "value" $.Values.insecureInitContainers "context" $) | nindent 12 }}
+              {{- end }}
           containers:
           - name: {{ template "apitestrig.serviceAccountName" $ }}-{{ $module.name }}
             image: {{ template "apitestrig.image" $ }}
@@ -66,6 +73,16 @@ spec:
             ports:
                 - name: spring-service
                   containerPort: {{ $.Values.springServicePort }}
-
+            volumeMounts:
+              {{- if $.Values.enable_insecure }}
+                - mountPath: /usr/local/openjdk-11/lib/security/cacerts
+                  name: cacerts
+                  subPath: cacerts
+              {{- end }}
+          volumes:
+          {{- if $.Values.enable_insecure }}
+          - name: cacerts
+            emptyDir: {}
+          {{- end }}
 {{- end }}
 {{- end }}

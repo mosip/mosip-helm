@@ -249,7 +249,67 @@ extraVolumeMounts: []
 ##       - name: portname
 ##         containerPort: 1234
 ##
-initContainers: {}
+initContainers:
+  - command:
+      - /bin/bash
+      - -c
+      - |
+        S3_HOST=$(printenv s3-host )
+        S3_USER_KEY=$( printenv s3-user-key )
+        S3_USER_SECRET=$( printenv s3-user-secret )
+        S3_ACCOUNT=$(printenv s3-account )
+        echo "S3 details: $S3_HOST $S3_USER_KEY $S3_USER_SECRET $S3_ACCOUNT $S3_RETENTION_DAYS"
+        mc alias set s3 $S3_HOST $S3_USER_KEY $S3_USER_SECRET
+        echo "Bucket usage before removal of reports: $( mc du --depth 1 s3/$S3_ACCOUNT )"
+        mc rm --recursive --force --older-than $S3_RETENTION_DAYS s3/$S3_ACCOUNT
+        echo "Bucket usage after removal of reports: $( mc du --depth 1 s3/$S3_ACCOUNT )"
+    envFrom:
+      - configMapRef:
+          name: s3
+      - configMapRef:
+          name: apitestrig
+      - secretRef:
+          name: s3
+    image: docker.io/minio/mc:RELEASE.2022-07-29T19-17-16Z
+    imagePullPolicy: Always
+    name: s3-reports-cleanup
+    resources: {}
+    securityContext:
+      runAsUser: 0
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+insecureInitContainers:
+  - command:
+      - /bin/bash
+      - -c
+      - if [ "$ENABLE_INSECURE" = "true" ]; then HOST=$( env | grep "mosip-api-internal-host"
+        |sed "s/mosip-api-internal-host=//g"); if [ -z "$HOST" ]; then echo "HOST
+        $HOST is empty; EXITING"; exit 1; fi; openssl s_client -servername "$HOST"
+        -connect "$HOST":443  > "$HOST.cer" 2>/dev/null & sleep 2 ; sed -i -ne '/-BEGIN
+        CERTIFICATE-/,/-END CERTIFICATE-/p' "$HOST.cer"; cat "$HOST.cer"; /usr/local/openjdk-11/bin/keytool
+        -delete -alias "$HOST" -keystore $JAVA_HOME/lib/security/cacerts  -storepass
+        changeit; /usr/local/openjdk-11/bin/keytool -trustcacerts -keystore "$JAVA_HOME/lib/security/cacerts"
+        -storepass changeit -noprompt -importcert -alias "$HOST" -file "$HOST.cer"
+        ; if [ $? -gt 0 ]; then echo "Failed to add SSL certificate for host $host;
+        EXITING"; exit 1; fi; cp /usr/local/openjdk-11/lib/security/cacerts /cacerts;
+        fi
+    env:
+      - name: ENABLE_INSECURE
+        value: "true"
+    envFrom:
+      - configMapRef:
+          name: global
+    image: docker.io/openjdk:11-jre
+    imagePullPolicy: Always
+    name: cacerts
+    resources: {}
+    securityContext:
+      runAsUser: 0
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+      - mountPath: /cacerts
+        name: cacerts
 
 ## Add sidecars to the  pods.
 ## Example:
@@ -441,7 +501,7 @@ modules:
     enabled: true
   - name: auth
     enabled: true
-  - name: idp
+  - name: esignet
     enabled: true
   - name: mobileid
     enabled: true
@@ -462,8 +522,11 @@ apitestrig:
       ENV_USER: 'api-internal.sandbox'
       ENV_ENDPOINT: 'https://api-internal.sandbox.xyz.net'
       ENV_TESTLEVEL: 'smokeAndRegression'
-      ENABLE_INSECURE: 'false'
       authDemoServiceBaseURL: http://authdemo.authdemo
       authDemoServicePort: 80
       eSignetDeployed: yes or no
+      S3_RETENTION_DAYS: '5'
+      s3-account: "automation"
   secrets:
+
+enable_insecure: false

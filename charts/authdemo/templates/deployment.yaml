@@ -61,7 +61,16 @@ spec:
           command:
             - /bin/bash
             - -c
-            - chown -R mosip:mosip {{ .Values.persistence.mountDir }}
+            - echo "Disk usage before deletion" && 
+              du -sh {{ .Values.persistence.mountDir }}/* &&
+              find {{ .Values.persistence.mountDir }} -type f -mtime +$RETENTION_DAYS -exec rm {} \; &&
+              find {{ .Values.persistence.mountDir }} -type d -empty -delete &&
+              chown -R mosip:mosip {{ .Values.persistence.mountDir }} &&
+              echo "Disk usage after deletion" &&
+              du -sh {{ .Values.persistence.mountDir }}/*
+          env:
+            - name: RETENTION_DAYS
+              value: '5'
           securityContext:
             runAsUser: 0
           {{- if .Values.volumePermissions.resources }}
