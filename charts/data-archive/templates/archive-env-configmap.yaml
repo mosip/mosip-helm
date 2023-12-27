@@ -57,7 +57,12 @@ data:
   PMS_SOURCE_DB_PORT: {{ .Values.databases.source_db.source_pms_port | quote }}
   PMS_SOURCE_DB_UNAME: {{ .Values.databases.source_db.source_pms_uname | quote }}
   PMS_SOURCE_DB_NAME: {{ .Values.databases.source_db.source_pms_dbname | quote }}
-  PMS_SOURCE_SCHEMA_NAME: {{ .Values.databases.source_db.source_pms_schemaname | quote }}  
+  PMS_SOURCE_SCHEMA_NAME: {{ .Values.databases.source_db.source_pms_schemaname | quote }}
+  PREREG_SOURCE_DB_HOST: {{ .Values.databases.source_db.source_prereg_host | quote }}
+  PREREG_SOURCE_DB_PORT: {{ .Values.databases.source_db.source_prereg_port | quote }}
+  PREREG_SOURCE_DB_UNAME: {{ .Values.databases.source_db.source_prereg_uname | quote }}
+  PREREG_SOURCE_DB_NAME: {{ .Values.databases.source_db.source_prereg_dbname | quote }}
+  PREREG_SOURCE_SCHEMA_NAME: {{ .Values.databases.source_db.source_prereg_schemaname | quote }} 
   REGPRC_SOURCE_DB_HOST: {{ .Values.databases.source_db.source_regprc_host | quote }}
   REGPRC_SOURCE_DB_PORT: {{ .Values.databases.source_db.source_regprc_port | quote }}
   REGPRC_SOURCE_DB_UNAME: {{ .Values.databases.source_db.source_regprc_uname | quote }}
@@ -72,4 +77,5 @@ data:
   ARCHIVE_DB_PORT: {{ .Values.databases.archive_db.archiveport | quote }}
   ARCHIVE_DB_UNAME: {{ .Values.databases.archive_db.archiveuname | quote }}
   ARCHIVE_DB_NAME: {{ .Values.databases.archive_db.archive_dbname | quote }}
-  ARCHIVE_SCHEMA_NAME: {{ .Values.databases.archive_db.archive_schemaname | quote }}  
+  ARCHIVE_SCHEMA_NAME: {{ .Values.databases.archive_db.archive_schemaname | quote }}
+  CONTAINER_VOLUME_PATH: {{ .Values.databases.container_volume_path | quote }}
