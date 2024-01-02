@@ -536,10 +536,9 @@ keycloak:
            - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
  
        - name: mpartner-default-opencrvs
-         saroles: 
+         saroles:
            - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
            - PUBLISH_CREDENTIAL_STATUS_UPDATE_GENERAL  
-         # need to Discuss TODO
            - ID_REPOSITORY
        - name: mosip-hotlist-client
          saroles:
