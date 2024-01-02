@@ -13,6 +13,10 @@
 commonLabels:
   app.kubernetes.io/component: mosip
 
+## "backoff" strategy - It is used when dealing with resources that are retrying or recovering from failures.
+##
+backoffLimit: 0
+
 ## Add annotations to all the deployed resources
 ##
 commonAnnotations: {}
@@ -185,11 +189,13 @@ extraEnvVars: []
 
 ## ConfigMap with extra environment variables
 ##
-extraEnvVarsCM: []
+extraEnvVarsCM:
+  - s3
 
 ## Secret with extra environment variables
 ##
-extraEnvVarsSecret: []
+extraEnvVarsSecret:
+  - s3
 
 ## Extra volumes to add to the deployment
 ##
@@ -304,9 +310,11 @@ crontime: "0 4 * * *"    ## run cronjob every day at 4 AM in GMT which is 9.30 A
 minioclient:
   configmaps:
     s3:
-      s3_host: 'http://minio.minio:9000'
-      s3_access_key: 'admin'
-      s3_secret_key: 'minio'
-      s3_bucket_name: automation
+      S3_SERVER_URL: 'http://minio.minio:9000'
+      S3_ACCESS_KEY: 'admin'
+      S3_BUCKET_LIST: 'automation,dslreports'
       s3_region: ''
-  retention_days: 3d
+      S3_RETENTION_DAYS: 5d
+  secrets:
+    s3:
+      S3_SECRET_KEY: 'minio'
