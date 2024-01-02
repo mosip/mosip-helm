@@ -5,19 +5,6 @@ metadata:
   namespace: {{ .Release.Namespace }}
 rules:
   - apiGroups: ["apps"]
-    resources: ["deployments"]
+    resources: ["deployments", "pods"]
     verbs: ["get","list","watch"]
 
----
-
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: {{ .Release.Name }}-secrets-pods-role
-  namespace: {{ .Release.Namespace }}
-rules:
-  - apiGroups: [""]
-    resources: ["secrets","pods"]
-    verbs: ["get","list","watch"]
-
----
