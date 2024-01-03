@@ -105,40 +105,19 @@ spec:
               value: {{ .Values.mediator.opencrvs.authUrl }}
             - name: kernel_auth_adapter_available
               value: {{ .Values.mediator.kernelAuthAdapterAvailable | quote }}
-            - name: mosip_opencrvs_client_id
-              value: {{ .Values.mediator.mosipOpencrvsKeycloakClientId }}
             - name: opencrvs_receive_credential_url
               value: {{ .Values.mediator.opencrvs.receiveCredentialUrl }}
             - name: opencrvs_locations_url
               value: {{ .Values.mediator.opencrvs.locationsUrl }}
             - name: mosip_receive_credential_url
               value: http://{{ template "common.names.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/opencrvs/v1/internal/receiveCredentialBirth
-            - name: mosip_opencrvs_client_secret_key
-              valueFrom:
-                secretKeyRef:
-                  name: keycloak-client-secrets
-                  key: {{ .Values.mediator.mosipOpencrvsKeycloakClientId | replace "-" "_" }}_secret
-            - name: mosip_opencrvs_death_client_id
-              value: {{ .Values.mediator.mosipOpencrvsDeathClientId }}
-            - name: mosip_opencrvs_death_client_secret
-              valueFrom:
-                secretKeyRef:
-                  name: keycloak-client-secrets
-                  key: {{ .Values.mediator.mosipOpencrvsDeathClientId | replace "-" "_" }}_secret
-            - name: mosip_opencrvs_db_datasource_password
-              valueFrom:
-                secretKeyRef:
-                  name: db-common-secrets
-                  key: db-dbuser-password
             {{- if .Values.extraEnvVars }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}
 
           envFrom:
             - secretRef:
-                name: {{ .Values.mediator.opencrvs.clientSecretName }}
-            - secretRef:
-                name: {{ .Values.mediator.opencrvs.partnerClientSecretName }}
+                name: {{ template "common.names.fullname" . }}
             {{- if .Values.extraEnvVarsCM }}
             {{- range .Values.extraEnvVarsCM }}
             - configMapRef:

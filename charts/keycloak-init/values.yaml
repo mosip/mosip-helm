@@ -534,7 +534,11 @@ keycloak:
            - PRINT_PARTNER
            - CREDENTIAL_REQUEST
            - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
-
+       - name: mpartner-default-opencrvs
+         saroles:
+           - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
+           - PUBLISH_CREDENTIAL_STATUS_UPDATE_GENERAL
+           - ID_REPOSITORY
        - name: mosip-hotlist-client
          saroles:
            - HOTLIST_ADMIN
@@ -633,4 +637,6 @@ clientSecrets:
   - name: mpartner_default_digitalcard_secret
     secret: ""
   - name: mosip_testrig_client_secret
+    secret: ""
+  - name: mpartner_default_opencrvs_secret
     secret: ""
