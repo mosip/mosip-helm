@@ -1857,7 +1857,7 @@ entries:
   config-server:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2023-10-19T04:48:36.751606004Z"
+    created: "2024-01-03T06:22:56.197645585Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1865,7 +1865,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for configuration of MOSIP modules
-    digest: bc3933d03931aafb76346dc85df611d17109091296f10db2ea43bd6770133675
+    digest: 85d71c5d339729e6d67fb1a81db56ab8109297fde7fdef175ad90fc4c7e6aa6d
     home: https://mosip.io
     keywords:
     - config-server
@@ -4144,7 +4144,7 @@ entries:
   keycloak-init:
   - apiVersion: v2
     appVersion: 1.2.0
-    created: "2023-10-19T04:48:37.033737231Z"
+    created: "2024-01-03T06:22:56.200115361Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -4153,7 +4153,7 @@ entries:
       version: 1.x.x
     description: A Helm chart for Kubernetes to initialize Keycloak  (updating for
       test)
-    digest: c51f3489be3e3a78f14718e87913e9d48b7785f59511a33fe5dcb4a9c9e29b9c
+    digest: 1e838aa94b58f8a706253422cd91c543a78422e2f5c218f53ca73d224b7e8bdf
     home: https://mosip.io
     keywords:
     - keycloak
@@ -6405,7 +6405,7 @@ entries:
     version: 1.0.0
   opencrvs-mediator:
   - apiVersion: v2
-    created: "2023-10-19T04:48:37.26991148Z"
+    created: "2024-01-03T06:22:56.201510866Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -6413,7 +6413,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for mosip-opencrvs mediator.
-    digest: ceeddb35f15e54d9e66723bca1c02ff09f36d8cb1829e401e796e359a692004d
+    digest: 8ef0de07a6be1e7ba2685ddd74987107f7e75b5880a8b883982e23667f76c954
     home: https://mosip.io
     keywords:
     - mosip
@@ -14425,4 +14425,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2024-01-02T11:27:28.56115843Z"
+generated: "2024-01-03T06:22:56.195078509Z"
