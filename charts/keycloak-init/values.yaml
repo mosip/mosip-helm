@@ -514,8 +514,7 @@ keycloak:
            - PUBLISH_VID_CRED_STATUS_UPDATE_GENERAL
            - PUBLISH_AUTH_TYPE_STATUS_UPDATE_ALL_INDIVIDUAL
            - PUBLISH_IDENTITY_CREATED_GENERAL
-           - PUBLISH_IDENTITY_UPDATED_GENERAL
-        
+           - PUBLISH_IDENTITY_UPDATED_GENERAL        
        - name: mpartner-default-print
          mappers: []
          saroles:
@@ -534,7 +533,6 @@ keycloak:
            - PRINT_PARTNER
            - CREDENTIAL_REQUEST
            - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
- 
        - name: mpartner-default-opencrvs
          saroles:
            - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
