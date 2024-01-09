@@ -2,8 +2,7 @@ apiVersion: v2
 name: mock-smtp
 description: A Helm chart to mock-smtp server application.
 type: application
-version: 12.0.1
-appVersion: ""
+version: 12.0.1-B3
 dependencies:
   - name: common
     repository: https://charts.bitnami.com/bitnami
