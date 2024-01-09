@@ -1787,7 +1787,7 @@ entries:
   conf-secrets:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2023-10-19T04:48:36.727034601Z"
+    created: "2024-01-09T16:21:00.670040576Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1795,7 +1795,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for deploying secrets required by MOSIP config-server
-    digest: 7c7d5515cf97a37d9c0d7847cb384ee19bfbca702666e8e63798c4f8d80e22e0
+    digest: ba2675f24defe9be9f6dcc66ecba5b82b42836c7d2a7500288ec7c4f99116b5f
     home: https://mosip.io
     keywords:
     - config-server
@@ -1926,7 +1926,7 @@ entries:
   config-server:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2024-01-03T06:22:56.197645585Z"
+    created: "2024-01-09T16:21:00.673380964Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1934,7 +1934,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for configuration of MOSIP modules
-    digest: 85d71c5d339729e6d67fb1a81db56ab8109297fde7fdef175ad90fc4c7e6aa6d
+    digest: f739520cd386f8f1a12385fa78ae7ce8979b66aafb9be64b3ae6738f38b2798a
     home: https://mosip.io
     keywords:
     - config-server
@@ -14516,4 +14516,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2024-01-09T16:20:32.196224984Z"
+generated: "2024-01-09T16:21:00.668994871Z"
