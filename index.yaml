@@ -1856,6 +1856,29 @@ entries:
     version: 12.0.1-beta
   - apiVersion: v2
     appVersion: 1.1.2
+    created: "2024-01-09T16:20:32.197186638Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for deploying secrets required by MOSIP config-server
+    digest: 529eb3b393f5981282271e9d83c885e40065fac54839a0a51e374b70c92c8c1b
+    home: https://mosip.io
+    keywords:
+    - config-server
+    - conf-secrets
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: conf-secrets
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/conf-secrets-12.0.1-B4.tgz
+    version: 12.0.1-B4
+  - apiVersion: v2
+    appVersion: 1.1.2
     created: "2023-10-19T04:48:36.723202269Z"
     dependencies:
     - name: common
@@ -1967,6 +1990,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/config-server-12.0.1-beta.tgz
     version: 12.0.1-beta
+  - apiVersion: v2
+    appVersion: 1.1.2
+    created: "2024-01-09T16:20:32.199462343Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for configuration of MOSIP modules
+    digest: 3c36372772bb4a50a6e539297185f01c3ead969037ebf2eca92a5f2e1536d202
+    home: https://mosip.io
+    keywords:
+    - config-server
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: config-server
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/config-server-12.0.1-B4.tgz
+    version: 12.0.1-B4
   - apiVersion: v2
     appVersion: 1.1.2
     created: "2023-10-19T04:48:36.739660305Z"
@@ -14471,4 +14516,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2024-01-08T10:40:40.358883447Z"
+generated: "2024-01-09T16:20:32.196224984Z"
