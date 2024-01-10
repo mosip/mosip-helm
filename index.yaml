@@ -3830,6 +3830,29 @@ entries:
     - https://mosip.github.io/mosip-helm/idgenerator-12.0.1-beta.tgz
     version: 12.0.1-beta
   - apiVersion: v2
+    created: "2024-01-10T06:57:19.61164244Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Idgenerator module
+    digest: ead25851cc47651baabc89cd4249a77295616870c8be199cc5cd31a93c37fd2b
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - idgenerator
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: idgenerator
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/idgenerator-12.0.1-B3.tgz
+    version: 12.0.1-B3
+  - apiVersion: v2
     created: "2023-10-19T04:48:36.954988082Z"
     dependencies:
     - name: common
@@ -12076,6 +12099,29 @@ entries:
     - https://mosip.github.io/mosip-helm/regproc-salt-12.0.1-beta.tgz
     version: 12.0.1-beta
   - apiVersion: v2
+    created: "2024-01-10T06:57:19.612788845Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to generate keys for Kernel
+    digest: 3cc6e739d8fd4c8db8f17faa067c48f8fd19b8735be5f7ace9212e836cb05b8e
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-salt
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-salt
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-salt-12.0.1-B3.tgz
+    version: 12.0.1-B3
+  - apiVersion: v2
     created: "2023-10-19T04:48:37.90086338Z"
     dependencies:
     - name: common
@@ -14516,4 +14562,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2024-01-10T05:12:33.034676415Z"
+generated: "2024-01-10T06:57:19.610110052Z"
