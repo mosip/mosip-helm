@@ -461,6 +461,11 @@ dslorchestrator:
       mountPathForScenario: "/home/mosip/mountvolume/"
       packetUtilityBaseUrl: https://<server-host>/v1/packetcreator
       s3-account: "dslreports"
-      THREAD_COUNT: '8'
+      threadCount: "8"
       push-reports-to-s3: 'yes'
+      eSignetDeployed: "yes"
+      admin_userName: "test0"
+      scenariosToSkip: ""
+      langselect: "0"
+      enableDebug: "no"
   secrets:
