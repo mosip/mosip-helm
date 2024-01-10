@@ -480,7 +480,6 @@ dslorchestrator:
       ENABLE_INSECURE: "false"
       ENDPOINT: "https://api-internal.sandbox.xyz.net"
       USER: "api-internal.sandbox.xyz.net"
-      DEFAULT_SCENARIOS: "true"
       authCertsPath: "/home/mosip/authcerts"
       authDemoServiceBaseURL: "http://authdemo.authdemo"
       authDemoServicePort: "80"
@@ -492,8 +491,13 @@ dslorchestrator:
       s3-account: "dslreports"
       threadCount: "8"
       push-reports-to-s3: "yes"
-      enableDebug: "yes"
+      enableDebug: "no"
       langselect: "0"
+      admin_userName: "test0"
+      useExternalScenarioSheet: "no"
+      servicesNotDeployed:
+      scenariosToSkip:
+      scenariosToExecute:
   secrets:
 
 enable_insecure: false
