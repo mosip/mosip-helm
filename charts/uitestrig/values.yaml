@@ -103,7 +103,7 @@ resources:
 additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
-  javaOpts: "-Xms2600M -Xmx2600M"
+  javaOpts: "-Xms3500M -Xmx3500M"
 
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
 ## Clamav container already runs as 'mosip' user, so we may not need to enable this
@@ -497,6 +497,8 @@ uitestrig:
       push-reports-to-s3: "yes"
       enableDebug: "yes"
       langselect: "0"
+      CHROME_DRIVER_CPU_LIMIT: "2"
+      CHROME_DRIVER_MEMORY: 3g
   secrets:
 
 enable_insecure: false

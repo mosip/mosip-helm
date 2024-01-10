@@ -46,12 +46,6 @@ spec:
                   value: "{{ $.Values.additionalResources.javaOpts }}"
                 - name: modules
                   value: "{{ $module.name }}"
-                - name: apiInternalEndPoint
-                  value: "{{ $.Values.uitestrig.configmaps.apiInternalEndPoint }}"
-                - name: PmpPortalPath
-                  value: "{{ $.Values.uitestrig.configmaps.PmpPortalPath }}"
-                - name: apiEnvUser
-                  value: "{{ $.Values.uitestrig.configmaps.apiEnvUser }}"
               {{- if $.Values.extraEnvVars }}
               {{- include "common.tpvalues.render" (dict "value" $.Values.extraEnvVars "context" $) | nindent 12 }}
               {{- end }}
