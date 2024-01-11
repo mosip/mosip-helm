@@ -683,6 +683,29 @@ entries:
     - https://mosip.github.io/mosip-helm/artifactory-12.0.1-beta.tgz
     version: 12.0.1-beta
   - apiVersion: v2
+    created: "2024-01-11T09:40:17.880908104Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Artifactory
+    digest: f596976b632d1c05742deae27a9cc1eed32717f78cf20666a04d6976a48062c0
+    home: https://mosip.io
+    keywords:
+    - artifactory
+    - antivirus
+    - anti-virus
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: artifactory
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/artifactory-12.0.1-B7.tgz
+    version: 12.0.1-B7
+  - apiVersion: v2
     created: "2023-12-11T08:23:29.054530457Z"
     dependencies:
     - name: common
@@ -2985,7 +3008,7 @@ entries:
     - https://mosip.github.io/mosip-helm/ida-auth-12.0.1-beta.tgz
     version: 12.0.1-beta
   - apiVersion: v2
-    created: "2023-12-11T08:23:29.055912343Z"
+    created: "2024-01-11T09:40:17.882303959Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -2993,7 +3016,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP IDA module
-    digest: 2d289526fa1219b02236206c51f4f3978cfccc9ac521c33116b7ff76e11df164
+    digest: 0f56d0ca66b0d57491faf709f7425ac4940834239017d56af254662e3943e0a6
     home: https://mosip.io
     keywords:
     - mosip
@@ -3195,7 +3218,7 @@ entries:
     - https://mosip.github.io/mosip-helm/ida-internal-12.0.1-beta.tgz
     version: 12.0.1-beta
   - apiVersion: v2
-    created: "2023-12-11T08:23:29.057483341Z"
+    created: "2024-01-11T09:40:17.883636085Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -3203,7 +3226,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP IDA module
-    digest: 97f25b3fae78d591aca6a80bfe2ba2397ef3cc2429ad5458102ff3145462824c
+    digest: 1af28c618228498b72aa21354401324eada31a6e1555eaff08bb4e2b642ed682
     home: https://mosip.io
     keywords:
     - mosip
@@ -3456,7 +3479,7 @@ entries:
     - https://mosip.github.io/mosip-helm/ida-otp-12.0.1-beta.tgz
     version: 12.0.1-beta
   - apiVersion: v2
-    created: "2023-12-11T08:23:29.059014605Z"
+    created: "2024-01-11T09:40:17.885716149Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -3464,7 +3487,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP IDA module
-    digest: 283c442d586debbe47e406cbb8598233465e49856f99edffb29312afe73843c0
+    digest: eea43d2d8e547f676c1bc7f0f6fda2a06b39d7cbc018e70941950029501fe415
     home: https://mosip.io
     keywords:
     - mosip
@@ -14562,4 +14585,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2024-01-11T05:22:36.387022338Z"
+generated: "2024-01-11T09:40:17.879384619Z"
