@@ -8,7 +8,7 @@
 #     - myRegistryKeySecretName
 #   storageClass: myStorageClass
 
-## Add labels to all the deployed resources
+## Add labels to all the deployed resourceshttps://github.com/abhishek8shankar/mosip-helm/edit/develop/charts/apitestrig/values.yaml
 ##
 commonLabels:
   app.kubernetes.io/component: mosip
@@ -296,7 +296,7 @@ initContainers:
           # Filter out unwanted parts from image_name
           image_name=$(echo "$image_name")
           # Filter out unwanted parts from image_id
-          image_id=$(echo "$image_id" | sed 's/docker-pullable:\/\/[^@]*@//g')          
+          image_id=$(echo "$image_id" | sed 's/docker-pullable:\/\/[^@]*@//g')
           echo -e  "$container_name:{ IMAGE_NAME: '$image_name', IMAGE_HASH: '$image_id' },"
           done <<< "$images_and_ids"
           echo -e "}}"
