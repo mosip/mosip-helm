@@ -291,16 +291,16 @@ initContainers:
           images_and_ids=$(kubectl get pods -n "$namespace" -o jsonpath='{range .items[*]}{.metadata.name}{";"}{.spec.containers[*].name}{";"}{.spec.containers[*].image}{";"}{.status.containerStatuses[0].imageID}{"\n>
           # Print the fetched images and IDs in the desired format
           if [ -n "$images_and_ids" ]; then
-        echo -e "{ $namespace: {"
-                while IFS=';' read -r pod_name container_name image_name image_id; do
-                    # Filter out unwanted parts from image_name
-                    image_name=$(echo "$image_name")
+          echo -e "{ $namespace: {"
+          while IFS=';' read -r pod_name container_name image_name image_id; do
+          # Filter out unwanted parts from image_name
+          image_name=$(echo "$image_name")
           # Filter out unwanted parts from image_id
-                                 image_id=$(echo "$image_id" | sed 's/docker-pullable:\/\/[^@]*@//g')          
+          image_id=$(echo "$image_id" | sed 's/docker-pullable:\/\/[^@]*@//g')          
           echo -e  "$container_name:{ IMAGE_NAME: '$image_name', IMAGE_HASH: '$image_id' },"
-                done <<< "$images_and_ids"
-                                 echo -e "}}"
-                echo "---"
+          done <<< "$images_and_ids"
+          echo -e "}}"
+          echo "---"
           fi
           done
 
