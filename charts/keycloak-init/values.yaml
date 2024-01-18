@@ -78,7 +78,7 @@ frontend: https://iam.sandbox.xyz.net/auth
 keycloak:
   host:
     existingConfigMap: keycloak-host
-    key: keycloak-internal-url
+    key: keycloak-internal-service-url
   admin:
     userName:
       existingConfigMap: keycloak-env-vars
