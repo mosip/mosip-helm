@@ -2727,6 +2727,30 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/data-archive-1.0.0.tgz
     version: 1.0.0
+  databreachdetector:
+  - apiVersion: v2
+    created: "2024-01-18T15:09:28.243225966Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy databreachdetector to test working of MOSIP
+      modules
+    digest: 5f1aff2aaee5466a6a7ffe13781853efc8b793c2af5a1a1f19aba1a4618776f0
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - databreachdetector
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: databreachdetector
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/databreachdetector-12.0.2.tgz
+    version: 12.0.2
   datashare:
   - apiVersion: v2
     created: "2023-10-19T04:48:36.806560157Z"
@@ -15962,4 +15986,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2024-01-18T06:33:25.764515163Z"
+generated: "2024-01-18T15:09:28.241697852Z"
