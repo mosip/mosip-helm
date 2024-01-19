@@ -4,6 +4,6 @@ metadata:
   name: {{ .Release.Name }}-pods-role
   namespace: {{ .Release.Namespace }}
 rules:
-  - apiGroups: ["apps"]
-    resources: ["pods"]
-    verbs: ["create","get","patch","list","watch"]
+  - apiGroups: [""]
+    resources: ["pods", "serviceaccounts"]
+    verbs: ["get", "list", "impersonate"]
