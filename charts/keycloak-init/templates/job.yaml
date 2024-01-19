@@ -47,9 +47,24 @@ spec:
             value: {{ .Values.frontend }}
           - name:  INPUT_FILE
             value: input.yaml  # Must match below file name in the mount
+            {{- if .Values.extraEnvVars }}
+            {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
+            {{- end }}
           envFrom:
-              - secretRef:
-                  name: keycloak-client-secrets
+          - secretRef:
+              name: keycloak-client-secrets
+          {{- if .Values.extraEnvVarsCM }}
+          {{- range .Values.extraEnvVarsCM }}
+          - configMapRef:
+              name: {{ . }}
+          {{- end }}
+          {{- end }}
+          {{- if .Values.extraEnvVarsSecret }}
+          {{- range .Values.extraEnvVarsSecret }}
+          - secretRef:
+              name: {{ . }}
+          {{- end }}
+          {{- end }}
 
           volumeMounts:
             - name: keycloak-init-input
