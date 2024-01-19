@@ -233,7 +233,7 @@ keycloak:
         - name: add_oidc_client
           description: Scope required to create OIDC client
           protocol: openid-connect
-          Include In Token Scope: on
+          "Include In Token Scope": on
           attributes: {
             display.on.consent.screen: "false",
             include.in.token.scope: "true"
@@ -241,7 +241,7 @@ keycloak:
         - name: update_oidc_client
           description: ''
           protocol: openid-connect
-          Include In Token Scope: on
+          "Include In Token Scope": on
           attributes: {
             display.on.consent.screen: "false",
             include.in.token.scope: "true"
@@ -249,7 +249,7 @@ keycloak:
         - name: get_certificate
           description: Scope required to create OIDC client
           protocol: openid-connect
-          Include In Token Scope: on
+          "Include In Token Scope": on
           attributes: {
             display.on.consent.screen: "false",
             include.in.token.scope: "true"
@@ -257,7 +257,7 @@ keycloak:
         - name: upload_certificate
           description: ''
           protocol: openid-connect
-          Include In Token Scope: on
+          "Include In Token Scope": on
           attributes: {
             display.on.consent.screen: "false",
             include.in.token.scope: "true"
@@ -265,7 +265,7 @@ keycloak:
         - name: individual_id
           description: Scope required to create resident client
           protocol: openid-connect
-          Include In Token Scope: on
+          "Include In Token Scope": on
           attributes: {
             display.on.consent.screen: "true",
             include.in.token.scope: "true"
@@ -273,7 +273,7 @@ keycloak:
         - name: ida_token
           description: ''
           protocol: openid-connect
-          Include In Token Scope: on
+          "Include In Token Scope": on
           attributes: {
             display.on.consent.screen: "true",
             include.in.token.scope: "true"
@@ -281,7 +281,7 @@ keycloak:
         - name: send_binding_otp
           description: Scope required to create mpartner-default-mobile client
           protocol: openid-connect
-          Include In Token Scope: on
+          "Include In Token Scope": on
           attributes: {
             display.on.consent.screen: "false",
             include.in.token.scope: "true"
@@ -289,7 +289,7 @@ keycloak:
         - name: wallet_binding
           description: Scope required to create mpartner-default-mobile client
           protocol: openid-connect
-          Include In Token Scope: on
+          "Include In Token Scope": on
           attributes: {
             display.on.consent.screen: "false",
             include.in.token.scope: "true"
