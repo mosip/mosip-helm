@@ -28,7 +28,12 @@ spec:
               {{- if $.Values.enable_insecure }}
               {{- include "common.tplvalues.render" (dict "value" $.Values.initContainers "context" $) | nindent 12 }}
               {{- end }}
-          containers:
+        spec:
+          serviceAccountName: {{ template "partner-onboarder.serviceAccountName" $ }}
+          securityContext:
+            {{- toYaml $.Values.jobSecurityContext | nindent 8 }}
+          restartPolicy: Never  # This is one time job          
+         containers:
           - name: {{ template "apitestrig.serviceAccountName" $ }}-{{ $module.name }}
             image: {{ template "apitestrig.image" $ }}
             imagePullPolicy: {{ $.Values.image.pullPolicy }}
