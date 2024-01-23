@@ -29,7 +29,7 @@ spec:
               {{- include "common.tplvalues.render" (dict "value" $.Values.initContainers "context" $) | nindent 12 }}
               {{- end }}
         spec:
-          serviceAccountName: {{ template "partner-onboarder.serviceAccountName" $ }}
+          serviceAccountName: {{ template "apitestrig.serviceAccountName" $ }}
           securityContext:
             {{- toYaml $.Values.jobSecurityContext | nindent 8 }}
           restartPolicy: Never  # This is one time job          
