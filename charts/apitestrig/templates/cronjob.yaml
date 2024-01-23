@@ -22,6 +22,7 @@ spec:
       # "waiting for rollout" variant specified below
       template:
         spec:
+          serviceAccountName: {{ template "partner-onboarder.serviceAccountName" $ }}
           # account configured above
           restartPolicy: Never
           initContainers:
