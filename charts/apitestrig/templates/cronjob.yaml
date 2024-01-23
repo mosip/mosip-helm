@@ -1,5 +1,5 @@
 {{- range $module := $.Values.modules }}
-{{- if $module.enabled }}
+  {{- if $module.enabled }}
 ---
 apiVersion: {{ include "common.capabilities.cronjob.apiVersion" $ }}
 kind: CronJob
@@ -16,75 +16,73 @@ spec:
   jobTemplate:
     spec:
       backoffLimit: 0 # this has very low chance of failing, as all this does
-                      # is prompt kubernetes to schedule new replica set for
+      # is prompt kubernetes to schedule new replica set for
       # the deployment
       # activeDeadlineSeconds: 600 # timeout, makes most sense with
       # "waiting for rollout" variant specified below
       template:
         spec:
+          serviceAccountName: { { template "partner-onboarder.serviceAccountName" $ } }
+          securityContext:
+            { { - toYaml $.Values.jobSecurityContext | nindent 8 } }
           # account configured above
           restartPolicy: Never
           initContainers:
-              {{- if $.Values.enable_insecure }}
+            {{- if $.Values.enable_insecure }}
               {{- include "common.tplvalues.render" (dict "value" $.Values.initContainers "context" $) | nindent 12 }}
               {{- end }}
-        spec:
-          serviceAccountName: {{ template "apitestrig.serviceAccountName" $ }}
-          securityContext:
-            {{- toYaml $.Values.jobSecurityContext | nindent 8 }}
-          restartPolicy: Never  # This is one time job          
-         containers:
-          - name: {{ template "apitestrig.serviceAccountName" $ }}-{{ $module.name }}
-            image: {{ template "apitestrig.image" $ }}
-            imagePullPolicy: {{ $.Values.image.pullPolicy }}
-            {{- if $.Values.lifecycleHooks }}
-            lifecycle: {{- include "common.tpvalues.render" (dict "value" $.Values.lifecycleHooks "context" $) | nindent 12 }}
-            {{- end }}
-            {{- if $.Values.containerSecurityContext.enabled }}
-            securityContext: {{- omit $.Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
-            {{- end }}
-            {{- if $.Values.command }}
-            command: {{- include "common.tpvalues.render" (dict "value" $.Values.command "context" $) | nindent 12 }}
-            {{- end }}
-            {{- if $.Values.args }}
-            args: {{- include "common.tpvalues.render" (dict "value" $.Values.args "context" $) | nindent 12 }}
-            {{- end }}
-            env:
+          containers:
+            - name: {{ template "apitestrig.serviceAccountName" $ }}-{{ $module.name }}
+              image: {{ template "apitestrig.image" $ }}
+              imagePullPolicy: {{ $.Values.image.pullPolicy }}
+              {{- if $.Values.lifecycleHooks }}
+              lifecycle: {{- include "common.tpvalues.render" (dict "value" $.Values.lifecycleHooks "context" $) | nindent 12 }}
+              {{- end }}
+              {{- if $.Values.containerSecurityContext.enabled }}
+              securityContext: {{- omit $.Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
+              {{- end }}
+              {{- if $.Values.command }}
+              command: {{- include "common.tpvalues.render" (dict "value" $.Values.command "context" $) | nindent 12 }}
+              {{- end }}
+              {{- if $.Values.args }}
+              args: {{- include "common.tpvalues.render" (dict "value" $.Values.args "context" $) | nindent 12 }}
+              {{- end }}
+              env:
                 - name: container_user
                   value: {{ $.Values.containerSecurityContext.runAsUser }}
                 - name: JDK_JAVA_OPTIONS
                   value: {{ $.Values.additionalResources.javaOpts }}
                 - name: MODULES
                   value: {{ $module.name }}
-              {{- if $.Values.extraEnvVars }}
-              {{- include "common.tpvalues.render" (dict "value" $.Values.extraEnvVars "context" $) | nindent 12 }}
-              {{- end }}
-            envFrom:
-              {{- if $.Values.extraEnvVarsCM }}
-                {{- range $.Values.extraEnvVarsCM }}
+                {{- if $.Values.extraEnvVars }}
+                {{- include "common.tpvalues.render" (dict "value" $.Values.extraEnvVars "context" $) | nindent 12 }}
+                {{- end }}
+              envFrom:
+                {{- if $.Values.extraEnvVarsCM }}
+                  {{- range $.Values.extraEnvVarsCM }}
                   - configMapRef:
-                        name: {{ . }}
-                {{- end }}
-                {{- end }}
-                {{- if $.Values.extraEnvVarsSecret }}
-                {{- range $.Values.extraEnvVarsSecret }}
+                      name: {{ . }}
+                  {{- end }}
+                  {{- end }}
+                  {{- if $.Values.extraEnvVarsSecret }}
+                  {{- range $.Values.extraEnvVarsSecret }}
                   - secretRef:
-                        name: {{ . }}
-                {{- end }}
-                {{- end }}
-            ports:
+                      name: {{ . }}
+                  {{- end }}
+                  {{- end }}
+              ports:
                 - name: spring-service
                   containerPort: {{ $.Values.springServicePort }}
-            volumeMounts:
-              {{- if $.Values.enable_insecure }}
+              volumeMounts:
+                {{- if $.Values.enable_insecure }}
                 - mountPath: /usr/local/openjdk-11/lib/security/cacerts
                   name: cacerts
                   subPath: cacerts
-              {{- end }}
+                {{- end }}
           volumes:
           {{- if $.Values.enable_insecure }}
           - name: cacerts
             emptyDir: {}
           {{- end }}
-{{- end }}
-{{- end }}
+  {{- end }}
+  {{- end }}
