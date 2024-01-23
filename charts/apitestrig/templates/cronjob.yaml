@@ -22,7 +22,7 @@ spec:
       # "waiting for rollout" variant specified below
       template:
         spec:
-          serviceAccountName: { { template "partner-onboarder.serviceAccountName" $ } }
+          serviceAccountName: { { template "apitestrig.serviceAccountName" $ } }
           securityContext:
             { { - toYaml $.Values.jobSecurityContext | nindent 8 } }
           # account configured above
