@@ -486,6 +486,7 @@ apitestrig:
       db-su-user: 'postgres'
       db-server: 'api-internal.sandbox.xyz.net'
     apitestrig:
+      NAMESPACE: 'apitestrig-qa'
       ENV_USER: 'api-internal.sandbox'
       ENV_ENDPOINT: 'https://api-internal.sandbox.xyz.net'
       ENV_TESTLEVEL: 'smokeAndRegression'
