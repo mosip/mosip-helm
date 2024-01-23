@@ -21,19 +21,7 @@ spec:
       # activeDeadlineSeconds: 600 # timeout, makes most sense with
       # "waiting for rollout" variant specified below
       template:
-        metadata:
-          labels: { { - include "common.labels.standard" $ | nindent 10 } }
-            { { - if $.Values.commonLabels } }
-            { { - include "common.tplvalues.render" ( dict "value" $.Values.commonLabels "context" $ ) | nindent 10 } }
-            { { - end } }
-          annotations:
-            { { - if $.Values.commonAnnotations } }
-              { { - include "common.tplvalues.render" ( dict "value" $.Values.commonAnnotations "context" $ ) | nindent 10 } }
-              { { - end } }
         spec:
-          serviceAccountName: { { template "apitestrig.serviceAccountName" $ } }
-          securityContext:
-            { { - toYaml $.Values.jobSecurityContext | nindent 8 } }
           # account configured above
           restartPolicy: Never
           initContainers:
