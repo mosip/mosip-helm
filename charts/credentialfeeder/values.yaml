@@ -198,10 +198,10 @@ extraEnvVarsCM:
   - credentialfeeder
 
 credentialfeeder:
-   configmaps:
-      credentialfeeder:
-        online-verification-partner-ids: "mpartner-default-auth"
-        skip-requesting-existing-credentials-for-partners: "false"
+  configmaps:
+    credentialfeeder:
+      online-verification-partner-ids: "mpartner-default-auth"
+      skip-requesting-existing-credentials-for-partners: "false"
 ## Secret with extra environment variables
 ##
 extraEnvVarsSecret:
