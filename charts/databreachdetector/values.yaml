@@ -13,10 +13,6 @@
 commonLabels:
   app.kubernetes.io/component: mosip
 
-## "backoff" strategy - It is used when dealing with resources that are retrying or recovering from failures.
-##
-backoffLimit: 0
-
 ## Add annotations to all the deployed resources
 ##
 commonAnnotations: {}
@@ -33,10 +29,30 @@ extraDeploy: []
 ##
 replicaCount: 1
 
+service:
+  type: ClusterIP
+  port: 80
+  ## loadBalancerIP for the SuiteCRM Service (optional, cloud specific)
+  ## ref: http://kubernetes.io/docs/user-guide/services/#type-loadbalancer
+  ##
+  ## loadBalancerIP:
+  ##
+  ## nodePorts:
+  ##   http: <to set explicitly, choose port between 30000-32767>
+  ##   https: <to set explicitly, choose port between 30000-32767>
+  ##
+  nodePorts:
+    http: ""
+    https: ""
+  ## Enable client source IP preservation
+  ## ref http://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip
+  ##
+  externalTrafficPolicy: Cluster
+
 image:
   registry: docker.io
-  repository: mosipdev/minio-client-util
-  tag: latest
+  repository: mosipdev/databreachdetector
+  tag: develop
 
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -49,6 +65,13 @@ image:
   ##
   # pullSecrets:
   #   - myRegistryKeySecretName
+
+## Port on which this particular spring service module is running.
+springServicePort: 8083
+
+## Configure extra options for liveness and readiness probes
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
+##
 
 ##
 # existingConfigmap:
@@ -190,12 +213,14 @@ extraEnvVars: []
 ## ConfigMap with extra environment variables
 ##
 extraEnvVarsCM:
+  - global
   - s3
-
+  - db
 ## Secret with extra environment variables
 ##
 extraEnvVarsSecret:
   - s3
+  - postgres-postgresql
 
 ## Extra volumes to add to the deployment
 ##
@@ -215,7 +240,38 @@ extraVolumeMounts: []
 ##       - name: portname
 ##         containerPort: 1234
 ##
-initContainers: {}
+initContainers:
+  - command:
+      - /bin/bash
+      - -c
+      - if [ "$ENABLE_INSECURE" = "true" ]; then HOST=$( env | grep "mosip-api-internal-host"
+        |sed "s/mosip-api-internal-host=//g"); if [ -z "$HOST" ]; then echo "HOST
+        $HOST is empty; EXITING"; exit 1; fi; openssl s_client -servername "$HOST"
+        -connect "$HOST":443  > "$HOST.cer" 2>/dev/null & sleep 2 ; sed -i -ne '/-BEGIN
+        CERTIFICATE-/,/-END CERTIFICATE-/p' "$HOST.cer"; cat "$HOST.cer"; /usr/local/openjdk-11/bin/keytool
+        -delete -alias "$HOST" -keystore $JAVA_HOME/lib/security/cacerts  -storepass
+        changeit; /usr/local/openjdk-11/bin/keytool -trustcacerts -keystore "$JAVA_HOME/lib/security/cacerts"
+        -storepass changeit -noprompt -importcert -alias "$HOST" -file "$HOST.cer"
+        ; if [ $? -gt 0 ]; then echo "Failed to add SSL certificate for host $host;
+        EXITING"; exit 1; fi; cp /usr/local/openjdk-11/lib/security/cacerts /cacerts;
+        fi
+    env:
+      - name: ENABLE_INSECURE
+        value: "true"
+    envFrom:
+      - configMapRef:
+          name: global
+    image: docker.io/openjdk:11-jre
+    imagePullPolicy: Always
+    name: cacerts
+    resources: {}
+    securityContext:
+      runAsUser: 0
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+      - mountPath: /cacerts
+        name: cacerts
 
 ## Add sidecars to the  pods.
 ## Example:
@@ -230,7 +286,7 @@ initContainers: {}
 sidecars: {}
 
 persistence:
-  enabled: false
+  enabled: true
   ## If defined, storageClassName: <storageClass>
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
@@ -246,16 +302,19 @@ persistence:
   storageClass:
   accessModes:
     - ReadWriteOnce
-  size: 10M
+  size: 100m
   existingClaim:
+  nfs:
+    path: '/srv/nfs/mosip/dsl-scenarios/<sandbox.xyz.net>'
+    server: ''
   # Dir where config and keys are written inside container
-  mountDir:
+  mountDir: '/home/mosip/mountvolume/scenarios'
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
 ##
 volumePermissions:
-  enabled: false
+  enabled: true
   image:
     registry: docker.io
     repository: bitnami/bitnami-shell
@@ -299,22 +358,81 @@ serviceAccount:
   ##
   name:
 
-## Admin swagger should have only internal access. Hence linked to internal gateway
-istio:
+## Prometheus Metrics
+##
+metrics:
   enabled: false
-  gateways:
-    - istio-system/internal
+  ## Prometheus pod annotations
+  ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+  ##
+  podAnnotations:
+    prometheus.io/scrape: "true"
 
-crontime: "0 4 * * *"    ## run cronjob every day at 4 AM in GMT which is 9.30 AM in IST (time hr: 0-23 )
+  endpointPath:
 
-minioclient:
+  ## Prometheus Service Monitor
+  ## ref: https://github.com/coreos/prometheus-operator
+  ##
+  serviceMonitor:
+    ## If the operator is installed in your cluster, set to true to create a Service Monitor Entry
+    ##
+    enabled: true
+    ## Specify the namespace in which the serviceMonitor resource will be created
+    ##
+    # namespace: ""
+    ## Specify the interval at which metrics should be scraped
+    ##
+    interval: 10s
+    ## Specify the timeout after which the scrape is ended
+    ##
+    # scrapeTimeout: 30s
+    ## Specify Metric Relabellings to add to the scrape endpoint
+    ##
+    # relabellings:
+    ## Specify honorLabels parameter to add the scrape endpoint
+    ##
+    honorLabels: false
+    ## Used to pass Labels that are used by the Prometheus installed in your cluster to select Service Monitors to work with
+    ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#prometheusspec
+    ##
+    additionalLabels: {}
+
+  ## Custom PrometheusRule to be defined
+  ## The value is evaluated as a template, so, for example, the value can depend on .Release or .Chart
+  ## ref: https://github.com/coreos/prometheus-operator#customresourcedefinitions
+  ##
+  prometheusRule:
+    enabled: false
+    additionalLabels: {}
+    namespace: ''
+    ## List of rules, used as template by Helm.
+    ## These are just examples rules inspired from https://awesome-prometheus-alerts.grep.to/rules.html
+    # rules:
+    #   - alert: RabbitmqDown
+    #     expr: rabbitmq_up{service="{{ template "rabbitmq.fullname" . }}"} == 0
+    #     for: 5m
+    #     labels:
+    #       severity: error
+    rules: []
+
+## Admin swagger should have only internal access. Hence linked to internal gateway
+
+types:
+  - name: full
+    enabled: true
+
+crontime: "0 3 * * *"    ## run cronjob every day at 3 AM (time hr: 0-23 )
+
+databreachdetector:
   configmaps:
     s3:
-      S3_SERVER_URL: 'http://minio.minio:9000'
-      S3_ACCESS_KEY: 'admin'
-      S3_BUCKET_LIST: 'automation,dslreports'
-      s3_region: ''
-      S3_RETENTION_DAYS: 5d
+      s3-host: 'http://minio.minio:9000'
+      s3-user-key: 'admin'
+      s3-region: ''
+    db:
+      db-port: '5432'
+      db-su-user: 'postgres'
+      db-server: 'api-internal.sandbox.xyz.net'
   secrets:
-    s3:
-      S3_SECRET_KEY: 'minio'
+
+enable_insecure: false

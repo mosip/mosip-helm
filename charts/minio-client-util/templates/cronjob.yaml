@@ -12,7 +12,7 @@ spec:
   schedule: {{ .Values.crontime }}
   jobTemplate:
     spec:
-      backoffLimit: 2 # this has very low chance of failing, as all this does
+      backoffLimit: {{ .Values.backoffLimit }} # this has very low chance of failing, as all this does
       # is prompt kubernetes to schedule new replica set for
       # the deployment
       # activeDeadlineSeconds: 600 # timeout, makes most sense with
@@ -40,18 +40,6 @@ spec:
               env:
                 - name: container_user
                   value: {{ $.Values.containerSecurityContext.runAsUser }}
-                - name: JDK_JAVA_OPTIONS
-                  value: {{ $.Values.additionalResources.javaOpts }}
-                - name: S3_ACCESS_KEY
-                  value: {{ .Values.minioclient.configmaps.s3.s3_access_key }}
-                - name: S3_SERVER_URL
-                  value: {{ .Values.minioclient.configmaps.s3.s3_host }}
-                - name: S3_BUCKET_NAME
-                  value: {{ .Values.minioclient.configmaps.s3.s3_bucket_name }}
-                - name: S3_RETENTION_DAYS
-                  value: {{ .Values.minioclient.retention_days }}
-                - name: S3_SECRET_KEY
-                  value: {{ .Values.minioclient.configmaps.s3.s3_secret_key }}
                 {{- if $.Values.extraEnvVars }}
                 {{- include "common.tpvalues.render" (dict "value" $.Values.extraEnvVars "context" $) | nindent 12 }}
                 {{- end }}

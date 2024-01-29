@@ -1,18 +1,19 @@
-apiVersion: v1
-kind: ConfigMap
+kind: ClusterRoleBinding
+apiVersion: {{ include "common.capabilities.rbac.apiVersion" . }}
 metadata:
-  name: {{ printf "%s-configuration" (include "keycloak-init.fullname" .) }}
-  namespace: {{ .Release.Namespace }}
   labels: {{- include "common.labels.standard" . | nindent 4 }}
-    app.kubernetes.io/component: keycloak-init
     {{- if .Values.commonLabels }}
     {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
     {{- end }}
+  name: {{ template "common.names.fullname" . }}
   {{- if .Values.commonAnnotations }}
   annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
   {{- end }}
-
-data:
-  input.yaml: |
-    {{ .Values.keycloak.realms | toYaml | nindent 4 }}
-    
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ template "common.names.fullname" . }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ template "databreachdetector.serviceAccountName" . }}
+    namespace: {{ .Release.Namespace }}
