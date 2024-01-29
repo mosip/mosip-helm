@@ -675,6 +675,7 @@ envVariables:
       secretKeyRef:
         key: sms-authkey
         name: sms-authkey
+    enabled: true
 
 ## The active profile env if you have another set of properties. Correspondingly, properties in Git repo will
 ## have names of type "*-default.properties"
