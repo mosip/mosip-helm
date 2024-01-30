@@ -605,7 +605,7 @@ envVariables:
       secretKeyRef:
         name: msg-gateway
         key: sms-authkey
-    enabled: true          
+    enabled: true
 
   - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_PREREG_CAPTCHA_SITE_KEY
     valueFrom:
