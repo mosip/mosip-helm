@@ -77,7 +77,7 @@ startupProbe:
   initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5
-  failureThreshold: 30
+  failureThreshold: 60
   successThreshold: 1
 
 livenessProbe:
@@ -244,6 +244,7 @@ extraEnvVars: []
 extraEnvVarsCM:
   - global
   - config-server-share
+  - artifactory-share
 
 ## Secret with extra environment variables
 ##
