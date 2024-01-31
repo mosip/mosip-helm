@@ -2155,7 +2155,7 @@ entries:
   config-server:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2024-01-30T09:56:07.600866096Z"
+    created: "2024-01-31T05:35:19.048445383Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -2163,7 +2163,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for configuration of MOSIP modules
-    digest: 042f3fecb2476a712e325581393083c270accac1809ede80ba378cafd1f61c45
+    digest: cc7bf8bd62337ba2a13bef591abf42108015a8be112e5be446d8013c69044008
     home: https://mosip.io
     keywords:
     - config-server
@@ -2538,6 +2538,31 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/credential-1.1.5.tgz
     version: 1.1.5
+  credentialfeeder:
+  - apiVersion: v2
+    created: "2024-01-31T05:35:19.050133562Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to generate keys
+    digest: 0a3cd470fa859d17c70e5927d81ab42dba921ae2754cca416f0f0b419914a5df
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - keymanager
+    - credentialfeeder
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: credentialfeeder
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/credentialfeeder-1.0.0.tgz
+    version: 1.0.0
   credentialrequest:
   - apiVersion: v2
     created: "2023-10-19T04:48:36.788262606Z"
@@ -16009,4 +16034,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2024-01-30T09:56:33.747913917Z"
+generated: "2024-01-31T05:35:19.045677818Z"
