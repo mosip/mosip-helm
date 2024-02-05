@@ -66,15 +66,26 @@ image:
   registry: docker.io
   repository: mosipdev/mosip-opencrvs-mediator
   tag: develop
-  ## Specify a imagePullPolicy
-  ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
-  ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
-  ##
   pullPolicy: Always
-  ## Optionally specify an array of imagePullSecrets.
-  ## Secrets must be manually created in the namespace.
-  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
-  ##
+  
+  name: cacerts
+  resources: { }
+  securityContext:
+    runAsUser: 0
+  terminationMessagePath: /dev/termination-log
+  terminationMessagePolicy: File
+  #volumeMounts:
+  #  - mountPath: /cacerts
+  #    name: cacerts
+
+  volumeMounts:
+    - name: auth-keystore
+      mountPath: /home/mosip/certs/authkeystore.p12
+      subPath: authkeystore.p12
+    - name: cred-keystore
+      mountPath: /home/mosip/certs/credkeystore.p12
+      subPath: credkeystore.p12
+
   pullSecrets: []
   #   - myRegistryKeySecretName
 
@@ -424,3 +435,18 @@ istio:
     ingressController:
       # for public, istio: ingressgateway && for internal, istio: ingressgateway-internal
       istio: ingressgateway
+
+#volumes:
+#  secrets:
+#    opencrvskeystore:
+#      key: authkeystore.p12
+#      path: /home/mosip/certs
+      
+volumes:
+  - name: auth-keystore
+    secret:
+      secretName: auth-keystore-secret
+  - name: cred-keystore
+    secret:
+      secretName: cred-keystore-secret      
+      
