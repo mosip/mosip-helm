@@ -454,7 +454,7 @@ entries:
     - https://mosip.github.io/mosip-helm/admin-ui-12.0.1-beta.tgz
     version: 12.0.1-beta
   - apiVersion: v2
-    created: "2023-10-19T04:48:36.578050971Z"
+    created: "2024-02-05T06:55:56.532990964Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -462,7 +462,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP Admin UI module
-    digest: f8d111bb12e6ee9fdb924559cd22b9dec7a8e4c5ca91e4f7739ce11bb513576e
+    digest: a0080d8740315b9cc4d2663e57fa212c3be0d5251c503f5dd4342310930e32da
     home: https://mosip.io
     keywords:
     - mosip
@@ -9715,6 +9715,29 @@ entries:
     - https://mosip.github.io/mosip-helm/prereg-gateway-12.0.1-beta.tgz
     version: 12.0.1-beta
   - apiVersion: v2
+    created: "2024-02-05T06:55:56.534223699Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Pre-registration Istio Gateway
+    digest: 36e053dc4aa37cb346190e9e742e53247211c4845da77c65eb7062456768d9b9
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - prereg-gateway
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: prereg-gateway
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/prereg-gateway-12.0.1-B3.tgz
+    version: 12.0.1-B3
+  - apiVersion: v2
     created: "2024-01-11T12:08:47.597631905Z"
     dependencies:
     - name: common
@@ -9879,7 +9902,7 @@ entries:
     - https://mosip.github.io/mosip-helm/prereg-ui-12.0.1-beta.tgz
     version: 12.0.1-beta
   - apiVersion: v2
-    created: "2023-10-19T04:48:37.5511047Z"
+    created: "2024-02-05T06:55:56.53555626Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -9887,7 +9910,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP Pre-registration UI
-    digest: 8e95e83ce6d89ca170d93dd3432e453551ecee695ec6a8bd373fcc8a9579ceeb
+    digest: a501fa6b281a791b70da973bceaa47e0064dac8ddcd255d6719469ff434a9d53
     home: https://mosip.io
     keywords:
     - mosip
@@ -16082,4 +16105,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2024-02-01T15:31:16.43403187Z"
+generated: "2024-02-05T06:55:56.530615509Z"
