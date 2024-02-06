@@ -676,6 +676,12 @@ envVariables:
         name: conf-secrets-various
         key: mosip-partner-crypto-p12-password
     enabled: true
+  - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MPARTNER_DEFAULT_TEMPLATE_SECRET
+    valueFrom:
+      secretKeyRef:
+        name: keycloak-client-secrets
+        key: mpartner_default_template_secret
+    enabled: true
 
 
 ## The active profile env if you have another set of properties. Correspondingly, properties in Git repo will
