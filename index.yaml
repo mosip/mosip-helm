@@ -2155,7 +2155,7 @@ entries:
   config-server:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2024-01-31T05:35:19.048445383Z"
+    created: "2024-02-06T16:33:35.597362291Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -2163,7 +2163,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for configuration of MOSIP modules
-    digest: cc7bf8bd62337ba2a13bef591abf42108015a8be112e5be446d8013c69044008
+    digest: 980007b87769c11e883e7e72d3df4f71faca2c9fc4ebebaee81bf0fd17e41f32
     home: https://mosip.io
     keywords:
     - config-server
@@ -4672,7 +4672,7 @@ entries:
   keycloak-init:
   - apiVersion: v2
     appVersion: 1.2.0
-    created: "2024-01-22T05:48:45.183347185Z"
+    created: "2024-02-06T16:33:35.601133047Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -4681,7 +4681,7 @@ entries:
       version: 1.x.x
     description: A Helm chart for Kubernetes to initialize Keycloak  (updating for
       test)
-    digest: 6653d66149270fc501b22502fa7c80e4cd5222f4e3267262f4aef41fb44d20f2
+    digest: 265df50dcbc1450a6918b86194370b5d2b935ba94ba9f956e8bbeae57ccbebaf
     home: https://mosip.io
     keywords:
     - keycloak
@@ -16105,4 +16105,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2024-02-05T11:45:34.476665889Z"
+generated: "2024-02-06T16:33:35.594586981Z"
