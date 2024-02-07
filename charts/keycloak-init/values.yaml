@@ -228,7 +228,7 @@ keycloak:
         - PUBLISH_OIDC_CLIENT_UPDATED_GENERAL
         - SUBSCRIBE_OIDC_CLIENT_CREATED_GENERAL
         - SUBSCRIBE_OIDC_CLIENT_UPDATED_GENERAL
-        - AUTHENTICATION_ERRORS
+        - PUBLISH_AUTHENTICATION_ERRORS_GENERAL
       client_scopes:
         - name: add_oidc_client
           description: Scope required to create OIDC client
@@ -535,6 +535,7 @@ keycloak:
             - PUBLISH_IDA_FRAUD_ANALYTICS_GENERAL
             - SUBSCRIBE_OIDC_CLIENT_CREATED_GENERAL
             - SUBSCRIBE_OIDC_CLIENT_UPDATED_GENERAL
+            - PUBLISH_AUTHENTICATION_ERRORS_GENERAL
 
         - name: mosip-idrepo-client
           mappers: []
@@ -651,7 +652,7 @@ keycloak:
             - PUBLISH_IDA_FRAUD_ANALYTICS_GENERAL
             - SUBSCRIBE_OIDC_CLIENT_CREATED_GENERAL
             - SUBSCRIBE_OIDC_CLIENT_UPDATED_GENERAL
-            - AUTHENTICATION_ERRORS
+            - PUBLISH_AUTHENTICATION_ERRORS_GENERAL
       users: []
 
 ## These will be passed as environments variables to keycloak-init docker. Note the expected naming convention is
