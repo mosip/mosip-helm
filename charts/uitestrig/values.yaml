@@ -51,8 +51,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipqa/dsl-orchestrator
-  tag: 1.2.0.1
+  repository: mosipdev/pmptest
+  tag: develop
 
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -103,7 +103,7 @@ resources:
 additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
-  javaOpts: "-Xms2600M -Xmx2600M"
+  javaOpts: "-Xms3500M -Xmx3500M"
 
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
 ## Clamav container already runs as 'mosip' user, so we may not need to enable this
@@ -194,10 +194,6 @@ customLivenessProbe: {}
 ##
 customReadinessProbe: {}
 
-## "backoff" strategy - It is used when dealing with resources that are retrying or recovering from failures.
-##
-backoffLimit: 0
-
 ## Update strategy - only really applicable for deployments with RWO PVs attached
 ## If replicas = 1, an update can get "stuck", as the previous pod remains attached to the
 ## PV, and the "incoming" pod can never start. Changing the strategy to "Recreate" will
@@ -221,7 +217,7 @@ extraEnvVarsCM:
   - s3
   - keycloak-host
   - db
-  - dslorchestrator
+  - uitestrig
   - config-server-share
   - artifactory-share
 ## Secret with extra environment variables
@@ -270,6 +266,8 @@ initContainers:
     envFrom:
       - configMapRef:
           name: global
+      - configMapRef:
+          name: uitestrig
     image: docker.io/openjdk:11-jre
     imagePullPolicy: Always
     name: cacerts
@@ -312,18 +310,12 @@ persistence:
   accessModes:
     - ReadWriteOnce
   size: 100m
-  existingClaim:
-  nfs:
-    path: '/srv/nfs/mosip/dsl-scenarios/<sandbox.xyz.net>'
-    server: ''
-  # Dir where config and keys are written inside container
-  mountDir: '/home/mosip/mountvolume/scenarios'
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
 ##
 volumePermissions:
-  enabled: true
+  enabled: false
   image:
     registry: docker.io
     repository: bitnami/bitnami-shell
@@ -462,15 +454,29 @@ istio:
       - PUT
       - DELETE
 
-types:
-  - name: full
+modules:
+  - name: adminui
     enabled: true
-  - name: sanity
+    image:
+      registry: docker.io
+      repository: mosipdev/admintest
+      tag: develop
+  - name: pmpui
     enabled: true
+    image:
+      registry: docker.io
+      repository: mosipdev/pmptest
+      tag: develop
+  - name: residentui
+    enabled: true
+    image:
+      registry: docker.io
+      repository: mosipdev/residenttest
+      tag: develop
 
 crontime: "0 3 * * *"    ## run cronjob every day at 3 AM (time hr: 0-23 )
 
-dslorchestrator:
+uitestrig:
   configmaps:
     s3:
       s3-host: 'http://minio.minio:9000'
@@ -480,28 +486,19 @@ dslorchestrator:
       db-port: '5432'
       db-su-user: 'postgres'
       db-server: 'api-internal.sandbox.xyz.net'
-    dslorchestrator:
+    uitestrig:
       ENABLE_INSECURE: "false"
-      ENDPOINT: "https://api-internal.sandbox.xyz.net"
-      USER: "api-internal.sandbox.xyz.net"
-      authCertsPath: "/home/mosip/authcerts"
-      authDemoServiceBaseURL: "http://authdemo.authdemo"
-      authDemoServicePort: "80"
-      # authdemo volume mountPath
-      mountPath: "/home/mosip/mountvolume"
-      # dslorchestrator scenario mountPath
-      mountPathForScenario: "/home/mosip/mountvolume/"
-      packetUtilityBaseUrl: https://<server-host>/v1/packetcreator
-      s3-account: "dslreports"
+      apiInternalEndPoint: "https://api-internal.sandbox.xyz.net"
+      apiEnvUser: "api-internal.sandbox.xyz.net"
+      PmpPortalPath: "https://pmp.sandbox.xyz.net/"
+      DEFAULT_SCENARIOS: "true"
+      s3-account: "uitestrig"
       threadCount: "8"
       push-reports-to-s3: "yes"
-      enableDebug: "no"
+      enableDebug: "yes"
       langselect: "0"
-      admin_userName: "test0"
-      useExternalScenarioSheet: "no"
-      servicesNotDeployed: ""
-      scenariosToSkip: ""
-      scenariosToExecute: ""
+      CHROME_DRIVER_CPU_LIMIT: "2"
+      CHROME_DRIVER_MEMORY: 3g
     scripts:
       fetch_docker_image_hash_ids.sh: |
         #!/bin/bash
@@ -526,6 +523,5 @@ dslorchestrator:
         defaultMode: 0777
         volumeMounts:
           mountPath: '/home/mosip/scripts/'
-
 
 enable_insecure: false
