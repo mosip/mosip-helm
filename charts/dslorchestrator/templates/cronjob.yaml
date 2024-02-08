@@ -6,6 +6,14 @@ kind: CronJob
 metadata:
   name: {{ template "dslorchestrator.cronjob" $ }}-{{ $type.name }}
   namespace: {{ $.Release.Namespace }}
+  annotations:
+    {{- if $.Values.commonAnnotations }}
+      {{- include "common.tplvalues.render" ( dict "value" $.Values.commonAnnotations "context" $ ) | nindent 4 }}
+      {{- end }}
+  labels: {{- include "common.labels.standard" $ | nindent 4 }}
+    {{- if $.Values.commonLabels }}
+    {{- include "common.tplvalues.render" ( dict "value" $.Values.commonLabels "context" $ ) | nindent 4 }}
+    {{- end }}
 
 spec:
   {{- if eq $type.name "full" }}
@@ -29,6 +37,7 @@ spec:
       template:
         spec:
           # account configured above
+          serviceAccountName: {{ template "dslorchestrator.serviceAccountName" $ }}
           restartPolicy: Never
           initContainers:
             {{- if and $.Values.volumePermissions.enabled $.Values.persistence.enabled }}
@@ -91,16 +100,18 @@ spec:
             securityContext: {{- omit $.Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
             {{- end }}
             {{- if $.Values.command }}
-            command: {{- include "common.tpvalues.render" (dict "value" $.Values.command "context" $) | nindent 12 }}
+            command: {{- include "common.tplvalues.render" (dict "value" $.Values.command "context" $) | nindent 12 }}
             {{- end }}
             {{- if $.Values.args }}
-            args: {{- include "common.tpvalues.render" (dict "value" $.Values.args "context" $) | nindent 12 }}
+            args: {{- include "common.tplvalues.render" (dict "value" $.Values.args "context" $) | nindent 12 }}
             {{- end }}
             env:
                 - name: container_user
                   value: {{ $.Values.containerSecurityContext.runAsUser }}
                 - name: JDK_JAVA_OPTIONS
                   value: {{ $.Values.additionalResources.javaOpts }}
+                - name: NS
+                  value: {{ $.Release.Namespace }}
               {{- if $.Values.extraEnvVars }}
               {{- include "common.tpvalues.render" (dict "value" $.Values.extraEnvVars "context" $) | nindent 12 }}
               {{- end }}
@@ -136,6 +147,12 @@ spec:
                   name: cacerts
                   subPath: cacerts
                 {{- end }}
+                {{- if $.Values.dslorchestrator.volumes }}
+                {{- range $volume_name, $volume_value :=  $.Values.dslorchestrator.volumes.configmaps }}
+                - name: {{ $volume_name }}
+                  mountPath: {{ $volume_value.volumeMounts.mountPath }}
+                {{- end }}
+                {{- end }}
           volumes:
           {{- if $.Values.persistence.enabled }}
           - name: {{ template "common.names.fullname" $ }}
@@ -145,6 +162,14 @@ spec:
           {{- if $.Values.enable_insecure }}
           - name: cacerts
             emptyDir: {}
+          {{- end }}
+          {{- if $.Values.dslorchestrator.volumes }}
+          {{- range $volume_name, $volume_value :=  $.Values.dslorchestrator.volumes.configmaps }}
+          - name: {{ $volume_name }}
+            configMap:
+              defaultMode: {{ $volume_value.defaultMode }}
+              name: {{ $volume_name }}
+          {{- end }}
           {{- end }}
 {{- end }}
 {{- end }}
