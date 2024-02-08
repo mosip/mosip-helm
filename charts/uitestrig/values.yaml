@@ -79,7 +79,7 @@ springServicePort: 8083
 ## Command and args for running the container (set to default if not set). Use array form
 ##
 command: ['/bin/bash']
-args: ['-c',"/home/${container_user}/scripts/fetch_docker_image_hash_ids.sh"]
+args: ['-c', "/home/${container_user}/scripts/fetch_docker_image_hash_ids.sh"]
 
 ## Deployment pod host aliases
 ## https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/
@@ -502,7 +502,6 @@ uitestrig:
     scripts:
       fetch_docker_image_hash_ids.sh: |
         #!/bin/bash
-        
         sleep 5
         export DOCKER_HASH_ID=$( kubectl get pod "$HOSTNAME" -n "$NS" -o jsonpath='{.status.containerStatuses[*].imageID}' | sed 's/ /\n/g' | grep -v 'istio' | sed 's/docker\-pullable\:\/\///g' )
         if [[ -z $DOCKER_HASH_ID ]]; then
@@ -511,7 +510,6 @@ uitestrig:
         fi
         echo "DOCKER_HASH_ID ; $DOCKER_HASH_ID"
         kubectl get pods -A -o=jsonpath='{range .items[*]}{.metadata.namespace}{","}{.metadata.labels.app\.kubernetes\.io\/name}{","}{.status.containerStatuses[0].imageID}{","}{.metadata.creationTimestamp}{"\n"}' | sed 's/ /\n/g' | grep -vE 'istio*|longhorn*|cattle*|rancher|kube' | sed 's/docker\-pullable\:\/\///g' | sort -u | sed '/,,,/d' | awk -F ',' 'BEGIN {print "{ \"POD_NAME\": \"'$(echo $HOSTNAME)'\", \"DOCKER_HASH_ID\": \"'$(echo $DOCKER_HASH_ID)'\", \"k8s-cluster-image-list\": ["} {print "{"} {print "\"namespace\": \"" $1 "\","} {print "\"app_name\": \"" $2 "\","} {print "\"docker_image_id\": \"" $3 "\","} {print "\"creation_timestamp\": \"" $4 "\"" } {print "},"} END {print "]}"}' | sed -z 's/},\n]/}\n]/g' | jq -r . | tee -a images-list.json
-        
         ## run entrypoint script
         sleep 5
         cd /home/${container_user}/
