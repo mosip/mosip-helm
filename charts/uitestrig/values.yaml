@@ -459,19 +459,19 @@ modules:
     enabled: true
     image:
       registry: docker.io
-      repository: mosipdev/admintest
+      repository: mosipqa/admintest
       tag: develop
   - name: pmpui
     enabled: true
     image:
       registry: docker.io
-      repository: mosipdev/pmptest
+      repository: mosipqa/pmptest
       tag: develop
   - name: residentui
     enabled: true
     image:
       registry: docker.io
-      repository: mosipdev/residenttest
+      repository: mosipqa/residenttest
       tag: develop
 
 crontime: "0 3 * * *"    ## run cronjob every day at 3 AM (time hr: 0-23 )
@@ -487,18 +487,16 @@ uitestrig:
       db-su-user: 'postgres'
       db-server: 'api-internal.sandbox.xyz.net'
     uitestrig:
-      ENABLE_INSECURE: "false"
-      apiInternalEndPoint: "https://api-internal.sandbox.xyz.net"
-      apiEnvUser: "api-internal.sandbox.xyz.net"
-      PmpPortalPath: "https://pmp.sandbox.xyz.net/"
-      DEFAULT_SCENARIOS: "true"
-      s3-account: "uitestrig"
-      threadCount: "8"
-      push-reports-to-s3: "yes"
-      enableDebug: "yes"
-      langselect: "0"
+      apiInternalEndPoint: 'https://api-internal.sandbox.xyz.net'
+      apiEnvUser: 'api-internal.sandbox.xyz.net'
+      PmpPortalPath: 'https://pmp.sandbox.xyz.net'
+      adminPortalPath: 'https://admin.sandbox.xyz.net'
+      residentPortalPath: 'https://resident.sandbox.xyz.net'
       CHROME_DRIVER_CPU_LIMIT: "2"
       CHROME_DRIVER_MEMORY: 3g
+      loginlang: sin
+      push-reports-to-s3: 'yes'
+      s3-account: uitestrig
     scripts:
       fetch_docker_image_hash_ids.sh: |
         #!/bin/bash
