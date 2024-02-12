@@ -97,6 +97,8 @@ spec:
               value: {{ .Values.containerSecurityContext.runAsUser }}
             - name: JDK_JAVA_OPTIONS
               value: {{ .Values.additionalResources.javaOpts }}
+            - name: NS
+              value: {{ $.Release.Namespace }}
             {{- if .Values.extraEnvVars }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}

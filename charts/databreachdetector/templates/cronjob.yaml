@@ -1,10 +1,10 @@
-{{- range $module := $.Values.modules }}
-{{- if $module.enabled }}
+{{- range $type := $.Values.types }}
+{{- if $type.enabled }}
 ---
 apiVersion: {{ include "common.capabilities.cronjob.apiVersion" $ }}
 kind: CronJob
 metadata:
-  name: {{ template "apitestrig.cronjob" $ }}-{{ $module.name }}
+  name: {{ template "databreachdetector.cronjob" $ }}-{{ $type.name }}
   namespace: {{ $.Release.Namespace }}
   annotations:
     {{- if $.Values.commonAnnotations }}
@@ -16,14 +16,20 @@ metadata:
     {{- end }}
 
 spec:
+  {{- if eq $type.name "full" }}
+  suspend: false
+  {{- end }}
+  {{- if eq $type.name "sanity" }}
+  suspend: true
+  {{- end }}
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 1  # remove jobs which are successfully executed
   failedJobsHistoryLimit: 1      # except 1 recent failed job, remove jobs which are not successfully executed
-  #schedule: '*/3 * * * *' # cron spec of time, here, 8 o'clock
+  #schedule: '*/3 * * * *' # cron spec of time
   schedule: {{ $.Values.crontime }}
   jobTemplate:
     spec:
-      backoffLimit: {{ $.Values.backoffLimit }} # this has very low chance of failing, as all this does
+      backoffLimit: 0 # this has very low chance of failing, as all this does
                       # is prompt kubernetes to schedule new replica set for
       # the deployment
       # activeDeadlineSeconds: 600 # timeout, makes most sense with
@@ -32,14 +38,9 @@ spec:
         spec:
           # account configured above
           restartPolicy: Never
-          serviceAccountName: {{ template "apitestrig.serviceAccountName" $ }}
-          initContainers:
-              {{- if $.Values.enable_insecure }}
-              {{- include "common.tplvalues.render" (dict "value" $.Values.initContainers "context" $) | nindent 12 }}
-              {{- end }}
           containers:
-          - name: {{ template "apitestrig.serviceAccountName" $ }}-{{ $module.name }}
-            image: {{ template "apitestrig.image" $ }}
+          - name: {{ template "databreachdetector.serviceAccountName" $ }}-{{ $type.name }}
+            image: {{ template "databreachdetector.image" $ }}
             imagePullPolicy: {{ $.Values.image.pullPolicy }}
             {{- if $.Values.lifecycleHooks }}
             lifecycle: {{- include "common.tpvalues.render" (dict "value" $.Values.lifecycleHooks "context" $) | nindent 12 }}
@@ -48,18 +49,14 @@ spec:
             securityContext: {{- omit $.Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
             {{- end }}
             {{- if $.Values.command }}
-            command: {{- include "common.tplvalues.render" (dict "value" $.Values.command "context" $) | nindent 12 }}
+            command: {{- include "common.tpvalues.render" (dict "value" $.Values.command "context" $) | nindent 12 }}
             {{- end }}
             {{- if $.Values.args }}
-            args: {{- include "common.tplvalues.render" (dict "value" $.Values.args "context" $) | nindent 12 }}
+            args: {{- include "common.tpvalues.render" (dict "value" $.Values.args "context" $) | nindent 12 }}
             {{- end }}
             env:
                 - name: container_user
                   value: {{ $.Values.containerSecurityContext.runAsUser }}
-                - name: JDK_JAVA_OPTIONS
-                  value: {{ $.Values.additionalResources.javaOpts }}
-                - name: MODULES
-                  value: {{ $module.name }}
               {{- if $.Values.extraEnvVars }}
               {{- include "common.tpvalues.render" (dict "value" $.Values.extraEnvVars "context" $) | nindent 12 }}
               {{- end }}
@@ -79,31 +76,5 @@ spec:
             ports:
                 - name: spring-service
                   containerPort: {{ $.Values.springServicePort }}
-            volumeMounts:
-              {{- if $.Values.enable_insecure }}
-                - mountPath: /usr/local/openjdk-11/lib/security/cacerts
-                  name: cacerts
-                  subPath: cacerts
-              {{- end }}
-              {{- if $.Values.apitestrig.volumes }}
-              {{- range $volume_name, $volume_value :=  $.Values.apitestrig.volumes.configmaps }}
-                - name: {{ $volume_name }}
-                  mountPath: {{ $volume_value.volumeMounts.mountPath }}
-              {{- end }}
-              {{- end }}
-          volumes:
-          {{- if $.Values.enable_insecure }}
-          - name: cacerts
-            emptyDir: {}
-          {{- end }}
-          {{- if $.Values.apitestrig.volumes }}
-          {{- range $volume_name, $volume_value :=  $.Values.apitestrig.volumes.configmaps }}
-          - name: {{ $volume_name }}
-            configMap:
-              defaultMode: {{ $volume_value.defaultMode }}
-              name: {{ $volume_name }}
-          {{- end }}
-          {{- end }}
-
 {{- end }}
 {{- end }}
