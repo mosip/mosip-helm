@@ -15531,7 +15531,7 @@ entries:
     version: 12.0.1-B1
   uitestrig:
   - apiVersion: v2
-    created: "2024-02-08T13:53:24.164491643Z"
+    created: "2024-02-12T13:11:52.738541172Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -15539,11 +15539,12 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart to deploy uitestrig to test working of MOSIP modules
-    digest: 38cd5aba6eb2551c5fb2c7e1ce6165457dfe6dcab384c46cc91257f1670f4efd
+    digest: 0d5344032f250c8642770e17d2025916e7c5725576ea7efde8cf9e2232ce913d
     home: https://mosip.io
     keywords:
     - mosip
     - uitestrig
+    - testrig
     maintainers:
     - email: info@mosip.io
       name: MOSIP
@@ -16105,4 +16106,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2024-02-12T05:20:48.311848521Z"
+generated: "2024-02-12T13:11:52.736027425Z"
