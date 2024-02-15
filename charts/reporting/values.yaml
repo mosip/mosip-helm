@@ -103,7 +103,7 @@ kafkaClient:
   image: confluentinc/cp-kafka
   db_secretref:
     name: postgres-postgresql
-    key: postgresql-password
+    key: postgres-password
 
 bitnami-kafka:
   fullnameOverride: kafka
@@ -149,7 +149,6 @@ confluentinc:
     ## Configure extra options for liveness and readiness probes
     ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
     ##
-
 
     kafka:
       bootstrapServers: kafka:9092
