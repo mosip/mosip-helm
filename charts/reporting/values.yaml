@@ -103,7 +103,7 @@ kafkaClient:
   image: confluentinc/cp-kafka
   db_secretref:
     name: postgres-postgresql
-    key: postgresql-password
+    key: postgres-password
 
 bitnami-kafka:
   fullnameOverride: kafka
