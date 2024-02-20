@@ -465,6 +465,7 @@ keycloak:
               token_claim_name: ida_token
           saroles:
             - RESIDENT
+            - PARTNER_ADMIN
             - CREDENTIAL_REQUEST
             - offline_access
             - uma_authorization
@@ -709,8 +710,6 @@ clientSecrets:
   - name: mpartner_default_digitalcard_secret
     secret: ""
   - name: mosip_testrig_client_secret
-    secret: ""
-  - name: mpartner_default_opencrvs_secret
     secret: ""
   - name: mpartner_default_template_secret
     secret: ""
