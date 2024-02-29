@@ -223,6 +223,7 @@ extraEnvVarsCM:
 ## Secret with extra environment variables
 ##
 extraEnvVarsSecret:
+  - apitestrig
   - s3
   - keycloak-client-secrets
   - postgres-postgresql
@@ -508,6 +509,7 @@ apitestrig:
         cd /home/${container_user}/
         bash ./entrypoint.sh
   secrets:
+    apitestrig:
   volumes:
     configmaps:
       scripts:

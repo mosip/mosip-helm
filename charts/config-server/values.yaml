@@ -663,6 +663,13 @@ envVariables:
         key: mosip-ida-kyc-token-secret
     enabled: true
 
+  - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_RESIDENT_WEBSUB_REGPROC_WORKFLOW_COMPLETE_SECRET
+    valueFrom:
+      secretKeyRef:
+        name: conf-secrets-various
+        key: resident-websub-regproc-workflow-complete-secret
+    enabled: true
+
   - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_PARTNER_CRYPTO_P12_PASSWORD
     valueFrom:
       secretKeyRef:
