@@ -572,7 +572,7 @@ entries:
     version: 1.1.5
   apitestrig:
   - apiVersion: v2
-    created: "2024-02-08T13:53:24.157383729Z"
+    created: "2024-02-29T10:31:29.881128881Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -580,7 +580,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart to deploy APITESTRIG for MOSIP modules
-    digest: 603cc4c4e73fe9f021722c1c031c11c88be59813e797d6478e85c588689304d4
+    digest: 838d6a39308e884aff469492a24b94fb7da735274cfff44883c8edc1807afe84
     home: https://mosip.io
     keywords:
     - mosip
@@ -2039,7 +2039,7 @@ entries:
   conf-secrets:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2024-01-09T16:21:00.670040576Z"
+    created: "2024-02-29T10:31:29.881940639Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -2047,7 +2047,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for deploying secrets required by MOSIP config-server
-    digest: ba2675f24defe9be9f6dcc66ecba5b82b42836c7d2a7500288ec7c4f99116b5f
+    digest: 3d84a19b108010a6030cfbdce3caa2a9c9eb934db413d8fdf1226da431ad1ff7
     home: https://mosip.io
     keywords:
     - config-server
@@ -2178,7 +2178,7 @@ entries:
   config-server:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2024-02-20T13:28:04.455799287Z"
+    created: "2024-02-29T10:31:29.884428198Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -2186,7 +2186,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for configuration of MOSIP modules
-    digest: 505cfa1dca74e4b751ff59c716a82b08891f45acbe81dfe7a87d99c4e4fdc38f
+    digest: 3245ab8e00f2ee91e773165092e44ddc21cebd7854729e4257cc758b3d8f23a2
     home: https://mosip.io
     keywords:
     - config-server
@@ -16173,4 +16173,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2024-02-28T10:12:35.780866656Z"
+generated: "2024-02-29T10:31:29.879292319Z"
