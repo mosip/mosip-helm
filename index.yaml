@@ -572,7 +572,7 @@ entries:
     version: 1.1.5
   apitestrig:
   - apiVersion: v2
-    created: "2024-02-29T10:31:29.881128881Z"
+    created: "2024-03-01T11:38:46.531122037Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -580,7 +580,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart to deploy APITESTRIG for MOSIP modules
-    digest: 838d6a39308e884aff469492a24b94fb7da735274cfff44883c8edc1807afe84
+    digest: 14aa4658506da5432bf95eab1904e50a8790f2a20c70abff82403315a35abeb8
     home: https://mosip.io
     keywords:
     - mosip
@@ -2039,7 +2039,7 @@ entries:
   conf-secrets:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2024-02-29T10:31:29.881940639Z"
+    created: "2024-03-01T11:38:46.531936078Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -2047,7 +2047,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for deploying secrets required by MOSIP config-server
-    digest: 3d84a19b108010a6030cfbdce3caa2a9c9eb934db413d8fdf1226da431ad1ff7
+    digest: c13e5817255f2561ff48128ac38c8cf4be0c4398e6dc2077d765b51a6879119e
     home: https://mosip.io
     keywords:
     - config-server
@@ -2178,7 +2178,7 @@ entries:
   config-server:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2024-02-29T10:31:29.884428198Z"
+    created: "2024-03-01T11:38:46.535245775Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -2186,7 +2186,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for configuration of MOSIP modules
-    digest: 3245ab8e00f2ee91e773165092e44ddc21cebd7854729e4257cc758b3d8f23a2
+    digest: 745e0c17237c959e8931aabecf6c483beb44d633cc52f7259651f86c0588de58
     home: https://mosip.io
     keywords:
     - config-server
@@ -3026,7 +3026,7 @@ entries:
     version: 12.0.2
   dslorchestrator:
   - apiVersion: v2
-    created: "2024-02-08T13:53:24.161349147Z"
+    created: "2024-03-01T11:38:46.536925113Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -3034,7 +3034,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart to deploy dslorchestrator to test working of MOSIP modules
-    digest: fca6f4297260a7924d90a441fc513f9cf5ea7d8aa829d18b574bae7c653dff98
+    digest: e60e36ae0a482930a87e02ca9c9ee2d3ba59425903c97d98266a24943e0c8984
     home: https://mosip.io
     keywords:
     - mosip
@@ -15731,7 +15731,7 @@ entries:
     version: 12.0.1-B1
   uitestrig:
   - apiVersion: v2
-    created: "2024-02-12T13:11:52.738541172Z"
+    created: "2024-03-01T11:38:46.538537928Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -15739,7 +15739,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart to deploy uitestrig to test working of MOSIP modules
-    digest: 0d5344032f250c8642770e17d2025916e7c5725576ea7efde8cf9e2232ce913d
+    digest: 50e712fcd8237b5998d20ac84ae82e8249dacb856160606c0bad13123beb3278
     home: https://mosip.io
     keywords:
     - mosip
@@ -16329,4 +16329,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2024-02-29T14:47:55.089807826Z"
+generated: "2024-03-01T11:38:46.529331853Z"
