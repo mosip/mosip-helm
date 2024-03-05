@@ -278,13 +278,6 @@ envVariables:
         key: mpartner_default_digitalcard_secret
     enabled: true
 
-  - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MPARTNER_DEFAULT_OPENCRVS_SECRET
-    valueFrom:
-      secretKeyRef:
-        name: keycloak-client-secrets
-        key: mpartner_default_opencrvs_secret
-    enabled: true
-
   - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_ADMIN_CLIENT_SECRET
     valueFrom:
       secretKeyRef:
@@ -670,11 +663,24 @@ envVariables:
         key: mosip-ida-kyc-token-secret
     enabled: true
 
+  - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_RESIDENT_WEBSUB_REGPROC_WORKFLOW_COMPLETE_SECRET
+    valueFrom:
+      secretKeyRef:
+        name: conf-secrets-various
+        key: resident-websub-regproc-workflow-complete-secret
+    enabled: true
+
   - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_PARTNER_CRYPTO_P12_PASSWORD
     valueFrom:
       secretKeyRef:
         name: conf-secrets-various
         key: mosip-partner-crypto-p12-password
+    enabled: true
+  - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MPARTNER_DEFAULT_TEMPLATE_SECRET
+    valueFrom:
+      secretKeyRef:
+        name: keycloak-client-secrets
+        key: mpartner_default_template_secret
     enabled: true
 
 

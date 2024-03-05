@@ -228,6 +228,7 @@ keycloak:
         - PUBLISH_OIDC_CLIENT_UPDATED_GENERAL
         - SUBSCRIBE_OIDC_CLIENT_CREATED_GENERAL
         - SUBSCRIBE_OIDC_CLIENT_UPDATED_GENERAL
+        - PUBLISH_AUTHENTICATION_ERRORS_GENERAL
       client_scopes:
         - name: add_oidc_client
           description: Scope required to create OIDC client
@@ -464,6 +465,7 @@ keycloak:
               token_claim_name: ida_token
           saroles:
             - RESIDENT
+            - PARTNER_ADMIN
             - CREDENTIAL_REQUEST
             - offline_access
             - uma_authorization
@@ -534,6 +536,7 @@ keycloak:
             - PUBLISH_IDA_FRAUD_ANALYTICS_GENERAL
             - SUBSCRIBE_OIDC_CLIENT_CREATED_GENERAL
             - SUBSCRIBE_OIDC_CLIENT_UPDATED_GENERAL
+            - PUBLISH_AUTHENTICATION_ERRORS_GENERAL
 
         - name: mosip-idrepo-client
           mappers: []
@@ -617,6 +620,40 @@ keycloak:
                 - view-clients
                 - view-realm
                 - manage-users
+        - name: mpartner-default-template
+          mappers:
+            - mapper_name: langCode
+              mapper_user_attribute: langCode
+              token_claim_name: langCode
+          saroles:
+            - SUBSCRIBE_AUTH_TYPE_STATUS_UPDATE_INDIVIDUAL
+            - SUBSCRIBE_POLICY_UPDATED_GENERAL
+            - SUBSCRIBE_MISP_LICENSE_GENERATED_GENERAL
+            - CREDENTIAL_REQUEST
+            - SUBSCRIBE_MOSIP_HOTLIST_GENERAL
+            - PUBLISH_ANONYMOUS_PROFILE_GENERAL
+            - SUBSCRIBE_ACTIVATE_ID_INDIVIDUAL
+            - SUBSCRIBE_REMOVE_ID_INDIVIDUAL
+            - SUBSCRIBE_MASTERDATA_TITLES_GENERAL
+            - SUBSCRIBE_CREDENTIAL_ISSUED_INDIVIDUAL
+            - SUBSCRIBE_MISP_LICENSE_UPDATED_GENERAL
+            - ID_AUTHENTICATION
+            - PUBLISH_CREDENTIAL_STATUS_UPDATE_GENERAL
+            - SUBSCRIBE_AUTH_TYPE_STATUS_UPDATE_ACK_GENERAL
+            - SUBSCRIBE_PARTNER_UPDATED_GENERAL
+            - offline_access
+            - SUBSCRIBE_APIKEY_APPROVED_GENERAL
+            - PUBLISH_AUTH_TYPE_STATUS_UPDATE_ACK_GENERAL
+            - SUBSCRIBE_MASTERDATA_IDAUTHENTICATION_TEMPLATES_GENERAL
+            - uma_authorization
+            - SUBSCRIBE_APIKEY_UPDATED_GENERAL
+            - SUBSCRIBE_DEACTIVATE_ID_INDIVIDUAL
+            - SUBSCRIBE_CA_CERTIFICATE_UPLOADED_GENERAL
+            - PUBLISH_AUTHENTICATION_TRANSACTION_STATUS_GENERAL
+            - PUBLISH_IDA_FRAUD_ANALYTICS_GENERAL
+            - SUBSCRIBE_OIDC_CLIENT_CREATED_GENERAL
+            - SUBSCRIBE_OIDC_CLIENT_UPDATED_GENERAL
+            - PUBLISH_AUTHENTICATION_ERRORS_GENERAL
       users: []
 
 ## These will be passed as environments variables to keycloak-init docker. Note the expected naming convention is
@@ -674,7 +711,7 @@ clientSecrets:
     secret: ""
   - name: mosip_testrig_client_secret
     secret: ""
-  - name: mpartner_default_opencrvs_secret
+  - name: mpartner_default_template_secret
     secret: ""
 
 extraEnvVarsSecret: []
