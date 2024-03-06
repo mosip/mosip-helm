@@ -109,6 +109,30 @@ spec:
               value: {{ .Values.mediator.opencrvs.receiveCredentialUrl }}
             - name: opencrvs_locations_url
               value: {{ .Values.mediator.opencrvs.locationsUrl }}
+            - name: mosip_opencrvs_client_id
+              value: {{ .Values.mediator.opencrvs.mosipOpencrvsClientId }}
+            - name: mosip_opencrvs_client_secret_key
+              valueFrom:
+                secretKeyRef:
+                  key: mosip_resident_client_secret
+                  name: keycloak-client-secrets
+            - name: opencrvs_client_sha_secret
+              valueFrom:
+                secretKeyRef:
+                  key: mosip_resident_client_secret
+                  name: keycloak-client-secrets
+            - name: mosip_opencrvs_death_client_secret
+              valueFrom:
+                secretKeyRef:
+                  key: mosip_idrepo_client_secret
+                  name: keycloak-client-secrets
+            - name: mosip_opencrvs_db_datasource_password
+              valueFrom:
+                secretKeyRef:
+                  key: db-dbuser-password
+                  name: db-common-secrets
+            - name: mosip_opencrvs_death_client_id
+              value: {{ .Values.mediator.opencrvs.mosipOpencrvsDeathClientId }}
             - name: mosip_receive_credential_url
               value: http://{{ template "common.names.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/opencrvs/v1/internal/receiveCredentialBirth
             {{- if .Values.extraEnvVars }}
@@ -116,20 +140,32 @@ spec:
             {{- end }}
 
           envFrom:
-            - secretRef:
-                name: {{ template "common.names.fullname" . }}
-            {{- if .Values.extraEnvVarsCM }}
-            {{- range .Values.extraEnvVarsCM }}
-            - configMapRef:
-                name: {{ . }}
-            {{- end }}
-            {{- end }}
-            {{- if .Values.extraEnvVarsSecret }}
-            {{- range .Values.extraEnvVarsSecret }}
-            - secretRef:
-                name: {{ . }}
-            {{- end }}
-            {{- end }}
+            {{- if .Values.envVarsCM }}
+              {{- range .Values.envVarsCM }}
+              - configMapRef:
+                  name: {{ . }}
+              {{- end }}
+              {{- end }}
+              {{- if .Values.envVarsSecret }}
+              {{- range .Values.envVarsSecret }}
+              - secretRef:
+                  name: {{ . }}
+              {{- end }}
+               
+              {{- end }}
+              {{- if .Values.extraEnvVarsCM }}
+              {{- range .Values.extraEnvVarsCM }}
+              - configMapRef:
+                  name: {{ . }}
+              {{- end }}
+              {{- end }}
+              {{- if .Values.extraEnvVarsSecret }}
+              {{- range .Values.extraEnvVarsSecret }}
+              - secretRef:
+                  name: {{ . }}
+              {{- end }}
+              {{- end }}
+
           ports:
           - name: container-port
             containerPort: {{ .Values.containerPort }}
@@ -152,12 +188,12 @@ spec:
           readinessProbe: {{- include "common.tplvalues.render" (dict "value" .Values.customReadinessProbe "context" $) | nindent 12 }}
           {{- end }}
           volumeMounts:
-          - name: certs-keys
-            mountPath: {{ .Values.mediator.opencrvs.certsKeysMountPath }}
+          - name: opencrvs-certs
+            mountPath: /certs/mnt
       {{- if .Values.sidecars }}
       {{- include "common.tplvalues.render" ( dict "value" .Values.sidecars "context" $) | nindent 8 }}
       {{- end }}
       volumes:
-      - name: certs-keys
+      - name: opencrvs-certs
         secret:
           secretName: {{ .Values.mediator.opencrvs.certsKeysSecretName }}
