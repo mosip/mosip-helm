@@ -4,13 +4,13 @@ metadata:
   name: {{ template "common.names.fullname" . }}
   labels:
     {{- include "common.labels.standard" . | nindent 4 }}
-    {{- if .Values.commonLabels }}
-    {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
-    {{- end }}
+      {{- if .Values.commonLabels }}
+      {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
+      {{- end }}
   annotations:
     {{- if .Values.commonAnnotations }}
-    {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
-    {{- end }}
+      {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
+      {{- end }}
 spec:
   replicas: {{ .Values.replicaCount }}
   {{- if .Values.updateStrategy }}
@@ -24,19 +24,19 @@ spec:
     metadata:
       annotations:
         {{- if .Values.commonAnnotations }}
-        {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 8 }}
-        {{- end }}
-        {{- if .Values.podAnnotations }}
-        {{- include "common.tplvalues.render" ( dict "value" .Values.podAnnotations "context" $ ) | nindent 8 }}
-        {{- end }}
+          {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 8 }}
+          {{- end }}
+          {{- if .Values.podAnnotations }}
+          {{- include "common.tplvalues.render" ( dict "value" .Values.podAnnotations "context" $ ) | nindent 8 }}
+          {{- end }}
       labels:
         {{- include "common.labels.standard" . | nindent 8 }}
-        {{- if .Values.commonLabels }}
-        {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
-        {{- end }}
-        {{- if .Values.podLabels }}
-        {{- include "common.tplvalues.render" ( dict "value" .Values.podLabels "context" $ ) | nindent 8 }}
-        {{- end }}
+          {{- if .Values.commonLabels }}
+          {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
+          {{- end }}
+          {{- if .Values.podLabels }}
+          {{- include "common.tplvalues.render" ( dict "value" .Values.podLabels "context" $ ) | nindent 8 }}
+          {{- end }}
     spec:
       serviceAccountName: {{- include "mediator.serviceAccountName" . | nindent 8 }}
       {{- include "mediator.imagePullSecrets" . | nindent 6 }}
@@ -82,7 +82,7 @@ spec:
               mountPath: bar
         {{- end }}
         {{- if .Values.initContainers }}
-          {{- include "common.tplvalues.render" (dict "value" .Values.initContainers "context" $) | nindent 8 }}
+        {{- include "common.tplvalues.render" (dict "value" .Values.initContainers "context" $) | nindent 8 }}
         {{- end }}
       containers:
         - name: mediator
@@ -105,46 +105,70 @@ spec:
               value: {{ .Values.mediator.opencrvs.authUrl }}
             - name: kernel_auth_adapter_available
               value: {{ .Values.mediator.kernelAuthAdapterAvailable | quote }}
-            - name: mosip_opencrvs_client_id
-              value: {{ .Values.mediator.mosipOpencrvsKeycloakClientId }}
             - name: opencrvs_receive_credential_url
               value: {{ .Values.mediator.opencrvs.receiveCredentialUrl }}
-            - name: mosip_receive_credential_url
-              value: http://{{ template "common.names.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/receiveCredentialBirth
+            - name: opencrvs_locations_url
+              value: {{ .Values.mediator.opencrvs.locationsUrl }}
+            - name: mosip_opencrvs_client_id
+              value: {{ .Values.mediator.opencrvs.mosipOpencrvsClientId }}
             - name: mosip_opencrvs_client_secret_key
               valueFrom:
                 secretKeyRef:
+                  key: mosip_resident_client_secret
                   name: keycloak-client-secrets
-                  key: {{ .Values.mediator.mosipOpencrvsKeycloakClientId | replace "-" "_" }}_secret
+            - name: opencrvs_client_sha_secret
+              valueFrom:
+                secretKeyRef:
+                  key: mosip_resident_client_secret
+                  name: keycloak-client-secrets
+            - name: mosip_opencrvs_death_client_secret
+              valueFrom:
+                secretKeyRef:
+                  key: mosip_idrepo_client_secret
+                  name: keycloak-client-secrets
             - name: mosip_opencrvs_db_datasource_password
               valueFrom:
                 secretKeyRef:
-                  name: db-common-secrets
                   key: db-dbuser-password
+                  name: db-common-secrets
+            - name: mosip_opencrvs_death_client_id
+              value: {{ .Values.mediator.opencrvs.mosipOpencrvsDeathClientId }}
+            - name: mosip_receive_credential_url
+              value: http://{{ template "common.names.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/opencrvs/v1/internal/receiveCredentialBirth
             {{- if .Values.extraEnvVars }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}
 
           envFrom:
-            - secretRef:
-                name: {{ .Values.mediator.opencrvs.clientSecretName }}
-            - secretRef:
-                name: {{ .Values.mediator.opencrvs.partnerClientSecretName }}
-            {{- if .Values.extraEnvVarsCM }}
-            {{- range .Values.extraEnvVarsCM }}
-            - configMapRef:
-                name: {{ . }}
-            {{- end }}
-            {{- end }}
-            {{- if .Values.extraEnvVarsSecret }}
-            {{- range .Values.extraEnvVarsSecret }}
-            - secretRef:
-                name: {{ . }}
-            {{- end }}
-            {{- end }}
+            {{- if .Values.envVarsCM }}
+              {{- range .Values.envVarsCM }}
+              - configMapRef:
+                  name: {{ . }}
+              {{- end }}
+              {{- end }}
+              {{- if .Values.envVarsSecret }}
+              {{- range .Values.envVarsSecret }}
+              - secretRef:
+                  name: {{ . }}
+              {{- end }}
+
+              {{- end }}
+              {{- if .Values.extraEnvVarsCM }}
+              {{- range .Values.extraEnvVarsCM }}
+              - configMapRef:
+                  name: {{ . }}
+              {{- end }}
+              {{- end }}
+              {{- if .Values.extraEnvVarsSecret }}
+              {{- range .Values.extraEnvVarsSecret }}
+              - secretRef:
+                  name: {{ . }}
+              {{- end }}
+              {{- end }}
+
           ports:
-          - name: container-port
-            containerPort: {{ .Values.containerPort }}
+            - name: container-port
+              containerPort: {{ .Values.containerPort }}
           {{- if .Values.resources }}
           resources: {{- toYaml .Values.resources | nindent 12 }}
           {{- end }}
@@ -164,12 +188,12 @@ spec:
           readinessProbe: {{- include "common.tplvalues.render" (dict "value" .Values.customReadinessProbe "context" $) | nindent 12 }}
           {{- end }}
           volumeMounts:
-          - name: certs-keys
-            mountPath: {{ .Values.mediator.opencrvs.certsKeysMountPath }}
+            - name: opencrvs-certs
+              mountPath: /certs/mnt
       {{- if .Values.sidecars }}
       {{- include "common.tplvalues.render" ( dict "value" .Values.sidecars "context" $) | nindent 8 }}
       {{- end }}
       volumes:
-      - name: certs-keys
-        secret:
-          secretName: {{ .Values.mediator.opencrvs.certsKeysSecretName }}
+        - name: opencrvs-certs
+          secret:
+            secretName: {{ .Values.mediator.opencrvs.certsKeysSecretName }}

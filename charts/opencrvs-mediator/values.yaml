@@ -34,11 +34,9 @@ mediator:
     partnerClientSecretName: opencrvs-partner-client-creds
     clientSecretName: opencrvs-client-creds
     receiveCredentialUrl: ""
-    certsKeysSecretName: opencrvs-partner-certs-keys
-    certsKeysMountPath: "/certs/mnt"
-
-  mosipOpencrvsKeycloakClientId: mosip-opencrvs-client
-  kernelAuthAdapterAvailable: false
+    certsKeysSecretName: opencrvs-certs
+    mosipOpencrvsClientId: mosip-resident-client
+    mosipOpencrvsDeathClientId: mosip-idrepo-client
 
 service:
   type: ClusterIP
@@ -62,8 +60,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipqa/mosip-opencrvs-mediator
-  tag: 1.2.0.1
+  repository: mosipdev/mosip-opencrvs-mediator
+  tag: develop
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -255,7 +253,10 @@ extraEnvVarsCM:
 
 ## Secret with extra environment variables
 ##
-extraEnvVarsSecret: []
+extraEnvVarsSecret:
+  - opencrvs-certs
+  - opencrvs-client-creds
+  - mosip-client-creds
 
 ## Extra volumes to add to the deployment
 ##
@@ -418,7 +419,7 @@ istio:
   # the following newGateway option is only valid if above existingGateway is null/empty
   newGateway:
     # host example value: opencrvs.sandbox.mosip.net
-    host: ""
+    host: ''
     ingressController:
       # for public, istio: ingressgateway && for internal, istio: ingressgateway-internal
       istio: ingressgateway
