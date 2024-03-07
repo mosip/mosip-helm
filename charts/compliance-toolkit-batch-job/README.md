@@ -1,6 +1,6 @@
 # compliance-toolkit Batchjob
 
-Helm chart for installing Pre-Registration Batchjob service.
+Helm chart for installing compliance-toolkit Batchjob service.
 
 ## Install
 ```console
