@@ -50,7 +50,7 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipqa/registration-processor-opencrvs-stage
+  repository: mosipdev/registration-processor-opencrvs-stage
   tag: develop
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
