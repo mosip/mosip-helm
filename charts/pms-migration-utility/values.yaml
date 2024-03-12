@@ -31,7 +31,7 @@ replicaCount: 1
 
 image:
   registry: docker.io
-  repository: mosipqa/pms-migration-utility
+  repository: mosipid/pms-migration-utility
   tag: 1.2.0.1
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
