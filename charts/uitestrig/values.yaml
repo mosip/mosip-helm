@@ -51,8 +51,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipdev/pmptest
-  tag: develop
+  repository: mosipid/pmptest
+  tag: 1.2.0.1
 
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -459,16 +459,16 @@ modules:
     enabled: true
     image:
       registry: docker.io
-      repository: mosipqa/admintest
+      repository: mosipid/admintest
       tag: 1.2.0.1
   - name: pmpui
     enabled: true
     image:
       registry: docker.io
-      repository: mosipqa/pmptest
+      repository: mosipid/pmptest
       tag: 1.2.0.1
   - name: residentui
-    enabled: true
+    enabled: false
     image:
       registry: docker.io
       repository: mosipqa/residenttest

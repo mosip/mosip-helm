@@ -6,10 +6,10 @@ replicaCount: 1
 
 image:
   registry: docker.io
-  repository: mosipqa/status-check
+  repository: mosipid/status-check
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: latest
+  tag: 1.2.0.1
 
 schedule: "0 0 * * *"
 command: ["/bin/sh"]
