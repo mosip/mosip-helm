@@ -13,6 +13,6 @@ metadata:
   {{- end }}
 
 data:
-  input.yaml: |-
-    {{ .Values.keycloak.realms | nindent 4 }}
+  input.yaml: |
+    {{ .Values.keycloak.realms | toYaml | nindent 4 }}
     
