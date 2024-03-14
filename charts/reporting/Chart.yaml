@@ -5,6 +5,11 @@ type: application
 version: 12.0.1
 appVersion: ""
 dependencies:
+- name: common
+  repository: https://charts.bitnami.com/bitnami
+  tags:
+  - bitnami-common
+  version: 1.x.x
 - name: cp-helm-charts
   alias: confluentinc
   repository: "https://confluentinc.github.io/cp-helm-charts/"
@@ -13,7 +18,7 @@ dependencies:
 - name: kafka
   alias: bitnami-kafka
   repository: "https://charts.bitnami.com/bitnami"
-  version: ">= 14.0.3"
+  version: "23.0.7"
   condition: bitnami-kafka.enabled
 - name: elasticsearch
   alias: bitnami-elasticsearch
