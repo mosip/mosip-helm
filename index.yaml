@@ -14319,30 +14319,15 @@ entries:
     version: 1.2.0
   reporting:
   - apiVersion: v2
-    created: "2023-10-19T04:48:38.190954636Z"
+    created: "2024-03-14T15:45:06.471665838Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
       tags:
       - bitnami-common
       version: 1.x.x
-    - alias: confluentinc
-      condition: confluentinc.enabled
-      name: cp-helm-charts
-      repository: https://confluentinc.github.io/cp-helm-charts/
-      version: '>= 0.6.1'
-    - alias: bitnami-kafka
-      condition: bitnami-kafka.enabled
-      name: kafka
-      repository: https://charts.bitnami.com/bitnami
-      version: 23.0.7
-    - alias: bitnami-elasticsearch
-      condition: bitnami-elasticsearch.enabled
-      name: elasticsearch
-      repository: https://charts.bitnami.com/bitnami
-      version: '>= 17.0.0'
     description: A Helm chart for MOSIP Reporting module.
-    digest: 139f1aed9036f80e4a820b2f0f4df4b86091d54424ae504092727c0ae7081e34
+    digest: 63d3a6da191c55ca34f810a91d8ca9759f5e8aad248182c42b36e3e8241b1a59
     maintainers:
     - email: info@mosip.io
       name: MOSIP
@@ -16368,4 +16353,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2024-03-14T15:40:47.40458222Z"
+generated: "2024-03-14T15:45:06.470300203Z"
