@@ -5,21 +5,21 @@ type: application
 version: 12.0.1
 appVersion: ""
 dependencies:
-  - name: cp-helm-charts
-    alias: confluentinc
-    repository: "https://confluentinc.github.io/cp-helm-charts/"
-    version: ">= 0.6.1"
-    condition: confluentinc.enabled
-  - name: kafka
-    alias: bitnami-kafka
-    repository: "https://charts.bitnami.com/bitnami"
-    version: ">= 14.0.3"
-    condition: bitnami-kafka.enabled
-  - name: elasticsearch
-    alias: bitnami-elasticsearch
-    repository: "https://charts.bitnami.com/bitnami"
-    version: ">= 17.0.0"
-    condition: bitnami-elasticsearch.enabled
+- name: cp-helm-charts
+  alias: confluentinc
+  repository: "https://confluentinc.github.io/cp-helm-charts/"
+  version: ">= 0.6.1"
+  condition: confluentinc.enabled
+- name: kafka
+  alias: bitnami-kafka
+  repository: "https://charts.bitnami.com/bitnami"
+  version: ">= 14.0.3"
+  condition: bitnami-kafka.enabled
+- name: elasticsearch
+  alias: bitnami-elasticsearch
+  repository: "https://charts.bitnami.com/bitnami"
+  version: ">= 17.0.0"
+  condition: bitnami-elasticsearch.enabled
 maintainers:
   - email: info@mosip.io
     name: MOSIP
