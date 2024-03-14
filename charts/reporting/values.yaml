@@ -35,7 +35,7 @@ debezium:
     failureThreshold: 6
     successThreshold: 1
   fixer_container:
-    image: mosipqa/debezium-fixer:develop
+    image: mosipid/debezium-fixer:1.2.0.1
     imagePullPolicy: Always
     startup_delay: "30s"
     probe_time_period: "30s"
@@ -142,8 +142,8 @@ confluentinc:
 
     replicaCount: 1
 
-    image: mosipqa/cp-kafka-connect-es
-    imageTag: develop
+    image: mosipid/cp-kafka-connect-es
+    imageTag: 1.2.0.1
     imagePullPolicy: Always
 
     ## Configure extra options for liveness and readiness probes
