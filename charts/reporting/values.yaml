@@ -142,7 +142,7 @@ confluentinc:
 
     replicaCount: 1
 
-    image: mosipid/cp-kafka-connect-es
+    image: mosipid/es-kafka-connect
     imageTag: 1.2.0.1
     imagePullPolicy: Always
 
