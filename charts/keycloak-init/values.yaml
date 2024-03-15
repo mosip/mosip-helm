@@ -490,7 +490,7 @@ keycloak:
             - wallet_binding
 
         - name: mosip-resident-client
-          mappers:
+          mappers: []
           saroles:
             - RESIDENT
             - PARTNER_ADMIN
