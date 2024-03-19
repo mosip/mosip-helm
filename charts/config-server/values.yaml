@@ -199,7 +199,7 @@ envVariables:
       configMapKeyRef:
         name: global
         key: mosip-signup-host
-    enabled: true  
+    enabled: true
 
   - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_DBUSER_PASSWORD
     valueFrom:
