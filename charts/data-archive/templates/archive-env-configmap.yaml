@@ -1,0 +1,81 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-archive-init-env-config
+  namespace: {{ .Release.Namespace }}
+  labels: {{- include "common.labels.standard" . | nindent 4 }}
+    app.kubernetes.io/component: postgres
+    {{- if .Values.commonLabels }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
+    {{- end }}
+  {{- if .Values.commonAnnotations }}
+  annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
+  {{- end }}
+data:
+  MOSIP_DB_NAME: {{ .Values.databases.archive_db.db_name | quote }}
+  SU_USER: {{ .Values.databases.archive_db.su_user | quote }}
+  DB_SERVERIP: {{ .Values.databases.archive_db.host | quote }}
+  DB_PORT: {{ .Values.databases.archive_db.port | quote }}
+  DML_FLAG: {{ .Values.databases.archive_db.dml | quote }}
+  DB_NAMES: {{ .Values.databases.source_db.provide_db_names_to_archive | quote }}
+  AUDIT_SOURCE_DB_HOST: {{ .Values.databases.source_db.source_audit_host | quote }}
+  AUDIT_SOURCE_DB_PORT: {{ .Values.databases.source_db.source_audit_port | quote }}
+  AUDIT_SOURCE_DB_UNAME: {{ .Values.databases.source_db.source_audit_uname | quote }}
+  AUDIT_SOURCE_DB_NAME: {{ .Values.databases.source_db.source_audit_dbname | quote }}
+  AUDIT_SOURCE_SCHEMA_NAME: {{ .Values.databases.source_db.source_audit_schemaname | quote }}
+  CREDENTIAL_SOURCE_DB_HOST: {{ .Values.databases.source_db.source_credential_host | quote }}
+  CREDENTIAL_SOURCE_DB_PORT: {{ .Values.databases.source_db.source_credential_port | quote }}
+  CREDENTIAL_SOURCE_DB_UNAME: {{ .Values.databases.source_db.source_credential_uname | quote }}
+  CREDENTIAL_SOURCE_DB_NAME: {{ .Values.databases.source_db.source_credential_dbname | quote }}
+  CREDENTIAL_SOURCE_SCHEMA_NAME: {{ .Values.databases.source_db.source_credential_schemaname | quote }}
+  ESIGNET_SOURCE_DB_HOST: {{ .Values.databases.source_db.source_esignet_host | quote }}
+  ESIGNET_SOURCE_DB_PORT: {{ .Values.databases.source_db.source_esignet_port | quote }}
+  ESIGNET_SOURCE_DB_UNAME: {{ .Values.databases.source_db.source_esignet_uname | quote }}
+  ESIGNET_SOURCE_DB_NAME: {{ .Values.databases.source_db.source_esignet_dbname | quote }}
+  ESIGNET_SOURCE_SCHEMA_NAME: {{ .Values.databases.source_db.source_esignet_schemaname | quote }}  
+  IDA_SOURCE_DB_HOST: {{ .Values.databases.source_db.source_ida_host | quote }}
+  IDA_SOURCE_DB_PORT: {{ .Values.databases.source_db.source_ida_port | quote }}
+  IDA_SOURCE_DB_UNAME: {{ .Values.databases.source_db.source_ida_uname | quote }}
+  IDA_SOURCE_DB_NAME: {{ .Values.databases.source_db.source_ida_dbname | quote }}
+  IDA_SOURCE_SCHEMA_NAME: {{ .Values.databases.source_db.source_ida_schemaname | quote }}  
+  IDREPO_SOURCE_DB_HOST: {{ .Values.databases.source_db.source_idrepo_host | quote }}
+  IDREPO_SOURCE_DB_PORT: {{ .Values.databases.source_db.source_idrepo_port | quote }}
+  IDREPO_SOURCE_DB_UNAME: {{ .Values.databases.source_db.source_idrepo_uname | quote }}
+  IDREPO_SOURCE_DB_NAME: {{ .Values.databases.source_db.source_idrepo_dbname | quote }}
+  IDREPO_SOURCE_SCHEMA_NAME: {{ .Values.databases.source_db.source_idrepo_schemaname | quote }}  
+  KERNEL_SOURCE_DB_HOST: {{ .Values.databases.source_db.source_kernel_host | quote }}
+  KERNEL_SOURCE_DB_PORT: {{ .Values.databases.source_db.source_kernel_port | quote }}
+  KERNEL_SOURCE_DB_UNAME: {{ .Values.databases.source_db.source_kernel_uname | quote }}
+  KERNEL_SOURCE_DB_NAME: {{ .Values.databases.source_db.source_kernel_dbname | quote }}
+  KERNEL_SOURCE_SCHEMA_NAME: {{ .Values.databases.source_db.source_kernel_schemaname | quote }}  
+  MASTER_SOURCE_DB_HOST: {{ .Values.databases.source_db.source_master_host | quote }}
+  MASTER_SOURCE_DB_PORT: {{ .Values.databases.source_db.source_master_port | quote }}
+  MASTER_SOURCE_DB_UNAME: {{ .Values.databases.source_db.source_master_uname | quote }}
+  MASTER_SOURCE_DB_NAME: {{ .Values.databases.source_db.source_master_dbname | quote }}
+  MASTER_SOURCE_SCHEMA_NAME: {{ .Values.databases.source_db.source_master_schemaname | quote }}  
+  PMS_SOURCE_DB_HOST: {{ .Values.databases.source_db.source_pms_host | quote }}
+  PMS_SOURCE_DB_PORT: {{ .Values.databases.source_db.source_pms_port | quote }}
+  PMS_SOURCE_DB_UNAME: {{ .Values.databases.source_db.source_pms_uname | quote }}
+  PMS_SOURCE_DB_NAME: {{ .Values.databases.source_db.source_pms_dbname | quote }}
+  PMS_SOURCE_SCHEMA_NAME: {{ .Values.databases.source_db.source_pms_schemaname | quote }}
+  PREREG_SOURCE_DB_HOST: {{ .Values.databases.source_db.source_prereg_host | quote }}
+  PREREG_SOURCE_DB_PORT: {{ .Values.databases.source_db.source_prereg_port | quote }}
+  PREREG_SOURCE_DB_UNAME: {{ .Values.databases.source_db.source_prereg_uname | quote }}
+  PREREG_SOURCE_DB_NAME: {{ .Values.databases.source_db.source_prereg_dbname | quote }}
+  PREREG_SOURCE_SCHEMA_NAME: {{ .Values.databases.source_db.source_prereg_schemaname | quote }} 
+  REGPRC_SOURCE_DB_HOST: {{ .Values.databases.source_db.source_regprc_host | quote }}
+  REGPRC_SOURCE_DB_PORT: {{ .Values.databases.source_db.source_regprc_port | quote }}
+  REGPRC_SOURCE_DB_UNAME: {{ .Values.databases.source_db.source_regprc_uname | quote }}
+  REGPRC_SOURCE_DB_NAME: {{ .Values.databases.source_db.source_regprc_dbname | quote }}
+  REGPRC_SOURCE_SCHEMA_NAME: {{ .Values.databases.source_db.source_regprc_schemaname | quote }}  
+  RESIDENT_SOURCE_DB_HOST: {{ .Values.databases.source_db.source_resident_host | quote }}
+  RESIDENT_SOURCE_DB_PORT: {{ .Values.databases.source_db.source_resident_port | quote }}
+  RESIDENT_SOURCE_DB_UNAME: {{ .Values.databases.source_db.source_resident_uname | quote }}
+  RESIDENT_SOURCE_DB_NAME: {{ .Values.databases.source_db.source_resident_dbname | quote }}
+  RESIDENT_SOURCE_SCHEMA_NAME: {{ .Values.databases.source_db.source_resident_schemaname | quote }}  
+  ARCHIVE_DB_HOST: {{ .Values.databases.archive_db.archivehost | quote }}
+  ARCHIVE_DB_PORT: {{ .Values.databases.archive_db.archiveport | quote }}
+  ARCHIVE_DB_UNAME: {{ .Values.databases.archive_db.archiveuname | quote }}
+  ARCHIVE_DB_NAME: {{ .Values.databases.archive_db.archive_dbname | quote }}
+  ARCHIVE_SCHEMA_NAME: {{ .Values.databases.archive_db.archive_schemaname | quote }}
+  CONTAINER_VOLUME_PATH: {{ .Values.databases.container_volume_path | quote }}
