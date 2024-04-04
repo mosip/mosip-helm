@@ -17,4 +17,4 @@ data:
   DB_USER: {{ .Values.db.user | quote }}
   BRANCH: {{ .Values.mosipDataGithubBranch | quote }}
   REPOSITORY: {{ .Values.mosipDataGithubRepo | quote }}
-  XLSFOLDERPATH: {{ .Values.mosipDataXlsfolderPath | quote }}
+  XLS_FOLDER_PATH: {{ .Values.mosipDataXlsfolderPath | quote }}
