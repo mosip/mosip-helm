@@ -6,7 +6,7 @@
 ```
 * Update helm dependencies using:
 ```
-$ helm dependency update
+$ helm dependency update 
 ```
 * Run the helm chart
 ```
