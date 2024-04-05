@@ -52,7 +52,7 @@ service:
 image:
   registry: docker.io
   repository: mosipid/pmptest
-  tag: 1.2.0.1
+  tag: 1.2.0.2
 
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -466,7 +466,7 @@ modules:
     image:
       registry: docker.io
       repository: mosipid/pmptest
-      tag: 1.2.0.1
+      tag: 1.2.0.2
   - name: residentui
     enabled: false
     image:
