@@ -683,6 +683,12 @@ envVariables:
         key: mpartner_default_template_secret
     enabled: true
 
+  - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_RESIDENT_REQUEST_CREDENTIAL_ENCRYPTION_KEY
+    valueFrom:
+      secretKeyRef:
+        name: mosip-resident-request-credential-encryption-key
+        key: mosip-resident-request-credential-encryption-key
+    enabled: true
 
 ## The active profile env if you have another set of properties. Correspondingly, properties in Git repo will
 ## have names of type "*-default.properties"
