@@ -196,6 +196,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/admin-hotlist-1.2.0.tgz
     version: 1.2.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.240242504Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Admin Hotlist
+    digest: 149dd7518d3ab9edebb98dbc6d37dc3c841c71f5e204adb2953c8d74ddf1ba0a
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - admin
+    - hotlist
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: admin-hotlist
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/admin-hotlist-0.0.1-develop.tgz
+    version: 0.0.1-develop
   admin-service:
   - apiVersion: v2
     created: "2024-04-23T04:41:33.91360039Z"
@@ -383,6 +406,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/admin-service-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.241936787Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Admin module
+    digest: a5aba3af3de893cf85d51b0e97d50fbaf6e4ced63e8350b40c6a7cfa96dd7c23
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - admin
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: admin-service
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/admin-service-0.0.1-develop.tgz
+    version: 0.0.1-develop
   admin-ui:
   - apiVersion: v2
     created: "2023-10-19T04:48:36.585348432Z"
@@ -570,6 +616,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/admin-ui-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.243421192Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Admin UI module
+    digest: 09c416780c68a0b765ce1fc1fc9df8de86121fe42f30b7aad70829b7db28cce7
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - admin
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: admin-ui
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/admin-ui-0.0.1-develop.tgz
+    version: 0.0.1-develop
   apitestrig:
   - apiVersion: v2
     created: "2024-03-01T11:38:46.531122037Z"
@@ -703,6 +772,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/apitestrig-12.0.1-B2.tgz
     version: 12.0.1-B2
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.24503751Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy APITESTRIG for MOSIP modules
+    digest: 3ee5b773a5b1714324976767321aa809813627de1c2524c2584a9ae98e7b21d4
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - apitestrig
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: apitestrig
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/apitestrig-0.0.1-develop.tgz
+    version: 0.0.1-develop
   artifactory:
   - apiVersion: v2
     created: "2024-04-15T05:32:59.127162425Z"
@@ -936,6 +1027,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/artifactory-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.246412762Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Artifactory
+    digest: 0be3e8e38fb7d8fd2050167c67e38e058d12e16ba5d1877bb9b450221b1e69c6
+    home: https://mosip.io
+    keywords:
+    - artifactory
+    - antivirus
+    - anti-virus
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: artifactory
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/artifactory-0.0.1-develop.tgz
+    version: 0.0.1-develop
   auditmanager:
   - apiVersion: v2
     created: "2023-10-19T04:48:36.638316869Z"
@@ -1123,6 +1237,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/auditmanager-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.24863412Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Auditmanager module
+    digest: 5d78c6c356cfba40625e5128ba2f9dce21402fb7229efa3b889bdc8ca17b2c03
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - auditmanager
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: auditmanager
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/auditmanager-0.0.1-develop.tgz
+    version: 0.0.1-develop
   authdemo:
   - apiVersion: v2
     created: "2023-10-19T04:48:36.646199534Z"
@@ -1212,6 +1349,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/authdemo-12.0.1-B3.tgz
     version: 12.0.1-B3
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.25017013Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy authdemo for MOSIP modules
+    digest: 76cb9ee8e9c683f0dc51b5d9128191fa90044a454f830182df9237bbec7a9eae
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - authdemo
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: authdemo
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/authdemo-0.0.1-develop.tgz
+    version: 0.0.1-develop
   authmanager:
   - apiVersion: v2
     created: "2023-10-19T04:48:36.663716078Z"
@@ -1407,6 +1566,30 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/authmanager-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.251607837Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Authentication Manager module
+    digest: ca829669d7ce7297bcabfb4784f09413c3c41c1ed22c30d918f503d4d60504db
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - auth
+    - authmanager
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: authmanager
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/authmanager-0.0.1-develop.tgz
+    version: 0.0.1-develop
   biosdk-service:
   - apiVersion: v2
     created: "2023-10-19T04:48:36.683413141Z"
@@ -1617,6 +1800,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/biosdk-service-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.252932976Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Auditmanager module
+    digest: cfa1c46db9d78bcff2d3a458044bc8160c4cd819d52cd00b6506fa070a4261aa
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - biosdk-service
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: biosdk-service
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/biosdk-service-0.0.1-develop.tgz
+    version: 0.0.1-develop
   bqatsdk-service:
   - apiVersion: v2
     created: "2023-10-19T04:48:36.68568726Z"
@@ -1804,6 +2010,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/clamav-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.254204054Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for Clamav
+    digest: 50b8bf8dc904fef10571f9b7b5a4c00ccc7d99c152d5a9c263597bdbcfe53bd8
+    home: https://mosip.io
+    keywords:
+    - clamav
+    - antivirus
+    - anti-virus
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: clamav
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/clamav-0.0.1-develop.tgz
+    version: 0.0.1-develop
   compliance-toolkit:
   - apiVersion: v2
     created: "2023-10-19T04:48:36.711982377Z"
@@ -2245,6 +2474,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/conf-secrets-12.0.1-B2.tgz
     version: 12.0.1-B2
+  - apiVersion: v2
+    appVersion: 1.1.2
+    created: "2024-04-24T07:37:52.255050905Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for deploying secrets required by MOSIP config-server
+    digest: b7bbcbebdeed8e7157f2f344ac67b556027113f64d3847beb6593cae4969d92d
+    home: https://mosip.io
+    keywords:
+    - config-server
+    - conf-secrets
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: conf-secrets
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/conf-secrets-0.0.1-develop.tgz
+    version: 0.0.1-develop
   config-server:
   - apiVersion: v2
     appVersion: 1.1.2
@@ -2444,6 +2696,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/config-server-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    appVersion: 1.1.2
+    created: "2024-04-24T07:37:52.258115755Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for configuration of MOSIP modules
+    digest: 0f8a5322f102050dd8fd64cb3b7d27a9fe9c6cdd7a6d1d9d4cceecde5c1015a9
+    home: https://mosip.io
+    keywords:
+    - config-server
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: config-server
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/config-server-0.0.1-develop.tgz
+    version: 0.0.1-develop
   credential:
   - apiVersion: v2
     created: "2023-10-19T04:48:36.770120256Z"
@@ -2631,6 +2905,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/credential-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.259429723Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP IDRepo Identity Service
+    digest: bd61babf03e590066c8d207cf538b85e22dfdec7ef4ae8bdee547396648496ee
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - credential
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: credential
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/credential-0.0.1-develop.tgz
+    version: 0.0.1-develop
   credentialfeeder:
   - apiVersion: v2
     created: "2024-01-31T05:35:19.050133562Z"
@@ -2656,6 +2953,30 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/credentialfeeder-1.0.0.tgz
     version: 1.0.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.260556043Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to generate keys
+    digest: b245638cf7e76ab45d29da02d8142ca8683595af4cdd98ef9a17cc9bd97e70e5
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - keymanager
+    - credentialfeeder
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: credentialfeeder
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/credentialfeeder-0.0.1-develop.tgz
+    version: 0.0.1-develop
   credentialrequest:
   - apiVersion: v2
     created: "2023-10-19T04:48:36.788262606Z"
@@ -2843,6 +3164,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/credentialrequest-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.261965447Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP IDRepo Identity Service
+    digest: b14845047e70d37d06b195240f6022ccd2c0f7216b26e8f65f57194ac15ea399
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - credentialrequest
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: credentialrequest
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/credentialrequest-0.0.1-develop.tgz
+    version: 0.0.1-develop
   data-archive:
   - apiVersion: v2
     created: "2023-12-27T10:58:47.546340655Z"
@@ -2868,6 +3212,30 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/data-archive-1.0.0.tgz
     version: 1.0.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.263844664Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes to initialize mosip_archive Postgres
+      DB and execute py script to archive data from source db to archive db
+    digest: 7d2f86beb90fc8a4d818df9882707d65a7f9b789ac89c69e5cfecf90db35c080
+    home: https://mosip.io
+    keywords:
+    - postgres
+    - db
+    - database
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: data-archive
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/data-archive-0.0.1-develop.tgz
+    version: 0.0.1-develop
   databreachdetector:
   - apiVersion: v2
     created: "2024-02-08T13:53:24.158794592Z"
@@ -2892,6 +3260,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/databreachdetector-12.0.2.tgz
     version: 12.0.2
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.266231282Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy databreachdetector to test working of MOSIP
+      modules
+    digest: 8de48060de44d88dc43cb981e05ba5e4b13f92b1718a29afd8fb6f38f42c4666
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - databreachdetector
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: databreachdetector
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/databreachdetector-0.0.1-develop.tgz
+    version: 0.0.1-develop
   datashare:
   - apiVersion: v2
     created: "2023-10-19T04:48:36.806560157Z"
@@ -3071,6 +3462,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/datashare-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.26771741Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Datashare module
+    digest: 83250386f347fc5940c7644139cbd290adb90f15316810989e458634ea3f9595
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - datashare
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: datashare
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/datashare-0.0.1-develop.tgz
+    version: 0.0.1-develop
   digitalcard:
   - apiVersion: v2
     created: "2023-10-19T04:48:36.808847676Z"
@@ -3205,6 +3618,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/dslorchestrator-12.0.1-B3.tgz
     version: 12.0.1-B3
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.269572331Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy dslorchestrator to test working of MOSIP modules
+    digest: f367ec228aaa895e75090b2f82f35832aed6febace99dacda532fd94e050156b
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - dslorchestrator
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: dslorchestrator
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/dslorchestrator-0.0.1-develop.tgz
+    version: 0.0.1-develop
   dslrig:
   - apiVersion: v2
     created: "2023-11-24T11:57:14.69061587Z"
@@ -3228,6 +3663,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/dslrig-12.0.2.tgz
     version: 12.0.2
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.271724173Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy dslrig to test working of MOSIP modules
+    digest: f222c9e17643fd21fa96e4ced1e2e2ee0261825596c3f9f0c10395f6f23e7e56
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - dslrig
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: dslrig
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/dslrig-0.0.1-develop.tgz
+    version: 0.0.1-develop
   elasticsearch:
   - annotations:
       category: Analytics
@@ -3464,6 +3921,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/gc-util-0.0.8.tgz
     version: 0.0.8
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.273876016Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to clear completed jobs from the kubernetes cluster
+    digest: 8e0455616d2a4921fe8751af5dee7366f1bc8d94c44c1f367d665bff8bb11117
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - deletecron
+    - gcutil
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: gc-util
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/gc-util-0.0.1-develop.tgz
+    version: 0.0.1-develop
   ida-auth:
   - apiVersion: v2
     created: "2023-11-02T17:01:36.523902984Z"
@@ -3674,6 +4154,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/ida-auth-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.275505189Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP IDA module
+    digest: 9b5be3f6b6030e7f4693d38bf98998bdfd661fdcd87192a1280663e2dcb56796
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - ida-auth
+    - ida
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: ida-auth
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/ida-auth-0.0.1-develop.tgz
+    version: 0.0.1-develop
   ida-internal:
   - apiVersion: v2
     created: "2023-10-19T04:48:36.896350098Z"
@@ -3884,6 +4387,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/ida-internal-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.276945942Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP IDA module
+    digest: 8b3c4ca14b8622e529a7c9ab23017b7a4ce1ad9df56d7dfc48fb84a00166b669
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - ida-internal
+    - ida
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: ida-internal
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/ida-internal-0.0.1-develop.tgz
+    version: 0.0.1-develop
   ida-keygen:
   - apiVersion: v2
     appVersion: 1.1.5
@@ -4145,6 +4671,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/ida-otp-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.278387958Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP IDA module
+    digest: 9ccef78556fde0942afac8df526cd45a65de4a204446e02a7fc30e0e17be79ff
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - ida-otp
+    - ida
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: ida-otp
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/ida-otp-0.0.1-develop.tgz
+    version: 0.0.1-develop
   identity:
   - apiVersion: v2
     created: "2023-10-19T04:48:36.945696505Z"
@@ -4332,6 +4881,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/identity-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.279706825Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP IDRepo Identity Service
+    digest: b97ba3bf5537971435f22720fd195c0895705cc7da9c7bce3d773a01854502b0
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - identity
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: identity
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/identity-0.0.1-develop.tgz
+    version: 0.0.1-develop
   idgenerator:
   - apiVersion: v2
     created: "2023-10-19T04:48:36.965186666Z"
@@ -4519,6 +5091,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/idgenerator-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.281015162Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Idgenerator module
+    digest: 994e91d0abf5541f648c38b4f25d48d5056a5acd4e11f64f0b1281815b8c1696
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - idgenerator
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: idgenerator
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/idgenerator-0.0.1-develop.tgz
+    version: 0.0.1-develop
   idp:
   - apiVersion: v2
     created: "2023-10-19T04:48:36.967595986Z"
@@ -4752,6 +5347,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/idrepo-saltgen-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.283109553Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to generate salt for ID Repo.
+    digest: 21f9cd37a71abe19f0d13d2de2ce6e04972944fec68b966c356a4e8f81fc83b5
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - idrepo
+    - salt
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: idrepo-saltgen
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/idrepo-saltgen-0.0.1-develop.tgz
+    version: 0.0.1-develop
   kafka:
   - annotations:
       category: Infrastructure
@@ -5068,6 +5686,30 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/keycloak-init-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    appVersion: 1.2.0
+    created: "2024-04-24T07:37:52.285513553Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes to initialize Keycloak  (updating for
+      test)
+    digest: 7cad8e1e9e5c49343627ab2ee673748172293e6a90d9da35127f9b9b76b3e7fc
+    home: https://mosip.io
+    keywords:
+    - keycloak
+    - access-management
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: keycloak-init
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/keycloak-init-0.0.1-develop.tgz
+    version: 0.0.1-develop
   keygen:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.04570733Z"
@@ -5238,6 +5880,30 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/keygen-1.2.0.tgz
     version: 1.2.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.28663265Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to generate keys
+    digest: e73eff83c2921175648f28ff18b4c877f0fb19254ad2e5888eb4339318766ab5
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - keymanager
+    - keygen
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: keygen
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/keygen-0.0.1-develop.tgz
+    version: 0.0.1-develop
   keymanager:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.066837905Z"
@@ -5425,6 +6091,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/keymanager-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.287972225Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Keymanager module
+    digest: 9f12d12cf156651e63267c3161d4c7684c1b46d1e045832fc3fe76859bd390f2
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - keymanager
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: keymanager
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/keymanager-0.0.1-develop.tgz
+    version: 0.0.1-develop
   landing-page:
   - apiVersion: v2
     created: "2023-11-08T18:27:02.986565364Z"
@@ -5570,6 +6259,30 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/landing-page-12.0.1-B2.tgz
     version: 12.0.1-B2
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.289383554Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to installed Downloader for Regstration Client Application
+    digest: b1d50ecd0339c54eb08b8607f109c646a51879c489d036150b4029b0f1d12c1a
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - landing-page
+    - registration
+    - client
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: landing-page
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/landing-page-0.0.1-develop.tgz
+    version: 0.0.1-develop
   masterdata:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.100648483Z"
@@ -5757,6 +6470,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/masterdata-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.291394869Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Masterdata module
+    digest: aa5d135f59a65fb7d56c21d8ed28852661e1ee110a99d6890acaddea5dbd0230
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - masterdata
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: masterdata
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/masterdata-0.0.1-develop.tgz
+    version: 0.0.1-develop
   masterdata-loader:
   - apiVersion: v2
     appVersion: 1.2.0
@@ -5878,6 +6614,30 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/masterdata-loader-12.0.1-B2.tgz
     version: 12.0.1-B2
+  - apiVersion: v2
+    appVersion: 1.2.0
+    created: "2024-04-24T07:37:52.292296271Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to upload default masterdata to mosip_master DB.
+    digest: 32b0997daa1d800c4a7b071cdd97621a94136bc513f562e3a4c6b02f5bfc356c
+    home: https://mosip.io
+    keywords:
+    - postgres
+    - db
+    - database
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: masterdata-loader
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/masterdata-loader-0.0.1-develop.tgz
+    version: 0.0.1-develop
   mimoto:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.122841267Z"
@@ -6151,6 +6911,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/minio-client-util-1.0.0-P1.tgz
     version: 1.0.0-P1
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.293460661Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy s3 utility to remove apitestrig reports from
+      minio
+    digest: 76ac3036f06d56ec0ff71608d47c3e0ee126d86aa5ee74002f4d4b618d3f77e5
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - minioclient
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: minio-client-util
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/minio-client-util-0.0.1-develop.tgz
+    version: 0.0.1-develop
   mock-abis:
   - apiVersion: v2
     created: "2024-04-05T06:48:09.125068884Z"
@@ -6361,6 +7144,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/mock-abis-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.294836334Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Mock ABIS
+    digest: f98276f50c2242044713689ae69a32ba4349d69661f1ac4606efd861a484cd8f
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - mock-abis
+    - abis
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: mock-abis
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/mock-abis-0.0.1-develop.tgz
+    version: 0.0.1-develop
   mock-identity-system:
   - apiVersion: v2
     created: "2024-02-29T14:00:13.560143701Z"
@@ -6636,6 +7442,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/mock-mv-1.2.0.tgz
     version: 1.2.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.296119925Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Mock Manual Verification service
+    digest: e3cd393340b8dd3668d751aca32042dd4704c14e2aa74f47ada43362b51f01a0
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - mock-mv
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: mock-mv
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/mock-mv-0.0.1-develop.tgz
+    version: 0.0.1-develop
   mock-relying-party-service:
   - apiVersion: v2
     created: "2024-02-29T14:00:13.561686796Z"
@@ -6925,6 +7754,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/mock-smtp-1.0.0.tgz
     version: 1.0.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.297886283Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to mock-smtp server application.
+    digest: 55a0ba5a1cd14c0c05a1e62975bf4e983414bc7b64daf70e5976ea6d1b61d424
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - mock-smtp
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: mock-smtp
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/mock-smtp-0.0.1-develop.tgz
+    version: 0.0.1-develop
   mosip-file-server:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.224915109Z"
@@ -7111,6 +7962,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/mosip-file-server-1.2.0.tgz
     version: 1.2.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.299741471Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to file server application.
+    digest: 3de3245f60ea2c8d59e8c030956d068de7735b77cc5c301a35270646cc74fca0
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - mosip-file-server
+    - fileserver
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: mosip-file-server
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/mosip-file-server-0.0.1-develop.tgz
+    version: 0.0.1-develop
   notifier:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.243391161Z"
@@ -7298,6 +8172,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/notifier-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.301070066Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Notifier module
+    digest: 1514ea60494ce8a11eb2bb2f887fb11831d532023ca68ed536e82a129a8ce732
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - notifier
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: notifier
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/notifier-0.0.1-develop.tgz
+    version: 0.0.1-develop
   oidc-ui:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.257884781Z"
@@ -7574,6 +8471,30 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/opencrvs-mediator-12.0.0.tgz
     version: 12.0.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.302409702Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for mosip-opencrvs mediator.
+    digest: 8201955f1d7de93f199768f1519aec1754cee9a709609f6fdf606036dba8f8b6
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - mosip-opencrvs-mediator
+    - opencrvs-mediator
+    - opencrvs
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: opencrvs-mediator
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/opencrvs-mediator-0.0.1-develop.tgz
+    version: 0.0.1-develop
   otpmanager:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.28807773Z"
@@ -7761,6 +8682,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/otpmanager-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.303688404Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP OTPManager module
+    digest: 0894bf194b6c5ce5428bb52996e70038ad7b78d79e5dfca86220b6d48405f356
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - otpmanager
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: otpmanager
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/otpmanager-0.0.1-develop.tgz
+    version: 0.0.1-develop
   packetcreator:
   - apiVersion: v2
     created: "2024-02-08T13:53:24.16288335Z"
@@ -7850,6 +8794,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/packetcreator-12.0.1-B3.tgz
     version: 12.0.1-B3
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.305166256Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for DSL orchestrator
+    digest: 8cb47a1ff3a99f3b5cea3485359e9f3906c23508d451693a09828043588aadef
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - packetcreator
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: packetcreator
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/packetcreator-0.0.1-develop.tgz
+    version: 0.0.1-develop
   packetmanager:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.316167362Z"
@@ -8037,6 +9003,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/packetmanager-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.307366994Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Packetmanager module
+    digest: 6de63de4598c94338feab3d2aa27ebf5073fa4b419e56cdb8886aa26843708fe
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - packetmanager
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: packetmanager
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/packetmanager-0.0.1-develop.tgz
+    version: 0.0.1-develop
   partner-onboarder:
   - apiVersion: v2
     created: "2024-02-07T08:17:01.143939976Z"
@@ -8176,6 +9165,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/partner-onboarder-12.0.1-B2.tgz
     version: 12.0.1-B2
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.308768735Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for onboarding default partners for MOSIP sandbox.
+    digest: cb29d5a0f2be5d741c2d86e621510d645648f98c4f284773a111db7d4298c139
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - partner-onboarder
+    - partners
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: partner-onboarder
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/partner-onboarder-0.0.1-develop.tgz
+    version: 0.0.1-develop
   pmp-ui:
   - apiVersion: v2
     created: "2024-04-05T06:48:09.128048141Z"
@@ -8265,6 +9277,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/pmp-ui-12.0.1-B2.tgz
     version: 12.0.1-B2
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.310127606Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP pmp UI module
+    digest: ba2d44fe92e78737c6480b4f3fb37da26d1e439126237e48721a10de27c84461
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - pmp
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: pmp-ui
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/pmp-ui-0.0.1-develop.tgz
+    version: 0.0.1-develop
   pms-migration-utility:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.346903315Z"
@@ -8354,6 +9388,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/pms-migration-utility-1.0.0.tgz
     version: 1.0.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.311374018Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy pms-migration-utility
+    digest: f57f20d17883ca246e1ceb6129ee9a1536127e938cb432740211771484bfee58
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - pms-migration-utility
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: pms-migration-utility
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/pms-migration-utility-0.0.1-develop.tgz
+    version: 0.0.1-develop
   pms-partner:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.369796304Z"
@@ -8564,6 +9620,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/pms-partner-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.312732107Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Partner Management Service Partner service
+    digest: 32875af48e97bba39ecf6a65a998cc9e20ddbbd4bf17464597c729057e481548
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - pms-partner
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: pms-partner
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/pms-partner-0.0.1-develop.tgz
+    version: 0.0.1-develop
   pms-policy:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.391496183Z"
@@ -8774,6 +9853,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/pms-policy-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.314155559Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Packetmanager module
+    digest: fa86eccb42c79c6f2a9b3839a9aa925e422e6a27f931aeb6250dc25697db3a0f
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - pms-policy
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: pms-policy
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/pms-policy-0.0.1-develop.tgz
+    version: 0.0.1-develop
   postgres-init:
   - apiVersion: v2
     appVersion: 1.2.0
@@ -8991,6 +10093,30 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/postgres-init-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    appVersion: 1.2.0
+    created: "2024-04-24T07:37:52.316427302Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes to initialize various Postgres DBs.
+    digest: a4dd5a1f866904a866feb8094fe795cc53ebf0c3a850bdb1322c45c4dfd74099
+    home: https://mosip.io
+    keywords:
+    - postgres
+    - db
+    - database
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: postgres-init
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/postgres-init-0.0.1-develop.tgz
+    version: 0.0.1-develop
   postgres-upgrade:
   - apiVersion: v2
     appVersion: 1.2.0
@@ -9064,6 +10190,30 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/postgres-upgrade-12.0.1-B4.tgz
     version: 12.0.1-B4
+  - apiVersion: v2
+    appVersion: 1.2.0
+    created: "2024-04-24T07:37:52.317415155Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes to Upgrade various Postgres DBs.
+    digest: 6418a9bc862595ed2f9f359b3b63e70755331001508291897597e386fde861de
+    home: https://mosip.io
+    keywords:
+    - postgres-upgrade
+    - db-upgrade
+    - database
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: postgres-upgrade
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/postgres-upgrade-0.0.1-develop.tgz
+    version: 0.0.1-develop
   postgresql:
   - annotations:
       category: Database
@@ -9285,6 +10435,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/prereg-application-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.318848815Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Pre-registration Application service
+    digest: 19ac2fb7818cfdc6e5c329e194944d9195df872c458224e6a9bd5c5ba5ca695b
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - prereg-application
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: prereg-application
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/prereg-application-0.0.1-develop.tgz
+    version: 0.0.1-develop
   prereg-batchjob:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.468025615Z"
@@ -9472,6 +10645,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/prereg-batchjob-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.320149057Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Pre-registration Batchjob service
+    digest: 52cc9644da3ba1bef9be4ad2a426663e2f64fd1ab8ddfa46ba14b3de0b5ecbd5
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - prereg-batchjob
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: prereg-batchjob
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/prereg-batchjob-0.0.1-develop.tgz
+    version: 0.0.1-develop
   prereg-booking:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.486609068Z"
@@ -9659,6 +10855,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/prereg-booking-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.321766859Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Pre-registration application service
+    digest: da1636346b3ec7bc4ca871f7928ed5bb6fc15c61074900d5f98129e02663d765
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - prereg-booking
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: prereg-booking
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/prereg-booking-0.0.1-develop.tgz
+    version: 0.0.1-develop
   prereg-captcha:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.5026543Z"
@@ -9822,6 +11041,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/prereg-captcha-1.2.0.tgz
     version: 1.2.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.323565407Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Pre-registration Captcha Service
+    digest: 7d9fa0c2e40956ac98617b239530da7c78bcd66ca203fdb8cc308331bf41e454
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - prereg-captcha
+    - prereg
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: prereg-captcha
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/prereg-captcha-0.0.1-develop.tgz
+    version: 0.0.1-develop
   prereg-datasync:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.52204026Z"
@@ -10001,6 +11243,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/prereg-datasync-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.324892088Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Pre-registration Datasync service
+    digest: 72542142cacdfbc2dd0d76e02b01303c886af11789d28bb2d30669cd08853f3f
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - prereg-datasync
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: prereg-datasync
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/prereg-datasync-0.0.1-develop.tgz
+    version: 0.0.1-develop
   prereg-gateway:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.539393004Z"
@@ -10188,6 +11452,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/prereg-gateway-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.326107123Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Pre-registration Istio Gateway
+    digest: dd70a2a596428e3ab961fa61b0c417f84bee53e7241f49328250c178999e1f18
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - prereg-gateway
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: prereg-gateway
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/prereg-gateway-0.0.1-develop.tgz
+    version: 0.0.1-develop
   prereg-ui:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.559272368Z"
@@ -10375,6 +11662,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/prereg-ui-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.327402105Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Pre-registration UI
+    digest: fd30811bb220cb6138765c4dd50be14be78921176fa378399f76e85a862c50bc
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - prereg-ui
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: prereg-ui
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/prereg-ui-0.0.1-develop.tgz
+    version: 0.0.1-develop
   pridgenerator:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.577838221Z"
@@ -10562,6 +11872,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/pridgenerator-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.32868207Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP PRIDgenerator module
+    digest: 346778fca0ff764baf6969127f5212c012ea26ee43c2b62b637766992b2e8675
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - pridgenerator
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: pridgenerator
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/pridgenerator-0.0.1-develop.tgz
+    version: 0.0.1-develop
   print-service:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.600924311Z"
@@ -10749,6 +12082,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/print-service-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.329999635Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for sample Print Service
+    digest: 9d53813d3ad4094c93d6e2fd9c7b1bad2f1defa8871d630feeb74f525e1d834d
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - print-service
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: print-service
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/print-service-0.0.1-develop.tgz
+    version: 0.0.1-develop
   regclient:
   - apiVersion: v2
     created: "2024-04-05T06:48:09.129454413Z"
@@ -10968,6 +12324,30 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regclient-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.33201028Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to installed Downloader for Regstration Client Application
+    digest: 715e6b09af0fb43898d1712561eb3fe73f18c4e819303053f538ca7637262ea1
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regclient
+    - registration
+    - client
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regclient
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regclient-0.0.1-develop.tgz
+    version: 0.0.1-develop
   regproc-abishandler:
   - apiVersion: v2
     appVersion: 1.1.5
@@ -11288,6 +12668,30 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-camel-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.333312927Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Camel stage
+    digest: c278d5b9bec97d26543648bd6a5b65a3c23031eee9bc06c5c27cb000e193dc8b
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-camel
+    - regproc
+    - camel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-camel
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-camel-0.0.1-develop.tgz
+    version: 0.0.1-develop
   regproc-demo:
   - apiVersion: v2
     appVersion: 1.1.5
@@ -11552,6 +12956,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-group1-1.2.0.tgz
     version: 1.2.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.334659065Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Group 1
+    digest: 122c98d746618919cdf62a43b311870d867da9dc470ce690d4fe93788cb15980
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-group1
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-group1
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-group1-0.0.1-develop.tgz
+    version: 0.0.1-develop
   regproc-group2:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.70009273Z"
@@ -11738,6 +13165,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-group2-1.2.0.tgz
     version: 1.2.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.336061477Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Group 2 stage
+    digest: a665017a2e3f74ed4531e40648f6a8bc238d1951e2dfb622be7c4582e03ce181
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-group2
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-group2
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-group2-0.0.1-develop.tgz
+    version: 0.0.1-develop
   regproc-group3:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.719330988Z"
@@ -11924,6 +13374,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-group3-1.2.0.tgz
     version: 1.2.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.337481331Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Group 3 stage
+    digest: 9203406febc7d050c4819c3996baa73ca93e346b523b765212e4c835d80b4622
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-group3
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-group3
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-group3-0.0.1-develop.tgz
+    version: 0.0.1-develop
   regproc-group4:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.738073643Z"
@@ -12110,6 +13583,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-group4-1.2.0.tgz
     version: 1.2.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.33964773Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Group 4
+    digest: 752df01c04ab74d12ed58a0a0fa11f235f17400683b3d877c41f1af7d9a6d6ca
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-group4
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-group4
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-group4-0.0.1-develop.tgz
+    version: 0.0.1-develop
   regproc-group5:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.756965499Z"
@@ -12296,6 +13792,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-group5-1.2.0.tgz
     version: 1.2.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.341092401Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Group 5
+    digest: 5223880023317207323491ee4d436cddf834afe2755dc00890bdad6bd2fcfac7
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-group5
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-group5
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-group5-0.0.1-develop.tgz
+    version: 0.0.1-develop
   regproc-group6:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.775718354Z"
@@ -12482,6 +14001,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-group6-1.2.0.tgz
     version: 1.2.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.342497427Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Group 6
+    digest: 10c7d925b3f68eef3debcd8c75979a7a7b1a50f970724b5235825d208c5397ae
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-group6
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-group6
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-group6-0.0.1-develop.tgz
+    version: 0.0.1-develop
   regproc-group7:
   - apiVersion: v2
     created: "2023-11-21T10:07:48.093398296Z"
@@ -12668,6 +14210,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-group7-1.2.0.tgz
     version: 1.2.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.34388941Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Group 7
+    digest: a1a533ada70c9f713e4622137c12858b5c996652d89e32882f30a51b9b9c0281
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-group7
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-group7
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-group7-0.0.1-develop.tgz
+    version: 0.0.1-develop
   regproc-landingzone:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.79705473Z"
@@ -12692,6 +14257,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-landingzone-12.0.2.tgz
     version: 12.0.2
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.34523694Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Group 7
+    digest: f80d4034782aafbc1634ac8191ff604c989d5413ba45979318da675fa2559d17
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-landingzone
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-landingzone
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-landingzone-0.0.1-develop.tgz
+    version: 0.0.1-develop
   regproc-landingzoneutility:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.801508666Z"
@@ -12953,6 +14541,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-notifier-1.2.0.tgz
     version: 1.2.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.346562159Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Notification Service
+    digest: 09eab1e8254cdef92c02f6d951c4aa919b29c174d5f93800f33867447f9be3b7
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-notifier
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-notifier
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-notifier-0.0.1-develop.tgz
+    version: 0.0.1-develop
   regproc-opencrvs:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.840135085Z"
@@ -13110,6 +14721,32 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-opencrvs-12.0.0.tgz
     version: 12.0.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.348467407Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for mosip regproc-opencrvs stage.
+    digest: 547893a5fe45ddd5bb4e56d90cc754f02a8dbc2fc15aba9df9609f6f5f954f45
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - mosip-opencrvs-mediator
+    - opencrvs-mediator
+    - regproc-opencrvs
+    - regproc-opencrvs-stage
+    - opencrvs
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-opencrvs
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-opencrvs-0.0.1-develop.tgz
+    version: 0.0.1-develop
   regproc-osi:
   - apiVersion: v2
     appVersion: 1.1.5
@@ -13345,6 +14982,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-pktserver-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.349850213Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Packet Server
+    digest: 8f40cd5f51541b3ab2aeda3aa186c6a0be7b752dba221f175566ddcedc1967c2
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-pktserver
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-pktserver
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-pktserver-0.0.1-develop.tgz
+    version: 0.0.1-develop
   regproc-print:
   - apiVersion: v2
     appVersion: 1.1.5
@@ -13630,6 +15290,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-reprocess-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.351163269Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Reprocess stage
+    digest: b67e4f831f05e41ec7f0d1da503aae485b907b877323d8d4877db1b6a96af5d3
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-reprocess
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-reprocess
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-reprocess-0.0.1-develop.tgz
+    version: 0.0.1-develop
   regproc-salt:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.906497726Z"
@@ -13793,6 +15476,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-salt-1.2.0.tgz
     version: 1.2.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.352235138Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to generate keys for Kernel
+    digest: 11ef969b251177d169eca32b80a436e4d01e7e6c68e039aa2e6a3e8d674f24d9
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-salt
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-salt
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-salt-0.0.1-develop.tgz
+    version: 0.0.1-develop
   regproc-status:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.929729815Z"
@@ -14003,6 +15709,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-status-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.353585332Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Status Service
+    digest: b2be76d7b6707e5e1b4f119772914f1bd67c3210c24a3e2203617f789fcfbf42
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-status
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-status
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-status-0.0.1-develop.tgz
+    version: 0.0.1-develop
   regproc-trans:
   - apiVersion: v2
     created: "2023-10-19T04:48:37.953594009Z"
@@ -14213,6 +15942,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-trans-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.355706374Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Transaction Service
+    digest: 2109bee79726cfdc1b3d10c9505e4c86998aa6abfa66c308e960494001dd7150
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-trans
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-trans
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-trans-0.0.1-develop.tgz
+    version: 0.0.1-develop
   regproc-uin:
   - apiVersion: v2
     appVersion: 1.1.5
@@ -14474,6 +16226,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-workflow-1.2.0.tgz
     version: 1.2.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.357092235Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Workflow Manager
+    digest: ca6be288b144f6d0880305dbe44433da41e6915ca05cc184e2c23067307f909e
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-workflow
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-workflow
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-workflow-0.0.1-develop.tgz
+    version: 0.0.1-develop
   reporting:
   - apiVersion: v2
     created: "2024-03-14T15:45:06.471665838Z"
@@ -14631,6 +16406,24 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/reporting-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.358299475Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Reporting module.
+    digest: 82f8e69c2b19d5be6e2b7e894b1c2052fc738b9e80f74ea16857f093e3984042
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: reporting
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/reporting-0.0.1-develop.tgz
+    version: 0.0.1-develop
   reporting-init:
   - apiVersion: v2
     created: "2023-10-19T04:48:38.193726958Z"
@@ -14693,6 +16486,18 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/reporting-init-1.2.0.tgz
     version: 1.2.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.358580807Z"
+    description: A Helm chart for MOSIP Reporting Initialization.
+    digest: 26eaf3b7a834e8d990935be6abf6211f4dbaf3b33dae1c693423d3949f285b09
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: reporting-init
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/reporting-init-0.0.1-develop.tgz
+    version: 0.0.1-develop
   resident:
   - apiVersion: v2
     created: "2023-10-19T04:48:38.212814013Z"
@@ -14871,6 +16676,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/resident-1.2.0.tgz
     version: 1.2.0
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.360073216Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Resident service
+    digest: 3261ee8550f7fe3c93726ee80e84ec92b8f90204474850a4a67df5d99a1b3abf
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - resident
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: resident
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/resident-0.0.1-develop.tgz
+    version: 0.0.1-develop
   resident-app:
   - apiVersion: v2
     created: "2023-10-19T04:48:38.222814595Z"
@@ -15057,6 +16884,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/resident-ui-0.0.1.tgz
     version: 0.0.1
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.362250269Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for resident-ui
+    digest: be0204c9c7a1e6d782b179769140c3abaa497c1fb6e4603e8d5a86396ba832a9
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - resident-ui
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: resident-ui
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/resident-ui-0.0.1-develop.tgz
+    version: 0.0.1-develop
   restart-cron:
   - apiVersion: v2
     created: "2023-10-19T04:48:38.237414813Z"
@@ -15127,6 +16977,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/restart-cron-12.0.1-B4.tgz
     version: 12.0.1-B4
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.363175044Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy cronjob to restart authdemo and packetcreator
+      service and other services.
+    digest: 450a324e42b2623c476b43e3da59aa47516b0223baa70104f02cf0e2aa1644e6
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - restart-cron
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: restart-cron
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/restart-cron-0.0.1-develop.tgz
+    version: 0.0.1-develop
   ridgenerator:
   - apiVersion: v2
     created: "2023-10-19T04:48:38.25801478Z"
@@ -15314,6 +17187,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/ridgenerator-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.36447144Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP RIDgenerator module
+    digest: 63fd0c2ad3dd0b3cfbf150f8e0f731afb80ee03005756930b66d510dbf256d03
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - ridgenerator
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: ridgenerator
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/ridgenerator-0.0.1-develop.tgz
+    version: 0.0.1-develop
   s3-utility:
   - apiVersion: v2
     created: "2023-10-19T04:48:38.261848812Z"
@@ -15612,6 +17508,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/softhsm-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.365683589Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Softhsm module
+    digest: 5d71f029b2d33cb870bc5e9233ddf696c617bc7c1d463ef798df48704cc1a5b3
+    home: https://mosip.io
+    keywords:
+    - softhsm
+    - hsm
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: softhsm
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/softhsm-0.0.1-develop.tgz
+    version: 0.0.1-develop
   status-check:
   - apiVersion: v2
     created: "2024-03-18T06:15:02.558514145Z"
@@ -15844,6 +17762,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/syncdata-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.366979353Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Syncdata module
+    digest: 509a06325097c689f87db17817e9af55f74977717b2b653216ef12e6cd2a7577
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - syncdata
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: syncdata
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/syncdata-0.0.1-develop.tgz
+    version: 0.0.1-develop
   testrigs-cron:
   - apiVersion: v2
     created: "2023-10-19T04:48:38.298943713Z"
@@ -15935,6 +17876,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/tusd-12.0.1-B1.tgz
     version: 12.0.1-B1
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.368302317Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to file server application.
+    digest: 114805639a91af0ec2000894be345e7202f232fa009a3fa09382f58a600fc911
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - tusd
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: tusd
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/tusd-0.0.1-develop.tgz
+    version: 0.0.1-develop
   uitestrig:
   - apiVersion: v2
     created: "2024-04-05T06:48:09.131908997Z"
@@ -15982,6 +17945,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/uitestrig-12.0.1.tgz
     version: 12.0.1
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.370111434Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy uitestrig to test working of MOSIP modules
+    digest: c2ab3b28350b1d7d33700273e1dee05f72980e6290ec06a74f479145dc4fffe0
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - uitestrig
+    - testrig
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: uitestrig
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/uitestrig-0.0.1-develop.tgz
+    version: 0.0.1-develop
   vid:
   - apiVersion: v2
     created: "2023-10-19T04:48:38.328827155Z"
@@ -16169,6 +18155,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/vid-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.372269535Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP IDRepo VID Service
+    digest: 4e46248e6f4e9c8595b73f3da9015a62851ee9812eefacc7251d51df444ce1e2
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - vid
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: vid
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/vid-0.0.1-develop.tgz
+    version: 0.0.1-develop
   websub:
   - apiVersion: v2
     created: "2023-10-19T04:48:38.347961011Z"
@@ -16349,6 +18358,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-1.1.5.tgz
     version: 1.1.5
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.373654845Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for Websub service
+    digest: ef3f81219ee8b5291d5422227a45826b44c45b642b0f073dde5303db17c04108
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - websub
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: websub
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/websub-0.0.1-develop.tgz
+    version: 0.0.1-develop
   websub-consolidator:
   - apiVersion: v2
     created: "2023-10-19T04:48:38.36635706Z"
@@ -16535,4 +18566,27 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-1.1.5.tgz
     version: 1.1.5
-generated: "2024-04-23T12:57:06.99337322Z"
+  - apiVersion: v2
+    created: "2024-04-24T07:37:52.374979402Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for Websub Cconsolidator
+    digest: 6b0769bbd99cd43345ac347fb80688ded1fb0fa9a2342535d332757ba566ef70
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - websub-consolidator
+    - websub
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: websub-consolidator
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
+    version: 0.0.1-develop
+generated: "2024-04-24T07:37:52.237489002Z"
