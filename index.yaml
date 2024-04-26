@@ -5393,6 +5393,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/idrepo-saltgen-0.0.1-develop.tgz
     version: 0.0.1-develop
+  injiweb:
+  - apiVersion: v2
+    created: "2024-04-26T11:02:55.494631018Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP injiweb UI module
+    digest: 28340092caeb8343d0cf5166e2046a965c3018a55d119d6d148c5c4ee67dea41
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - inji-web
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: injiweb
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/injiweb-0.8.0.tgz
+    version: 0.8.0
   kafka:
   - annotations:
       category: Infrastructure
@@ -18634,4 +18657,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-04-26T09:41:04.930042244Z"
+generated: "2024-04-26T11:02:55.49280855Z"
