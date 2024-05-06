@@ -34,7 +34,7 @@ spec:
           restartPolicy: Never
           serviceAccountName: {{ template "apitestrig.serviceAccountName" $ }}
           initContainers:
-            {{- if $.Values.enable_insecure }}
+              {{- if $.Values.enable_insecure }}
               {{- include "common.tplvalues.render" (dict "value" $.Values.initContainers "context" $) | nindent 12 }}
               {{- end }}
           containers:
