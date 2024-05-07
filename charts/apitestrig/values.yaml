@@ -49,23 +49,6 @@ service:
   ##
   externalTrafficPolicy: Cluster
 
-image:
-  registry: docker.io
-  repository: mosipqa/automationtests
-  tag: develop
-
-  ## Specify a imagePullPolicy
-  ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
-  ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
-  ##
-  pullPolicy: Always
-  ## Optionally specify an array of imagePullSecrets.
-  ## Secrets must be manually created in the namespace.
-  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
-  ##
-  # pullSecrets:
-  #   - myRegistryKeySecretName
-
 ## Port on which this particular spring service module is running.
 springServicePort: 8083
 
@@ -457,22 +440,54 @@ istio:
       - DELETE
 
 modules:
-  - name: prereg
+  prereg:
     enabled: true
-  - name: masterdata
+    image:
+      repository: mosipqa/apitest-prereg
+      tag: develop
+      pullPolicy: Always
+  masterdata:
     enabled: true
-  - name: idrepo
+    image:
+      repository: mosipqa/apitest-masterdata
+      tag: develop
+      pullPolicy: Always
+  idrepo:
     enabled: true
-  - name: partner
+    image:
+      repository: mosipqa/apitest-idrepo
+      tag: develop
+      pullPolicy: Always
+  partner:
     enabled: true
-  - name: resident
+    image:
+      repository: mosipqa/apitest-pms
+      tag: develop
+      pullPolicy: Always
+  resident:
     enabled: true
-  - name: auth
+    image:
+      repository: mosipqa/apitest-resident
+      tag: develop
+      pullPolicy: Always
+  auth:
     enabled: true
-  - name: esignet
+    image:
+      repository: mosipqa/apitest-auth
+      tag: develop
+      pullPolicy: Always
+  esignet:
     enabled: true
-  - name: mimoto
+    image:
+      repository: mosipqa/apitest-esignet
+      tag: develop
+      pullPolicy: Always
+  mimoto:
     enabled: true
+    image:
+      repository: mosipqa/apitest-mimoto
+      tag: develop
+      pullPolicy: Always
 
 crontime: "0 3 * * *"    ## run cronjob every day at 3 AM (time hr: 0-23 )
 

@@ -1,10 +1,10 @@
-{{- range $module := $.Values.modules }}
+{{- range $modulename, $module := $.Values.modules }}
 {{- if $module.enabled }}
 ---
 apiVersion: {{ include "common.capabilities.cronjob.apiVersion" $ }}
 kind: CronJob
 metadata:
-  name: {{ template "apitestrig.cronjob" $ }}-{{ $module.name }}
+  name: {{ template "apitestrig.cronjob" $ }}-{{ $modulename }}
   namespace: {{ $.Release.Namespace }}
   annotations:
     {{- if $.Values.commonAnnotations }}
@@ -38,9 +38,9 @@ spec:
               {{- include "common.tplvalues.render" (dict "value" $.Values.initContainers "context" $) | nindent 12 }}
               {{- end }}
           containers:
-          - name: {{ template "apitestrig.serviceAccountName" $ }}-{{ $module.name }}
-            image: {{ template "apitestrig.image" $ }}
-            imagePullPolicy: {{ $.Values.image.pullPolicy }}
+          - name: {{ template "apitestrig.serviceAccountName" $ }}-{{ $modulename }}
+            image: {{ $module.image.repository }}:{{ $module.image.tag }}
+            imagePullPolicy: {{ $module.image.pullPolicy }}
             {{- if $.Values.lifecycleHooks }}
             lifecycle: {{- include "common.tpvalues.render" (dict "value" $.Values.lifecycleHooks "context" $) | nindent 12 }}
             {{- end }}
