@@ -1,5 +1,5 @@
 {{- range $modulename, $module := $.Values.modules }}
-  {{- if $module.enabled }}
+{{- if $module.enabled }}
 ---
 apiVersion: {{ include "common.capabilities.cronjob.apiVersion" $ }}
 kind: CronJob
@@ -8,8 +8,8 @@ metadata:
   namespace: {{ $.Release.Namespace }}
   annotations:
     {{- if $.Values.commonAnnotations }}
-      {{- include "common.tplvalues.render" ( dict "value" $.Values.commonAnnotations "context" $ ) | nindent 4 }}
-      {{- end }}
+    {{- include "common.tplvalues.render" ( dict "value" $.Values.commonAnnotations "context" $ ) | nindent 4 }}
+    {{- end }}
   labels: {{- include "common.labels.standard" $ | nindent 4 }}
     {{- if $.Values.commonLabels }}
     {{- include "common.tplvalues.render" ( dict "value" $.Values.commonLabels "context" $ ) | nindent 4 }}
@@ -24,7 +24,7 @@ spec:
   jobTemplate:
     spec:
       backoffLimit: 0 # this has very low chance of failing, as all this does
-      # is prompt kubernetes to schedule new replica set for
+                      # is prompt kubernetes to schedule new replica set for
       # the deployment
       # activeDeadlineSeconds: 600 # timeout, makes most sense with
       # "waiting for rollout" variant specified below
@@ -38,59 +38,59 @@ spec:
               {{- include "common.tplvalues.render" (dict "value" $.Values.initContainers "context" $) | nindent 12 }}
               {{- end }}
           containers:
-            - name: {{ template "apitestrig.serviceAccountName" $ }}-{{ $modulename }}
-              image: {{ $module.image.repository }}:{{ $module.image.tag }}
-              imagePullPolicy: {{ $module.image.pullPolicy }}
-              {{- if $.Values.lifecycleHooks }}
-              lifecycle: {{- include "common.tpvalues.render" (dict "value" $.Values.lifecycleHooks "context" $) | nindent 12 }}
-              {{- end }}
-              {{- if $.Values.containerSecurityContext.enabled }}
-              securityContext: {{- omit $.Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
-              {{- end }}
-              {{- if $.Values.command }}
-              command: {{- include "common.tplvalues.render" (dict "value" $.Values.command "context" $) | nindent 12 }}
-              {{- end }}
-              {{- if $.Values.args }}
-              args: {{- include "common.tplvalues.render" (dict "value" $.Values.args "context" $) | nindent 12 }}
-              {{- end }}
-              env:
+          - name: {{ template "apitestrig.serviceAccountName" $ }}-{{ $modulename }}
+            image: {{ $module.image.repository }}:{{ $module.image.tag }}
+            imagePullPolicy: {{ $module.image.pullPolicy }}
+            {{- if $.Values.lifecycleHooks }}
+            lifecycle: {{- include "common.tpvalues.render" (dict "value" $.Values.lifecycleHooks "context" $) | nindent 12 }}
+            {{- end }}
+            {{- if $.Values.containerSecurityContext.enabled }}
+            securityContext: {{- omit $.Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
+            {{- end }}
+            {{- if $.Values.command }}
+            command: {{- include "common.tplvalues.render" (dict "value" $.Values.command "context" $) | nindent 12 }}
+            {{- end }}
+            {{- if $.Values.args }}
+            args: {{- include "common.tplvalues.render" (dict "value" $.Values.args "context" $) | nindent 12 }}
+            {{- end }}
+            env:
                 - name: container_user
                   value: {{ $.Values.containerSecurityContext.runAsUser }}
                 - name: JDK_JAVA_OPTIONS
                   value: {{ $.Values.additionalResources.javaOpts }}
                 - name: MODULES
                   value: {{ $module.name }}
-                {{- if $.Values.extraEnvVars }}
-                {{- include "common.tpvalues.render" (dict "value" $.Values.extraEnvVars "context" $) | nindent 12 }}
-                {{- end }}
-              envFrom:
-                {{- if $.Values.extraEnvVarsCM }}
-                  {{- range $.Values.extraEnvVarsCM }}
+              {{- if $.Values.extraEnvVars }}
+              {{- include "common.tpvalues.render" (dict "value" $.Values.extraEnvVars "context" $) | nindent 12 }}
+              {{- end }}
+            envFrom:
+              {{- if $.Values.extraEnvVarsCM }}
+                {{- range $.Values.extraEnvVarsCM }}
                   - configMapRef:
-                      name: {{ . }}
-                  {{- end }}
-                  {{- end }}
-                  {{- if $.Values.extraEnvVarsSecret }}
-                  {{- range $.Values.extraEnvVarsSecret }}
+                        name: {{ . }}
+                {{- end }}
+                {{- end }}
+                {{- if $.Values.extraEnvVarsSecret }}
+                {{- range $.Values.extraEnvVarsSecret }}
                   - secretRef:
-                      name: {{ . }}
-                  {{- end }}
-                  {{- end }}
-              ports:
+                        name: {{ . }}
+                {{- end }}
+                {{- end }}
+            ports:
                 - name: spring-service
                   containerPort: {{ $.Values.springServicePort }}
-              volumeMounts:
-                {{- if $.Values.enable_insecure }}
-                  - mountPath: /usr/local/openjdk-11/lib/security/cacerts
-                    name: cacerts
-                    subPath: cacerts
-                {{- end }}
-                {{- if $.Values.apitestrig.volumes }}
-                {{- range $volume_name, $volume_value :=  $.Values.apitestrig.volumes.configmaps }}
+            volumeMounts:
+              {{- if $.Values.enable_insecure }}
+                - mountPath: /usr/local/openjdk-11/lib/security/cacerts
+                  name: cacerts
+                  subPath: cacerts
+              {{- end }}
+              {{- if $.Values.apitestrig.volumes }}
+              {{- range $volume_name, $volume_value :=  $.Values.apitestrig.volumes.configmaps }}
                 - name: {{ $volume_name }}
                   mountPath: {{ $volume_value.volumeMounts.mountPath }}
-                {{- end }}
-                {{- end }}
+              {{- end }}
+              {{- end }}
           volumes:
           {{- if $.Values.enable_insecure }}
           - name: cacerts
@@ -104,5 +104,5 @@ spec:
               name: {{ $volume_name }}
           {{- end }}
           {{- end }}
-  {{- end }}
-  {{- end }}
+{{- end }}
+{{- end }}
