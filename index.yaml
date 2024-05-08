@@ -5393,6 +5393,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/idrepo-saltgen-0.0.1-develop.tgz
     version: 0.0.1-develop
+  injiverify:
+  - apiVersion: v2
+    created: "2024-05-08T05:43:28.711108091Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP injiverify module
+    digest: fd344a69dcd59b617eb875b67a7adfbf78b2f94e0513d6dd977ad7bdba438015
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - inji-verify
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: injiverify
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/injiverify-0.8.0.tgz
+    version: 0.8.0
   injiweb:
   - apiVersion: v2
     created: "2024-05-04T07:16:59.474688916Z"
@@ -18703,4 +18726,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-05-07T06:42:07.383964924Z"
+generated: "2024-05-08T05:43:28.709496057Z"
