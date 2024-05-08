@@ -59,7 +59,7 @@ spec:
                 - name: JDK_JAVA_OPTIONS
                   value: {{ $.Values.additionalResources.javaOpts }}
                 - name: MODULES
-                  value: {{ $module.name }}
+                  value: {{ $modulename }}
               {{- if $.Values.extraEnvVars }}
               {{- include "common.tpvalues.render" (dict "value" $.Values.extraEnvVars "context" $) | nindent 12 }}
               {{- end }}
