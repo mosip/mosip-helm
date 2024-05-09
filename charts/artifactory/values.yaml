@@ -87,10 +87,10 @@ livenessProbe:
   httpGet:
     path: /
     port: 8080
-  initialDelaySeconds: 20 
+  initialDelaySeconds: 20
   periodSeconds: 10
-  timeoutSeconds: 1 
-  failureThreshold: 3 
+  timeoutSeconds: 1
+  failureThreshold: 3
   successThreshold: 1
 
 readinessProbe:
@@ -98,12 +98,11 @@ readinessProbe:
   httpGet:
     path: /
     port: 8080
-  initialDelaySeconds: 0 
+  initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 1 
-  failureThreshold: 3 
+  timeoutSeconds: 1
+  failureThreshold: 3
   successThreshold: 1
-
 
 ##
 # existingConfigmap:
@@ -128,7 +127,7 @@ resources:
   limits: {}
   #   cpu: 200m
   #   memory: 256Mi
-  requests: 
+  requests:
     cpu: 50m
     memory: 20Mi
 
@@ -213,11 +212,11 @@ podAnnotations: {}
 ##
 lifecycleHooks: {}
 
-## Custom Liveness probes for 
+## Custom Liveness probes for
 ##
 customLivenessProbe: {}
 
-## Custom Rediness probes 
+## Custom Rediness probes
 ##
 customReadinessProbe: {}
 
@@ -283,7 +282,7 @@ persistence:
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-  ##   GKE, AWS & OpenStack).  
+  ##   GKE, AWS & OpenStack).
   ##
   # storageClass: "-"
   ##
@@ -291,13 +290,13 @@ persistence:
   ## the existingClaim variable
   # existingClaim: your-claim
   ## ReadWriteMany not supported by AWS gp2
-  storageClass: 
+  storageClass:
   accessModes:
     - ReadWriteOnce
   size: 10M
-  existingClaim: 
+  existingClaim:
   # Dir where config and keys are written inside container
-  mountDir: 
+  mountDir:
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
@@ -353,7 +352,6 @@ artifacts:
   iamAdapter: artifactory/libs-release-local/io/mosip/kernel/kernel-auth-adapter.jar
   iamAdapterRegproc: artifactory/libs-snapshot-local/io/mosip/kernel/kernel-auth-adapter/1.2.0-SNAPSHOT/kernel-auth-adapter-1.2.0-SNAPSHOT-regproc-20201209055103.jar
   iamAdapterRegprocExt: artifactory/libs-snapshot-local/io/mosip/kernel/kernel-auth-adapter/1.2.0-SNAPSHOT/kernel-auth-adapter-1.2.0-SNAPSHOT-regproc-20201209055103.jar
-  hsmClientZip: artifactory/libs-release-local/hsm/client.zip  
+  hsmClientZip: artifactory/libs-release-local/hsm/client.zip
   cacheProvider: artifactory/libs-release-local/cache/cache-provider.jar
   runtimeDep: artifactory/libs-release-local/io/mosip/kernel/
-
