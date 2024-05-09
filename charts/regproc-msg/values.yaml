@@ -75,7 +75,7 @@ springServicePort: 8088
 ## TODO: enable probles once health urls are available
 
 startupProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /registrationprocessor/v1/sender-stage/actuator/health
     port: 8088
@@ -86,7 +86,7 @@ startupProbe:
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /registrationprocessor/v1/sender-stage/actuator/health
     port: 8088
@@ -97,7 +97,7 @@ livenessProbe:
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /registrationprocessor/v1/sender-stage/actuator/health
     port: 8088
