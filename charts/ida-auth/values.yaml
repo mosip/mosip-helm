@@ -363,7 +363,7 @@ metrics:
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
-  podAnnotations: 
+  podAnnotations:
     prometheus.io/scrape: "true"
   endpointPath: /idauthentication/v1/auth/actuator/prometheus
   ## Prometheus Service Monitor
@@ -414,7 +414,7 @@ metrics:
 ## IDA Auth needs both internal & external access.
 istio:
   enabled: true
-  gateways: 
+  gateways:
     - istio-system/public
     - istio-system/internal
   prefix:  /idauthentication/v1/auth/
