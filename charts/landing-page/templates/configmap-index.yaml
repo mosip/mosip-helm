@@ -150,10 +150,28 @@ data:
           </a>
         </div>
     {{- end }}
+        <div class="w3-col l2 w3-center">
+          <a href="https://{{ .Values.landing.injiweb }}">
+          <img src="https://{{ .Values.landing.api }}/inji/Inji_wallet.png" style="height:80px">
+          <p>Inji Web</p>
+          </a>
+        </div>
         <div class="w3-col l2 w3-center"><p></p></div>
       </div>
-
+    
       <!-- row 5 -->
+      <div class="w3-row-padding w3-padding-16">
+        <div class="w3-col l2 w3-center"><p></p></div> 
+        <div class="w3-col l2 w3-center">
+          <a href="https://{{ .Values.landing.injiverify }}">
+          <img src="https://{{ .Values.landing.api }}/inji/Inji_wallet.png" style="height:80px">
+          <p>Inji Verify</p>
+          </a>
+        </div>
+        <div class="w3-col l2 w3-center"><p></p></div>
+      </div>   
+      
+      <!-- row 6 -->
       <div class="w3-row-padding w3-padding-16">
         <div class="w3-col l4 w3-center"><p></p></div> 
         <div class="w3-col l4 w3-left">
