@@ -17,7 +17,3 @@ This helm chart contains the following subcharts and they can be individually co
 - Elasticsearch Kafka Connector
 - A KafkaClient Pod for monitoring kafka topics, and making connect api calls
 
-## Prerequisites
-
-- Kubernetes 1.12+
-- Helm 3.1.0
