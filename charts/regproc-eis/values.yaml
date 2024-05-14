@@ -66,7 +66,7 @@ image:
   # pullSecrets:
   #   - myRegistryKeySecretName
 
-## Port on which this particular spring service module is running. 
+## Port on which this particular spring service module is running.
 springServicePort: 8201
 
 ## Configure extra options for liveness and readiness probes
@@ -88,9 +88,9 @@ livenessProbe:
   httpGet:
     path: /registrationprocessor/v1/eis/actuator/health
     port: 8201
-  initialDelaySeconds: 20 
+  initialDelaySeconds: 20
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
@@ -99,9 +99,9 @@ readinessProbe:
   httpGet:
     path: /registrationprocessor/v1/eis/actuator/health
     port: 8201
-  initialDelaySeconds: 0 
+  initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
@@ -128,11 +128,11 @@ resources:
   limits: {}
   #   cpu: 200m
   #   memory: 256Mi
-  requests: 
+  requests:
     cpu: 100m
     memory: 1000Mi
 
-additionalResources: 
+additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
   javaOpts: ""
@@ -219,11 +219,11 @@ podAnnotations: {}
 ##
 lifecycleHooks: {}
 
-## Custom Liveness probes for 
+## Custom Liveness probes for
 ##
 customLivenessProbe: {}
 
-## Custom Rediness probes 
+## Custom Rediness probes
 ##
 customReadinessProbe: {}
 
@@ -247,7 +247,7 @@ extraEnvVars: []
 ##
 extraEnvVarsCM:
   - global
-  - config-server-share 
+  - config-server-share
   - artifactory-share
 
 ## Secret with extra environment variables
@@ -268,7 +268,7 @@ extraVolumeMounts: []
 ##   - name: your-image-name
 ##     image: your-image
 ##     imagePullPolicy: Always
-#true#     ports:
+##     ports:
 ##       - name: portname
 ##         containerPort: 1234
 ##
@@ -287,12 +287,12 @@ initContainers: {}
 sidecars: {}
 
 persistence:
-  enabled: false 
+  enabled: false
   ## If defined, storageClassName: <storageClass>
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-  ##   GKE, AWS & OpenStack).  
+  ##   GKE, AWS & OpenStack).
   ##
   # storageClass: "-"
   ##
@@ -302,13 +302,13 @@ persistence:
   ## ReadWriteMany not supported by AWS gp2
   ## We use EFS storage class as that supports ReadWriteMany. Make sure you have installed the same as given
   ## here: https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html
-  ## Packet landing zone requires ReadWriteMany 
-  storageClass: 
+  ## Packet landing zone requires ReadWriteMany
+  storageClass:
   accessModes:
     - ReadWriteMany
-  size: 
-  existingClaim: 
-  reclaimPolicy: 
+  size:
+  existingClaim:
+  reclaimPolicy:
   mountDir:
 
 ## Init containers parameters:
@@ -367,9 +367,9 @@ metrics:
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
-  podAnnotations: 
+  podAnnotations:
     prometheus.io/scrape: "true"
-  
+
   endpointPath: /registrationprocessor/v1/eis/actuator/prometheus
 
   ## Prometheus Service Monitor
@@ -417,9 +417,9 @@ metrics:
     #       severity: error
     rules: []
 
-## Requires only internal access for swagger 
+## Requires only internal access for swagger
 istio:
   enabled: true
-  gateways: 
+  gateways:
     - istio-system/internal
   prefix: /registrationprocessor/v1/eis/
