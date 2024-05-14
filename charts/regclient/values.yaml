@@ -395,7 +395,7 @@ metrics:
     ##
     # scrapeTimeout: 30s
     ## Specify Metric Relabellings to add to the scrape endpoint
-
+    ##
     # relabellings:
     ## Specify honorLabels parameter to add the scrape endpoint
     ##
@@ -422,7 +422,6 @@ metrics:
     #     labels:
     #       severity: error
     rules: []
-
 
 ## Only internal access
 istio:
