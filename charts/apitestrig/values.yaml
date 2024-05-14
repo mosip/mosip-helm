@@ -508,6 +508,7 @@ apitestrig:
       authDemoServiceBaseURL: http://authdemo.authdemo
       authDemoServicePort: 80
       eSignetDeployed: yes or no
+      push-reports-to-s3: yes
     scripts:
       fetch_docker_image_hash_ids.sh: |
         #!/bin/bash
