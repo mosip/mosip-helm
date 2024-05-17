@@ -302,11 +302,14 @@ persistence:
   ## ReadWriteMany not supported by AWS gp2
   storageClass:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   size: 10M
+  # existingClaim: pkcs12-keys.p12
   existingClaim:
   # Dir where config and keys are written inside container
-  mountDir:
+  mountDir: /home/mosip/config/
+  volume_name: config
+  # pvc_claim_name: pkcs12-keys.p12
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
@@ -418,3 +421,6 @@ istio:
   enabled: true
   gateway: istio-system/internal
   prefix: /v1/keymanager
+
+springConfigNameEnv: kernel
+activeProfileEnv: default
