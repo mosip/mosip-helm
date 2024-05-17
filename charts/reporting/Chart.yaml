@@ -1,0 +1,30 @@
+apiVersion: v2
+name: reporting
+description: A Helm chart for MOSIP Reporting module.
+type: application
+version: 0.0.1-develop
+appVersion: ""
+dependencies:
+- name: common
+  repository: https://charts.bitnami.com/bitnami
+  tags:
+  - bitnami-common
+  version: 1.x.x
+- name: cp-helm-charts
+  alias: confluentinc
+  repository: "https://confluentinc.github.io/cp-helm-charts/"
+  version: ">= 0.6.1"
+  condition: confluentinc.enabled
+- name: kafka
+  alias: bitnami-kafka
+  repository: "https://charts.bitnami.com/bitnami"
+  version: "23.0.7"
+  condition: bitnami-kafka.enabled
+- name: elasticsearch
+  alias: bitnami-elasticsearch
+  repository: "https://charts.bitnami.com/bitnami"
+  version: ">= 17.0.0"
+  condition: bitnami-elasticsearch.enabled
+maintainers:
+  - email: info@mosip.io
+    name: MOSIP
