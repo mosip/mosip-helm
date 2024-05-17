@@ -268,7 +268,40 @@ extraVolumeMounts: []
 ##       - name: portname
 ##         containerPort: 1234
 ##
-initContainers: {}
+initContainers:
+  - command:
+      - /bin/bash
+      - -c
+      - |
+        i=1;
+        n=5
+        while(($i <= $n)); do
+          echo "Trying to access websub consolidator health url : $i"
+          curl_output="$( curl -w %{http_code} -o /dev/null -s $WEBSUB_CONSOLIDATOR_URL )";
+          if ! [ "$curl_output" = "200" ]; then
+             echo "$WEBSUB_CONSOLIDATOR_URL failed with status code $curl_output" >> /dev/stderr;
+             if [ "$i" = "$n" ]; then
+               echo "EXITING;";
+               exit 1;
+             fi
+             sleep 10;
+             ((i++));
+             continue;
+          fi;
+          echo "Got response from websub consolidator url $curl_output"
+          break;
+        done
+    env:
+      - name: WEBSUB_CONSOLIDATOR_URL
+        value: "http://websub-consolidator.websub:80/consolidator/actuator/health"
+    image: docker.io/mosipdev/ubuntu-20.04:latest
+    imagePullPolicy: Always
+    name: consolidator-health-chk
+    resources: {}
+    securityContext:
+      runAsUser: 0
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
 
 ## Add sidecars to the  pods.
 ## Example:
