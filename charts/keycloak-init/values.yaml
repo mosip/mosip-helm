@@ -501,6 +501,7 @@ keycloak:
             - SUBSCRIBE_AUTHENTICATION_TRANSACTION_STATUS_GENERAL
             - SUBSCRIBE_AUTH_TYPE_STATUS_UPDATE_ACK_GENERAL
             - SUBSCRIBE_CREDENTIAL_STATUS_UPDATE_GENERAL
+            - SUBSCRIBE_REGISTRATION_PROCESSOR_WORKFLOW_COMPLETED_EVENT_GENERAL
           assign_client_scopes:
             - individual_id
             - ida_token
