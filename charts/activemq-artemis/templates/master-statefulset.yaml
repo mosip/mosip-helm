@@ -5,7 +5,7 @@ metadata:
   annotations:
   {{ toYaml .Values.deployment.annotations | indent 4 }}
 labels:
-  {{ include "artemis.labels.standard" . | indent 4 }}
+  {{ include "artemis.labels.standard" . }}-master
 spec:
   serviceName: {{ include "artemis.fullname" . }}-master
   replicas: {{ .Values.replicas }}
