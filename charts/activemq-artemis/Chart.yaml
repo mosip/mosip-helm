@@ -1,0 +1,28 @@
+apiVersion: v2
+name: activemq-artemis
+description: a multi-protocol, embeddable, very high performance, clustered, asynchronous messaging system.
+version: 0.0.2
+appVersion: 2.6.2
+dependencies:
+  - name: common
+    repository: https://charts.bitnami.com/bitnami
+    tags:
+      - bitnami-common
+    version: 1.x.x
+keywords:
+- activemq
+- artemis
+- messaging
+- mom
+- amqp
+- jms
+- mqtt
+home: https://activemq.apache.org/artemis/
+icon: https://activemq.apache.org/assets/img/activemq_logo_icon.png
+sources:
+- https://github.com/kubernetes/charts
+- https://github.com/apache/activemq-artemis
+maintainers:
+- name: vromero
+  email: victor.romero@gmail.com
+engine: gotpl

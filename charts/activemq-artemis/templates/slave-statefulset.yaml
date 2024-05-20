@@ -1,0 +1,138 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "artemis.fullname" . }}-slave
+  annotations:
+{{ toYaml .Values.deployment.annotations | indent 4 }}
+  labels:
+{{ include "artemis.labels.standard" . | indent 4 }}
+spec:
+  serviceName: {{ include "artemis.fullname" . }}-slave
+  replicas: {{ .Values.replicas }}
+  podManagementPolicy: "Parallel"
+  revisionHistoryLimit: 10
+  updateStrategy:
+    type: OnDelete
+  selector:
+    matchLabels:
+      app: {{ template "artemis.name" . }}
+      release: {{ .Release.Name | quote }}    
+      component: slave
+  template:
+    metadata:
+      name: {{ include "artemis.fullname" . }}
+      annotations:
+{{ toYaml .Values.replica.annotations | indent 8 }}
+      labels:
+        app: {{ template "artemis.name" . }}
+        release: {{ .Release.Name | quote }}
+        component: slave
+    spec:
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
+        runAsNonRoot: true
+      imagePullSecrets: {{ toYaml .Values.image.pullSecrets }}
+      initContainers:
+      - name: configure-cluster
+        image: {{ template "artemis.image" . }}
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        command: ["/bin/sh", "/opt/configure-slave/configure-cluster.sh"]
+        volumeMounts:
+          - name: config-override
+            mountPath: /var/lib/artemis/etc-override
+          - name: configure-common
+            mountPath: /opt/configure-common
+          - name: configure-slave
+            mountPath: /opt/configure-slave
+      containers:
+      - name: {{ include "artemis.fullname" . }}
+        image: {{ template "artemis.image" . }}
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        resources:
+{{ toYaml .Values.resources | indent 10 }}
+        env:
+        - name: ARTEMIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "artemis.fullname" . }}
+              key: artemis-password
+        - name: ARTEMIS_USERNAME
+          value: {{ default "artemis" .Values.artemisUser | quote }}
+        - name: ARTEMIS_PERF_JOURNAL
+          value: {{ default "AUTO" .Values.persistence.testJournalPerformance | quote }}
+        - name: ENABLE_JMX_EXPORTER
+          value: "true"
+        ports:
+        - name: http
+          containerPort: {{ .Values.ports.webconsole }}
+        - name: core
+          containerPort: {{ .Values.ports.activemq }}
+        - name: amqp
+          containerPort: {{ .Values.ports.amqp }}
+        - name: jmxexporter
+          containerPort: 9404
+        livenessProbe:
+          httpGet:
+            port: http
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 4
+          timeoutSeconds: 10
+        readinessProbe:
+          exec:
+            command:
+            - "/bin/netcat"
+            - "-z"
+            - "localhost"
+            - "61616"
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 4
+          timeoutSeconds: 10
+        startupProbe:
+          exec:
+            command:
+              - "/bin/netcat"
+              - "-z"
+              - "localhost"
+              - "61616"
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 4
+          timeoutSeconds: 10
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/artemis/data
+        - name: config-override
+          mountPath: /var/lib/artemis/etc-override
+        - name: configure-common
+          mountPath: /opt/configure-common
+        - name: configure-slave
+          mountPath: /opt/configure-slave
+      volumes:
+      - name: config-override
+        emptyDir: {}
+      - name: configure-common
+        configMap:
+          name: {{ include "artemis.fullname" . }}-configure-common
+      - name: configure-slave
+        configMap:
+          name: {{ include "artemis.fullname" . }}-configure-slave
+{{- if .Values.persistence.enabled }}
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ {{ .Values.persistence.accessMode | quote }} ]
+      storageClassName: {{ .Values.persistence.storageClass | quote }}
+      resources:
+        requests:
+          storage: {{ .Values.persistence.size }}
+{{- else}}
+      - name: data
+        emptyDir: {}
+{{- end}}

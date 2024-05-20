@@ -1,0 +1,54 @@
+{{- if .Values.istio.enabled }}
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ template "common.names.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels: {{- include "common.labels.standard" . | nindent 4 }}
+    {{- if .Values.commonLabels }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
+    {{- end }}
+  annotations:
+    {{- if .Values.commonAnnotations }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
+    {{- end }}
+spec:
+  hosts:
+  - "*"
+  gateways:
+   - {{ include "artemis.fullname" . }}
+  http:
+  - headers:
+      request:
+        set:
+          x-forwarded-proto: ws
+    match:
+    - uri:
+        prefix: /ws
+    name: activemq-websocket
+    route:
+    - destination:
+        host: activemq-activemq-artemis
+        port:
+          number: 61616
+  - match:
+      - uri:
+          prefix: /
+    route:
+    - destination:
+        host: {{ include "artemis.fullname" . }}
+        port:
+          number: {{ .Values.ports.webconsole }}
+    headers:
+      request:
+        set:
+          x-forwarded-proto: https
+  tcp:
+  - match:
+    - port: {{ .Values.ports.activemq }} 
+    route:
+    - destination:
+        host: {{ include "artemis.fullname" . }}
+        port:
+          number: {{ .Values.ports.activemq }}
+{{- end }}

@@ -1,0 +1,11 @@
+## activemq-host: is to be initialized AFTER installing the helm chart. This would be the load balancer DNS/IP 
+## or one of the node addresses if service type is NodePort.   
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "artemis.fullname" . }}-share
+  labels:
+{{ include "artemis.labels.standard" . | indent 4 }}
+data:
+  activemq-host: {{ printf "%s.%s" (include "artemis.fullname" .) .Release.Namespace }}
+  activemq-core-port: {{ .Values.ports.activemq | quote }}
