@@ -83,7 +83,7 @@ startupProbe:
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
+  enabled: true
   tcpSocket:
     port: 9099
   initialDelaySeconds: 20
