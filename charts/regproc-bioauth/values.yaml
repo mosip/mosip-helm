@@ -74,7 +74,7 @@ springServicePort: 8020
 ##
 ## TODO: enable probles once health urls are available
 startupProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /registrationprocessor/v1/bioauth/actuator/health
     port: 8020
@@ -85,7 +85,7 @@ startupProbe:
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /registrationprocessor/v1/bioauth/actuator/health
     port: 8020
@@ -96,7 +96,7 @@ livenessProbe:
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /registrationprocessor/v1/bioauth/actuator/health
     port: 8020
