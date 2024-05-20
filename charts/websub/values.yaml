@@ -293,8 +293,8 @@ initContainers:
         done
     env:
       - name: WEBSUB_CONSOLIDATOR_URL
-        value: "http://websub-consolidator.websub:80/consolidator/actuator/health"
-    image: docker.io/mosipdev/ubuntu-20.04:latest
+        value: 'http://websub-consolidator.websub:80/consolidator/actuator/health'
+    image: docker.io/mosipdev/alpine:latest
     imagePullPolicy: Always
     name: consolidator-health-chk
     resources: {}
