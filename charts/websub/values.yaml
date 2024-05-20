@@ -84,9 +84,9 @@ livenessProbe:
   enabled: true
   tcpSocket:
     port: 9191
-  initialDelaySeconds: 20 
+  initialDelaySeconds: 20
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
@@ -94,9 +94,9 @@ readinessProbe:
   enabled: true
   tcpSocket:
     port: 9191
-  initialDelaySeconds: 0 
+  initialDelaySeconds: 0
   periodSeconds: 10
-  timeoutSeconds: 5 
+  timeoutSeconds: 5
   failureThreshold: 6
   successThreshold: 1
 
@@ -127,7 +127,7 @@ resources:
     cpu: 200m
     memory: 1000Mi
 
-additionalResources: 
+additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
   javaOpts: ""
@@ -214,11 +214,11 @@ podAnnotations: {}
 ##
 lifecycleHooks: {}
 
-## Custom Liveness probes for 
+## Custom Liveness probes for
 ##
 customLivenessProbe: {}
 
-## Custom Rediness probes 
+## Custom Rediness probes
 ##
 customReadinessProbe: {}
 
@@ -285,7 +285,7 @@ persistence:
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
   ## If undefined (the default) or set to null, no storageClassName spec is
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-  ##   GKE, AWS & OpenStack).  
+  ##   GKE, AWS & OpenStack).
   ##
   # storageClass: "-"
   ##
@@ -293,13 +293,13 @@ persistence:
   ## the existingClaim variable
   # existingClaim: your-claim
   ## ReadWriteMany not supported by AWS gp2
-  storageClass: 
+  storageClass:
   accessModes:
     - ReadWriteOnce
   size: 10M
-  existingClaim: 
+  existingClaim:
   # Dir where config and keys are written inside container
-  mountDir: 
+  mountDir:
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
@@ -357,9 +357,9 @@ metrics:
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
-  podAnnotations: 
+  podAnnotations:
     prometheus.io/scrape: "true"
-  
+
   endpointPath: /v1/websub/actuator/prometheus
 
   ## Prometheus Service Monitor
@@ -413,19 +413,18 @@ istio:
   gateway: istio-system/internal
   prefix: /websub
 
-## TODO: read postgres hostname from configmap 
+## TODO: read postgres hostname from configmap
 ## TODO: implement a dynamic way of providing republish_time
 ## datasource_secret:  Kubernetes secret for websubuser
 websub:
-  datasource_url: jdbc:postgresql://postgres-postgresql.postgres:5432/mosip_websub 
+  datasource_url: jdbc:postgresql://postgres-postgresql.postgres:5432/mosip_websub
   datasource_username: websubuser
   datasource_secret:
     name: db-common-secrets
-    key: db-dbuser-password 
+    key: db-dbuser-password
   retry_count: 7
   retry_interval: 1000
   retry_backofffactor: 2.0
   retry_maxwaitinterval: 65000
   port: 9191
   republish_time: 2021-05-25T08:07:11.645Z
-

@@ -3,7 +3,7 @@ image:
   registry: docker.io
   # image.repository is the ActiveMQ Artemis image name
   # repository: vromero/activemq-artemis
-  repository: mosipdev/activemq-artemis
+  repository: mosipqa/activemq-artemis
 
   # image.tag is the ActiveMQ Artemis image's tag: https://hub.docker.com/r/vromero/activemq-artemis/tags
   # tag: 2.16.0
@@ -65,6 +65,9 @@ persistence:
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
 ##
 resources:
+  limits:
+    cpu: 2000m
+    memory: 8000Mi
   requests:
     memory: 512Mi
     cpu: 200m
@@ -191,11 +194,11 @@ ports:
   activemq: 61616
   webconsole: 8161
   amqp: 5672
-  
+
 istio:
   enabled: true
   hosts:
-    -  activemq.sandbox.xyz.net
+    - activemq.sandbox.xyz.net
   ## Associate with either public or internal ingress controllers
   ingressController:
     name: ingressgateway-internal

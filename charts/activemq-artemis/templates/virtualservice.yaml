@@ -18,6 +18,19 @@ spec:
   gateways:
    - {{ include "artemis.fullname" . }}
   http:
+  - headers:
+      request:
+        set:
+          x-forwarded-proto: ws
+    match:
+    - uri:
+        prefix: /ws
+    name: activemq-websocket
+    route:
+    - destination:
+        host: activemq-activemq-artemis
+        port:
+          number: 61616
   - match:
       - uri:
           prefix: /

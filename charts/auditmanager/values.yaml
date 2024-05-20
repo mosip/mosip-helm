@@ -362,9 +362,9 @@ metrics:
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
-  podAnnotations: 
+  podAnnotations:
     prometheus.io/scrape: "true"
-  
+
   endpointPath: /v1/auditmanager/actuator/prometheus
 
   ## Prometheus Service Monitor
@@ -416,4 +416,4 @@ metrics:
 istio:
   enabled: true
   gateway: istio-system/internal
-  prefix:  /v1/auditmanager
+  prefix: /v1/auditmanager

@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: mosipdev/keycloak-init 
+  repository: mosipdev/keycloak-init
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: 1.1.5
@@ -26,7 +26,7 @@ serviceAccount:
 jobAnnotations: {}
 
 jobSecurityContext: {}
-  # fsGroup: 2000
+# fsGroup: 2000
 
 securityContext: {}
   # capabilities:
@@ -34,7 +34,7 @@ securityContext: {}
   #   - ALL
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
-  # runAsUser: 1000
+# runAsUser: 1000
 
 service:
   type: ClusterIP
@@ -44,7 +44,7 @@ ingress:
   enabled: false
   annotations: {}
     # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+  # kubernetes.io/tls-acme: "true"
   hosts:
     - host: chart-example.local
       paths: []
@@ -63,7 +63,7 @@ resources: {}
   #   memory: 128Mi
   # requests:
   #   cpu: 100m
-  #   memory: 128Mi
+#   memory: 128Mi
 
 nodeSelector: {}
 
@@ -72,22 +72,22 @@ tolerations: []
 affinity: {}
 
 ## It is assumed that these configmaps are created when Keycloak was installed and available in the same namespace
-## as this chart 
+## as this chart
 keycloak:
-  host: 
+  host:
     existingConfigMap: keycloak-host
     key: keycloak-internal-url
   admin:
     userName:
       existingConfigMap: keycloak-env-vars
-      key: KEYCLOAK_ADMIN_USER 
+      key: KEYCLOAK_ADMIN_USER
     secret:
       existingSecret: keycloak
-      key: admin-password 
+      key: admin-password
 
   realms: |-
     mosip: # realm
-      roles:  
+      roles:
        - Default
        - ABIS_PARTNER
        - AUTH
@@ -119,7 +119,7 @@ keycloak:
        - REGISTRATION_SUPERVISOR
        - RESIDENT
        - ZONAL_ADMIN
-      clients: 
+      clients:
        - name: mosip-abis-client
          saroles: []
        #TODO: Roles of admin need to be defined
@@ -133,8 +133,8 @@ keycloak:
        - name: mosip-crereq-client
          saroles:
            - CREDENTIAL_ISSUANCE
-           - CREDENTIAL_REQUEST 
-       - name: mosip-creser-client 
+           - CREDENTIAL_REQUEST
+       - name: mosip-creser-client
          saroles:
            - CREDENTIAL_ISSUANCE
            - REGISTRATION_PROCESSOR
@@ -158,7 +158,7 @@ keycloak:
        - name: mosip-partnermanager-client
          saroles: []
        - name: mosip-pms-client
-         saroles: 
+         saroles:
            - PARTNER_ADMIN
        - name: mosip-policymanager-client
          saroles: []
@@ -173,36 +173,36 @@ keycloak:
            - REGISTRATION_SUPERVISOR
        - name: mosip-regproc-client
          saroles:
-           - REGISTRATION_PROCESSOR 
-           - DATA_READ 
-           - DOCUMENT_READ 
+           - REGISTRATION_PROCESSOR
+           - DATA_READ
+           - DOCUMENT_READ
            - BIOMETRIC_READ
-           - METADATA_READ 
-           - CREATE_SHARE 
+           - METADATA_READ
+           - CREATE_SHARE
            - CREDENTIAL_REQUEST
        - name: mosip-resident-client
          saroles:
            - RESIDENT
            - CREDENTIAL_REQUEST
       users: []
-    
+
     preregistration:  # realm
-      roles: 
+      roles:
         - AUTH
         - PREREG
         - REGISTRATION_PROCESSOR
         - INDIVIDUAL
-        - PRE_REGISTRATION_ADMIN 
-      clients: 
+        - PRE_REGISTRATION_ADMIN
+      clients:
         - name: mosip-prereg-client
           saroles:
            - PREREG
            - REGISTRATION_PROCESSOR
            - INDIVIDUAL
-           - PRE_REGISTRATION_ADMIN 
+           - PRE_REGISTRATION_ADMIN
       users: []
 
-## These will be passed as environments variables to keycloak-init docker. Note the expected naming convention is 
+## These will be passed as environments variables to keycloak-init docker. Note the expected naming convention is
 ## <realm name>_<clientname>_<secret>.  If empty secret is passed, it shall be randomly generated
 clientSecrets:
   - name: mosip_mosip_abis_client_secret

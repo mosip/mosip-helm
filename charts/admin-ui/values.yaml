@@ -74,7 +74,7 @@ springServicePort: 80
 ##
 ## TODO: health probes don't exist. Check.
 startupProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /v1/admin/actuator/health
     port: 80
@@ -85,7 +85,7 @@ startupProbe:
   successThreshold: 1
 
 livenessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /v1/admin/actuator/health
     port: 80
@@ -96,7 +96,7 @@ livenessProbe:
   successThreshold: 1
 
 readinessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /v1/admin/actuator/health
     port: 80
@@ -416,7 +416,7 @@ metrics:
 ## CAUTION: Domain name to acess Admin UI must be secure/internal/over vpn.
 ## Slash is important!
 admin:
-   hostUrl: https://your-internal-domain-name/v1/
+  hostUrl: https://your-internal-domain-name/v1/
 
 ## Admin UI swagger should have only internal access. Hence linked to internal gateway
 istio:
