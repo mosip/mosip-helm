@@ -773,7 +773,7 @@ entries:
     - https://mosip.github.io/mosip-helm/apitestrig-12.0.1-B2.tgz
     version: 12.0.1-B2
   - apiVersion: v2
-    created: "2024-05-20T13:42:41.64231843Z"
+    created: "2024-05-21T11:46:59.388690075Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -781,7 +781,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart to deploy APITESTRIG for MOSIP modules
-    digest: f16ac9523ef55cde542780a98620e248fc6500adf5ff9c67cdda9c46989df7f2
+    digest: 2c7fdb9dafe5f35084ed80542c6212ccd80076d276241ebab39c0fe19d81e68c
     home: https://mosip.io
     keywords:
     - mosip
@@ -6329,7 +6329,7 @@ entries:
     - https://mosip.github.io/mosip-helm/landing-page-12.0.1-B2.tgz
     version: 12.0.1-B2
   - apiVersion: v2
-    created: "2024-05-20T13:42:41.974944244Z"
+    created: "2024-05-21T11:46:59.390304877Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -6337,7 +6337,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart to installed Downloader for Regstration Client Application
-    digest: 8186cdbec0ee19123d7379394d501bad70d552fab3f96893aca518b9eb72227f
+    digest: dde48a6ee86b70091d9c7e02d0f298ee6f3d859ccd84ef38ed1f0fd0d8e95079
     home: https://mosip.io
     keywords:
     - mosip
@@ -9302,6 +9302,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/partner-onboarder-0.0.1-develop.tgz
     version: 0.0.1-develop
+  pmp-reactjs-ui:
+  - apiVersion: v2
+    created: "2024-05-21T11:46:59.39189365Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP pmp reactJS UI module
+    digest: 89354a5ed3465a854b342e25f3c5009edf09e8be0f31540dd49d91e23fae3eaa
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - pmp
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: pmp-reactjs-ui
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/pmp-reactjs-ui-0.0.1-develop.tgz
+    version: 0.0.1-develop
   pmp-ui:
   - apiVersion: v2
     created: "2024-05-20T13:42:42.166306282Z"
@@ -9735,7 +9758,7 @@ entries:
     - https://mosip.github.io/mosip-helm/pms-partner-1.1.5.tgz
     version: 1.1.5
   - apiVersion: v2
-    created: "2024-05-20T13:42:42.173893852Z"
+    created: "2024-05-21T11:46:59.393356649Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -9743,7 +9766,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP Partner Management Service Partner service
-    digest: 32875af48e97bba39ecf6a65a998cc9e20ddbbd4bf17464597c729057e481548
+    digest: 7a4ed4be45c0b4b9e7df76d22c40f3ff5817039fff309c4a6f113bce2ee397de
     home: https://mosip.io
     keywords:
     - mosip
@@ -9968,7 +9991,7 @@ entries:
     - https://mosip.github.io/mosip-helm/pms-policy-1.1.5.tgz
     version: 1.1.5
   - apiVersion: v2
-    created: "2024-05-20T13:42:42.187563568Z"
+    created: "2024-05-21T11:46:59.395139944Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -9976,7 +9999,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP Packetmanager module
-    digest: fa86eccb42c79c6f2a9b3839a9aa925e422e6a27f931aeb6250dc25697db3a0f
+    digest: ca10cbe8398a552c9b23d7c6dd57c6f7f62c6c68427150c4597317162c161b72
     home: https://mosip.io
     keywords:
     - mosip
@@ -18518,7 +18541,7 @@ entries:
     - https://mosip.github.io/mosip-helm/websub-1.1.5.tgz
     version: 1.1.5
   - apiVersion: v2
-    created: "2024-05-20T13:42:42.769576417Z"
+    created: "2024-05-21T11:46:59.396940101Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -18526,7 +18549,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for Websub service
-    digest: 33e91d1dd005a76142c0a574725ac4b0b7789dc8027f8b02737e8bd7555e855e
+    digest: ee170f32073d018cbe68d09e6847455897683120ba2ca11e8d8ffbc4528fb842
     home: https://mosip.io
     keywords:
     - mosip
@@ -18748,4 +18771,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-05-20T13:47:02.906643299Z"
+generated: "2024-05-21T11:46:59.386713078Z"
