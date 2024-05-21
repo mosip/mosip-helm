@@ -41,7 +41,6 @@ service:
   ##   http: <to set explicitly, choose port between 30000-32767>
   ##   https: <to set explicitly, choose port between 30000-32767>
   ##
-
   nodePorts:
     http: ""
     https: ""
@@ -52,8 +51,9 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipqa/partner-management-service
+  repository: mosipdev/pmp-reactjs-ui
   tag: develop
+
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -67,16 +67,17 @@ image:
   #   - myRegistryKeySecretName
 
 ## Port on which this particular spring service module is running.
-springServicePort: 9109
+springServicePort: 3000
 
 ## Configure extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ##
+## TODO: health probes don't exist. Check.
 startupProbe:
   enabled: true
   httpGet:
-    path: /v1/partnermanager/actuator/health
-    port: 9109
+    path: /
+    port: 3000
   initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5
@@ -86,8 +87,8 @@ startupProbe:
 livenessProbe:
   enabled: true
   httpGet:
-    path: /v1/partnermanager/actuator/health
-    port: 9109
+    path: /
+    port: 3000
   initialDelaySeconds: 20
   periodSeconds: 10
   timeoutSeconds: 5
@@ -97,8 +98,8 @@ livenessProbe:
 readinessProbe:
   enabled: true
   httpGet:
-    path: /v1/partnermanager/actuator/health
-    port: 9109
+    path: /
+    port: 3000
   initialDelaySeconds: 0
   periodSeconds: 10
   timeoutSeconds: 5
@@ -126,16 +127,16 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-    cpu: 700m
-    memory: 3500Mi
+    cpu: 300m
+    memory: 1500Mi
   requests:
     cpu: 100m
-    memory: 1000Mi
+    memory: 50Mi
 
 additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
-  javaOpts: "-Xms2750M -Xmx2750M"
+  javaOpts: "-Xms750M -Xmx750M"
 
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
 ## Clamav container already runs as 'mosip' user, so we may not need to enable this
@@ -242,12 +243,13 @@ updateStrategy:
 ##
 extraEnvVars: []
 
-## ConfigMap with extra environment variables that used
+## ConfigMap with extra environment variables
 ##
 extraEnvVarsCM:
   - global
   - config-server-share
   - artifactory-share
+  - pmp-reactjs-ui
 
 ## Secret with extra environment variables
 ##
@@ -358,14 +360,14 @@ serviceAccount:
 ## Prometheus Metrics
 ##
 metrics:
-  enabled: true
+  enabled: false
   ## Prometheus pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
   podAnnotations:
     prometheus.io/scrape: "true"
 
-  endpointPath: /v1/partnermanager/actuator/prometheus
+  endpointPath:
 
   ## Prometheus Service Monitor
   ## ref: https://github.com/coreos/prometheus-operator
@@ -412,42 +414,24 @@ metrics:
     #       severity: error
     rules: []
 
-## Partner management needs public access.
+pmp_new:
+  react_app_api_base_url: 'api-internal.sandbox.xyz.net'
+
+## The url below is to access pmp API services.
+## CAUTION: Domain name to acess pmp UI must be secure/internal/over vpn.
+## Slash is important!
+
+## pmp UI swagger should have only internal access. Hence linked to internal gateway
+## We create a gateway for pmp specific URL(s) listed under `hosts`
 istio:
   enabled: true
+  ingressController:
+    name: ingressgateway-internal
   gateways:
-    - istio-system/public
-    - istio-system/internal
-  prefix: /v1/partnermanager
-  corsPolicy:
-    allowOrigins:
-      - prefix: https://pmp.sandbox.xyz.net
-      - prefix: https://pmp-new.sandbox.xyz.net
-    allowCredentials: true
-    allowHeaders:
-      - Accept
-      - Accept-Encoding
-      - Accept-Language
-      - Connection
-      - Content-Type
-      - Cookie
-      - Host
-      - Referer
-      - Sec-Fetch-Dest
-      - Sec-Fetch-Mode
-      - Sec-Fetch-Site
-      - Sec-Fetch-User
-      - Origin
-      - Upgrade-Insecure-Requests
-      - User-Agent
-      - sec-ch-ua
-      - sec-ch-ua-mobile
-      - sec-ch-ua-platform
-      - x-xsrf-token
-      - xsrf-token
-    allowMethods:
-      - GET
-      - POST
-      - PATCH
-      - PUT
-      - DELETE
+    - name: pmp-reactjs-gateway
+      protocol: HTTP
+      portName: http
+      port: 80
+  hosts:
+    - pmp-new.sandbox.xyz.net
+  prefix: /
