@@ -1,12 +1,12 @@
 # Authmanager
 
-Helm chart for installing MOSIP pmp UI module
+Helm chart for installing MOSIP pmp reactJS UI module
 
 ## TL;DR
 
 ```console
 $ helm repo add mosip https://mosip.github.io
-$ helm install my-release mosip/pmp-ui
+$ helm install my-release mosip/pmp-reactjs-ui
 ```
 
 ## Prerequisites
@@ -18,10 +18,10 @@ $ helm install my-release mosip/pmp-ui
 
 ## Installing the Chart
 
-To install the chart with the release name `pmp-ui`.
+To install the chart with the release name `pmp-reactjs-ui`.
 
 ```console
-helm install my-release mosip/pmp-ui
+helm install my-release mosip/pmp-reactjs-ui
 ```
 
 > **Tip**: List all releases using `helm list`
