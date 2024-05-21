@@ -249,6 +249,7 @@ extraEnvVarsCM:
   - global
   - config-server-share
   - artifactory-share
+  - pmp-reactjs-ui
 
 ## Secret with extra environment variables
 ##
@@ -413,6 +414,9 @@ metrics:
     #       severity: error
     rules: []
 
+pmp_new:
+  react_app_api_base_url: 'api-internal.sandbox.xyz.net'
+
 ## The url below is to access pmp API services.
 ## CAUTION: Domain name to acess pmp UI must be secure/internal/over vpn.
 ## Slash is important!
@@ -424,7 +428,7 @@ istio:
   ingressController:
     name: ingressgateway-internal
   gateways:
-    - name: pmp-reacts-gateway
+    - name: pmp-reactjs-gateway
       protocol: HTTP
       portName: http
       port: 80

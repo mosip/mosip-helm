@@ -107,10 +107,6 @@ spec:
             - secretRef:
                 name: {{ include "common.tplvalues.render" (dict "value" .Values.extraEnvVarsSecret "context" $) }}
             {{- end }}
-          volumeMounts:
-            - name: nginx-config
-              mountPath: /etc/nginx/conf.d/default.conf
-              subPath: default.conf
           ports:
             - name: spring-service
               containerPort: {{ .Values.springServicePort }}
@@ -135,10 +131,3 @@ spec:
         {{- if .Values.sidecars }}
         {{- include "common.tplvalues.render" ( dict "value" .Values.sidecars "context" $) | nindent 8 }}
         {{- end }}
-      volumes:
-        - name: nginx-config
-          configMap:
-            name: {{ template "common.names.fullname" . }}
-            items:
-              - key: default.conf
-                path: default.conf

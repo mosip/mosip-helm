@@ -11,16 +11,17 @@ metadata:
   annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
   {{- end }}
 data:
-  default.conf: |-
+  REACT_APP_API_BASE_URL: https://{{ .Values.pmp_new.react_app_api_base_url }}/v1/partnermanager
+  nginx.conf: |-
     server {
-      listen       8080;
+      listen       3000;
       server_name  localhost;
       add_header X-Frame-Options DENY;
-      
+    
       #charset koi8-r;
       #access_log  /var/log/nginx/host.access.log  main;
       #index  index.html index.htm;
-      
+    
       location / {
           root   /usr/share/nginx/html;
       }
