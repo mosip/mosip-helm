@@ -215,13 +215,13 @@ extraEnvVars: []
 extraEnvVarsCM:
   - global
   - db
-  - pre-expirydays
+  - mosipcertmanager
 ## Secret with extra environment variables
 ##
 extraEnvVarsSecret:
   - s3
   - postgres-postgresql
-  - mosip-pms-client-secret
+  - keycloak-client-secrets
 
 ## Extra volumes to add to the deployment
 ##
@@ -418,20 +418,16 @@ metrics:
 
 ## Admin swagger should have only internal access. Hence linked to internal gateway
 
-types:
-  - name: full
-    enabled: true
-
 crontime: "0 3 * * *"    ## run cronjob every day at 3 AM (time hr: 0-23 )
 
-certvalidator:
+mosipcertmanager:
   configmaps:
     db:
-      db_port: '5432'
-      db_suuser: 'postgres'
-      db_server: 'api-internal.sandbox.xyz.net'
-    preexpirydays: '7'
-  secrets:
-    mosip-pms-client-secret:
+      db-port: '5432'
+      db-su-user: 'postgres'
+      db-server: 'postgres-k8s-svc-name'
+      db-host: 'mosip-api-internal-host'
+    mosipcertmanager:
+      pre-expiry-days: '7'
 
 enable_insecure: false

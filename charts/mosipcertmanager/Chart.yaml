@@ -1,6 +1,6 @@
 apiVersion: v2
-name: certvalidator
-description: A Helm chart to deploy certvalidator to test working of MOSIP modules
+name: mosipcertmanager
+description: A Helm chart to deploy mosipcertmanager to test working of MOSIP modules
 type: application
 version: 12.0.2
 appVersion: ""
@@ -13,7 +13,7 @@ dependencies:
 home: https://mosip.io
 keywords:
   - mosip
-  - certvalidator
+  - mosipcertmanager
 maintainers:
   - email: info@mosip.io
     name: MOSIP
