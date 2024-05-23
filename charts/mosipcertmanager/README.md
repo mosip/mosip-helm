@@ -2,14 +2,8 @@
 Helm chart for installing mosipcertmanager
 
 ## Introduction
-its a Cronjob which will go though the DB & Check for partner certifiactes expiry Dates
- if certificates expired will renew the Certifcates.
+It's a cronjob that checks DBs for partner certificate expiry dates and renews the certificates if expired.
 
-## Install
-RUN Install script 
-```
-./install.sh
-```
 
 # TL;DR
 ```console
