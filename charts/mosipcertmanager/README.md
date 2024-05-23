@@ -1,10 +1,10 @@
 # mosipcertmanager
 
-Helm chart to deploy mosipcertmanager for `MOSIP` modules
+# its a Cronjob which will go though the DB & Check for partner certifiactes expiry
+# dates & if certificates expired will renew the Certifcates
 
-## TL;DR
+# To deploy the cronjob
+RUN Install script
 
-```console
-$ helm repo add mosip https://mosip.github.io
-$ helm install my-release mosip/mosipcertmanager
-```
+ ./install.sh
+

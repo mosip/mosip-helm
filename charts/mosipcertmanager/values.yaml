@@ -425,7 +425,6 @@ mosipcertmanager:
     db:
       db-port: '5432'
       db-su-user: 'postgres'
-      db-server: 'postgres-k8s-svc-name'
       db-host: 'mosip-api-internal-host'
     mosipcertmanager:
       pre-expiry-days: '7'
