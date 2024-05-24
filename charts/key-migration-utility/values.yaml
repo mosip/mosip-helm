@@ -302,10 +302,10 @@ serviceAccount:
   ##
   name:
 
-# kernel or id-authentication
-springConfigNameEnv: kernel
-# default or migrator
-activeProfileEnv: default
+# migration
+springConfigNameEnv:
+# default or migration
+activeProfileEnv:
 
 ## This param is to be set during installation.
 ## For Kernel: softhsm-kernel-share

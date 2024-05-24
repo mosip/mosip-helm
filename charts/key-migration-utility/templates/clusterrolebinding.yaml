@@ -15,5 +15,5 @@ roleRef:
   name: {{ template "common.names.fullname" . }}
 subjects:
   - kind: ServiceAccount
-    name: {{ template "hsm-key-migrator.serviceAccountName" . }}
+    name: {{ template "key-migration-utility.serviceAccountName" . }}
     namespace: {{ .Release.Namespace }}

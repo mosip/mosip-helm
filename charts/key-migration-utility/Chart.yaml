@@ -1,6 +1,6 @@
 apiVersion: v2
-name: hsm-key-migrator
-description: A Helm chart to generate keys
+name: key-migration-utility
+description: A Helm chart to migrate keys from any keystore type to any other supported format.
 type: application
 version: 0.0.1-develop
 appVersion: ""
@@ -13,9 +13,7 @@ dependencies:
 home: https://mosip.io
 keywords:
   - mosip
-  - keymanager
-  - hsm-key-migrator
-  - kernel
+  - key-migration-utility
 maintainers:
   - email: info@mosip.io
     name: MOSIP
