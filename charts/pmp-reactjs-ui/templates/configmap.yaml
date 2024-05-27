@@ -11,7 +11,8 @@ metadata:
   annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
   {{- end }}
 data:
-  REACT_APP_API_BASE_URL: https://{{ .Values.pmp_new.react_app_api_base_url }}/v1/partnermanager
+  REACT_APP_PARTNER_MANAGER_API_BASE_URL: https://{{ .Values.pmp_new.react_app_partner_manager_api_base_url }}/v1/partnermanager
+  REACT_APP_POLICY_MANAGER_API_BASE_URL: https://{{ .Values.pmp_new.react_app_policy_manager_api_base_url }}/v1/policymanager
   nginx.conf: |-
     server {
       listen       3000;
