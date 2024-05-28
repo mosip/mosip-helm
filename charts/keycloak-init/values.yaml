@@ -101,8 +101,6 @@ keycloak:
         "actionTokenGeneratedByUserLifespan": 300
         "passwordPolicy": "length(8)"
         "resetPasswordAllowed": 'True'
-        "registrationAllowed": 'True'
-        "verifyEmail": 'True'
         "bruteForceProtected": 'True'
         "permanentLockout": 'False'
         "maxFailureWaitSeconds": 900
