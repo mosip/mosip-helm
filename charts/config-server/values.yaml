@@ -670,6 +670,13 @@ envVariables:
         key: resident-websub-regproc-workflow-complete-secret
     enabled: true
 
+  - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDREPO_WEBSUB_REMOTE_ID_STATUS_SECRET
+    valueFrom:
+      secretKeyRef:
+        name: conf-secrets-various
+        key: idrepo-websub-remove-id-status-secret
+    enabled: true
+
   - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_PARTNER_CRYPTO_P12_PASSWORD
     valueFrom:
       secretKeyRef:
