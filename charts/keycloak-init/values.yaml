@@ -538,6 +538,7 @@ keycloak:
             - SUBSCRIBE_OIDC_CLIENT_CREATED_GENERAL
             - SUBSCRIBE_OIDC_CLIENT_UPDATED_GENERAL
             - PUBLISH_AUTHENTICATION_ERRORS_GENERAL
+            - PUBLISH_REMOVE_ID_STATUS_GENERAL
 
         - name: mosip-idrepo-client
           mappers: []
@@ -554,6 +555,7 @@ keycloak:
             - PUBLISH_AUTH_TYPE_STATUS_UPDATE_ALL_INDIVIDUAL
             - PUBLISH_IDENTITY_CREATED_GENERAL
             - PUBLISH_IDENTITY_UPDATED_GENERAL
+            - SUBSCRIBE_REMOVE_ID_STATUS_GENERAL
 
         - name: mpartner-default-print
           mappers: []
