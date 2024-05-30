@@ -94,7 +94,7 @@ databases:
       secret:
         name: postgres-postgresql
         key: postgres-password
-    dml: 0
+    dml: 1
     repoUrl: https://github.com/mosip/admin-services.git
     branch: develop
 
