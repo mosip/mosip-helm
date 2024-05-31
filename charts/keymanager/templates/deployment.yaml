@@ -155,4 +155,4 @@ spec:
       - name: {{ .Values.persistence.volume_name }}
         persistentVolumeClaim:
           claimName: {{ .Values.persistence.existingClaim | default .Values.persistence.pvc_claim_name  }}
-      {{ end }}
+      {{- end }}
