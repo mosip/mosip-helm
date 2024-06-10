@@ -257,6 +257,19 @@ databases:
     repoUrl: https://github.com/mosip/resident-services.git
     branch: develop
 
+  mosip_otp:
+    enabled: true
+    host: "postgres-postgresql"
+    port: 5432
+    su:
+      user: postgres
+      secret:
+        name: postgres-postgresql
+        key: postgres-password
+    dml: 0
+    repoUrl: https://github.com/mosip/otp-manager.git
+    branch: develop
+
   mosip_toolkit:
     enabled: true
     host: "postgres-postgresql"
