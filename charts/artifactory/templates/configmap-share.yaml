@@ -24,3 +24,4 @@ data:
   virusscanner_url_env: {{ printf "%s%s" (include "artifactory.baseUrl" .) .Values.artifacts.virusscannerUrl }}
   auth_wrapper_url_env: {{ printf "%s%s" (include "artifactory.baseUrl" .) .Values.artifacts.authwrapperUrl }}
   esignet_wrapper_url_env: {{ printf "%s%s" (include "artifactory.baseUrl" .) .Values.artifacts.esignetauthwrapperUrl }}
+  kernel_ref_idobjectvalidator_url: {{ printf "%s%s" (include "artifactory.baseUrl" .) .Values.artifacts.kernelRefIdObjectValidator }}
