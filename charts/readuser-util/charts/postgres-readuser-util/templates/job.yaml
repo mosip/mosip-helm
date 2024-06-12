@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: postgres-readuser
-  namespace: postgres
+  namespace: util
 spec:
   template:
     metadata:

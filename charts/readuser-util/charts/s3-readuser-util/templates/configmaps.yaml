@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: s3-policy
-  namespace: minio
+  namespace: util
 data:
   readuser.json: |
     {

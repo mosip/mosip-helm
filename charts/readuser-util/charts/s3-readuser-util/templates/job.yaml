@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: s3-init
-  namespace: minio
+  namespace: util
 spec:
   template:
     metadata:

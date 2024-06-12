@@ -5,7 +5,7 @@
 postgres-readuser-util:
   enabled: true
   # Values for readuser creation.
-  # "action" key specifies whether you want to "create" or "delete" readuser.
+  # "action" key specifies whether you want to "create" or "delete" readuser. The possible actions are "create" or "delete".
   # "username" key specifies the username of readuser creating.
   # "password" key specifies the password for readuser.
   # "dbport" key specifies the DB port number.
@@ -20,7 +20,7 @@ postgres-readuser-util:
 s3-readuser-util:
   enabled: true
   # Values for readuser creation.
-  # "action" key specifies whether you want to "create" or "delete" readuser.
+  # "action" key specifies whether you want to "create" or "delete" readuser. The possible actions are "create" or "delete".
   # "username" key specifies the username of readuser creating.
   # "password" key specifies the password for readuser.
   # "policyName" key specifies the policyname creating.

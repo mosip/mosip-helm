@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: readuser-script
-  namespace: postgres
+  namespace: util
 data:
   create-readuser.sh: |
     #!/bin/bash
