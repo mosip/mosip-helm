@@ -1074,7 +1074,7 @@ entries:
     - https://mosip.github.io/mosip-helm/artifactory-1.1.5.tgz
     version: 1.1.5
   - apiVersion: v2
-    created: "2024-06-11T16:44:48.913904957Z"
+    created: "2024-06-13T13:46:06.027667131Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1082,7 +1082,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP Artifactory
-    digest: 6804a3249fc33a7f63cf34c1ae916002beff4b15080d209181efe7c999e36f2a
+    digest: 43281087a5ad4a4fc7541a33d1a323f9a5ab7fe3b6ba666912b4cdf1bd392d17
     home: https://mosip.io
     keywords:
     - artifactory
@@ -6031,7 +6031,7 @@ entries:
     version: 1.1.5
   - apiVersion: v2
     appVersion: 1.2.0
-    created: "2024-05-29T07:44:03.886939765Z"
+    created: "2024-06-13T13:46:06.030030872Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -6040,7 +6040,7 @@ entries:
       version: 1.x.x
     description: A Helm chart for Kubernetes to initialize Keycloak  (updating for
       test)
-    digest: 9eaf73cdfaf4ae187533ff55110dfa3b3a5a836822236cce004891acc795dc8f
+    digest: 169a3adde6759d24873bc59b7f0bd3b5745d45ff6999dad0e499a10a92221c96
     home: https://mosip.io
     keywords:
     - keycloak
@@ -12608,6 +12608,33 @@ entries:
     type: application
     urls:
     - https://mosip.github.io/mosip-helm/print-service-0.0.1-develop.tgz
+    version: 0.0.1-develop
+  readuser-util:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-06-13T13:46:06.030873211Z"
+    dependencies:
+    - condition: postgres-readuser-util.enabled
+      name: postgres-readuser-util
+      repository: ""
+      version: 0.0.1-develop
+    - condition: s3-readuser-util.enabled
+      name: s3-readuser-util
+      repository: ""
+      version: 0.0.1-develop
+    description: A Helm chart to deploy multiple readuser helm charts.
+    digest: 78b87093cfe9f81894aaea4e55bb8ead330c9e7a77552ff92c380a5af945a9ec
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - readuser-util
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: readuser-util
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/readuser-util-0.0.1-develop.tgz
     version: 0.0.1-develop
   regclient:
   - apiVersion: v2
@@ -19229,4 +19256,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-06-11T16:44:48.911092247Z"
+generated: "2024-06-13T13:46:06.026078754Z"
