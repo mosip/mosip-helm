@@ -1,0 +1,48 @@
+{{- if .Values.databases.mosip_otp.enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-otp-init-job
+  labels:
+    {{- include "postgres-init.labels" . | nindent 4 }}
+spec:
+  backoffLimit: 0
+  template:
+    metadata:
+      labels:
+        {{- include "postgres-init.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/name: db-otp-init-job
+        sidecar.istio.io/inject: "false"
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "postgres-init.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.jobSecurityContext | nindent 8 }}
+      restartPolicy: Never  # This is one time job
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: SU_USER_PWD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.databases.mosip_otp.su.secret.name }}
+                  key: {{ .Values.databases.mosip_otp.su.secret.key }}
+
+            - name: DBUSER_PWD
+              valueFrom:
+                secretKeyRef:
+                  name: db-common-secrets
+                  key: db-dbuser-password
+
+          envFrom:
+            - configMapRef:
+                name: db-otp-init-env-config
+  {{- end }}
+
