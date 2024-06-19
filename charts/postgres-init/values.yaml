@@ -321,3 +321,16 @@ databases:
     dml: 0
     repoUrl: https://github.com/mosip/otp-manager.git
     branch: develop
+
+  mosip_certify:
+    enabled: false
+    host: "postgres-postgresql"
+    port: 5432
+    su:
+      user: postgres
+      secret:
+        name: postgres-postgresql
+        key: postgres-password
+    dml: 0
+    repoUrl: https://github.com/mosip/inji-certify.git
+    branch: develop
