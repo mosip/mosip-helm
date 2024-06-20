@@ -1,0 +1,47 @@
+{{- if .Values.databases.mosip_certify.enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-certify-init-job
+  labels:
+    {{- include "postgres-init.labels" . | nindent 4 }}
+spec:
+  backoffLimit: 0
+  template:
+    metadata:
+      labels:
+        {{- include "postgres-init.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/name: db-certify-init-job
+        sidecar.istio.io/inject: "false"
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "postgres-init.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.jobSecurityContext | nindent 8 }}
+      restartPolicy: Never  # This is one time job
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+          - name: SU_USER_PWD
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.databases.mosip_certify.su.secret.name }}
+                key: {{ .Values.databases.mosip_certify.su.secret.key }}
+
+          - name: DBUSER_PWD
+            valueFrom:
+              secretKeyRef:
+                name: db-common-secrets
+                key: db-dbuser-password
+
+          envFrom:
+              - configMapRef:
+                  name: db-certify-init-env-config
+{{- end }}
