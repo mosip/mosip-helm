@@ -59,7 +59,7 @@ spec:
           image: {{ template "keygen.image" . }}
           imagePullPolicy: {{ .Values.volumePermissions.image.pullPolicy | quote }}
           command:
-            - /bin/bash
+            - /bin/sh
             - -c
             - chown -R 1001:1001 {{ .Values.persistence.mountDir }}
           securityContext:
