@@ -93,6 +93,10 @@ spec:
               value: {{ .Values.containerSecurityContext.runAsUser }}
             - name: JDK_JAVA_OPTIONS
               value: {{ .Values.additionalResources.javaOpts }}
+            - name: REACT_APP_PARTNER_MANAGER_API_BASE_URL
+              value: {{ .Values.pmp_new.react_app_partner_manager_api_base_url }}
+            - name: REACT_APP_POLICY_MANAGER_API_BASE_URL
+              value: {{ .Values.pmp_new.react_app_policy_manager_api_base_url }}
             {{- if .Values.extraEnvVars }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}
@@ -107,6 +111,10 @@ spec:
             - secretRef:
                 name: {{ include "common.tplvalues.render" (dict "value" .Values.extraEnvVarsSecret "context" $) }}
             {{- end }}
+          volumeMounts:
+            - name: nginx-config
+              mountPath: {{ .Values.nginx.volume_mount_path }}
+              subPath: {{ .Values.nginx.sub_path }}
           ports:
             - name: spring-service
               containerPort: {{ .Values.springServicePort }}
@@ -131,3 +139,10 @@ spec:
         {{- if .Values.sidecars }}
         {{- include "common.tplvalues.render" ( dict "value" .Values.sidecars "context" $) | nindent 8 }}
         {{- end }}
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: {{ template "common.names.fullname" . }}
+            items:
+              - key: nginx.conf
+                path: nginx.conf

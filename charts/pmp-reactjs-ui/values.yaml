@@ -51,7 +51,7 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipdev/pmp-reactjs-ui
+  repository: mosipqa/pmp-reactjs-ui
   tag: develop
 
   ## Specify a imagePullPolicy
@@ -249,7 +249,6 @@ extraEnvVarsCM:
   - global
   - config-server-share
   - artifactory-share
-  - pmp-reactjs-ui
 
 ## Secret with extra environment variables
 ##
@@ -415,12 +414,18 @@ metrics:
     rules: []
 
 pmp_new:
-  react_app_partner_manager_api_base_url: 'https://api-internal.sandbox.xyz.net'
-  react_app_policy_manager_api_base_url: 'https://api-internal.sandbox.xyz.net'
+  react_app_partner_manager_api_base_url: 'https://api-internal.sandbox.xyz.net/v1/partnermanager'
+  react_app_policy_manager_api_base_url: 'https://api-internal.sandbox.xyz.net/v1/policymanager'
+  pms_partner_manager_internal_service_url: 'http://pms-partner.pms/v1/partnermanager'
+  pms_policy_manager_internal_service_url: 'http://pms-policy.pms/v1/policymanager'
 
 ## The url below is to access pmp API services.
-## CAUTION: Domain name to acess pmp UI must be secure/internal/over vpn.
+## CAUTION: Domain name to access pmp UI must be secure/internal/over vpn.
 ## Slash is important!
+
+nginx:
+  volume_mount_path: /etc/nginx/nginx.conf
+  sub_path: nginx.conf
 
 ## pmp UI swagger should have only internal access. Hence linked to internal gateway
 ## We create a gateway for pmp specific URL(s) listed under `hosts`
