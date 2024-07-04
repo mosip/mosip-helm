@@ -26,3 +26,5 @@ data:
   auth_wrapper_url_env: {{ printf "%s%s" (include "artifactory.baseUrl" .) .Values.artifacts.authwrapperUrl }}
   esignet_wrapper_url_env: {{ printf "%s%s" (include "artifactory.baseUrl" .) .Values.artifacts.esignetauthwrapperUrl }}
   kernel_ref_idobjectvalidator_url: {{ printf "%s%s" (include "artifactory.baseUrl" .) .Values.artifacts.kernelRefIdObjectValidator }}
+  icu4j_url_env: {{ printf "%s%s" (include "artifactory.baseUrl" .) .Values.artifacts.icu4j }}
+  kernel_transliteration_icu4j_url_env: {{ printf "%s%s" (include "artifactory.baseUrl" .) .Values.artifacts.kernelTransliterationIcu4j }}
