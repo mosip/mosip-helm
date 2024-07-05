@@ -5645,6 +5645,28 @@ entries:
     version: 0.0.1-develop
   injiverify:
   - apiVersion: v2
+    created: "2024-07-05T14:04:57.799493785Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP injiverify module
+    digest: fb7aa0e6323dd644ca093959e9be412ec1a4a69c7cfaad923260039c213c3bbb
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - inji-verify
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: injiverify
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/injiverify-0.9.0.tgz
+    version: 0.9.0
+  - apiVersion: v2
     created: "2024-05-21T15:32:34.105126102Z"
     dependencies:
     - name: common
@@ -19500,4 +19522,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-07-04T13:30:00.925928682Z"
+generated: "2024-07-05T14:04:57.797806275Z"
