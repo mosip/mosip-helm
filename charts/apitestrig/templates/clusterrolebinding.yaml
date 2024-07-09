@@ -12,7 +12,7 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ template "apitestrig.serviceAccountName" . }}-pods-role
+  name: {{ template "apitestrig.serviceAccountName" . }}-{{ .Release.Namespace }}
 subjects:
   - kind: ServiceAccount
     name: {{ template "apitestrig.serviceAccountName" . }}

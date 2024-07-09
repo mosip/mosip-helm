@@ -4,9 +4,9 @@ metadata:
   labels:
     app.kubernetes.io/managed-by: Helm
   annotations:
-    meta.helm.sh/release-name: restart-cron-{{ .Release.Namespace }}
+    meta.helm.sh/release-name: restart-cron
     meta.helm.sh/release-namespace: infra-admin
-  name: pod-deleter-role
+  name: {{ .Values.role.name }}-{{ .Release.Namespace }}
 rules:
   - apiGroups:
       - apps
