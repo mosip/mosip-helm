@@ -6,7 +6,7 @@ metadata:
   annotations:
     meta.helm.sh/release-name: restart-cron
     meta.helm.sh/release-namespace: infra-admin
-  name: pod-deleter-role
+  name: {{ .Values.role.name }}-{{ .Release.Namespace }}
 rules:
   - apiGroups:
       - apps
