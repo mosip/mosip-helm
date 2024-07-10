@@ -1,0 +1,40 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: "{{.Release.Name}}-{{ .Release.Namespace }}-job"
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/managed-by: {{.Release.Service | quote }}
+    app.kubernetes.io/instance: {{.Release.Name | quote }}
+    helm.sh/chart: "{{.Chart.Name}}-{{.Chart.Version}}"
+    app: generate-certs
+  annotations:
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-weight": "-2"
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  template:
+    metadata:
+      name: "{{.Release.Name}}"
+      namespace: {{ .Release.Namespace }}
+      labels:
+        app.kubernetes.io/managed-by: {{.Release.Service | quote }}
+        app.kubernetes.io/instance: {{.Release.Name | quote }}
+        helm.sh/chart: "{{.Chart.Name}}-{{.Chart.Version}}"
+        sidecar.istio.io/inject: "false"
+    spec:
+      restartPolicy: Never
+      serviceAccountName: {{ template "regclient.serviceAccountName" . }}
+      containers:
+      - name: openssl-container
+        image: "{{ .Values.job.image }}:{{ .Values.job.tag }}"
+        imagePullPolicy: {{ .Values.job.pullPolicy }}
+        env:
+        - name: NAMESPACE
+          value: "{{ .Release.Namespace }}"
+        volumeMounts:
+        - name: certs-volume
+          mountPath: /home/mosip/certs
+      volumes:
+      - name: certs-volume
+        emptyDir: {}

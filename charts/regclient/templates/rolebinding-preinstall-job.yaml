@@ -1,0 +1,16 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{.Release.Name}}-{{ .Release.Namespace }}-rolebinding
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-weight": "-3"
+subjects:
+  - kind: ServiceAccount
+    name: {{ template "regclient.serviceAccountName" . }}
+    namespace: {{ .Release.Namespace }}
+roleRef:
+  kind: Role
+  name: {{.Release.Name}}-{{ .Release.Namespace }}-role
+  apiGroup: rbac.authorization.k8s.io
