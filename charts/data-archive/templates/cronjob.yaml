@@ -1,0 +1,42 @@
+apiVersion: {{ include "common.capabilities.cronjob.apiVersion" $ }}
+kind: CronJob
+metadata:
+  name: {{ template "data-archive.cronjob" $ }}
+  namespace: {{ $.Release.Namespace }}
+spec:
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1  # remove jobs which are successfully executed
+  failedJobsHistoryLimit: 1      # except 1 recent failed job, remove jobs which are not successfully executed
+  #schedule: '*/3 * * * *' # cron spec of time, here, 8 o'clock
+  schedule: {{ $.Values.crontime }}
+  jobTemplate:
+    spec:
+      backoffLimit: 2 # this has very low chance of failing, as all this does
+      # is prompt kubernetes to schedule new replica set for
+      # the deployment
+      # activeDeadlineSeconds: 600 # timeout, makes most sense with
+      # "waiting for rollout" variant specified below
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: {{ template "data-archive.serviceAccountName" $ }}
+              image: {{ template "data-archive.image" $ }}
+              imagePullPolicy: {{ $.Values.image.pullPolicy }}
+              volumeMounts:
+              - name: config-volume
+                mountPath: /all-db-info-json
+              env:
+                - name: container_user
+                  value: {{ $.Values.containerSecurityContext.runAsUser }}
+              envFrom:
+                - configMapRef:
+                    name: db-archive-init-env-config
+                - secretRef:
+                    name: source-db-secrets
+                - secretRef:
+                    name: archive-db-secrets
+          volumes:
+          - name: config-volume
+            configMap:
+              name: {{ .Release.Name }}
