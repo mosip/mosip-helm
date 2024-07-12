@@ -5388,7 +5388,7 @@ entries:
     - https://mosip.github.io/mosip-helm/idgenerator-1.1.5.tgz
     version: 1.1.5
   - apiVersion: v2
-    created: "2024-07-09T07:35:11.16959342Z"
+    created: "2024-07-12T07:25:59.368974639Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -5396,7 +5396,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP Idgenerator module
-    digest: 47bf5ac52421d12aff40ea0ea7adfa40381ece09417b5193c4c6784996760f96
+    digest: 6978f6bba316ccca72be43a6965acbd4b3e1c68965125aac47ac0f64a1857bec
     home: https://mosip.io
     keywords:
     - mosip
@@ -6023,6 +6023,40 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/kafka-18.3.1.tgz
     version: 18.3.1
+  kernel:
+  - apiVersion: v2
+    created: "2024-07-12T07:25:59.374518285Z"
+    dependencies:
+    - condition: idgenerator.enabled
+      name: idgenerator
+      repository: https://mosip.github.io/mosip-helm
+      version: 0.0.1-develop
+    - condition: pridgenerator.enabled
+      name: pridgenerator
+      repository: https://mosip.github.io/mosip-helm
+      version: 0.0.1-develop
+    - condition: ridgenerator.enabled
+      name: ridgenerator
+      repository: https://mosip.github.io/mosip-helm
+      version: 0.0.1-develop
+    - condition: notifier.enabled
+      name: notifier
+      repository: https://mosip.github.io/mosip-helm
+      version: 0.0.1-develop
+    description: A Helm chart for Kernel module of MOSIP.
+    digest: a8b1e37121db07e2178d4d2cc3133caebc2f59e3af008e8220d33dee90e54bea
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - idrepo
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: kernel
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/kernel-0.0.1-develop.tgz
+    version: 0.0.1-develop
   kernel-keygen:
   - apiVersion: v2
     appVersion: 1.1.5
@@ -8992,7 +9026,7 @@ entries:
     - https://mosip.github.io/mosip-helm/notifier-1.1.5.tgz
     version: 1.1.5
   - apiVersion: v2
-    created: "2024-07-09T07:35:11.188301797Z"
+    created: "2024-07-12T07:25:59.376807947Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -9000,7 +9034,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP Notifier module
-    digest: 17111a325fc87d2317d3a5c61c5b7e6c1c95ce9b798646e7304077e8ba93038f
+    digest: 22e995172b1ba9351cfd1c905f7b1e6779dd74ed3c00c68b78fa3faa626600e7
     home: https://mosip.io
     keywords:
     - mosip
@@ -12805,7 +12839,7 @@ entries:
     - https://mosip.github.io/mosip-helm/pridgenerator-1.1.5.tgz
     version: 1.1.5
   - apiVersion: v2
-    created: "2024-07-09T07:35:11.212981315Z"
+    created: "2024-07-12T07:25:59.378176226Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -12813,7 +12847,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP PRIDgenerator module
-    digest: 35babed56276245e2e10249663a48255400a044aa53ef1c4c1819c8d16f20670
+    digest: 2afc2a7e65213095aeb3271e0ba723a53989e1959f706cfa70086030d9e99649
     home: https://mosip.io
     keywords:
     - mosip
@@ -18191,7 +18225,7 @@ entries:
     - https://mosip.github.io/mosip-helm/ridgenerator-1.1.5.tgz
     version: 1.1.5
   - apiVersion: v2
-    created: "2024-07-09T07:35:11.243849949Z"
+    created: "2024-07-12T07:25:59.379481376Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -18199,7 +18233,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP RIDgenerator module
-    digest: f99021493a6eafa3bce1231aaf8a3c7de74f876ade40347b22c51c129455e053
+    digest: 9645b4595c9c7d6de87e85a8c19ce1f825c7df214ac1f4e063beea6ecf8ec1de
     home: https://mosip.io
     keywords:
     - mosip
@@ -19753,4 +19787,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-07-12T07:19:31.572548855Z"
+generated: "2024-07-12T07:25:59.367405465Z"
