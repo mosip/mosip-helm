@@ -66,9 +66,12 @@ image:
   #   - myRegistryKeySecretName
 # Configuration for the Job
 job:
+  name: keystorejob
   image: mosipdev/openssl-regclient
   tag: latest
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
+  rolename: keystorerole
+  rolebindingname: keystorerolebinding
 
 regclient:
   version: 1.2.1-SNAPSHOT
