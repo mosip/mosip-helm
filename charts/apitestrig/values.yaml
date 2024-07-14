@@ -464,6 +464,12 @@ modules:
       repository: mosipqa/apitest-pms
       tag: develop
       pullPolicy: Always
+  pms:
+    enabled: true
+    image:
+      repository: mosipdev/apitest-pms
+      tag: develop
+      pullPolicy: Always
   resident:
     enabled: true
     image:
