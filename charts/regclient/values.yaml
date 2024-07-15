@@ -64,11 +64,12 @@ image:
   ##
   # pullSecrets:
   #   - myRegistryKeySecretName
-# Configuration for the Job
+# Configuration for the keystoreJob
 job:
   name: keystorejob
-  image: mosipdev/openssl-regclient
-  tag: latest
+  registry: docker.io
+  image: mosipdev/regclient-keystore
+  tag: develop
   pullPolicy: Always
   rolename: keystorerole
   rolebindingname: keystorerolebinding
