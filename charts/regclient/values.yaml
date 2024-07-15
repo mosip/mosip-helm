@@ -51,8 +51,8 @@ service:
 
 image:
   registry: docker.io
-  repository: mosipid/registration-client
-  tag: 1.2.0.1-B2
+  repository: mosipqa/registration-client
+  tag: develop
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -64,16 +64,23 @@ image:
   ##
   # pullSecrets:
   #   - myRegistryKeySecretName
+# Configuration for the keystoreJob
+job:
+  name: keystorejob
+  registry: docker.io
+  image: mosipdev/regclient-keystore
+  tag: release-1.2.0.x
+  pullPolicy: Always
+  rolename: keystorerole
+  rolebindingname: keystorerolebinding
 
 regclient:
-  version: 1.2.0.1-B2
+  version: 1.2.1-SNAPSHOT
   mountDir: /home/mosip/build_files/
   upgradeServerUrl: https://regclient.sandbox.xzy.net
   hostName: https://api-internal.sandbox.mosip.net
   ## Here we check the health of syncdata service. The service must be accessible over internal channel.
   healthCheckUrl: http://api-internal.sandbox.mosip.net/v1/syncdata/actuator/health
-  certificate: mosip_cer.cer
-  signer_url: http://timestamp.comodoca.com/rfc3161
 
 ## Port on which this particular spring service module is running.
 containerPort: 80
@@ -86,8 +93,8 @@ startupProbe:
   httpGet:
     path: "/registration-client/{{ tpl .Values.regclient.version . }}/reg-client.zip"
     port: 80
-  initialDelaySeconds: 420
-  periodSeconds: 60
+  initialDelaySeconds: 0
+  periodSeconds: 30
   timeoutSeconds: 5
   failureThreshold: 10
   successThreshold: 1
