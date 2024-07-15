@@ -449,6 +449,8 @@ onboarding:
       enabled: true
     - name: mimoto-oidc
       enabled: false
+    - name: signup-oidc
+      enabled: false
 
   configmaps:
     s3:
@@ -458,4 +460,6 @@ onboarding:
     onboarder-namespace:
       ns_mimoto: mimoto
       ns_esignet: esignet
+      ns_signup: signup
   secrets:
+   
