@@ -7862,6 +7862,29 @@ entries:
     - https://mosip.github.io/mosip-helm/mock-abis-12.0.2.tgz
     version: 12.0.2
   - apiVersion: v2
+    created: "2024-07-18T06:29:57.056174558Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Mock ABIS
+    digest: 09939183aefae0a682c096087e933c61dc6ef3f94e3475ef5ff530b3a20915a1
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - mock-abis
+    - abis
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: mock-abis
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/mock-abis-12.0.2-develop.tgz
+    version: 12.0.2-develop
+  - apiVersion: v2
     created: "2024-05-20T13:42:42.032951926Z"
     dependencies:
     - name: common
@@ -8205,6 +8228,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/mock-mv-12.0.2.tgz
     version: 12.0.2
+  - apiVersion: v2
+    created: "2024-07-18T06:29:57.057864112Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Mock Manual Verification service
+    digest: 37be449eda937d073820679e5ac47495e1ef46e324b5191a3548872c6407073a
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - mock-mv
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: mock-mv
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/mock-mv-12.0.2-develop.tgz
+    version: 12.0.2-develop
   - apiVersion: v2
     created: "2024-05-20T13:42:42.05008385Z"
     dependencies:
@@ -20110,4 +20156,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-07-18T06:28:09.641863383Z"
+generated: "2024-07-18T06:29:57.054560385Z"
