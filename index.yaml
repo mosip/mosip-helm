@@ -9510,6 +9510,29 @@ entries:
     - https://mosip.github.io/mosip-helm/otpmanager-12.0.1.tgz
     version: 12.0.1
   - apiVersion: v2
+    created: "2024-07-18T06:23:54.038096154Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP OTPManager module
+    digest: 8f28385ad5ce56252d58921f0020166d20b1bdbcbe2850b285de5221d768d43b
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - otpmanager
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: otpmanager
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/otpmanager-12.0.1-develop.tgz
+    version: 12.0.1-develop
+  - apiVersion: v2
     created: "2024-05-20T13:42:42.127894417Z"
     dependencies:
     - name: common
@@ -19903,4 +19926,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-07-18T06:23:10.582453923Z"
+generated: "2024-07-18T06:23:54.035975934Z"
