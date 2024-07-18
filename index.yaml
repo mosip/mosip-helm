@@ -6432,6 +6432,30 @@ entries:
     version: 0.0.1-develop
   keygen:
   - apiVersion: v2
+    created: "2024-07-18T06:24:43.357046676Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to generate keys
+    digest: 91e2e3866c9d21b30f3680c453b94dd8fb05e130b81320ff3a29101585822f9e
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - keymanager
+    - keygen
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: keygen
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/keygen-12.1.0-develop.tgz
+    version: 12.1.0-develop
+  - apiVersion: v2
     created: "2024-05-20T13:42:41.961063766Z"
     dependencies:
     - name: common
@@ -6625,6 +6649,29 @@ entries:
     - https://mosip.github.io/mosip-helm/keygen-0.0.1-develop.tgz
     version: 0.0.1-develop
   keymanager:
+  - apiVersion: v2
+    created: "2024-07-18T06:24:43.358405172Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Keymanager module
+    digest: 59487bad3673fc16ea659b5651f9951ea524b6e0e6c9418321a67e50658db46f
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - keymanager
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: keymanager
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/keymanager-12.1.0-develop.tgz
+    version: 12.1.0-develop
   - apiVersion: v2
     created: "2024-05-20T13:42:41.973636904Z"
     dependencies:
@@ -19926,4 +19973,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-07-18T06:23:54.035975934Z"
+generated: "2024-07-18T06:24:43.355717766Z"
