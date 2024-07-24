@@ -47,8 +47,6 @@ spec:
                   {{- end }}
                   {{- end }}
               volumeMounts:
-              {{- if $value.volumes }}
-              {{- range $value.volumes  }}
               - name: {{ .pvc_name }}
                 mountPath: {{ .mountDir }}
               {{- end }}
