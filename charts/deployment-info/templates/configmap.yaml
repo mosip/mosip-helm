@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-script-config
+  namespace: {{ .Release.Namespace }}
+data:
+  fetch-deployment-info.sh: |
+    #!/bin/sh
+
+    # Clear existing deployment_info.txt or create if not exists
+    > /usr/share/nginx/html/deployment_info.txt
+
+    kubectl get namespaces | awk 'NR>1 {print $1}' | while read namespace; do
+      echo "Namespace: $namespace" >> /usr/share/nginx/html/deployment_info.txt
+
+      # Get deployments
+      kubectl get deployments -n $namespace -o json | jq -r '.items[] | "Deployment: \(.metadata.name), Image: \(.spec.template.spec.containers[].image), Helm Chart Version: \(.metadata.labels["helm.sh/chart"])"' >> /usr/share/nginx/html/deployment_info.txt
+
+      # Get statefulsets
+      kubectl get statefulsets -n $namespace -o json | jq -r '.items[] | "StatefulSet: \(.metadata.name), Image: \(.spec.template.spec.containers[].image), Helm Chart Version: \(.metadata.labels["helm.sh/chart"])"' >> /usr/share/nginx/html/deployment_info.txt
+
+      # Get cronjobs
+      kubectl get cronjobs -n $namespace -o json | jq -r '.items[] | "CronJob: \(.metadata.name), Image: \(.spec.jobTemplate.spec.template.spec.containers[].image), Helm Chart Version: \(.metadata.labels["helm.sh/chart"])"' >> /usr/share/nginx/html/deployment_info.txt
+
+      # Get jobs
+      kubectl get jobs -n $namespace -o json | jq -r '.items[] | "Job: \(.metadata.name), Image: \(.spec.template.spec.containers[].image), Helm Chart Version: \(.metadata.labels["helm.sh/chart"])"' >> /usr/share/nginx/html/deployment_info.txt
+
+      echo "" >> /usr/share/nginx/html/deployment_info.txt
+    done
+
+    echo "Script executed at $(date)" >> /usr/share/nginx/html/deployment_info.txt

@@ -1,0 +1,16 @@
+replicaCount: 1
+
+nginx:
+  image: nginx:latest
+  imagePullPolicy: IfNotPresent
+
+scriptRunner:
+  image: alpine:latest
+  imagePullPolicy: IfNotPresent
+
+
+istio:
+  enabled: true
+  gateways:
+    - istio-system/internal
+  prefix: /deployment_info.txt

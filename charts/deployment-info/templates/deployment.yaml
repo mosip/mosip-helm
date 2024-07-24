@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "deployment-info.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: deployment-info
+  template:
+    metadata:
+      labels:
+        app: deployment-info
+    spec:
+      serviceAccountName: {{ .Release.Name }}
+      containers:
+        - name: nginx
+          image: {{ .Values.nginx.image }}
+          imagePullPolicy: {{ .Values.nginx.imagePullPolicy }}
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: result-file
+              mountPath: /usr/share/nginx/html
+        - name: script-runner
+          image: {{ .Values.scriptRunner.image }}
+          imagePullPolicy: {{ .Values.nginx.imagePullPolicy }}
+          command:
+            - /bin/sh
+            - -c
+            - |
+              apk add --no-cache bash curl bind-tools jq
+              
+              curl -LO "https://dl.k8s.io/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+              
+              chmod +x kubectl
+              
+              mv kubectl /usr/local/bin/
+              
+              cp /fetch-deployment-info.sh /tmp/fetch-deployment-info.sh
+              
+              chmod +x /tmp/fetch-deployment-info.sh
+              
+              /tmp/fetch-deployment-info.sh
+              
+              echo "0 2 * * * /tmp/fetch-deployment-info.sh" > /etc/crontabs/root
+              
+              crond -f
+          volumeMounts:
+            - name: script-file
+              mountPath: /fetch-deployment-info.sh
+              subPath: fetch-deployment-info.sh
+            - name: result-file
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: script-file
+          configMap:
+            name: {{ .Release.Name }}-script-config
+        - name: result-file
+          emptyDir: {}
