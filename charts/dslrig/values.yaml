@@ -264,13 +264,6 @@ initContainers:
 sidecars: {}
 
 volumes:
-  authdemo:
-    enabled: true
-    storageClass: 'longhorn'
-    accessModes:
-      - ReadWriteMany
-    size: 1Gi
-    existingClaim:
   packetcreator-data:
     enabled: true
     storageClass: 'longhorn'
@@ -385,8 +378,8 @@ dslrig:
       USER: "api-internal.dev.mosip.net"
       DEFAULT_SCENARIOS: "true"
       authCertsPath: "/home/mosip/authcerts"
-      authDemoServiceBaseURL: "http://localhost"
-      authDemoServicePort: "8082"
+      #authDemoServiceBaseURL: "http://localhost"
+      #authDemoServicePort: "8082"
       # authdemo volume mountPath
       mountPath: "/home/mosip/mountvolume"
       # dslrig scenario mountPath
@@ -403,7 +396,6 @@ dslrig:
               cd $work_dir;
               curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl";
               chmod +x kubectl;
-              ./kubectl -n dslrig exec -it $HOSTNAME -c authdemo -- bash -c "kill -s TERM\$( ps -aux | grep java | awk 'NR==1{print \$2}' ) || true;" ;
               ./kubectl -n dslrig exec -it $HOSTNAME -c packetcreator-data -- bash -c "kill -9 \$( ps -aux | grep java | awk 'NR==1{print \$2}' ) || true;" ;
 
   secrets:
@@ -448,7 +440,7 @@ containers:
       - '-c'
       - 'echo "Initial sleep 30 seconds";
          sleep 30;
-         MY_PROBE_CHECK_PATHS="$packetUtilityBaseUrl/actuator/health,$authDemoServiceBaseURL:$authDemoServicePort/v1/identity/actuator/health";
+         MY_PROBE_CHECK_PATHS="$packetUtilityBaseUrl/actuator/health";
          for str in $(echo $MY_PROBE_CHECK_PATHS | tr "," " "); do
            COUNT=60;
            while [[ $COUNT -gt 0 ]]; do
@@ -467,62 +459,6 @@ containers:
          ./entrypoint.sh
          bash scripts/del.sh  ## Todo: Requires get api to shutdown authdemo and packetcreator. Currently we are stopping via kubectl command.
          '
-  authdemo:
-    image:
-      registry: docker.io
-      repository: mosipdev/authentication-demo-service
-      tag: develop
-      pullPolicy: Always
-    springServicePort: 8082
-    volumes:
-    - pvc_name: 'authdemo'
-      mountDir: '/home/mosip/authcerts'
-    envVars:
-      JDK_JAVA_OPTIONS: '-Xms2600M -Xmx2600M'
-      container_user: 'mosip'
-    envVarsCM:
-      - global
-      - s3
-      - keycloak-host
-      - db
-      - dslrig
-      - config-server-share
-      - artifactory-share
-    envVarsSecret:
-      - s3
-      - keycloak-client-secrets
-      - postgres-postgresql
-    healthcheck:
-      startupProbe:
-        enabled: true
-        httpGet:
-          path: /v1/identity/actuator/health
-          port: 8082
-        initialDelaySeconds: 0
-        periodSeconds: 20
-        timeoutSeconds: 5
-        failureThreshold: 60
-        successThreshold: 1
-      livenessProbe:
-        enabled: true
-        httpGet:
-          path: /v1/identity/actuator/health
-          port: 8082
-        initialDelaySeconds: 0
-        periodSeconds: 10
-        timeoutSeconds: 5
-        failureThreshold: 10
-        successThreshold: 1
-      readinessProbe:
-        enabled: true
-        httpGet:
-          path: /v1/identity/actuator/health
-          port: 8082
-        initialDelaySeconds: 30
-        periodSeconds: 10
-        timeoutSeconds: 5
-        failureThreshold: 6
-        successThreshold: 1
   packetcreator-data:
     image:
       registry: docker.io
@@ -533,7 +469,7 @@ containers:
     volumes:
     - pvc_name: 'packetcreator-data'
       mountDir: '/home/mosip/mountvolume'
-    - pvc_name: 'authdemo'
+    #- pvc_name: 'authdemo'
       mountDir: '/home/mosip/authcerts'
     envVars:
       JDK_JAVA_OPTIONS: '-Xms2600M -Xmx2600M'

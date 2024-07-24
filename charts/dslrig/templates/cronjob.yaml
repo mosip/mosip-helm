@@ -47,7 +47,6 @@ spec:
                   {{- end }}
                   {{- end }}
               volumeMounts:
-              {{- range $key, $value := (omit $.Values.containers "authdemo" ) }}
               {{- if $value.volumes }}
               {{- range $value.volumes  }}
               - name: {{ .pvc_name }}
