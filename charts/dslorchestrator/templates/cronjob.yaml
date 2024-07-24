@@ -56,13 +56,13 @@ spec:
               volumeMounts:
                 - name: {{ template "common.names.fullname" $ }}
                   mountPath: {{ $.Values.persistence.mountDir }}
-            - name: authdemo-packetcreator-accessibility-check
+            - name: packetcreator-accessibility-check
               image: rancher/curl
               imagePullPolicy: {{ $.Values.volumePermissions.image.pullPolicy | quote }}
               command:
                 - /bin/sh
                 - -c
-                - MY_PROBE_CHECK_PATHS="$packetUtilityBaseUrl/actuator/health,$authDemoServiceBaseURL:$authDemoServicePort/v1/identity/actuator/health"; for str in $(echo $MY_PROBE_CHECK_PATHS | sed "s/,/\n/g"); do curl_output="$(curl -w %{http_code} -o /dev/null -s -k $str)"; if ! [ "$curl_output" = "200" ]; then echo "$str failed with status code $curl_output" >> /dev/stderr && exit 1; fi;done
+                - MY_PROBE_CHECK_PATHS="$packetUtilityBaseUrl/actuator/health"; for str in $(echo $MY_PROBE_CHECK_PATHS | sed "s/,/\n/g"); do curl_output="$(curl -w %{http_code} -o /dev/null -s -k $str)"; if ! [ "$curl_output" = "200" ]; then echo "$str failed with status code $curl_output" >> /dev/stderr && exit 1; fi;done
               securityContext:
                 runAsUser: 0
               {{- if $.Values.volumePermissions.resources }}
