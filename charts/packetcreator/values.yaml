@@ -244,7 +244,8 @@ extraEnvVars: []
 
 ## ConfigMap with extra environment variables
 ##
-extraEnvVarsCM: []
+extraEnvVarsCM:
+  - packetcreator
 
 ## Secret with extra environment variables
 ##
