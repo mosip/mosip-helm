@@ -157,7 +157,7 @@ spec:
           {{- if $.Values.persistence.enabled }}
           - name: {{ template "common.names.fullname" $ }}
             persistentVolumeClaim:
-              claimName: {{ template "common.names.fullname" $ }}-pvc
+              claimName: {{ template "common.names.fullname" $ }}
           {{- end }}
           {{- if $.Values.enable_insecure }}
           - name: cacerts
