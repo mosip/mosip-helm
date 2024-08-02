@@ -333,13 +333,7 @@ persistence:
     - ReadWriteOnce
   size: 50G
   existingClaim:
-
-  nfs:
-    path: '/srv/nfs/mosip/packetcreator-authdemo-authcerts'
-    packetcreator_data_path: '/srv/nfs/mosip/packetcreator-data'
-    server: ''
   # Dir where config and keys are written inside container
-  mountDir: '/home/mosip/authcerts'
   packetcreator_data_mount_dir: '/home/mosip/mountvolume/'
 
 ## Init containers parameters:
@@ -450,7 +444,6 @@ metrics:
 packetcreator:
   configmaps:
     packetcreator:
-      authCertsPath: /home/mosip/authcerts
       mountPath: /home/mosip/mountvolume
   secrets:
 

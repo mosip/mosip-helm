@@ -61,16 +61,14 @@ spec:
           command:
             - /bin/bash
             - -c
-            - chown -R mosip:mosip {{ .Values.persistence.mountDir }} && chown -R mosip:mosip {{ .Values.persistence.packetcreator_data_mount_dir }}
+            - chown -R mosip:mosip {{ .Values.persistence.packetcreator_data_mount_dir }}
           securityContext:
             runAsUser: 0
           {{- if .Values.volumePermissions.resources }}
           resources: {{- toYaml .Values.volumePermissions.resources | nindent 12 }}
           {{- end }}
           volumeMounts:
-            - name: {{ template "common.names.fullname" . }}-authcerts
-              mountPath: {{ .Values.persistence.mountDir }}
-            - name: {{ template "common.names.fullname" . }}-data
+            - name: {{ template "common.names.fullname" . }}
               mountPath: {{ .Values.persistence.packetcreator_data_mount_dir }}
         {{- end }}
         {{- if .Values.enable_insecure }}
@@ -120,9 +118,7 @@ spec:
           resources: {{- toYaml .Values.resources | nindent 12 }}
           {{- end }}
           volumeMounts:
-            - name: {{ template "common.names.fullname" . }}-authcerts
-              mountPath: {{ .Values.persistence.mountDir }}
-            - name: {{ template "common.names.fullname" . }}-data
+            - name: {{ template "common.names.fullname" . }}
               mountPath: {{ .Values.persistence.packetcreator_data_mount_dir }}
             {{- if .Values.enable_insecure }}
             - mountPath: /usr/local/openjdk-11/lib/security/cacerts
@@ -149,12 +145,9 @@ spec:
         {{- end }}
       volumes:
       {{- if .Values.persistence.enabled }}
-        - name: {{ template "common.names.fullname" . }}-authcerts
+        - name: {{ template "common.names.fullname" . }}
           persistentVolumeClaim:
-            claimName: {{ template "common.names.fullname" . }}-authcerts-pvc
-        - name: {{ template "common.names.fullname" . }}-data
-          persistentVolumeClaim:
-            claimName: {{ template "common.names.fullname" . }}-data-pvc
+            claimName: {{ template "common.names.fullname" . }}
       {{- end }}
       {{- if .Values.enable_insecure }}
         - name: cacerts
