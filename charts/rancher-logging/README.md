@@ -1,6 +1,9 @@
 
 # Logging operator Chart
 
+> **Note:**
+> "We would like to clarify that we did not create the Helm charts in use. Instead, we have utilized existing Helm charts from `rancher/charts` repository to meet our specific requirements".
+
 [Logging operator](https://github.com/banzaicloud/logging-operator) Managed centralized logging component fluentd and fluent-bit instance on cluster.
 
 ## tl;dr:
