@@ -1,7 +1,7 @@
 # Rancher Logging
 
-> **Note:** 
-> "We would like to clarify that we did not create the Helm charts in use. Instead, we have utilized existing Helm charts from `rancher/charts` repository to meet our specific requirements".
+> **Note:**
+> "This Helm chart is taken from `rancher/charts` repository. For any issues or maintenance requests related to these charts, please open a ticket or pull request directly on the original repository".
 
 This chart is based off of the upstream [Banzai Logging Operator](https://banzaicloud.com/docs/one-eye/logging-operator/) chart. The chart deploys a logging operator and CRDs, which allows users to configure complex logging pipelines with a few simple custom resources. There are two levels of logging, which allow you to collect all logs in a cluster or from a single namespace.
 

@@ -1,7 +1,7 @@
 # Rancher Monitoring and Alerting
 
 > **Note:**
-> "We would like to clarify that we did not create the Helm charts in use. Instead, we have utilized existing Helm charts from `rancher/charts` repository to meet our specific requirements".
+> "This Helm chart is taken from `rancher/charts` repository. For any issues or maintenance requests related to these charts, please open a ticket or pull request directly on the original repository".
 
 This chart is based on the upstream [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) chart. The chart deploys [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator) and its CRDs along with [Grafana](https://github.com/grafana/helm-charts/tree/main/charts/grafana), [Prometheus Adapter](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-adapter) and additional charts / Kubernetes manifests to gather metrics. It allows users to monitor their Kubernetes clusters, view metrics in Grafana dashboards, and set up alerts and notifications.
 
