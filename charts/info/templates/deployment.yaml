@@ -1,0 +1,107 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "info.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: info
+  template:
+    metadata:
+      labels:
+        app: info
+    spec:
+      serviceAccountName: {{ .Release.Name }}
+      containers:
+        - name: nginx
+          image: {{ .Values.nginx.image }}
+          imagePullPolicy: {{ .Values.nginx.imagePullPolicy }}
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: result-file
+              mountPath: /usr/share/nginx/html/info
+              subPath: info.txt
+          {{- if .Values.resources }}
+          resources: {{- toYaml .Values.resources | nindent 12 }}
+          {{- end }}
+          {{- if .Values.startupProbe.enabled }}
+          startupProbe: {{- include "common.tplvalues.render" (dict "value" (omit .Values.startupProbe "enabled") "context" $) | nindent 12 }}
+          {{- else if .Values.customStartupProbe }}
+          startupProbe: {{- include "common.tplvalues.render" (dict "value" .Values.customStartupProbe "context" $) | nindent 12 }}
+          {{- end }}
+          {{- if .Values.livenessProbe.enabled }}
+          livenessProbe: {{- include "common.tplvalues.render" (dict "value" (omit .Values.livenessProbe "enabled") "context" $) | nindent 12 }}
+          {{- else if .Values.customLivenessProbe }}
+          livenessProbe: {{- include "common.tplvalues.render" (dict "value" .Values.customLivenessProbe "context" $) | nindent 12 }}
+          {{- end }}
+          {{- if .Values.readinessProbe.enabled }}
+          readinessProbe: {{- include "common.tplvalues.render" (dict "value" (omit .Values.readinessProbe "enabled") "context" $) | nindent 12 }}
+          {{- else if .Values.customReadinessProbe }}
+          readinessProbe: {{- include "common.tplvalues.render" (dict "value" .Values.customReadinessProbe "context" $) | nindent 12 }}
+          {{- end }}
+          {{- if .Values.sidecars }}
+          {{- include "common.tplvalues.render" ( dict "value" .Values.sidecars "context" $) | nindent 8 }}
+          {{- end }}
+        - name: script-runner
+          image: {{ .Values.scriptRunner.image }}
+          imagePullPolicy: {{ .Values.nginx.imagePullPolicy }}
+          command:
+            - /bin/sh
+            - -c
+            - |
+              apk add --no-cache bash curl bind-tools jq
+              
+              curl -LO "https://dl.k8s.io/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+              
+              chmod +x kubectl
+              
+              mv kubectl /usr/local/bin/
+              
+              cp /fetch-info.sh /tmp/fetch-info.sh
+              
+              chmod +x /tmp/fetch-info.sh
+              
+              /tmp/fetch-info.sh
+              
+              echo "0 2 * * * /tmp/fetch-info.sh" > /etc/crontabs/root
+              
+              crond -f
+          volumeMounts:
+            - name: script-file
+              mountPath: /fetch-info.sh
+              subPath: fetch-info.sh
+            - name: result-file
+              mountPath: /usr/share/nginx/html/info
+              subPath: info.txt
+          {{- if .Values.resources }}
+          resources: {{- toYaml .Values.resources | nindent 12 }}
+          {{- end }}
+          {{- if .Values.startupProbe.enabled }}
+          startupProbe: {{- include "common.tplvalues.render" (dict "value" (omit .Values.startupProbe "enabled") "context" $) | nindent 12 }}
+          {{- else if .Values.customStartupProbe }}
+          startupProbe: {{- include "common.tplvalues.render" (dict "value" .Values.customStartupProbe "context" $) | nindent 12 }}
+          {{- end }}
+          {{- if .Values.livenessProbe.enabled }}
+          livenessProbe: {{- include "common.tplvalues.render" (dict "value" (omit .Values.livenessProbe "enabled") "context" $) | nindent 12 }}
+          {{- else if .Values.customLivenessProbe }}
+          livenessProbe: {{- include "common.tplvalues.render" (dict "value" .Values.customLivenessProbe "context" $) | nindent 12 }}
+          {{- end }}
+          {{- if .Values.readinessProbe.enabled }}
+          readinessProbe: {{- include "common.tplvalues.render" (dict "value" (omit .Values.readinessProbe "enabled") "context" $) | nindent 12 }}
+          {{- else if .Values.customReadinessProbe }}
+          readinessProbe: {{- include "common.tplvalues.render" (dict "value" .Values.customReadinessProbe "context" $) | nindent 12 }}
+          {{- end }}
+          {{- if .Values.sidecars }}
+          {{- include "common.tplvalues.render" ( dict "value" .Values.sidecars "context" $) | nindent 8 }}
+          {{- end }}    
+      volumes:
+        - name: script-file
+          configMap:
+            name: {{ .Release.Name }}-script-config
+        - name: result-file
+          emptyDir: {}

@@ -1,0 +1,29 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  hosts:
+    - "*"
+  gateways:
+    {{- if .Values.istio.gateways }}
+      {{- range .Values.istio.gateways }}
+      - {{ . }}
+      {{- end }}
+      {{- end }}
+  http:
+    - match:
+        - uri:
+            prefix: {{ .Values.istio.prefix }}
+      rewrite:
+        uri: {{ .Values.istio.rewrite }}
+      route:
+        - destination:
+            host: {{ .Release.Name }}
+            port:
+              number: 80
+      headers:
+        request:
+          set:
+            x-forwarded-proto: https
