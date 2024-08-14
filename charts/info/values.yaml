@@ -61,5 +61,5 @@ istio:
   enabled: true
   gateways:
     - istio-system/internal
-  prefix: /deployment-info
-  rewrite: /deployment_info/deployment_info.txt
+  prefix: /info
+  rewrite: /info/info.txt

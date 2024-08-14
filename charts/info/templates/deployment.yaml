@@ -4,16 +4,16 @@ metadata:
   name: {{ .Release.Name }}
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "deployment-info.labels" . | nindent 4 }}
+    {{- include "info.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: deployment-info
+      app: info
   template:
     metadata:
       labels:
-        app: deployment-info
+        app: info
     spec:
       serviceAccountName: {{ .Release.Name }}
       containers:
@@ -24,8 +24,8 @@ spec:
             - containerPort: 80
           volumeMounts:
             - name: result-file
-              mountPath: /usr/share/nginx/html/deployment_info
-              subPath: deployment_info.txt
+              mountPath: /usr/share/nginx/html/info
+              subPath: info.txt
           {{- if .Values.resources }}
           resources: {{- toYaml .Values.resources | nindent 12 }}
           {{- end }}
@@ -62,22 +62,22 @@ spec:
               
               mv kubectl /usr/local/bin/
               
-              cp /fetch-deployment-info.sh /tmp/fetch-deployment-info.sh
+              cp /fetch-info.sh /tmp/fetch-info.sh
               
-              chmod +x /tmp/fetch-deployment-info.sh
+              chmod +x /tmp/fetch-info.sh
               
-              /tmp/fetch-deployment-info.sh
+              /tmp/fetch-info.sh
               
-              echo "0 2 * * * /tmp/fetch-deployment-info.sh" > /etc/crontabs/root
+              echo "0 2 * * * /tmp/fetch-info.sh" > /etc/crontabs/root
               
               crond -f
           volumeMounts:
             - name: script-file
-              mountPath: /fetch-deployment-info.sh
-              subPath: fetch-deployment-info.sh
+              mountPath: /fetch-info.sh
+              subPath: fetch-info.sh
             - name: result-file
-              mountPath: /usr/share/nginx/html/deployment_info
-              subPath: deployment_info.txt
+              mountPath: /usr/share/nginx/html/info
+              subPath: info.txt
           {{- if .Values.resources }}
           resources: {{- toYaml .Values.resources | nindent 12 }}
           {{- end }}

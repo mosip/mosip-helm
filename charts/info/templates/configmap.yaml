@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-script-config
+  namespace: {{ .Release.Namespace }}
+data:
+  fetch-info.sh: |
+    #!/bin/sh
+
+    EXCLUDED_NAMESPACE='^(istio|cattle|kube|info)'
+    OUTPUT_DIR=/usr/share/nginx/html/info/info.txt
+
+    # Clear existing info.txt or create if not exists
+    > $OUTPUT_DIR
+
+    kubectl get namespaces | awk 'NR>1 {print $1}' | grep -vE $EXCLUDED_NAMESPACE | while read namespace; do
+      echo "Namespace: $namespace" >> $OUTPUT_DIR
+      echo "----------------" >> $OUTPUT_DIR
+
+      # Get deployments
+      kubectl get deployments -n $namespace -o json | jq -r '.items[] | "Deployment: \(.metadata.name), Image: \(.spec.template.spec.containers[].image), Helm Chart Version: \(.metadata.labels["helm.sh/chart"])"' >> $OUTPUT_DIR
+
+      # Get statefulsets
+      kubectl get statefulsets -n $namespace -o json | jq -r '.items[] | "StatefulSet: \(.metadata.name), Image: \(.spec.template.spec.containers[].image), Helm Chart Version: \(.metadata.labels["helm.sh/chart"])"' >> $OUTPUT_DIR
+
+      # Get cronjobs
+      kubectl get cronjobs -n $namespace -o json | jq -r '.items[] | "CronJob: \(.metadata.name), Image: \(.spec.jobTemplate.spec.template.spec.containers[].image), Helm Chart Version: \(.metadata.labels["helm.sh/chart"])"' >> $OUTPUT_DIR
+
+      # Get jobs
+      kubectl get jobs -n $namespace -o json | jq -r '.items[] | "Job: \(.metadata.name), Image: \(.spec.template.spec.containers[].image), Helm Chart Version: \(.metadata.labels["helm.sh/chart"])"' >> $OUTPUT_DIR
+      
+      kubectl get pods -n $namespace -o json | jq -r '.items[] | .status.containerStatuses[] | select(.imageID | contains("istio") | not) | "ImageID: \(.imageID | sub("docker-pullable://"; ""))"' >> $OUTPUT_DIR
+      
+      echo "" >> $OUTPUT_DIR
+    done
+
+    echo "Script executed at $(date)" >> $OUTPUT_DIR
