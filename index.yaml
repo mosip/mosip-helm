@@ -865,7 +865,7 @@ entries:
     - https://mosip.github.io/mosip-helm/apitestrig-12.0.1-B2.tgz
     version: 12.0.1-B2
   - apiVersion: v2
-    created: "2024-08-14T08:24:37.270862683Z"
+    created: "2024-08-14T14:41:06.567936244Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -873,7 +873,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart to deploy APITESTRIG for MOSIP modules
-    digest: e17df782134ae6bc0329c90849e19ed402e9af9e2a1a52120648b35b9af5a8aa
+    digest: e49904f9f456d4d5568944f0126561764c245a03ceb1f95f6d084ce7df15542b
     home: https://mosip.io
     keywords:
     - mosip
@@ -4009,7 +4009,7 @@ entries:
     - https://mosip.github.io/mosip-helm/dslorchestrator-12.0.1-B3.tgz
     version: 12.0.1-B3
   - apiVersion: v2
-    created: "2024-08-02T10:26:16.70559672Z"
+    created: "2024-08-14T14:41:06.569585502Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -4017,7 +4017,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart to deploy dslorchestrator to test working of MOSIP modules
-    digest: 5aa439068612e1de2c0fe5b955306fa81f25183d1c1366c5568f1027b3920de3
+    digest: 8712c127fc7129a769f99e53ee31719a97c8b8733240e79bec90d28b55164762
     home: https://mosip.io
     keywords:
     - mosip
@@ -6187,6 +6187,23 @@ entries:
     type: application
     urls:
     - https://mosip.github.io/mosip-helm/idrepo-saltgen-0.0.1-develop.tgz
+    version: 0.0.1-develop
+  info:
+  - apiVersion: v2
+    created: "2024-08-14T14:41:06.570019842Z"
+    description: A Helm chart to get deployment information
+    digest: fad54437824453d25a7e5021a01ec0342947f2f366c003c41bab75ce61ad310e
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - info
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: info
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/info-0.0.1-develop.tgz
     version: 0.0.1-develop
   inji-certify:
   - apiVersion: v2
@@ -10305,7 +10322,7 @@ entries:
     - https://mosip.github.io/mosip-helm/packetcreator-12.0.1-B3.tgz
     version: 12.0.1-B3
   - apiVersion: v2
-    created: "2024-08-02T10:26:16.707103717Z"
+    created: "2024-08-14T14:41:06.57166333Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -10313,7 +10330,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for DSL orchestrator
-    digest: 623532c5a5af072fc09ea5a7c089d32df606e593507c34133b05f8b28788bf68
+    digest: 8cd4a4f29d242b1a15daaf3777d5da910271a7869f63607d568fa263c66aa6a6
     home: https://mosip.io
     keywords:
     - mosip
@@ -14044,10 +14061,10 @@ entries:
       catalog.cattle.io/upstream-version: 3.17.10
     apiVersion: v1
     appVersion: 3.17.10
-    created: "2024-08-13T12:41:01.277841607Z"
+    created: "2024-08-14T14:41:06.573259068Z"
     description: Collects and filter logs using highly configurable CRDs. Powered
       by Banzai Cloud Logging Operator.
-    digest: e3123f003c1c76f8ed64de3b1de7ab64b229e1f4f547bc6eb2c726e53954d9c2
+    digest: 6a74aae850ff625c11d9df6428ff659185296fb5f58da47f09dc7759dd26d931
     home: https://mosip.io
     icon: https://charts.rancher.io/assets/logos/logging.svg
     keywords:
@@ -14086,7 +14103,7 @@ entries:
       catalog.cattle.io/upstream-version: 19.0.3
     apiVersion: v2
     appVersion: 0.59.1
-    created: "2024-08-13T12:41:01.320281988Z"
+    created: "2024-08-14T14:41:06.61399215Z"
     dependencies:
     - condition: grafana.enabled
       name: grafana
@@ -14179,7 +14196,7 @@ entries:
     description: Collects several related Helm charts, Grafana dashboards, and Prometheus
       rules combined with documentation and scripts to provide easy to operate end-to-end
       Kubernetes cluster monitoring with Prometheus using the Prometheus Operator.
-    digest: 7444ee7e9439db31c821b5d92e77df84515937394908374fa4244e23835af31f
+    digest: 47e7dffd3472686f9b9d842f5b7362946fcc4c1a93c631c4202c577fea399238
     home: https://github.com/prometheus-operator/kube-prometheus
     icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
     keywords:
@@ -14226,9 +14243,9 @@ entries:
       catalog.cattle.io/namespace: cattle-monitoring-system
       catalog.cattle.io/release-name: rancher-monitoring-crd
     apiVersion: v2
-    created: "2024-08-13T12:41:01.323322319Z"
+    created: "2024-08-14T14:41:06.616127065Z"
     description: Installs the CRDs for rancher-monitoring.
-    digest: 369094292ba0cfba22e6862997aed429fd790e8c16c33e22580ce53758eab031
+    digest: bd34fed352305e81a58f7534f9f5384f5fb388cf51266bbc1275ce5750f87f62
     home: https://mosip.io
     keywords:
     - mosip
@@ -21512,4 +21529,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-08-14T09:51:36.286897311Z"
+generated: "2024-08-14T14:41:06.565923877Z"
