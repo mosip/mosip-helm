@@ -515,6 +515,7 @@ apitestrig:
       authDemoServicePort: 80
       eSignetDeployed: yes or no
       push-reports-to-s3: 'yes'
+      authCertsPath: '/home/mosip/authcerts'
     scripts:
       fetch_docker_image_hash_ids.sh: |
         #!/bin/bash
