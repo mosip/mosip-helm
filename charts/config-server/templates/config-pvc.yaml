@@ -7,7 +7,9 @@ metadata:
 spec:
   storageClassName: {{ .Values.pv.storageClass }}
   accessModes:
-    - ReadOnlyMany
+    {{- range .Values.pv.accessModes }}
+      - {{ . }}
+    {{- end }}
   resources:
     requests:
       storage: {{ .Values.pv.size }}

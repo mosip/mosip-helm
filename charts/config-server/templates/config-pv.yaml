@@ -10,7 +10,9 @@ spec:
   capacity:
     storage: {{ .Values.pv.size }}
   accessModes:
-    - ReadOnlyMany
+    {{- range .Values.pv.accessModes }}
+      - {{ . }}
+    {{- end }}
   nfs:
     server: {{ .Values.pv.nfs.server }}
     path: {{ .Values.pv.nfs.path }}

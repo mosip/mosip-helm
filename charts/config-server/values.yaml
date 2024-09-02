@@ -127,7 +127,7 @@ affinity: {}
 ## version: branch/tag of the repo to be used
 gitRepo:
   uri: https://github.com/mosip/mosip-config
-  version: develop1
+  version: develop
   ## Folders within the base repo where properties may be found.
   searchFolders: ""
   private: false
@@ -136,8 +136,8 @@ gitRepo:
   token: ""
 
 localRepo:
-  enabled: false        # Set this to "true" inorder to Enable config-server to pull configurations from local git repo.
-  spring_profiles_active: ""       # Set this to "native" inorder to Enable config-server to pull configurations from local git repo.
+  enabled: true       # Set this to "true" inorder to Enable config-server to pull configurations from local git repo.
+  spring_profiles_active: "default"       # Set this to "native" inorder to Enable config-server to pull configurations from local git repo.
   spring_cloud_config_server_native_search_locations: ""        # Set this to "file:///var/lib/config_repo" inorder to Enable config-server to pull configurations from local git repo.
   spring_cloud_config_server_accept_empty: false        # Set this to "true" inorder to Enable config-server to pull configurations from local git repo.
   spring_cloud_config_server_git_force_pull: true        # Set this to "false" inorder to Enable config-server to pull configurations from local git repo.
@@ -160,14 +160,14 @@ pv:
   name: config-server
   storageClass: nfs-client
   accessModes:
-    - ReadOnlyMany
+    - ReadWriteMany
   size: 10Mi
   existingClaim:
   # Dir where config and keys are written inside container
   mountDir: '/var/lib/config_repo'
   nfs:
-    path: '/srv/nfs/mosip/dev/mosip-config'  # Dir within the nfs server where config repo is cloned/maintained locally.
-    server: '172.31.15.176'  # Ip address of nfs server.
+    path: ''  # Dir within the nfs server where config repo is cloned/maintained locally.
+    server: ''  # Ip address of nfs server.
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
