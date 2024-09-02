@@ -35,12 +35,23 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+            - name: spring_profiles_active
+              value: {{ .Values.localRepo.spring_profiles_active | quote }}
+            - name: spring_cloud_config_server_native_search-locations
+              value: {{ .Values.localRepo.spring_cloud_config_server_native_search_locations | quote }}
+            - name: spring_cloud_config_server_accept-empty
+              value: {{ .Values.localRepo.spring_cloud_config_server_accept_empty | quote }}
+            - name: spring_cloud_config_server_git_force-pull
+              value: {{ .Values.localRepo.spring_cloud_config_server_git_force_pull | quote }}
+            - name: spring_cloud_config_server_git_refreshRate
+              value: {{ .Values.localRepo.spring_cloud_config_server_git_refreshRate | quote }}
+            - name: spring_cloud_config_server_git_cloneOnStart
+              value: {{ .Values.localRepo.spring_cloud_config_server_git_cloneOnStart | quote }}
             - name: SPRING_CLOUD_CONFIG_SERVER_GIT_PASSWORD
               valueFrom:
                  secretKeyRef:
                    name: {{ include "config-server.fullname" . }}
                    key: github-token
-
             {{- range .Values.envVariables }}
             {{- if .enabled }}
             - name: {{ .name }}
@@ -61,7 +72,6 @@ spec:
             {{- if .Values.extraEnvVars }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}
-
           envFrom:
             - configMapRef:
                 name: {{ printf "%s-env-vars" (include "config-server.fullname" .) }}
@@ -86,6 +96,15 @@ spec:
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      {{- if .Values.localRepo.enabled }}
+          volumeMounts:
+            - name: {{ .Values.pv.name }}
+              mountPath: {{ .Values.pv.mountDir }}
+      volumes:
+      - name: {{ .Values.pv.name }}
+        persistentVolumeClaim:
+          claimName: {{ .Values.pv.name }}
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
