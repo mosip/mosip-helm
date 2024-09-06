@@ -139,6 +139,9 @@ spec:
             ports:
                 - name: spring-service
                   containerPort: {{ $.Values.springServicePort }}
+            {{- if $.Values.resources }}
+            resources: {{- toYaml $.Values.resources | nindent 14 }}
+            {{- end }}
             volumeMounts:
                 - name: {{ template "common.names.fullname" $ }}
                   mountPath: {{ $.Values.persistence.mountDir }}
