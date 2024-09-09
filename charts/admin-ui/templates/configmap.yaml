@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "common.names.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels: {{- include "common.labels.standard" . | nindent 4 }}
+    {{- if .Values.commonLabels }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
+    {{- end }}
+  {{- if .Values.commonAnnotations }}
+  annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
+  {{- end }}
+data:
+  config.json: |-
+    {"baseUrl":"{{ tpl .Values.admin.apiUrl . }}",  "adminUrl" : "/", "primaryLangCode": "eng", "secondaryLangCode": "fra", "validateToken": "authmanager/authorize/admin/validateToken", "login": "admin/login/",  "logout": "admin/logout/user", "templateRepoUrl": "/templates/" }
+
+  default.conf: |-
+    server {
+      listen       8080;
+      server_name  localhost;
+      add_header X-Frame-Options DENY;
+      
+      #charset koi8-r;
+      #access_log  /var/log/nginx/host.access.log  main;
+      
+      index  index.html index.htm;
+      
+      location ^~ /templates/ {
+          if ($uri !~ \.(csv|xlsx)$  ) { return 403; }
+          
+          autoindex on;
+          default_type application/octet-stream;
+          #add_header Content-disposition "attachment; filename=$1";
+          index index.html index.php;
+          alias /usr/share/nginx/html/templates/;
+      }
+       
+      location / {
+          alias   /usr/share/nginx/html/;
+      }
+    }
+
