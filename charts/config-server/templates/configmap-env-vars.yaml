@@ -6,7 +6,7 @@ metadata:
 data:
   SPRING_CLOUD_CONFIG_SERVER_GIT_SEARCHPATHS: {{ .Values.gitRepo.searchFolders  | quote }}
   {{- if .Values.localRepo.enabled }}
-  SPRING_CLOUD_CONFIG_SERVER_GIT_URI: {{ .Values.pv.mountDir | quote }}
+  SPRING_CLOUD_CONFIG_SERVER_GIT_URI: {{ .Values.volume.mountDir | quote }}
   {{- else }}
   SPRING_CLOUD_CONFIG_SERVER_GIT_URI: {{ .Values.gitRepo.uri | quote }}
   {{- end }}

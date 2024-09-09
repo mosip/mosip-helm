@@ -2,18 +2,18 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: {{ .Values.pv.name }}
+  name: {{ .Values.volume.name }}
   labels:
-    name: {{ .Values.pv.name }}
+    name: {{ .Values.volume.name }}
 spec:
-  storageClassName: {{ .Values.pv.storageClass }}
+  storageClassName: {{ .Values.volume.storageClass }}
   capacity:
-    storage: {{ .Values.pv.size }}
+    storage: {{ .Values.volume.size }}
   accessModes:
-    {{- range .Values.pv.accessModes }}
+    {{- range .Values.volume.accessModes }}
       - {{ . }}
     {{- end }}
   nfs:
-    server: {{ .Values.pv.nfs.server }}
-    path: {{ .Values.pv.nfs.path }}
+    server: {{ .Values.volume.nfs.server }}
+    path: {{ .Values.volume.nfs.path }}
 {{- end }}

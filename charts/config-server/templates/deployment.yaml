@@ -35,6 +35,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+          {{- if .Values.localRepo.enabled }}
             - name: spring_profiles_active
               value: {{ .Values.localRepo.spring_profiles_active | quote }}
             - name: spring_cloud_config_server_native_search-locations
@@ -47,6 +48,7 @@ spec:
               value: {{ .Values.localRepo.spring_cloud_config_server_git_refreshRate | quote }}
             - name: spring_cloud_config_server_git_cloneOnStart
               value: {{ .Values.localRepo.spring_cloud_config_server_git_cloneOnStart | quote }}
+          {{- end }}
             - name: SPRING_CLOUD_CONFIG_SERVER_GIT_PASSWORD
               valueFrom:
                  secretKeyRef:
@@ -98,12 +100,12 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- if .Values.localRepo.enabled }}
           volumeMounts:
-            - name: {{ .Values.pv.name }}
-              mountPath: {{ .Values.pv.mountDir }}
+            - name: {{ .Values.volume.name }}
+              mountPath: {{ .Values.volume.mountDir }}
       volumes:
-      - name: {{ .Values.pv.name }}
+      - name: {{ .Values.volume.name }}
         persistentVolumeClaim:
-          claimName: {{ .Values.pv.name }}
+          claimName: {{ .Values.volume.name }}
       {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
