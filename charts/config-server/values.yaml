@@ -32,7 +32,7 @@ springServicePort: 51000
 startupProbe:
   enabled: true
   httpGet:
-    path: "/config/*/*"
+    path: "/config/application/default"
     port: 51000
   initialDelaySeconds: 0
   periodSeconds: 10
@@ -43,7 +43,7 @@ startupProbe:
 livenessProbe:
   enabled: true
   httpGet:
-    path: "/config/*/*"
+    path: "/config/application/default"
     port: 51000
   initialDelaySeconds: 20
   periodSeconds: 10
@@ -54,7 +54,7 @@ livenessProbe:
 readinessProbe:
   enabled: true
   httpGet:
-    path: "/config/*/*"
+    path: "/config/application/default"
     port: 51000
   initialDelaySeconds: 0
   periodSeconds: 10
@@ -127,7 +127,7 @@ affinity: {}
 ## version: branch/tag of the repo to be used
 gitRepo:
   uri: https://github.com/mosip/mosip-config
-  version: 1.2.0_v3
+  version: develop
   ## Folders within the base repo where properties may be found.
   searchFolders: ""
   private: false
@@ -135,6 +135,73 @@ gitRepo:
   username: ""
   token: ""
 
+localRepo:
+  enabled: false
+  spring_profiles_active: "native"
+  spring_cloud_config_server_native_search_locations: "file:///var/lib/config_repo"
+  spring_cloud_config_server_accept_empty: true
+  spring_cloud_config_server_git_force_pull: false
+  spring_cloud_config_server_git_refreshRate: 0
+  spring_cloud_config_server_git_cloneOnStart: false
+
+volume:
+  ## If defined, storageClassName: <storageClass>
+  ## If set to "-", storageClassName: "", which disables dynamic provisioning
+  ## If undefined (the default) or set to null, no storageClassName spec is
+  ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+  ##   GKE, AWS & OpenStack).
+  ##
+  # storageClass: "-"
+  ##
+  ## If you want to reuse an existing claim, you can pass the name of the PVC using
+  ## the existingClaim variable
+  # existingClaim: your-claim
+  ## ReadWriteMany not supported by AWS gp2
+  name: config-server
+  storageClass: nfs-client
+  accessModes:
+    - ReadWriteMany
+  size: 10Mi
+  existingClaim:
+  # Dir where config and keys are written inside container
+  mountDir: '/var/lib/config_repo'
+  nfs:
+    path: ''  # Dir within the nfs server where config repo is cloned/maintained locally.
+    server: ''  # Ip address of nfs server.
+
+## Init containers parameters:
+## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
+##
+volumePermissions:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: bitnami/bitnami-shell
+    tag: "10"
+    pullPolicy: Always
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ##
+    pullSecrets: []
+    ##   - myRegistryKeySecretName
+  ## Init containers' resource requests and limits
+  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+  ##
+  resources:
+    ## We usually recommend not to specify default resources and to leave this as a conscious
+    ## choice for the user. This also increases chances charts run on environments with little
+    ## resources, such as Minikube. If you do want to specify resources, uncomment the following
+    ## lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    ##
+    limits: {}
+    ##   cpu: 100m
+    ##   memory: 128Mi
+    ##
+    requests: {}
+    ##   cpu: 100m
+    ##   memory: 128Mi
+    ##
 
 # All env variables that are accessed from mosip config properties
 envVariables:
