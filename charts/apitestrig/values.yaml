@@ -494,6 +494,12 @@ modules:
       repository: mosipqa/apitest-mimoto
       tag: develop
       pullPolicy: Always
+  injicertify:
+    enabled: true
+    image:
+      repository: mosipqa/apitest-injicertify
+      tag: develop
+      pullPolicy: Always
 
 crontime: "0 3 * * *"    ## run cronjob every day at 3 AM (time hr: 0-23 )
 
