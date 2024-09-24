@@ -11,7 +11,7 @@ data:
     export PGPASSWORD=$POSTGRES_PASSWORD
 
     # List of schemas
-    SCHEMAS=("audit" "credential" "hotlist" "ida" "idmap" "idrepo" "kernel" "keymgr" "master" "pms" "prereg" "regprc" "resident")
+    SCHEMAS=( "master" )
 
     if [ "{{ .Values.user.action }}" = "create" ]; then
       # Create user and set connection limit
