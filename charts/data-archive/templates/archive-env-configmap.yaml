@@ -17,7 +17,7 @@ data:
   DB_SERVERIP: {{ .Values.databases.archive_db.host | quote }}
   DB_PORT: {{ .Values.databases.archive_db.port | quote }}
   DML_FLAG: {{ .Values.databases.archive_db.dml | quote }}
-  DB_NAMES: {{ .Values.databases.source_db.provide_db_names_to_archive | quote }}
+  BATCH_SIZE: {{ .Values.databases.archive_db.batch_size | quote }}
   AUDIT_SOURCE_DB_HOST: {{ .Values.databases.source_db.source_audit_host | quote }}
   AUDIT_SOURCE_DB_PORT: {{ .Values.databases.source_db.source_audit_port | quote }}
   AUDIT_SOURCE_DB_UNAME: {{ .Values.databases.source_db.source_audit_uname | quote }}
@@ -78,4 +78,3 @@ data:
   ARCHIVE_DB_UNAME: {{ .Values.databases.archive_db.archiveuname | quote }}
   ARCHIVE_DB_NAME: {{ .Values.databases.archive_db.archive_dbname | quote }}
   ARCHIVE_SCHEMA_NAME: {{ .Values.databases.archive_db.archive_schemaname | quote }}
-  CONTAINER_VOLUME_PATH: {{ .Values.databases.container_volume_path | quote }}
