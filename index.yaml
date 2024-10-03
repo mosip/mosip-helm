@@ -1166,6 +1166,29 @@ entries:
     - https://mosip.github.io/mosip-helm/artifactory-1.1.5.tgz
     version: 1.1.5
   - apiVersion: v2
+    created: "2024-10-03T09:43:02.802099614Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Artifactory
+    digest: 9dca52832976f34d39496084bc32c622356cc6f76f40fc711237500f996a3a4d
+    home: https://mosip.io
+    keywords:
+    - artifactory
+    - antivirus
+    - anti-virus
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: artifactory
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/artifactory-0.9.1.tgz
+    version: 0.9.1
+  - apiVersion: v2
     created: "2024-09-24T15:49:02.040065634Z"
     dependencies:
     - name: common
@@ -22185,4 +22208,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-10-03T09:05:53.949411095Z"
+generated: "2024-10-03T09:43:02.800461286Z"
