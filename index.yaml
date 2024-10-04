@@ -8948,6 +8948,28 @@ entries:
     - https://mosip.github.io/mosip-helm/mock-identity-system-1.1.0-develop.tgz
     version: 1.1.0-develop
   - apiVersion: v2
+    created: "2024-10-04T13:36:08.859895491Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP mock-identity-system module
+    digest: 9cf9d1518f44b55760913a68d8045d38662fb7f83c6e4e5424e0c86545416e4b
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - mock-identity-system
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: mock-identity-system
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/mock-identity-system-0.10.0-develop.tgz
+    version: 0.10.0-develop
+  - apiVersion: v2
     created: "2024-06-14T17:28:11.69438802Z"
     dependencies:
     - name: common
@@ -9335,6 +9357,28 @@ entries:
     - https://mosip.github.io/mosip-helm/mock-relying-party-service-1.1.0-develop.tgz
     version: 1.1.0-develop
   - apiVersion: v2
+    created: "2024-10-04T13:36:08.861384403Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to file server application.
+    digest: 29ee210276dd4d7706f641b9b690e5f93b252569af54408ecd35fdde32f2495a
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - mock-relying-party-service
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: mock-relying-party-service
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/mock-relying-party-service-0.10.0-develop.tgz
+    version: 0.10.0-develop
+  - apiVersion: v2
     created: "2024-06-14T17:28:11.695907369Z"
     dependencies:
     - name: common
@@ -9511,6 +9555,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/mock-relying-party-ui-1.1.0-develop.tgz
     version: 1.1.0-develop
+  - apiVersion: v2
+    created: "2024-10-04T13:36:08.86359587Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP OIDC UI module
+    digest: f7b38eabac9c1acec57ddaf2144e702f3e1bd822b28532ad3c78cfa594c0cf8e
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - mock-relying-party-ui
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: mock-relying-party-ui
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/mock-relying-party-ui-0.10.0-develop.tgz
+    version: 0.10.0-develop
   - apiVersion: v2
     created: "2024-06-14T17:28:11.697484375Z"
     dependencies:
@@ -22387,4 +22453,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-10-04T12:40:16.618771707Z"
+generated: "2024-10-04T13:36:08.858103154Z"
