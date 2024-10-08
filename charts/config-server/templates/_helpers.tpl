@@ -60,3 +60,16 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Determine if there are any native repos in the spring composite repos.
+*/}}
+{{- define "config-server.hasNative" -}}
+{{- $hasNative := false -}}
+{{- range .Values.spring_profiles.spring_compositeRepos }}
+  {{- if eq .type "native" }}
+    {{- $hasNative = true -}}
+  {{- end }}
+{{- end }}
+{{- $hasNative -}}
+{{- end -}}
