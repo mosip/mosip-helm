@@ -21301,6 +21301,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/softhsm-0.0.1-develop.tgz
     version: 0.0.1-develop
+  softhsmbackup:
+  - apiVersion: v2
+    created: "2024-10-15T16:22:54.430105035Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy softhsmbackup
+    digest: 037ce35c6dc91976e35400a328aa718313d55b97968df5af8f8dbaaa9c687c09
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - softhsmbackup
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: softhsmbackup
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/softhsmbackup-0.0.1-develop.tgz
+    version: 0.0.1-develop
   status-check:
   - apiVersion: v2
     created: "2024-07-10T10:45:13.910318638Z"
@@ -22520,4 +22543,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-10-15T13:16:18.77171461Z"
+generated: "2024-10-15T16:22:54.428657294Z"
