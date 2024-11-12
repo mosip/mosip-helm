@@ -5,6 +5,15 @@
 {{- end -}}
 {{- end -}}
 
+{{- define "monitoring_registry" -}}
+  {{- $temp_registry := (include "system_default_registry" .) -}}
+  {{- if $temp_registry -}}
+    {{- trimSuffix "/" $temp_registry -}}
+  {{- else -}}
+    {{- .Values.global.imageRegistry -}}
+  {{- end -}}
+{{- end -}}
+
 {{/*
 https://github.com/helm/helm/issues/4535#issuecomment-477778391
 Usage: {{ include "call-nested" (list . "SUBCHART_NAME" "TEMPLATE") }}
@@ -173,6 +182,11 @@ The longest name that gets created adds and extra 37 characters, so truncation s
 {{- end }}
 {{- end }}
 
+{{/* Prometheus apiVersion for networkpolicy */}}
+{{- define "kube-prometheus-stack.prometheus.networkPolicy.apiVersion" -}}
+{{- print "networking.k8s.io/v1" -}}
+{{- end }}
+
 {{/* Alertmanager custom resource instance name */}}
 {{- define "kube-prometheus-stack.alertmanager.crname" -}}
 {{- if .Values.cleanPrometheusOperatorObjectNames }}
@@ -186,6 +200,12 @@ The longest name that gets created adds and extra 37 characters, so truncation s
 {{- define "kube-prometheus-stack.thanosRuler.fullname" -}}
 {{- printf "%s-thanos-ruler" (include "kube-prometheus-stack.fullname" .) -}}
 {{- end }}
+
+{{/* Shortened name suffixed with thanos-ruler */}}
+{{- define "kube-prometheus-stack.thanosRuler.name" -}}
+{{- default (printf "%s-thanos-ruler" (include "kube-prometheus-stack.name" .)) .Values.thanosRuler.name -}}
+{{- end }}
+
 
 {{/* Create chart name and version as used by the chart label. */}}
 {{- define "kube-prometheus-stack.chartref" -}}
@@ -236,7 +256,7 @@ heritage: {{ $.Release.Service | quote }}
 {{/* Create the name of thanosRuler service account to use */}}
 {{- define "kube-prometheus-stack.thanosRuler.serviceAccountName" -}}
 {{- if .Values.thanosRuler.serviceAccount.create -}}
-    {{ default (include "kube-prometheus-stack.thanosRuler.fullname" .) .Values.thanosRuler.serviceAccount.name }}
+    {{ default (include "kube-prometheus-stack.thanosRuler.name" .) .Values.thanosRuler.serviceAccount.name }}
 {{- else -}}
     {{ default "default" .Values.thanosRuler.serviceAccount.name }}
 {{- end -}}
@@ -356,6 +376,25 @@ Use the prometheus-node-exporter namespace override for multi-namespace deployme
   {{- $secure := index . 2 -}}
   {{- $userValue := index . 3 -}}
   {{- include "kube-prometheus-stack.kubeVersionDefaultValue" (list $values ">= 1.23-0" $insecure $secure $userValue) -}}
+{{- end -}}
+
+{{/* Sets default scrape limits for servicemonitor */}}
+{{- define "servicemonitor.scrapeLimits" -}}
+{{- with .sampleLimit }}
+sampleLimit: {{ . }}
+{{- end }}
+{{- with .targetLimit }}
+targetLimit: {{ . }}
+{{- end }}
+{{- with .labelLimit }}
+labelLimit: {{ . }}
+{{- end }}
+{{- with .labelNameLengthLimit }}
+labelNameLengthLimit: {{ . }}
+{{- end }}
+{{- with .labelValueLengthLimit }}
+labelValueLengthLimit: {{ . }}
+{{- end }}
 {{- end -}}
 
 {{/*

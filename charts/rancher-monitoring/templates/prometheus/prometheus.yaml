@@ -12,6 +12,7 @@ metadata:
 {{ toYaml .Values.prometheus.annotations | indent 4 }}
 {{- end }}
 spec:
+{{- if or .Values.prometheus.prometheusSpec.alertingEndpoints .Values.alertmanager.enabled }}
   alerting:
     alertmanagers:
 {{- if .Values.prometheus.prometheusSpec.alertingEndpoints }}
@@ -24,28 +25,29 @@ spec:
         pathPrefix: "{{ .Values.alertmanager.alertmanagerSpec.routePrefix }}"
         {{- end }}
         apiVersion: {{ .Values.alertmanager.apiVersion }}
-{{- else }}
-      []
+{{- end }}
 {{- end }}
 {{- if .Values.prometheus.prometheusSpec.apiserverConfig }}
   apiserverConfig:
 {{ toYaml .Values.prometheus.prometheusSpec.apiserverConfig | indent 4}}
 {{- end }}
 {{- if .Values.prometheus.prometheusSpec.image }}
+  {{- $registry := include "monitoring_registry" . | default .Values.prometheus.prometheusSpec.image.registry -}}
   {{- if and .Values.prometheus.prometheusSpec.image.tag .Values.prometheus.prometheusSpec.image.sha }}
-  image: "{{ template "system_default_registry" . }}{{ .Values.prometheus.prometheusSpec.image.repository }}:{{ .Values.prometheus.prometheusSpec.image.tag }}@sha256:{{ .Values.prometheus.prometheusSpec.image.sha }}"
+  image: "{{ $registry }}/{{ .Values.prometheus.prometheusSpec.image.repository }}:{{ .Values.prometheus.prometheusSpec.image.tag }}@sha256:{{ .Values.prometheus.prometheusSpec.image.sha }}"
   {{- else if .Values.prometheus.prometheusSpec.image.sha }}
-  image: "{{ template "system_default_registry" . }}{{ .Values.prometheus.prometheusSpec.image.repository }}@sha256:{{ .Values.prometheus.prometheusSpec.image.sha }}"
+  image: "{{ $registry }}/{{ .Values.prometheus.prometheusSpec.image.repository }}@sha256:{{ .Values.prometheus.prometheusSpec.image.sha }}"
   {{- else if .Values.prometheus.prometheusSpec.image.tag }}
-  image: "{{ template "system_default_registry" . }}{{ .Values.prometheus.prometheusSpec.image.repository }}:{{ .Values.prometheus.prometheusSpec.image.tag }}"
+  image: "{{ $registry }}/{{ .Values.prometheus.prometheusSpec.image.repository }}:{{ .Values.prometheus.prometheusSpec.image.tag }}"
   {{- else }}
-  image: "{{ template "system_default_registry" . }}{{ .Values.prometheus.prometheusSpec.image.repository }}"
+  image: "{{ $registry }}/{{ .Values.prometheus.prometheusSpec.image.repository }}"
   {{- end }}
-  version: {{ .Values.prometheus.prometheusSpec.image.tag }}
-  {{- if .Values.prometheus.prometheusSpec.image.sha }}
-  sha: {{ .Values.prometheus.prometheusSpec.image.sha }}
-  {{- end }}
+  version: {{ default .Values.prometheus.prometheusSpec.image.tag .Values.prometheus.prometheusSpec.version }}
 {{- end }}
+{{- if .Values.prometheus.prometheusSpec.additionalArgs }}
+  additionalArgs:
+{{ toYaml .Values.prometheus.prometheusSpec.additionalArgs | indent 4}}
+{{- end -}}
 {{- if .Values.prometheus.prometheusSpec.externalLabels }}
   externalLabels:
 {{ tpl (toYaml .Values.prometheus.prometheusSpec.externalLabels | indent 4) . }}
@@ -113,6 +115,12 @@ spec:
   retention: {{ .Values.prometheus.prometheusSpec.retention | quote  }}
 {{- if .Values.prometheus.prometheusSpec.retentionSize }}
   retentionSize: {{ .Values.prometheus.prometheusSpec.retentionSize | quote }}
+{{- end }}
+{{- if .Values.prometheus.prometheusSpec.tsdb }}
+  tsdb:
+    {{- if .Values.prometheus.prometheusSpec.tsdb.outOfOrderTimeWindow }}
+    outOfOrderTimeWindow: {{ .Values.prometheus.prometheusSpec.tsdb.outOfOrderTimeWindow }}
+    {{- end }}
 {{- end }}
 {{- if eq .Values.prometheus.prometheusSpec.walCompression false }}
   walCompression: false
@@ -207,6 +215,7 @@ spec:
 {{ else }}
   ruleNamespaceSelector: {}
 {{- end }}
+{{- if not (has "agent" .Values.prometheus.prometheusSpec.enableFeatures) }}
 {{- if .Values.prometheus.prometheusSpec.ruleSelector }}
   ruleSelector:
 {{ toYaml .Values.prometheus.prometheusSpec.ruleSelector | indent 4}}
@@ -216,6 +225,7 @@ spec:
       release: {{ $.Release.Name | quote }}
 {{ else }}
   ruleSelector: {}
+{{- end }}
 {{- end }}
 {{- if .Values.prometheus.prometheusSpec.storageSpec }}
   storage:
@@ -241,7 +251,7 @@ spec:
         labelSelector:
           matchExpressions:
             - {key: app.kubernetes.io/name, operator: In, values: [prometheus]}
-            - {key: prometheus, operator: In, values: [{{ template "kube-prometheus-stack.fullname" . }}-prometheus]}
+            - {key: prometheus, operator: In, values: [{{ template "kube-prometheus-stack.prometheus.crname" . }}]}
 {{- else if eq .Values.prometheus.prometheusSpec.podAntiAffinity "soft" }}
     podAntiAffinity:
       preferredDuringSchedulingIgnoredDuringExecution:
@@ -251,7 +261,7 @@ spec:
           labelSelector:
             matchExpressions:
               - {key: app.kubernetes.io/name, operator: In, values: [prometheus]}
-              - {key: prometheus, operator: In, values: [{{ template "kube-prometheus-stack.fullname" . }}-prometheus]}
+              - {key: prometheus, operator: In, values: [{{ template "kube-prometheus-stack.prometheus.crname" . }}]}
 {{- end }}
 {{- end }}
   tolerations: {{ include "linux-node-tolerations" . | nindent 4 }}
@@ -353,7 +363,8 @@ spec:
 {{- end }}
   excludedFromEnforcement:
 {{- range $prometheusDefaultRulesExcludedFromEnforce.rules }}
-    - resource: prometheusrules
+    - group: monitoring.coreos.com
+      resource: prometheusrules
       namespace: "{{ template "kube-prometheus-stack.namespace" $ }}"
       name: "{{ printf "%s-%s" (include "kube-prometheus-stack.fullname" $) . | trunc 63 | trimSuffix "-" }}"
 {{- end }}
@@ -384,5 +395,10 @@ spec:
 {{- end }}
 {{- if .Values.prometheus.prometheusSpec.minReadySeconds }}
   minReadySeconds: {{ .Values.prometheus.prometheusSpec.minReadySeconds }}
+{{- end }}
+  hostNetwork: {{ .Values.prometheus.prometheusSpec.hostNetwork }}
+{{- if .Values.prometheus.prometheusSpec.hostAliases }}
+  hostAliases:
+{{ toYaml .Values.prometheus.prometheusSpec.hostAliases | indent 4 }}
 {{- end }}
 {{- end }}

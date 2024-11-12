@@ -1,4 +1,10 @@
 annotations:
+  artifacthub.io/license: AGPL-3.0-only
+  artifacthub.io/links: |
+    - name: Chart Source
+      url: https://github.com/grafana/helm-charts
+    - name: Upstream Project
+      url: https://github.com/grafana/grafana
   catalog.cattle.io/hidden: "true"
   catalog.cattle.io/kube-version: '>= 1.16.0-0 < 1.27.0-0'
   catalog.cattle.io/os: linux
@@ -6,10 +12,13 @@ annotations:
   catalog.rancher.io/namespace: cattle-monitoring-system
   catalog.rancher.io/release-name: rancher-grafana
 apiVersion: v2
-appVersion: 9.1.5
+appVersion: 10.1.0
 description: The leading tool for querying and visualizing time series and metrics.
 home: https://grafana.net
 icon: https://raw.githubusercontent.com/grafana/grafana/master/public/img/logo_transparent_400x.png
+keywords:
+- monitoring
+- metric
 kubeVersion: ^1.8.0-0
 maintainers:
 - email: zanhsieh@gmail.com
@@ -25,5 +34,6 @@ maintainers:
 name: grafana
 sources:
 - https://github.com/grafana/grafana
+- https://github.com/grafana/helm-charts
 type: application
-version: 6.38.6
+version: 6.59.0

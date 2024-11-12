@@ -4,21 +4,26 @@ global:
       enabled: false
     systemDefaultRegistry: ""
 
+  # To help compatibility with other charts which use global.imagePullSecrets.
+  # Allow either an array of {name: pullSecret} maps (k8s-style), or an array of strings (more common helm-style).
+  # Can be tempalted.
+  # global:
+  #   imagePullSecrets:
+  #   - name: pullSecret1
+  #   - name: pullSecret2
+  # or
+  # global:
+  #   imagePullSecrets:
+  #   - pullSecret1
+  #   - pullSecret2
+  imagePullSecrets: []
+
 rbac:
   create: true
   ## Use an existing ClusterRole/Role (depending on rbac.namespaced false/true)
   # useExistingRole: name-of-some-(cluster)role
-  pspAnnotations: {}
-  ## Specify pod annotations
-  ## Ref: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#apparmor
-  ## Ref: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#seccomp
-  ## Ref: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#sysctl
-  ##
-  # seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default,runtime/default'
-  # seccomp.security.alpha.kubernetes.io/defaultProfileName:  'docker/default'
-  # apparmor.security.beta.kubernetes.io/allowedProfileNames: 'runtime/default'
-  # apparmor.security.beta.kubernetes.io/defaultProfileName:  'runtime/default'
-
+  pspEnabled: false
+  pspUseAppArmor: false
   namespaced: false
   extraRoleRules: []
   # - apiGroups: []
@@ -32,6 +37,8 @@ serviceAccount:
   create: true
   name:
   nameTest:
+  ## ServiceAccount labels.
+  labels: {}
 ## Service account annotations. Can be templated.
 #  annotations:
 #    eks.amazonaws.com/role-arn: arn:aws:iam::123456789000:role/iam-role-name-here
@@ -46,21 +53,16 @@ headlessService: false
 #
 autoscaling:
   enabled: false
-#   minReplicas: 1
-#   maxReplicas: 10
-#   metrics:
-#   - type: Resource
-#     resource:
-#       name: cpu
-#       targetAverageUtilization: 60
-#   - type: Resource
-#     resource:
-#       name: memory
-#       targetAverageUtilization: 60
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPU: "60"
+  targetMemory: ""
+  behavior: {}
 
 ## See `kubectl explain poddisruptionbudget.spec` for more
 ## ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
 podDisruptionBudget: {}
+#  apiVersion: ""
 #  minAvailable: 1
 #  maxUnavailable: 1
 
@@ -99,7 +101,7 @@ image:
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
   ## Can be templated.
   ##
-  # pullSecrets:
+  pullSecrets: []
   #   - myRegistrKeySecretName
 
 testFramework:
@@ -118,7 +120,12 @@ securityContext:
   fsGroup: 472
 
 containerSecurityContext:
-  {}
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+    - ALL
+  seccompProfile:
+    type: RuntimeDefault
 
 # Enable creating the grafana configmap
 createConfigmap: true
@@ -154,7 +161,18 @@ downloadDashboards:
   env: {}
   envFromSecret: ""
   resources: {}
-  securityContext: {}
+  securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+      - ALL
+    seccompProfile:
+      type: RuntimeDefault
+  envValueFrom: {}
+  #  ENV_NAME:
+  #    configMapKeyRef:
+  #      name: configmap-name
+  #      key: value_key
 
 ## Pod Annotations
 # podAnnotations: {}
@@ -163,7 +181,7 @@ downloadDashboards:
 # podLabels: {}
 
 podPortName: grafana
-
+gossipPortName: gossip
 ## Deployment annotations
 # annotations: {}
 
@@ -197,6 +215,8 @@ serviceMonitor:
   tlsConfig: {}
   scrapeTimeout: 30s
   relabelings: []
+  metricRelabelings: []
+  targetLabels: []
 
 extraExposePorts: []
  # - name: keycloak
@@ -325,6 +345,8 @@ persistence:
   # subPath: ""
   ## Name of an existing PVC. Can be templated.
   # existingClaim:
+  ## Extra labels to apply to a PVC.
+  extraPvcLabels: {}
 
   ## If persistence is not enabled, this allows to mount the
   ## local storage in-memory to improve performance
@@ -339,7 +361,7 @@ persistence:
 
 initChownData:
   ## If false, data ownership will not be reset at startup
-  ## This allows the prometheus-server to be run with an arbitrary user
+  ## This allows the grafana-server to be run with an arbitrary user
   ##
   enabled: true
 
@@ -361,7 +383,14 @@ initChownData:
   #  requests:
   #    cpu: 100m
   #    memory: 128Mi
-
+  securityContext:
+    runAsNonRoot: false
+    runAsUser: 0
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      add:
+        - CHOWN
 
 # Administrator credentials when not using an existing secret (see below)
 adminUser: admin
@@ -381,10 +410,13 @@ admin:
 # - "sh"
 # - "/run.sh"
 
-## Use an alternate scheduler, e.g. "stork".
-## ref: https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
-##
-# schedulerName:
+## Optionally define args if command is used
+## Needed if using `hashicorp/envconsul` to manage secrets
+## By default no arguments are set
+# args:
+# - "-secret"
+# - "secret/grafana"
+# - "./grafana"
 
 ## Extra environment variables that will be pass onto deployment pods
 ##
@@ -429,7 +461,9 @@ envValueFrom: {}
 envFromSecret: ""
 
 ## Sensible environment variables that will be rendered as new secret object
-## This can be useful for auth tokens, etc
+## This can be useful for auth tokens, etc.
+## If the secret values contains "{{", they'll need to be properly escaped so that they are not interpreted by Helm
+## ref: https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-tpl-function
 envRenderSecret: {}
 
 ## The names of secrets in the same kubernetes namespace which contain values to be added to the environment
@@ -496,6 +530,7 @@ extraVolumeMounts: []
   #   readOnly: true
   #   hostPath: /usr/shared/
   # - name: grafana-secrets
+  #   mountPath: /mnt/volume2
   #   csi: true
   #   data:
   #     driver: secrets-store.csi.k8s.io
@@ -514,6 +549,9 @@ lifecycleHooks: {}
 plugins: []
   # - digrich-bubblechart-panel
   # - grafana-clock-panel
+  ## You can also use other plugin download URL, as long as they are valid zip files,
+  ## and specify the name of the plugin after the semicolon. Like this:
+  # - https://grafana.com/api/plugins/marcusolsson-json-datasource/versions/1.3.2/download;marcusolsson-json-datasource
 
 ## Configure grafana datasources
 ## ref: http://docs.grafana.org/administration/provisioning/#datasources
@@ -535,6 +573,8 @@ datasources: {}
 #      jsonData:
 #        authType: default
 #        defaultRegion: us-east-1
+#    deleteDatasources: []
+#    - name: Prometheus
 
 ## Configure grafana alerting (can be templated)
 ## ref: http://docs.grafana.org/administration/provisioning/#alerting
@@ -599,7 +639,7 @@ alerting: {}
   #             component: Grafana
   #             group: app-stack
   #             summary: |
-  #               {{ `{{ template "default.message" . }}` }}
+  #               {{ `{{ include "default.message" . }}` }}
 
 ## Configure notifiers
 ## ref: http://docs.grafana.org/administration/provisioning/#alert-notification-channels
@@ -667,6 +707,10 @@ dashboards: {}
   #   local-dashboard-bitbucket:
   #     url: https://example.com/repository/test-bitbucket.json
   #     bearerToken: ''
+  #   local-dashboard-azure:
+  #     url: https://example.com/repository/test-azure.json
+  #     basic: ''
+  #     acceptHeader: '*/*'
 
 ## Reference to external ConfigMap per provider. Use provider name as key and ConfigMap name as value.
 ## A provider dashboards must be defined either by external ConfigMaps or in values.yaml, not in both.
@@ -696,7 +740,7 @@ grafana.ini:
   grafana_net:
     url: https://grafana.net
   server:
-    domain: "{{ if (and .Values.ingress.enabled .Values.ingress.hosts) }}{{ .Values.ingress.hosts | first }}{{ end }}"
+    domain: "{{ if (and .Values.ingress.enabled .Values.ingress.hosts) }}{{ .Values.ingress.hosts | first }}{{ else }}''{{ end }}"
 ## grafana Authentication can be enabled with the following values on grafana.ini
  # server:
       # The full public facing url you use in browser, used for redirects and emails
@@ -758,7 +802,7 @@ smtp:
 sidecar:
   image:
     repository: rancher/mirrored-kiwigrid-k8s-sidecar
-    tag: 1.19.2
+    tag: 1.24.6
     sha: ""
   imagePullPolicy: IfNotPresent
   resources: {}
@@ -768,7 +812,13 @@ sidecar:
 #   requests:
 #     cpu: 50m
 #     memory: 50Mi
-  securityContext: {}
+  securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+      - ALL
+    seccompProfile:
+      type: RuntimeDefault
   # skipTlsVerify Set to true to skip tls verification for kube api calls
   # skipTlsVerify: true
   enableUniqueFilenames: false
@@ -776,6 +826,46 @@ sidecar:
   livenessProbe: {}
   # Log level default for all sidecars. Can be one of: DEBUG, INFO, WARN, ERROR, CRITICAL. Defaults to INFO
   # logLevel: INFO
+  alerts:
+    enabled: false
+    # Additional environment variables for the alerts sidecar
+    env: {}
+    # Do not reprocess already processed unchanged resources on k8s API reconnect.
+    # ignoreAlreadyProcessed: true
+    # label that the configmaps with alert are marked with
+    label: grafana_alert
+    # value of label that the configmaps with alert are set to
+    labelValue: ""
+    # Log level. Can be one of: DEBUG, INFO, WARN, ERROR, CRITICAL.
+    # logLevel: INFO
+    # If specified, the sidecar will search for alert config-maps inside this namespace.
+    # Otherwise the namespace in which the sidecar is running will be used.
+    # It's also possible to specify ALL to search in all namespaces
+    searchNamespace: null
+    # Method to use to detect ConfigMap changes. With WATCH the sidecar will do a WATCH requests, with SLEEP it will list all ConfigMaps, then sleep for 60 seconds.
+    watchMethod: WATCH
+    # search in configmap, secret or both
+    resource: both
+    # watchServerTimeout: request to the server, asking it to cleanly close the connection after that.
+    # defaults to 60sec; much higher values like 3600 seconds (1h) are feasible for non-Azure K8S
+    # watchServerTimeout: 3600
+    #
+    # watchClientTimeout: is a client-side timeout, configuring your local socket.
+    # If you have a network outage dropping all packets with no RST/FIN,
+    # this is how long your client waits before realizing & dropping the connection.
+    # defaults to 66sec (sic!)
+    # watchClientTimeout: 60
+    #
+    # Endpoint to send request to reload alerts
+    reloadURL: "http://localhost:3000/api/admin/provisioning/alerting/reload"
+    # Absolute path to shell script to execute after a alert got reloaded
+    script: null
+    skipReload: false
+    # Deploy the alert sidecar as an initContainer in addition to a container.
+    # Additional alert sidecar volume mounts
+    extraMounts: []
+    # Sets the size limit of the alert sidecar emptyDir volume
+    sizeLimit: {}
   dashboards:
     enabled: false
     # Additional environment variables for the dashboards sidecar
@@ -804,8 +894,11 @@ sidecar:
     # If specified, the sidecar will look for annotation with this name to create folder and put graph here.
     # You can use this parameter together with `provider.foldersFromFilesStructure`to annotate configmaps and create folder structure.
     folderAnnotation: null
+    # Endpoint to send request to reload alerts
+    reloadURL: "http://localhost:3000/api/admin/provisioning/dashboards/reload"
     # Absolute path to shell script to execute after a configmap got reloaded
     script: null
+    skipReload: false
     # watchServerTimeout: request to the server, asking it to cleanly close the connection after that.
     # defaults to 60sec; much higher values like 3600 seconds (1h) are feasible for non-Azure K8S
     # watchServerTimeout: 3600
@@ -932,8 +1025,28 @@ sidecar:
     # Otherwise the namespace in which the sidecar is running will be used.
     # It's also possible to specify ALL to search in all namespaces
     searchNamespace: null
+    # Method to use to detect ConfigMap changes. With WATCH the sidecar will do a WATCH requests, with SLEEP it will list all ConfigMaps, then sleep for 60 seconds.
+    watchMethod: WATCH
     # search in configmap, secret or both
     resource: both
+    # watchServerTimeout: request to the server, asking it to cleanly close the connection after that.
+    # defaults to 60sec; much higher values like 3600 seconds (1h) are feasible for non-Azure K8S
+    # watchServerTimeout: 3600
+    #
+    # watchClientTimeout: is a client-side timeout, configuring your local socket.
+    # If you have a network outage dropping all packets with no RST/FIN,
+    # this is how long your client waits before realizing & dropping the connection.
+    # defaults to 66sec (sic!)
+    # watchClientTimeout: 60
+    #
+    # Endpoint to send request to reload notifiers
+    reloadURL: "http://localhost:3000/api/admin/provisioning/notifications/reload"
+    # Absolute path to shell script to execute after a notifier got reloaded
+    script: null
+    skipReload: false
+    # Deploy the notifier sidecar as an initContainer in addition to a container.
+    # This is needed if skipReload is true, to load any notifiers defined at startup time.
+    initNotifiers: false
     # Sets the size limit of the notifier sidecar emptyDir volume
     sizeLimit: {}
 
@@ -947,14 +1060,22 @@ revisionHistoryLimit: 10
 
 ## Add a seperate remote image renderer deployment/service
 imageRenderer:
+  deploymentStrategy: {}
   # Enable the image-renderer deployment & service
   enabled: false
   replicas: 1
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 5
+    targetCPU: "60"
+    targetMemory: ""
+    behavior: {}
   image:
     # image-renderer Image repository
     repository: rancher/mirrored-grafana-grafana-image-renderer
     # image-renderer Image tag
-    tag: 3.0.1
+    tag: 3.8.0
     # image-renderer Image sha (optional)
     sha: ""
     # image-renderer ImagePullPolicy
@@ -965,10 +1086,33 @@ imageRenderer:
     # RENDERING_ARGS: --no-sandbox,--disable-gpu,--window-size=1280x758
     # RENDERING_MODE: clustered
     # IGNORE_HTTPS_ERRORS: true
+
+  ## "valueFrom" environment variable references that will be added to deployment pods. Name is templated.
+  ## ref: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#envvarsource-v1-core
+  ## Renders in container spec as:
+  ##   env:
+  ##     ...
+  ##     - name: <key>
+  ##       valueFrom:
+  ##         <value rendered as YAML>
+  envValueFrom: {}
+    #  ENV_NAME:
+    #    configMapKeyRef:
+    #      name: configmap-name
+    #      key: value_key
+
   # image-renderer deployment serviceAccount
   serviceAccountName: ""
   # image-renderer deployment securityContext
   securityContext: {}
+  # image-renderer deployment container securityContext
+  containerSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop: ['ALL']
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
   # image-renderer deployment Host Aliases
   hostAliases: []
   # image-renderer deployment priority class
@@ -983,6 +1127,23 @@ imageRenderer:
     targetPort: 8081
     # Adds the appProtocol field to the image-renderer service. This allows to work with istio protocol selection. Ex: "http" or "tcp"
     appProtocol: ""
+  serviceMonitor:
+    ## If true, a ServiceMonitor CRD is created for a prometheus operator
+    ## https://github.com/coreos/prometheus-operator
+    ##
+    enabled: false
+    path: /metrics
+    #  namespace: monitoring  (defaults to use the namespace this chart is deployed to)
+    labels: {}
+    interval: 1m
+    scheme: http
+    tlsConfig: {}
+    scrapeTimeout: 30s
+    relabelings: []
+    # See: https://doc.crds.dev/github.com/prometheus-operator/kube-prometheus/monitoring.coreos.com/ServiceMonitor/v1@v0.11.0#spec-targetLabels
+    targetLabels: []
+      # - targetLabel1
+      # - targetLabel2
   # If https is enabled in Grafana, this needs to be set as 'https' to correctly configure the callback used in Grafana
   grafanaProtocol: http
   # In case a sub_path is used this needs to be added to the image renderer callback
@@ -996,6 +1157,8 @@ imageRenderer:
     limitIngress: true
     # Enable a NetworkPolicy to limit outbound traffic to only the created grafana pods
     limitEgress: false
+    # Allow additional services to access image-renderer (eg. Prometheus operator when ServiceMonitor is enabled)
+    extraIngressSelectors: []
   resources: {}
 #   limits:
 #     cpu: 100m
@@ -1017,6 +1180,11 @@ imageRenderer:
   ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
   ##
   affinity: {}
+
+  ## Use an alternate scheduler, e.g. "stork".
+  ## ref: https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
+  ##
+  # schedulerName: "default-scheduler"
 
 networkPolicy:
   ## @param networkPolicy.enabled Enable creation of NetworkPolicy resources. Only Ingress traffic is filtered for now.

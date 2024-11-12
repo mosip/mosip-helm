@@ -126,3 +126,22 @@ spec:
   - Egress
 {{- end }}
 {{- end }}
+---
+{{- if .Values.hardened.k3s.networkPolicy.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: rancher-monitoring-coredns-allow-all
+  namespace: kube-system
+spec:
+  ingress:
+  - {}
+  egress:
+  - {}
+  policyTypes:
+  - Ingress
+  - Egress 
+  podSelector:
+    matchLabels:
+      k8s-app: kube-dns
+{{- end }}

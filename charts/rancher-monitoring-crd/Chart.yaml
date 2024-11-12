@@ -3,15 +3,8 @@ annotations:
   catalog.cattle.io/hidden: "true"
   catalog.cattle.io/namespace: cattle-monitoring-system
   catalog.cattle.io/release-name: rancher-monitoring-crd
-apiVersion: v2
+apiVersion: v1
 description: Installs the CRDs for rancher-monitoring.
 name: rancher-monitoring-crd
 type: application
-version: 102.0.5+up40.1.2
-maintainers:
-  - email: info@mosip.io
-    name: MOSIP
-home: https://mosip.io
-keywords:
-  - mosip
-  - rancher-monitoring-crd
+version: 103.1.1+up45.31.1
