@@ -3203,6 +3203,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/converters-1.3.0-beta.1-develop.tgz
     version: 1.3.0-beta.1-develop
+  - apiVersion: v2
+    created: "2024-11-14T06:23:43.050159582Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP converters module
+    digest: a6683c2eab4b944f505e5e56ee32c6fdfd20d9ece6c942dad5ba274181d089ed
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - converters
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: converters
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/converters-0.0.1-develop.tgz
+    version: 0.0.1-develop
   credential:
   - apiVersion: v2
     created: "2024-08-08T07:27:07.883183556Z"
@@ -22725,4 +22748,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-11-13T12:36:56.524515972Z"
+generated: "2024-11-14T06:23:43.048610555Z"
