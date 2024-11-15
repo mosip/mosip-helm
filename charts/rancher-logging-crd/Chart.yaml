@@ -3,7 +3,7 @@ annotations:
   catalog.cattle.io/hidden: "true"
   catalog.cattle.io/namespace: cattle-logging-system
   catalog.cattle.io/release-name: rancher-logging-crd
-apiVersion: v1
+apiVersion: v2
 description: Installs the CRDs for rancher-logging.
 name: rancher-logging-crd
 type: application
