@@ -865,6 +865,28 @@ entries:
     - https://mosip.github.io/mosip-helm/apitestrig-12.0.1-B2.tgz
     version: 12.0.1-B2
   - apiVersion: v2
+    created: "2024-11-27T11:07:21.724769259Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy APITESTRIG for MOSIP modules
+    digest: 631782da9c679299653040dee07a44f83a3d88821c17acda5d80fbe448a84250
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - apitestrig
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: apitestrig
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/apitestrig-1.5.0-develop.tgz
+    version: 1.5.0-develop
+  - apiVersion: v2
     created: "2024-11-27T11:04:54.180854555Z"
     dependencies:
     - name: common
@@ -4548,7 +4570,7 @@ entries:
     version: 17.9.25
   esignet:
   - apiVersion: v2
-    created: "2024-11-25T14:35:24.082077156+05:30"
+    created: "2024-11-27T11:07:21.726919566Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -4556,7 +4578,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP esignet module
-    digest: 5e5c4ff1eb11859d7a156f8ac22d365ca48cf04675340e40fc443456159ce0d7
+    digest: 22434d2fbde6034b79184b995d0dd273faa7fdffe719f1b79b63609e3ea29d47
     home: https://mosip.io
     keywords:
     - mosip
@@ -10789,7 +10811,7 @@ entries:
     - https://mosip.github.io/mosip-helm/oidc-ui-12.0.2.tgz
     version: 12.0.2
   - apiVersion: v2
-    created: "2024-11-25T14:35:24.635039433+05:30"
+    created: "2024-11-27T11:07:21.729058406Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -10797,7 +10819,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP OIDC UI module
-    digest: f70877fd7940de3cac3d2afed192ef0c84f26901cb52bab8ff897c69d7ee49b4
+    digest: 6297e916ec42474db8f41a95d57ab411d111dbb37c62a9c1f19d9d78914fe6fe
     home: https://mosip.io
     keywords:
     - mosip
@@ -23285,4 +23307,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-11-27T11:04:54.177964635Z"
+generated: "2024-11-27T11:07:21.722775965Z"
