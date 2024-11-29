@@ -1,4 +1,5 @@
 ## Config map to insert a landing index.html page in the docker.  This may be removed later if the same is done while building the docker.
+{{- if eq .Values.configMapOption "index" }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -206,4 +207,4 @@ data:
     </footer>
     </body>
     </html>
-
+{{- end }}
