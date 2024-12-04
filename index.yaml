@@ -7392,6 +7392,30 @@ entries:
     version: 12.0.0
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2024-12-04T14:19:04.175529394Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes to initialize Keycloak  (updating for
+      test)
+    digest: 75343ddccaca35b17fc0135453ce7086cecefd25545a5fb1162ec45433f382c6
+    home: https://mosip.io
+    keywords:
+    - keycloak
+    - access-management
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: keycloak-init
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/keycloak-init-1.3.0-beta.1-develop.tgz
+    version: 1.3.0-beta.1-develop
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2024-11-25T14:35:24.31731107+05:30"
     dependencies:
     - name: common
@@ -23462,4 +23486,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-12-04T13:53:29.857102132Z"
+generated: "2024-12-04T14:19:04.172839459Z"
