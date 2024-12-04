@@ -10761,6 +10761,29 @@ entries:
     - https://mosip.github.io/mosip-helm/mosip-file-server-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
+    created: "2024-12-04T17:31:43.976293809Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to file server application.
+    digest: b16586c6b55398a449b191fe8aecb5477b5926cd871e976b7fd91cf088fb132a
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - mosip-file-server
+    - fileserver
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: mosip-file-server
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/mosip-file-server-1.3.0-beta.1-develop.tgz
+    version: 1.3.0-beta.1-develop
+  - apiVersion: v2
     appVersion: 1.2.0
     created: "2024-11-25T14:35:24.569045902+05:30"
     dependencies:
@@ -23739,4 +23762,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-12-04T16:25:57.634399585Z"
+generated: "2024-12-04T17:31:43.974503796Z"
