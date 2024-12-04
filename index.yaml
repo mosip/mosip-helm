@@ -8626,6 +8626,30 @@ entries:
     version: 12.0.1-B2
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2024-12-04T13:32:37.65946841Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to upload default masterdata to mosip_master DB.
+    digest: 0b78b691454a14d6973efbc95d871a1e3127bef6b5f5ead1483683b413df8477
+    home: https://mosip.io
+    keywords:
+    - postgres
+    - db
+    - database
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: masterdata-loader
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/masterdata-loader-1.3.0-beta.1-develop.tgz
+    version: 1.3.0-beta.1-develop
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2024-11-25T14:35:24.415966243+05:30"
     dependencies:
     - name: common
@@ -13136,6 +13160,30 @@ entries:
     version: 12.0.0
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2024-12-04T13:32:37.661471694Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes to initialize various Postgres DBs.
+    digest: 19fd42daaf16c611d73cd2c0bdbceec7cb42edf917fac618ac6433f5007a118d
+    home: https://mosip.io
+    keywords:
+    - postgres
+    - db
+    - database
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: postgres-init
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/postgres-init-1.3.0-beta.1-develop.tgz
+    version: 1.3.0-beta.1-develop
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2024-11-25T14:35:24.792406683+05:30"
     dependencies:
     - name: common
@@ -13302,6 +13350,30 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/postgres-upgrade-12.0.1-B4.tgz
     version: 12.0.1-B4
+  - apiVersion: v2
+    appVersion: 1.2.0
+    created: "2024-12-04T13:32:37.663638703Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes to Upgrade various Postgres DBs.
+    digest: 375ca57dd9b4767356227111aded3e8f91864c9ccf2d8f04496e97a718dc98e5
+    home: https://mosip.io
+    keywords:
+    - postgres-upgrade
+    - db-upgrade
+    - database
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: postgres-upgrade
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/postgres-upgrade-1.3.0-beta.1-develop.tgz
+    version: 1.3.0-beta.1-develop
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2024-11-25T14:35:24.812957587+05:30"
@@ -23390,4 +23462,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-12-04T11:47:28.279131766Z"
+generated: "2024-12-04T13:32:37.658366266Z"
