@@ -707,6 +707,29 @@ entries:
     - https://mosip.github.io/mosip-helm/admin-ui-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
+    created: "2024-12-05T10:24:38.23414595Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Admin UI module
+    digest: 6fed411acc340bcf913b3ad10ec454afce193069a86f6789edc1549dd9d7104f
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - admin
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: admin-ui
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/admin-ui-1.3.0-beta.1-develop.tgz
+    version: 1.3.0-beta.1-develop
+  - apiVersion: v2
     appVersion: 1.2.0
     created: "2024-11-25T14:35:23.710426556+05:30"
     dependencies:
@@ -24386,4 +24409,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-12-05T08:22:03.916515108Z"
+generated: "2024-12-05T10:24:38.232560412Z"
