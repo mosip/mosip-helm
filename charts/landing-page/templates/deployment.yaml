@@ -136,4 +136,4 @@ spec:
       volumes:
         - name: landing-page
           configMap:
-            name: {{ template "common.names.fullname" . }}-{{ .Values.configMapOption }}
+            name: {{ template "common.names.fullname" . }}-index
