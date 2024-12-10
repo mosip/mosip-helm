@@ -4561,6 +4561,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/digitalcard-12.0.1.tgz
     version: 12.0.1
+  - apiVersion: v2
+    created: "2024-12-10T14:08:49.133744144Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for Digital Card Service
+    digest: 4f61032ea28aead50ab5d0504269a38d59496f2d423ac94f4652b0ed0a90d7d2
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - digitalcard
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: digitalcard
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/digitalcard-1.3.0-beta.1.tgz
+    version: 1.3.0-beta.1
   dslorchestrator:
   - apiVersion: v2
     created: "2024-11-25T14:35:24.040075693+05:30"
@@ -24614,4 +24636,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-12-10T13:17:04.903994957Z"
+generated: "2024-12-10T14:08:49.132103673Z"
