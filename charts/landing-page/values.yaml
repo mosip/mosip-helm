@@ -441,3 +441,9 @@ istio:
     name: ingressgateway-internal
   host: dev3.mosip.net
   prefix: /
+
+# Specify the path to the primary index file. Leave empty if you want to use a custom index file.
+indexFile: "default-index.html"
+
+# Specify the custom index file to include if the primary index file is not set.
+customindexFile: ""
