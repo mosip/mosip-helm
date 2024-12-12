@@ -14146,6 +14146,29 @@ entries:
     - https://mosip.github.io/mosip-helm/prereg-application-1.3.0-beta.1-develop.tgz
     version: 1.3.0-beta.1-develop
   - apiVersion: v2
+    created: "2024-12-12T12:57:32.315949765Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Pre-registration Application service
+    digest: 44ee86d06650e9f29319b5c9eec4ff84587e946ff0bfd8eb4527cdf2912b33ef
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - prereg-application
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: prereg-application
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/prereg-application-1.3.0-beta.1.tgz
+    version: 1.3.0-beta.1
+  - apiVersion: v2
     appVersion: 1.2.0
     created: "2024-11-25T14:35:24.829190511+05:30"
     dependencies:
@@ -14401,6 +14424,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/prereg-batchjob-1.3.0-beta.1-develop.tgz
     version: 1.3.0-beta.1-develop
+  - apiVersion: v2
+    created: "2024-12-12T12:57:32.317284071Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Pre-registration Batchjob service
+    digest: 829edfb3584de19e2d47d7994633f1f6de898b36735cf492121323a6cf657211
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - prereg-batchjob
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: prereg-batchjob
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/prereg-batchjob-1.3.0-beta.1.tgz
+    version: 1.3.0-beta.1
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2024-11-25T14:35:24.848787306+05:30"
@@ -14658,6 +14704,29 @@ entries:
     - https://mosip.github.io/mosip-helm/prereg-booking-1.3.0-beta.1-develop.tgz
     version: 1.3.0-beta.1-develop
   - apiVersion: v2
+    created: "2024-12-12T12:57:32.31861943Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Pre-registration application service
+    digest: c3d431de06a52399c9dfde337f7dfc2466303b74eb37bdb9ae760549bada1b0e
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - prereg-booking
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: prereg-booking
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/prereg-booking-1.3.0-beta.1.tgz
+    version: 1.3.0-beta.1
+  - apiVersion: v2
     appVersion: 1.2.0
     created: "2024-11-25T14:35:24.86710883+05:30"
     dependencies:
@@ -14914,6 +14983,29 @@ entries:
     - https://mosip.github.io/mosip-helm/prereg-captcha-1.3.0-beta.1-develop.tgz
     version: 1.3.0-beta.1-develop
   - apiVersion: v2
+    created: "2024-12-12T12:57:32.320135187Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Pre-registration Captcha Service
+    digest: 57747178af9a7b08cdc885568a4b83301d816c799f28f0a3f4ce8406456f57c9
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - prereg-captcha
+    - prereg
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: prereg-captcha
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/prereg-captcha-1.3.0-beta.1.tgz
+    version: 1.3.0-beta.1
+  - apiVersion: v2
     appVersion: 1.2.0
     created: "2024-11-25T14:35:24.88329235+05:30"
     dependencies:
@@ -15137,6 +15229,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/prereg-datasync-1.3.0-beta.1-develop.tgz
     version: 1.3.0-beta.1-develop
+  - apiVersion: v2
+    created: "2024-12-12T12:57:32.321437694Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Pre-registration Datasync service
+    digest: f717f50db5dfefb026f7d9f58c77399e158ee824eb31ca187cc4516f7d761902
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - prereg-datasync
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: prereg-datasync
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/prereg-datasync-1.3.0-beta.1.tgz
+    version: 1.3.0-beta.1
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2024-11-25T14:35:24.901403282+05:30"
@@ -15390,6 +15504,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/prereg-gateway-1.3.0-beta.1-develop.tgz
     version: 1.3.0-beta.1-develop
+  - apiVersion: v2
+    created: "2024-12-12T12:57:32.323347602Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Pre-registration Istio Gateway
+    digest: c66c25c26f0c42e95584920ac2a64ef9a9584a1d7d82bff63dc68e90ecd558a1
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - prereg-gateway
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: prereg-gateway
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/prereg-gateway-1.3.0-beta.1.tgz
+    version: 1.3.0-beta.1
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2024-11-25T14:35:24.916607629+05:30"
@@ -24819,4 +24956,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-12-12T12:55:27.352238267Z"
+generated: "2024-12-12T12:57:32.314276812Z"
