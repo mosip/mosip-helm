@@ -2559,6 +2559,28 @@ entries:
     - https://mosip.github.io/mosip-helm/captcha-0.1.0-develop.tgz
     version: 0.1.0-develop
   - apiVersion: v2
+    created: "2024-12-13T15:13:08.032753527Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Captcha Service
+    digest: 95f80774a6f972d68988c58e894d8ed7b16a156e388a13f6ad25d9f852e85e5f
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - captcha
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: captcha
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/captcha-0.1.0-beta.1.tgz
+    version: 0.1.0-beta.1
+  - apiVersion: v2
     created: "2024-11-25T14:35:23.845709688+05:30"
     dependencies:
     - name: common
@@ -25419,4 +25441,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2024-12-13T10:24:41.540218957Z"
+generated: "2024-12-13T15:13:08.030507672Z"
