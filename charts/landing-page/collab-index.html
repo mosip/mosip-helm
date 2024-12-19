@@ -322,7 +322,7 @@
     <!-- Module List -->
     <div class="bg-[#EFF3F8] flex items-center justify-center" id="appDetails">
       <div class="-mt-[120px] flex justify-center w-full mx-auto max-[870px]:px-[20px] max-[750px]:-mt-[90px]">
-        <div id="appsContainer" class="flex flex-wrap justify-between w-[1300px] max-[1350px]:w-[1000px] max-[1040px]:w-[645px] max-[675px]:justify-center"></div>
+        <div id="appsContainer" class="flex flex-wrap justify-start w-[1350px] max-[1350px]:w-[1000px] max-[1040px]:w-[695px] max-[675px]:justify-center"></div>
       </div>
     </div>
 
@@ -342,12 +342,13 @@
         {id: "eSignet", appName:"Integrate with Mock ID", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png", userGuide:"https://docs.esignet.io/integration/relying-party", tryIt:"https://esignet-mock.collab.mosip.net/", docs:"https://docs.esignet.io/overview"},
         {id: "eSignet", appName:"Integrate with MOSIP ID", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png", userGuide:"https://docs.esignet.io/integration/relying-party", tryIt:"https://esignet-mosipid.collab.mosip.net/", docs:"https://docs.esignet.io/overview"},
         {id: "eSignet", appName:"Health Portal using Mock ID", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png", userGuide:"https://docs.esignet.io/try-it-out/using-mock-data", tryIt:"https://healthservices-esignet-mock.collab.mosip.net/", docs:"https://docs.esignet.io/overview"},
-        {id: "eSignet", appName:"Health Portal using MOSIP ID", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png", userGuide:"https://docs.esignet.io/try-it-out/register-yourself", tryIt:"https://healthservices-mosipid.collab.mosip.net/", docs:"https://docs.esignet.io/overview"},
+        {id: "eSignet", appName:"Health Portal using Your MOSIP ID", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png", userGuide:"https://docs.esignet.io/try-it-out/register-yourself", tryIt:"https://healthservices-mosipid.collab.mosip.net/", docs:"https://docs.esignet.io/overview"},
         {id: "injiWallet", appName:"Inji Wallet - Mobile | Android", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/Inji_wallet.png", userGuide:"https://docs.inji.io/inji-wallet/inji-mobile/sandbox-details/inji-setup-guide", tryIt:"https://drive.google.com/drive/folders/1gBjFSdpjxU4bsZi7-xS59W1-EIFKrkS8", docs:"https://docs.inji.io/inji-wallet/inji-mobile"},
         {id: "injiWallet", appName:"Inji Wallet - Mobile | iOS", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/Inji_wallet.png", userGuide:"https://docs.inji.io/inji-wallet/inji-mobile/sandbox-details/inji-setup-guide", tryIt:"https://testflight.apple.com/join/7FTAdjLe", docs:"https://docs.inji.io/inji-wallet/inji-mobile"},
-        {id: "injiWeb", appName:"Inji Wallet - Web", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/Inji_web.png", userGuide:"https://docs.mosip.io/inji/inji-wallet/inji-web/functional-overview/end-user-guide", tryIt:"https://injiweb.collab.mosip.net/", docs:"https://docs.mosip.io/inji/inji-wallet/inji-web"},
+        {id: "injiWeb", appName:"Inji Wallet - Web", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/Inji_web.png", userGuide:"https://docs.mosip.io/inji/inji-wallet/inji-web/try-it-out/inji-web-setup-guide", tryIt:"https://injiweb.collab.mosip.net/", docs:"https://docs.mosip.io/inji/inji-wallet/inji-web"},
         {id: "injiVerify", appName:"Inji Verify", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/Inji_verify.png", userGuide:"https://docs.mosip.io/inji/inji-verify/releases-1/inji-verify-collab-guide", tryIt:"https://injiverify.collab.mosip.net/", docs:"https://docs.mosip.io/inji/inji-verify/overview"},
-        {id: "AdminPortal", appName:"Admin Portal", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/Admin_logo.png", userGuide:"https://docs.mosip.io/1.2.0/collab-getting-started-guide/admin-portal", tryIt:"https://admin.collab.mosip.net", docs:"https://docs.mosip.io/1.2.0/modules/administration"}
+        {id: "AdminPortal", appName:"Admin Portal", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/Admin_logo.png", userGuide:"https://docs.mosip.io/1.2.0/collab-getting-started-guide/admin-portal", tryIt:"https://admin.collab.mosip.net", docs:"https://docs.mosip.io/1.2.0/modules/administration"},
+        {id: "pms", appName:"Partner Management System", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/PMS_logo.png", userGuide:"https://docs.mosip.io/1.2.0/collab-getting-started-guide/collab-pmp-guide", tryIt:"https://pmp.collab.mosip.net/#/pmp/home", docs:"https://docs.mosip.io/1.2.0/modules/partner-management-services/pms-existing/partner-policies"}
       ];
 
       // Dom elements for interaction
@@ -379,13 +380,13 @@
         appsContainerEl.innerHTML = "";
         sortedAppData.forEach(item =>{
           appsContainerEl.innerHTML += `
-            <div class="w-[302px] h-[322px] bg-[#ffffff] rounded-[20px] p-4 shadow-lg mb-[30px] mr-4 max-[675px]:mr-0">
-              <div id=${item.appName} class="w-[272px] h-[209px] bg-[#F4F8FA] rounded-[10px] flex justify-center items-center">
-                  <img alt=${item.id} src=${item.logo} >
+            <div class="w-[312px] h-[312px] bg-[#ffffff] rounded-[20px] p-2 shadow-lg mb-[30px] mr-4 max-[675px]:mr-0">
+              <div id=${item.appName} class="w-[292px] h-[209px] bg-[#F4F8FA] rounded-[10px] flex justify-center items-center">
+                  <img alt=${item.id} src=${item.logo}>
               </div>
               <div class="mt-2">
                 <h4 class="text-[#01315F] font-bold text-[18px]">${item.appName}</h4>
-                <div class="mt-2 flex justify-between">
+                <div class="mt-2 flex justify-start space-x-2 mb-2">
                   <button class="w-[90px] h-[29px] bg-[#1763AC] rounded-[6px] text-[#ffffff] text-[14px]"><a target="_blank" href=${item.tryIt}>Try It Out!</a></button>
                   <button class="w-[90px] h-[29px] rounded-[6px] border border-[#1763AC] font-[600]"><a class="text-[#1763AC] text-[14px]" target="_blank" href=${item.userGuide}>User Guide</a></button>
                   <button class="w-[74px] h-[29px] rounded-[6px] border border-[#1763AC] font-[600]"><a class="text-[#1763AC] text-[14px]" target="_blank" href=${item.docs}>Overview</a></button>
