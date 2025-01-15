@@ -317,16 +317,14 @@ postgresbackup:
       AWS_ACCESS_KEY_ID: ''
       AWS_DEFAULT_REGION: ''
       NUM_BACKUPS_TO_KEEP: 5
-      ##Expected size in bytes (provide the approximate size of the database in bytes, e.g., 1 TB) for AWS CLI to prepare multipart.
+      ## Expected size in bytes (provide the approximate size of the database in bytes, e.g., 1 TB) for AWS CLI to prepare multipart.
       EXPECTED_SIZE: 1073741824000
     db:
       DB_USER: ''
       DB_HOST: ''
       DB_PORT: ''
-
   secrets:
     s3:
       AWS_SECRET_ACCESS_KEY: ''
     db:
       DB_PASSWORD: ''
-
