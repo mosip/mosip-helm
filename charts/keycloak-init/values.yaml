@@ -409,6 +409,11 @@ keycloak:
             - add_oidc_client
             - get_certificate
             - upload_certificate
+          sa_client_roles:
+            ## realm-management client id
+            - realm-management:
+                # realm-management client roles
+                - view-users
 
         - name: mosip-policymanager-client
           mappers: []
