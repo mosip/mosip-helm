@@ -9546,7 +9546,7 @@ entries:
   masterdata-loader:
   - apiVersion: v2
     appVersion: 1.2.0
-    created: "2024-11-25T14:35:24.423612098+05:30"
+    created: "2025-01-31T11:54:40.756850238Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -9554,7 +9554,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart to upload default masterdata to mosip_master DB.
-    digest: 147d86ffae9660a862b27e0a2bffddfb4f1931117a505f769a9549f27631f72d
+    digest: 82763e24271e97d201b6c6fe3d941f534463de5003dd80ff76f691727d034f39
     home: https://mosip.io
     keywords:
     - postgres
@@ -14348,7 +14348,7 @@ entries:
   postgres-init:
   - apiVersion: v2
     appVersion: 1.2.0
-    created: "2024-11-25T14:35:24.811653773+05:30"
+    created: "2025-01-31T11:54:40.75847051Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -14356,7 +14356,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for Kubernetes to initialize various Postgres DBs.
-    digest: 4717e657707ca2bdad898134d0b0ce8ac838f95f45e42f5dd42bd03d6cb3dd26
+    digest: 03a2fa847cd909b2639fcfb4c44d4a5a2c01a9f12e4f3e12788bcbf948515d6b
     home: https://mosip.io
     keywords:
     - postgres
@@ -14636,8 +14636,7 @@ entries:
     version: 0.0.1-develop
   postgres-upgrade:
   - apiVersion: v2
-    appVersion: 1.2.0
-    created: "2024-11-25T14:35:24.81817441+05:30"
+    created: "2025-01-31T11:54:40.759626286Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -14645,7 +14644,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for Kubernetes to Upgrade various Postgres DBs.
-    digest: 21df1da0266ab3d169b571b47731623ac9445f54ff02ed5eae721f8eb0173da6
+    digest: 5525e2083215d455fbb849a7aa817fa523ce4498d1f0b1b34a77459066623ca4
     home: https://mosip.io
     keywords:
     - postgres-upgrade
@@ -26430,4 +26429,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-01-31T09:09:22.737431336Z"
+generated: "2025-01-31T11:54:40.75572063Z"
