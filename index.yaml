@@ -35,7 +35,7 @@ entries:
     version: 0.0.2
   admin-hotlist:
   - apiVersion: v2
-    created: "2025-01-31T08:45:21.186869491Z"
+    created: "2025-01-31T12:46:44.910084083Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -43,7 +43,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP Admin Hotlist
-    digest: 09cb4c5470048a3e40381be29f8f866fcf7b50289f3fbcd8488b0a5b95e6e304
+    digest: 68be4dfd81f33962472363454a46434c68e60d083a8eda08605accc6a6b5be18
     home: https://mosip.io
     keywords:
     - mosip
@@ -336,7 +336,7 @@ entries:
     version: 0.0.1-develop
   admin-service:
   - apiVersion: v2
-    created: "2025-01-31T08:45:21.18846689Z"
+    created: "2025-01-31T12:46:44.911494996Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -344,7 +344,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP Admin module
-    digest: bd098c96dd280df1fea121690ef45dde0e6f06d58cdcefb454d527648bf7445f
+    digest: 883fa9f5d1d9af47dc84c8068492eddbdf48cb866b992d1369d44870cf477644
     home: https://mosip.io
     keywords:
     - mosip
@@ -9220,7 +9220,7 @@ entries:
     version: 0.0.1-develop
   masterdata:
   - apiVersion: v2
-    created: "2025-01-31T08:45:21.190233006Z"
+    created: "2025-01-31T12:46:44.913058815Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -9228,7 +9228,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP Masterdata module
-    digest: 7f8e4e5af86aaecf261f995e62608e51b6e0d8bde35025bd176a4cb540c1b0bd
+    digest: 8b04d7d80953b348e5ea35c782d477cbdadce656ec15ecb14dddea7be1c06d03
     home: https://mosip.io
     keywords:
     - mosip
@@ -25006,7 +25006,7 @@ entries:
     version: 1.2.0
   syncdata:
   - apiVersion: v2
-    created: "2025-01-31T08:45:21.191996306Z"
+    created: "2025-01-31T12:46:44.914382285Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -25014,7 +25014,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP Syncdata module
-    digest: 1208d03669d029606b1016250eb331ad53d16974731de2d0408cb38b060f92b1
+    digest: 804b13a43beac81db75f0d234dadd12e6b40eba75b43d5ebd3ea6c50d5dcfc9f
     home: https://mosip.io
     keywords:
     - mosip
@@ -26429,4 +26429,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-01-31T12:44:59.596577007Z"
+generated: "2025-01-31T12:46:44.908358393Z"
