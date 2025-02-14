@@ -23665,7 +23665,7 @@ entries:
     - https://mosip.github.io/mosip-helm/reporting-1.1.5.tgz
     version: 1.1.5
   - apiVersion: v2
-    created: "2024-12-04T11:47:28.299539329Z"
+    created: "2025-02-14T06:03:46.697920861Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -23681,14 +23681,14 @@ entries:
       condition: bitnami-kafka.enabled
       name: kafka
       repository: https://charts.bitnami.com/bitnami
-      version: 23.0.7
+      version: 23.0.6
     - alias: bitnami-elasticsearch
       condition: bitnami-elasticsearch.enabled
       name: elasticsearch
       repository: https://charts.bitnami.com/bitnami
       version: '>= 17.0.0'
     description: A Helm chart for MOSIP Reporting module.
-    digest: 8047c6c8ca9217f2700ae211b57dd1c9bee70eaf0105f8c3773369f1390966ce
+    digest: b38ec85d2329dac225f8e0e4a0f6badbf9755fb9a67222fafbe12cb063a36678
     maintainers:
     - email: info@mosip.io
       name: MOSIP
@@ -23760,9 +23760,9 @@ entries:
     - https://mosip.github.io/mosip-helm/reporting-init-1.2.0.tgz
     version: 1.2.0
   - apiVersion: v2
-    created: "2024-12-04T11:47:28.299858885Z"
+    created: "2025-02-14T06:03:46.698227351Z"
     description: A Helm chart for MOSIP Reporting Initialization.
-    digest: dfd744b57c8d51ad2d8a94e3ea561575363b2464a88762b7d0f7067432bd88be
+    digest: bb2e070a978a7274f5f75bd658c1c6fed2f00493851df8adef48655eb8e0f0dd
     maintainers:
     - email: info@mosip.io
       name: MOSIP
@@ -26818,4 +26818,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-02-14T05:36:56.81929395Z"
+generated: "2025-02-14T06:03:46.677446444Z"
