@@ -68,10 +68,10 @@ resources:
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
     cpu: 1000m
-    memory: 3500Mi
+    memory: 1000Mi
   requests:
-    cpu: 1000m
-    memory: 3500Mi
+    cpu: 300m
+    memory: 700Mi
 
 # additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
@@ -298,11 +298,6 @@ serviceAccount:
   ##
   name:
 
-## Admin swagger should have only internal access. Hence linked to internal gateway
-istio:
-  enabled: false
-  gateways:
-    - istio-system/internal
 
 crontime: "0 4 * * *"    ## run cronjob every day at 4 AM in GMT which is 9.30 AM in IST (time hr: 0-23 )
 
@@ -321,8 +316,44 @@ databases:
     archive_dbname: "mosip_archive"
     archive_schemaname: "archive"
     archive_db_password: ""
+    batch_size: 1000
+
+  db_names:
+    - name: audit
+      enabled: true
+      container_volume_path: /audit-table-info  ## volume mount path for table info inside cronjob container
+    - name: ida
+      enabled: true
+      container_volume_path: /ida-table-info  ## volume mount path for table info inside cronjob container
+    - name: credential
+      enabled: true
+      container_volume_path: /credential-table-info  ## volume mount path for table info inside cronjob container
+    - name: kernel
+      enabled: true
+      container_volume_path: /kernel-table-info  ## volume mount path for table info inside cronjob container
+    - name: master
+      enabled: true
+      container_volume_path: /master-table-info  ## volume mount path for table info inside cronjob container
+    - name: pms
+      enabled: true
+      container_volume_path: /pms-table-info  ## volume mount path for table info inside cronjob container
+    - name: regprc
+      enabled: true
+      container_volume_path: /regprc-table-info  ## volume mount path for table info inside cronjob container
+    - name: resident
+      enabled: true
+      container_volume_path: /resident-table-info  ## volume mount path for table info inside cronjob container
+    - name: idrepo
+      enabled: true
+      container_volume_path: /idrepo-db-info-json
+    - name: prereg
+      enabled: true
+      container_volume_path: /prereg-db-info-json
+    - name: esignet
+      enabled: true
+      container_volume_path: /esignet-db-info-json
+
   source_db:
-    provide_db_names_to_archive: "AUDIT,IDA"
     source_audit_host: "api-internal.sandbox.xyz.net"
     source_audit_port: 5432
     source_audit_uname: "audituser"
@@ -389,7 +420,6 @@ databases:
     source_resident_dbname: "mosip_resident"
     source_resident_schemaname: "resident"
     source_resident_db_pass: ""
-  container_volume_path: "/all-db-info-json"  ## volume mount path for table info inside cronjob container
   all_db_tables_info:
     audit:
       tables_info:
@@ -405,7 +435,7 @@ databases:
         archive_table: "mosip_credential_credential_transaction"
         id_column: "id"
         date_column: "cr_dtimes"
-        retension_days: 30
+        retention_days: 30
         operation_type: "archive_delete"
     esignet:
       tables_info:
@@ -421,13 +451,13 @@ databases:
         archive_table: "mosip_ida_credential_event_store"
         id_column: "event_id"
         date_column: "cr_dtimes"
-        retension_days: 30
+        retention_days: 30
         operation_type: "archive_delete"
       - source_table: "otp_transaction"
         archive_table: "mosip_ida_otp_transaction"
         id_column: "id"
         date_column: "cr_dtimes"
-        retension_days: 30
+        retention_days: 30
         operation_type: 'delete'
     idrepo:
       tables_info:
@@ -435,19 +465,19 @@ databases:
         archive_table: "mosip_idrepo_anonymous_profile"
         id_column: "id"
         date_column: "cr_dtimes"
-        retension_days: 30
+        retention_days: 30
         operation_type: "archive_delete"
       - source_table: "credential_request_status"
         archive_table: "mosip_idrepo_credential_request_status"
         id_column: "individual_id"
         date_column: "cr_dtimes"
-        retension_days: 30
+        retention_days: 30
         operation_type: "archive_delete"
       - source_table: "uin_draft"
         archive_table: "mosip_idrepo_uin_draft"
         id_column: "id"
         date_column: "cr_dtimes"
-        retension_days: 30
+        retention_days: 30
         operation_type: "archive_delete"
     kernel:
       tables_info:
@@ -455,7 +485,7 @@ databases:
         archive_table: "mosip_kernel_otp_transaction"
         id_column: "id"
         date_column: "generated_dtimes"
-        retension_days: 7
+        retention_days: 7
         operation_type: "delete"
     master:
       tables_info:
@@ -463,37 +493,37 @@ databases:
         archive_table: "mosip_master_bulkupload_transaction"
         id_column: "id"
         date_column: "cr_dtimes"
-        retension_days: 91
+        retention_days: 91
         operation_type: "archive_delete"
       - source_table: "device_master_h"
         archive_table: "mosip_master_device_master_h"
         id_column: "id"
         date_column: "cr_dtimes"
-        retension_days: 365
+        retention_days: 365
         operation_type: "archive_delete"
       - source_table: "machine_master_h"
         archive_table: "mosip_master_machine_master_h"
         id_column: "id"
         date_column: "cr_dtimes"
-        retension_days: 183
+        retention_days: 183
         operation_type: "archive_delete"
       - source_table: "registration_center_h"
         archive_table: "mosip_master_registration_center_h"
         id_column: "id"
         date_column: "cr_dtimes"
-        retension_days: 365
+        retention_days: 365
         operation_type: "archive_delete"
       - source_table: "user_detail_h"
         archive_table: "mosip_master_user_detail_h"
         id_column: "id"
         date_column: "cr_dtimes"
-        retension_days: 183
+        retention_days: 183
         operation_type: "archive_delete"
       - source_table: "zone_user_h"
         archive_table: "mosip_master_zone_user_h"
-        id_column: "usr_id"
+        id_column: "zone_code"
         date_column: "cr_dtimes"
-        retension_days: 183
+        retention_days: 183
         operation_type: "archive_delete"
     pms:
       tables_info:
@@ -501,19 +531,19 @@ databases:
         archive_table: "mosip_pms_auth_policy_h"
         id_column: "id"
         date_column: "cr_dtimes"
-        retension_days: 183
+        retention_days: 183
         operation_type: "archive_delete"
       - source_table: "secure_biometric_interface_h"
         archive_table: "mosip_pms_secure_biometric_interface_h"
         id_column: "id"
         date_column: "cr_dtimes"
-        retension_days: 183
+        retention_days: 183
         operation_type: "archive_delete"
       - source_table: "partner_h"
         archive_table: "mosip_pms_partner_h"
         id_column: "id"
         date_column: "cr_dtimes"
-        retension_days: 183
+        retention_days: 183
         operation_type: "archive_delete"
     prereg:
       tables_info:
@@ -521,7 +551,7 @@ databases:
         archive_table: "mosip_prereg_otp_transaction"
         id_column: "id"
         date_column: "cr_dtimes"
-        retension_days: 30
+        retention_days: 30
         operation_type: "delete"
     regprc:
       tables_info:
@@ -529,31 +559,31 @@ databases:
         archive_table: "mosip_regprc_abis_response_det"
         id_column: "abis_resp_id"
         date_column: "cr_dtimes"
-        retension_days: 183
+        retention_days: 183
         operation_type: "archive_delete"
       - source_table: "abis_response"
         archive_table: "mosip_regprc_abis_response"
         id_column: "id"
         date_column: "cr_dtimes"
-        retension_days: 183
+        retention_days: 183
         operation_type: "archive_delete"
       - source_table: "abis_request"
         archive_table: "mosip_regprc_abis_request"
         id_column: "id"
         date_column: "cr_dtimes"
-        retension_days: 183
+        retention_days: 183
         operation_type: "archive_delete"
       - source_table: "reg_demo_dedupe_list"
         archive_table: "mosip_regprc_reg_demo_dedupe_list"
         id_column: "id"
         date_column: "cr_dtimes"
-        retension_days: 183
+        retention_days: 183
         operation_type: "archive_delete"
       - source_table: "registration_transaction"
         archive_table: "mosip_regprc_registration_transaction"
         id_column: "regtrn_id"
         date_column: "cr_dtimes"
-        retension_days: 183
+        retention_days: 183
         operation_type: "archive_delete"
     resident:
       tables_info:
@@ -561,29 +591,29 @@ databases:
         archive_table: "mosip_resident_otp_transaction"
         id_column: "id"
         date_column: "cr_dtimes"
-        retension_days: 30
+        retention_days: 30
         operation_type: "delete"
       - source_table: "resident_grievance_ticket"
         archive_table: "mosip_resident_grievance_ticket"
         id_column: "id"
         date_column: "cr_dtimes"
-        retension_days: 365
+        retention_days: 365
         operation_type: "archive_delete"
       - source_table: "resident_session"
         archive_table: "mosip_resident_session"
         id_column: "session_id"
         date_column: "login_dtimes"
-        retension_days: 30
+        retention_days: 30
         operation_type: "archive_delete"
       - source_table: "resident_transaction"
         archive_table: "mosip_resident_transaction"
         id_column: "id"
         date_column: "cr_dtimes"
-        retension_days: 365
+        retention_days: 365
         operation_type: "archive_delete"
       - source_table: "resident_user_actions"
         archive_table: "mosip_resident_user_actions"
         id_column: "ida_token"
         date_column: "last_bell_notif_click_dtimes"
-        retension_days: 365
+        retention_days: 365
         operation_type: "archive_delete"

@@ -1,13 +1,15 @@
+{{- range $dbnames := $.Values.databases.db_names }}
+{{- if $dbnames.enabled }}
+---
 apiVersion: {{ include "common.capabilities.cronjob.apiVersion" $ }}
 kind: CronJob
 metadata:
-  name: {{ template "data-archive.cronjob" $ }}
+  name: {{ template "data-archive.cronjob" $ }}-{{ $dbnames.name }}
   namespace: {{ $.Release.Namespace }}
 spec:
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 1  # remove jobs which are successfully executed
   failedJobsHistoryLimit: 1      # except 1 recent failed job, remove jobs which are not successfully executed
-  #schedule: '*/3 * * * *' # cron spec of time, here, 8 o'clock
   schedule: {{ $.Values.crontime }}
   jobTemplate:
     spec:
@@ -19,24 +21,35 @@ spec:
       template:
         spec:
           restartPolicy: Never
-          containers:
-            - name: {{ template "data-archive.serviceAccountName" $ }}
-              image: {{ template "data-archive.image" $ }}
-              imagePullPolicy: {{ $.Values.image.pullPolicy }}
-              volumeMounts:
-              - name: config-volume
-                mountPath: /all-db-info-json
-              env:
-                - name: container_user
-                  value: {{ $.Values.containerSecurityContext.runAsUser }}
-              envFrom:
-                - configMapRef:
-                    name: db-archive-init-env-config
-                - secretRef:
-                    name: source-db-secrets
-                - secretRef:
-                    name: archive-db-secrets
+          serviceAccountName: {{ template "data-archive.serviceAccountName" $ }}
+          containers: 
+          - name: {{ template "data-archive.serviceAccountName" $ }}-{{ $dbnames.name }}
+            image: {{ template "data-archive.image" $ }}
+            imagePullPolicy: {{ $.Values.image.pullPolicy }}
+            volumeMounts:
+            - name: config-volume-{{ $dbnames.name }}  # Unique volume mount path for each job
+              mountPath: {{ $dbnames.container_volume_path | quote }}  # Dynamic volume path from values.yaml
+            env: 
+              - name: CONTAINER_VOLUME_PATH
+                value: {{ $dbnames.container_volume_path | quote }}  # Set dynamic CONTAINER_VOLUME_PATH
+              - name: container_user
+                value: {{ $.Values.containerSecurityContext.runAsUser }}
+              - name: DB_NAMES
+                value: {{ $dbnames.name | upper }}
+            envFrom:
+              - configMapRef:
+                  name: db-archive-init-env-config
+              - secretRef:
+                  name: source-db-secrets
+              - secretRef:
+                  name: archive-db-secrets
+            {{- if $.Values.resources }}
+            resources: {{- toYaml $.Values.resources | nindent 14 }}
+            {{- end }}
           volumes:
-          - name: config-volume
-            configMap:
-              name: {{ .Release.Name }}
+            - name: config-volume-{{ $dbnames.name }}  # Unique config-volume per job
+              configMap:
+                name: {{ $.Release.Name }}
+
+{{- end }}
+{{- end }}
