@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MOSIP Collab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/mosip-favicon.png">
+  </head>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: sans-serif, Inter;
+    }
+
+    .border-bottom-center {
+      position: relative; 
+      display: inline-block; 
+    }
+
+    .border-bottom-center::after {
+      content: '';
+      position: absolute;
+      bottom: 0; 
+      left: 50%; 
+      width: 100%; 
+      height: 1px;
+      background-color: #F4F8FA; 
+      transform: translateX(-50%) scaleX(0);
+      transition: transform 0.3s ease; 
+      }
+
+      .border-bottom-center:hover::after {
+        transform: translateX(-50%) scaleX(1);
+      }
+
+      .active-btn{
+        background-color: #ffffff;
+        color: #01315F;
+        border: 1px solid #ffffff;
+      }
+
+      .inactive-btn{
+        background-color: #013464;
+        color: #4D7397;
+        border: 1px solid #4D7397;
+      }
+  </style>
+  <body>
+    <!-- Header -->
+    <header
+      id="header"
+      class="bg-[url('https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/header_background.png')] px-[80px] pt-[38px] max-[730px]:pt-[20px] bg-cover max-[870px]:px-[20px]"
+    >
+    <!-- Nav -->
+      <nav class="flex justify-between items-center">
+        <div class="flex items-center max-[740px]:space-x-5">
+          <span id="hamburgerIcon" class="hidden max-[740px]:block">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <rect y="4" width="24" height="2" fill="white"/>
+              <rect y="11" width="24" height="2" fill="white"/>
+              <rect y="18" width="24" height="2" fill="white"/>
+            </svg>
+          </span>
+          <img
+            id="mosipLogo"
+            alt="mosip logo"
+            class="h-[68px] w-[169px] cursor-pointer max-[460px]:h-[48px] max-[460px]:w-[109px]"
+            src="https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/new_Mosip_logo.png"
+          />
+        </div>
+        <div class="flex space-x-6 items-center max-[870px]:space-x-3">
+          <div class="flex items-center space-x-6 max-[740px]:hidden">
+            <div class="group text-[#ffffff] text-[16px] flex items-center cursor-pointer">
+              <span class="group-hover:border-b mr-2">About MOSIP</span>
+              <span class="w-0 h-0 border-l-4 border-r-4 border-b-4 border-transparent border-b-white -rotate-180 group-hover:rotate-0 duration-300"></span>
+              <div id="dropdownCard" class="absolute top-20 mt-[6px] w-[174px] -ml-14 bg-white rounded-md shadow-lg hidden  z-50 group-hover:block">
+                <div class="p-2">
+                  <a href="https://mosip.io/"  target="_blank" class="block hover:bg-gray-200 px-2 py-2 text-[#3E3E3E] border-b border-[#C4D6E6] text-[14px] flex items-center space-x-1">
+                    <span>MOSIP Website</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827" viewBox="0 0 14.529 13.827">
+                      <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                        <path id="north_east_FILL0_wght400_GRAD0_opsz48" d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z" transform="translate(952.372 823.652)" fill="#3e3e3e" stroke="#3e3e3e" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+                        <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                        <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                        <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                        <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                      </g>
+                    </svg>
+                  </a>
+                  <div id="docLinkCard" class="px-2 py-2 text-[#3E3E3E] border-b border-[#C4D6E6] text-[14px] flex items-center hover:bg-gray-200">
+                    <span >Documentation</span>
+
+                    <!-- Docs version card -->
+                    <div id="docVersiondropDown" class="absolute mt-32 w-[174px] ml-36 bg-white rounded-md shadow-lg hidden z-50">
+                      <div class="p-2">
+                        <a href="https://docs.mosip.io/1.1.5" target="_blank" class="block px-2 py-2 text-[#3E3E3E] hover:bg-gray-200 border-b border-[#C4D6E6] text-[14px] flex items-center space-x-1">
+                          <span>Docs 1.1.5</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827" viewBox="0 0 14.529 13.827">
+                            <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                              <path id="north_east_FILL0_wght400_GRAD0_opsz48" d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z" transform="translate(952.372 823.652)" fill="#3e3e3e" stroke="#3e3e3e" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+                              <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                              <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                              <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                              <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                            </g>
+                          </svg>
+                        </a>
+                        <a href="https://docs.mosip.io/1.2.0" target="_blank" class="block px-2 py-2 text-[#3E3E3E] hover:bg-gray-200 border-b border-[#C4D6E6] text-[14px] flex items-center space-x-1">
+                          <span>Docs 1.2.0</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827" viewBox="0 0 14.529 13.827">
+                            <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                              <path id="north_east_FILL0_wght400_GRAD0_opsz48" d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z" transform="translate(952.372 823.652)" fill="#3e3e3e" stroke="#3e3e3e" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+                              <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                              <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                              <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                              <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                            </g>
+                          </svg>
+                        </a>
+                        <a href="https://docs.inji.io/" target="_blank" class="block px-2 py-2 text-[#3E3E3E] hover:bg-gray-200 border-b border-[#C4D6E6] text-[14px] flex items-center space-x-1">
+                          <span>Inji</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827" viewBox="0 0 14.529 13.827">
+                            <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                              <path id="north_east_FILL0_wght400_GRAD0_opsz48" d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z" transform="translate(952.372 823.652)" fill="#3e3e3e" stroke="#3e3e3e" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+                              <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                              <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                              <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                              <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                            </g>
+                          </svg>
+                        </a>
+                        <a href="https://docs.esignet.io/" target="_blank" class="block px-2 py-2 text-[#3E3E3E] hover:bg-gray-200 text-[14px] flex items-center space-x-1">
+                          <span>eSignet</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827" viewBox="0 0 14.529 13.827">
+                            <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                              <path id="north_east_FILL0_wght400_GRAD0_opsz48" d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z" transform="translate(952.372 823.652)" fill="#3e3e3e" stroke="#3e3e3e" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+                              <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                              <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                              <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                              <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                            </g>
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+
+                  </div>
+                  <a href="https://www.youtube.com/@mosip16" target="_blank" class="block px-2 py-2 hover:bg-gray-200 text-[#3E3E3E] text-[14px] flex items-center space-x-1">
+                    <span>YouTube Videos</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827" viewBox="0 0 14.529 13.827">
+                      <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                        <path id="north_east_FILL0_wght400_GRAD0_opsz48" d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z" transform="translate(952.372 823.652)" fill="#3e3e3e" stroke="#3e3e3e" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+                        <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                        <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                        <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                        <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5"/>
+                      </g>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <a href="https://community.mosip.io/" target="_blank" class="group text-[#ffffff] text-[16px] flex items-center space-x-1 border-bottom-center cursor-pointer pb-1 border-bottom-center">
+              <span>Community</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="12.529"height="11.827"viewBox="0 0 14.529 13.827">
+                <g id="Group_57562" data-name="Group 57562" transform="translate(-1106.75 -63.402)">
+                  <path id="north_east_FILL0_wght400_GRAD0_opsz48"  d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z" transform="translate(952.372 823.652)" fill="#fff" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" />
+                  <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1.5" />
+                  <line id="Line_4" data-name="Line 4" x1="10.827"  transform="translate(1107.5 76.48)" fill="none" stroke="#fff" stroke-linecap="round"stroke-width="1.5" />
+                  <line id="Line_5"data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none"  stroke="#fff" stroke-linecap="round" stroke-width="1.5" />
+                  <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1.5"/>
+                </g>
+              </svg>
+            </a>
+            <span class="text-[#ffffff] text-[16px] cursor-pointer border-bottom-center"><a target="_blank" href="https://mosip.stoplight.io/">APIs</a></span>
+          </div>
+          <button class="text-[#ffffff] text-[16px] border-solid border-[1px] h-[43px] w-[86px] rounded-[10px] hover:bg-[#ffffff] hover:text-[#1763AC]"><a href="https://docs.google.com/forms/d/e/1FAIpQLSc2I0CQqlYRIrEmcJ3J3tKlYOVNcYNj88YZe4MMwU2RZTrjOA/viewform" target="_blank">Get UIN</a></button>
+        </div>
+      </nav>
+
+      <!-- Hamburger for Mobile view -->
+       
+      <div id="hamburgerDetails" class="hidden bg-[#012F5A] -mx-5 p-5 absolute w-full text-[#ffffff] mt-3 z-50">
+        <div class="mb-2">
+          <span class="flex items-center space-x-1 pb-2">
+            <span class="font-bold text-1 border-b border-[#ffffff]">About MOSIP</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M8 10l4 4 4-4" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+
+          <a href="https://mosip.io/"  target="_blank" class="block pl-5 py-1 text-[#ffffff] text-[14px] flex items-center space-x-2">
+            <span class="border-b border-[#ffffff]">MOSIP Website</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827" viewBox="0 0 14.529 13.827">
+              <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                <path id="north_east_FILL0_wght400_GRAD0_opsz48" d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z" transform="translate(952.372 823.652)" fill="#ffffff" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+                <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+              </g>
+            </svg>
+          </a>
+
+          <div class="block pl-5 py-1 text-[#ffffff] text-[14px]">
+            <span class="border-b border-[#ffffff]">Documentation</span>
+            <a href="https://docs.mosip.io/1.1.5"  target="_blank" class="block pl-5 py-1 text-[#ffffff] text-[14px] flex items-center space-x-2">
+              <span class="border-b border-[#ffffff]">Docs 1.1.5</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827" viewBox="0 0 14.529 13.827">
+                <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                  <path id="north_east_FILL0_wght400_GRAD0_opsz48" d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z" transform="translate(952.372 823.652)" fill="#ffffff" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+                  <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                  <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                  <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                  <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                </g>
+              </svg>
+            </a>
+            <a href="https://docs.mosip.io/1.2.0"  target="_blank" class="block pl-5 py-1 text-[#ffffff] text-[14px] flex items-center space-x-2">
+              <span class="border-b border-[#ffffff]">Docs 1.2.0</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827" viewBox="0 0 14.529 13.827">
+                <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                  <path id="north_east_FILL0_wght400_GRAD0_opsz48" d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z" transform="translate(952.372 823.652)" fill="#ffffff" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+                  <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                  <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                  <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                  <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                </g>
+              </svg>
+            </a>
+            <a href="https://docs.inji.io/"  target="_blank" class="block pl-5 py-1 text-[#ffffff] text-[14px] flex items-center space-x-2">
+              <span class="border-b border-[#ffffff]">Inji</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827" viewBox="0 0 14.529 13.827">
+                <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                  <path id="north_east_FILL0_wght400_GRAD0_opsz48" d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z" transform="translate(952.372 823.652)" fill="#ffffff" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+                  <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                  <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                  <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                  <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                </g>
+              </svg>
+            </a>
+            <a href="https://docs.esignet.io/"  target="_blank" class="block pl-5 py-1 text-[#ffffff] text-[14px] flex items-center space-x-2">
+              <span class="border-b border-[#ffffff]">eSignet</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827" viewBox="0 0 14.529 13.827">
+                <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                  <path id="north_east_FILL0_wght400_GRAD0_opsz48" d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z" transform="translate(952.372 823.652)" fill="#ffffff" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+                  <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                  <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                  <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                  <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                </g>
+              </svg>
+            </a>
+          </div>
+          <a href="https://www.youtube.com/@mosip16"  target="_blank" class="block pl-5 py-1 text-[#ffffff] text-[14px] flex items-center space-x-2">
+            <span class="border-b border-[#ffffff]">YouTube Videos</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827" viewBox="0 0 14.529 13.827">
+              <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                <path id="north_east_FILL0_wght400_GRAD0_opsz48" d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z" transform="translate(952.372 823.652)" fill="#ffffff" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+                <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+                <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5"/>
+              </g>
+            </svg>
+          </a>
+        </div>
+        <a href="https://community.mosip.io/" target="_blank" class="block py-1 text-[#ffffff] text-[16px] flex items-center space-x-2 font-bold mb-2">
+          <span class="border-b border-[#ffffff]">Community</span>
+        </a>
+        <a href="https://mosip.stoplight.io/" target="_blank" class="block py-1 text-[#ffffff] text-[16px] flex items-center space-x-2 font-bold mb-2">
+          <span class="border-b border-[#ffffff]">APIs</span>
+        </a>
+      </div>
+      <!-- Hamburger for Mobile view end -->
+
+      <!-- title card -->
+      <div id="titleCard" class="text-center px-[30px] pt-[30px] flex justify-center flex-col max-[930px]:px-0">
+        <h2 class="text-[50px] max-[1800px]:text-[34px] font-[700] text-[#ffffff] max-[520px]:text-[26px] max-[400px]:font-[600]">Welcome to the MOSIP Collab environment!</h2>
+        <p class="text-[#C4D6E6] text-[14px]">Dive into our dynamic sandbox, designed for testing, collaboration, and seamless integration of your solutions with our bleeding-edge offerings.<br/>
+          Learn more about Collab <a target="_blank" href="https://docs.mosip.io/1.2.0/collab-getting-started-guide" class="underline font-bold">here</a>, or head below to get started!</p>
+      </div> 
+
+      <!-- Filter -->
+      <div id="filterCard" class="flex justify-end max-[750px]:justify-center mt-7 max-[675px]:mt-2">
+        <div id="filterContainer" class="w-[150px] mt-6 h-[40px] rounded-[20px] text-[14px] bg-[#FFFFFF33] py-[10px] z-40">
+          <div id="filterButton" class="flex rounded-[30px] items-center justify-between cursor-pointer text-[#ffffff] px-3">
+            <span class="flex items-center space-x-1">
+             <span>Sort by: </span>
+             <span id="selectedSortType">Default</span>
+            </span>
+            <span id="arrowIcon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                <path id="arrowIconPath" d="M8 10l4 4 4-4" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span> 
+          </div>
+
+          <div id="filterOptionsCard" class="hidden mt-1">
+            <p id="defaultOrder" class="py-2 px-3 flex items-center justify-between bg-[#EFF7FF] text-[#1763AC] text-[14px] cursor-pointer">
+              <span>Default </span>
+              <span id="defaultTickIcon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#1763AC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12l5 5L20 7" />
+                </svg>
+              </span>
+            </p>
+            <p id="ascOrder" class="py-2 px-3 flex items-center justify-between text-[#313131] text-[14px] cursor-pointer">
+              <span>Ascending Order</span>
+              <span id="ascTickIcon" class="hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#1763AC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12l5 5L20 7" />
+                </svg>
+              </span>
+            </p>
+            <p id="descOrder" class="py-2 px-3 pb-3 flex items-center justify-between text-[#313131] text-[14px] rounded-b-[20px] cursor-pointer">
+              <span>Descending Order</span>
+              <span id="descTickIcon" class="hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#1763AC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12l5 5L20 7" />
+                </svg>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mb-0 mt-10">
+        <button id="applicationCardBtn" class="w-[254px] h-[46px] border-b-0 rounded-t-[10px] text-[16px] font-bold -mr-1 active-btn max-[750px]:w-[150px]">Applications</button>
+        <button id="useCasesCars" class="w-[254px] h-[46px] border-b-0 rounded-t-[10px] text-[16px] font-bold inactive-btn max-[750px]:w-[150px]">Use Cases</button>
+      </div>
+
+    </header>
+
+  <div class="bg-[#EFF3F8] p-[30px]">
+      <div id="applicationsCard">
+        <p class="text-center px-[60px] pb-[30px] max-[750px]:px-[3px]">Try out the various MOSIP Applications below</p>
+        <div class="flex items-center justify-center" id="appDetails">
+          <div class="flex justify-center w-full mx-auto max-[870px]:px-[20px]">
+            <div id="appsContainer" class="flex flex-wrap justify-start w-[1350px] max-[1350px]:w-[1000px] max-[1040px]:w-[695px] max-[675px]:justify-center"></div>
+          </div>
+        </div>
+      </div>
+
+    <!-- Module List -->
+      <div id="useCases" class="hidden">
+        <p class="text-center px-[60px] pb-[30px] max-[750px]:px-[3px]">Try out the various MOSIP Use Cases below</p>
+        <div class="flex items-center justify-start max-[800px]:justify-center max-[800px]:flex-wrap max-[800px]:space-y-2">
+          <div class="w-[312px] h-[312px] bg-[#ffffff] rounded-[20px] p-2 shadow-lg mr-4 max-[675px]:mr-0">
+            <div id='preReg' class="w-[292px] h-[209px] bg-[#F4F8FA] rounded-[10px] flex justify-center items-center flex-col">
+              <img class="h-[80px] w-[80px] block" src="https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/mosip-favicon.png"/>
+              <h2 class="text-[20px] font-bold block">Use Case 1</h2>
+            </div>
+            <div class="mt-2 flex align-center justify-center flex-col items-center">
+              <h4 class="text-[#01315F] font-bold text-[18px]">Loan Application</h4>
+              <div class="mt-2 flex justify-start space-x-2 mb-2">
+                <button class="w-[90px] h-[29px] bg-[#1763AC] rounded-[6px] text-[#ffffff] text-[14px]"><a target="_blank" href='https://docs.mosip.io/1.2.0/general/collab-getting-started-guide/use-cases/loan-application'>User Guide</a></button>
+              </div>
+            </div>
+          </div>
+          <div class="bg-[#F4F8FA] rounded-[10px] w-[914px] h-[312px] flex flex-col justify-center items-center">
+            <img alt="comingsoon" class="h-[191px] w-[191px]" src="data:image/png;base64,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"/>
+            <p class="text-[#1763AC] text=[18px]">Stay tuned!</p>
+            <p class="text-[#000000] text-[14px]">More use cases coming soon.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="h-[64px] flex items-center justify-center">
+      <p class="text-[#727272] text-[16px]">© 2024 All Rights Reserved MOSIP</p>
+    </div>
+
+    <!-- Java Script -->
+     <script>
+      // list of All Applications
+
+      let listOfMosipApps = [
+        {id: "preReg", appName:"Pre-registration", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/pre-reg.png", userGuide:"https://docs.mosip.io/1.2.0/collab-getting-started-guide/collab-pre-registration-guide", tryIt:"https://prereg.collab.mosip.net/pre-registration-ui/#/eng", docs:"https://docs.mosip.io/1.2.0/modules/pre-registration"},
+        {id: "androidRegClient", appName:"Android Registration Client", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/android-reg.png", userGuide:"https://docs.mosip.io/1.2.0/collab-getting-started-guide/collab-android-reg-client", tryIt:"https://drive.google.com/drive/folders/1-kukTkg7o-D8F0mEEWyPAK3pDDg-TRQh", docs:"https://docs.mosip.io/1.2.0/modules/android-registration-client"},
+        {id: "desktopRegClient", appName:"Desktop Registration Client", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/desktop-reg.png", userGuide:"https://docs.mosip.io/1.2.0/collab-getting-started-guide/collab-reg-client-setup-guide", tryIt:"https://regclient.collab.mosip.net/", docs:"https://docs.mosip.io/1.2.0/modules/registration-client"},
+        {id: "resident", appName:"Resident Portal", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/RP_logo.png", userGuide:"https://docs.mosip.io/1.2.0/collab-getting-started-guide/collab-resident-portal-guide", tryIt:"https://resident.collab.mosip.net", docs:"https://docs.mosip.io/1.2.0/modules/resident-services"},
+        {id: "eSignet", appName:"Integrate with Mock ID", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png", userGuide:"https://docs.esignet.io/integration/relying-party", tryIt:"https://esignet-mock.collab.mosip.net/", docs:"https://docs.esignet.io/overview"},
+        {id: "eSignet", appName:"Integrate with MOSIP ID", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png", userGuide:"https://docs.esignet.io/integration/relying-party", tryIt:"https://esignet-mosipid.collab.mosip.net/", docs:"https://docs.esignet.io/overview"},
+        {id: "eSignet", appName:"Health Portal using Mock ID", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png", userGuide:"https://docs.esignet.io/try-it-out/using-mock-data", tryIt:"https://healthservices-esignet-mock.collab.mosip.net/", docs:"https://docs.esignet.io/overview"},
+        {id: "eSignet", appName:"Health Portal using Your MOSIP ID", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png", userGuide:"https://docs.esignet.io/try-it-out/register-yourself", tryIt:"https://healthservices-mosipid.collab.mosip.net/", docs:"https://docs.esignet.io/overview"},
+        {id: "injiWallet", appName:"Inji Wallet - Mobile | Android", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-wallet.png", userGuide:"https://docs.inji.io/inji-wallet/inji-mobile/sandbox-details/inji-setup-guide", tryIt:"https://drive.google.com/drive/folders/1gBjFSdpjxU4bsZi7-xS59W1-EIFKrkS8", docs:"https://docs.inji.io/inji-wallet/inji-mobile"},
+        {id: "injiWallet", appName:"Inji Wallet - Mobile | iOS", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-wallet.png", userGuide:"https://docs.inji.io/inji-wallet/inji-mobile/sandbox-details/inji-setup-guide", tryIt:"https://testflight.apple.com/join/7FTAdjLe", docs:"https://docs.inji.io/inji-wallet/inji-mobile"},
+        {id: "injiWeb", appName:"Inji Wallet - Web", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-wallet.png", userGuide:"https://docs.mosip.io/inji/inji-wallet/inji-web/try-it-out/inji-web-setup-guide", tryIt:"https://injiweb.collab.mosip.net/", docs:"https://docs.mosip.io/inji/inji-wallet/inji-web"},
+        {id: "injiVerify", appName:"Inji Verify", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-verify.png", userGuide:"https://docs.mosip.io/inji/inji-verify/releases-1/inji-verify-collab-guide", tryIt:"https://injiverify.collab.mosip.net/", docs:"https://docs.mosip.io/inji/inji-verify/overview"},
+        {id: "AdminPortal", appName:"Admin Portal", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/Admin_logo.png", userGuide:"https://docs.mosip.io/1.2.0/collab-getting-started-guide/admin-portal", tryIt:"https://admin.collab.mosip.net", docs:"https://docs.mosip.io/1.2.0/modules/administration"},
+        {id: "pms", appName:"Partner Management System", logo:"https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/PMS_logo.png", userGuide:"https://docs.mosip.io/1.2.0/collab-getting-started-guide/collab-pmp-guide", tryIt:"https://pmp.collab.mosip.net/#/pmp/home", docs:"https://docs.mosip.io/1.2.0/modules/partner-management-services/pms-existing/partner-policies"}
+      ];
+
+      // Dom elements for interaction
+      const appsContainerEl = document.getElementById('appsContainer');
+      const docLinkCardEl = document.getElementById("docLinkCard");
+      const docVersiondropDownEl = document.getElementById("docVersiondropDown");
+      const filterButtonEl = document.getElementById("filterButton");
+      const arrowIconEl = document.getElementById("arrowIcon");
+      const filterContainerEl = document.getElementById("filterContainer");
+      const filterOptionsCardEl = document.getElementById("filterOptionsCard");
+      const defaultOrderEl = document.getElementById("defaultOrder");
+      const ascOrderEl = document.getElementById("ascOrder");
+      const descOrderEl = document.getElementById("descOrder");
+      const applicationCardBtnEl = document.getElementById("applicationCardBtn");
+      const useCasesBtnEl = document.getElementById("useCasesCars");
+
+      let isFilterDropdownOpen = false;
+      let isHamburgerOpen = false;
+
+      const sortByAsc = () => {
+        const sortedAppData = listOfMosipApps.slice().sort((a, b) => a.appName.localeCompare(b.appName));
+        showListOfAppsData(sortedAppData);
+      }
+
+      const sortByDesc = () => {
+        const sortedAppData = listOfMosipApps.slice().sort((a, b) => b.appName.localeCompare(a.appName));
+        showListOfAppsData(sortedAppData);
+      }
+  
+      function showListOfAppsData(sortedAppData){
+        appsContainerEl.innerHTML = "";
+        sortedAppData.forEach(item =>{
+          appsContainerEl.innerHTML += `
+            <div class="w-[312px] h-[312px] bg-[#ffffff] rounded-[20px] p-2 shadow-lg mb-[30px] mr-4 max-[675px]:mr-0">
+              <div id=${item.appName} class="w-[292px] h-[209px] bg-[#F4F8FA] rounded-[10px] flex justify-center items-center">
+                  <img alt=${item.id} src=${item.logo}>
+              </div>
+              <div class="mt-2">
+                <h4 class="text-[#01315F] font-bold text-[18px]">${item.appName}</h4>
+                <div class="mt-2 flex justify-start space-x-2 mb-2">
+                  <button class="w-[90px] h-[29px] bg-[#1763AC] rounded-[6px] text-[#ffffff] text-[14px]"><a target="_blank" href=${item.tryIt}>Try It Out!</a></button>
+                  <button class="w-[90px] h-[29px] rounded-[6px] border border-[#1763AC] font-[600]"><a class="text-[#1763AC] text-[14px]" target="_blank" href=${item.userGuide}>User Guide</a></button>
+                  <button class="w-[74px] h-[29px] rounded-[6px] border border-[#1763AC] font-[600]"><a class="text-[#1763AC] text-[14px]" target="_blank" href=${item.docs}>Overview</a></button>
+                </div>
+              </div>
+            </div>
+          `
+        });
+      };
+
+      showListOfAppsData(listOfMosipApps);
+
+      docLinkCardEl.addEventListener('mouseover', () =>{
+        docVersiondropDownEl.style.display = "block";
+        docLinkCardEl.style.backgroundColor = "";
+      });
+      
+      docLinkCardEl.addEventListener('mouseout', () =>{
+        docVersiondropDownEl.style.display = "none";
+        docLinkCardEl.style.backgroundColor = "#ffffff";
+      });
+
+      const openFilterDropdown = () =>{
+        arrowIconEl.classList.remove("rotate-0");
+        arrowIconEl.classList.add("rotate-180", "transition-transform", "ease", "duration-300");
+        filterButtonEl.classList.remove("text-[#ffffff]", "font-[500]");
+        filterButtonEl.classList.add("text-[#313131]", "font-[600]");
+        document.getElementById("arrowIconPath").setAttribute('stroke', '#313131');
+        filterContainerEl.classList.remove("h-[40px]", "shadow-none", "w-[150px]", "bg-[#FFFFFF33]", "hidden");
+        filterContainerEl.classList.add("h-[155px]", "shadow-lg", "w-[162px]", "bg-[#ffffff]", "block");
+        filterOptionsCardEl.classList.remove("hidden");
+        filterOptionsCardEl.classList.add("block");
+        isFilterDropdownOpen = true; 
+      }
+
+      const closeFilterDropdown = () =>{
+        arrowIconEl.classList.remove("rotate-180")
+        arrowIconEl.classList.add("rotate-0", "transition-transform", "ease", "duration-300");
+        filterButtonEl.classList.remove("text-[#313131]", "font-[600]");
+        filterButtonEl.classList.add("text-[#ffffff]", "font-[500]");
+        document.getElementById("arrowIconPath").setAttribute('stroke', '#ffffff');
+        filterContainerEl.classList.remove("h-[155px]", "shadow-lg", "w-[162px]", "bg-[#ffffff]");
+        filterContainerEl.classList.add("h-[40px]", "shadow-none", "w-[150px]", "bg-[#FFFFFF33]");
+        filterOptionsCardEl.classList.remove("block");
+        filterOptionsCardEl.classList.add("hidden");
+        isFilterDropdownOpen = false;
+      }
+
+      filterButtonEl.addEventListener('click', () =>{
+        if(!isFilterDropdownOpen){
+          openFilterDropdown();
+        }else{
+          closeFilterDropdown();
+        }
+      });
+
+      document.addEventListener("click", (event) =>{
+        if(!filterContainerEl.contains(event.target)){
+          closeFilterDropdown();
+        }
+      })
+
+      defaultOrderEl.addEventListener("click", () =>{
+        defaultOrderEl.style.backgroundColor = "#EFF7FF";
+        defaultOrderEl.style.color = "#1763AC";
+        descOrderEl.style.backgroundColor = "#ffffff";
+        descOrderEl.style.color = "#313131";
+        ascOrderEl.style.backgroundColor = "#ffffff";
+        ascOrderEl.style.color = "#313131";
+        document.getElementById("defaultTickIcon").style.display = "block";
+        document.getElementById("ascTickIcon").style.display = "none";
+        document.getElementById("descTickIcon").style.display = "none";
+        closeFilterDropdown();
+        document.getElementById("selectedSortType").innerText = "Default";
+        showListOfAppsData(listOfMosipApps);
+      })
+
+      ascOrderEl.addEventListener("click", () =>{
+        defaultOrderEl.style.backgroundColor = "#ffffff";
+        defaultOrderEl.style.color = "#313131";
+        ascOrderEl.style.backgroundColor = "#EFF7FF";
+        ascOrderEl.style.color = "#1763AC";
+        descOrderEl.style.backgroundColor = "#ffffff";
+        descOrderEl.style.color = "#313131";
+        document.getElementById("defaultTickIcon").style.display = "none";
+        document.getElementById("ascTickIcon").style.display = "block";
+        document.getElementById("descTickIcon").style.display = "none";
+        closeFilterDropdown();
+        document.getElementById("selectedSortType").innerText = "Aa - Zz";
+        sortByAsc();
+      })
+
+      descOrderEl.addEventListener("click", () =>{
+        defaultOrderEl.style.backgroundColor = "#ffffff";
+        defaultOrderEl.style.color = "#313131";
+        ascOrderEl.style.backgroundColor = "#ffffff";
+        ascOrderEl.style.color = "#313131";
+        descOrderEl.style.backgroundColor = "#EFF7FF";
+        descOrderEl.style.color = "#1763AC";
+        document.getElementById("defaultTickIcon").style.display = "none";
+        document.getElementById("ascTickIcon").style.display = "none";
+        document.getElementById("descTickIcon").style.display = "block";
+        closeFilterDropdown();
+        document.getElementById("selectedSortType").innerText = "Zz - Aa";
+        sortByDesc();
+      })
+
+      document.getElementById("hamburgerIcon").addEventListener("click", () =>{
+        if(!isHamburgerOpen){
+          document.getElementById("hamburgerDetails").classList.remove('hidden');
+          isHamburgerOpen = true;
+        }else{
+          document.getElementById("hamburgerDetails").classList.add('hidden');
+          isHamburgerOpen = false;
+        }
+      });
+      
+      applicationCardBtnEl.addEventListener("click", () =>{
+        document.getElementById('useCases').classList.add("hidden");
+        document.getElementById('applicationsCard').classList.remove("hidden");
+        applicationCardBtnEl.classList.add("active-btn");
+        applicationCardBtnEl.classList.remove("inactive-btn");
+        useCasesBtnEl.classList.remove("active-btn");
+        useCasesBtnEl.classList.add("inactive-btn");
+      })
+
+      useCasesBtnEl.addEventListener("click", () =>{
+        document.getElementById('applicationsCard').classList.add("hidden");
+        document.getElementById('useCases').classList.remove("hidden");
+        useCasesBtnEl.classList.add("active-btn");
+        useCasesBtnEl.classList.remove("inactive-btn");
+        applicationCardBtnEl.classList.remove("active-btn");
+        applicationCardBtnEl.classList.add("inactive-btn");
+      })
+
+     </script>
+  </body>
+</html>
