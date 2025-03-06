@@ -1,20 +1,19 @@
 apiVersion: v2
-name: keycloak-init
-description: A Helm chart for Kubernetes to initialize Keycloak  (updating for test)
+name: postgresbackup
+description: A Helm chart to deploy postgresbackup
 type: application
 version: 0.0.1-develop
-appVersion: 1.2.0
+appVersion: ""
 dependencies:
   - name: common
     repository: https://charts.bitnami.com/bitnami
     tags:
       - bitnami-common
     version: 1.x.x
-
 home: https://mosip.io
 keywords:
-  - keycloak
-  - access-management
+  - mosip
+  - postgresbackup
 maintainers:
   - email: info@mosip.io
     name: MOSIP
