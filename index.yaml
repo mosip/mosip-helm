@@ -14504,6 +14504,29 @@ entries:
     - https://mosip.github.io/mosip-helm/pms-partner-12.2.0.tgz
     version: 12.2.0
   - apiVersion: v2
+    created: "2025-03-10T12:36:36.339547019Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Partner Management Service Partner service
+    digest: 5288a1f84f75b660dd96ba272f7b020e5deb4373c2fc99bbc03d03e6420f0fe6
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - pms-partner
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: pms-partner
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/pms-partner-12.2.0-develop.tgz
+    version: 12.2.0-develop
+  - apiVersion: v2
     created: "2024-11-25T14:35:24.761396162+05:30"
     dependencies:
     - name: common
@@ -14805,6 +14828,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/pms-policy-12.2.0.tgz
     version: 12.2.0
+  - apiVersion: v2
+    created: "2025-03-10T12:36:36.340950567Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Packetmanager module
+    digest: 06c9236a334ed2f93811bde9e96bf621143f2c8ff9d666e1dbcecc8a2afdf5de
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - pms-policy
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: pms-policy
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/pms-policy-12.2.0-develop.tgz
+    version: 12.2.0-develop
   - apiVersion: v2
     created: "2024-11-25T14:35:24.786244851+05:30"
     dependencies:
@@ -27443,4 +27489,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-03-10T11:33:17.115614081Z"
+generated: "2025-03-10T12:36:36.337910376Z"
