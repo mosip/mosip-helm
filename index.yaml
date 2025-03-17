@@ -1161,6 +1161,28 @@ entries:
     - https://mosip.github.io/mosip-helm/apitestrig-1.3.1.tgz
     version: 1.3.1
   - apiVersion: v2
+    created: "2025-03-17T09:06:28.927156529Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy APITESTRIG for MOSIP modules
+    digest: 5d92801af8d499c927cda2117626a5299ebc58c13db6770332e04d95f9fd58cf
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - apitestrig
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: apitestrig
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/apitestrig-1.3.1-develop.tgz
+    version: 1.3.1-develop
+  - apiVersion: v2
     created: "2024-12-12T11:41:13.883909116Z"
     dependencies:
     - name: common
@@ -27312,7 +27334,7 @@ entries:
     - https://mosip.github.io/mosip-helm/uitestrig-12.0.1.tgz
     version: 12.0.1
   - apiVersion: v2
-    created: "2025-02-26T05:51:42.453143956Z"
+    created: "2025-03-17T09:06:28.928821002Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -27320,7 +27342,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart to deploy uitestrig to test working of MOSIP modules
-    digest: d2c9f0387c8a61bdebf015940422f1f4ffe2b261e8ebbd25762e53dab0d3ae9e
+    digest: d1beef61a893febed1213b75268434876c4ae190e0085e607d6c05508e776e7b
     home: https://mosip.io
     keywords:
     - mosip
@@ -28297,4 +28319,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-03-17T08:10:35.857281567Z"
+generated: "2025-03-17T09:06:28.924434268Z"
