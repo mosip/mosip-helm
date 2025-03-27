@@ -215,7 +215,8 @@ extraEnvVars: []
 extraEnvVarsCM:
   - global
   - db
-  - mosipcertmanager
+  - pre-expiry-days
+  - partner-ids-env
 ## Secret with extra environment variables
 ##
 extraEnvVarsSecret:
@@ -426,7 +427,9 @@ mosipcertmanager:
       db-port: '5432'
       db-su-user: 'postgres'
       db-host: 'mosip-api-internal-host'
-    mosipcertmanager:
-      pre-expiry-days: '7'
+    pre-expiry-days:
+      pre-expiry-days: 'Null'
+    partner-ids-env:
+      PARTNER_IDS_ENV: ""  # Comma-separated list of partner IDs (e.g., "partner1,partner2")
 
 enable_insecure: false
