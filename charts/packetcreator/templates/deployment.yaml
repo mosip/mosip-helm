@@ -53,24 +53,6 @@ spec:
       {{- if .Values.podSecurityContext.enabled }}
       securityContext: {{- omit .Values.podSecurityContext "enabled" | toYaml | nindent 8 }}
       {{- end }}
-      initContainers:
-        {{- if and .Values.volumePermissions.enabled .Values.persistence.enabled }}
-        - name: volume-permissions
-          image: {{ template "packetcreator.image" . }}
-          imagePullPolicy: {{ .Values.volumePermissions.image.pullPolicy | quote }}
-          command:
-            - /bin/bash
-            - -c
-            - chown -R mosip:mosip {{ .Values.persistence.packetcreator_data_mount_dir }}
-          securityContext:
-            runAsUser: 0
-          {{- if .Values.volumePermissions.resources }}
-          resources: {{- toYaml .Values.volumePermissions.resources | nindent 12 }}
-          {{- end }}
-          volumeMounts:
-            - name: {{ template "common.names.fullname" . }}
-              mountPath: {{ .Values.persistence.packetcreator_data_mount_dir }}
-        {{- end }}
         {{- if .Values.enable_insecure }}
           {{- include "common.tplvalues.render" (dict "value" .Values.initContainers "context" $) | nindent 8 }}
         {{- end }}
@@ -119,14 +101,6 @@ spec:
           {{- if .Values.resources }}
           resources: {{- toYaml .Values.resources | nindent 12 }}
           {{- end }}
-          volumeMounts:
-            - name: {{ template "common.names.fullname" . }}
-              mountPath: {{ .Values.persistence.packetcreator_data_mount_dir }}
-            {{- if .Values.enable_insecure }}
-            - mountPath: /usr/local/openjdk-11/lib/security/cacerts
-              name: cacerts
-              subPath: cacerts
-            {{- end }}
           {{- if .Values.startupProbe.enabled }}
           startupProbe: {{- include "common.tplvalues.render" (dict "value" (omit .Values.startupProbe "enabled") "context" $) | nindent 12 }}
           {{- else if .Values.customStartupProbe }}

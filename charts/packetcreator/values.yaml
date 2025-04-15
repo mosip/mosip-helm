@@ -334,7 +334,6 @@ persistence:
   size: 50G
   existingClaim:
   # Dir where config and keys are written inside container
-  packetcreator_data_mount_dir: '/home/mosip/mountvolume/'
 
 ## Init containers parameters:
 ## volumePermissions: Change the owner and group of the persistent volume mountpoint to runAsUser:fsGroup values from the securityContext section.
@@ -444,7 +443,7 @@ metrics:
 packetcreator:
   configmaps:
     packetcreator:
-      mountPath: /home/mosip/mountvolume
+      mountPath:
   secrets:
 
 ## Ingress
