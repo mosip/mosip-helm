@@ -691,54 +691,51 @@
 
     document.addEventListener('click', (event) => {
       if (event.target.alt) {
-        const appImageEl = event.target;
-        let applicationName = "";
         listOfMosipApps.forEach(item => {
-          if (item.id === appImageEl.alt) {
-            applicationName = item.appName;
+          if (item.id === event.target.alt) {
+            document.getElementById("appDetailsTitlePart").innerHTML = `
+            <div class="flex flex-row justify-between items-center">
+              <div class="flex flex-row gap-x-2 items-center">
+                <div id=${event.target.alt + 'details'}
+                  class="w-[180px] h-[150px] min-[750px]:w-[190px] min-[900px]:w-[207px] min-[750px]:h-[160px] min-[900px]:h-[200px] px-[1%] bg-[#F4F8FA] shadow rounded-[10px] flex justify-center items-center cursor-default pointer-events-none">
+                  <img alt=${item.alt} src=${item.logo} />
+                </div>
+                <div class="flex flex-col mx-6 -mt-[5%]">
+                  <h1 class="text-[1.1rem] min-[750px]:text-[1.3rem] min-[900px]:text-[1.8rem] font-bold text-white">${item.appName}</h1>
+                  <p class="text-[0.6rem] min-[750px]:text-[0.7rem] min-[900px]:text-[0.9rem] text-white opacity-[70%] w-[65%]">ActiveMQ is most commonly deployed as a standalone
+                    process. This option isolates
+                    ActiveMQ
+                    from any particular application and provides maximum flexibility.
+                  </p>
+                </div>
+              </div>
+                <button id="openBtnTop"
+                  class=" flex items-center justify-center bg-transparent text-[18px] text-[#FFFFFF] border border-[#ffffff] w-[23%] min-[750px]:w-[21%] min-[900px]:w-[13%] h-[2.2rem] rounded-md">
+                  <p class="text-[0.9rem] m-1.5">Open</p>
+                  <a><svg xmlns="http://www.w3.org/2000/svg" width="15.957" height="15" viewBox="0 0 19.957 19">
+                      <g id="Group_57577" data-name="Group 57577" transform="translate(-1106.5 -63.152)">
+                        <path id="north_east_FILL0_wght400_GRAD0_opsz48"
+                          d="M160.827-748.19l-.827-.827,9.8-9.8h-5.787V-760h7.794v7.795h-1.181v-5.787Z"
+                          transform="translate(954.147 823.653)" fill="#fff" stroke="#fff" stroke-linecap="round"
+                          stroke-linejoin="round" stroke-width="1" />
+                        <line id="Line_3" data-name="Line 3" y2="14.771" transform="translate(1107.5 66.381)" fill="none"
+                          stroke="#fff" stroke-linecap="round" stroke-width="2" />
+                        <line id="Line_4" data-name="Line 4" x1="14.771" transform="translate(1107.5 81.152)" fill="none"
+                          stroke="#fff" stroke-linecap="round" stroke-width="2" />
+                        <line id="Line_5" data-name="Line 5" x2="7.386" transform="translate(1107.5 66.381)" fill="none"
+                          stroke="#fff" stroke-linecap="round" stroke-width="2" />
+                        <line id="Line_6" data-name="Line 6" y1="7.386" transform="translate(1122.271 73.767)" fill="none"
+                          stroke="#fff" stroke-linecap="round" stroke-width="2" />
+                      </g>
+                    </svg>
+                  </a>
+                </button>
+              </div>
+            </div>
+            `
           }
+          showAppDetails(listOfMosipApps);
         })
-        document.getElementById("appDetailsTitlePart").innerHTML = `
-    <div class="flex flex-row justify-between items-center">
-      <div class="flex flex-row gap-x-2 items-center">
-        <div id=${event.target.alt + 'details'}
-          class="w-[180px] h-[150px] min-[750px]:w-[190px] min-[900px]:w-[207px] min-[750px]:h-[160px] min-[900px]:h-[200px] px-[1%] bg-[#F4F8FA] shadow rounded-[10px] flex justify-center items-center cursor-default pointer-events-none">
-          <img alt=${appImageEl.alt} src=${appImageEl.currentSrc} />
-        </div>
-        <div class="flex flex-col mx-6 -mt-[5%]">
-          <h1 class="text-[1.1rem] min-[750px]:text-[1.3rem] min-[900px]:text-[1.8rem] font-bold text-white">${applicationName}</h1>
-          <p class="text-[0.6rem] min-[750px]:text-[0.7rem] min-[900px]:text-[0.9rem] text-white opacity-[70%] w-[65%]">ActiveMQ is most commonly deployed as a standalone
-            process. This option isolates
-            ActiveMQ
-            from any particular application and provides maximum flexibility.
-          </p>
-        </div>
-      </div>
-        <button id="openBtnTop"
-          class=" flex items-center justify-center bg-transparent text-[18px] text-[#FFFFFF] border border-[#ffffff] w-[23%] min-[750px]:w-[21%] min-[900px]:w-[13%] h-[2.2rem] rounded-md">
-          <p class="text-[0.9rem] m-1.5">Open</p>
-          <a><svg xmlns="http://www.w3.org/2000/svg" width="15.957" height="15" viewBox="0 0 19.957 19">
-              <g id="Group_57577" data-name="Group 57577" transform="translate(-1106.5 -63.152)">
-                <path id="north_east_FILL0_wght400_GRAD0_opsz48"
-                  d="M160.827-748.19l-.827-.827,9.8-9.8h-5.787V-760h7.794v7.795h-1.181v-5.787Z"
-                  transform="translate(954.147 823.653)" fill="#fff" stroke="#fff" stroke-linecap="round"
-                  stroke-linejoin="round" stroke-width="1" />
-                <line id="Line_3" data-name="Line 3" y2="14.771" transform="translate(1107.5 66.381)" fill="none"
-                  stroke="#fff" stroke-linecap="round" stroke-width="2" />
-                <line id="Line_4" data-name="Line 4" x1="14.771" transform="translate(1107.5 81.152)" fill="none"
-                  stroke="#fff" stroke-linecap="round" stroke-width="2" />
-                <line id="Line_5" data-name="Line 5" x2="7.386" transform="translate(1107.5 66.381)" fill="none"
-                  stroke="#fff" stroke-linecap="round" stroke-width="2" />
-                <line id="Line_6" data-name="Line 6" y1="7.386" transform="translate(1122.271 73.767)" fill="none"
-                  stroke="#fff" stroke-linecap="round" stroke-width="2" />
-              </g>
-            </svg>
-          </a>
-        </button>
-      </div>
-    </div>
-    `
-        showAppDetails(listOfMosipApps);
       }
     });
 
