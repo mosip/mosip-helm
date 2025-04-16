@@ -469,7 +469,8 @@
     </div>
 
     <!-- App Details Header part -->
-    <div id="appDetailsTitlePart" class="flex flex-row justify-between pt-[13%]">
+    <div id="appDetailsTitlePart"
+      class="flex flex-row justify-between mt-[120px] min-[750px]:mt-[110px] min-[900px]:mt-[95px]">
     </div>
 
   </header>
@@ -535,27 +536,33 @@
           <br />Data Driven Load Balance
         </p>
       </div>
-      <button id="openBtnbottom"
-        class=" flex items-center justify-center bg-transparent text-[18px] border-2 text-[#1763AC] border-[#1763AC] w-[11%] h-[2.2rem] rounded-md">
-        <p class="text-[0.9rem] font-[500] m-1.5">Open</p>
-        <a><svg xmlns="http://www.w3.org/2000/svg" width="15.957" height="15" viewBox="0 0 19.957 19">
-            <g id="Group_57577" data-name="Group 57577" transform="translate(-1106.5 -63.152)">
-              <path id="north_east_FILL0_wght400_GRAD0_opsz48"
-                d="M160.827-748.19l-.827-.827,9.8-9.8h-5.787V-760h7.794v7.795h-1.181v-5.787Z"
-                transform="translate(954.147 823.653)" fill="#1763AC" stroke="#1763AC" stroke-linecap="round"
-                stroke-linejoin="round" stroke-width="1" />
-              <line id="Line_3" data-name="Line 3" y2="14.771" transform="translate(1107.5 66.381)" fill="none"
-                stroke="#1763AC" stroke-linecap="round" stroke-width="2" />
-              <line id="Line_4" data-name="Line 4" x1="14.771" transform="translate(1107.5 81.152)" fill="none"
-                stroke="#1763AC" stroke-linecap="round" stroke-width="2" />
-              <line id="Line_5" data-name="Line 5" x2="7.386" transform="translate(1107.5 66.381)" fill="none"
-                stroke="#1763AC" stroke-linecap="round" stroke-width="2" />
-              <line id="Line_6" data-name="Line 6" y1="7.386" transform="translate(1122.271 73.767)" fill="none"
-                stroke="#1763AC" stroke-linecap="round" stroke-width="2" />
-            </g>
-          </svg>
-        </a>
-      </button>
+      <div class="flex flex-col justify-between items-center min-[500px]:flex-row">
+        <button id="openBtnbottom"
+          class=" flex items-center justify-center bg-transparent text-[18px] border-2 text-[#1763AC] border-[#1763AC] w-[11%] h-[2.2rem] rounded-md">
+          <p class="text-[0.9rem] font-[500] m-1.5">Open</p>
+          <a><svg xmlns="http://www.w3.org/2000/svg" width="15.957" height="15" viewBox="0 0 19.957 19">
+              <g id="Group_57577" data-name="Group 57577" transform="translate(-1106.5 -63.152)">
+                <path id="north_east_FILL0_wght400_GRAD0_opsz48"
+                  d="M160.827-748.19l-.827-.827,9.8-9.8h-5.787V-760h7.794v7.795h-1.181v-5.787Z"
+                  transform="translate(954.147 823.653)" fill="#1763AC" stroke="#1763AC" stroke-linecap="round"
+                  stroke-linejoin="round" stroke-width="1" />
+                <line id="Line_3" data-name="Line 3" y2="14.771" transform="translate(1107.5 66.381)" fill="none"
+                  stroke="#1763AC" stroke-linecap="round" stroke-width="2" />
+                <line id="Line_4" data-name="Line 4" x1="14.771" transform="translate(1107.5 81.152)" fill="none"
+                  stroke="#1763AC" stroke-linecap="round" stroke-width="2" />
+                <line id="Line_5" data-name="Line 5" x2="7.386" transform="translate(1107.5 66.381)" fill="none"
+                  stroke="#1763AC" stroke-linecap="round" stroke-width="2" />
+                <line id="Line_6" data-name="Line 6" y1="7.386" transform="translate(1122.271 73.767)" fill="none"
+                  stroke="#1763AC" stroke-linecap="round" stroke-width="2" />
+              </g>
+            </svg>
+          </a>
+        </button>
+        <button id="backBtn"
+          class=" flex items-center justify-center bg-transparent text-[18px] border-2 text-[#1763AC] border-[#1763AC] w-[11%] h-[2.2rem] rounded-md">
+          <p class="text-[0.9rem] font-[500] m-1.5">Back</p>
+        </button>
+      </div>
     </div>
 
     <!-- Module List -->
@@ -602,12 +609,12 @@
       { id: "androidRegClient", appName: "Android Registration Client", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/android-reg.png", userGuide: "https://docs.mosip.io/1.2.0/collab-getting-started-guide/collab-android-reg-client", tryIt: "https://drive.google.com/drive/folders/1-kukTkg7o-D8F0mEEWyPAK3pDDg-TRQh", docs: "https://docs.mosip.io/1.2.0/modules/android-registration-client" },
       { id: "desktopRegClient", appName: "Desktop Registration Client", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/desktop-reg.png", userGuide: "https://docs.mosip.io/1.2.0/collab-getting-started-guide/collab-reg-client-setup-guide", tryIt: "https://regclient.collab.mosip.net/", docs: "https://docs.mosip.io/1.2.0/modules/registration-client" },
       { id: "resident", appName: "Resident Portal", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/RP_logo.png", userGuide: "https://docs.mosip.io/1.2.0/collab-getting-started-guide/collab-resident-portal-guide", tryIt: "https://resident.collab.mosip.net", docs: "https://docs.mosip.io/1.2.0/modules/resident-services" },
-      { id: "eSignet", appName: "Integrate with Mock ID", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png", userGuide: "https://docs.esignet.io/integration/relying-party", tryIt: "https://esignet-mock.collab.mosip.net/", docs: "https://docs.esignet.io/overview" },
-      { id: "eSignet", appName: "Integrate with MOSIP ID", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png", userGuide: "https://docs.esignet.io/integration/relying-party", tryIt: "https://esignet-mosipid.collab.mosip.net/", docs: "https://docs.esignet.io/overview" },
-      { id: "eSignet", appName: "Health Portal using Mock ID", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png", userGuide: "https://docs.esignet.io/try-it-out/using-mock-data", tryIt: "https://healthservices-esignet-mock.collab.mosip.net/", docs: "https://docs.esignet.io/overview" },
-      { id: "eSignet", appName: "Health Portal using Your MOSIP ID", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png", userGuide: "https://docs.esignet.io/try-it-out/register-yourself", tryIt: "https://healthservices-mosipid.collab.mosip.net/", docs: "https://docs.esignet.io/overview" },
-      { id: "injiWallet", appName: "Inji Wallet - Mobile | Android", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-wallet.png", userGuide: "https://docs.inji.io/inji-wallet/inji-mobile/sandbox-details/inji-setup-guide", tryIt: "https://drive.google.com/drive/folders/1gBjFSdpjxU4bsZi7-xS59W1-EIFKrkS8", docs: "https://docs.inji.io/inji-wallet/inji-mobile" },
-      { id: "injiWallet", appName: "Inji Wallet - Mobile | iOS", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-wallet.png", userGuide: "https://docs.inji.io/inji-wallet/inji-mobile/sandbox-details/inji-setup-guide", tryIt: "https://testflight.apple.com/join/7FTAdjLe", docs: "https://docs.inji.io/inji-wallet/inji-mobile" },
+      { id: "integratedMockId", appName: "Integrate with Mock ID", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png", userGuide: "https://docs.esignet.io/integration/relying-party", tryIt: "https://esignet-mock.collab.mosip.net/", docs: "https://docs.esignet.io/overview" },
+      { id: "integratedMosipId", appName: "Integrate with MOSIP ID", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png", userGuide: "https://docs.esignet.io/integration/relying-party", tryIt: "https://esignet-mosipid.collab.mosip.net/", docs: "https://docs.esignet.io/overview" },
+      { id: "healthPortalUsingMockId", appName: "Health Portal using Mock ID", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png", userGuide: "https://docs.esignet.io/try-it-out/using-mock-data", tryIt: "https://healthservices-esignet-mock.collab.mosip.net/", docs: "https://docs.esignet.io/overview" },
+      { id: "healthPortalUsingMosipId", appName: "Health Portal using Your MOSIP ID", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png", userGuide: "https://docs.esignet.io/try-it-out/register-yourself", tryIt: "https://healthservices-mosipid.collab.mosip.net/", docs: "https://docs.esignet.io/overview" },
+      { id: "injiWalletAndroid", appName: "Inji Wallet - Mobile | Android", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-wallet.png", userGuide: "https://docs.inji.io/inji-wallet/inji-mobile/sandbox-details/inji-setup-guide", tryIt: "https://drive.google.com/drive/folders/1gBjFSdpjxU4bsZi7-xS59W1-EIFKrkS8", docs: "https://docs.inji.io/inji-wallet/inji-mobile" },
+      { id: "injiWalletIos", appName: "Inji Wallet - Mobile | iOS", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-wallet.png", userGuide: "https://docs.inji.io/inji-wallet/inji-mobile/sandbox-details/inji-setup-guide", tryIt: "https://testflight.apple.com/join/7FTAdjLe", docs: "https://docs.inji.io/inji-wallet/inji-mobile" },
       { id: "injiWeb", appName: "Inji Wallet - Web", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-wallet.png", userGuide: "https://docs.mosip.io/inji/inji-wallet/inji-web/try-it-out/inji-web-setup-guide", tryIt: "https://injiweb.collab.mosip.net/", docs: "https://docs.mosip.io/inji/inji-wallet/inji-web" },
       { id: "injiVerify", appName: "Inji Verify", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-verify.png", userGuide: "https://docs.mosip.io/inji/inji-verify/releases-1/inji-verify-collab-guide", tryIt: "https://injiverify.collab.mosip.net/", docs: "https://docs.mosip.io/inji/inji-verify/overview" },
       { id: "AdminPortal", appName: "Admin Portal", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/Admin_logo.png", userGuide: "https://docs.mosip.io/1.2.0/collab-getting-started-guide/admin-portal", tryIt: "https://admin.collab.mosip.net", docs: "https://docs.mosip.io/1.2.0/modules/administration" },
@@ -655,8 +662,8 @@
       sortedAppData.forEach(item => {
         appsContainerEl.innerHTML += `
             <div class="w-[312px] h-[312px] bg-[#ffffff] rounded-[20px] p-2 shadow-lg mb-[30px] mr-4 max-[675px]:mr-0">
-              <div id=${item.appName} class="w-[292px] h-[209px] bg-[#F4F8FA] rounded-[10px] flex justify-center items-center cursor-pointer">
-                  <img alt=${item.id} src=${item.logo} name=${item.appName}>
+              <div id=${item.appName} class="w-[292px] h-[209px] bg-[#F4F8FA] rounded-[10px] flex justify-center items-center cursor-pointer" title="appHeader">
+                  <img alt=${item.id} src=${item.logo} name=${item.appName} />
               </div>
               <div class="mt-2">
                 <h4 class="text-[#01315F] font-bold text-[18px]">${item.appName}</h4>
@@ -685,22 +692,30 @@
     document.addEventListener('click', (event) => {
       if (event.target.alt) {
         const appImageEl = event.target;
+        let applicationName = "";
+        listOfMosipApps.forEach(item => {
+          if (item.id === appImageEl.alt) {
+            applicationName = item.appName;
+          }
+        })
         document.getElementById("appDetailsTitlePart").innerHTML = `
-      <div class="flex flex-row gap-x-2">
+    <div class="flex flex-row justify-between items-center">
+      <div class="flex flex-row gap-x-2 items-center">
         <div id=${event.target.alt + 'details'}
-          class="w-[202px] h-[200px] bg-[#F4F8FA] shadow -mt-[4rem] max-w-[1020px]:-mb-[0rem] rounded-[10px] flex justify-center items-center cursor-pointer">
-          <img alt=${appImageEl.alt} src=${appImageEl.currentSrc}/>
+          class="w-[180px] h-[150px] min-[750px]:w-[190px] min-[900px]:w-[207px] min-[750px]:h-[160px] min-[900px]:h-[200px] px-[1%] bg-[#F4F8FA] shadow rounded-[10px] flex justify-center items-center cursor-default pointer-events-none">
+          <img alt=${appImageEl.alt} src=${appImageEl.currentSrc} />
         </div>
-        <div class="flex flex-col m-6 -mt-[4%]">
-          <h1 class="text-[1.8rem] font-bold text-white">${appImageEl.name}</h1>
-          <p class="text-[0.9rem] text-white opacity-[70%] w-[65%]">ActiveMQ is most commonly deployed as a standalone
+        <div class="flex flex-col mx-6 -mt-[5%]">
+          <h1 class="text-[1.1rem] min-[750px]:text-[1.3rem] min-[900px]:text-[1.8rem] font-bold text-white">${applicationName}</h1>
+          <p class="text-[0.6rem] min-[750px]:text-[0.7rem] min-[900px]:text-[0.9rem] text-white opacity-[70%] w-[65%]">ActiveMQ is most commonly deployed as a standalone
             process. This option isolates
             ActiveMQ
             from any particular application and provides maximum flexibility.
           </p>
         </div>
+      </div>
         <button id="openBtnTop"
-          class=" flex items-center justify-center bg-transparent text-[18px] text-[#FFFFFF] border border-[#ffffff] w-[13%] h-[2.2rem] rounded-md">
+          class=" flex items-center justify-center bg-transparent text-[18px] text-[#FFFFFF] border border-[#ffffff] w-[23%] min-[750px]:w-[21%] min-[900px]:w-[13%] h-[2.2rem] rounded-md">
           <p class="text-[0.9rem] m-1.5">Open</p>
           <a><svg xmlns="http://www.w3.org/2000/svg" width="15.957" height="15" viewBox="0 0 19.957 19">
               <g id="Group_57577" data-name="Group 57577" transform="translate(-1106.5 -63.152)">
@@ -721,12 +736,13 @@
           </a>
         </button>
       </div>
-      `
+    </div>
+    `
         showAppDetails(listOfMosipApps);
       }
     });
 
-
+    document.getElementById("backBtn").onclick = function () { window.location.reload(); };
 
     docLinkCardEl.addEventListener('mouseover', () => {
       docVersiondropDownEl.style.display = "block";
