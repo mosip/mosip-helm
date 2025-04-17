@@ -9011,6 +9011,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/injiweb-0.8.0.tgz
     version: 0.8.0
+  - apiVersion: v2
+    created: "2025-04-17T12:12:29.486657128Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP injiweb UI module
+    digest: ca0b595a922228910edd1286ca1c1064bea050c351a2b17a261283b867abccf8
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - inji-web
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: injiweb
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/injiweb-0.0.1-develop.tgz
+    version: 0.0.1-develop
   kafka:
   - annotations:
       category: Infrastructure
@@ -29512,4 +29534,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-04-17T05:12:35.895864132Z"
+generated: "2025-04-17T12:12:29.484758897Z"
