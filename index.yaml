@@ -8281,6 +8281,28 @@ entries:
     version: 0.0.1-develop
   inji-certify:
   - apiVersion: v2
+    created: "2025-05-02T09:44:47.246057247Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP inji-certify module
+    digest: 56c50d2d642e8686e40bd5a5c3b0d9f51ce684348ac4094c589fe9d056b1461d
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - inji-certify
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: inji-certify
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/inji-certify-0.11.0.tgz
+    version: 0.11.0
+  - apiVersion: v2
     created: "2025-04-17T12:58:09.165227116Z"
     dependencies:
     - name: common
@@ -29578,4 +29600,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-04-30T13:05:41.196653458Z"
+generated: "2025-05-02T09:44:47.244363602Z"
