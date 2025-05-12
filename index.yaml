@@ -10893,7 +10893,7 @@ entries:
     version: 12.0.1
   - apiVersion: v2
     appVersion: 1.2.0
-    created: "2025-03-27T14:53:06.0475261+05:30"
+    created: "2025-05-12T12:16:51.279113233Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -10901,7 +10901,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart to upload default masterdata to mosip_master DB.
-    digest: aee2d579adce59df4fa0b412d712822384c84112c4dbd6615e2074bc9e6b4c07
+    digest: 8306f79df510998e16ffc1d6ae84aacd73a8d7c92158b8b61bb95e57c87c58cb
     home: https://mosip.io
     keywords:
     - postgres
@@ -16318,7 +16318,7 @@ entries:
     version: 12.0.1
   - apiVersion: v2
     appVersion: 1.2.0
-    created: "2025-03-27T14:53:07.0577695+05:30"
+    created: "2025-05-12T12:16:51.281262595Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -16326,7 +16326,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for Kubernetes to initialize various Postgres DBs.
-    digest: 70fd12c44b4b90e41814686b2bfbede5fb3deb31d72369aae31b7d1131fe2881
+    digest: 09bfecac94646d2525a9ecb43a39a69cbe7ad6791adc9e1d8ee451831fda4ca5
     home: https://mosip.io
     keywords:
     - postgres
@@ -16628,7 +16628,8 @@ entries:
     - https://mosip.github.io/mosip-helm/postgres-upgrade-12.0.1.tgz
     version: 12.0.1
   - apiVersion: v2
-    created: "2025-03-27T14:53:07.0866226+05:30"
+    appVersion: 1.2.0
+    created: "2025-05-12T12:16:51.283372534Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -16636,7 +16637,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for Kubernetes to Upgrade various Postgres DBs.
-    digest: c0f7d3053a29fac8730c3cc72a31ebeaccf2160ffadf9bb558b35973c4155c5f
+    digest: e8d4bf7dced50fafe30bd52f685c8bbdb07611a757bcfd5c5fb296d1a5ad2e7a
     home: https://mosip.io
     keywords:
     - postgres-upgrade
@@ -29600,4 +29601,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-05-12T12:01:40.110400756Z"
+generated: "2025-05-12T12:16:51.27795225Z"
