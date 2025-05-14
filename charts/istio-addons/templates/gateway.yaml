@@ -4,7 +4,7 @@ metadata:
   name: {{ .Values.istio.name }}
 spec:
   selector:
-    istio: ingressgateway-internal
+    istio: {{ .Values.istio.ingressController }}
   servers:
   {{- range .Values.istio.servers }}
   - port:
