@@ -9165,6 +9165,24 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/injiweb-0.0.1-develop.tgz
     version: 0.0.1-develop
+  istio-addons:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-05-14T10:28:10.938292143Z"
+    description: A Helm chart for MOSIP external services istio
+    digest: d47d2ebe525629cae93534850f5dd71b644a78f66b18d72e5aac66c1097ef246
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - istio-addons
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: istio-addons
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/istio-addons-0.0.1-develop.tgz
+    version: 0.0.1-develop
   kafka:
   - annotations:
       category: Infrastructure
@@ -29689,4 +29707,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-05-14T09:44:41.873345349Z"
+generated: "2025-05-14T10:28:10.937940978Z"
