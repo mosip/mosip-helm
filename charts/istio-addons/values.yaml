@@ -1,6 +1,7 @@
 istio:
   name: <metadata-name>
   host: <hostname>
+  ingressController: <istio-ingressgateway>
   port:
     name: http
     number: 80
