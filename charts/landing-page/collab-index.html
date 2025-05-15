@@ -429,9 +429,9 @@
       <!-- Filter -->
       <div id="filterCard" class="flex justify-end max-[750px]:justify-center mt-7 max-[675px]:mt-2">
         <div id="filterContainer"
-          class="absolute h-[40px] w-[150px] min-[500px]:-mt-3 rounded-[20px] text-[14px] bg-[#FFFFFF33] py-[10px] z-40">
+          class="absolute h-[40px] w-[162px] min-[500px]:-mt-3 rounded-[18px] text-[14px] bg-[#FFFFFF33] py-[10px] z-40">
           <div id="filterButton"
-            class="flex rounded-[28px] items-center justify-between cursor-pointer text-[#ffffff] px-2">
+            class="flex rounded-[28px] items-center justify-evenly cursor-pointer text-[#ffffff] px-3">
             <span class="flex items-center space-x-1">
               <span>Sort by: </span>
               <span id="selectedSortType">Default</span>
@@ -784,8 +784,8 @@
       filterButtonEl.classList.remove("text-[#ffffff]", "font-[500]");
       filterButtonEl.classList.add("text-[#313131]", "font-[600]");
       document.getElementById("arrowIconPath").setAttribute('stroke', '#313131');
-      filterContainerEl.classList.remove("h-[40px]", "shadow-none", "w-[150px]", "bg-[#FFFFFF33]", "hidden");
-      filterContainerEl.classList.add("h-[155px]", "shadow-lg", "w-[162px]", "bg-[#ffffff]", "block");
+      filterContainerEl.classList.remove("h-[40px]", "shadow-none", "bg-[#FFFFFF33]", "hidden");
+      filterContainerEl.classList.add("h-[155px]", "shadow-lg", "bg-[#ffffff]", "block");
       filterOptionsCardEl.classList.remove("hidden");
       filterOptionsCardEl.classList.add("block", "duration-700");
       isFilterDropdownOpen = true;
@@ -797,8 +797,8 @@
       filterButtonEl.classList.remove("text-[#313131]", "font-[600]");
       filterButtonEl.classList.add("text-[#ffffff]", "font-[500]");
       document.getElementById("arrowIconPath").setAttribute('stroke', '#ffffff');
-      filterContainerEl.classList.remove("h-[155px]", "shadow-lg", "w-[162px]", "bg-[#ffffff]");
-      filterContainerEl.classList.add("h-[40px]", "shadow-none", "w-[150px]", "bg-[#FFFFFF33]");
+      filterContainerEl.classList.remove("h-[155px]", "shadow-lg", "bg-[#ffffff]");
+      filterContainerEl.classList.add("h-[40px]", "shadow-none",  "bg-[#FFFFFF33]");
       filterOptionsCardEl.classList.remove("block");
       filterOptionsCardEl.classList.add("hidden");
       isFilterDropdownOpen = false;
