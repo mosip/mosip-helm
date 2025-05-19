@@ -9168,9 +9168,15 @@ entries:
   istio-addons:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-05-14T10:28:10.938292143Z"
+    created: "2025-05-19T05:23:39.833458142Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
     description: A Helm chart for MOSIP external services istio
-    digest: d47d2ebe525629cae93534850f5dd71b644a78f66b18d72e5aac66c1097ef246
+    digest: e281f8b449d9c6a616b50f1473b108bafde79e9b640664b5f2b0a2856c2cefc6
     home: https://mosip.io
     keywords:
     - mosip
@@ -29775,4 +29781,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-05-15T09:42:04.221675384Z"
+generated: "2025-05-19T05:23:39.832438647Z"
