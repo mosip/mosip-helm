@@ -1,10 +1,15 @@
+{{- if not .Values.istio.gateways }}
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: {{ .Values.istio.name }}
 spec:
   selector:
+  {{- if kindIs "slice" .Values.istio.ingressController }}
+    istio: {{- include "common.tplvalues.render" (dict "value" .Values.istio.ingressController "context" $) | nindent 4 }}
+  {{- else }}
     istio: {{ .Values.istio.ingressController }}
+  {{- end }}
   servers:
   {{- range .Values.istio.servers }}
   - port:
@@ -24,3 +29,4 @@ spec:
     hosts:
     - {{ .Values.istio.host }}
   {{- end }}
+{{- end }}

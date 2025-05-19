@@ -6,7 +6,11 @@ spec:
   hosts:
   - "*"
   gateways:
-  - {{ .Values.istio.name }}
+  {{- if .Values.istio.gateways }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.istio.gateways "context" $ ) | nindent 4 }}
+  {{- else }}
+    - {{ .Values.istio.name }}
+  {{- end }}
   {{- if eq .Values.istio.port.protocol "TCP" }}
   tcp:
   - match:
