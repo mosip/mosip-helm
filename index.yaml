@@ -15796,6 +15796,29 @@ entries:
     - https://mosip.github.io/mosip-helm/pms-partner-12.2.1.tgz
     version: 12.2.1
   - apiVersion: v2
+    created: "2025-05-21T12:43:06.261097539Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Partner Management Service Partner service
+    digest: 97d8e62f3c25928ea4e590a892e54f3c6648bada046fa29aa08702c826666f1b
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - pms-partner
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: pms-partner
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/pms-partner-12.2.1-develop.tgz
+    version: 12.2.1-develop
+  - apiVersion: v2
     created: "2025-03-27T14:53:06.9570346+05:30"
     dependencies:
     - name: common
@@ -16189,6 +16212,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/pms-policy-12.2.1.tgz
     version: 12.2.1
+  - apiVersion: v2
+    created: "2025-05-21T12:43:06.262543373Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Packetmanager module
+    digest: 41f9140a3d7a27f9ecae8d67b4cf9a3320a1473dbe5b8995e0e89b568a78fca7
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - pms-policy
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: pms-policy
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/pms-policy-12.2.1-develop.tgz
+    version: 12.2.1-develop
   - apiVersion: v2
     created: "2025-03-27T14:53:07.0154451+05:30"
     dependencies:
@@ -29917,4 +29963,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-05-21T11:12:38.778738448Z"
+generated: "2025-05-21T12:43:06.258926602Z"
