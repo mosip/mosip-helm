@@ -36,7 +36,7 @@ replicaCount: 1
 image:
   registry: docker.io
   repository: mosipdev/minio-client-util
-  tag: latest
+  tag: 1.0.0
 
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
