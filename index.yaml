@@ -15920,6 +15920,28 @@ entries:
     version: 0.0.1-develop
   pmp-revamp-ui:
   - apiVersion: v2
+    created: "2025-07-04T17:53:18.452122534Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP pmp revamp UI module
+    digest: c51ec8a9581b97e60728bdbad5ab4276d8915a5922dd1362ed44796196e0ba2c
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - pmp
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: pmp-revamp-ui
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/pmp-revamp-ui-12.2.2.tgz
+    version: 12.2.2
+  - apiVersion: v2
     created: "2025-05-21T08:08:24.54173004Z"
     dependencies:
     - name: common
@@ -16052,6 +16074,28 @@ entries:
     - https://mosip.github.io/mosip-helm/pmp-revamp-ui-0.0.1-develop.tgz
     version: 0.0.1-develop
   pmp-ui:
+  - apiVersion: v2
+    created: "2025-07-04T17:53:18.453805058Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP pmp UI module
+    digest: 13d1b85e053b536fa6dea5544954ddfef27d6cc83506f38079601d60cb63b6fe
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - pmp
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: pmp-ui
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/pmp-ui-12.2.2.tgz
+    version: 12.2.2
   - apiVersion: v2
     created: "2025-05-21T08:08:24.543585259Z"
     dependencies:
@@ -31571,4 +31615,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-07-04T13:31:27.761679179Z"
+generated: "2025-07-04T17:53:18.44907029Z"
