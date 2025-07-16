@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+
+metadata:
+  annotations:
+    "helm.sh/hook": test-success
+  name: {{ include "artemis.fullname" . }}-amqp
+  labels:
+{{ include "artemis.labels.standard" . | indent 4 }}
+spec:
+  imagePullSecrets: {{ toYaml .Values.image.pullSecrets }}
+  containers:
+  - name: {{ .Release.Name }}-amqp-test
+    image: {{ template "artemis.image" . }}
+    imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+    env:
+      - name: ARTEMIS_HOST
+        value: {{ include "artemis.fullname" . }}
+      - name: ARTEMIS_PORT
+        value: "5672"
+      - name: ARTEMIS_USER
+        value: {{ default "" .Values.artemisUser | quote }}
+      - name: ARTEMIS_PASSWORD
+        value: {{ default "" .Values.artemisPassword | quote }}
+    command: ["sh", "-c", "./artemis producer --user ${ARTEMIS_USER} --password ${ARTEMIS_PASSWORD} --protocol amqp --url tcp://${ARTEMIS_HOST}:${ARTEMIS_PORT} --message-count 10000 --threads 10"]
+  restartPolicy: Never
