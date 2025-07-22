@@ -3,6 +3,38 @@ entries:
   activemq-artemis:
   - apiVersion: v2
     appVersion: 2.39.0
+    created: "2025-07-22T06:34:39.778461967Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: a multi-protocol, embeddable, very high performance, clustered, asynchronous
+      messaging system.
+    digest: d8c8a31885a674496b1ee3e8470d75789a2a050ccaf9c7db995953bdac683cf4
+    home: https://activemq.apache.org/artemis/
+    icon: https://activemq.apache.org/assets/img/activemq_logo_icon.png
+    keywords:
+    - activemq
+    - artemis
+    - messaging
+    - mom
+    - amqp
+    - jms
+    - mqtt
+    maintainers:
+    - email: victor.romero@gmail.com
+      name: vromero
+    name: activemq-artemis
+    sources:
+    - https://github.com/kubernetes/charts
+    - https://github.com/apache/activemq-artemis
+    urls:
+    - https://mosip.github.io/mosip-helm/activemq-artemis-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 2.39.0
     created: "2025-07-16T05:44:21.167137101Z"
     dependencies:
     - name: common
@@ -33135,4 +33167,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-07-22T06:02:07.430987991Z"
+generated: "2025-07-22T06:34:39.776777261Z"
