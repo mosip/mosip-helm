@@ -22,6 +22,8 @@ spec:
   - name: jmx
     port: 9494
     targetPort: jmxexporter
+  clusterIP: { { .Values.service.clusterIP } }
+  publishNotReadyAddresses: true           # so DNS records exist even before pod is Ready
   selector:
     app: {{ template "artemis.name" . }}
     release: {{ .Release.Name | quote }}
