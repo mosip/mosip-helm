@@ -9624,6 +9624,28 @@ entries:
     version: 0.0.1-develop
   inji-verify-service:
   - apiVersion: v2
+    created: "2025-07-23T08:35:54.114673357Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP inji verify service module
+    digest: 92f7eb3e68e8ebb758a38cb34b7c896b4f6b7404625baad53bece61df51dfb24
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - inji-verify-service
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: inji-verify-service
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/inji-verify-service-0.13.0.tgz
+    version: 0.13.0
+  - apiVersion: v2
     created: "2025-06-11T10:48:31.122321298Z"
     dependencies:
     - name: common
@@ -9844,6 +9866,28 @@ entries:
     - https://mosip.github.io/mosip-helm/inji-verify-service-0.0.1-develop.tgz
     version: 0.0.1-develop
   inji-verify-ui:
+  - apiVersion: v2
+    created: "2025-07-23T08:35:54.116183763Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP inji verify ui module
+    digest: 5d2eed42f1f3b58954ab755e5d6afb4f69c3f268fc70f09c1872a8d4caa4f077
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - inji-verify-ui
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: inji-verify-ui
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/inji-verify-ui-0.13.0.tgz
+    version: 0.13.0
   - apiVersion: v2
     created: "2025-06-11T10:48:31.123801006Z"
     dependencies:
@@ -33167,4 +33211,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-07-23T07:13:10.860305859Z"
+generated: "2025-07-23T08:35:54.112702363Z"
