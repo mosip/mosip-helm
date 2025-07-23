@@ -74,6 +74,7 @@ resources:
 
 service:
   type: ClusterIP
+  clusterIP: None
   annotations: {}
 
 ## Prometheus Exporters / Metrics
