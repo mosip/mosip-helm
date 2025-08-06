@@ -9738,6 +9738,28 @@ entries:
     - https://mosip.github.io/mosip-helm/inji-verify-service-0.14.0-develop.tgz
     version: 0.14.0-develop
   - apiVersion: v2
+    created: "2025-08-06T12:58:00.564569577Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP inji verify service module
+    digest: 64b5e8327b30da917af0f59805e1449f61398ca8dc0bd5fe8a86071601a7bfc4
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - inji-verify-service
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: inji-verify-service
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/inji-verify-service-0.13.1-develop.tgz
+    version: 0.13.1-develop
+  - apiVersion: v2
     created: "2025-07-24T05:55:54.16462652Z"
     dependencies:
     - name: common
@@ -10002,6 +10024,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/inji-verify-ui-0.14.0-develop.tgz
     version: 0.14.0-develop
+  - apiVersion: v2
+    created: "2025-08-06T12:58:00.566924924Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP inji verify ui module
+    digest: 4fb053dbaec7e03cf19e4dd337c4aa53a2c16b5de8f672a5063846e8d54f2584
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - inji-verify-ui
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: inji-verify-ui
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/inji-verify-ui-0.13.1-develop.tgz
+    version: 0.13.1-develop
   - apiVersion: v2
     created: "2025-07-24T05:55:54.166123622Z"
     dependencies:
@@ -33839,4 +33883,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-08-06T07:12:38.41649355Z"
+generated: "2025-08-06T12:58:00.562708875Z"
