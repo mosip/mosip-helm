@@ -21200,6 +21200,29 @@ entries:
     - https://mosip.github.io/mosip-helm/prereg-application-12.0.3.tgz
     version: 12.0.3
   - apiVersion: v2
+    created: "2025-09-08T05:54:49.411480462Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Pre-registration Application service
+    digest: 684a371baf8c25bec7962313945387f8548d770a50defae613d301e08fa76816
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - prereg-application
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: prereg-application
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/prereg-application-12.0.3-develop.tgz
+    version: 12.0.3-develop
+  - apiVersion: v2
     created: "2025-03-27T14:53:07.1579055+05:30"
     dependencies:
     - name: common
@@ -21502,6 +21525,29 @@ entries:
     - https://mosip.github.io/mosip-helm/prereg-batchjob-12.0.3.tgz
     version: 12.0.3
   - apiVersion: v2
+    created: "2025-09-08T05:54:49.413064057Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Pre-registration Batchjob service
+    digest: 4fa2395a33303d726bef23c154e712ca2bb24eaf67ea5faf893c0d5f4b95f0c5
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - prereg-batchjob
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: prereg-batchjob
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/prereg-batchjob-12.0.3-develop.tgz
+    version: 12.0.3-develop
+  - apiVersion: v2
     created: "2025-03-27T14:53:07.2061142+05:30"
     dependencies:
     - name: common
@@ -21803,6 +21849,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/prereg-booking-12.0.3.tgz
     version: 12.0.3
+  - apiVersion: v2
+    created: "2025-09-08T05:54:49.414942725Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Pre-registration application service
+    digest: abb1eeb00965ef5309322ac1c24adf097e8b1c0ed4ea37493ed7d9d67b7334fd
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - prereg-booking
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: prereg-booking
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/prereg-booking-12.0.3-develop.tgz
+    version: 12.0.3-develop
   - apiVersion: v2
     created: "2025-03-27T14:53:07.266034+05:30"
     dependencies:
@@ -22360,6 +22429,28 @@ entries:
     - https://mosip.github.io/mosip-helm/prereg-datasync-12.0.3.tgz
     version: 12.0.3
   - apiVersion: v2
+    created: "2025-09-08T05:54:49.416299926Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Pre-registration Datasync service
+    digest: 17bd8dd2d5d649033ea59b95371a2478f5c85ba217bd36ea37fc98c5604be9aa
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - prereg-datasync
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: prereg-datasync
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/prereg-datasync-12.0.3-develop.tgz
+    version: 12.0.3-develop
+  - apiVersion: v2
     created: "2025-03-27T14:53:07.3620776+05:30"
     dependencies:
     - name: common
@@ -22649,6 +22740,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/prereg-gateway-12.0.3.tgz
     version: 12.0.3
+  - apiVersion: v2
+    created: "2025-09-08T05:54:49.417513589Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Pre-registration Istio Gateway
+    digest: c9ca97d9b88c58a965ab7c1019a35ce2c8bc92de357aa19c063aa83c064f5549
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - prereg-gateway
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: prereg-gateway
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/prereg-gateway-12.0.3-develop.tgz
+    version: 12.0.3-develop
   - apiVersion: v2
     created: "2025-03-27T14:53:07.4198816+05:30"
     dependencies:
@@ -36537,4 +36651,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-09-08T05:54:13.347802567Z"
+generated: "2025-09-08T05:54:49.409767234Z"
