@@ -7076,6 +7076,29 @@ entries:
     version: 0.0.1-develop
   ida-auth:
   - apiVersion: v2
+    created: "2025-09-11T10:44:14.671927612Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP IDA module
+    digest: a86528c5ca2ea273697da0500bedcc376a2c514026f7089d300a9284ab4645d9
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - ida-auth
+    - ida
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: ida-auth
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/ida-auth-12.2.0-develop.tgz
+    version: 12.2.0-develop
+  - apiVersion: v2
     created: "2025-09-11T10:23:40.769828306Z"
     dependencies:
     - name: common
@@ -7469,6 +7492,29 @@ entries:
     - https://mosip.github.io/mosip-helm/ida-auth-0.0.1-develop.tgz
     version: 0.0.1-develop
   ida-internal:
+  - apiVersion: v2
+    created: "2025-09-11T10:44:14.67335594Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP IDA module
+    digest: 134233a252714d8c9baece87a36be90a376ee6dd17d175e5753a0f647651d8da
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - ida-internal
+    - ida
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: ida-internal
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/ida-internal-12.2.0-develop.tgz
+    version: 12.2.0-develop
   - apiVersion: v2
     created: "2025-09-11T10:23:40.771432289Z"
     dependencies:
@@ -7914,6 +7960,29 @@ entries:
     - https://mosip.github.io/mosip-helm/ida-kyc-1.1.5.tgz
     version: 1.1.5
   ida-otp:
+  - apiVersion: v2
+    created: "2025-09-11T10:44:14.674969464Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP IDA module
+    digest: 01621ce06543713296951f3504bf317bee2d43ecc7925e7eccc5c24396127245
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - ida-otp
+    - ida
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: ida-otp
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/ida-otp-12.2.0-develop.tgz
+    version: 12.2.0-develop
   - apiVersion: v2
     created: "2025-09-11T10:23:40.773073932Z"
     dependencies:
@@ -36789,4 +36858,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-09-11T10:23:40.768091705Z"
+generated: "2025-09-11T10:44:14.670141954Z"
