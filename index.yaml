@@ -4157,6 +4157,29 @@ entries:
   conf-secrets:
   - apiVersion: v2
     appVersion: 1.1.2
+    created: "2025-09-21T07:11:23.190831555Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for deploying secrets required by MOSIP config-server
+    digest: a0a07a76e671abf64680ee25c7f77522589818db036830e6db18386c97184b23
+    home: https://mosip.io
+    keywords:
+    - config-server
+    - conf-secrets
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: conf-secrets
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/conf-secrets-12.0.3-develop.tgz
+    version: 12.0.3-develop
+  - apiVersion: v2
+    appVersion: 1.1.2
     created: "2025-03-27T14:53:04.6514537+05:30"
     dependencies:
     - name: common
@@ -4409,6 +4432,28 @@ entries:
     - https://mosip.github.io/mosip-helm/conf-secrets-0.0.1-develop.tgz
     version: 0.0.1-develop
   config-server:
+  - apiVersion: v2
+    appVersion: 1.1.2
+    created: "2025-09-21T07:11:23.194137077Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for configuration of MOSIP modules
+    digest: 52489db52dde2fa40b28476bcd1126dfb6ce61e18f0fd85ea81271ca6a1d6d2a
+    home: https://mosip.io
+    keywords:
+    - config-server
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: config-server
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/config-server-12.0.3-develop.tgz
+    version: 12.0.3-develop
   - apiVersion: v2
     appVersion: 1.1.2
     created: "2025-03-27T14:53:04.7177149+05:30"
@@ -11921,6 +11966,29 @@ entries:
   istio-addons:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-09-21T07:11:23.194917026Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP external services istio
+    digest: 0b7ff6409c644945f72fc05ab1e8de4b2ede0c02501f879dc28d47b338bea4ba
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - istio-addons
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: istio-addons
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/istio-addons-1.0.0-develop.tgz
+    version: 1.0.0-develop
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-05-19T05:23:39.833458142Z"
     dependencies:
     - name: common
@@ -12089,6 +12157,29 @@ entries:
     - https://mosip.github.io/mosip-helm/kernel-keygen-1.1.5.tgz
     version: 1.1.5
   key-migration-utility:
+  - apiVersion: v2
+    created: "2025-09-21T07:11:23.196080272Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to migrate keys from any keystore type to any other
+      supported format.
+    digest: 0cc7c07e53f63ad2e8890b78185e74a7c86cf77655fba2e4534402611f5a43ae
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - key-migration-utility
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: key-migration-utility
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/key-migration-utility-12.0.3-develop.tgz
+    version: 12.0.3-develop
   - apiVersion: v2
     created: "2025-08-26T15:30:51.431395123Z"
     dependencies:
@@ -21692,6 +21783,28 @@ entries:
     version: 0.0.1-develop
   postgresbackup:
   - apiVersion: v2
+    created: "2025-09-21T07:11:23.197365616Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy postgresbackup
+    digest: f87ec33bbb504a395e3c89e93c9c14309236feb73a4427eda8ed3b7e072c83ae
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - postgresbackup
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: postgresbackup
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/postgresbackup-1.0.0-develop.tgz
+    version: 1.0.0-develop
+  - apiVersion: v2
     created: "2025-03-27T14:53:07.1008465+05:30"
     dependencies:
     - name: common
@@ -25132,6 +25245,32 @@ entries:
     - https://mosip.github.io/mosip-helm/rancher-monitoring-crd-100.1.3+up19.0.3.tgz
     version: 100.1.3+up19.0.3
   readuser-util:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-09-21T07:11:23.198005302Z"
+    dependencies:
+    - condition: postgres-readuser-util.enabled
+      name: postgres-readuser-util
+      repository: ""
+      version: 1.0.0-develop
+    - condition: s3-readuser-util.enabled
+      name: s3-readuser-util
+      repository: ""
+      version: 1.0.0-develop
+    description: A Helm chart to deploy multiple readuser helm charts.
+    digest: 01564b0c98936125fcde95d81e1eeb369ff6012124336a5315a478b42495fa6f
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - readuser-util
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: readuser-util
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/readuser-util-1.0.0-develop.tgz
+    version: 1.0.0-develop
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2025-03-27T14:53:07.7693333+05:30"
@@ -35410,6 +35549,28 @@ entries:
     version: 0.0.1-develop
   softhsmbackup:
   - apiVersion: v2
+    created: "2025-09-21T07:11:23.199529312Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy softhsmbackup
+    digest: 33c6535c1907f74d7ce4884e927d70a848597640ab0362c355b0461ae1e472fa
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - softhsmbackup
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: softhsmbackup
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/softhsmbackup-1.0.0-develop.tgz
+    version: 1.0.0-develop
+  - apiVersion: v2
     created: "2025-03-27T14:53:09.2058667+05:30"
     dependencies:
     - name: common
@@ -37315,4 +37476,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-09-20T11:04:32.590893789Z"
+generated: "2025-09-21T07:11:23.18984511Z"
