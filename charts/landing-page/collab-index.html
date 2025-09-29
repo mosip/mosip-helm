@@ -427,7 +427,7 @@
       </div>
 
       <!-- Filter -->
-      <div id="filterCard" class="flex justify-end max-[750px]:justify-center mt-7 max-[675px]:mt-2">
+      <div id="filterCard" class="transition-opacity duration-300 opacity-100 pointer-events-auto flex justify-end max-[750px]:justify-center mt-7 max-[675px]:mt-2">
         <div id="filterContainer"
           class="absolute h-[40px] w-[162px] min-[500px]:-mt-3 rounded-[18px] text-[14px] bg-[#FFFFFF33] py-[10px] z-40">
           <div id="filterButton"
@@ -625,20 +625,20 @@
     // list of All Applications
 
     let listOfMosipApps = [
-      {id: "preReg",appName: "Pre-registration",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/pre-reg.png",version: "Version 1.2.0.1-B1",userGuide:"https://docs.mosip.io/1.2.0/collab-getting-started-guide/collab-pre-registration-guide",tryIt: "https://prereg.collab.mosip.net/pre-registration-ui/#/eng",docs: "https://docs.mosip.io/1.2.0/id-lifecycle-management/identity-issuance/pre-registration/overview"},
-      {id: "androidRegClient", appName: "Android Registration Client", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/android-reg.png", version: "Version 0.11.0-beta.1", userGuide: "https://docs.mosip.io/1.2.0/collab-getting-started-guide/collab-android-reg-client", tryIt: "https://drive.google.com/drive/folders/1-kukTkg7o-D8F0mEEWyPAK3pDDg-TRQh", docs: "https://docs.mosip.io/1.2.0/id-lifecycle-management/identity-issuance/android-registration-client/overview"},
-      {id: "desktopRegClient", appName: "Desktop Registration Client", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/desktop-reg.png", version: "Version 1.2.0.1-B1", userGuide: "https://docs.mosip.io/1.2.0/collab-getting-started-guide/collab-reg-client-setup-guide", tryIt: "https://regclient.collab.mosip.net/", docs: "https://docs.mosip.io/1.2.0/id-lifecycle-management/identity-issuance/registration-client/overview"},
-      {id: "resident", appName: "Resident Portal", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/RP_logo.png", version: "Version 0.9.1", userGuide:"https://docs.mosip.io/1.2.0/collab-getting-started-guide/collab-resident-portal-guide", tryIt: "https://resident.collab.mosip.net", docs: "https://docs.mosip.io/1.2.0/id-lifecycle-management/identity-management/resident-services/overview"},
-      {id: "integratedMockId", appName: "Integrate with Mock ID", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png", version: "Version 1.4.1", userGuide: "https://docs.esignet.io/test/integration/relying-party",tryIt: "https://esignet-mock.collab.mosip.net/",docs: "https://docs.esignet.io/overview"},
-      {id: "integratedMosipId",appName: "Integrate with MOSIP ID",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png",version: "Version 1.4.1", userGuide: "https://docs.esignet.io/test/integration/relying-party",tryIt: "https://esignet-mosipid.collab.mosip.net/",docs: "https://docs.esignet.io/overview"},
-      {id: "healthPortalUsingMockId",appName: "Health Portal using Mock ID",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png",version: "Version 1.4.1",userGuide: "https://docs.esignet.io/test/try-it-out/using-mock-data",tryIt: "https://healthservices-esignet-mock.collab.mosip.net/", docs: "https://docs.esignet.io/overview"},
-      {id: "healthPortalUsingMosipId",appName: "Health Portal using Your MOSIP ID",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png",version: "Version 1.4.1",userGuide: "https://docs.esignet.io/test/try-it-out/register-yourself",tryIt: "https://healthservices-mosipid.collab.mosip.net/",docs: "https://docs.esignet.io/overview",},
-      {id: "injiWalletAndroid", appName: "Inji Wallet - Mobile | Android",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-wallet.png",version: "Version 0.16.0",userGuide:"https://docs.inji.io/inji-wallet/inji-mobile/functional-overview/sandbox-details/inji-setup-guide",tryIt:"https://drive.google.com/drive/folders/1gBjFSdpjxU4bsZi7-xS59W1-EIFKrkS8",docs: "https://docs.inji.io/inji-wallet/inji-mobile/overview"},
-      {id: "injiWalletIos",appName: "Inji Wallet - Mobile | IOS", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-wallet.png", version: "Version 0.16.0", userGuide:"https://docs.inji.io/inji-wallet/inji-mobile/functional-overview/sandbox-details/inji-setup-guide", tryIt: "https://testflight.apple.com/join/7FTAdjLe", docs: "https://docs.inji.io/inji-wallet/inji-mobile/overview"},
-      {id: "injiWeb", appName: "Inji Wallet - Web",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-wallet.png",version: "Version 0.12.0",userGuide:"https://docs.mosip.io/inji/inji-wallet/inji-web/try-it-out/inji-web-setup-guide",tryIt: "https://injiweb.collab.mosip.net/",docs: "https://docs.inji.io/inji-wallet/inji-web/overview"},
-      {id: "injiVerify",appName: "Inji Verify", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-verify.png",version: "Version 0.12.3",userGuide:"https://docs.inji.io/inji-verify/functional-overview/releases-1/inji-verify-collab-guide", tryIt: "https://injiverify.collab.mosip.net/",docs: "https://docs.mosip.io/inji/inji-verify/overview"},
-      {id: "AdminPortal",appName: "Admin Portal",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/Admin_logo.png",version: "Version 1.2.0.1",userGuide:"https://docs.mosip.io/1.2.0/collab-getting-started-guide/admin-portal",tryIt: "https://admin.collab.mosip.net",docs: "https://docs.mosip.io/1.2.0/modules/administration"},
-      {id: "pms",appName: "Partner Management System",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/PMS_logo.png",version: "Version 1.2.1.0",userGuide:"https://docs.mosip.io/1.2.0/collab-getting-started-guide/collab-pmp-guide",tryIt: "https://pmp.collab.mosip.net/#/pmp/home", docs: "https://docs.mosip.io/1.2.0/modules/partner-management-services/pms-existing/partner-policies"},
+      {id: "preReg",appName: "Pre-registration",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/pre-reg.png",version: "Version 1.2.0.1-B1",userGuide:"https://docs.mosip.io/1.2.0/collab-getting-started-guide/collab-pre-registration-guide",tryIt: "https://prereg.collab.mosip.net/pre-registration-ui/#/eng",docs: "https://docs.mosip.io/1.2.0/id-lifecycle-management/identity-issuance/pre-registration/overview", disabled:false},
+      {id: "androidRegClient", appName: "Android Registration Client", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/android-reg.png", version: "Version 0.11.0-beta.1", userGuide: "https://docs.mosip.io/1.2.0/collab-getting-started-guide/collab-android-reg-client", tryIt: "https://drive.google.com/drive/folders/1-kukTkg7o-D8F0mEEWyPAK3pDDg-TRQh", docs: "https://docs.mosip.io/1.2.0/id-lifecycle-management/identity-issuance/android-registration-client/overview", disabled:false},
+      {id: "desktopRegClient", appName: "Desktop Registration Client", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/desktop-reg.png", version: "Version 1.2.0.1-B1", userGuide: "https://docs.mosip.io/1.2.0/collab-getting-started-guide/collab-reg-client-setup-guide", tryIt: "https://regclient.collab.mosip.net/", docs: "https://docs.mosip.io/1.2.0/id-lifecycle-management/identity-issuance/registration-client/overview", disabled:false},
+      {id: "resident", appName: "Resident Portal", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/RP_logo.png", version: "Version 0.9.1", userGuide:"https://docs.mosip.io/1.2.0/collab-getting-started-guide/collab-resident-portal-guide", tryIt: "https://resident.collab.mosip.net", docs: "https://docs.mosip.io/1.2.0/id-lifecycle-management/identity-management/resident-services/overview", disabled:false},
+      {id: "integratedMockId", appName: "Integrate with Mock ID", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png", version: "Version 1.4.1", userGuide: "https://docs.esignet.io/esignet-authentication/develop/integration/relying-party/relying-party-onboarding",tryIt: "https://esignet-mock.collab.mosip.net/",docs: "https://docs.esignet.io/overview", disabled:true},
+      {id: "integratedMosipId",appName: "Integrate with MOSIP ID",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png",version: "Version 1.4.1", userGuide: "https://docs.esignet.io/esignet-authentication/develop/integration/relying-party/relying-party-onboarding",tryIt: "https://esignet-mosipid.collab.mosip.net/",docs: "https://docs.esignet.io/overview", disabled:true},
+      {id: "healthPortalUsingMockId",appName: "Health Portal using Mock ID",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png",version: "Version 1.4.1",userGuide: "https://docs.esignet.io/test/try-it-out/using-mock-data",tryIt: "https://healthservices-esignet-mock.collab.mosip.net/", docs: "https://docs.esignet.io/overview", disabled:false},
+      {id: "healthPortalUsingMosipId",appName: "Health Portal using Your MOSIP ID",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png",version: "Version 1.4.1",userGuide: "https://docs.esignet.io/test/try-it-out/register-yourself",tryIt: "https://healthservices-mosipid.collab.mosip.net/",docs: "https://docs.esignet.io/overview", disabled:false},
+      {id: "injiWalletAndroid", appName: "Inji Wallet - Mobile | Android",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-wallet.png",version: "Version 0.16.0",userGuide:"https://docs.inji.io/inji-wallet/inji-mobile/functional-overview/sandbox-details/inji-setup-guide",tryIt:"https://drive.google.com/drive/folders/1gBjFSdpjxU4bsZi7-xS59W1-EIFKrkS8",docs: "https://docs.inji.io/inji-wallet/inji-mobile/overview", disabled:false},
+      {id: "injiWalletIos",appName: "Inji Wallet - Mobile | IOS", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-wallet.png", version: "Version 0.16.0", userGuide:"https://docs.inji.io/inji-wallet/inji-mobile/functional-overview/sandbox-details/inji-setup-guide", tryIt: "https://testflight.apple.com/join/7FTAdjLe", docs: "https://docs.inji.io/inji-wallet/inji-mobile/overview", disabled:false},
+      {id: "injiWeb", appName: "Inji Wallet - Web",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-wallet.png",version: "Version 0.12.0",userGuide:"https://docs.mosip.io/inji/inji-wallet/inji-web/try-it-out/inji-web-setup-guide",tryIt: "https://injiweb.collab.mosip.net/",docs: "https://docs.inji.io/inji-wallet/inji-web/overview", disabled:false},
+      {id: "injiVerify",appName: "Inji Verify", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-verify.png",version: "Version 0.12.3",userGuide:"https://docs.inji.io/inji-verify/functional-overview/releases-1/inji-verify-collab-guide", tryIt: "https://injiverify.collab.mosip.net/",docs: "https://docs.mosip.io/inji/inji-verify/overview", disabled:false},
+      {id: "AdminPortal",appName: "Admin Portal",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/Admin_logo.png",version: "Version 1.2.0.1",userGuide:"https://docs.mosip.io/1.2.0/collab-getting-started-guide/admin-portal",tryIt: "https://admin.collab.mosip.net",docs: "https://docs.mosip.io/1.2.0/modules/administration", disabled:false},
+      {id: "pms",appName: "Partner Management System",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/PMS_logo.png",version: "Version 1.2.1.0",userGuide:"https://docs.mosip.io/1.2.0/collab-getting-started-guide/collab-pmp-guide",tryIt: "https://pmp.collab.mosip.net/#/pmp/home", docs: "https://docs.mosip.io/1.2.0/modules/partner-management-services/pms-existing/partner-policies", disabled:false},
     ];
 
     // Dom elements for interaction
@@ -661,6 +661,7 @@
     const descOrderEl = document.getElementById("descOrder");
     const applicationCardBtnEl = document.getElementById("applicationCardBtn");
     const useCasesBtnEl = document.getElementById("useCasesCars");
+    const filterCardEl = document.getElementById("filterCard");
 
     let isFilterDropdownOpen = false;
     let isHamburgerOpen = false;
@@ -695,7 +696,10 @@
                 <h4 class="text-[#01315F] font-bold text-[17px]">${item.appName}</h4>
                 <p class="text-[#777777] text-[0.87rem] font-[550] opacity-[70%]">${item.version}</p>
                 <div class="mt-2 flex justify-start space-x-2 mb-2">
-                  <button class="w-[90px] h-[29px] bg-[#1763AC] rounded-[6px] text-[#ffffff] text-[14px]"><a target="_blank" href=${item.tryIt}>Try It Out!</a></button>
+                  ${item.disabled
+                    ? `<button disabled class="w-[90px] h-[29px] bg-gray-400 rounded-[6px] text-[#ffffff] text-[14px]">Try It Out!</button>`
+                    : `<a target="_blank" href=${item.tryIt}><button class="w-[90px] h-[29px] bg-[#1763AC] rounded-[6px] text-[#ffffff] text-[14px]">Try It Out!</button></a>`
+                  }
                   <button class="w-[90px] h-[29px] rounded-[6px] border border-[#1763AC] font-[600]"><a class="text-[#1763AC] text-[14px]" target="_blank" href=${item.userGuide}>User Guide</a></button>
                   <button class="w-[74px] h-[29px] rounded-[6px] border border-[#1763AC] font-[600]"><a class="text-[#1763AC] text-[14px]" target="_blank" href=${item.docs}>Overview</a></button>
                 </div>
@@ -911,6 +915,9 @@
       applicationCardBtnEl.classList.remove("inactive-btn");
       useCasesBtnEl.classList.remove("active-btn");
       useCasesBtnEl.classList.add("inactive-btn");
+      filterCardEl.classList.replace("opacity-0", "opacity-100");
+      filterCardEl.classList.remove("pointer-events-none");
+      filterButtonEl.classList.add("cursor-pointer");
     })
 
     useCasesBtnEl.addEventListener("click", () => {
@@ -920,6 +927,9 @@
       useCasesBtnEl.classList.remove("inactive-btn");
       applicationCardBtnEl.classList.remove("active-btn");
       applicationCardBtnEl.classList.add("inactive-btn");
+      filterCardEl.classList.replace("opacity-100", "opacity-0");
+      filterCardEl.classList.add("pointer-events-none");
+      filterButtonEl.classList.remove("cursor-pointer");
     })
 
   </script>
