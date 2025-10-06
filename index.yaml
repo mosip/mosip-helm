@@ -2546,6 +2546,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/auditmanager-0.0.1-develop.tgz
     version: 0.0.1-develop
+  auditsweeper:
+  - apiVersion: v2
+    created: "2025-10-06T08:41:43.73015278Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy auditsweeper
+    digest: f26c0e1d4ae32d370d834c736e9ae44f4a3445c2660054f5fcb069b15844b5fa
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - auditsweeper
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: auditsweeper
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/auditsweeper-0.0.1-develop.tgz
+    version: 0.0.1-develop
   authdemo:
   - apiVersion: v2
     created: "2025-03-27T14:53:04.3663934+05:30"
@@ -6087,7 +6110,7 @@ entries:
     - https://mosip.github.io/mosip-helm/databreachdetector-12.0.2.tgz
     version: 12.0.2
   - apiVersion: v2
-    created: "2025-08-06T13:20:51.794776518Z"
+    created: "2025-10-06T08:41:43.731653409Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -6096,7 +6119,7 @@ entries:
       version: 1.x.x
     description: A Helm chart to deploy databreachdetector to test working of MOSIP
       modules
-    digest: cb9669809e83340c752d58246423c628a95dfedb7c6b4147233b5397fbe83ac0
+    digest: b8ca59a88a64e5d25623a5e05dda2336a1d103989895645a39e4b809d03e6ba5
     home: https://mosip.io
     keywords:
     - mosip
@@ -17551,7 +17574,7 @@ entries:
     version: 0.0.1-develop
   mosipcertmanager:
   - apiVersion: v2
-    created: "2025-08-06T13:20:51.796010532Z"
+    created: "2025-10-06T08:41:43.732941018Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -17560,7 +17583,7 @@ entries:
       version: 1.x.x
     description: A Helm chart to deploy mosipcertmanager to test working of MOSIP
       modules
-    digest: d77cdbe9016a474e7d843e2fcd8f8170e82db4f9c6a3f18e3f96ccdd17b27da4
+    digest: 5f9adf322aec5719f00f449076f9337b4b7a1161718eddb9523419ca70f062fb
     home: https://mosip.io
     keywords:
     - mosip
@@ -37698,4 +37721,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-10-05T18:06:05.31848198Z"
+generated: "2025-10-06T08:41:43.727862304Z"
