@@ -20,7 +20,7 @@ spec:
     port: {{ .Values.ports.amqp }}
     targetPort: amqp
   - name: jmx
-    port: 9494
+    port: 9495
     targetPort: jmxexporter
   clusterIP: {{ .Values.service.clusterIP }}
   publishNotReadyAddresses: true           # so DNS records exist even before pod is Ready
