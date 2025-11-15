@@ -25252,6 +25252,29 @@ entries:
     - https://mosip.github.io/mosip-helm/print-service-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
+    created: "2025-11-15T13:52:13.935630912Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for sample Print Service
+    digest: cba6a041df39e6a3b930ea4806bf4d2273db4dfdfd075f62d5e6c2b12208e7bb
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - print-service
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: print-service
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/print-service-1.3.0-develop.tgz
+    version: 1.3.0-develop
+  - apiVersion: v2
     created: "2025-03-27T14:53:07.5534864+05:30"
     dependencies:
     - name: common
@@ -38258,4 +38281,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-11-15T13:48:12.467634519Z"
+generated: "2025-11-15T13:52:13.934018905Z"
