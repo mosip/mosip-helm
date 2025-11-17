@@ -15509,6 +15509,30 @@ entries:
     version: 12.0.1-B2
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2025-11-17T07:13:52.492834021Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to upload default masterdata to mosip_master DB.
+    digest: cee7badc12f54185309bd83712ef656273252338fc198400723ffafd9303a070
+    home: https://mosip.io
+    keywords:
+    - postgres
+    - db
+    - database
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: masterdata-loader
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/masterdata-loader-1.3.0-develop.tgz
+    version: 1.3.0-develop
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2025-03-27T14:53:06.0334823+05:30"
     dependencies:
     - name: common
@@ -23046,7 +23070,7 @@ entries:
     version: 12.0.0
   - apiVersion: v2
     appVersion: 1.2.0
-    created: "2025-03-27T14:53:07.0314816+05:30"
+    created: "2025-11-17T07:13:52.49457722Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -23054,7 +23078,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for Kubernetes to initialize various Postgres DBs.
-    digest: 19fd42daaf16c611d73cd2c0bdbceec7cb42edf917fac618ac6433f5007a118d
+    digest: 29e47b2512d94d6f968647e5a7ef96c0adf57a4166ae95d36f96ce4faaffd0ae
     home: https://mosip.io
     keywords:
     - postgres
@@ -23261,7 +23285,7 @@ entries:
     version: 12.0.1-B4
   - apiVersion: v2
     appVersion: 1.2.0
-    created: "2025-03-27T14:53:07.0780108+05:30"
+    created: "2025-11-17T07:13:52.495515278Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -23269,7 +23293,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for Kubernetes to Upgrade various Postgres DBs.
-    digest: 375ca57dd9b4767356227111aded3e8f91864c9ccf2d8f04496e97a718dc98e5
+    digest: 686aeb46c79fbf50303c0dfe6eb6aa0afaea9e3e4f104f564765e4011366b725
     home: https://mosip.io
     keywords:
     - postgres-upgrade
@@ -39760,4 +39784,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-11-17T06:57:29.588747493Z"
+generated: "2025-11-17T07:13:52.491068201Z"
