@@ -11978,6 +11978,28 @@ entries:
     - https://mosip.github.io/mosip-helm/inji-verify-service-0.16.0-develop.tgz
     version: 0.16.0-develop
   - apiVersion: v2
+    created: "2025-11-26T09:40:09.269491296Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP inji verify service module
+    digest: 8fb16f5736826676aae4a98b17b14d5d86095c58778e1fcfdceabb393c913442
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - inji-verify-service
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: inji-verify-service
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/inji-verify-service-0.15.2-develop.tgz
+    version: 0.15.2-develop
+  - apiVersion: v2
     created: "2025-11-03T13:08:28.91151127Z"
     dependencies:
     - name: common
@@ -12396,6 +12418,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/inji-verify-ui-0.16.0-develop.tgz
     version: 0.16.0-develop
+  - apiVersion: v2
+    created: "2025-11-26T09:40:09.270996728Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP inji verify ui module
+    digest: 5623e2d8526e05ae4e844dc263608739fff31b90e4dd19878cb81c86ac3059c6
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - inji-verify-ui
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: inji-verify-ui
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/inji-verify-ui-0.15.2-develop.tgz
+    version: 0.15.2-develop
   - apiVersion: v2
     created: "2025-11-03T13:08:28.913129181Z"
     dependencies:
@@ -40439,4 +40483,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-11-26T06:55:44.109748728Z"
+generated: "2025-11-26T09:40:09.267803404Z"
