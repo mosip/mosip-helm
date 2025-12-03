@@ -12180,6 +12180,28 @@ entries:
     - https://mosip.github.io/mosip-helm/inji-verify-service-0.16.0-develop.tgz
     version: 0.16.0-develop
   - apiVersion: v2
+    created: "2025-12-03T10:11:41.604847597Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP inji verify service module
+    digest: a9c9fb2947775a910f9084e871f84797e7682628de6528d00c54de4ad5da17f3
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - inji-verify-service
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: inji-verify-service
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/inji-verify-service-0.15.2.tgz
+    version: 0.15.2
+  - apiVersion: v2
     created: "2025-11-26T09:40:09.269491296Z"
     dependencies:
     - name: common
@@ -12620,6 +12642,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/inji-verify-ui-0.16.0-develop.tgz
     version: 0.16.0-develop
+  - apiVersion: v2
+    created: "2025-12-03T10:11:41.606332806Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP inji verify ui module
+    digest: a22d86044ad232230224deaa2e5ecc9e1bcae34c5d176ff03c93021e9c6fde45
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - inji-verify-ui
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: inji-verify-ui
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/inji-verify-ui-0.15.2.tgz
+    version: 0.15.2
   - apiVersion: v2
     created: "2025-11-26T09:40:09.270996728Z"
     dependencies:
@@ -41318,4 +41362,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-12-03T08:01:11.165186447Z"
+generated: "2025-12-03T10:11:41.602997208Z"
