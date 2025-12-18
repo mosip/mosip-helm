@@ -1,8 +1,8 @@
 apiVersion: v2
-name: landing-page
+name: regclient
 description: A Helm chart to installed Downloader for Regstration Client Application
 type: application
-version: 1.3.0-develop
+version: 12.0.3-develop
 appVersion: ""
 dependencies:
   - name: common
@@ -13,7 +13,7 @@ dependencies:
 home: https://mosip.io
 keywords:
   - mosip
-  - landing-page
+  - regclient
   - registration
   - client
 maintainers:

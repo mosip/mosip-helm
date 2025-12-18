@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    # Exclude unready slave nodes from DNS
+    service.alpha.kubernetes.io/tolerate-unready-endpoints: "false"
+    {{- if .Values.service.annotations }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.service.annotations "context" $ ) | nindent 4 }}
+    {{- end }}
+  name: {{ include "artemis.fullname" . }}
+  labels:
+{{ include "artemis.labels.standard" . | indent 4 }}
+spec:
+  ports:
+  - name: http
+    port: {{ .Values.ports.webconsole }}
+    targetPort: http
+  - name: core
+    port: {{ .Values.ports.activemq }}
+    targetPort: core
+  - name: amqp
+    port: {{ .Values.ports.amqp }} 
+    targetPort: amqp
+  selector:
+    app: {{ template "artemis.name" . }}
+    release: {{ .Release.Name | quote }}
+  #sessionAffinity: "ClientIP"

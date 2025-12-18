@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: artemis-log4j2
+data:
+  log4j2.xml: |
+    <Root level="WARN">
+      <AppenderRef ref="Console"/>
+      <AppenderRef ref="ArtemisRollingFile"/>
+    </Root>

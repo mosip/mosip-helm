@@ -1,0 +1,21 @@
+{{ if .Values.prometheus.operator.enabled }} 
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "artemis.fullname" . }}-monitor
+  namespace: {{ .Values.prometheus.operator.serviceMonitor.namespace }}
+  labels:
+{{ toYaml .Values.prometheus.operator.serviceMonitor.selector | indent 4 }}
+spec:
+  endpoints:
+  - port: jmx-exporter
+    interval: {{ .Values.prometheus.jmx.interval }}
+  {{- if .Values.prometheus.jmx.scrapeTimeout }}
+    scrapeTimeout: {{ .Values.prometheus.jmx.scrapeTimeout }}
+  {{- end }}
+  selector:
+    matchLabels:
+{{ include "artemis.labels.standard" . | indent 6 }}
+  namespaceSelector:
+    any: true
+{{ end }}
