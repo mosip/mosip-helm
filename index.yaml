@@ -3,7 +3,7 @@ entries:
   activemq-artemis:
   - apiVersion: v2
     appVersion: 2.39.0
-    created: "2025-07-23T07:13:10.863232377Z"
+    created: "2025-12-18T11:03:18.278564082Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -12,7 +12,7 @@ entries:
       version: 1.x.x
     description: a multi-protocol, embeddable, very high performance, clustered, asynchronous
       messaging system.
-    digest: 4e10d4312ffa22bfc6791dc2474b865e90aa5369998c8958f79e552a21086f3a
+    digest: 2ce3392be049a86c971191529628f9c6b2d8ab744214d2b57335518e8fc466a0
     home: https://activemq.apache.org/artemis/
     icon: https://activemq.apache.org/assets/img/activemq_logo_icon.png
     keywords:
@@ -4706,7 +4706,7 @@ entries:
     version: 12.0.1-B2
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2025-12-09T18:34:34.406562408Z"
+    created: "2025-12-18T11:03:18.279368097Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -4714,7 +4714,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for deploying secrets required by MOSIP config-server
-    digest: e62c3fd671bc65fa1e60ff73e0410b058e972432404f8805253dd6bdf313f263
+    digest: 7ae3cff11cfa1d55ef130a835d5e965ad9d76ab9d5e3a66de8abf415cbddead1
     home: https://mosip.io
     keywords:
     - config-server
@@ -15681,6 +15681,30 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/landing-page-12.0.1-B2.tgz
     version: 12.0.1-B2
+  - apiVersion: v2
+    created: "2025-12-18T11:03:18.282659276Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to installed Downloader for Regstration Client Application
+    digest: ac40263cd2211d77bd5be9f3c387ae6ce603deffda4690e2f93f87783f0f05e4
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - landing-page
+    - registration
+    - client
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: landing-page
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/landing-page-1.3.0-develop.tgz
+    version: 1.3.0-develop
   - apiVersion: v2
     created: "2025-11-05T07:04:41.18646395Z"
     dependencies:
@@ -41521,4 +41545,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-12-18T06:17:28.302203308Z"
+generated: "2025-12-18T11:03:18.276902172Z"
