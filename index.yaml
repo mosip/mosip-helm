@@ -7385,6 +7385,28 @@ entries:
     version: 17.9.25
   esignet:
   - apiVersion: v2
+    created: "2025-12-19T09:39:50.828001122Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP esignet module
+    digest: 7f9e78a8b1b352db537274f83be2f636cbbbfe836db4e737f93d5ef4efa11372
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - esignet
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: esignet
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/esignet-1.7.1.tgz
+    version: 1.7.1
+  - apiVersion: v2
     created: "2025-12-02T12:12:20.73043819Z"
     dependencies:
     - name: common
@@ -20281,6 +20303,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/oidc-ui-12.0.2.tgz
     version: 12.0.2
+  - apiVersion: v2
+    created: "2025-12-19T09:39:50.82976254Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP OIDC UI module
+    digest: bfdfbefdbe5db8c779fb77a1eb36e7cc0720320d53493fe8acb9a43fd918c4af
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - oidc-ui
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: oidc-ui
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/oidc-ui-1.7.1.tgz
+    version: 1.7.1
   - apiVersion: v2
     created: "2025-12-02T12:12:20.732184344Z"
     dependencies:
@@ -41589,4 +41633,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-12-19T06:00:05.678349047Z"
+generated: "2025-12-19T09:39:50.825695045Z"
