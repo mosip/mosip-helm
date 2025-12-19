@@ -4706,6 +4706,29 @@ entries:
     version: 12.0.1-B2
   - apiVersion: v2
     appVersion: 1.1.2
+    created: "2025-12-19T17:06:27.502206006Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for deploying secrets required by MOSIP config-server
+    digest: 71c4f6e2c696f51e7f69169fa77bd96064cc9fa861bced9400f7c2f48b1cd8ba
+    home: https://mosip.io
+    keywords:
+    - config-server
+    - conf-secrets
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: conf-secrets
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/conf-secrets-1.3.0.tgz
+    version: 1.3.0
+  - apiVersion: v2
+    appVersion: 1.1.2
     created: "2025-12-18T11:03:18.279368097Z"
     dependencies:
     - name: common
@@ -5041,6 +5064,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/config-server-12.0.0.tgz
     version: 12.0.0
+  - apiVersion: v2
+    appVersion: 1.1.2
+    created: "2025-12-19T17:06:27.506023168Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for configuration of MOSIP modules
+    digest: cf342566911ec2c634d7470169fb5f371810c14ff035b663fff641949f727f22
+    home: https://mosip.io
+    keywords:
+    - config-server
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: config-server
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/config-server-1.3.0.tgz
+    version: 1.3.0
   - apiVersion: v2
     appVersion: 1.1.2
     created: "2025-12-09T18:34:34.410502562Z"
@@ -10232,6 +10277,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/idgenerator-12.0.0.tgz
     version: 12.0.0
+  - apiVersion: v2
+    created: "2025-12-19T17:06:27.50751401Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Idgenerator module
+    digest: 65c8b64e800f36fac260c1448eee75b0b08cbf29e507eb63da69d100ea6bc0c5
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - idgenerator
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: idgenerator
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/idgenerator-1.3.0.tgz
+    version: 1.3.0
   - apiVersion: v2
     created: "2025-12-09T18:34:34.411911738Z"
     dependencies:
@@ -20049,6 +20117,29 @@ entries:
     - https://mosip.github.io/mosip-helm/notifier-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
+    created: "2025-12-19T17:06:27.508925433Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Notifier module
+    digest: 75754260ecd1a49e6276c2970c045fed85f32ce6f9a7fca18cd1a5362d3d24c4
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - notifier
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: notifier
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/notifier-1.3.0.tgz
+    version: 1.3.0
+  - apiVersion: v2
     created: "2025-12-09T18:34:34.413351662Z"
     dependencies:
     - name: common
@@ -27406,6 +27497,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/pridgenerator-12.0.0.tgz
     version: 12.0.0
+  - apiVersion: v2
+    created: "2025-12-19T17:06:27.510333911Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP PRIDgenerator module
+    digest: 09c8ead27b58b74c87c6d6738074c7d2a026f0cf55ad212043b496f0a500a686
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - pridgenerator
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: pridgenerator
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/pridgenerator-1.3.0.tgz
+    version: 1.3.0
   - apiVersion: v2
     created: "2025-12-09T18:34:34.414710434Z"
     dependencies:
@@ -35216,6 +35330,29 @@ entries:
     - https://mosip.github.io/mosip-helm/regproc-salt-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
+    created: "2025-12-19T17:06:27.511519393Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to generate keys for Kernel
+    digest: d3ae6467dfd7df0d7dd8a7d917b05005ce55223cf7a59b3c21f0537f6a559106
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-salt
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-salt
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-salt-1.3.0.tgz
+    version: 1.3.0
+  - apiVersion: v2
     created: "2025-12-09T18:34:34.415830068Z"
     dependencies:
     - name: common
@@ -38034,6 +38171,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/ridgenerator-12.0.0.tgz
     version: 12.0.0
+  - apiVersion: v2
+    created: "2025-12-19T17:06:27.513748864Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP RIDgenerator module
+    digest: a3015ca0189098e259075afdcf44e32d3a5eed18dc7d29586505171fe35a4dfb
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - ridgenerator
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: ridgenerator
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/ridgenerator-1.3.0.tgz
+    version: 1.3.0
   - apiVersion: v2
     created: "2025-12-09T18:34:34.418194979Z"
     dependencies:
@@ -41702,4 +41862,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-12-19T10:41:56.71996763Z"
+generated: "2025-12-19T17:06:27.501218995Z"
