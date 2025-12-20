@@ -2658,6 +2658,29 @@ entries:
     - https://mosip.github.io/mosip-helm/auditmanager-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
+    created: "2025-12-20T09:43:44.793590558Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Auditmanager module
+    digest: 1cc617fd7ee270f7ddff0b905c919255e1ae229aa60c1a8bc4a94a6756da1468
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - auditmanager
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: auditmanager
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/auditmanager-1.3.0.tgz
+    version: 1.3.0
+  - apiVersion: v2
     created: "2025-11-29T17:11:40.447675277Z"
     dependencies:
     - name: common
@@ -41978,4 +42001,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-12-20T09:25:17.876710011Z"
+generated: "2025-12-20T09:43:44.791908012Z"
