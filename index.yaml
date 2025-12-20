@@ -435,6 +435,29 @@ entries:
     - https://mosip.github.io/mosip-helm/admin-hotlist-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
+    created: "2025-12-20T11:17:05.310402448Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Admin Hotlist
+    digest: e5a54e45bda905a1545b9f1290abca9d437fed7e458cceeafacb351323b3d230
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - admin
+    - hotlist
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: admin-hotlist
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/admin-hotlist-1.3.0.tgz
+    version: 1.3.0
+  - apiVersion: v2
     created: "2025-11-29T16:44:06.268139128Z"
     dependencies:
     - name: common
@@ -965,6 +988,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/admin-service-12.0.0.tgz
     version: 12.0.0
+  - apiVersion: v2
+    created: "2025-12-20T11:17:05.311821837Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Admin module
+    digest: d30203b0c0485a2b4f8ee08c31458e1d5b1ddfa6e54d48055d12343a40135125
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - admin
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: admin-service
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/admin-service-1.3.0.tgz
+    version: 1.3.0
   - apiVersion: v2
     created: "2025-11-29T16:44:06.269555475Z"
     dependencies:
@@ -16395,6 +16441,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/masterdata-12.0.0.tgz
     version: 12.0.0
+  - apiVersion: v2
+    created: "2025-12-20T11:17:05.313176834Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Masterdata module
+    digest: 9fd3b24e2bd9e3171e5a0b76225609950e2f22d3b5b315c1c7dc62e4b3b69226
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - masterdata
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: masterdata
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/masterdata-1.3.0.tgz
+    version: 1.3.0
   - apiVersion: v2
     created: "2025-11-29T16:44:06.271808712Z"
     dependencies:
@@ -40372,6 +40441,29 @@ entries:
     - https://mosip.github.io/mosip-helm/syncdata-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
+    created: "2025-12-20T11:17:05.314731155Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Syncdata module
+    digest: 1393c6174b1b6015f147ff32834edc916e7ada39231a78878d3f3e4342d855fd
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - syncdata
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: syncdata
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/syncdata-1.3.0.tgz
+    version: 1.3.0
+  - apiVersion: v2
     created: "2025-11-29T16:44:06.273205021Z"
     dependencies:
     - name: common
@@ -42116,4 +42208,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-12-20T10:36:23.306404819Z"
+generated: "2025-12-20T11:17:05.30849806Z"
