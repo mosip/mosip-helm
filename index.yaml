@@ -26413,6 +26413,29 @@ entries:
     - https://mosip.github.io/mosip-helm/prereg-booking-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
+    created: "2025-12-22T05:13:38.885757137Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Pre-registration application service
+    digest: 5567325ca029b1acc59b5a4c1cd4b59b2d19a9b73becfce677603fcc14cdfc68
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - prereg-booking
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: prereg-booking
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/prereg-booking-1.3.0.tgz
+    version: 1.3.0
+  - apiVersion: v2
     created: "2025-11-29T17:19:39.529545339Z"
     dependencies:
     - name: common
@@ -42385,4 +42408,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-12-21T10:41:40.355436988Z"
+generated: "2025-12-22T05:13:38.883581739Z"
