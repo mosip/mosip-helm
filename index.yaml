@@ -7160,6 +7160,28 @@ entries:
     - https://mosip.github.io/mosip-helm/datashare-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
+    created: "2025-12-22T07:44:56.39995999Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Datashare module
+    digest: 7a42d1a429dab4e6ad500d56a55ebc0e453aefd33dde69d05de7c2615b836588
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - datashare
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: datashare
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/datashare-1.3.0.tgz
+    version: 1.3.0
+  - apiVersion: v2
     created: "2025-11-29T16:35:21.402721191Z"
     dependencies:
     - name: common
@@ -43073,4 +43095,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-12-22T07:17:26.578960572Z"
+generated: "2025-12-22T07:44:56.398208988Z"
