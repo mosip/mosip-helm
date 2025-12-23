@@ -64,7 +64,7 @@ job:
     name: keystorejob
     registry: docker.io
     repository: mosipid/regclient-keystore
-    tag: 1.2.0.2
+    tag: 1.0.0
     pullPolicy: Always
     rolename: keystorerole
     rolebindingname: keystorerolebinding
