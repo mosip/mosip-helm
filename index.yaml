@@ -14289,6 +14289,29 @@ entries:
   istio-addons:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-12-23T08:01:19.055488227Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP external services istio
+    digest: 6ae507bfadd7a66e25e4e488155a76201d899f07c6aaa33578862385d4f09805
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - istio-addons
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: istio-addons
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/istio-addons-1.0.0.tgz
+    version: 1.0.0
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-09-22T05:26:24.154362063Z"
     dependencies:
     - name: common
@@ -16382,6 +16405,30 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/landing-page-12.0.1-B2.tgz
     version: 12.0.1-B2
+  - apiVersion: v2
+    created: "2025-12-23T08:01:19.057751678Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to installed Downloader for Regstration Client Application
+    digest: 4ccb8541104e7cac9c8a2d24430e01505e4e915f51247f407067ca6aee5b808d
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - landing-page
+    - registration
+    - client
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: landing-page
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/landing-page-1.3.0.tgz
+    version: 1.3.0
   - apiVersion: v2
     created: "2025-12-18T11:03:18.282659276Z"
     dependencies:
@@ -43302,4 +43349,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-12-23T08:00:19.752795992Z"
+generated: "2025-12-23T08:01:19.05442547Z"
