@@ -14289,7 +14289,7 @@ entries:
   istio-addons:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-12-23T08:01:19.055488227Z"
+    created: "2025-12-23T09:20:17.559913289Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -14297,7 +14297,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP external services istio
-    digest: 6ae507bfadd7a66e25e4e488155a76201d899f07c6aaa33578862385d4f09805
+    digest: 050841c5a28b01504bfa4212632045fcac9aed1118e67d50bb2dbbc1695df65c
     home: https://mosip.io
     keywords:
     - mosip
@@ -16406,7 +16406,7 @@ entries:
     - https://mosip.github.io/mosip-helm/landing-page-12.0.1-B2.tgz
     version: 12.0.1-B2
   - apiVersion: v2
-    created: "2025-12-23T08:01:19.057751678Z"
+    created: "2025-12-23T09:20:17.562204386Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -16414,7 +16414,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart to installed Downloader for Regstration Client Application
-    digest: 4ccb8541104e7cac9c8a2d24430e01505e4e915f51247f407067ca6aee5b808d
+    digest: 7b3ddec0c7b6a8a2df7a6a15863347026ea4c8a04eef2d6ed8636278c5f54280
     home: https://mosip.io
     keywords:
     - mosip
@@ -29703,6 +29703,30 @@ entries:
     - https://mosip.github.io/mosip-helm/readuser-util-0.0.1-develop.tgz
     version: 0.0.1-develop
   regclient:
+  - apiVersion: v2
+    created: "2025-12-23T09:20:17.563730314Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to installed Downloader for Regstration Client Application
+    digest: 44cecf2022e91d3bb083abf4d98e401094d93c9617b39a6a106fa783ee1b2f54
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regclient
+    - registration
+    - client
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regclient
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regclient-12.0.3-develop.tgz
+    version: 12.0.3-develop
   - apiVersion: v2
     created: "2025-03-27T14:53:07.8321012+05:30"
     dependencies:
@@ -43349,4 +43373,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-12-23T08:01:19.05442547Z"
+generated: "2025-12-23T09:20:17.558914551Z"
