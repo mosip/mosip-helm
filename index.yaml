@@ -3,7 +3,7 @@ entries:
   activemq-artemis:
   - apiVersion: v2
     appVersion: 2.39.0
-    created: "2025-12-18T11:03:18.278564082Z"
+    created: "2025-12-23T16:23:32.547341631Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -12,7 +12,7 @@ entries:
       version: 1.x.x
     description: a multi-protocol, embeddable, very high performance, clustered, asynchronous
       messaging system.
-    digest: 2ce3392be049a86c971191529628f9c6b2d8ab744214d2b57335518e8fc466a0
+    digest: e4bcda21abdfaf0c00c9b3e0a0e669598b49c15935cfcbb98b3fc2cf45a3bd72
     home: https://activemq.apache.org/artemis/
     icon: https://activemq.apache.org/assets/img/activemq_logo_icon.png
     keywords:
@@ -14289,7 +14289,7 @@ entries:
   istio-addons:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-12-23T09:20:17.559913289Z"
+    created: "2025-12-23T16:23:32.548144117Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -14297,7 +14297,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP external services istio
-    digest: 050841c5a28b01504bfa4212632045fcac9aed1118e67d50bb2dbbc1695df65c
+    digest: e307468c762890a443ed9580868a0ec650f6b3552588ff34b5ef69ee1cdc1090
     home: https://mosip.io
     keywords:
     - mosip
@@ -16406,7 +16406,7 @@ entries:
     - https://mosip.github.io/mosip-helm/landing-page-12.0.1-B2.tgz
     version: 12.0.1-B2
   - apiVersion: v2
-    created: "2025-12-23T09:20:17.562204386Z"
+    created: "2025-12-23T16:23:32.550572653Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -16414,7 +16414,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart to installed Downloader for Regstration Client Application
-    digest: 7b3ddec0c7b6a8a2df7a6a15863347026ea4c8a04eef2d6ed8636278c5f54280
+    digest: 508cd4d33f66fe2cbcbfa373f7e383e0c76a732355a0a1337a67b3e22f48e9c8
     home: https://mosip.io
     keywords:
     - mosip
@@ -29704,7 +29704,7 @@ entries:
     version: 0.0.1-develop
   regclient:
   - apiVersion: v2
-    created: "2025-12-23T15:51:29.038491864Z"
+    created: "2025-12-23T16:23:32.552051559Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -29712,7 +29712,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart to installed Downloader for Regstration Client Application
-    digest: ae03db8457f898b56a500c903c2312b760c9e73068eca7de92449d56e297ff87
+    digest: 083bf24cafec301f10769f13835423bdeb97eaf221624bd29656f0d12f7dabac
     home: https://mosip.io
     keywords:
     - mosip
@@ -43397,4 +43397,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-12-23T16:13:04.447741656Z"
+generated: "2025-12-23T16:23:32.545723255Z"
