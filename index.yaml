@@ -7626,6 +7626,28 @@ entries:
     - https://mosip.github.io/mosip-helm/dslorchestrator-12.0.1-B3.tgz
     version: 12.0.1-B3
   - apiVersion: v2
+    created: "2025-12-24T05:57:11.191850736Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy dslorchestrator to test working of MOSIP modules
+    digest: 5524fb6700b63c89c6100c9ec2e7d2b60714201a525667f477606b0137b69fb4
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - dslorchestrator
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: dslorchestrator
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/dslorchestrator-1.3.0.tgz
+    version: 1.3.0
+  - apiVersion: v2
     created: "2025-12-02T18:17:51.09838427Z"
     dependencies:
     - name: common
@@ -22233,6 +22255,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/packetcreator-12.0.1-B3.tgz
     version: 12.0.1-B3
+  - apiVersion: v2
+    created: "2025-12-24T05:57:11.193353408Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for DSL orchestrator
+    digest: a4811f7650ce15a14cba3300a1381d6a285b9ca17e4d2f78e1aa1eeec75764f9
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - packetcreator
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: packetcreator
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/packetcreator-1.3.0.tgz
+    version: 1.3.0
   - apiVersion: v2
     created: "2025-12-02T18:17:51.099874448Z"
     dependencies:
@@ -43397,4 +43441,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2025-12-24T05:53:03.118460519Z"
+generated: "2025-12-24T05:57:11.189938228Z"
