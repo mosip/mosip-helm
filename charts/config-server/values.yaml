@@ -728,11 +728,17 @@ extraEnvVars:
     value: ""
     enabled: false
   - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_DATABASE_HOSTNAME_OVERRIDE
-    value: ""
-    enabled: false
+    valueFrom:
+      configMapKeyRef:
+        key: mosip-database-hostname-override
+        name: postgres-setup-config
+    enabled: true
   - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_DATABASE_PORT_OVERRIDE
-    value: ""
-    enabled: false
+    valueFrom:
+      configMapKeyRef:
+        key: mosip-database-port-override
+        name: postgres-setup-config
+    enabled: true
 
 ## The active profile env if you have another set of properties. Correspondingly, properties in Git repo will
 ## have names of type "*-default.properties"
