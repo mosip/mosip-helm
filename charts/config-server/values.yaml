@@ -739,7 +739,6 @@ extraEnvVars:
         key: mosip-database-port-override
         name: postgres-setup-config
     enabled: true
-
 ## The active profile env if you have another set of properties. Correspondingly, properties in Git repo will
 ## have names of type "*-default.properties"
 activeProfileEnv: default
