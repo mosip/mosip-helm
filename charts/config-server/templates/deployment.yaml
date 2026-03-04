@@ -44,9 +44,6 @@ spec:
             {{- range .Values.envVariables }}
             {{- if .enabled }}
             - name: {{ .name }}
-              {{- if kindIs "string" .value }}
-              value: {{ .value | quote }}
-              {{- else if .valueFrom }}
               valueFrom:
                 {{- if .valueFrom.configMapKeyRef }}
                 configMapKeyRef:
@@ -57,29 +54,12 @@ spec:
                   name: {{ .valueFrom.secretKeyRef.name }}
                   key: {{ .valueFrom.secretKeyRef.key }}
                 {{- end }}
-              {{- end }}
             {{- end }}
             {{- end }}
 
 
-            {{- range .Values.extraEnvVars }}
-            {{- if .enabled }}
-            - name: {{ .name }}
-              {{- if kindIs "string" .value }}
-              value: {{ .value | quote }}
-              {{- else if .valueFrom }}
-              valueFrom:
-                {{- if .valueFrom.configMapKeyRef }}
-                configMapKeyRef:
-                  name: {{ .valueFrom.configMapKeyRef.name }}
-                  key: {{ .valueFrom.configMapKeyRef.key }}
-                {{- else if .valueFrom.secretKeyRef }}
-                secretKeyRef:
-                  name: {{ .valueFrom.secretKeyRef.name }}
-                  key: {{ .valueFrom.secretKeyRef.key }}
-                {{- end }}
-              {{- end }}
-            {{- end }}
+            {{- if .Values.extraEnvVars }}
+            {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}
 
           envFrom:
