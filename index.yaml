@@ -5832,7 +5832,7 @@ entries:
     - https://mosip.github.io/mosip-helm/credential-12.3.0.tgz
     version: 12.3.0
   - apiVersion: v2
-    created: "2026-04-22T05:41:15.969109903Z"
+    created: "2026-04-23T12:58:15.443877253Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -5840,7 +5840,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP IDRepo Identity Service
-    digest: 602994454649031266ff8709bb9250dcfd7354d975ddcd59fd273fd3e41f0e6c
+    digest: ef63758dbcaac5d4467c2396813c6f9dccbb3175ae5a60c89aec6eb63e17680d
     home: https://mosip.io
     keywords:
     - mosip
@@ -6648,7 +6648,7 @@ entries:
     - https://mosip.github.io/mosip-helm/credentialrequest-12.3.0.tgz
     version: 12.3.0
   - apiVersion: v2
-    created: "2026-04-22T05:41:15.970495306Z"
+    created: "2026-04-23T12:58:15.445224012Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -6656,7 +6656,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP IDRepo Identity Service
-    digest: 784ba4b4f0d92aee556bcb2bd4593597cc36587ad4440d987f3b0955e181be78
+    digest: e230bfb9a8fcbc3ccaa4cab099a258c88f648cc7b14cafd520ce27c0085b07b6
     home: https://mosip.io
     keywords:
     - mosip
@@ -10469,7 +10469,7 @@ entries:
     - https://mosip.github.io/mosip-helm/identity-12.3.0.tgz
     version: 12.3.0
   - apiVersion: v2
-    created: "2026-04-22T05:41:15.971835651Z"
+    created: "2026-04-23T12:58:15.446541217Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -10477,7 +10477,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP IDRepo Identity Service
-    digest: 0b5a8fe4940180fec4caa3d02e96de95b4643bcacd52bc5a8dd24196e636292f
+    digest: 711ecf65445efd19296bd21af32c69951d86a4d8995a3950c3749770b2795a95
     home: https://mosip.io
     keywords:
     - mosip
@@ -11640,31 +11640,31 @@ entries:
     - https://mosip.github.io/mosip-helm/idrepo-12.3.0.tgz
     version: 12.3.0
   - apiVersion: v2
-    created: "2026-04-22T05:41:15.978947743Z"
+    created: "2026-04-23T12:58:15.453642756Z"
     dependencies:
     - alias: saltgen
       condition: saltgen.enabled
       name: idrepo-saltgen
       repository: https://mosip.github.io/mosip-helm
-      version: 12.2.1
+      version: 12.2.2
     - condition: identity.enabled
       name: identity
       repository: https://mosip.github.io/mosip-helm
-      version: 12.2.1
+      version: 12.2.2
     - condition: credential.enabled
       name: credential
       repository: https://mosip.github.io/mosip-helm
-      version: 12.2.1
+      version: 12.2.2
     - condition: vid.enabled
       name: vid
       repository: https://mosip.github.io/mosip-helm
-      version: 12.2.1
+      version: 12.2.2
     - condition: credentialrequest.enabled
       name: credentialrequest
       repository: https://mosip.github.io/mosip-helm
-      version: 12.2.1
+      version: 12.2.2
     description: A Helm chart for Idrepo module of MOSIP.
-    digest: b874b9d53b8548de52130e25b634ed3f6c9662dac866737b151543ac08d171ad
+    digest: dd1deb325db940719115245f845981ae6a4c124662841d01293821bbfd037ae3
     home: https://mosip.io
     keywords:
     - mosip
@@ -12387,7 +12387,7 @@ entries:
     - https://mosip.github.io/mosip-helm/idrepo-saltgen-12.3.0.tgz
     version: 12.3.0
   - apiVersion: v2
-    created: "2026-04-22T05:41:15.980112302Z"
+    created: "2026-04-23T12:58:15.454800022Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -12395,7 +12395,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart to generate salt for ID Repo.
-    digest: 1adfe833f958f380295fc2fd0529e3603ff1d36262fce64c25703eb8c822f4fe
+    digest: b1edea94f91bc0919acbeb8c73cb0fea3a3961f64a92276bc6c95fd1b0ae65e1
     home: https://mosip.io
     keywords:
     - mosip
@@ -45067,7 +45067,7 @@ entries:
     - https://mosip.github.io/mosip-helm/vid-12.3.0.tgz
     version: 12.3.0
   - apiVersion: v2
-    created: "2026-04-22T05:41:15.981438095Z"
+    created: "2026-04-23T12:58:15.456149226Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -45075,7 +45075,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP IDRepo VID Service
-    digest: 46c0957ee1372afb0c8482e7648bb1eff51e11ae4d52e00fd22895134d2a6e49
+    digest: 27b3ca93b5aac6ab87d3b3ff0283389de5b260b3104ca7f3fee77e889ddd7395
     home: https://mosip.io
     keywords:
     - mosip
@@ -46370,4 +46370,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2026-04-22T12:51:47.042353684Z"
+generated: "2026-04-23T12:58:15.442316292Z"
