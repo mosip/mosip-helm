@@ -43066,6 +43066,29 @@ entries:
     version: 1.0.0
   signup:
   - apiVersion: v2
+    created: "2026-05-19T08:20:56.264459503Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for DGTDept signup-service module
+    digest: 60e8a3d469e68d85370ebd31bd99bcf03e897b951daa3e076fceb44028a67bc8
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - DGTDept
+    - signup
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: signup
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/signup-1.8.0.tgz
+    version: 1.8.0
+  - apiVersion: v2
     created: "2026-02-13T08:44:33.928294842Z"
     dependencies:
     - name: common
@@ -43526,6 +43549,29 @@ entries:
     - https://mosip.github.io/mosip-helm/signup-0.0.1-develop.tgz
     version: 0.0.1-develop
   signup-ui:
+  - apiVersion: v2
+    created: "2026-05-19T08:20:56.266262841Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for DGTDept SIGNUP UI module
+    digest: 916cb450adfab4d7a95607259ba8c228a9312c0314083f14ae382d6bd87d886f
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - DGTDept
+    - signup-ui
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: signup-ui
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/signup-ui-1.8.0.tgz
+    version: 1.8.0
   - apiVersion: v2
     created: "2026-02-13T08:44:33.930050579Z"
     dependencies:
@@ -46999,4 +47045,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2026-05-19T07:52:44.342599604Z"
+generated: "2026-05-19T08:20:56.262310005Z"
