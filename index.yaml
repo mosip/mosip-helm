@@ -26465,6 +26465,29 @@ entries:
     - https://mosip.github.io/mosip-helm/pms-partner-1.3.0-beta.1-develop.tgz
     version: 1.3.0-beta.1-develop
   - apiVersion: v2
+    created: "2026-05-20T07:18:16.289887162Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Partner Management Service Partner service
+    digest: a684b8beed4e58cf578abf0f165233eadc29fd8eb35f7eecb911a8f216f43c0a
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - pms-partner
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: pms-partner
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/pms-partner-1.3.0-beta.5.tgz
+    version: 1.3.0-beta.5
+  - apiVersion: v2
     created: "2026-02-04T05:27:37.301357645Z"
     dependencies:
     - name: common
@@ -27180,6 +27203,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/pms-policy-1.3.0-beta.1-develop.tgz
     version: 1.3.0-beta.1-develop
+  - apiVersion: v2
+    created: "2026-05-20T07:18:16.291007507Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Packetmanager module
+    digest: 5b98f7890238834798457eb5153db44040e861abdbbffce0604dc688845e221d
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - pms-policy
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: pms-policy
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/pms-policy-1.3.0-beta.5.tgz
+    version: 1.3.0-beta.5
   - apiVersion: v2
     created: "2026-02-04T05:27:37.302811139Z"
     dependencies:
@@ -47270,4 +47316,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2026-05-20T06:14:00.655933746Z"
+generated: "2026-05-20T07:18:16.288572952Z"
