@@ -25690,6 +25690,28 @@ entries:
     - https://mosip.github.io/mosip-helm/pmp-ui-v2-1.3.0-beta.1-develop.tgz
     version: 1.3.0-beta.1-develop
   - apiVersion: v2
+    created: "2026-05-20T07:39:47.198534597Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP pmp uiv2 UI module
+    digest: a1d8fb8633ef30e004426116bf0cb8e90ec3511b17f9a3596749561d39f15c31
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - pmp
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: pmp-ui-v2
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/pmp-ui-v2-1.3.0-beta.5.tgz
+    version: 1.3.0-beta.5
+  - apiVersion: v2
     created: "2026-02-04T05:26:34.722404217Z"
     dependencies:
     - name: common
@@ -47316,4 +47338,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2026-05-20T07:18:16.288572952Z"
+generated: "2026-05-20T07:39:47.196173121Z"
