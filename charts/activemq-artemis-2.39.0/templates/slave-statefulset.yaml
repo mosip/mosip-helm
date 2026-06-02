@@ -61,8 +61,6 @@ spec:
               key: artemis-password
         - name: ARTEMIS_USERNAME
           value: {{ default "artemis" .Values.artemisUser | quote }}
-        - name: ARTEMIS_USERNAME
-          value: {{ default "artemis" .Values.artemisUser | quote }}
         - name: HA_MODE
           value: "slave"
         - name: ANONYMOUS_LOGIN
