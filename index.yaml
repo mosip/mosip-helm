@@ -4153,6 +4153,29 @@ entries:
     - https://mosip.github.io/mosip-helm/biosdk-service-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
+    created: "2026-06-02T11:33:52.025308137Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Auditmanager module
+    digest: 4c1299911bde1e23a0f0daa9d69bddf6a71dbac4d3187f516d30266d45d73b05
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - biosdk-service
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: biosdk-service
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/biosdk-service-1.3.1-rc.1-develop.tgz
+    version: 1.3.1-rc.1-develop
+  - apiVersion: v2
     created: "2026-06-02T07:57:00.984070275Z"
     dependencies:
     - name: common
@@ -49993,4 +50016,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2026-06-02T11:08:18.815626683Z"
+generated: "2026-06-02T11:33:52.023607877Z"
