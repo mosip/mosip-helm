@@ -49356,6 +49356,28 @@ entries:
     - https://mosip.github.io/mosip-helm/websub-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
+    created: "2026-06-02T11:37:30.81085379Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for Websub service
+    digest: 17e0bfda51d76bae731f358c20c8afdb7b4b3d5e8abf1fcb3cd88a1f5cf30848
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - websub
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: websub
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/websub-1.3.2-rc.1-develop.tgz
+    version: 1.3.2-rc.1-develop
+  - apiVersion: v2
     created: "2026-06-01T13:22:47.164550022Z"
     dependencies:
     - name: common
@@ -49763,6 +49785,29 @@ entries:
     - https://mosip.github.io/mosip-helm/websub-consolidator-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
+    created: "2026-06-02T11:37:30.812348229Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for Websub Cconsolidator
+    digest: cc128200163477ad5596334bef7a3bcbff12059351c3e6f9cbef0214aadf2d2b
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - websub-consolidator
+    - websub
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: websub-consolidator
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/websub-consolidator-1.3.2-rc.1-develop.tgz
+    version: 1.3.2-rc.1-develop
+  - apiVersion: v2
     created: "2026-06-01T13:22:47.165998914Z"
     dependencies:
     - name: common
@@ -50016,4 +50061,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2026-06-02T11:33:52.023607877Z"
+generated: "2026-06-02T11:37:30.807987333Z"
