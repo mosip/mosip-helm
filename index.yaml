@@ -9717,6 +9717,50 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/gc-util-0.0.1-develop.tgz
     version: 0.0.1-develop
+  gh-tracker-service:
+  - apiVersion: v2
+    created: "2026-07-27T05:50:04.527233539Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: Helm chart for GitHub Activity Tracker backend service
+    digest: 781c7128dd57f730c3181c7120de3f1d1c4585c5473c430b6001e839d660fa24
+    home: https://mosip.io
+    keywords:
+    - mosip
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: gh-tracker-service
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/gh-tracker-service-0.0.1-develop.tgz
+    version: 0.0.1-develop
+  gh-tracker-ui:
+  - apiVersion: v2
+    created: "2026-07-27T05:50:04.528707333Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for Github Activity tracker UI module
+    digest: 575898887f99cd07adab6ce3891a7e77f0c4bc6698d4a16278e05ed5eb3aa5cb
+    home: https://mosip.io
+    keywords:
+    - mosip
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: gh-tracker-ui
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/gh-tracker-ui-0.0.1-develop.tgz
+    version: 0.0.1-develop
   ida-auth:
   - apiVersion: v2
     created: "2025-09-11T10:44:14.671927612Z"
@@ -50172,4 +50216,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2026-07-26T18:11:30.147844911Z"
+generated: "2026-07-27T05:50:04.525375398Z"
