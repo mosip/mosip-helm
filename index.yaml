@@ -23769,6 +23769,48 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/mosipcertmanager-0.0.1-develop.tgz
     version: 0.0.1-develop
+  nexus-server:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2026-08-09T18:39:11.505295063Z"
+    description: Helm chart for the MOSIP Nexus Server (RAG API, crawlers, ingestion,
+      MCP)
+    digest: 8b6e7143e1a127aa0c4e5ae70985dedf87430b7bf2c79fed5e406ebdcdd74b76
+    home: https://docs.mosip.io
+    keywords:
+    - mosip
+    - inji
+    - nexus
+    - rag
+    - chatbot
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: nexus-server
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/nexus-server-1.0.0.tgz
+    version: 1.0.0
+  nexus-ui:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2026-08-09T18:39:11.505903986Z"
+    description: Helm chart for the MOSIP Nexus UI (React + nginx)
+    digest: ce336282a7fe8d20f01adae6beeb62c4eaa43f6feb6d34006880e9af151b6db4
+    home: https://docs.mosip.io
+    keywords:
+    - mosip
+    - inji
+    - nexus
+    - ui
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: nexus-ui
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/nexus-ui-1.0.0.tgz
+    version: 1.0.0
   notifier:
   - apiVersion: v2
     created: "2025-09-17T12:13:27.25201459Z"
@@ -50327,4 +50369,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2026-08-09T17:58:46.076351754Z"
+generated: "2026-08-09T18:39:11.504008469Z"
