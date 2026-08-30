@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+    <html>
+
+    <head>
+        <title>MOSIP Synergy</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="icon" type="image/x-icon"
+            href="https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/mosip-favicon.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Montserrat", Inter;
+        }
+
+        .border-bottom-center {
+            position: relative;
+            display: inline-block;
+        }
+
+        .border-bottom-center::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 100%;
+            height: 1px;
+            background-color: #F4F8FA;
+            transform: translateX(-50%) scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .border-bottom-center:hover::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        .active-btn {
+            background-color: #ffffff;
+            color: #01315F;
+            border: 1px solid #ffffff;
+        }
+
+        .inactive-btn {
+            background-color: #013464;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+        }
+
+        .active-dropdown-btn {
+            rotate: 180deg;
+        }
+
+        .inactive-dropdown-btn {
+            rotate: 0deg;
+        }
+    </style>
+
+    <body>
+    <!-- Header -->
+    <header id="header"
+        class="bg-[url('https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/header_background.png')] px-[80px] pt-[38px] max-[730px]:pt-[20px] bg-cover max-[870px]:px-[20px]">
+        <!-- Nav -->
+        <nav class="flex justify-between items-center">
+        <div class="flex items-center max-[740px]:space-x-5">
+            <span id="hamburgerIcon" class="hidden max-[740px]:block cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <rect y="4" width="24" height="2" fill="white" />
+                <rect y="11" width="24" height="2" fill="white" />
+                <rect y="18" width="24" height="2" fill="white" />
+            </svg>
+            </span>
+            <img id="mosipLogo" alt="mosip logo"
+            class="h-[68px] w-[169px] cursor-pointer max-[460px]:h-[48px] max-[460px]:w-[109px]"
+            src="https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/new_Mosip_logo.png" />
+        </div>
+        <div class="flex space-x-6 items-center max-[870px]:space-x-3">
+            <div class="flex items-center space-x-6 max-[740px]:hidden">
+            <div class="group text-[#ffffff] text-[16px] flex items-center cursor-pointer">
+                <span class="group-hover:border-b mr-2">About MOSIP</span>
+                <span
+                class="w-0 h-0 border-l-4 border-r-4 border-b-4 border-transparent border-b-white -rotate-180 group-hover:rotate-0 duration-300"></span>
+                <div id="dropdownCard"
+                class="absolute top-20 mt-[6px] w-[174px] -ml-14 bg-white rounded-md shadow-lg hidden  z-50 group-hover:block">
+                <div class="p-2">
+                    <a href="https://mosip.io/" target="_blank"
+                    class="block hover:bg-gray-200 px-2 py-2 text-[#3E3E3E] border-b border-[#C4D6E6] text-[14px] flex items-center space-x-1">
+                    <span>MOSIP Website</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827" viewBox="0 0 14.529 13.827">
+                        <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                        <path id="north_east_FILL0_wght400_GRAD0_opsz48"
+                            d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z"
+                            transform="translate(952.372 823.652)" fill="#3e3e3e" stroke="#3e3e3e" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="0.5" />
+                        <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none"
+                            stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                        <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)" fill="none"
+                            stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                        <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none"
+                            stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                        <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none"
+                            stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                        </g>
+                    </svg>
+                    </a>
+                    <div id="docLinkCard"
+                    class="px-2 py-2 text-[#3E3E3E] border-b border-[#C4D6E6] text-[14px] flex items-center hover:bg-gray-200">
+                    <span>Documentation</span>
+
+                    <!-- Docs version card -->
+                    <div id="docVersiondropDown"
+                        class="absolute mt-32 w-[174px] ml-36 bg-white rounded-md shadow-lg hidden z-50">
+                        <div class="p-2">
+                        <a href="https://docs.mosip.io/1.1.5" target="_blank"
+                            class="block px-2 py-2 text-[#3E3E3E] hover:bg-gray-200 border-b border-[#C4D6E6] text-[14px] flex items-center space-x-1">
+                            <span>Docs 1.1.5</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827"
+                            viewBox="0 0 14.529 13.827">
+                            <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                                <path id="north_east_FILL0_wght400_GRAD0_opsz48"
+                                d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z"
+                                transform="translate(952.372 823.652)" fill="#3e3e3e" stroke="#3e3e3e"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" />
+                                <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)"
+                                fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                                <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)"
+                                fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                                <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)"
+                                fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                                <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)"
+                                fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                            </g>
+                            </svg>
+                        </a>
+                        <a href="https://docs.mosip.io/1.2.0" target="_blank"
+                            class="block px-2 py-2 text-[#3E3E3E] hover:bg-gray-200 border-b border-[#C4D6E6] text-[14px] flex items-center space-x-1">
+                            <span>Docs 1.2.0</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827"
+                            viewBox="0 0 14.529 13.827">
+                            <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                                <path id="north_east_FILL0_wght400_GRAD0_opsz48"
+                                d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z"
+                                transform="translate(952.372 823.652)" fill="#3e3e3e" stroke="#3e3e3e"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" />
+                                <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)"
+                                fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                                <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)"
+                                fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                                <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)"
+                                fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                                <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)"
+                                fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                            </g>
+                            </svg>
+                        </a>
+                        <a href="https://docs.inji.io/" target="_blank"
+                            class="block px-2 py-2 text-[#3E3E3E] hover:bg-gray-200 border-b border-[#C4D6E6] text-[14px] flex items-center space-x-1">
+                            <span>Inji</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827"
+                            viewBox="0 0 14.529 13.827">
+                            <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                                <path id="north_east_FILL0_wght400_GRAD0_opsz48"
+                                d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z"
+                                transform="translate(952.372 823.652)" fill="#3e3e3e" stroke="#3e3e3e"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" />
+                                <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)"
+                                fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                                <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)"
+                                fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                                <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)"
+                                fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                                <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)"
+                                fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                            </g>
+                            </svg>
+                        </a>
+                        <a href="https://docs.esignet.io/" target="_blank"
+                            class="block px-2 py-2 text-[#3E3E3E] hover:bg-gray-200 text-[14px] flex items-center space-x-1">
+                            <span>eSignet</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827"
+                            viewBox="0 0 14.529 13.827">
+                            <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                                <path id="north_east_FILL0_wght400_GRAD0_opsz48"
+                                d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z"
+                                transform="translate(952.372 823.652)" fill="#3e3e3e" stroke="#3e3e3e"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" />
+                                <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)"
+                                fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                                <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)"
+                                fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                                <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)"
+                                fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                                <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)"
+                                fill="none" stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                            </g>
+                            </svg>
+                        </a>
+                        </div>
+                    </div>
+
+                    </div>
+                    <a href="https://www.youtube.com/@mosip16" target="_blank"
+                    class="block px-2 py-2 hover:bg-gray-200 text-[#3E3E3E] text-[14px] flex items-center space-x-1">
+                    <span>YouTube Videos</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827" viewBox="0 0 14.529 13.827">
+                        <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                        <path id="north_east_FILL0_wght400_GRAD0_opsz48"
+                            d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z"
+                            transform="translate(952.372 823.652)" fill="#3e3e3e" stroke="#3e3e3e" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="0.5" />
+                        <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none"
+                            stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                        <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)" fill="none"
+                            stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                        <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none"
+                            stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                        <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none"
+                            stroke="#3e3e3e" stroke-linecap="round" stroke-width="1.5" />
+                        </g>
+                    </svg>
+                    </a>
+                </div>
+                </div>
+            </div>
+            <a href="https://community.mosip.io/" target="_blank"
+                class="group text-[#ffffff] text-[16px] flex items-center space-x-1 border-bottom-center cursor-pointer pb-1 border-bottom-center">
+                <span>Contact Us</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12.529" height="11.827" viewBox="0 0 14.529 13.827">
+                <g id="Group_57562" data-name="Group 57562" transform="translate(-1106.75 -63.402)">
+                    <path id="north_east_FILL0_wght400_GRAD0_opsz48"
+                    d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z"
+                    transform="translate(952.372 823.652)" fill="#fff" stroke="#fff" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="0.5" />
+                    <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none"
+                    stroke="#fff" stroke-linecap="round" stroke-width="1.5" />
+                    <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)" fill="none"
+                    stroke="#fff" stroke-linecap="round" stroke-width="1.5" />
+                    <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none"
+                    stroke="#fff" stroke-linecap="round" stroke-width="1.5" />
+                    <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none"
+                    stroke="#fff" stroke-linecap="round" stroke-width="1.5" />
+                </g>
+                </svg>
+            </a>
+            <span class="text-[#ffffff] text-[16px] cursor-pointer border-bottom-center"><a target="_blank"
+                href="https://mosip.stoplight.io/">APIs</a></span>
+            </div>
+            <a class="flex align-center justify-center items-center text-[#ffffff] text-[16px] border-solid border-[1px] h-[43px] w-[86px] rounded-[10px] hover:bg-[#ffffff] hover:text-[#1763AC]"
+            href="https://self-register.synergy.mosip.net/" target="_blank">Get UIN</a>
+        </div>
+        </nav>
+
+        <!-- Hamburger for Mobile view -->
+
+        <div id="hamburgerDetails" class="hidden bg-[#012F5A] -mx-5 p-5 absolute w-full text-[#ffffff] mt-3 z-50">
+        <div class="mb-2">
+            <span class="flex items-center space-x-1 pb-2">
+            <span class="font-bold text-1 border-b border-[#ffffff] cursor-default">About MOSIP</span>
+            <svg id="aboutDropdownIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="cursor-pointer">
+                <path d="M8 10l4 4 4-4" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            </span>
+            <div id="aboutDropdownOptions">
+            <a href="https://mosip.io/" target="_blank"
+                class="block pl-5 py-1 text-[#ffffff] text-[14px] flex items-center space-x-2">
+                <span class="border-b border-[#ffffff]">MOSIP Website</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827" viewBox="0 0 14.529 13.827">
+                <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                    <path id="north_east_FILL0_wght400_GRAD0_opsz48"
+                    d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z"
+                    transform="translate(952.372 823.652)" fill="#ffffff" stroke="#ffffff" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="0.5" />
+                    <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none"
+                    stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                    <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)" fill="none"
+                    stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                    <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none"
+                    stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                    <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none"
+                    stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                </g>
+                </svg>
+            </a>
+
+            <div class="block pl-5 py-1 text-[#ffffff] text-[14px]">
+                <span class="flex items-center space-x-1 pb-2">
+                <span class="border-b border-[#ffffff] cursor-default">Documentation</span>
+                <svg id="documentationDropdownIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" class="cursor-pointer">
+                    <path d="M8 10l4 4 4-4" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+                </span>
+                <div id="documentationDropdownOptions">
+                <a href="https://docs.mosip.io/1.1.5" target="_blank"
+                    class="block pl-5 py-1 text-[#ffffff] text-[14px] flex items-center space-x-2">
+                    <span class="border-b border-[#ffffff]">Docs 1.1.5</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827" viewBox="0 0 14.529 13.827">
+                    <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                        <path id="north_east_FILL0_wght400_GRAD0_opsz48"
+                        d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z"
+                        transform="translate(952.372 823.652)" fill="#ffffff" stroke="#ffffff" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="0.5" />
+                        <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none"
+                        stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                        <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)" fill="none"
+                        stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                        <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none"
+                        stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                        <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none"
+                        stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                    </g>
+                    </svg>
+                </a>
+                <a href="https://docs.mosip.io/1.2.0" target="_blank"
+                    class="block pl-5 py-1 text-[#ffffff] text-[14px] flex items-center space-x-2">
+                    <span class="border-b border-[#ffffff]">Docs 1.2.0</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827" viewBox="0 0 14.529 13.827">
+                    <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                        <path id="north_east_FILL0_wght400_GRAD0_opsz48"
+                        d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z"
+                        transform="translate(952.372 823.652)" fill="#ffffff" stroke="#ffffff" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="0.5" />
+                        <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none"
+                        stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                        <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)" fill="none"
+                        stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                        <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none"
+                        stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                        <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none"
+                        stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                    </g>
+                    </svg>
+                </a>
+                <a href="https://docs.inji.io/" target="_blank"
+                    class="block pl-5 py-1 text-[#ffffff] text-[14px] flex items-center space-x-2">
+                    <span class="border-b border-[#ffffff]">Inji</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827" viewBox="0 0 14.529 13.827">
+                    <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                        <path id="north_east_FILL0_wght400_GRAD0_opsz48"
+                        d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z"
+                        transform="translate(952.372 823.652)" fill="#ffffff" stroke="#ffffff" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="0.5" />
+                        <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none"
+                        stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                        <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)" fill="none"
+                        stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                        <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none"
+                        stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                        <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none"
+                        stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                    </g>
+                    </svg>
+                </a>
+                <a href="https://docs.esignet.io/" target="_blank"
+                    class="block pl-5 py-1 text-[#ffffff] text-[14px] flex items-center space-x-2">
+                    <span class="border-b border-[#ffffff]">eSignet</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827" viewBox="0 0 14.529 13.827">
+                    <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                        <path id="north_east_FILL0_wght400_GRAD0_opsz48"
+                        d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z"
+                        transform="translate(952.372 823.652)" fill="#ffffff" stroke="#ffffff" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="0.5" />
+                        <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none"
+                        stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                        <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)" fill="none"
+                        stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                        <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none"
+                        stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                        <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none"
+                        stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                    </g>
+                    </svg>
+                </a>
+                </div>
+            </div>
+            <a href="https://www.youtube.com/@mosip16" target="_blank"
+                class="block pl-5 py-1 text-[#ffffff] text-[14px] flex items-center space-x-2">
+                <span class="border-b border-[#ffffff]">YouTube Videos</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14.529" height="13.827" viewBox="0 0 14.529 13.827">
+                <g id="Group_58201" data-name="Group 58201" transform="translate(-1106.75 -63.402)">
+                    <path id="north_east_FILL0_wght400_GRAD0_opsz48"
+                    d="M160.606-751.343l-.606-.606,7.185-7.185h-4.242V-760h5.713v5.713h-.866v-4.242Z"
+                    transform="translate(952.372 823.652)" fill="#ffffff" stroke="#ffffff" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="0.5" />
+                    <line id="Line_3" data-name="Line 3" y2="10.827" transform="translate(1107.5 65.653)" fill="none"
+                    stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                    <line id="Line_4" data-name="Line 4" x1="10.827" transform="translate(1107.5 76.48)" fill="none"
+                    stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                    <line id="Line_5" data-name="Line 5" x2="5.414" transform="translate(1107.5 65.653)" fill="none"
+                    stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                    <line id="Line_6" data-name="Line 6" y1="5.414" transform="translate(1118.327 71.066)" fill="none"
+                    stroke="#ffffff" stroke-linecap="round" stroke-width="1.5" />
+                </g>
+                </svg>
+            </a>
+            </div>
+        </div>
+        <a href="https://community.mosip.io/" target="_blank"
+            class="block py-1 text-[#ffffff] text-[16px] flex items-center space-x-2 font-bold mb-2">
+            <span class="border-b border-[#ffffff]">Contact Us</span>
+        </a>
+        <a href="https://mosip.stoplight.io/" target="_blank"
+            class="block py-1 text-[#ffffff] text-[16px] flex items-center space-x-2 font-bold mb-2">
+            <span class="border-b border-[#ffffff]">APIs</span>
+        </a>
+        </div>
+        <!-- Hamburger for Mobile view end -->
+
+        <!-- Apps header Part -->
+        <div id="appsTitlePart">
+        <!-- title card -->
+        <div id="titleCard"
+            class="text-center px-[30px] pt-[30px] flex justify-center flex-col max-[930px]:px-0 max-[500px]:mb-8">
+            <h2
+            class="text-[50px] max-[1800px]:text-[34px] font-[700] text-[#ffffff] max-[520px]:text-[26px] max-[400px]:font-[600]">
+            Welcome to the MOSIP Synergy environment!</h2>
+            <p class="text-[#C4D6E6] text-[14px]">Dive into our dynamic sandbox, designed for testing, collaboration, and
+            seamless integration of your solutions with our offerings.<br />
+            </p>
+        </div>
+
+        <!-- Filter -->
+        <div id="filterCard" class="flex justify-end max-[750px]:justify-center mt-7 max-[675px]:mt-2">
+            <div id="filterContainer"
+            class="absolute h-[40px] w-[162px] min-[500px]:-mt-3 rounded-[18px] text-[14px] bg-[#FFFFFF33] py-[10px] z-40">
+            <div id="filterButton"
+                class="flex rounded-[28px] items-center justify-evenly cursor-pointer text-[#ffffff] px-3">
+                <span class="flex items-center space-x-1">
+                <span>Sort by: </span>
+                <span id="selectedSortType">Default</span>
+                </span>
+                <span id="arrowIcon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                    <path id="arrowIconPath" d="M8 10l4 4 4-4" fill="none" stroke="#ffffff" stroke-width="4"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                </span>
+            </div>
+
+            <div id="filterOptionsCard" class="hidden mt-1">
+                <p id="defaultOrder"
+                class="py-2 px-3 flex items-center justify-between bg-[#EFF7FF] text-[#1763AC] text-[14px] cursor-pointer">
+                <span>Default </span>
+                <span id="defaultTickIcon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none"
+                    stroke="#1763AC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12l5 5L20 7" />
+                    </svg>
+                </span>
+                </p>
+                <p id="ascOrder"
+                class="py-2 px-3 flex items-center justify-between text-[#313131] text-[14px] cursor-pointer">
+                <span>Ascending Order</span>
+                <span id="ascTickIcon" class="hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none"
+                    stroke="#1763AC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12l5 5L20 7" />
+                    </svg>
+                </span>
+                </p>
+                <p id="descOrder"
+                class="py-2 px-3 pb-3 flex items-center justify-between text-[#313131] text-[14px] rounded-b-[20px] cursor-pointer">
+                <span>Descending Order</span>
+                <span id="descTickIcon" class="hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none"
+                    stroke="#1763AC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12l5 5L20 7" />
+                    </svg>
+                </span>
+                </p>
+            </div>
+            </div>
+        </div>
+
+        <div class="text-center mb-0 mt-14 min-[500px]:mt-10 max-[500px]:mt-20">
+            <button id="applicationCardBtn"
+            class="w-[140px] min-[330px]:w-[165px] min-[500px]:w-[254px] h-[40px] min-[500px]:h-[46px] border-b-0 rounded-t-[10px] text-[13px] min-[500px]:text-[16px] font-bold -mr-1 active-btn">Applications</button>
+            <button id="useCasesCars"
+            class="w-[140px] min-[330px]:w-[165px] min-[500px]:w-[254px] h-[40px] min-[500px]:h-[46px] border-b-0 rounded-t-[10px] text-[13px] min-[500px]:text-[16px] font-bold inactive-btn">Others</button>
+        </div>
+        </div>
+
+        <!-- App Details Header part -->
+        <div id="appDetailsTitlePart"
+        class="flex flex-row justify-between mt-[120px] min-[750px]:mt-[110px] min-[900px]:mt-[95px]">
+        </div>
+
+    </header>
+
+    <div id="mainContainer" class="p-[30px]">
+        <div id="applicationsCard">
+        <p class="text-center px-[60px] pb-[30px] max-[750px]:px-[3px]">Try out the various MOSIP Applications below</p>
+        <div id="appDetails" class="flex items-center justify-center">
+            <div class="flex justify-center w-full mx-auto max-[870px]:px-[20px]">
+            <div
+                id="appsContainer"
+                class="flex flex-wrap gap-5 justify-start max-w-[1350px] w-full mx-auto max-[1370px]:max-w-[1000px] max-[1050px]:max-w-[755px] max-[755px]:justify-center"
+                >
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- other apps -->
+        <div id="useCases" class="hidden w-full">
+        <p class="text-center px-[60px] pb-[30px] max-[750px]:px-[3px]">Click on your preferred links to explore further</p>
+        <div class="flex justify-center w-full mx-auto max-[870px]:px-[20px]">
+            <div
+                id="othersApps"
+                class="flex flex-wrap gap-5 justify-start max-w-[1350px] w-full mx-auto max-[1370px]:max-w-[1000px] max-[1050px]:max-w-[755px] max-[755px]:justify-center"
+                >
+                </div>
+            </div>
+        <!-- <div id="othersApps" class="flex items-center gap-5 justify-start flex-wrap max-[800px]:justify-center max-[800px]:flex-wrap max-[800px]:space-y-2"></div> -->
+        </div>
+    </div>
+    <setion class="w-full">
+        <div class="bg-[#0D4B85] flex flex-col items-center justify-center text-white px-4 py-10 space-y-4">
+            <h2 class="text-3xl font-semibold">APIs</h2>
+            <div class="bg-[#063765] rounded-xl p-4 w-auto shadow-lg flex items-center gap-3 max-[500px]:flex-col">
+                <h3 class="text-white text-md text-center">External API:</h3>
+                <div class="bg-[#002E58] rounded-lg p-2 flex items-center justify-between">
+                    <span class="text-[#CEBD3B] break-all">
+                        https://api.synergy.mosip.net
+                    </span>
+                </div>
+            </div>
+            <div class="bg-[#063765] rounded-xl p-4 w-auto shadow-lg flex items-center gap-3 max-[500px]:flex-col">
+                <h3 class="text-white text-md text-center">Internal API:</h3>
+                <div class="bg-[#002E58] rounded-lg p-2 flex items-center justify-between">
+                    <span class="text-[#CEBD3B] break-all">
+                        https://api-internal.synergy.mosip.net
+                    </span>
+                </div>
+            </div>
+            <div class="bg-[#063765] rounded-xl p-4 w-auto shadow-lg flex items-center gap-3 max-[500px]:flex-col">
+                <h3 class="text-white text-md text-center">postgres.synergy.mosip.net:</h3>
+                <div class="bg-[#002E58] rounded-lg p-2 flex items-center justify-between">
+                    <span class="text-[#CEBD3B] break-all">
+                    5432
+                    </span>
+                </div>
+            </div>
+            </div>
+        </setion>
+    <footer class="h-[64px] flex items-center justify-center">
+        <p class="text-[#727272] text-[16px]">© <span id="year"></span> All Rights Reserved MOSIP</p>
+    </footer>
+
+    <!-- Java Script -->
+    <script>
+        // list of All Applications
+
+        let listOfMosipApps = [
+        {id: "preReg", appName: "Pre-registration", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/pre-reg.png",version: "Version 1.2.0.1", tryIt: "https://prereg.synergy.mosip.net/pre-registration-ui/#/eng", docs: "https://docs.mosip.io/1.2.0/id-lifecycle-management/identity-issuance/pre-registration/overview", disabled: false},
+        {id: "androidRegClient", appName: "Android Registration Client", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/android-reg.png", version: "Version 0.12.0", tryIt: "https://drive.google.com/drive/folders/1xBvaEC9HSXy12nbLa-LmxGbT2z2SBRBy", docs: "https://docs.mosip.io/1.2.0/id-lifecycle-management/identity-issuance/android-registration-client/overview", disabled:false},
+        {id: "desktopRegClient", appName: "Desktop Registration Client", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/desktop-reg.png", version: "Version 1.2.0.1-B1", tryIt: "https://regclient.synergy.mosip.net/", docs: "https://docs.mosip.io/1.2.0/id-lifecycle-management/identity-issuance/registration-client/overview", disabled:false},
+        {id: "resident", appName: "Resident Portal", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/RP_logo.png", version: "Version 0.9.1", tryIt: "https://resident.synergy.mosip.net", docs: "https://docs.mosip.io/1.2.0/id-lifecycle-management/identity-management/resident-services/overview", disabled:false},
+        {id: "integratedMosipId",appName: "eSignet",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png",version: "Version 1.5.1", tryIt: "https://esignet.synergy.mosip.net/",docs: "https://docs.esignet.io/overview", disabled:false},
+        {id: "healthPortalUsingMosipId",appName: "Health Portal",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/eSignet.png",version: "Version 1.4.1", tryIt: "https://healthservices.synergy.mosip.net/", docs: "https://docs.esignet.io/overview", disabled:false},
+        {id: "injiWalletAndroid", appName: "Inji Wallet - Mobile | Android",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-wallet.png",version: "Version 0.19.0", tryIt:"https://mosip.atlassian.net/wiki/external/NmRmMzE3NDJlYjI4NGMxZThmNWUwZGU4MzI4ZjNiNTE",docs: "https://docs.inji.io/inji-wallet/inji-mobile/overview", disabled:false},
+        {id: "injiWalletIos",appName: "Inji Wallet - Mobile | IOS", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-wallet.png", version: "Version 0.19.0", tryIt: "https://testflight.apple.com/join/7FTAdjLe", docs: "https://docs.inji.io/inji-wallet/inji-mobile/overview", disabled:false},
+        {id: "injiWeb", appName: "Inji Wallet - Web",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-wallet.png",version: "Version 0.14.0", tryIt: "https://injiweb.synergy.mosip.net/",docs: "https://docs.inji.io/inji-wallet/inji-web/overview", disabled:false},
+        {id: "injiVerify",appName: "Inji Verify", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/inji-verify.png",version: "Version 0.13.1", tryIt: "https://injiverify.synergy.mosip.net/",docs: "https://docs.mosip.io/inji/inji-verify/overview", disabled:false},
+        {id: "AdminPortal",appName: "Admin Portal",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/Admin_logo.png",version: "Version 1.2.0.1", tryIt: "https://admin.synergy.mosip.net",docs: "https://docs.mosip.io/1.2.0/modules/administration", disabled:false},
+        {id: "pms",appName: "Partner Management System",logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/PMS_logo.png",version: "Version 1.2.2.1", tryIt: "https://pmp.synergy.mosip.net/#/pmp/home", docs: "https://docs.mosip.io/1.2.0/modules/partner-management-services/pms-existing/partner-policies", disabled:false},
+        {id: "Compliance", appName: "Compliance Portal", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/mosip-favicon.png", version: "Version 1.4.3", tryIt: "https://compliance.synergy.mosip.net/#/landing", disabled:false},
+        {id: "CTKAndroid", appName: "CTK Android", logo: "https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/mosip-favicon.png", version: "Version 1.4.3", tryIt: "https://drive.google.com/drive/folders/1t14CucwTk7F6WP8DUi07bZyoDAHdI9wU", disabled:false}
+        ];
+
+        let listOfOtherApps = [
+            {id:"ActiveMQ", appName: "ActiveMQ", tryIt: "https://activemq.synergy.mosip.net/"},
+            {id:"Kafka", appName: "Kafka", tryIt: "https://kafka.synergy.mosip.net/"},
+            {id:"Kibana", appName: "Kibana", tryIt: "https://kibana.synergy.mosip.net/app/home"},
+            {id:"MinIO", appName: "MinIO", tryIt: "https://minio.synergy.mosip.net/login"},
+            {id:"Keycloak", appName: "Keycloak", tryIt: "https://iam.synergy.mosip.net/auth/"},
+            {id:"MOSIPCerts", appName: "MOSIP Certs", tryIt: "https://api.synergy.mosip.net/mosip-certs/"},
+            {id:"well-known/attributes", appName: "well-known/attributes", tryIt: "https://api.synergy.mosip.net/.well-known/"},
+            {id:"MOCKABIS", appName: "MOCK ABIS", tryIt: "https://drive.google.com/drive/folders/1AOthzB-5o18wrwUc7Xz60XPldoTyMnxs"},
+            {id:"MOCKSDK", appName: "MOCK SDK", tryIt: "https://drive.google.com/drive/folders/1Z6EMRKgk3t-aXqU6YRKt9rThwUjR1Jz6"},
+            {id:"MOCKSBI", appName: "MOCK SBI", tryIt: "https://drive.google.com/drive/folders/1oRfA6-iwh713SgOOTH3QuTsZctIZEF3S"},
+            {id:"MOCKAndroidSBI", appName: "MOCK Android SBI", tryIt: "https://drive.google.com/drive/folders/1dGLWqqW5P04IWznC8SWp58anXh4OVn26"}
+        ];
+
+        // Dom elements for interaction
+        const headerEl = document.getElementById('header');
+        const appsTitlePartEl = document.getElementById('appsTitlePart');
+        const appDetailsTitlePartEl = document.getElementById('appDetailsTitlePart');
+        const appsContainerEl = document.getElementById('appsContainer');
+        const docLinkCardEl = document.getElementById("docLinkCard");
+        const docVersiondropDownEl = document.getElementById("docVersiondropDown");
+        const filterButtonEl = document.getElementById("filterButton");
+        const arrowIconEl = document.getElementById("arrowIcon");
+        const filterContainerEl = document.getElementById("filterContainer");
+        const filterOptionsCardEl = document.getElementById("filterOptionsCard");
+        const defaultOrderEl = document.getElementById("defaultOrder");
+        const aboutDropdownIcon = document.getElementById("aboutDropdownIcon");
+        const aboutDropdownMenu = document.getElementById("aboutDropdownOptions");
+        const documentationDropdownIcon = document.getElementById("documentationDropdownIcon");
+        const documentationDropdownMenu = document.getElementById("documentationDropdownOptions");
+        const ascOrderEl = document.getElementById("ascOrder");
+        const descOrderEl = document.getElementById("descOrder");
+        const applicationCardBtnEl = document.getElementById("applicationCardBtn");
+        const useCasesBtnEl = document.getElementById("useCasesCars");
+        const othersAppsEl = document.getElementById("othersApps");
+        
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        let isFilterDropdownOpen = false;
+        let isHamburgerOpen = false;
+        let isAboutDropdownMenuOpen = false;
+        let isDocumentationMenuOpen = false;
+        let activeTab = "applications";
+
+        const sortByAsc = () => {
+            if(activeTab === "applications"){
+                let sortedAppData = listOfMosipApps.slice().sort((a, b) => a.appName.localeCompare(b.appName));
+                showListOfAppsData(sortedAppData);
+            }else{
+                let sortedAppData = listOfOtherApps.slice().sort((a, b) => a.appName.localeCompare(b.appName));
+                showListOfOtherAppsData(sortedAppData);
+            }
+            
+        }
+
+        const sortByDesc = () => {
+            if(activeTab === "applications"){
+                const sortedAppData = listOfMosipApps.slice().sort((a, b) => b.appName.localeCompare(a.appName));
+                showListOfAppsData(sortedAppData);
+            }else{
+                const sortedAppData = listOfOtherApps.slice().sort((a, b) => b.appName.localeCompare(a.appName));
+                showListOfOtherAppsData(sortedAppData);
+            }
+        
+        }
+
+        function showListOfAppsData(sortedAppData) {
+        appsTitlePartEl.style.display = "block";
+        appDetailsTitlePartEl.style.display = "none";
+        document.getElementById("mainContainer").style.backgroundColor = "#EFF3F8";
+        document.getElementById("applicationsCard").classList.remove("hidden");
+        appsContainerEl.innerHTML = "";
+        sortedAppData.forEach(item => {
+            appsContainerEl.innerHTML += `
+                <div class="w-[312px] h-[332px] bg-[#ffffff] rounded-[20px] p-2 shadow-lg mb-[24px]">
+                <div id=${item.appName} class="w-[292px] h-[209px] bg-[#F4F8FA] rounded-[10px] flex justify-center items-center">
+                    <img class=${(item.id === "Compliance" || item.id === "CTKAndroid") ? "w-[120px] h-[79px]" : ""} alt=${item.id} src=${item.logo} name=${item.appName} />
+                </div>
+                <div class="mt-2">
+                    <h4 class="text-[#01315F] font-bold text-[16px]">${item.appName}</h4>
+                    <p class="text-[#777777] text-[0.87rem] font-[550] opacity-[70%]">${item.version}</p>
+                    <div class="mt-2 flex justify-start space-x-2 mb-2">
+                    ${item.disabled
+                        ? `<button disabled class="w-[90px] h-[29px] bg-gray-400 rounded-[6px] text-[#ffffff] text-[14px]">Try It Out!</button>`
+                        : `<a target="_blank" href=${item.tryIt}><button class="w-[90px] h-[29px] bg-[#1763AC] rounded-[6px] text-[#ffffff] text-[14px]">Try It Out!</button></a>`
+                    }
+                    ${item.docs ? `<button class="w-[74px] h-[29px] rounded-[6px] border border-[#1763AC] font-[600]"><a class="text-[#1763AC] text-[14px]" target="_blank" href=${item.docs}>Overview</a></button>` : ""}
+                    </div>
+                </div>
+                </div>
+            `
+        });
+        };
+
+        function showListOfOtherAppsData(othersAppsList){
+            othersAppsEl.innerHTML = "";
+            othersAppsList.forEach(item =>{
+            othersAppsEl.innerHTML += `
+                    <div class="w-[312px] h-[272px] bg-[#ffffff] rounded-[20px] p-2 shadow-lg max-[675px]:mr-0 mb-[24px]">
+                        <div id='preReg'
+                            class="w-[292px] h-[209px] bg-[#F4F8FA] rounded-[10px] flex justify-center items-center flex-col">
+                            <img class="h-[80px] w-[80px] block"
+                            src="https://raw.githubusercontent.com/mosip/documentation/1.2.0/docs/_images/mosip-favicon.png" />
+                        </div>
+                        <div class="mt-2 flex align-center justify-center flex-col items-center">
+                            <a target="_blank" href="${item.tryIt}" class="text-[#01315F] font-bold text-[18px] border-b-2 border-[#01315F]  hover:brightness-125 hover:text-[#014a8c] hover:border-[#014a8c] transition-all duration-300">${item.appName}</a>
+                            <div class="mt-2 flex justify-start space-x-2 mb-2">
+                            </div>
+                        </div>
+                    </div>`;
+                });
+        };
+
+        showListOfAppsData(listOfMosipApps);
+
+        docLinkCardEl.addEventListener('mouseover', () => {
+        docVersiondropDownEl.style.display = "block";
+        docLinkCardEl.style.backgroundColor = "";
+        });
+
+        docLinkCardEl.addEventListener('mouseout', () => {
+        docVersiondropDownEl.style.display = "none";
+        docLinkCardEl.style.backgroundColor = "#ffffff";
+        });
+
+        const openFilterDropdown = () => {
+        arrowIconEl.classList.remove("rotate-0");
+        arrowIconEl.classList.add("rotate-180", "transition-transform", "ease");
+        filterButtonEl.classList.remove("text-[#ffffff]", "font-[500]");
+        filterButtonEl.classList.add("text-[#313131]", "font-[600]");
+        document.getElementById("arrowIconPath").setAttribute('stroke', '#313131');
+        filterContainerEl.classList.remove("h-[40px]", "shadow-none", "bg-[#FFFFFF33]", "hidden");
+        filterContainerEl.classList.add("h-[155px]", "shadow-lg", "bg-[#ffffff]", "block");
+        filterOptionsCardEl.classList.remove("hidden");
+        filterOptionsCardEl.classList.add("block", "duration-700");
+        isFilterDropdownOpen = true;
+        }
+
+        const closeFilterDropdown = () => {
+        arrowIconEl.classList.remove("rotate-180")
+        arrowIconEl.classList.add("rotate-0", "transition-transform", "ease");
+        filterButtonEl.classList.remove("text-[#313131]", "font-[600]");
+        filterButtonEl.classList.add("text-[#ffffff]", "font-[500]");
+        document.getElementById("arrowIconPath").setAttribute('stroke', '#ffffff');
+        filterContainerEl.classList.remove("h-[155px]", "shadow-lg", "bg-[#ffffff]");
+        filterContainerEl.classList.add("h-[40px]", "shadow-none",  "bg-[#FFFFFF33]");
+        filterOptionsCardEl.classList.remove("block");
+        filterOptionsCardEl.classList.add("hidden");
+        isFilterDropdownOpen = false;
+        }
+
+        filterButtonEl.addEventListener('click', () => {
+        if (!isFilterDropdownOpen) {
+            openFilterDropdown();
+        } else {
+            closeFilterDropdown();
+        }
+        });
+
+        document.addEventListener("click", (event) => {
+        if (!filterContainerEl.contains(event.target)) {
+            closeFilterDropdown();
+        }
+        })
+
+        function changeFilterCardStyles(){
+        defaultOrderEl.style.backgroundColor = "#EFF7FF";
+        defaultOrderEl.style.color = "#1763AC";
+        descOrderEl.style.backgroundColor = "#ffffff";
+        descOrderEl.style.color = "#313131";
+        ascOrderEl.style.backgroundColor = "#ffffff";
+        ascOrderEl.style.color = "#313131";
+        document.getElementById("defaultTickIcon").style.display = "block";
+        document.getElementById("ascTickIcon").style.display = "none";
+        document.getElementById("descTickIcon").style.display = "none";
+        document.getElementById("selectedSortType").innerText = "Default";
+        }
+
+        defaultOrderEl.addEventListener("click", () => {
+        changeFilterCardStyles();
+        closeFilterDropdown();
+        showListOfAppsData(listOfMosipApps);
+        })
+
+        ascOrderEl.addEventListener("click", () => {
+        defaultOrderEl.style.backgroundColor = "#ffffff";
+        defaultOrderEl.style.color = "#313131";
+        ascOrderEl.style.backgroundColor = "#EFF7FF";
+        ascOrderEl.style.color = "#1763AC";
+        descOrderEl.style.backgroundColor = "#ffffff";
+        descOrderEl.style.color = "#313131";
+        document.getElementById("defaultTickIcon").style.display = "none";
+        document.getElementById("ascTickIcon").style.display = "block";
+        document.getElementById("descTickIcon").style.display = "none";
+        closeFilterDropdown();
+        document.getElementById("selectedSortType").innerText = "Aa - Zz";
+        sortByAsc();
+        })
+
+        descOrderEl.addEventListener("click", () => {
+        defaultOrderEl.style.backgroundColor = "#ffffff";
+        defaultOrderEl.style.color = "#313131";
+        ascOrderEl.style.backgroundColor = "#ffffff";
+        ascOrderEl.style.color = "#313131";
+        descOrderEl.style.backgroundColor = "#EFF7FF";
+        descOrderEl.style.color = "#1763AC";
+        document.getElementById("defaultTickIcon").style.display = "none";
+        document.getElementById("ascTickIcon").style.display = "none";
+        document.getElementById("descTickIcon").style.display = "block";
+        closeFilterDropdown();
+        document.getElementById("selectedSortType").innerText = "Zz - Aa";
+        sortByDesc();
+        })
+
+        document.getElementById("hamburgerIcon").addEventListener("click", () => {
+        if (!isHamburgerOpen) {
+            document.getElementById("hamburgerDetails").classList.remove('hidden');
+            aboutDropdownMenu.classList.add('hidden');
+            documentationDropdownMenu.classList.add('hidden');
+            isHamburgerOpen = true;
+            isAboutDropdownMenuOpen = false;
+            isDocumentationMenuOpen = false;
+
+        } else {
+            document.getElementById("hamburgerDetails").classList.add('hidden');
+            isHamburgerOpen = false;
+        }
+        });
+
+        aboutDropdownIcon.addEventListener("click", () => {
+        if (!isAboutDropdownMenuOpen) {
+            aboutDropdownIcon.classList.add('active-dropdown-btn');
+            aboutDropdownMenu.classList.remove('hidden');
+            isAboutDropdownMenuOpen = true;
+        } else {
+            aboutDropdownIcon.classList.add('inactive-dropdown-btn');
+            aboutDropdownMenu.classList.add('hidden');
+            documentationDropdownMenu.classList.add('hidden');
+            isAboutDropdownMenuOpen = false;
+            isDocumentationMenuOpen = false;
+        }
+        });
+
+        documentationDropdownIcon.addEventListener("click", () => {
+        if (!isDocumentationMenuOpen) {
+            documentationDropdownIcon.classList.add('active-dropdown-btn');
+            documentationDropdownMenu.classList.remove('hidden');
+            isDocumentationMenuOpen = true;
+        } else {
+            documentationDropdownIcon.classList.add('inactive-dropdown-btn');
+            documentationDropdownMenu.classList.add('hidden');
+            isDocumentationMenuOpen = false;
+        }
+        });
+
+        applicationCardBtnEl.addEventListener("click", () => {
+            document.getElementById('useCases').classList.add("hidden");
+            document.getElementById('applicationsCard').classList.remove("hidden");
+            applicationCardBtnEl.classList.add("active-btn");
+            applicationCardBtnEl.classList.remove("inactive-btn");
+            useCasesBtnEl.classList.remove("active-btn");
+            useCasesBtnEl.classList.add("inactive-btn");
+            showListOfAppsData(listOfMosipApps);
+            othersAppsEl.innerHTML = "";
+            activeTab = "applications";
+            changeFilterCardStyles();
+        });
+
+        useCasesBtnEl.addEventListener("click", () => {
+            document.getElementById('applicationsCard').classList.add("hidden");
+            document.getElementById('useCases').classList.remove("hidden");
+            useCasesBtnEl.classList.add("active-btn");
+            useCasesBtnEl.classList.remove("inactive-btn");
+            applicationCardBtnEl.classList.remove("active-btn");
+            applicationCardBtnEl.classList.add("inactive-btn");
+            showListOfOtherAppsData(listOfOtherApps);
+            activeTab = "usecases";
+            changeFilterCardStyles();
+        });
+
+    </script>
+    </body>
+
+</html>
