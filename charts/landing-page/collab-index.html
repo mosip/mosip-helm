@@ -623,7 +623,8 @@
     const useCasesList = [
       {id: 'Loan-application', title: 'Loan Application', name: 'Secure Loan Application Using National ID', guideUrl:'https://docs.mosip.io/1.2.0/general/collab-getting-started-guide/use-cases/loan-application', youtubeLink:"https://www.youtube.com/watch?v=3dO-mUXCZT8"},
       {id: 'esim-issuance', title: 'eSIM Issuance With National ID', name: 'National ID Authentication via eSignet For eSIM Allocation', guideUrl: 'https://docs.esignet.io/esignet-authentication/test/end-user-guide/telecom-portal', tryItOut: 'https://esim-mosipid.collab.mosip.net/', youtubeLink:"https://www.youtube.com/watch?v=9eQEy3aXv2E"},
-      {id: 'global-id-pass-issuance', title: 'Global ID Pass Issuance & Login for Republic of Utopia', name: 'Access Republic of Utopia Services with a Global ID Pass', guideUrl: 'https://docs.mosip.io/1.2.0/general/collab-getting-started-guide/use-cases/global-id-pass-issuance', youtubeLink:"https://www.youtube.com/watch?v=IGpQWpOnJn0&feature=youtu.be"}
+      {id: 'global-id-pass-issuance', title: 'Global ID Pass Issuance & Login for Republic of Utopia', name: 'Access Republic of Utopia Services with a Global ID Pass', guideUrl: 'https://docs.mosip.io/1.2.0/general/collab-getting-started-guide/use-cases/global-id-pass-issuance', youtubeLink:"https://www.youtube.com/watch?v=IGpQWpOnJn0&feature=youtu.be"},
+      {id: 'Patient-registration', title: 'Patient Registration using National ID', name: "Patient registration on the DHIS2 portal, authenticated via eSignet.", guideUrl: 'https://docs.esignet.io/esignet-authentication/test/end-user-guide/patient-registration-portal', youtubeLink:""}
     ];
 
 
@@ -711,7 +712,7 @@
               <button class="w-[90px] h-[29px] bg-[#1763AC] rounded-[6px] text-[#ffffff] text-[14px]"><a  target="_blank"
                   href=${item.guideUrl}>User
                   Guide</a></button>
-              ${item.youtubeLink ? `<button class="w-[100px] h-[29px] rounded-[6px] border border-[#1763AC] font-[600]"><a class="text-[#1763AC] text-[14px]" target="_blank" href=${item.youtubeLink}>Watch Demo</a></button>` : ''}
+              ${item.youtubeLink ? `<button class="w-[100px] h-[29px] rounded-[6px] border border-[#1763AC] font-[600]"><a class="text-[#1763AC] text-[14px]" target="_blank" href=${item.youtubeLink}>Watch Demo</a></button>` : `<button class="w-[100px] h-[29px] rounded-[6px] border border-gray cursor-default font-[600] text-gray text-[14px]">Watch Demo</button>`}
             </div>
           </div>
         </div>
