@@ -9237,7 +9237,7 @@ entries:
     version: 17.9.25
   esignet:
   - apiVersion: v2
-    created: "2026-09-15T08:01:32.978478298Z"
+    created: "2026-09-17T17:03:18.70813066Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -9245,7 +9245,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP esignet module
-    digest: 72bbcfe914b47a958fe7bd6ae845ee52b80699fd2bf5099c0550696d5bce53a7
+    digest: 50311025c373d034f270a14991dab7e8f51e418278fc9ab696ed78088c4407b0
     home: https://mosip.io
     keywords:
     - mosip
@@ -9874,6 +9874,55 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/esignet-0.0.1-develop.tgz
     version: 0.0.1-develop
+  esignet-apitestrig:
+  - apiVersion: v2
+    created: "2026-09-17T17:03:18.709421281Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy the Go-based eSignet API test rig (api-test)
+    digest: 4c44468a9004a380ee5ebe95a1ebf5c929760532eca8c0146c27b93af29a9e98
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - esignet
+    - apitestrig
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: esignet-apitestrig
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/esignet-apitestrig-2.0.0-develop.tgz
+    version: 2.0.0-develop
+  esignet-uitestrig:
+  - apiVersion: v2
+    created: "2026-09-17T17:03:18.711131561Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy the Java eSignet UI test rig (ui-test, image
+      uitest-esignet)
+    digest: 29dc6fb44ac75bde348d785fa7f664575119a5f28db27e8d575cf6a9211edaf7
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - esignet
+    - uitestrig
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: esignet-uitestrig
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/esignet-uitestrig-2.0.0-develop.tgz
+    version: 2.0.0-develop
   gc-util:
   - apiVersion: v2
     created: "2025-03-27T14:53:05.0910927+05:30"
@@ -24636,7 +24685,7 @@ entries:
     - https://mosip.github.io/mosip-helm/oidc-ui-12.0.2.tgz
     version: 12.0.2
   - apiVersion: v2
-    created: "2026-09-15T08:01:32.980276403Z"
+    created: "2026-09-17T17:03:18.712558992Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -24644,7 +24693,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP OIDC UI module
-    digest: 065f619f1b5f9521ec06c71f9788dc4173a82fdb617760b29ed4950691e0a913
+    digest: 86a16073928f35e484477d49efa91c0d3bfe51105fe5d96d6bfb60f53453e09e
     home: https://mosip.io
     keywords:
     - mosip
@@ -50795,4 +50844,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2026-09-16T11:25:36.737238139Z"
+generated: "2026-09-17T17:03:18.706317935Z"
