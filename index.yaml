@@ -9230,6 +9230,28 @@ entries:
     - https://mosip.github.io/mosip-helm/dslorchestrator-12.0.1-B3.tgz
     version: 12.0.1-B3
   - apiVersion: v2
+    created: "2026-09-22T06:18:25.356802682Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy dslorchestrator to test working of MOSIP modules
+    digest: defdc5759f68560a3be56109ac858faa52558d56cb4be540ec2ce85daa595abd
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - dslorchestrator
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: dslorchestrator
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/dslorchestrator-1.6.0-SNAPSHOT.tgz
+    version: 1.6.0-SNAPSHOT
+  - apiVersion: v2
     created: "2026-08-03T07:17:08.846048709Z"
     dependencies:
     - name: common
@@ -26487,6 +26509,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/packetcreator-12.0.1-B3.tgz
     version: 12.0.1-B3
+  - apiVersion: v2
+    created: "2026-09-22T06:18:25.358039264Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for DSL orchestrator
+    digest: b98d4c9dd3cef5390b6cf365b0f52ee4ef89ba68a1ba2d18385832274af6e73a
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - packetcreator
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: packetcreator
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/packetcreator-1.6.0-SNAPSHOT.tgz
+    version: 1.6.0-SNAPSHOT
   - apiVersion: v2
     created: "2026-08-03T07:17:08.847220483Z"
     dependencies:
@@ -51957,4 +52001,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2026-09-22T06:00:17.447222587Z"
+generated: "2026-09-22T06:18:25.354760167Z"
