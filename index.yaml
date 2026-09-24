@@ -9487,7 +9487,7 @@ entries:
     version: 17.9.25
   esignet:
   - apiVersion: v2
-    created: "2026-09-24T12:44:35.552606387Z"
+    created: "2026-09-24T13:00:25.886188501Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -9495,7 +9495,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP esignet module
-    digest: aa39cdaa1e34587f78afd79d2f387bfe1d26076deb2c4a1f4501c6ddd390cb45
+    digest: d6b5873d279775e03d8ec6fab7a6f2d29047702371b53db8969652fdacee997c
     home: https://mosip.io
     keywords:
     - mosip
@@ -10148,7 +10148,7 @@ entries:
     version: 0.0.1-develop
   esignet-apitestrig:
   - apiVersion: v2
-    created: "2026-09-24T12:44:35.553983135Z"
+    created: "2026-09-24T13:00:25.887866876Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -10156,7 +10156,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart to deploy the Go-based eSignet API test rig (api-test)
-    digest: 362556e9d5d89f5186955a8f937ddfc47954db7706fda1a65a654ed260b2aa3e
+    digest: 3ed0392176f803c692a158d750347f8540cb7e6292d7f7fb305f7ecb360e8c28
     home: https://mosip.io
     keywords:
     - mosip
@@ -10195,7 +10195,7 @@ entries:
     version: 2.0.0-develop
   esignet-uitestrig:
   - apiVersion: v2
-    created: "2026-09-24T12:44:35.555695535Z"
+    created: "2026-09-24T13:00:25.889233529Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -10204,7 +10204,7 @@ entries:
       version: 1.x.x
     description: A Helm chart to deploy the Java eSignet UI test rig (ui-test, image
       uitest-esignet)
-    digest: 672f4aedbe3e9d68adc08a3c485ade7c44b5631ec9f780753f2276a58130f619
+    digest: 7ea22baa0619be4d3197c383599b193c0ec3f688d3d3b1a8d0c2a78ef4f2fad4
     home: https://mosip.io
     keywords:
     - mosip
@@ -25409,7 +25409,7 @@ entries:
     - https://mosip.github.io/mosip-helm/oidc-ui-12.0.2.tgz
     version: 12.0.2
   - apiVersion: v2
-    created: "2026-09-24T12:44:35.557420876Z"
+    created: "2026-09-24T13:00:25.891044613Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -25417,7 +25417,7 @@ entries:
       - bitnami-common
       version: 1.x.x
     description: A Helm chart for MOSIP OIDC UI module
-    digest: 05b1996bc2313b45d40814b22943347a4f1ec971c4970513b26d7ff9f62e8338
+    digest: 4cea9e4c548225d82f4f3e41ed043f11b1bd849962fa8e602da387657448b6ee
     home: https://mosip.io
     keywords:
     - mosip
@@ -52279,4 +52279,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2026-09-24T12:44:35.550662229Z"
+generated: "2026-09-24T13:00:25.883019146Z"
