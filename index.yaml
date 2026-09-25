@@ -9275,6 +9275,28 @@ entries:
     - https://mosip.github.io/mosip-helm/dslorchestrator-12.0.1-B3.tgz
     version: 12.0.1-B3
   - apiVersion: v2
+    created: "2026-09-25T09:49:29.487411662Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart to deploy dslorchestrator to test working of MOSIP modules
+    digest: 6d2db61b46cccf545ce3164ec0bec21690ee16534f64361cee4e1e4371e712e0
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - dslorchestrator
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: dslorchestrator
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/dslorchestrator-1.6.0-develop.tgz
+    version: 1.6.0-develop
+  - apiVersion: v2
     created: "2026-09-22T06:18:25.356802682Z"
     dependencies:
     - name: common
@@ -26717,6 +26739,28 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/packetcreator-12.0.1-B3.tgz
     version: 12.0.1-B3
+  - apiVersion: v2
+    created: "2026-09-25T09:49:29.488990841Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for DSL orchestrator
+    digest: 4636b66f6ad9a1fca926e386276b2751b1d1ba77d06ea838e0a06da7b2cd9bc8
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - packetcreator
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: packetcreator
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/packetcreator-1.6.0-develop.tgz
+    version: 1.6.0-develop
   - apiVersion: v2
     created: "2026-09-22T06:18:25.358039264Z"
     dependencies:
@@ -52441,4 +52485,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2026-09-25T08:20:55.746879066Z"
+generated: "2026-09-25T09:49:29.485492211Z"
