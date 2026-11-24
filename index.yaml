@@ -36932,6 +36932,30 @@ entries:
     - https://mosip.github.io/mosip-helm/regproc-camel-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
+    created: "2026-11-24T14:26:28.91189345Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Camel stage
+    digest: cd9e359a6763a080092728f5705733e740a1a75083c50c5dc8b60b7a2d90d66d
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-camel
+    - regproc
+    - camel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-camel
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-camel-1.4.0-beta.1-develop.tgz
+    version: 1.4.0-beta.1-develop
+  - apiVersion: v2
     created: "2026-09-23T08:03:57.922857902Z"
     dependencies:
     - name: common
@@ -37645,6 +37669,29 @@ entries:
     - https://mosip.github.io/mosip-helm/regproc-group1-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
+    created: "2026-11-24T14:26:28.913400733Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Group 1
+    digest: 2ab04416ff2ed615d1c590573a2e716f00df2d0f4549e20cb7ced89e13a88f90
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-group1
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-group1
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-group1-1.4.0-beta.1-develop.tgz
+    version: 1.4.0-beta.1-develop
+  - apiVersion: v2
     created: "2026-09-23T08:03:57.924563433Z"
     dependencies:
     - name: common
@@ -38244,6 +38291,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-group2-12.0.0.tgz
     version: 12.0.0
+  - apiVersion: v2
+    created: "2026-11-24T14:26:28.915057355Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Group 2 stage
+    digest: 4feaf85d8062dfce29914c2972b6ef6971daf798d5a9c7229026dcc2b2132c17
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-group2
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-group2
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-group2-1.4.0-beta.1-develop.tgz
+    version: 1.4.0-beta.1-develop
   - apiVersion: v2
     created: "2026-09-23T08:03:57.926349364Z"
     dependencies:
@@ -38845,6 +38915,29 @@ entries:
     - https://mosip.github.io/mosip-helm/regproc-group3-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
+    created: "2026-11-24T14:26:28.916904743Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Group 3 stage
+    digest: f6d247f8626bb4b16b68eb87fb247461ed4ba54c43889924c742c9ee9d621d27
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-group3
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-group3
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-group3-1.4.0-beta.1-develop.tgz
+    version: 1.4.0-beta.1-develop
+  - apiVersion: v2
     created: "2026-09-23T08:03:57.928899046Z"
     dependencies:
     - name: common
@@ -39444,6 +39537,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-group4-12.0.0.tgz
     version: 12.0.0
+  - apiVersion: v2
+    created: "2026-11-24T14:26:28.91863868Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Group 4
+    digest: 6ac56f43d0c247deccc2475b272e9162e88bdf3371467684eead93fe28b21ced
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-group4
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-group4
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-group4-1.4.0-beta.1-develop.tgz
+    version: 1.4.0-beta.1-develop
   - apiVersion: v2
     created: "2026-09-23T08:03:57.930409931Z"
     dependencies:
@@ -40045,6 +40161,29 @@ entries:
     - https://mosip.github.io/mosip-helm/regproc-group5-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
+    created: "2026-11-24T14:26:28.920432247Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Group 5
+    digest: a803accae45ba5543c191efb296dcf2b834f715b4eded6f2e3f96fd0ebb99dea
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-group5
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-group5
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-group5-1.4.0-beta.1-develop.tgz
+    version: 1.4.0-beta.1-develop
+  - apiVersion: v2
     created: "2026-09-23T08:03:57.931899647Z"
     dependencies:
     - name: common
@@ -40644,6 +40783,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-group6-12.0.0.tgz
     version: 12.0.0
+  - apiVersion: v2
+    created: "2026-11-24T14:26:28.922799384Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Group 6
+    digest: dc5afd25aa4792d3b8d89200e164f97367a6cc53139036f030a420baa789ae5f
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-group6
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-group6
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-group6-1.4.0-beta.1-develop.tgz
+    version: 1.4.0-beta.1-develop
   - apiVersion: v2
     created: "2026-09-23T08:03:57.933381748Z"
     dependencies:
@@ -41245,6 +41407,29 @@ entries:
     - https://mosip.github.io/mosip-helm/regproc-group7-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
+    created: "2026-11-24T14:26:28.924265991Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Group 7
+    digest: fa58a5c9f5c755a2058032fff32031399852c777fff88518c284c37f217ce3e6
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-group7
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-group7
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-group7-1.4.0-beta.1-develop.tgz
+    version: 1.4.0-beta.1-develop
+  - apiVersion: v2
     created: "2026-09-23T08:03:57.935697035Z"
     dependencies:
     - name: common
@@ -41683,6 +41868,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-landingzone-12.0.2.tgz
     version: 12.0.2
+  - apiVersion: v2
+    created: "2026-11-24T14:26:28.925626951Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Group 7
+    digest: ec0cc8cc309d1fc41a75c25fd9b42fe06d12e4a1879e8e6ccb3aab3f2925e50b
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-landingzone
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-landingzone
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-landingzone-1.4.0-beta.1-develop.tgz
+    version: 1.4.0-beta.1-develop
   - apiVersion: v2
     created: "2026-09-23T08:03:57.937078297Z"
     dependencies:
@@ -42334,6 +42542,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-notifier-12.0.0.tgz
     version: 12.0.0
+  - apiVersion: v2
+    created: "2026-11-24T14:26:28.927060197Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Notification Service
+    digest: 0c5529039bc21db3c0e0a66bca46a8f13e1b7d8d0773594ae896f53035b7b4be
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-notifier
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-notifier
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-notifier-1.4.0-beta.1-develop.tgz
+    version: 1.4.0-beta.1-develop
   - apiVersion: v2
     created: "2026-09-23T08:03:57.938443399Z"
     dependencies:
@@ -43429,6 +43660,29 @@ entries:
     - https://mosip.github.io/mosip-helm/regproc-pktserver-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
+    created: "2026-11-24T14:26:28.928437477Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Packet Server
+    digest: 7e932e44a3ea9bcfa4550cdb780e34566b9a80a3258755e336661194adf625a8
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-pktserver
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-pktserver
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-pktserver-1.4.0-beta.1-develop.tgz
+    version: 1.4.0-beta.1-develop
+  - apiVersion: v2
     created: "2026-09-23T08:03:57.939810995Z"
     dependencies:
     - name: common
@@ -44127,6 +44381,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-reprocess-12.0.0.tgz
     version: 12.0.0
+  - apiVersion: v2
+    created: "2026-11-24T14:26:28.930595907Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Reprocess stage
+    digest: 9f17d5eb0c1e15a7a25d87153c8d088b26607caddbf3671621a8426b70d74b74
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-reprocess
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-reprocess
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-reprocess-1.4.0-beta.1-develop.tgz
+    version: 1.4.0-beta.1-develop
   - apiVersion: v2
     created: "2026-09-23T08:03:57.9415724Z"
     dependencies:
@@ -45306,6 +45583,29 @@ entries:
     - https://mosip.github.io/mosip-helm/regproc-status-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
+    created: "2026-11-24T14:26:28.932103912Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Status Service
+    digest: 50b11775877926a4d5e2008349de4f9d80537cbe037709e84f0ddce57596d8e8
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-status
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-status
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-status-1.4.0-beta.1-develop.tgz
+    version: 1.4.0-beta.1-develop
+  - apiVersion: v2
     created: "2026-09-23T08:03:57.943242039Z"
     dependencies:
     - name: common
@@ -45929,6 +46229,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-trans-12.0.0.tgz
     version: 12.0.0
+  - apiVersion: v2
+    created: "2026-11-24T14:26:28.933449003Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Transaction Service
+    digest: fe0e80558b87312da84110401dcdeb58877145348c218f5d84e5ed4212445f43
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-trans
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-trans
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-trans-1.4.0-beta.1-develop.tgz
+    version: 1.4.0-beta.1-develop
   - apiVersion: v2
     created: "2026-09-23T08:03:57.944582475Z"
     dependencies:
@@ -46628,6 +46951,29 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/regproc-workflow-12.0.0.tgz
     version: 12.0.0
+  - apiVersion: v2
+    created: "2026-11-24T14:26:28.934826484Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Registration Processor Workflow Manager
+    digest: c668d956ace0471b5f48cf027968e96f77a375c4eeb1b626fbf36f64ee4e146e
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - regproc-workflow
+    - regproc
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: regproc-workflow
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/regproc-workflow-1.4.0-beta.1-develop.tgz
+    version: 1.4.0-beta.1-develop
   - apiVersion: v2
     created: "2026-09-23T08:03:57.94593371Z"
     dependencies:
@@ -53241,4 +53587,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2026-11-24T13:56:35.041964857Z"
+generated: "2026-11-24T14:26:28.90927997Z"
