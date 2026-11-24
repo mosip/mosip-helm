@@ -27720,6 +27720,29 @@ entries:
     - https://mosip.github.io/mosip-helm/packetmanager-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
+    created: "2026-11-24T13:56:35.043803702Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for MOSIP Packetmanager module
+    digest: f8c0439b850f07794f2bbf22091b3775d78e6d8b00a31fe920fb20131063113f
+    home: https://mosip.io
+    keywords:
+    - mosip
+    - packetmanager
+    - kernel
+    maintainers:
+    - email: info@mosip.io
+      name: MOSIP
+    name: packetmanager
+    type: application
+    urls:
+    - https://mosip.github.io/mosip-helm/packetmanager-1.4.0-beta.1-develop.tgz
+    version: 1.4.0-beta.1-develop
+  - apiVersion: v2
     created: "2026-09-23T08:01:09.317087106Z"
     dependencies:
     - name: common
@@ -53218,4 +53241,4 @@ entries:
     urls:
     - https://mosip.github.io/mosip-helm/websub-consolidator-0.0.1-develop.tgz
     version: 0.0.1-develop
-generated: "2026-11-24T12:01:52.157464165Z"
+generated: "2026-11-24T13:56:35.041964857Z"
